@@ -8,17 +8,18 @@ img{
    
 td{
             
-    border: 1px solid black;
+    border: 1px solid grey;
     border-collapse: collapse;
     text-align: center;
 }
 th {
     color: blue;
-    border: 1px solid black;
+    border: 1px solid grey;
     border-collapse: collapse;
     text-align: center;
 }
 
 table{
     border-collapse: collapse;    
+    
 }
