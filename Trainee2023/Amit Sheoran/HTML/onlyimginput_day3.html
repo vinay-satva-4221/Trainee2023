@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>upload file</title>
+    </head>
+    <body >
+        <h1>Only Images Allowed </h1><hr><br>
+
+
+    <input type="file" id="file" accept="image/*" onchange="return checkimagefile()" />
+    <script>
+        function checkimagefile() {
+            var fileInput = document.getElementById('file');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+             
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            }
+        }
+        reader.readAsDataURL(fileInput.files[0]);
+     </script>
+    </body>
+</html>
