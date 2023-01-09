@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <head>
+    <style>
+      h1 {text-align: center;}
+      p {text-align: center;}
+      div {text-align: center;}
+      </style>
+  </head>
+
+<h1>Allow Only If image</h1>
+<form >
+  <input name="image" type="file" id="fileName" accept=".jpg,.jpeg,.png" onchange="validateFileType()"/>
+  <input type="submit">
+</form>
+
+<p><strong>Note:</strong> Image File Only</p>
+
+
+
+
+
+<script type="text/javascript">
+    function validateFileType(){
+        var fileName = document.getElementById("fileName").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+            //TO DO
+        }else{
+            alert("Only jpg/jpeg and png files are allowed!");
+        }   
+    }
+</script>
+</body>
+</html>
