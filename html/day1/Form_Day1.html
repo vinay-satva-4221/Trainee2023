@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>task1</title>
+<h2>Traniee Forms</h2>
+<header>
+    <button onclick="myFunction()">Home</button>
+
+<p id="demo"></p>
+
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "";
+}
+</script><p style = "direction: rtl;"></p>
+</header>
+<body style="Background-color:rgb(205, 235, 240)"
+
+
+    <br>
+
+First name: <input type="text" id="fname" onkeyup="myFunction()">
+
+<script>
+function myFunction() {
+  var x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+</script> </br>
+<br>
+last name: <input type="text" id="fname" onkeyup="myFunction()">
+
+<script>
+function myFunction() {
+  var x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+</script> </br>
+
+  <br>
+  <label for="gname">Mail id:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
+  <label for="pname">password:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
+  <label for="pname">re write password:</label><br>
+  <input type="text" id="fname" name="fname" value="You can copy from above">
+  
+<br> </br>
+</form> 
+<header>
+    <tr>
+        <th colspan="6">
+          <h1> Employe names</h1>
+
+          <select>
+           <option>Chintan Sir</option>
+           <option>Nischay Sir </option>
+           <option>Suraj Sir</option>
+           <option>Rohan Sir</option>
+        </select>
+        </th>
+  </tr>
+</header>
+<br>
+<style>
+    #myDIV {
+      border: 1px solid rgb(238, 211, 211);
+      width: 200px;
+      height: 100px;
+      overflow: scroll;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <p>Try the scrollbar in div.</p>
+    
+    <div id="myDIV" onscroll="myFunction()">xyz
+    <br><br>
+    </div>
+    
+    <script>
+    function myFunction() {
+      document.getElementById("myDIV").style.color = "red";
+    }
+    </script>
+    <br>
+    
+<a href="index.html"><input type="submit" value="Submit"></br></a></p>
+</br>
+</body>
+</html>
+
