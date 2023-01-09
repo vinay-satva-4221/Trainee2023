@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Submit Button</title>
+</head>
+<body>
+    <div>
+        <form>
+            <h1>
+                Submit Form
+            </h1>
+            <label>User Name: </label>
+            <input type="text" name="name" id="name">
+            <div>
+                <button type="button" class="button" id="button1">button 1 </button> 
+                <button type="button" class="button" id="button2"> button 2</button>
+            </div>
+            
+        </form>
+    </div>
+    <div>
+        <table border="1" id="tableData">
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Submitted Via
+                </th>
+            </tr>
+            
+        </table>
+    </div>
+<script>
+
+    // let buttonList = document.querySelectorAll(".button");
+    // var buttonValue = buttonList.forEach(function(i){
+    //     i.addEventListener("click", function(e){
+    //     alert(e.target.innerHTML);
+    //     })
+    // })
+    
+    var button = document.getElementById('button1');
+    button.addEventListener("click",disDetail).value;
+    var row = 1;
+    function disDetail()
+    {
+        var name = document.getElementById('name').value;
+        var buttonValue = event.target.innerText;
+        //var bValue = (this.innerText);
+        if(!name)
+        {
+            alert("Enter data");
+            return;
+        }
+        var display = document.getElementById('tableData');
+        var newRow  = display.insertRow(row);
+
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+
+        cell1.innerHTML = name;
+        cell2.innerHTML = buttonValue;
+    }
+</script>
+</body>
+</html>
