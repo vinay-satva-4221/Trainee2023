@@ -1,0 +1,36 @@
+
+    .table1 {
+        width: 700px;
+        height: 350px;
+    
+    }
+    
+    
+    table {
+        border: 1px solid black;
+    
+    }
+    
+    .new {
+        border: 1px solid black;
+    }
+    
+    .main_div {
+        border-collapse: collapse;
+    }
+    
+    .div1 {
+        border: 1px solid black;
+        margin-top: -1px;
+        margin-left: -1px;
+        margin-right: -1px;
+    
+    }
+    
+    .div2 {
+        border: 1px solid black;
+        margin-top: 2px;
+        margin-bottom: -1px;
+        margin-left: -1px;
+        margin-right: -1px;
+    }  
