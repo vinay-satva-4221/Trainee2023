@@ -1,0 +1,43 @@
+Task:- Extra
+
+<!DOCTYPE html>: Doctype HTML is a declaration that tells the browser what version of HTML the document 
+is written in. This declaration appears as the very first line in an HTML file.
+
+<html lang="en">:
+The lang attribute specifies the language of the element's content.
+Common examples are "en" for English, "es" for Spanish, "fr" for French and so on
+
+<meta charset="UTF-8">:
+The charset attribute specifies the character encoding for the HTML document. 
+The HTML5 specification encourages web developers to use the UTF-8 character set, 
+which covers almost all of the characters and symbols in the world!.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">:
+This gives the browser instructions on how to control the page's dimensions and scaling. 
+The width=device-width part sets the width of the page to follow the screen-width of the device 
+(which will vary depending on the device)
+
+<meta http-equiv X-UA-compatible content IE Edge>:
+The X-UA-Compatible meta tag is a http-equiv meta tag. 
+X-UA-Compatible Meta Tag Recommended Uses: Use the X-UA-Compatible meta tag on web pages where you 
+suspect that Internet Explorer 8 will attempt to render the page in an incorrect view.
+ Such as when you have an XHTML document with an XML declaration
+
+----------------------------------------------------------------------------------------------------
+Task:- 3
+<tt> tage:-Not supported in HTML5. Use CSS instead.
+
+The <tt> HTML element creates inline text which is presented using the user agent's default monospace font face.
+ This element was created for the purpose of rendering text as it would be displayed 
+on a fixed-width display such as a teletype, text-only screen, or line printer.
+
+Ex:-<p>
+  Enter the following at the telnet command prompt: <code>set localecho</code><br />
+
+  The telnet client should display: <tt>Local Echo is on</tt>
+</p>
+
+output:-
+Enter the following at the telnet command prompt: set localecho
+The telnet client should display: Local Echo is on
+

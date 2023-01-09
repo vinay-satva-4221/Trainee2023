@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1 Form </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div >
+        <aside>
+            <p><h1> Register Yourself Here!!!!</h1></p>
+        </aside>
+    </div>
+    <div id="mainbody">
+        <div class="formBody">
+            <a href="https://satvasolutions.com/" style="text-decoration: none;"><h2> Registration Form </h2></a>
+            <img src="./RegisterImage.png" class="image" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+            
+    
+            <div class="form">
+                
+                <form action="">
+                    
+                    <div class="form">
+                        <label>Name: </label>
+                        <input type="text" placeholder="Username" name="name" id="name" onfocus="nameFocus(this.name)">
+                    </div>
+                    <div class="form">
+                        <label>Email: </label>
+                        <input type="email" placeholder="email id" name="email">
+                    </div>
+                    <div class="form">
+                        <label>Date of Birth: </label>
+                        <input type="date"  name="date">
+                    </div>
+                    <div class="form">
+                        <label>Gender: </label>
+                        <input type="radio" name="male" value="Male"> Male
+                        <input type="radio" name="male" value="Feamle"> Female
+                        <input type="radio" name="male" value="Others"> Others
+                    </div>
+                    <div class="form">
+                        <label>Hobbies: </label>
+                        <input type="checkbox" name="Reading" value="Reading">Reading
+                        <input type="checkbox" name="Dancing" value="Dancing">Dancing
+                        <input type="checkbox" name="Travelling" value="Travelling">Travelling
+                    </div>
+                    <div class="form">
+                        <label>Phone Number: </label>
+                        <input type="tel" name="phone" onselect="selectingInputText()">
+                    </div>
+                    <div class="form">
+                        <input type="submit" value="Submit" name="submit" id="save" onclick="saveButton()">
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        function saveButton() {
+          alert("Hello! Thanks for registartion!");
+        }
+        function bigImg(x) {
+        x.style.height = "200px";
+        x.style.width = "200px";
+        }
+
+        function normalImg(x) {
+        x.style.height = "100px";
+        x.style.width = "100px";
+        }
+        function nameFocus(x){
+            document.getElementById(x).style.background = "lightblue";
+        }
+        function selectingInputText() {
+        alert("You have selected some text!");
+        }
+        </script>
+</body>
+</html>
