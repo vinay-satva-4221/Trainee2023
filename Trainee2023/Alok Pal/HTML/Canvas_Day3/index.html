@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <body style="text-align: center;">
+        <canvas id="myCanvas" width="450" height="310" ></canvas>
+    
+    
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "pink";
+            ctx.fillRect(20, 20, 300, 200);
+            
+            //Turn transparency on
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = "green"; 
+            ctx.fillRect(150, 105, 300, 200);
+            </script>
+    </body>
+
+
+
+
+    <script src="index.js"></script>
+</body>
+</html>

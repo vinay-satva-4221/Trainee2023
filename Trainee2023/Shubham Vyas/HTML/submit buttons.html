@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two buttons</title>
+    <style>
+        table{
+            border: 2px solid black;
+            width: 50%;
+        }
+        tr{border: 1px solid black; }
+        td{
+            border:1px solid black
+            width: auto;
+            padding-bottom:20px ;
+            padding-right:50px ;
+            padding-top:20px ;
+            padding-left:50px ;
+        }
+    </style>
+</head>
+<body>
+    <h2>Two submit Button with different actions</h2>
+    <label for="fname">FirstName</label>
+    <input type="text" id="fname" name="fname"/><br></br>
+    <button type="submit" id="submit1">Submit1</button>
+    <button type="submit" id="submit2">Submit2</button><br></br>
+
+    <table id="table">
+        <tr>
+            <td>FirstName</td>
+            <td>Submitted Via</td>
+        </tr>
+    </table>
+    
+
+    <script>
+        document.getElementById("submit1").onclick= function(){
+            var table= document.getElementById("table");
+            var row= table.insertRow(1);
+            var firstName= row.insertCell(0);
+            var submittedVia= row.insertCell(1) ;
+            firstName.innerHTML= document.getElementById("fname").value;
+            submittedVia.innerHTML= "submit1";
+        }
+
+        document.getElementById("submit2").onclick= function(){
+            var table=document.getElementById("table");
+            var row= table.insertRow(1);
+            var firstName= row.insertCell(0);
+            var submittedVia= row.insertCell(1);
+            firstName.innerHTML= document.getElementById("fname").value;
+            submittedVia.innerHTML= "submit2";
+
+        }
+    </script>
+</body>
+</html>
