@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2023", "2023", "{F0B6CCF3-8E91-4D64-B259-C6C084FAAAE5}"
 	ProjectSection(SolutionItems) = preProject
 		Shubham.txt = Shubham.txt
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Global
