@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_1</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="task_2.html" onsubmit="myFunction1()">
+            <h1>Task 1 </h1>
+
+            <p><a href="https://www.Satvasolutions.com/">Visit Satvasolutions!</a></p>
+
+
+            User name:-<input type="text" id="myInput" onfocus="focusFunction()" onblur="blurFunction()"><br><br>
+            Password:-<input type="text" name="pass" id="pass" onblur="myFunction()"><br><br>
+            Birthday:-<input type="date" name="birthday"><br><br>
+
+            <div>
+                <div>
+                    <p style="font-size: 20px;">Choose your favorite color</p>
+                    <input type="radio" name="color" value="red">
+                    <label>Red</label><br>
+                    <input type="radio" name="color" value="blue">
+                    <label>Blue</label><br>
+                    <input type="radio" name="color" value="black">
+                    <label>Black</label><br>
+                    <input type="radio" name="color" value="yellow">
+                    <label>Yellow</label><br>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p style="font-size: 20px;">Choose your favorite color</p>
+                    <input type="checkbox" value="red">
+                    <label>Red</label><br>
+                    <input type="checkbox" value="blue">
+                    <label>Blue</label><br>
+                    <input type="checkbox" value="black">
+                    <label>Black</label><br>
+                    <input type="checkbox" value="yellow">
+                    <label>Yellow</label><br><br>
+                </div>
+            </div>
+
+            <h2 onclick="this.innerHTML='Satva solutions'">Click Here!...</h2>
+
+            <img onmousemove="bigImg(this)" onmouseout="normalImg(this)" src="./Assets/moving_image.gif"
+                alt="moving_image" width="100px" height="100px">
+
+            <div class="row">
+                <div class="column">
+                    <a href="https://satvasolutions.com/"><img src="./Assets/Random image.jpg" alt="random image" width="500" height="450"></a>
+                </div>
+            </div>
+
+            <input type="submit" value="submit" width="100%" height="100%">
+
+            <p>Satva solutions<sup>team</sup></p>
+        </form>
+    </div>
+
+
+
+    <script>
+
+        // For alert message
+        function myFunction1() {
+            alert("The form was submitted");
+        }
+
+        //For Username field change text colour
+        function focusFunction() {
+            document.getElementById("myInput").style.background = "yellow";
+        }
+        function blurFunction() {
+            document.getElementById("myInput").style.background = "red";
+        }
+
+        //For password to uppercase
+        function myFunction() {
+            var x = document.getElementById("pass");
+            x.value = x.value.toUpperCase();
+        }
+
+        //For gif image to hover your mouse
+        function bigImg(x) {
+            x.style.height = "160px";
+            x.style.width = "160px";
+        }
+        function normalImg(x) {
+            x.style.height = "80px";
+            x.style.width = "80px";
+        }
+    </script>
+
+</body>
+
+</html>
