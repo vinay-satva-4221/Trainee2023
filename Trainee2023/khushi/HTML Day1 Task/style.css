@@ -1,0 +1,73 @@
+*{
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#heading{
+    
+    text-align: center;
+    height: 50px;
+    color: white;
+   
+}
+
+.formBody{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(69, 109, 196);
+    width: fit-content;
+    
+}
+.form{
+    padding: 10px;
+    
+}
+.image{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    
+}
+#save{
+    border-radius:10px; 
+    padding:10px;
+    min-height:10px; 
+    min-width: 100px;
+    background-color: white;
+    color: black;
+    font-size: medium;
+    align-items: center;
+}
+h2{
+    color: white;
+}
+label{
+    color: white;
+    font-size: medium;
+    
+}
+
+aside {
+    width: 50%;
+    float: left;
+    background-color: rgb(69, 109, 196);
+    color: white;
+    
+    height: 500px;
+    animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  color: black;
+  text-align: center;
+
+  }
+  @keyframes example {
+    0% {background-color: rgb(69, 109, 196);}
+    25% {background-color: rgb(122, 146, 197);}
+    75% {background-color: rgb(195, 209, 243);}
+    100% {background-color: white;}
+  } 

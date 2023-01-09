@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>html page</title>
+    </head>
+    <body>
+        <center>
+            <img src="images/image1.jfif" alt="spiderman" height="130px">
+            <h2>Fill the form</h2>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" name="name" onfocus="focusfunction()" id="focus"/><br>
+            <label for="name">Username:</label><br>
+            <input type="text" name="username"/><br>
+            <label for="name">Password:</label><br>
+            <input type="text" name="password"/><br>
+            <label for="contact">Contact No:</label><br>
+            <input type="text" name="contact"/><br>
+            <label for="address">Address</label><br>
+            <input type="text" name="address"/><br><br>
+            <button>Submit</button><br>
+            <a href="https://en.wikipedia.org/wiki/Spider-Man">know more...</a>
+        </form>
+        <hr>
+        <h2>Some Events</h2>
+        Click button and see the console log: <br><button onclick= clickfunction()>click!</button><br><br>
+        Copy the text: <input type="text" oncopy="copyfunction()" value="copy the text"/>
+        <p  id="copytext"></p>
+        <p ondblclick="doubleclick()">Double click here!</p>
+        <p id="over"></p>
+        Select this text and see the alert box: <br><input type="text" onselect="selectfunction()" value="Select this the text"/>
+        </center>
+        <script>
+            function clickfunction()
+            {
+                console.log("onclick");
+            }
+            function copyfunction()
+            {
+                document.getElementById("copytext").innerHTML = "Text copied!"
+            }
+            function doubleclick()
+            {
+                document.getElementById("over").innerHTML = "Just click 2 times"
+            }
+            function focusfunction()
+            {
+                document.getElementById("focus").style.background="yellow";
+            }
+            function selectfunction()
+            {
+                alert("you select the text!");
+            }
+        </script>
+    </body>
+</html>
