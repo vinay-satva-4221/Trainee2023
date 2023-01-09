@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title>Allow Only Images</title>
+ 
+    <style>
+        fieldset{
+            width: 100%;
+            border-color: 1px solid black;
+            border-collapse: collapse;
+        }
+       
+        h3{
+            color: purple;
+
+        }
+    </style>
+</head>
+ 
+<body>
+    <form style="width: 100px;">
+    <fieldset>
+    <h3> Allow Only Images</h3>
+    <label for="Only Image">Select Image:</label>
+    <input type="file" id="file"
+        onchange="return fileValidation()" />
+ 
+    
+    <div id="imagePreview"></div>
+    <script>
+        function fileValidation() {
+            var fileInput =document.getElementById('file');
+             
+            var filePath = fileInput.value;
+         
+            var allowedExtensions =
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+             
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Alert..Wrong File Choosen');
+                fileInput.value = '';
+                return false;
+            }
+            else
+            {  
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById(
+                            'imagePreview').innerHTML ='<img src="' + e.target.result + '"/>';
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+    </script>
+    </fieldset>
+</form>
+</body>
+</html>
