@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 task 2</title>
+    <style>
+        form {
+
+            border: 2px solid black;
+            width: 40%;
+            margin: auto;
+            background-color: rgb(255, 149, 149);
+
+        }
+
+        label,
+        input {
+            
+            padding: 10px;
+            margin: 10px;
+        }
+        .btn{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#">
+
+        <label for="F_name">First Name</label>
+        <input type="text" name="F_name" id="F_name" placeholder="Enter First Name" required>
+
+        <br>
+
+        <label for="L_name">Last Name</label>
+        <input type="text" name="L_name" id="L_name" placeholder="Enter Last Name" required>
+
+        <br>
+
+        <label for="Email">Email</label>
+        <input type="email" name="Email" id="Email" placeholder="Enter Email" required>
+
+        <br>
+
+        <label for="Age">Age</label>
+        <input type="text" name="Age" id="Age" placeholder="Enter Age" required>
+
+        <br>
+
+        <label for="Linkedin Profile">Linkedin Profile</label>
+        <input type="url" name="Linkedin Profile" id="Linkedin Profile" placeholder="Enter Linkedin Profile" required>
+
+        <br>
+
+        <label for="Range">Number between 10 to 20</label>
+        <input type="range" name="Range" id="Range" min="10" max="20" value="12">
+
+        <br>
+
+        <label for="PW">Password</label>
+        <input type="password" name="PW" id="PW" placeholder="Enter Password" required>
+
+        <br>
+
+        <input class="btn" type="submit" value="Submit">
+
+    </form>
+
+</body>
+
+</html>
