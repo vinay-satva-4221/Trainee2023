@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Canvas</title>
+    </head>
+    <style>
+    h2{
+        text-align: center;
+        color: plum;
+    }
+    canvas{
+        margin-left: 500px;
+        
+    } 
+    </style>
+
+<body>
+<h2>Canvas</h2>
+<canvas id="myCanvas" width="300" height="200" style="border:1px solid #e01414;"></canvas>
+
+<script>
+
+var c = document.getElementById("myCanvas");
+if(c.getContext)
+{
+    var ctx = c.getContext('2d');
+    ctx.fillStyle = 'green';
+    ctx.globalAlpha = 0.6;
+    ctx.fillRect(80, 90, 100, 100); 
+
+    var ctx2 = c.getContext('2d');
+    ctx2.fillStyle = 'red';
+    ctx2.fillRect(40, 40, 100, 100); 
+
+}
+   
+</script>
+
+</body>
+</html>

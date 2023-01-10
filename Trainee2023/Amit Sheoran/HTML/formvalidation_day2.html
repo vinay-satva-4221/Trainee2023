@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Task 2
+        </title>
+    </head>
+    <style>
+       form {
+             margin: 0;
+             padding: 1em 0;
+             border: 2px solid black;
+        }
+    </style>
+<body>
+
+<!-- <div class="form"> -->
+    <form >
+        <!-- <table  > -->
+         <label for="fname">First name:</label><br>
+         <input type="text" id="fname" name="fname" style="border-color: red; border: 1;" size="185" placeholder="Enter First Name" pattern="[A-Za-z]{1,32}" required><br><br>
+
+         <label for="lname">Last name:</label><br>
+         <input type="text" id="lname" name="lname" style="border-color: red;"size="185" placeholder="Enter Last Name" pattern="[A-Za-z]{1,32}" required><br><br>
+
+         <label for="Email">Email:</label><br>
+         <input type="text" id="Email" name="Email" style="border-color: red;" size="185" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"required><br><br>
+         
+         <label for="age">Enter Age<br>
+            <input type="number" style="width: 98.5%; border-color: rgb(211, 31, 31);" placeholder="Enter Age" min="18" max="60" required></label><br><br>
+
+         <label for="LinkedIn">LinkedIn Profile Link:</label><br>
+         <input type="text" id="LinkedIn" name="LinkedIn" style="border-color: red;" size="185" placeholder="Enter LinkedIn Profile Link" required><br><br>
+
+         <label for="Number">Number Between 10 & 20:</label><br>
+         <input type="number" id="Number" name="Number" style="width: 98.5%; border-color: red;" placeholder="Enter Number Between 10 & 20 " min="10" max="20" required><br><br>
+
+         <label for="Password">Password ( with 1 number 1 uppercase 1 lowercase with 5 min length ):</label><br>
+         <input type="text" id="Password" name="Password" style="border-color: red;" size="185" placeholder="Enter Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}"required><br><br>
+
+         <input type="submit" value="Submit">
+        </table>
+      </form>
+</div> 
+
+
+
+</body>
+</html>
