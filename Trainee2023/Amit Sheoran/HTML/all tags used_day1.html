@@ -1,0 +1,117 @@
+<!Doctype html>
+<html>
+    <head>
+        <title> Amit Sheoran</title>
+        <style>
+            .amit{
+                text-align: center;
+                background-color: black;
+                color: antiquewhite;
+            }
+            .split {
+                height: 100%;
+                width: 50%;
+                position: fixed;
+                z-index: 1;
+                top: 1;
+                overflow-x: hidden;
+                padding-top: 20px;
+}
+
+                .left {
+                left: 0;
+                }
+
+                .right {
+                right: 0;
+                }
+
+                .centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                }
+
+        </style>
+       
+    </head>
+    <body onresize="myFunction2()">
+        <div class="amit">
+            <h1><ins>AMIT</ins></h1>
+        </div>
+
+        <div class="split left">
+        <h2><ins>MYSELF</ins></h2>
+       
+        <p> My name is Amit Sheoran</p>
+        <ol>
+            <li> amit</li>
+            <li> sheoran</li>
+            <li> is </li>
+            <li> smart</li>
+        </ol>
+        
+<form  >
+    <h2><ins> Want to be friend of Amit? If yes, fill the form.</ins></h2>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"  onfocus="myFunction(this.id)" oninput="myFunction3()" ><br>
+  <p id="demo1"></p>
+
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"  onfocus="myFunction(this.id)" oninput="myFunction4()"><br><br>
+  <p id="demo2"></p>
+
+  <label for="birthday">Birthday:</label>
+  <input type="date" id="birthday" name="birthday" onfocus="myFunction(this.id)"><br><br>
+
+  <button onclick="myFunction1()" type='button'>Submit</button>
+  <p id="demo"></p>
+</form>
+
+</div>
+
+<div class="split right">
+<h2>Favorite car of Amit</h2>
+<img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="scorpio classic.jpg" width="350" height="250">
+
+<h2>want to contact Amit? click this link. </h2>
+<a href="https://mail.google.com/mail/u/0/#inbox">Gmail</a>
+</div>
+
+<script>
+    function myFunction1() {
+  document.getElementById("demo").innerHTML = "Form Submitted";
+}
+function bigImg(x) {
+  x.style.height = "300px";
+  x.style.width = "500px";
+}
+
+function normalImg(x) {
+  x.style.height = "250px";
+  x.style.width = "350px";
+}
+
+function myFunction(x) {
+  document.getElementById(x).style.background = "yellow";
+}
+
+function myFunction2() {
+  alert("You have changed the size of the browser window!");
+}
+
+function myFunction3() {
+  var x = document.getElementById("fname").value;
+  document.getElementById("demo1").innerHTML = "You wrote: " + x;
+}
+
+function myFunction4() {
+  var x = document.getElementById("lname").value;
+  document.getElementById("demo2").innerHTML = "You wrote: " + x;
+}
+    
+</script>
+</body> 
+</html>
