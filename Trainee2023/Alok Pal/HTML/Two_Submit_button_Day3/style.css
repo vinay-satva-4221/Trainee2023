@@ -1,0 +1,12 @@
+
+body{
+    background-color: skyblue;
+}
+.container{
+    border: 1px solid balck;
+    margin: 30px;
+}
+table{
+    margin: 30px;
+    border-collapse: collapse;
+}
