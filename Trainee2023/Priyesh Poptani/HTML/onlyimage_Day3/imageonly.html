@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>
+        Image
+    </title>
+ 
+    <style>
+        h1 {
+            color: blue;
+        }
+         
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+ 
+<body>
+    <h1>
+        image Validation
+    </h1>
+ 
+    <h3>
+        Validation of file type while
+        uploading 
+    </h3>
+ 
+    
+    <p>Upload an Image</p>
+    <input type="file" id="file" 
+        onchange="return fileValidation()" />
+ 
+    
+    <div id="imagePreview"></div>
+    <script>
+        function fileValidation() {
+            var fileInput =
+                document.getElementById('file');
+             
+            var filePath = fileInput.value;
+         
+            var allowedExtensions =
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+             
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            }
+            else
+            {
+             
+                
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById(
+                            'imagePreview').innerHTML =
+                            '<img src="' + e.target.result
+                            + '"/>';
+                    };
+                     
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            }
+        }
+    </script>
+</body>
+ 
+</html>
