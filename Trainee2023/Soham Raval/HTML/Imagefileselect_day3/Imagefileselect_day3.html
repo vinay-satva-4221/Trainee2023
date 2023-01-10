@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <span>Select Image:</span><input name="image" type="file" id="fileName"   />
+    <br><button type="button" onclick ="validateFileType()">upload</button>
+     
+    <script type="text/javascript">
+
+
+        function validateFileType() {
+            var fileName = document.getElementById("fileName").value;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (extFile == "jpg" || extFile == "jpeg" || extFile == "png") {
+                document.write("File is image");
+                document.write("<br>");
+                document.write("file type="+extFile)
+                
+                
+            } else {
+                // alert("Only jpg/jpeg and png files are allowed!");
+                document.write("File is not image")
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
