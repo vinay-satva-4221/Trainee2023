@@ -28,10 +28,12 @@
             background-color: rgb(49, 49, 49);
             height: 100%;
            
+           
         }
         tr td{
             padding: 5px;
             color: white;
+            width: 150px;
         }
         select{
             width:  195px;
@@ -137,26 +139,19 @@
                                 Customer Type
                             </td>
                             <td class="formTable"> 
-                                <input type="radio" name="Business"> Business
+                                <input type="radio" name="Business" checked> Business
                                 <input type="radio" name="Individual"> Individual
                             </td>
                         </tr>
                         <tr class="formTable">
                             <td class="formTable">
-                                Primary Contact
+                                Customer Email
                             </td>
                             <td>
-                               <input type="text" class="inputfield">     
+                               <input type="email" class="inputfield">     
                             </td>
                         </tr>
-                        <tr class="formTable">
-                            <td class="formTable">
-                                Primary Contact
-                            </td>
-                            <td>
-                                <input type="text" class="inputfield">    
-                            </td>
-                        </tr>
+                        
                         <tr class="formTable">
                             <td class="formTable">
                                 Primary Contact
@@ -171,19 +166,22 @@
                             </td>
                             <td>
                                 <input type="text" class="inputfield">   
-                            </td>
+                            </td>   
                         </tr>
                         <tr class="formTable">
                             <td class="formTable">
-                                Primary Contact
+                                Website
                             </td>
                             <td>
-                                <input type="text" class="inputfield">     
+                                <input type="url" class="inputfield">     
                             </td>
                         </tr>
                     </table>
-                    <input type="button" value="Save" class="button">
-                    <input type="button" value="Cancel" class="button">
+                    <div class="formTable">
+                        <input type="button" value="Save" class="button">
+                        <input type="button" value="Cancel" class="button">
+                    </div>
+                    
                 </form>
                 
             </div>
