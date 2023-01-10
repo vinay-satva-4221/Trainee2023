@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav>
+        <div class="nav1">
+            <li><a href="https://www.google.com/">Home</a> </li>
+            <li> <a href="https://www.twitter.com/">About</a></li>
+            <li><a href="https://www.facebook.com/">Contact</a> </li>
+        </div>
+    </nav>
+
+<!--Event is enabeled      -->
+    <div class="backimg" id="p1" onmousedown="mouseDown()" onmouseup="mouseUp()" >
+        <div class="heading1">
+            <h3>Contact Us form</h3>
+        </div>
+
+        <div class="container">
+            <form  name="myForm" onsubmit="return submitform()" method="post">
+                <div class="formdesign" id="name">
+                    First Name: <input type="text" name="fname1" />
+                </div>
+
+                <div class="formdesign" id="name1">
+                    Last Name: <input type="text" name="fname2" />
+                </div>
+
+                <div class="formdesign" id="phone">
+                    Phone No.: <input type="phone" name="fphone" />
+                </div>
+
+                <div class="formdesign" id="email">
+                    Email:<input type="email" name="femail" />
+                </div>
+
+                <div class="sub1">
+                    <button class="button1" > submit </button>
+                    <!-- <button class="button2" onclick="myFunction()">Form submitted</button> -->
+
+                </div>
+            </form>
+
+            <div class="event2">
+                <img onmouseover="bigImg(this)" onmouseout="normalImg(this)"  src="images/smiley.gif" alt="Smiley" width="32" height="32" ;>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
