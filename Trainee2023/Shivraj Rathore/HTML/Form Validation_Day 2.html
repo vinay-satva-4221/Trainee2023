@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset style="background-color:white !important;">
+        <legend style="text-align: center;">SATVA Form</legend>
+<form action="">
+    <label for="Name">Firstname: <br>
+    <input type="text" style="width: 90%;border-color: rgb(211, 31, 31);" placeholder="Enter First Name" required pattern="^[A-Za-z]{1,10}$"></label><br><br>
+
+    <label for="Lastname">Lastname<br>
+    <input type="text" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter Last Name" pattern="^[A-Za-z]{1,10}$" required></label><br><br>
+
+    <label for="email">Email<br>
+        <input type="email" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></label><br><br>
+
+    <label for="age">Enter Age<br>
+    <input type="number" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter Age" min="18" max="60" required></label><br><br>
+
+    <label for="linkedprofile">Enter Linkedin Profile Link<br>
+    <input type="url" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter URl" required></label><br><br>
+
+    <label for="number">Enter Number Between 10 to 20:<br>
+    <input type="number" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter Number Between 10 to 20" min="10" max="20" required></label><br><br>
+
+    <label for="password">Password(1 uppercase,1 Lowercase,Number)<br>
+    <input type="password" style="width: 90%; border-color: rgb(211, 31, 31);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" placeholder="EnterPassword" required></label><br><br>
+
+    <button type="submit" >Check Again & Save</button>
+</form>
+
+
+</fieldset>
+<div>
+    <p>
+        Select your favorite color:
+        <input type="color" value="red" id="color" />
+    </p>
+    <input type="button" onclick="change()" value="Change Colour"></input>
+</div>
+<script>
+    function change(){
+        var x = document.getElementById('color').value;
+          document.body.style.backgroundColor = x;
+    }
+</script>
+</body>
+</html>
