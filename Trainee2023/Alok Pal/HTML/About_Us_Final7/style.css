@@ -1,0 +1,62 @@
+body{
+    background-color: skyblue;
+}
+.con1{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+    background-color: rgb(23, 23, 23);
+   height: 80px;
+   align-items: center;
+   box-shadow: 3px 3px 3px black;
+   border-radius: 5px;
+}
+.con1 li{
+    list-style: none;
+    margin-right: 60px;
+    
+
+}
+
+a{
+    text-decoration: none;
+    color: rgb(246, 246, 246);
+
+}
+a:hover{
+    color: rgb(149, 255, 0);
+}
+
+aside{
+    font-size: 60px;
+    margin: 20px;
+    margin-left: 160px;
+    margin-top: 100px;
+    font-weight: 600;
+}
+
+
+.con2{
+    display: flex;
+    width: 1000px;
+    margin: 12px;
+    margin-left: 24px;
+}
+
+.para{
+    font-size: 25px;
+    color: rgb(16, 16, 15);
+    margin-left: 160px;
+}
+
+.foot{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 45px;
+    background-color: black;
+    color: aliceblue;
+    font-size: 20px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation form</title>
+    <style>
+        table {
+            align-items: center;
+        }
+
+        body {
+            background-color:lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form>
+            <a href="#" style="text-align: right; color: red; float: right;"><u>Student Registration form</u> </a>
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" for="fname" placeholder="Enter your first Name" autofocus /></td>
+                </tr>
+
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" for="lname" placeholder="Enter your Last Name" /></td>
+                </tr>
+
+
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" for="email" placeholder="it should contain @" /></td>
+                </tr>
+
+                <tr>
+                    <td>Mobile no:</td>
+                    <td><input type="number" for="mobno" placeholder="only 10 digits are allowed" /></td>
+                </tr>
+
+                <tr>
+                    <td>Gender:</td>
+                    <td><input type="radio" value="Male" group-name="Gender" />Male</td>
+                    <td><input type="radio" value="Female" group-name="Gender" />Female</td>
+                </tr>
+
+                <tr>
+                    <td>Date of birth:</td>
+                    <td><input type="datetime-local" for="DOb" placeholder="only 10 digits are allowed" /></td>
+                </tr>
+
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" for="city" /></td>
+                </tr>
+
+                <tr>
+                    <td>Area pin:</td>
+                    <td><input type="text" for="area pin" /></td>
+                </tr>
+
+                <tr>
+                    <td>State:</td>
+                    <td><input type="text" for="State" /></td>
+                </tr>
+
+                <tr>
+                    <td>Qualification:</td>
+                    <td><select name="Qualification">
+                            <option>Select Qualification</option>
+                            <option>Graduation</option>
+                            <option>Post Graduation</option>
+                            <option>P.HD</option>
+                        </select></td>
+                </tr>
+
+                <tr>
+                    <td>Specialization:</td>
+                    <td><input type="checkbox">Computer Science</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Information Technology</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Computer Architecture</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Tel communication</td>
+                </tr>
+
+
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" /></td>
+                </tr>
+
+            </table>
+            <div>
+                <button style="background-color: green;">Registered</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
