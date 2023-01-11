@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <fieldset>
+    <fieldset style="background-color:white !important;">
         <legend style="text-align: center;">SATVA Form</legend>
 <form action="">
     <label for="Name">Firstname: <br>
@@ -28,19 +28,21 @@
     <label for="number">Enter Number Between 10 to 20:<br>
     <input type="number" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter Number Between 10 to 20" min="10" max="20" required></label><br><br>
 
-    <label for="password">Password(1 uppercase,1 Lowercase,Number)<br>
+    <label for="password">Password(1 uppercase,1 Lowercase,Number,Length{min 8})<br>
     <input type="password" style="width: 90%; border-color: rgb(211, 31, 31);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" placeholder="EnterPassword" required></label><br><br>
 
-    <p>
-        Select your favorite color:
-        <input type="color" value="red" id="color" />
-    </p>
-
-    <button type="submit" onclick="change()">Check Again & Save</button>
+    <button type="submit" >Check Again & Save</button>
 </form>
 
 
 </fieldset>
+<div>
+    <p>
+        Select your favorite color:
+        <input type="color" value="yellow" id="color" />
+    </p>
+    <input type="button" onclick="change()" value="Change Colour"></input>
+</div>
 <script>
     function change(){
         var x = document.getElementById('color').value;
