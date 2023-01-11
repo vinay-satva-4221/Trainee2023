@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Form Validation exam
+        </title>
+        <style>
+            textarea{
+                width: 1080px;
+                height: 100px;
+            }
+            section{
+                width: -100px;
+                
+            }
+            .radio{
+                display: flex;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <form>
+            <table>
+                <tr>
+                    <td> First Name:</td>
+                    <td><input type="text" size="150" placeholder="Enter your First Name" pattern="[A-Za-z]{1,10}" required autofocus></td>
+                </tr>
+                <tr>
+                    <td> Last Name:</td>
+                    <td><input type="text" size="150" placeholder="Enter your Last Name" required></td>
+                </tr>
+                <tr>
+                    <td> Email:</td>
+                    <td><input type="email" size="150" placeholder="it should contain @" pattern="[^ @]*@[^ @]*.[^]*" required></td>
+                </tr>
+                <tr>
+                    <td> Mobile :</td>
+                    <td><input type="text" size="150" placeholder="only 10 digits are allowed" pattern="[0-9]{10}" required></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <section class="radio">
+                        <section>
+                            <td>Male<input value="Male" size="-100" type="radio" name="gender" checked="checked" ></td>
+                        </section>
+                        <section>
+                            <!-- <td>Female<input value="Female" type="radio" name="gender" ></td> -->
+                        </section>
+                        
+                    </section>
+                    
+                </tr>
+                <tr>
+                    <td> Date of Birth:</td>
+                    <td><input type="date" size="150" placeholder="dd-mm-yy" required></td>
+                </tr>
+                <tr>
+                    <td> Address:</td>
+                    <td><textarea></textarea required></td>
+                </tr>
+                <tr>
+                    <td> City:</td>
+                    <td><input type="text" size="150" placeholder="" required></td>
+                </tr>
+                <tr>
+                    <td> Area Pin:</td>
+                    <td><input type="text" size="150" placeholder="" required></td>
+                </tr>
+                <tr>
+                    <td> State:</td>
+                    <td><input type="text" size="150" placeholder="" required></td>
+                </tr>
+                <tr>
+                    <td> Qualification:</td>
+                    <td><select name="Select Qualification">
+                        <option >Select Qualification</option>
+                        <option>Graduate</option>
+                        <option>Post Graduate</option>
+                        <option>Under Graduate</option>
+                      </select></td>
+                </tr>
+                <tr>
+                    <td>Specialization: </td>
+                    <td><input type="checkbox">Computer Science</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Information Technology</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Computer Architecture</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Tele Communication</td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" size="150" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}"required></td><br>
+                </tr>
+                
+            </table>
+            <br>
+            <button style="background-color:green;" input type="submit">Registered</button>
+        </form>
+    </body>
+</html>
