@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <style>
-
+         *{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
         body{
             background-color: rgb(214, 211, 211);
         }
@@ -21,15 +23,52 @@
             border: none;
             border-radius: 5px;
         }
-        .form{
-            padding: 13px; 
+        #address{
+            height: 100px;
         }
-        
-        .input{
-            float: right;
-            margin-left: 10px;
-            width: 80%;
+        a{
+            color: rgb(95, 25, 25);
+        }
+        tr td{
+            padding: 5px;  
+            font-size: large;
             height: 30px;
+        }
+        table{
+            
+            height: 100vh;
+        }
+        input[type="text"] {
+            width: 100%; 
+            box-sizing: border-box;
+            height: 100%;
+        }
+        input[type="email"] {
+            width: 100%; 
+            box-sizing: border-box;
+            height: 100%;
+        }
+        input[type="number"] {
+            width: 100%; 
+            box-sizing: border-box;
+            height: 100%;
+            
+        }
+        input[type="date"] {
+            width: 100%; 
+            box-sizing: border-box;
+            height: 100%;
+        }
+        input[type="password"] {
+            width: 100%; 
+            box-sizing: border-box;
+            height: 100%;
+        }
+        .input{
+            width: 78vw;
+        }
+        .selection{
+            font-size: large;
         }
         
 
@@ -43,69 +82,112 @@
         <div>
         <form>
             
-            <div class="form">
-                <label>First Name: </label>
-                <input type="text" placeholder="Enter your first name" class="input" autofocus>
-            </div>
-            <div class="form">
-                <label>Last Name: </label>
-                <input type="text" placeholder="Enter your last name" class="input">
-            </div>
-            <div class="form">
-                <label>Email: </label>
-                <input type="email" placeholder="It should contain @." class="input">
-            </div>
-            <div class="form">
-                <label>Mobile: </label>
-                <input type="number" placeholder="only 10 digits are allowed" minlength="10" maxlength="10" class="input">
-            </div>
-            <div class="form">
-                <label>Gender: </label>
-                <input type="radio"  name="gender" value="Male" >Male
-                <input type="radio" name="gender" value="Female">Female
-            </div>
-            <div class="form">
-                <label>Date Of Birth: </label>
-                <input type="date" name="date" class="input">
-            </div>
-            <div class="form">
-                <label>Address: </label>
-                <input type="text" name="address" id="address" class="input">
-            </div>
-            <div class="form">
-                <label>City: </label>
-                <input type="text" name="city" class="input">
-            </div>
-            <div class="form">
-                <label>Area PIN: </label>
-                <input type="text" name="areaPin" class="input">
-            </div>
-            <div class="form">
-                <label>State: </label>
-                <input type="text" name="state" class="input">
-            </div>
-            <div class="form">
-                <label>Qualification: </label>
-                <select>
-                    <option class="input" >Select Qualification</option>
-                    <option class="input" >MCA</option>
-                    <option class="input" >BCA</option>
-                </select>
-            </div>
-            <div class="form">
-                <label>Specialization: </label>
-                
-                <input type="checkbox"  class="checkbox" name="Computer Science" value="Computer Science">Computer Science
-                <input type="checkbox"  class="checkbox" name="Information Technology" value="Information Technology">Information Technology
-                <input type="checkbox"  class="checkbox" name="Tele Communication" value="Tele Communication">Tele Communication
-            </div>
-            <div class="form">
-                <label>Password: </label>
-                <input type="password" name="password" class="input">
-            </div>
-            <div class="form">
-                <input type="submit" value="Registered" id="submit">
-            </div>
+            <table>
+                <tr>
+                    <td><label>First Name: </label></td>
+                    <td  class="input">
+                        <input type="text" placeholder="Enter your first name" autofocus>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Last Name: </label></td>
+                    <td class="input">
+                        <input type="text" placeholder="Enter your last name" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Email: </label>
+                    </td>
+                    <td class="input">
+                        <input type="email" placeholder="It should contain @." required >
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Mobile: </label></td>
+                    <td class="input">
+                        <input type="number" placeholder="only 10 digits are allowed" pattern="0-9">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Gender: </label></td>
+                    <td class="input">
+                        <input type="radio"  name="gender" value="Male" >Male
+                        <input type="radio" name="gender" value="Female">Female
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Date Of Birth: </label></td>
+                    <td class="input"><input type="date" name="date" ></td>
+                </tr>
+                <tr>
+                    <td><label>Address: </label></td>
+                    <td class="input">
+                        <input type="text" name="address" id="address">
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label>City: </label></td>
+                    <td class="input">
+                        <input type="text" name="city" >
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Area PIN: </label></td>
+                    <td class="input">
+                        <input type="text" name="areaPin">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>State: </label>
+                    </td>
+                    <td class="input">
+                        <input type="text" name="state">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Qualification: </label>
+                    </td>
+                    <td>
+                        <select class="selection">
+                            <option class="selection">Select Qualification</option>
+                            <option class="selection">MCA</option>
+                            <option class="selection">BCA</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Specialization: </label>
+                    </td>
+                    <td>
+                        <input type="checkbox"  class="checkbox" name="Computer Science" value="Computer Science">Computer Science<br>
+                        <input type="checkbox"  class="checkbox" name="Information Technology" value="Information Technology">Information Technology<br>
+                        <input type="checkbox"  class="checkbox" name="Tele Communication" value="Tele Communication">Tele Communication<br>
+                        <input type="checkbox"  class="checkbox" name="Computer Architecture" value="Computer Architecture">Computer Architecture
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Password: </label> 
+                    </td>
+                    <td class="input">
+                        <input type="password" name="password" >
+                    </td>
+                </tr>
+                <tr>
+                    <td> <input type="submit" value="Registered" id="submit"></td>
+                </tr>
+
+            </table>
+            
+               
+            
+            
+           
         </form>
     </div>
     </section>
