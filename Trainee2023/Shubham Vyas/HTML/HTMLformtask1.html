@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+    <head>
+
+    </head>
+    <body>
+        <section id="Student Registration Form">
+        <h1 style="text-align: right;" >
+            <a href="#">
+                <p style="color:brown;">
+            Student Registration Form </h1>
+                </p>
+            </a>
+        </section>
+        <body>
+            <form method="POST">
+                
+            <table> 
+                <tr>
+                    <td> Firstname: </td>
+                    <td> 
+                        <input type="text"  placeholder= "Enter your firstname" name="" autofocus required >
+                    </td>
+                </tr>
+                <tr>
+                    <td> Lastname: </td>
+                    <td> 
+                        <input type="text"  placeholder= "Enter your lastname" name="" required >
+                    </td>
+                </tr>
+                <tr>
+                    <td> Email: </td>
+                    <td>
+                        <input type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="it should contain @" title="Invalid email address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td> Mobile: </td>
+                    <td> 
+                       
+                        <input type="phone" name="" placeholder= "only 10 digits are allowed" maxlength="10">
+                    </td> 
+                </tr>
+                <tr>
+                    <td> Gender: </td>
+                    <td> 
+                        <input type="radio" name="Gender" checked> Male
+                        <input type="radio" name="Gender"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td> Date of Birth:  </td>
+                    <td>
+                        <input type="date"  name="Date of Birth"  required>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Address: </td>
+                 <td><textarea rows="7" cols="50" required> </textarea></td>
+                </tr>
+                <tr>
+                    <td> City: </td>
+                    <td> 
+                        <input type="text"   name="" required >
+                    </td>
+                </tr>
+                <tr>
+                    <td> Area Pin: </td>
+                    <td> 
+                        <input type="pin"   name="" required maxlength="6" >
+                    </td>
+                </tr>
+                <tr>
+                    <td> State: </td>
+                    <td> 
+                        <input type="text"   name="" required >
+                    </td>
+                </tr>
+                <tr>
+                    <td>Qualification</td>
+                    <td colspan="2">
+                      <select required>
+                        <option>Select Qualification</option>
+                        <option>BCA</option>
+                        <option>MCA</option>
+                        <option>B.Tech</option>
+                        <option>B.Com</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td> Specialization: </td>
+                    <td> 
+                        <input type="checkbox" name="specialization"> Computer Science <br>
+                        <input type="checkbox" name="specialization"> Information Technology <br>
+                        <input type="checkbox" name="specialization"> Computer Architecture <br>
+                        <input type="checkbox" name="specialization"> Tele Communication <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Password: </td> 
+                    <td>
+                        <input type="password" name="" placeholder= "Password" required minlength="8" maxlength="25">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <input type="Submit" value="Register" name="" style="background-color: green;">
+                    </td>
+                </tr>
+            </table>    
+        
+            </form>  
+    </body>
