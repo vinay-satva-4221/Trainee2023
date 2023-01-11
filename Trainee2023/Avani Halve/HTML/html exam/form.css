@@ -1,0 +1,17 @@
+form{
+    width: 40%;
+}
+table{
+    background-color: rgb(212, 212, 212); 
+    padding: 30px 60px;
+}
+button {
+    border: none;
+    padding: 8px 12px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  textarea{
+    width: 98%;
+    height: 100px;
+  }
