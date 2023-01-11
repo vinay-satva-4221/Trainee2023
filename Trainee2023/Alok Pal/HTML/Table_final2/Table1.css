@@ -1,0 +1,16 @@
+
+header{
+    margin-left: 300px;
+    margin-bottom: -13px;
+}
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr,th,td{
+
+    border: 1px solid black;
+    
+    width: 170px;
+    height: 35px;
+}
