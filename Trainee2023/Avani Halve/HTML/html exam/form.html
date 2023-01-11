@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <title>Form</title>
+</head>
+<body>
+    <center>
+   <header>
+    <h3>Student Registration Form</h3>
+   </header> 
+   <form>
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td><input type="text" placeholder="Enter Your first name" pattern="[A-Za-z]{,}" autofocus required size="50px" ></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input type="text" placeholder="Enter Your last name" pattern="[A-Za-z]{,}" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="email" placeholder="it should contain @" required size="50px"></td>
+        </tr> 
+        <tr>
+            <td>Mobile:</td>
+            <td><input type="text" placeholder="only 10 digit allowed" size="10" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td><input type="radio" name="gender">Male
+            <input type="radio" name="gender">Female</td>
+        </tr>
+        <tr>
+            <td>Date of Birth:</td>
+            <td><input type="date" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td><textarea required></textarea></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><input type="text" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>Area PIN:</td>
+            <td><input type="text" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td><input type="text" required size="50px"></td>
+        </tr>
+        <tr>
+            <td>Qualification:</td>
+            <td><select value="qualification" required>
+                <option value="select">Select Qualification</option>
+                <option value="select">Graduation</option>
+                <option value="select">Masters</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Specialization:</td>
+            <td><input type="checkbox">
+                <label for="cs">Computer Science</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox">
+                <label for="IT">Information Technology</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox">
+                <label for="ca">Computer Architecture</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox">
+                <label for="tc">Tele Communication</label>
+            </td>
+        </tr>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10}" required size="50px"></td>
+        </tr>
+        <tr>
+            <td><button style="background-color: rgb(20, 158, 20);">Registered</button></td>
+        </tr>
+    </table>
+   </form>
+   </center>
+</body>
+</html>
