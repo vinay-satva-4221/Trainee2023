@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_1</title>
+    <style>
+        .main {
+            padding: 0px 13px;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        [type="email"],
+        [type="date"],
+        [type="number"],
+        [type="password"],
+        select {
+            width: 480%;
+            padding: 8px 15px;
+            margin: 1.5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <form action="">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" placeholder="Enter your first name" pattern="[A-Za-z]{1,10}"
+                            required autofocus></td>
+                </tr>
+
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" placeholder="Enter your last name" pattern="[A-Za-z]{1,10}"
+                            required></td>
+                </tr>
+
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" placeholder="it should contain @" pattern="[^ @]*@[^ @]*"></td>
+                </tr>
+
+                <tr>
+                    <td>Mobile:</td>
+                    <td><input type="text" placeholder="only 10 digits are allowed"
+                            pattern="[0-9]{10}" required></td>
+                </tr>
+
+                <tr>
+                    <td>Gender:</td>
+                    <td><input type="radio" name="ABC" checked="checked">
+                        Male</td>
+
+                    <td><input type="radio" name="ABC">
+                        Female</td>
+                </tr>
+
+                <tr>
+                    <td>Date Of Birth:</td>
+                    <td><input type="date" required></td>
+                </tr>
+
+                <tr>
+                    <td>Address:</td>
+                    <td><textarea name="" cols="31" rows="2" required></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" required></td>
+                </tr>
+
+                <tr>
+                    <td>Area PIN:</td>
+                    <td><input type="number" required></td>
+                </tr>
+
+                <tr>
+                    <td>State:</td>
+                    <td><input type="text" required></td>
+                </tr>
+
+                <tr>
+                    <td>Qualification:</td>
+                    <td>
+                        <select name="">
+                            <option value="">Select Qualification</option>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Post-graduate">Post-Graduate</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Specialization:</td>
+                    <td><input type="checkbox">Computer Science</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Information Technology</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Compter Architecture</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox">Tele Communicaion</td>
+                </tr>
+
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" required></td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" value="Registered" style="background-color: green;"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
