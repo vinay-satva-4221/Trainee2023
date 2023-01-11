@@ -28,7 +28,7 @@
     <label for="number">Enter Number Between 10 to 20:<br>
     <input type="number" style="width: 90%; border-color: rgb(211, 31, 31);" placeholder="Enter Number Between 10 to 20" min="10" max="20" required></label><br><br>
 
-    <label for="password">Password(1 uppercase,1 Lowercase,Number)<br>
+    <label for="password">Password(1 uppercase,1 Lowercase,Number,Length{min 8})<br>
     <input type="password" style="width: 90%; border-color: rgb(211, 31, 31);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" placeholder="EnterPassword" required></label><br><br>
 
     <button type="submit" >Check Again & Save</button>
@@ -39,7 +39,7 @@
 <div>
     <p>
         Select your favorite color:
-        <input type="color" value="red" id="color" />
+        <input type="color" value="yellow" id="color" />
     </p>
     <input type="button" onclick="change()" value="Change Colour"></input>
 </div>
