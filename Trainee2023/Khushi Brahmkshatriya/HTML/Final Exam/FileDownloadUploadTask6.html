@@ -59,7 +59,13 @@
             console.log('fileInput',fileInput.files[0].type);
 
             var finalType = fileInput.files[0].type;
-            
+            if(finalType.match('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.*'))
+            {
+               alert('Uploaded');
+            }
+            else{
+                alert('Not Uploaded');
+            }
         }
         
 
