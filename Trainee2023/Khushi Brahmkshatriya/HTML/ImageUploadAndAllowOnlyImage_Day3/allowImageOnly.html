@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Upload Image
+        </h1>
+    </div>
+    <input type="file" id="file" accept="image/*" onchange="return fileValidation()"/>
+
+
+    <div id="fileExtension"></div>
+    <div>
+        <h1 id="isfile"></h1>
+        <h2 id="FileName"></h2>
+    </div>
+    
+    <script>
+        function fileValidation()
+        {
+            var fileInput = document.getElementById('file');
+            
+            var filePath = fileInput.value;
+            console.log(filePath);
+           
+            console.log('fileInput',fileInput.files[0].type);
+            var finalType = fileInput.files[0].type;
+            if(finalType.match('image.*'))
+            {
+               document.getElementById('isfile').innerText = 'File is Image';
+               document.getElementById('FileName').innerText = filePath;
+            }
+            else{
+               document.getElementById('isfile').innerText = 'File is Not An Image';
+               document.getElementById('FileName').innerText = filePath;
+            }
+            
+        }
+        
+
+    </script>
+</body>
+</html>

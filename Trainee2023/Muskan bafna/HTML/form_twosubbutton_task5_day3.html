@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<h1>Submit Form</h1><br>
+	<form id="form" action="satva14.html">
+	<label>firstname</label>
+	<input id="firstname"type="text" name="fname"><br><br>
+	<input type="submit" name="submit1" value="submit1">
+	<input type="submit" name="submit2" value="submit2">
+	<script> 
+		const form = document.getElementById('form');
+	const firstname = document.getElementById('firstname');
+	form.addEventListener('submit1', function(e){
+		e.preventDefault();
+
+	})
+
+</script>
+
+</body>
+</html>
