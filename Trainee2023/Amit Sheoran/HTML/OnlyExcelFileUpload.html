@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>upload file</title>
+    </head>
+    <body style="background-color: aqua;">
+        <h1>Only Excel file Allowed </h1><hr><br>
+
+
+    <input type="file" id="file"  onchange="return checkfile()" /><br>
+
+<br>
+<br>
+<h1>Click Download button to download file </h1><hr><br>
+   <a href="./Amit.txt" download="Amit.txt">
+    <button>Download</button>
+   </a>
+    <script>
+        function checkfile() {
+            var fileInput = document.getElementById('file');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.xlsx|\.xls)$/i;
+             
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            }
+        }
+        reader.readAsDataURL(fileInput.files[0]);
+     </script>
+    </body>
+</html>
