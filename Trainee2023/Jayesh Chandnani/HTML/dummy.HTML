@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy</title>
+    <style>
+        #table1 {
+            margin: auto;
+        }
+
+        #table1,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+
+        }
+
+        td {
+            margin: 5px;
+            padding: 5px;
+            height: 10px;
+            width: 150px;
+        }
+
+        .h_td{
+            background-color: rgb(168, 168, 168);
+            font-weight: bold;
+        }
+	
+        p {
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h5>Table 1</h5>
+    <table id="table1">
+        <p>Invoice</p>
+        <thead>
+            <td class="td_1" class="h_td">Item/ Desc.</td>
+            <td class="h_td td_1">QTY.</td>
+            <td class="h_td,td_1">@</td>
+            <td class="h_td,td_1">Price</td>
+        </thead>
+        <tbody>
+            <!-- row1 -->
+            <tr>
+                <td class="b_td td_1">Paperclips (Box)</td>
+                <td class="b_td,td_1">100</td>
+                <td class="b_td,td_1">1.15</td>
+                <td class="b_td,td_1">115.00</td>
+            </tr>
+            <!-- row 2 -->
+            <tr>
+                <td class="b_td,td_1">Paper (Case)</td>
+                <td class="b_td,td_1">10</td>
+                <td class="b_td,td_1">45.99</td>
+                <td class="b_td,td_1">459.00</td>
+            </tr>
+            <!-- row 3 -->
+            <tr>
+                <td class="b_td,td_1">WasterPaper (Case)</td>
+                <td class="b_td,td_1">2</td>
+                <td class="b_td,td_1">17.99</td>
+                <td class="b_td,td_1">35.98</td>
+            </tr>
+            <tr>
+                <td class="b_td,grey,td_1" colspan="3">SubTitle</td>
+                <td class="b_td,td_1">Price</td>
+            </tr>
+            <tr>
+                <td class="b_td,grey,td_1" colspan="2">Tax</td>
+                <td class="b_td,td_1">7%</td>
+                <td class="b_td,td_1">42.76</td>
+            </tr>
+
+            <tr>
+                <td class="b_td,grey,td_1" colspan="3">Total</td>
+                <td class="b_td">653.64</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</body>
+
+</html>
+
+
+<p id="p2">IAN'S TIME TABLE</p>
+<thead>
+    <td class="td_2 co_1"></td>
+    <td class="td_2 co_2"></td>
+    <td class="td_2 co_3">Morning</td>
+    <td class="td_2 co_4">Lunch</td>
+    <td class="td_2 co_5">Afternoon</td>
+    <td class="td_2 co_6">Evening</td>
+</thead>
+<tbody>
+    <td class="td_2 co_1"></td>
+    <td class="td_2 co_2"></td>
+</tbody>
+
+.co_1{
+    width: 80px;
+}
+.co_2{
+    width: 100px;
+}
+.co_3{
+    width: 160px;
+}
+.co_4{
+    width: 60px;
+}
+.co_5{
+    width: 180px;
+}
+.co_6{
+    width: 100px;
+}
