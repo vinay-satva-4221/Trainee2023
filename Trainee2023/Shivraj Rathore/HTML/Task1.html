@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset style="background-color: lightgray">
+      <h4 style="text-align: right; color: rgb(129, 39, 39)">
+        <u>Student Registration Form</u>
+      </h4>
+      <br /><br />
+      <form action="" >
+        <label for="Name"
+          >Firstname:&nbsp;&nbsp;
+          <input
+            type="text"
+            style="width: 500px;padding: 5px 5px;"
+            placeholder="Enter First Name"
+            required
+            autofocus
+            pattern="^[A-Za-z]{1,10}$" /></label
+        ><br /><br />
+
+        <label for="Lastname"
+          >Lastname:&nbsp;&nbsp;
+          <input
+            type="text"
+            style="width: 500px;padding: 5px 5px;"
+            placeholder="Enter Last Name"
+            pattern="^[A-Za-z]{1,10}$"
+            required /></label
+        ><br /><br />
+
+        <label for="email"
+          >Email: &nbsp;&nbsp;&emsp;&nbsp;
+          <input
+            type="email"
+            style="width: 500px;vertical-align: 20px 40px;padding: 5px 5px;"
+            placeholder="Enter email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /></label
+        ><br /><br />
+
+        <label for="mobile"
+          >Mobile: &nbsp;&emsp;
+          <input
+            type="Text"
+            style="width: 500px; vertical-align: 20px 40px;padding: 5px 5px;"
+            placeholder="Only 10 Digits Are allowed"
+            size="10"
+            pattern="^[0-9]{1,10}$"
+            required
+          /> </label
+        ><br /><br />
+
+        <label for="gender">
+          Gender: &nbsp;&nbsp;
+          <input type="radio" name="Male" /><span>Male</span> &nbsp;&nbsp;
+          <input type="radio" name="Male" /><span>Female</span> </label
+        ><br /><br />
+
+        <label for="DOB">
+          DateOfBirth:&nbsp;&nbsp;
+          <input type="date" style="width: 500px;padding: 5px 5px;" /> </label
+        ><br /><br />
+
+        <label for="Address">
+          Address:&nbsp;&nbsp;&emsp;
+          <textarea name="Address" id="" cols="30" rows="" style="margin-top: 0px;"></textarea></label
+        ><br /><br />
+
+        <label for="City"
+          >City:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp; <input type="text" style="width: 500px" /> </label
+        ><br /><br />
+
+        <label for="AreaPin"
+          >AreaPin:&nbsp;&emsp;&nbsp;
+          <input
+            type="Text"
+            style="width: 500px"
+            size="6"
+            pattern="^[0-9]{1,6}$"
+            required
+          /> </label
+        ><br /><br />
+
+        <label for="State"
+          >State:&nbsp;&nbsp;&nbsp;&emsp;&emsp;
+          <input type="text" style="width: 500px" /> </label
+        ><br /><br />
+
+        <label for="Qualification"
+          >Qualification:&nbsp;&nbsp;
+          <select name="Qualification" id="qf" required>
+            <option value="">Matriculation</option>
+            <option value="">Intermediate</option>
+            <option value="">Under Graduate</option>
+            <option value="">Post Graduate</option>
+          </select> </label
+        ><br /><br />
+
+        <label for="Specialization">
+          Specialization:
+          <input type="Checkbox" /><span>Computer Science</span><br/>
+          <div style="margin: 0px 100px;">
+          <input type="Checkbox" /><span>information Technology</span><br />
+          <input type="Checkbox" /><span>Computer Architecture</span><br />
+          <input type="Checkbox" /><span>Tele Communication</span> </label
+        >
+    </div><br /><br />
+
+        <label for="password"
+          >Password: &nbsp;&nbsp;
+          <input
+            type="password"
+            style="width: 500px"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}"
+            required /></label
+        ><br /><br />
+
+        <button type="submit" style="padding: 2px 2px; background-color: green">
+          Registered
+        </button>
+      </form>
+    </fieldset>
+  </body>
+</html>
