@@ -12,7 +12,7 @@
             background-color: lightslategrey;
         }
         a{
-            margin-left: 85%;
+            margin-left: 75%;
             color: red;
         }
         .space{
@@ -23,20 +23,17 @@
             background-color: green;
 
         }
-    
-       
-    
-        
+
     </style>
 </head>
 <body>
    <fieldset style="padding: 10px;">
         <form>
-        <a href="form_Validation.html">Student Registration Form</a>
+        <a href="form_Validation.html">Student Registration Form</a><br><br>
 
         <label for="fname" style="margin-right: 50px;">First Name:</label>
         <input type="text" id="fname" name="fname" class="space" pattern="^[A-Za-z]{1,9}$"
-        title="please fill character" placeholder="Enter Your First Name" required><br><br>
+        title="please fill character" placeholder="Enter Your First Name" autofocus required><br><br>
            
         <label for="lname" style="margin-right: 50px;">Last Name:</label>
         <input type="text" id="lname" name="lname" class="space"pattern="^[A-Za-z]{1,9}$"
@@ -63,14 +60,14 @@
         <input type="text" id="city" name="city" class="space"><br><br>
         
         <label for="pin" style="margin-right: 56px;">Area PIN:</label>
-        <input type="text" id="pin" value="pin" class="space"><br><br>
+        <input type="text" id="pin" class="space"><br><br>
 
         <label for="state" style="margin-right: 87px;">State:</label>
         <input type="text" id="state" name="state" class="space"><br><br>
 
         <label for="qualification" style="margin-right: 38px;">Qualification:</label> 
             <select>
-                <option value="Select Qualification">Select Qualification</option>
+                <option value="Select Qualification" disabled>Select Qualification</option>
                 <option value="BCA">BCA</option>
                 <option value="BBA">BBA</option>
                 <option value="B.Tech">B.Tech</option>
