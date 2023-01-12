@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=password], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 20%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        form {
+            background-color: #f2f2f2;
+            padding: 15px;
+        }
+        h3 {
+            color: brown;
+            text-decoration: underline;
+            font-weight: bold;
+            text-align: right;
+        }
+        table {
+            width: 85%;
+            text-align: left;
+        }
+        th {
+            font-weight: normal;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h3>Student Registration Form</h3>
+        <table>
+            <tr>
+                <th><label>First Name:</label></th>
+                <td><input type="text" placeholder="Enter Your first name" autofocus></td>
+            </tr>
+            <tr>
+                <th><label>Last Name:</label></th>
+                <td><input type="text" placeholder="Enter Your last name"></td>
+            </tr>
+            <tr>
+                <th><label>Email:</label></th>
+                <td><input type="email" placeholder="it should contain @"></td>
+            </tr>
+            <tr>
+                <th><label>Mobile:</label></th>
+                <td><input type="number" placeholder="only 10 digit are allowed"></td>
+            </tr>
+            <tr>
+                <th><legend>Gender </legend></th>
+                <td><p>
+                    male <input type="radio">
+                    female <input type="radio">
+                </p></td>
+            </tr>
+            <tr>
+                <th>Date Of Birth:</th>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td><textarea name="address" id="address" cols="100" rows="8" placeholder="Enter your Address"></textarea></td>
+            </tr>
+            <tr>
+                <th><label>City:</label></th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th><label>Area PIN:</label></th>
+                <td><input type="number"></td>
+            </tr>
+            <tr>
+                <th><label>State:</label></th>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <th><label>Qualification</label></th>
+                <td><select>
+                    <option>Selected Qualification</option>
+                </select></td>
+            </tr>
+            <tr>
+                <th><label>Specification</label></th>
+                <td><input type="checkbox">
+                <label>Computer Science</label><br>
+                <input type="checkbox">
+                <label>Information Technology</label><br>
+                <input type="checkbox">
+                <label>Computer Architecture</label><br>
+                <input type="checkbox">
+                <label>Tele Communication</label></td>
+            </tr>
+            <tr>
+                <th><label>password:</label></th>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+        <input type="submit" value="Registered">
+    </form>
+
+</html>

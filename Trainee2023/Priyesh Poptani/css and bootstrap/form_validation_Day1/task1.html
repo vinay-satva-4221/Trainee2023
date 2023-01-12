@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <link rel="stylesheet" href="./Bootstrap_setup/css/bootstrap.min.css">
+</head>
+    <body>
+            <div class="container">
+                <div class="table-responsive" >
+                <h2  class="text-center">Form validation</h2>
+                <div class="form-group mb-3 mt-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control  form-control is-valid" id="email" name="email" placeholder="priyesh@gmail.com" checked>
+                </div>
+        
+                <div class=" form-group mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control form-control is-valid" id="password" name="password" placeholder="......." required>
+                </div>
+        
+                <div class=" form-group mb-3">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" class="form-control form-control is-invalid" id="cpassword" placeholder="......" >
+                    <div id="validation" class="invalid-feedback">
+                       This field does not match password
+                      </div>
+                </div>
+        
+                <div>
+                    <label for="url">URL</label>
+                    <input type="url" class="form-control form-control is-valid" id="url" placeholder="https://www.youtube.com/">
+                </div>
+                </div>
+            </div>
+          
+        </body>
+
+
+
+    <script src="./Bootstrap_setup/jquery-3.6.3.min.js"></script>
+
+    <script src="./Bootstrap_setup/js/bootstrap.min.js"></script>
+</body>
+</html>
