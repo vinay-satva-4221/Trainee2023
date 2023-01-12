@@ -39,8 +39,9 @@
           <input
             type="email"
             style="width: 500px;vertical-align: 20px 40px;padding: 5px 5px;"
-            placeholder="Enter email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" /></label
+            placeholder="it should conatain @"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required /></label
         ><br /><br />
 
         <label for="mobile"
@@ -49,7 +50,7 @@
             type="Text"
             style="width: 500px; vertical-align: 20px 40px;padding: 5px 5px;"
             placeholder="Only 10 Digits Are allowed"
-            size="10"
+            
             pattern="^[0-9]{1,10}$"
             required
           /> </label
@@ -63,16 +64,16 @@
 
         <label for="DOB">
           DateOfBirth:&nbsp;&nbsp;
-          <input type="date" style="width: 500px;padding: 5px 5px;" /> </label
+          <input type="date" style="width: 500px;padding: 5px 5px;" required/> </label
         ><br /><br />
 
         <label for="Address">
           Address:&nbsp;&nbsp;&emsp;
-          <textarea name="Address" id="" cols="30" rows="" style="margin-top: 0px;"></textarea></label
+          <textarea name="Address" id="" cols="30" rows="" style="margin-top: 0px;" required></textarea></label
         ><br /><br />
 
         <label for="City"
-          >City:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp; <input type="text" style="width: 500px" /> </label
+          >City:&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp; <input type="text" style="width: 500px" required /> </label
         ><br /><br />
 
         <label for="AreaPin"
@@ -88,7 +89,7 @@
 
         <label for="State"
           >State:&nbsp;&nbsp;&nbsp;&emsp;&emsp;
-          <input type="text" style="width: 500px" /> </label
+          <input type="text" style="width: 500px" required/> </label
         ><br /><br />
 
         <label for="Qualification"
