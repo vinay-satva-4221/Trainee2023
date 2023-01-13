@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+        form {
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            background-color: rgb(231, 231, 231);
+        }
+
+        a {
+            position: absolute;
+            right: 40px;
+        }
+
+        input,
+        label {
+
+            margin: 5px;
+            padding: 5px;
+        }
+
+        label {
+            position: absolute;
+            width: 130px;
+        }
+
+        input,
+        select {
+            position: relative;
+            left: 130px;
+            width: 60%;
+        }
+
+        select {
+            margin: 5px;    
+            padding: 5px;
+            width: 20%;
+        }
+
+        #submit {
+            left: 0;
+            padding: 10px;
+            margin: auto;
+            width: 100px;
+            background-color: red;
+            color: aliceblue;
+        }
+
+        #radio_btn {
+            position: relative;
+            left: 130px;
+        }
+
+      .male{
+        left: 50px;
+        top: 7px;
+        height: 13px;
+        width: 13px;
+      }
+
+      .g_male{
+        width: 40px;
+      }
+
+      .female{
+        left: 140px;
+        top: 7px;
+        height: 13px;
+        width: 13px;
+      }
+
+      .g_female{
+        left: 100px;
+        width: 40px;
+      }
+      .right{
+        position: relative;
+        right: 260px;
+      }
+      .chk{
+        position: relative;
+        right: 383px;
+        top: 9px;
+      }
+      #add{
+			height: 50px;
+		}
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <a href="http://#">Student Registered Form</a>
+        <br>
+        <label for="First_Name">First Name</label>
+        <input type="text" name="First_Name" id="" placeholder="First Name" autofocus required >
+
+        <br>
+
+        <label for="Last_Name">Last Name</label>
+        <input type="text" name="Last_Name" id="" placeholder="Last Name" required>
+
+        <br>
+
+        <label for="Email">Email</label>
+        <input type="email" name="Email" id="" placeholder="Email" required>
+
+        <br>
+
+        <label for="Mobile">Mobile</label>
+        <input type="tel" name="Mobile" id="" placeholder="Only 10 digit are allowed" maxlength="10"required>
+
+        <br>
+
+        <label for="Gender">Gender</label>
+
+        <div id="radio_btn">
+
+            <label for="Gender" class="g_male">Male</label>
+            <input type="radio" name="Gender" class="male" class="chk_rad">
+
+            <label for="Gender" class="g_female">Female</label>
+            <input type="radio" name="Gender" class="female" class="chk_rad">
+
+        </div>
+        <br>
+
+        <label for="DOB">DOB</label>
+        <input type="date" name="DOB" id="" required>
+
+        <br>
+
+        <label for="Address">Address</label>
+        <input type="text" name="Address" id="add" required placeholder="Address">
+
+        <br>
+
+        <label for="City">City</label>
+        <input type="text" name="City" id="" required placeholder="City">
+
+        <br>
+
+        <label for="Area_PIN">Area PIN</label>
+        <input type="text" name="Area PIN" id="" required placeholder="Area PIN">
+
+        <br>
+
+        <label for="State">State:</label>
+        <input type="text" name="State" id="" required placeholder="State">
+
+
+        <div>
+            <label for="State">Qualifications:</label>
+            <select name="Qualifications" id="" required>
+                <option value="10Th">10Th</option>
+                <option value="12Th">12Th</option>
+            </select>
+        </div>
+
+        <br>
+
+        <label for="Specialization">Specialization:</label>
+
+<div class="chk">
+        <input type="checkbox" name="Computer Science" class="left">
+        <label for="Computer Science" class="right">Computer Science</label>
+        <br>
+        <input type="checkbox" name="Information Technology" class="left">
+        <label for="Information Technology" class="right">Information Technology</label>
+        <br>
+        <input type="checkbox" name="Computer Architecture" class="left">
+        <label for="Computer Architecture" class="right">Computer Architecture</label>
+        <br>
+        <input type="checkbox" name="Tele Communication" class="left">
+        <label for="Tele Communication" class="right">Tele Communication</label>
+</div>
+        <br>
+
+        <label for="Password">Password</label>
+        <input type="password" name="Password" id="" required>
+
+        <br>
+        <!-- <input type="submit" value=""> -->
+
+        <input type="submit" value="Registered" id="submit">
+
+    </form>
+
+</body>
+
+</html>
