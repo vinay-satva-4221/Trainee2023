@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="stylesheet" href="./bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+
+  <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+ 
+  <script src="./bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.js"></script>
+  <script src="./bootstrap-5.3.0-alpha1-dist/jquery/jquery-3.6.3.js"></script>
+
+</head>
+<body>
+
+<div class="container m-5 text-center">
+    <button  class="btn btn-danger"  >
+        Left Demo
+    </button>
+    <button  class="btn btn-success" >
+        Bottom Demo
+    </button>
+    <button  class="btn btn-warning" >
+        Top Demo
+    </button>
+    <button  class="btn btn-primary" >
+        Right Demo
+    </button>
+ 
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.btn-success').tooltip({title:"A demo of bottom tooltip",placement:"bottom"}); 
+  $('.btn-danger').tooltip({title:"A demo of left tooltip",placement:"left"});
+  $('.btn-warning').tooltip({title:"A demo of top tooltip",placement:"top"});
+  $('.btn-primary').tooltip({title:"A demo of right tooltip",placement:"right"});   
+});
+</script>
+
+</body>
+</html>
