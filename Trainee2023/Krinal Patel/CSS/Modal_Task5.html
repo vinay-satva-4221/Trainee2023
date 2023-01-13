@@ -29,18 +29,56 @@
       
             <!-- Modal Header -->
             <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
+              <h4 class="modal-title">Appointment Scheduler</h4>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
       
             <!-- Modal body -->
             <div class="modal-body">
-              Modal body..
+                <div>
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" id="fname" placeholder="Enter First name"><br>
+                
+                <label for="fname">Last Name</label>
+                <input type="text" class="form-control" id="lname" placeholder="Enter Last name"><br>
+
+                <label for="email">UNCC Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your UNCC Email"><br>
+                
+                <label for="course">What course do you need help with ?</label><br>
+                <select class="form-select form-select-lg" id="course" name="course"> 
+                    <option>Select your course</option>
+                    <option>MCA</option>
+                    <option>MSc IT</option>
+                    <option>BCA</option>
+                    <option>BSc IT</option>
+                    <option>BBA</option>
+                </select><br>
+
+                <label for="tutor">Name of Preferred Tutor</label><br>
+                <select class="form-select form-select-lg" id="tutor" name="tutor"> 
+                    <option>Anyone Available</option>
+                    <option>Vivek</option>
+                    <option>Rohan</option>
+                    <option>Prince</option>
+                    <option>Shyam</option>
+                    <option>Sandeep</option>
+                </select><br>
+
+                <label for="calender">Calender Date</label>
+                <input type="date" class="form-control" id="calender"><br>
+                
+                <label for="time">Preferred Time</label>
+                <input type="time" class="form-control" id="time"><br>
+
+
+
+                
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-info" data-bs-dismiss="modal">Schedule Appointment</button>
             </div>
       
           </div>
