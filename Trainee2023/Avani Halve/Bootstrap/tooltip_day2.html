@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1 </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col py-3" style="margin-left: 250px;margin-top: 100px;">
+                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+                    title="Tooltip on top">
+                    Left Demo
+                </button>
+                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="bottom"
+                    title="Tooltip on right">
+                    Bottom Demo
+                </button>
+                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom"
+                    title="Tooltip on bottom">
+                    Top Demo
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
+                    title="Tooltip on left">
+                    Right Demo
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+
+</html>
