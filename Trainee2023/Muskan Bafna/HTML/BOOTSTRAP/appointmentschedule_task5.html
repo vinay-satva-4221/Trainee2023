@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Trainee2023/Muskan bafna/HTML/BOOTSTRAP/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        #div{
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4>Appointment Scheduler</h4><br>
+    <form id="needs-validation" validate>
+        <div class="form-group">
+    <label for="exampleInputtext">First Name</label>
+    <input type="text" class="form-control" id="exampleInputtext" placeholder="Enter Your First Name" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputtext">Last Name</label>
+    <input type="text" class="form-control" id="exampleInputtext" placeholder="Enter Your Last Name" required>
+  </div>
+
+  <div class="form-group">
+      <label for="exampleInputEmail1">UNCC Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your UNCC email" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputhelp">What Course Do You Need Help With?</label>
+        <select class="custom-select" required>
+            <option value="">Select a Course</option>
+            <option value="1">BBA</option>
+            <option value="2">MBA</option>
+        </select>
+      </div><br>
+      <div class="form-group">
+        <label for="exampleInputtutor">Name of Preferred Tutor</label>  
+                                        <select class="custom-select" required>  
+                                            <option value="">Anyone Available</option>  
+                                            <option value="1">Male</option>  
+                                            <option value="2">Female</option>  
+                                        </select>
+                                        </div><br>
+    <div class="form-group">
+        <label for="exampleInputdate">Calender Date</label>
+        <input type="date" class="form-control" id="exampleInputdate" placeholder="example: may 28 2014" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputtime">Preferred Time</label>
+        <input type="time" class="form-control" id="exampleInputtime" placeholder="08:00" required>
+      </div>
+<button type="submit" class="btn btn-info">Schedule Appointment</button>
+</form>      
+</div>
+</body>
+</html>
