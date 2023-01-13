@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_1</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5 text-center">
+        <button class="btn btn-danger">Left Demo</button>
+        <button class="btn btn-success">Bottom Demo</button>
+        <button class="btn btn-warning">Top Demo</button>
+        <button class="btn btn-primary">Right Demo</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.btn-success').tooltip({ title: "A demoof bottom tooltip", placement: "bottom" });
+        });
+    </script>
+</body>
+
+</html>
