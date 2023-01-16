@@ -10,6 +10,30 @@
         #div{
             height: 30px;
         }
+        #label1{
+          font-weight: bold;
+        }
+        #label2{
+          font-weight: bold;
+        }
+        #label3{
+          font-weight: bold;
+        }
+        #label4{
+          font-weight: bold;
+        }
+        label5{
+          font-weight: bold;
+        }
+        #label6{
+          font-weight: bold;
+        }
+        #label7{
+          font-weight: bold;
+        }
+        #label8{
+          font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -17,24 +41,24 @@
         <h4>Appointment Scheduler</h4><br>
     <form id="needs-validation" validate>
         <div class="form-group">
-    <label for="exampleInputtext">First Name</label>
+    <label id="label1" for="exampleInputtext">First Name</label>
     <input type="text" class="form-control" id="exampleInputtext" placeholder="Enter Your First Name" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputtext">Last Name</label>
+    <label id="label2" for="exampleInputtext">Last Name</label>
     <input type="text" class="form-control" id="exampleInputtext" placeholder="Enter Your Last Name" required>
   </div>
 
   <div class="form-group">
-      <label for="exampleInputEmail1">UNCC Email</label>
+      <label id="label3" for="exampleInputEmail1">UNCC Email</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your UNCC email" required>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
+      <label id="label4" for="exampleInputPassword1">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputhelp">What Course Do You Need Help With?</label>
+        <label id="label5" for="exampleInputhelp">What Course Do You Need Help With?</label>
         <select class="custom-select" required>
             <option value="">Select a Course</option>
             <option value="1">BBA</option>
@@ -42,7 +66,7 @@
         </select>
       </div><br>
       <div class="form-group">
-        <label for="exampleInputtutor">Name of Preferred Tutor</label>  
+        <label id="label6" for="exampleInputtutor">Name of Preferred Tutor</label>  
                                         <select class="custom-select" required>  
                                             <option value="">Anyone Available</option>  
                                             <option value="1">Male</option>  
@@ -50,11 +74,11 @@
                                         </select>
                                         </div><br>
     <div class="form-group">
-        <label for="exampleInputdate">Calender Date</label>
+        <label id="label7" for="exampleInputdate">Calender Date</label>
         <input type="date" class="form-control" id="exampleInputdate" placeholder="example: may 28 2014" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputtime">Preferred Time</label>
+        <label id="label8" for="exampleInputtime">Preferred Time</label>
         <input type="time" class="form-control" id="exampleInputtime" placeholder="08:00" required>
       </div>
 <button type="submit" class="btn btn-info">Schedule Appointment</button>
