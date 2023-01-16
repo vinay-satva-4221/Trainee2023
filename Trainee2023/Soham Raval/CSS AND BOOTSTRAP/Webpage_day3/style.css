@@ -1,0 +1,14 @@
+.section{
+    height: 500px;
+    background-image:url(/Webpage_day3/assets/SL_060521_43530_09.jpg)
+}
+.heading{
+    padding-top: 200px;
+}
+.navbar{
+    padding: 20px;
+}
+.btn{
+    padding: 160px;
+    margin-top: 20px;
+}
