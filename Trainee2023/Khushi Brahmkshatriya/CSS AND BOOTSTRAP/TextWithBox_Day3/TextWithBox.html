@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text with Box</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <style>
+        div {
+            display: grid;
+            place-items: center;
+
+        }
+
+        .container {
+            margin: 0%;
+
+        }
+
+        .text {
+            color: #CD5C5C;
+            padding-left: 20px;
+            font: italic 30px "Fira Sans", serif;
+        }
+
+        .image>img,
+        .overlay-text {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="title text-center">
+            <h1>
+                Beauty Of Nature
+            </h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="text-center text">
+                    <h3 class="d-flex aligns-items-center justify-content-center">Pink Lakes</h3>
+                    <p class="d-flex aligns-items-center justify-content-center">There are supposedly only eight pink
+                        lakes in the world. Masazir Lake in Azerbaijan gets its vibrant color
+                        from microorganisms called halophiles.
+                        These have helped the lake produce salt since 1813. Its use is limited
+                        to extracting salt rather than for swimming.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="img-fluid">
+                    <img src="https://i.insider.com/624ce7babb219a00181bdf2e?width=700&format=jpeg&auto=webp"
+                        alt="pink lake">
+                    <span class="overlay-text text-white">Image</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

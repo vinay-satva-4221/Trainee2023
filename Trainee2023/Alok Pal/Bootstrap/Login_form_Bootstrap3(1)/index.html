@@ -2,43 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogIn form</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="log">
-                <div class="log1"> <i class="fa fa-times"></div></i>
-                <p style="margin-top: -8px;"><b>Login Form </b></p>
-            </div>
+  <div class="container cont1">
+    <div class="container ">
+      <div class="log">
+        <div class="log1"> <i class="fa fa-times"></div></i>
+        <p style="margin-top: -8px;"><b style="margin-left: 34%;font-size: 2rem;">Login Form </b></p>
+      </div>
 
-            <div class="form">
-                <form action="">
-                    <label for="fname" style="margin-left: -10vw; margin-bottom: 2px;">Email or Phone</label><br>
-                    <input type="text" id="fname" name="fname" value=""><br>
-                    <label for="fname"
-                        style="margin-left: -12vw; margin-top: 18px; margin-bottom: 2px;">Password</label><br>
-
-                    <input type="password" id="fname" name="lname" value=""><br><br>
-                    <p style="margin-top: -20px; margin-left: -9vw;color: rgb(60, 189, 240);"><b>Forgot Password</b>
-                    </p>
-                    <input type="submit" value="LOGIN" id="btn">
-                </form>
-                <p style="margin-top: 30px;
-                margin-left: 160px;">Not a member?<b style="color: rgb(60, 189, 240);"> Signup now</b></p>
-            </div>
-
-        </div>
     </div>
+    <div class="container">
+
+      <div class="form">
+        <form action="" >
+          <label for="fname" style="font-size: 1.2rem;">Email or Phone</label><br>
+          <input type="text" id="fname" name="fname" value="" style="height: 45px;" required><br>
+          <label for="fname" style="font-size: 1.2rem; margin-top: 4%;">Password</label><br>
+
+          <input type="password" id="fname" name="lname" value="" style="height: 45px;" required><br><br>
+          <p style="font-size: 1.2rem; margin-top: -23px;"><b style="color:rgb(119, 208, 240); ;" >Forgot Password</b>
+          </p>
+          <input type="submit" value="LOGIN" id="btn" style="width: 100%; background-image: linear-gradient(to left, #55065e, #5d2d86, #5d4dae, #5d79e8, #6caffc); color: white; height: 45px; margin-top: 30px;" required>
+        </form>
+        <div style="margin-top: 20px; margin-left: 24%;"><p style="font-size: 1.2rem;">Not a member?<b style="color: rgb(119, 208, 240);"> Signup now</b></p></div>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 
 </html>
