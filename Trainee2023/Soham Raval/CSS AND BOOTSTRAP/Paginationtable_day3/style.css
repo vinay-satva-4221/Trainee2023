@@ -1,0 +1,20 @@
+
+    .btn {
+      background-color: DodgerBlue;
+      border: none;
+      color: white;
+      padding: 3px 7px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn-btn{
+    
+      background-color: #e62b1e;
+      border: none;
+      color: white;
+      padding: 3px 7px;
+      font-size: 16px;
+      cursor: pointer;
+    
+    }
+    
