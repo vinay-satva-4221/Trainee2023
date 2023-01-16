@@ -1,0 +1,59 @@
+.navbar-brand {
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 1.5rem;
+    border-radius: 4px;
+}
+
+.start {
+    padding-left: 32vw;
+}
+
+.sec1 {
+    margin-top: 3vw;
+
+}
+
+.heading {
+    margin-left: 26vw;
+
+}
+
+.sec1 p b {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 3rem;
+}
+
+.sec2 p b {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 1.8rem;
+    margin-top: 25px;
+}
+
+.sec2 {
+    margin-top: -3vh;
+    margin-left: 2vw;
+}
+
+.section-class {
+
+   width: 50%;
+
+}
+
+.sec3 {
+    display: flex;
+}
+
+img {
+    border-radius: 50%;
+    width: 380px;
+    height: 380px;
+    margin-top: 2vh;
+    margin-left: 4vw;
+}
+
+a button:hover{
+    color: pink;
+}
