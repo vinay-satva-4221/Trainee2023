@@ -11,7 +11,7 @@ body {
 .container {
     width: 30vw;
     height: 60vh;
-    margin-top: 90px;
+    margin-top: 20vh;
     background-color: white;
     font-family: 'Roboto', sans-serif;
     text-align: center;
@@ -25,7 +25,7 @@ body {
 
 .log1 {
     font-size: 16px;
-    margin-left: 367px;
+    margin-left: 26vw;
 }
 
 .form {
@@ -38,16 +38,17 @@ label {
 }
 
 #fname {
-    width: 350px;
-    margin-left: 158px;
-    height: 44px;
+   
+    width: 27vw;
+    margin-left: 11vw;
+    height: 5vh;
 
 }
 
 #btn {
-    width: 350px;
-    margin-left: 158px;
-    height: 44px;
+    width: 27vw;
+    margin-left: 11vw;
+    height: 3vw;
     background-image: linear-gradient(to left, #55065e, #5d2d86, #5d4dae, #5d79e8, #6caffc);
     color: white;
     border: 1px solid white;
