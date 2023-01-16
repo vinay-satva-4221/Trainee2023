@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabination</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <style>
+         header{
+            height: 10%;
+            text-align: center;
+            background-color: violet;
+            color: aquamarine;
+        }
+        .container{
+            border: 1px solid black;
+            width: 50%;
+            margin-left: 300px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <header><h1>Tabination Table</h1></header>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Tab 1</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Tab 2</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Tab 3</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="tab4" aria-selected="true">Tab 4</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#tab5" type="button" role="tab" aria-controls="tab5" aria-selected="true">Tab 5</button>
+              </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                <h1>Tab 1</h1>
+                <p>The base .nav component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
+                The base .nav component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
+                </p>
+            </div>
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                <h1>Tab 2</h1>
+                <p>Tabs allow you to switch between options in a program, separate documents, or web pages. The currently-selected tab is usually underlined or highlighted in a different color than the other tabs. The interface is designed to resemble the tabs at the top of traditional file folders, as viewed from inside a file cabinet.</p>
+            </div>
+            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                <h1>Tab 3</h1>
+                <p>When you have two or more tabs open you can switch between those tabs by clicking or tapping the tab you want to switch between. You can also use any of the following keyboard shortcuts.
+                </p>
+            </div>
+            <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4">
+                <h1>Tab 4</h1>
+                <p>In general, your computer is likely able to open more browser tabs than you ever need or use. However, if you open enough browser tabs to use all the available RAM, you can usually install more.
+                </p>
+            </div>
+            <div class="tab-pane fade show active" id="tab5" role="tabpanel" aria-labelledby="tab5">
+                <h1>Tab 5</h1>
+                  <p> Placeholder content for the tab panel. this one relates to the contant tab. her love is like a drug. All my girls vintage chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking. on air (tonight). Skip the talk, heard it all, time to walk the walk. catch her if you can. stinging like a bee i earned my stripes. </p>        
+            </div>
+            
+          </div>
+
+          
+    </div>
+    <script src="../bootstrap/jquery-3.6.3.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

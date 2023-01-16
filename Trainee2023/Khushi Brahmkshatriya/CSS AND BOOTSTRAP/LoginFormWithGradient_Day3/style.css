@@ -1,0 +1,40 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+Body {
+
+
+    background-color: #3366ff;
+    /* background: linear-gradient(to top right, #3366ff, #00ff99);  */
+}
+
+.container {
+
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10%;
+}
+
+form {
+
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 15px;
+}
+
+
+#login {
+    background: linear-gradient(to top right, #3366ff 8%, #00ff99 100%);
+}
+
+#cancel {
+
+    border: none;
+    background: none;
+    font-weight: bolder;
+}
