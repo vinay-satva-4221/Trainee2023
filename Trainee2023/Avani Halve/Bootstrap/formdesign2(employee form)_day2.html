@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>task3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <style>
+        .form-check-label{
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-3 col-12">
+        <div class="card">
+            <div class="card-header text-white" style="background-color: rgb(46, 44, 207);">Employee Form</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control is-valid" placeholder="Karan" name="email">
+                    </div>
+                    <div class="col">
+                        <label for="lname">Last name</label>
+                        <input type="text" class="form-control is-invalid" placeholder="Enter password" name="pswd">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="lname" style="margin-top: 5px ;">Gender</label>
+                        <select class="form-select form-control is-valid" required aria-label="select example">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="email" style="margin-top: 5px;">Email</label>
+                        <input type="email" class="form-control is-invalid" placeholder="Email" name="email">
+                    </div>
+                    <div class="col">
+                        <label for="mobile" style="margin-top: 5px;">Mobile</label>
+                        <input type="number" class="form-control is-invalid" placeholder="Mobile" name="mobile">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="lname" style="margin-top: 5px ;">Mandatory skills</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="validationFormCheck2"
+                                    name="radio-stacked" required>
+                                <label class="form-check-label" for="validationFormCheck2">HTML 5</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="validationFormCheck2"
+                                    name="radio-stacked" required>
+                                <label class="form-check-label" for="validationFormCheck2">Javascript</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="validationFormCheck2"
+                                    name="radio-stacked" required>
+                                <label class="form-check-label" for="validationFormCheck2">C# Programming</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="validationFormCheck2"
+                                    name="radio-stacked" required>
+                                <label class="form-check-label" for="validationFormCheck2">ASP.NET</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="validationFormCheck2"
+                                    name="radio-stacked" required>
+                                <label class="form-check-label" for="validationFormCheck2">ASP.NET MVC</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="formFile" class="form-label" style="margin-top:10px;">Default file input
+                                example</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="validationTextarea" class="form-label">Address</label>
+                            <textarea class="form-control is-invalid" id="validationTextarea"
+                                placeholder="Required example textarea" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col">
+                            <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
+                            <label class="form-check-label" for="validationFormCheck1">Agree to Terms And
+                                Conditition</label>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 d-md-flex justify-content-md-end">
+                        <div class="col">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-danger me-md-2" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="button">Register</button>
+                              </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script src="js/bootstrap.min.js"></script> 
+</body>
+
+</html>
