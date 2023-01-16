@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_5</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+
+    <!-- Button trigger modal -->
+    <div class="container mt-5 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Click to Appointment
+        </button>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Appointment Scheduler</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="container mt-1">
+                        <div class="row justify-content-center">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>First name</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter Your First Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>Last name</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter Your Last Name">
+                                </div>
+                                <div class="form-outline mb-3">
+                                    <label class="form-label mb-2"><b>UNCC Email</b></label>
+                                    <input type="text" class="form-control" placeholder="Enter Your UNCC Email">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>What Course Do You Need Help With?</b></label>
+                                    <select class="form-select">
+                                        <option value="">Select Course</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>Name of Preferred Tutor</b></label>
+                                    <select class="form-select">
+                                        <option value="">Anyone Available</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>Calendar Date</b></label>
+                                    <input type="text" class="form-control" placeholder="Example: May 28 2014">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label mb-2"><b>Preferred Time</b></label>
+                                    <input type="time" class="form-control">
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
