@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <input type="text" class="form-control"   placeholder="First Name"  required>
+                    <input type="text" class="form-control"   placeholder="First Name" pattern="[a-zA-z\s]+" required>
            
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <input type="text" class="form-control"  placeholder="Last Name" required >
+                    <input type="text" class="form-control"  placeholder="Last Name" pattern="[a-zA-z\s]+" required >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
 
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <input type="password" class="form-control"  placeholder="Your Password" required>
+                    <input type="password" class="form-control"  placeholder="Your Password" pattern=".{8,}" required>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
