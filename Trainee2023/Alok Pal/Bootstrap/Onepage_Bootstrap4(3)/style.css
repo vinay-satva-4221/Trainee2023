@@ -1,0 +1,89 @@
+.container {
+    font-family: 'Lora', serif;
+}
+
+.margl1 {
+    margin-left: 40%;
+    /* margin-left: 500px; */
+}
+
+.head1 h1 {
+    font-size: 60px;
+    color: #124265;
+    padding-left: 90px;
+    margin-top: 80px;
+}
+.card1{
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.card-text{
+    font-size: 0.7rem;
+}
+
+.card-body i{
+    color: #124265;
+}
+
+/* Media querries */
+
+
+@media only screen and (max-width: 1326px) {
+    .media1 {
+        width: 110px
+    }
+}
+
+@media only screen and (min-width: 1326px) {
+    .media1 {
+        width: 110px;
+        margin-left: 10px;
+
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .media2 {
+        text-align: justify;
+        background-color: rgb(223, 223, 223);
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .media3 {
+        margin-left: 35%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .head1 {
+        margin-left: 24%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .head1 {
+        margin-left: 73%;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .head1{
+        margin-left: 1%;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .media4{
+        margin-left: 6%;
+    }
+}
+
+@media only screen and (min-width: 991px){
+    .mdchange{
+        margin-left: 10px;
+    }
+   
+}

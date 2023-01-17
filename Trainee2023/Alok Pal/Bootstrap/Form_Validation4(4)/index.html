@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container cont">
+        <div class="container ">
+            <p style="margin-left: 350px; margin-top: 50px;">Feid marked with an* are required</p>
+        </div>
+        <div class="container">
+            <form action="">
+                <div class="row">
+                    <div class=" col-sm-6">
+                        <label for="fname">*Full Name:</label><br>
+                        <input type="text" id="fname" name="fname" style="width: 100%;" placeholder="First Name"
+                            pattern="[a-zA-z\s]+" title="Use Alphabest only" required />
+                    </div>
+                    <div class=" col-sm-6">
+                        <label for="email">Email Address:</label><br>
+                        <input type="email" id="email" name="email" title="example@gmail.com" style="width: 100%;"
+                            placeholder="Your Email" pattern="[a-z0-9._%+-]+@[a-z09.-]+\.[a-z]{2,}$" required />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-sm-6">
+                        <label for="phone" class="mart">*Phone/Skype Id:</label><br>
+                        <input type="text" id="phone" name="phone" style="width: 100%;" placeholder="123 456 7890"
+                            pattern="[789][0-9]{9}" title="please use 789 2543112 " required />
+                    </div>
+                    <div class=" col-sm-6">
+                        <label for="busi" class="mart">Business name:</label><br>
+                        <input type="text" id="busi" name="busi" style="width: 100%;" placeholder="Company Name"
+                            pattern="[a-zA-z\s]+" title="Use Alphabest only" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-sm-6">
+                        <label for="web" class="mart">*Website</label><br>
+                        <input type="url" id="web" name="web" style="width: 100%;" placeholder="www.example.com"
+                            pattern="http(s?)(:\/\/)((www.)?)(([^.]+)\.)?([a-zA-z0-9\-_]+)(.com|.net|.gov|.org|.in)(\/[^\s]*)?"
+                            required />
+                    </div>
+                    <div class=" col-sm-6">
+                        <label for="bud" class="mart">Project Budget</label><br>
+                        <input type="text" id="bud" name="bud" style="width: 100%;" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label mart">*What does your business do
+                                and
+                                how can we help?</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Tell us more about your business and describe your needs " required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="fa-solid fa- shield-halved text-light"></i>
+                    <p class="mart">We respect you privacy. <u>Privacy Policy</u> </p>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <input type="submit" value="REQUEST A QUOTE"
+                            style="background-color: rgb(227, 33, 7); border: none; color: white; width: 250px; height: 35px; margin-left: 350px; ">
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
