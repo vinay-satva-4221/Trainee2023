@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAY_4(1)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <form >
+            <div class="row">
+                <div class="col-2">
+                    <label for="fname">First Name:</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" id="fname" name="fname" style="width: 60%;" placeholder="First Name" pattern="[a-zA-z\s]+" title="Use Alphabest only" required /><br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label for="lname">Last Name:</label></div>
+
+                <div class="col-10">
+                    <input type="text" id="lname" name="lname" style="width: 60%;" placeholder="Last Name" pattern="[a-zA-z\s]+" title="Use Alphabest only" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="col-10">
+                    <input type="email" id="email" name="email" title="example@gmail.com" style="width: 60%;" placeholder="Your Email" pattern="[a-z0-9._%+-]+@[a-z09.-]+\.[a-z]{2,}$"  required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-10 ">
+                    <input type="password" id="text" name="password"  style="width: 60%;" placeholder="Your Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or morerequired"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <input type="submit" value="Sign up" style="background-color: rgb(22, 102, 164); border: none; color: white; margin-left: 115%;" >
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

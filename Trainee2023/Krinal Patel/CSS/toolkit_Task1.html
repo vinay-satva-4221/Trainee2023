@@ -15,7 +15,7 @@
         .btn-group {
             margin-left: 30%;
             margin-top: 20%;
-          
+
         }
 
         button {
@@ -28,10 +28,14 @@
 
 <body>
     <div class="btn-group">
-        <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="Left"    title="A Demo of Left tooltip">Left Demo</button>
-        <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"  title="A Demo of  button tooltip">Bottom Demo</button>
-        <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="Top"    title="A Demo of  top tooltip">Top Demo</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="Right"   title="A Demo of  right tooltip">Right Demo</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="Left"
+            title="A Demo of Left tooltip">Left Demo</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            title="A Demo of  button tooltip">Bottom Demo</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="Top"
+            title="A Demo of  top tooltip">Top Demo</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="Right"
+            title="A Demo of  right tooltip">Right Demo</button>
 
 
 
@@ -39,12 +43,12 @@
     </div>
 
 
- 
+
     <script>
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
     </script>
 
 </body>
