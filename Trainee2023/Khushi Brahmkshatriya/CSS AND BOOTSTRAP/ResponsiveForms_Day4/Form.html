@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bs5/css/bootstrap.min.css">
+    <title>Form</title>
+    <style>
+        *{
+            color: White;
+        }
+        .container-fluid{
+            padding: 0%;
+            
+        }
+       
+    </style>
+</head>
+<body class="bg-info">
+
+    <div class="container-fluid">
+        <div class="container">
+            <form action="" class="was-validated">
+                <div class="row">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <div class="form-text text-center">
+                            <h5 class="mt-5">Field marked with an * are required</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 g-3">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="fname" class="form-label">*First name</label>
+                        <input type="text" class="form-control" required placeholder="John Smith"> 
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="email" class="form-label">*Email Address</label>
+                        <input type="email" class="form-control" required placeholder="name@servername.com">
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div> 
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="phone" class="form-label">*Phone/Skpe ID</label>
+                        <input type="text" class="form-control" required placeholder="123 456 7890" pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"> 
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="bname" class="form-label">Business Name</label>
+                        <input type="text" class="form-control"  placeholder="company name"> 
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="website" class="form-label">*Website</label>
+                        <input type="url" class="form-control" required placeholder="www.example.com">
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div> 
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="email" class="form-label">Project Budget</label>
+                        <select name="pb" id="pd" class="form-select" aria-label="select"> 
+                            <option selected>Choose...</option>
+                            <option class="text-dark"value="1">One</option>
+                            <option class="text-dark" value="2">Two</option>
+                            <option class="text-dark" value="3">Three</option>
+                        </select> 
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <label for="details" class="form-label">*What does your business do and how can we help?</label>
+                        <textarea name="details" id="details"  rows="2" placeholder="tell us more about your business and describe your needs here" class="form-control"></textarea>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <h6>We respect your privacy.<a href="" class="text-white">Privacy Policy.</a></h6>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn text-white" style="background-color: orangered;"><h6>REQUEST A QUOTE</h6></button>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+    
+
+    <script src="../bs5/jquery-3.6.3.min.js"></script>
+    <script src="../bs5/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -23,7 +23,7 @@
     </div>
 
     <!-- The Modal -->
-    <div class="modal" id="myModal">
+    <div class="modal" id="myModal" >
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -37,13 +37,13 @@
                 <div class="modal-body">
                     <div>
                         <label for="fname">First Name</label>
-                        <input type="text" class="form-control" id="fname" placeholder="Enter First name"><br>
+                        <input type="text" class="form-control is-valid" id="fname" placeholder="Enter First name"><br>
 
                         <label for="fname">Last Name</label>
-                        <input type="text" class="form-control" id="lname" placeholder="Enter Last name"><br>
+                        <input type="text" class="form-control is-valid" id="lname" placeholder="Enter Last name"><br>
 
                         <label for="email">UNCC Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your UNCC Email"><br>
+                        <input type="email" class="form-control needs-validation" id="email" placeholder="Enter your UNCC Email" required><br>
 
                         <label for="course">What course do you need help with ?</label><br>
                         <select class="form-select form-select-lg" id="course" name="course">
@@ -72,14 +72,13 @@
                         <input type="time" class="form-control" id="time"><br>
 
 
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Schedule Appointment</button>
+                        </div>
 
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Schedule Appointment</button>
-                    </div>
+                    
 
                 </div>
             </div>
