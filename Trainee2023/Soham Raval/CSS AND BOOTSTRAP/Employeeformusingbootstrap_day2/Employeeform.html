@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -102,5 +102,118 @@
         </div>
     </div>
 </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <div class="container " style="background-color: rgb(38, 139, 234);     margin-top: 55px;">
+        <nav class="navbar ">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1" style="color: white;" >Employe Form</span>
+            </div>
+          </nav>
+
+    </div>
+    <div class="container border " >
+        <form class="row g-3" style="margin-top: 10px;">
+            <div class="col-md-6">
+                <label for="validationServer01" class="form-label">First name</label>
+                <input type="text" class="form-control is-valid" id="validationServer01" required />
+            </div>
+            <div class="col-md-6">
+                <label for="validationServer02" class="form-label">Last name</label>
+                <input type="text" class="form-control is-invalid" id="validationServer02" required />
+            </div>
+            <div class="col-md-4">
+                <label for="validationServer02" class="form-label">Gender</label>
+                
+                <select id="validationServer02" type="number" class="form-control is-valid">
+                    <option value="volvo">Male</option>
+                    <option value="saab">Female</option>
+                </select>
+                <div class="valid-feedback"></div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationServer03" class="form-label">Email</label>
+                <input type="email" class="form-control is-invalid" id="validationServer03"
+                    aria-describedby="validationServer03Feedback" required />
+               
+            </div>
+            <div class="col-md-4">
+                <label for="validationServer03" class="form-label">Mobile number</label>
+                <input type="phone" class="form-control is-invalid" id="validationServer03"
+                    aria-describedby="validationServer03Feedback" required />
+               
+            </div>
+
+            <div class="col-md-12">
+                <label for="validationServer03" class="form-label">Mandatory Skills</label>
+                <br />
+
+                <input type="radio" id="html" name="fav_language" value="HTML" />
+                <label for="html" style="color: green">HTML 5</label>
+                <input type="radio" id="javascript" style="margin-left: 10px" name="fav_language" value="JavaScript" />
+                <label for="javascript" style="color: green">JavaScript</label>
+                <input type="radio" id="C# Programming" style="margin-left: 10px" name="fav_language"
+                    value="C# Programming" />
+                <label for="css" style="color: green">C# Programming</label>
+                <input type="radio" id="ASP.NET" style="margin-left: 10px" name="fav_language" value="ASP.NET" />
+                <label for="html" style="color: green">ASP.NET</label>
+                <input type="radio" id="ASP.NET MVC" style="margin-left: 10px" name="fav_language"
+                    value="ASP>NET MVC" />
+                <label for="ASP.NET MVC" style="color: green">ASP.NET MVC</label>
+            </div>
+
+           
+
+            <div class="container" style=" margin-left: 8px">
+                <div class="custom-file" id="customFile" style="margin-left: -8px">
+                    <input type="file" class="custom-file-input form-control is-invalid" id="exampleInputFile" aria-describedby="fileHelp" />
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="validationServer03" class="form-label">Address</label>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">message</label>
+                  </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3"
+                        aria-describedby="invalidCheck3Feedback" required />
+                    <label class="form-check-label" for="invalidCheck3" style="color: green">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+            <div class="col-12" style="display: flex; justify-content: flex-end">
+                <button class="btn btn-danger mb-2" type="submit">Cancel</button>
+
+                <button class="btn btn-primary mb-2" type="submit" style="margin-left: 10px">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.js"></script>
+<script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="jquery/jquery.js"></script> -->
 
 </html>

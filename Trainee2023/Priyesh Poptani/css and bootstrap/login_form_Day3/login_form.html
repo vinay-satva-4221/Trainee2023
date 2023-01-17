@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1_Day3</title>
+    <link rel="stylesheet" href="../Bootstrap_setup/css/bootstrap.min.css">
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .btn {
+            min-width: 375px;
+            border: none;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        #grad1 {
+
+
+            background-image: linear-gradient(to right, skyblue, purple);
+        }
+
+        span {
+            color: blue;
+        }
+
+        .bgcontainer {
+            background-image: linear-gradient(to bottom right, skyblue, purple);
+        }
+   
+    </style>
+</head>
+
+<body>
+    <div class="responsive">
+    <div class="bgcontainer border bg-primary text-black " style="width: 1365px; height: 650px; padding: 10px;">
+        <br><br><br>
+       
+            <div class="container border bg-light text-black " style="width: 400px; padding: 10px;">
+
+
+                <div style="text-align: right;">
+                    <h5>X</h5>
+                </div>
+                <h1>Login Form</h1>
+                <br>
+
+                <label> <b> Email or Phone </b></label><br>
+                <input type="text" name="email" class="form-control" required>
+                <br>
+                <label> <b> Password </b></label><br>
+                <input type="password" name="pass" class="form-control" required>
+
+                <h6> <span> forgot password!</span></h6>
+                <br>
+                <button type="button" id="grad1" class="btn">Login</button>
+
+                <br><br>
+                <p>Not a member? <span> SignUp Now </span></p>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../Bootstrap_setup/js/bootstrap.min.js"></script>
+    <script src="../Bootstrap_setup/jquery-3.6.3.min.js"></script>
+</body>
+
+</html>

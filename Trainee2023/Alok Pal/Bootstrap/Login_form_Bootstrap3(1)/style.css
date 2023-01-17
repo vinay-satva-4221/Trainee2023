@@ -1,0 +1,24 @@
+body{
+    background-image: linear-gradient(to left, #55065e, #5d2d86, #5d4dae, #5d79e8, #6caffc);
+
+}
+label p b{
+    font-family: 'Roboto', sans-serif;
+}
+
+.cont1{
+    width: 30%;
+    height: 450px;
+    background-color: white;
+    margin-top: 8vw;
+}
+
+.fa{
+    text-align: end;
+    margin-left: 98%;
+    position: relative;
+}
+
+#fname{
+    width: 100%;
+}
