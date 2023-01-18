@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Table task 7</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        body{
+            font-family: 'Roboto';
+        }
+        .tb {
+
+            margin: 10%;
+            width: 70%;
+            padding: 5px;
+            text-align: center;
+        }
+        th,td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid grey;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0
+        }
+        .bt{
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-responsive tb">
+        <table class="table">
+        <tr style="background-color: lightgray;">
+            <th> 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                  </div>
+            </th>
+            <th> Order#</th>
+            <th> Company name</th>
+            <th> Status</th>
+            <th> Title </th>
+            <th> Created</th>
+        </tr>
+        <tr>
+            <td> 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                  </div>
+            </td>
+            <td>#SO-13487</td>
+            <td> Gasper Antunes</td>
+            <td> <button class="btn bg-success bt">Fullfilled</button></td>
+            <td> $2674.00 </td>
+            <td> Today</td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                  </div>
+            </td>
+            <td>#SO-13487</td>
+            <td> Gasper Antunes</td>
+            <td> <button class="btn bg-info bt">Confirmed</button></td>
+            <td> $2674.00 </td>
+            <td> Today</td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                  </div>
+            </td>
+            <td>#SO-13487</td>
+            <td> Gasper Antunes</td>
+            <td> <button class="btn bg-danger bt">Partially shipped</button></td>
+            <td> $2674.00 </td>
+            <td> Today</td>
+        </tr>
+        <tr>
+            <td> 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                  </div>
+            </td>
+            <td>#SO-13487</td>
+            <td> Gasper Antunes</td>
+            <td> <button class="btn bg-success bt">Fullfilled</button></td>
+            <td> $2674.00 </td>
+            <td> Today</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown_Task8</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <style>
+        header{
+            background-color: blanchedalmond;
+            color: brown;
+            text-align: center;
+            height: 10%;
+            padding: 1%;
+        }
+       .container{
+            margin-top: 100px;
+            border-top: 1px solid black;
+            text-align: center;
+       }
+       .space{
+        width: 250px;
+       }
+       footer{
+            background-color: blanchedalmond;
+            color: brown;
+            text-align: center;
+            height: 10%;
+            margin-top: 25%;
+            padding: 1%;
+       }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <h4>Dropdown Button</h4>
+        </header>
+
+    </div>
+    <div class="container">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown Button
+            </button>
+            <ul class="dropdown-menu space" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button">Action</button></li>
+              <li><button class="dropdown-item" type="button">Another action</button></li>
+              <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+          </div>
+    </div>
+    <div class="container-fluid">
+        <footer>
+            <h4>Bootstrap & CSS Exam</h4>
+        </footer>
+
+    </div>
+    <script src="./bootstrap/jquery-3.6.3.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+</html>
