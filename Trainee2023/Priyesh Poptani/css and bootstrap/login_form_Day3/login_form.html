@@ -8,73 +8,81 @@
     <link rel="stylesheet" href="../Bootstrap_setup/css/bootstrap.min.css">
 
     <style>
-        h1 {
-            text-align: center;
-        }
-
-        .btn {
-            min-width: 375px;
-            border: none;
-        }
-
-        p {
-            text-align: center;
-        }
-
-        #grad1 {
-
-
-            background-image: linear-gradient(to right, skyblue, purple);
-        }
-
-        span {
-            color: blue;
-        }
-
-        .bgcontainer {
-            background-image: linear-gradient(to bottom right, skyblue, purple);
-        }
+        a:link {
+         text-decoration: none;
+   }
+   /* .content{
+       margin-left: 300px;
+       margin-right: 300px;
+   } */
+   body{
+       background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(33, 172, 200, 1) 0%, rgba(187, 34, 189, 1) 82%);
+   }
+   .btn{
+       background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(33, 172, 200, 1) 0%, rgba(187, 34, 189, 1) 82%);
+   }
+    
    
-    </style>
+   </style>
 </head>
 
 <body>
-    <div class="responsive">
-    <div class="bgcontainer border bg-primary text-black " style="width: 1365px; height: 650px; padding: 10px;">
-        <br><br><br>
-       
-            <div class="container border bg-light text-black " style="width: 400px; padding: 10px;">
+
+    <div class="container h-100 p-5 ">
 
 
-                <div style="text-align: right;">
-                    <h5>X</h5>
-                </div>
-                <h1>Login Form</h1>
-                <br>
-
-                <label> <b> Email or Phone </b></label><br>
-                <input type="text" name="email" class="form-control" required>
-                <br>
-                <label> <b> Password </b></label><br>
-                <input type="password" name="pass" class="form-control" required>
-
-                <h6> <span> forgot password!</span></h6>
-                <br>
-                <button type="button" id="grad1" class="btn">Login</button>
-
-                <br><br>
-                <p>Not a member? <span> SignUp Now </span></p>
+        <div class="content bg-light p-3 mx-5 w-50 mx-auto">
 
 
-
-
-
-            </div>
+        <div class="icon text-end">
+        <i class='fa fa-close '></i>
         </div>
+        <h2 class="text-center">Login Form</h2>
+    <form >
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Email or Phone</label>
+
+          <input type="email" id="form2Example1" class="form-control" />
+        </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example2">Password</label>
+
+          <input type="password" id="form2Example2" class="form-control" />
+        </div>
+      
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+        
+      
+          <div class="col">
+            <!-- Simple link -->
+            <a href="#!">Forgot password?</a>
+          </div>
+        </div>
+      
+        <!-- Submit button -->
+        <button type="button" class="btn btn-primary w-100 mb-4">LOGIN</button>
+      
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <a href="#!">Signup now</a></p>
+          
+        </div>
+      </form>
+
+
     </div>
+    </div>
+    
+</body>
 
     <script src="../Bootstrap_setup/js/bootstrap.min.js"></script>
     <script src="../Bootstrap_setup/jquery-3.6.3.min.js"></script>
 </body>
 
 </html>
+
+
