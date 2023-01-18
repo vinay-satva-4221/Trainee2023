@@ -28,7 +28,7 @@
                 <h4 class="text-left">Welcome, Let's Get started</h4>
 
 
-                <form class="was-validated ">
+                <form class="needs-validation" novalidate >
 
                     <div class="row">
                         <div class="col-md-12">
@@ -47,22 +47,42 @@
                                 <a href="#" style="text-decoration: none; float:right;">Forgot Password?</a><br></br>
 
                                 <div class=" ">
-                                    <button class="btn btn-success "><b>Log In</b></button>
+                                    <button type="submit" class="btn btn-success "><b>Log In</b></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-6 col-md-2 col-sm-12 col-xs-12">
+            <div class="col-6 col-md-2 col-sm-12 col-xs-12 mx-5">
                 <a class="thumbnail" href="#"></a>
-                <img src="images/etask1.jpg" alt="photo" class=" img-responsive" style="height: 100%;">
+                <img src="images/login.png" alt="photo" class=" img-responsive" style="height: 100%;">
             </div>
 
         </div>
 
     </div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 </body>
 
 </html>
