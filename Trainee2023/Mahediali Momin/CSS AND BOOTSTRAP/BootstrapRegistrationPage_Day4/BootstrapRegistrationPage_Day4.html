@@ -1,0 +1,168 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_6</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-danger">
+    <div class="container w-50 mt-5 bg-light p-5">
+        <form class="">
+            <h4 class="mb-4">Registration Form</h4>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="text-dark">First Name</label>
+                    <input type="text" class="form-control mb-3" pattern="[a-zA-z\s]+" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="text-dark">Last Name</label>
+                    <input type="text" class="form-control" pattern="[a-zA-z\s]+" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="text-dark">Birthday</label>
+                    <input type="date" class="form-control mb-3" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for="" class="form-label">Gender</label>
+                    <div class="d-flex">
+                        <div class="form-check">
+                            <input type="radio" name="abc">
+                            <label for="">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" name="abc">
+                            <label for="">Female</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="text-dark">Email</label>
+                    <input type="email" class="form-control mb-3" required>
+                </div>
+                <div class="col-sm-6">
+                    <label class="text-dark">Phone Number</label>
+                    <input type="tel" class="form-control mb-3" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="text-dark">Subject</label>
+                    <select class="form-select" required>
+                        <option value="">Choose Option</option>
+                        <option value="">MCA</option>
+                        <option value="">BCA</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary px-5">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_6</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-danger">
+    <div class="container mt-2">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body  m-3">
+                        <h3 class="mb-4">Registration Form</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-outline">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control form-control-lg"
+                                            pattern="[a-zA-z\s]+" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control form-control-lg"
+                                            pattern="[a-zA-z\s]+" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-1 ">
+                                    <div class="form-outline w-100">
+                                        <label>Birthday</label>
+                                        <input type="date" class="form-control form-control-lg" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <h6 class="mb-2 pb-1">Gender: </h6>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                             checked />
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                             />
+                                        <label class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-1 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label select-label">Subject</label>
+                                    <select class="select form-control-lg form-select">
+                                        <option value="1">Choose option</option>
+                                        <option value="2">Subject 1</option>
+                                        <option value="3">Subject 2</option>
+                                        <option value="4">Subject 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-2 pt-2">
+                                <input class="btn btn-primary px-5" type="submit" value="Submit" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

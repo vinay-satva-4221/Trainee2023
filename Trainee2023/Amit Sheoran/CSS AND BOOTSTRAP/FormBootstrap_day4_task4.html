@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body class="bg-info">
+    <div class="container">
+        <p class="text-center" style="color: aliceblue;">Field marked with an * are Required </p>
+        <form class="was-validated">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="exampleInput" class="form-label" style="color: aliceblue;" >*Full name</label>
+                    <input type="text" class="form-control" id="exampleInput" placeholder="john smith" pattern="[a-zA-z\s]+" required >
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+               <div class="col-md-6">
+                    <label for="exampleInputEmail1" class="form-label" style="color: aliceblue;" >*Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="name@servername.com" required >
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="exampleInputEmail1" class="form-label" style="color: aliceblue;" >*Phone / Skype ID</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="123 456 7890" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+               <div class="col-md-6">
+                    <label for="exampleInputEmail1" class="form-label" style="color: aliceblue;" >Bussiness Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Company name" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="exampleInputEmail1" class="form-label" style="color: aliceblue;" >*Website</label>
+                    <input type="url" class="form-control" id="exampleInputEmail1" placeholder="www.example.com" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+               <div class="col-md-6">
+                    <label  class="form-label" style="color: aliceblue;">Project Budget</label>
+                    <select class="form-select" style="color: gray;" aria-label="Default select example" required>
+                        <option selected >Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="exampleInputEmail1" class="form-label" style="color: aliceblue;" >
+                    *what does your bussiness do and how can we help?
+                    </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Tell us more about your bussiness and describe your needs here" rows="2" required></textarea>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+            </div>
+            <p style="color: aliceblue;">We respect your privacy <a style="color: aliceblue;" href="#">Privacy.</a><a style="color: aliceblue;" href="#">Policy.</a></p>
+            <div class="text-center">
+                <button class="btn border bg-danger" style="color: aliceblue;">
+                    Request a Quote
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
