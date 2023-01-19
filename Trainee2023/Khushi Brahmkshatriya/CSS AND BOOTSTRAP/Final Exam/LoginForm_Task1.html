@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="./bs5/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <style>
+        * {
+            font-family: 'roboto';
+        }
+
+        .fontColor {
+            color: rgb(104, 223, 177);
+        }
+
+        .btn {
+            background-color: rgb(104, 223, 177);
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="container py-5 h-100">
+        <div class="m-auto">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                            <h4 class="text-body">Welcome, Let's Get Started</h4>
+                        </div>
+                        <form action="" class="needs-validation row g-3 p-3" novalidate>
+
+                            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <h5 class="text-title">Log In</h5>
+                            </div>
+                            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <label for="email" class="form-label fontColor">Email</label>
+                                <input type="email" class="form-control" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email.
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <label for="password" class="form-label fontColor">Password</label>
+                                <input type="password" class="form-control" required>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <h6 class="text-title float-end fontColor">Forgot Password?</h6>
+                            </div>
+                            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                <button type="submit" class="btn text-white">Log In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 d-flex align-items-center">
+                    <img src="./image/login.webp" alt="Login image">
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <script>
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+    <script src="./bs5/jquery-3.6.3.min.js"></script>
+    <script src="./bs5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
