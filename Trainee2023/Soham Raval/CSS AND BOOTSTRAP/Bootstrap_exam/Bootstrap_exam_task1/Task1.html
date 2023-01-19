@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,48 +9,58 @@
     <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <style>
-        h3,p{
+        h3,
+        p {
             font-family: 'Roboto', sans-serif;
         }
-        .form-label{
+
+        .form-label {
             font-family: 'Roboto', sans-serif;
+        }
+
+        @media (max-width:629px) {
+            img {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container p-4">
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <h3>Welcome,Let's Get Started</h3>
-                <form  class="was-validated">
+                <form class="was-validated">
                     <p>Log In</p>
                     <div class="row ">
                         <div class="col-sm-12 col-md-6 col-lg-6">
                             <label for="nameinput" class="form-label">Email</label>
-                          <input type="email" class="form-control"  name="email" required>
-                          <div class="valid-feedback">Valid.</div>
-                          <div class="invalid-feedback">Please fill out this field.</div>
+                            <input type="email" class="form-control" name="email" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-                      </div>
-                      <div class="row">
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-6">
                             <label for="nameinput" class="form-label">Password</label>
-                          <input type="password" autocomplete="current-password" id="id_password" class="form-control"  name="pwd"  pattern=".{8,}"  required>
-                          <!-- <i class="far fa-eye" id="togglePassword" style=" cursor: pointer;"></i> -->
-                          <div class="valid-feedback">Valid.</div>
-                          <div class="invalid-feedback">Please fill out this field.</div>
-                          <p class="text-end">Forget Password?</p>
+                            <input type="password" autocomplete="current-password" id="id_password" class="form-control"
+                                name="pwd" pattern=".{8,}" required>
+                            <!-- <i class="far fa-eye" id="togglePassword" style=" cursor: pointer;"></i> -->
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                            <p class="text-end">Forget Password?</p>
                         </div>
-                      </div>
-                        <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
-                        <button type="submit" class="btn btn-success">Log In</button>
                     </div>
-                </div>
-                    </form>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+                            <button type="submit" class="btn btn-success">Log In</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-sm-6 col-md-6 p-0 mt-1">
                 <img src="/Bootstrap_exam/Bootstrap_exam_task1/assets/SL_060521_43530_09.jpg" height="300" width="100%">
@@ -57,4 +68,5 @@
         </div>
     </div>
 </body>
+
 </html>
