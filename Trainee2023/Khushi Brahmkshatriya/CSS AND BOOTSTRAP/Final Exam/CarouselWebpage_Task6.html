@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Page</title>
+    <link rel="stylesheet" href="./bs5/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <style>
+        *{
+            font-family: 'roboto';
+            overflow-x: hidden;
+        }
+        .bgColor{
+            background-color: rgb(64, 216, 208);
+        }
+        img{
+            height: 70vh;
+        }
+        header .navbar a:hover{
+            background-color: rgb(86, 95, 95);
+            color: white;
+        }
+        .bg{
+            background-color: rgb(86, 95, 95);
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bgColor">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand"><h6 class="text-white display-6">eNno</h6></a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        
+                        <a href="#" class="nav-item nav-link text-white bg">HOME</a>
+                        <a href="#" class="nav-item nav-link text-white">ABOUT</a>
+                        <a href="#" class="nav-item nav-link text-white">PORTFILE</a>
+                        <a href="#" class="nav-item nav-link text-white">CONTACT</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container mt-5">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="./image/c3.jpg" class="d-block w-100 img-fluid" alt="Party">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./image/c2.jpg" class="d-block w-100 img-fluid " alt="Party">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./image/c1.jfif" class="d-block w-100 img-fluid" alt="Party">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div class="row justify-content-center p-5">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <div class="text-center">
+                        <h5 class="display-5">Multi Purpose Theme</h5>
+                        <p class="tet-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quisquam 
+                            sunt eaque minus ad doloremque, neque libero enim quae consequuntur nobis at vero eius, 
+                            facilis reprehenderit adipisci eum deleniti! Consequuntur.</p>
+                    </div>
+                </div>
+              </div>
+              <div class="row justify-content-center text-center p-3">
+                    
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                            <div class="card border-0">
+                                <h5 class="card-header bg-white">Responsive</h5>
+                                <div class="card-body">
+                                  <i class="card-title bi bi-heart display-5"></i>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  <a href="#" class="btn border mt-4">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5 ">
+                            <div class="card border-0">
+                                <h5 class="card-header bg-white">Multi Purpose</h5>
+                                <div class="card-body">
+                                  <i class="card-title bi bi-laptop display-5"></i>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  <a href="#" class="btn border mt-4">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5">
+                            <div class="card border-0">
+                                <h5 class="card-header bg-white">Easy Customize</h5>
+                                <div class="card-body">
+                                  <i class="card-title bi bi-cursor-fill display-5"></i>
+                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                  <a href="#" class="btn border mt-4">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+        </div>
+    </section>
+    <footer>
+        <div class="row justify-content-center text-center p-3">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                <h3 class="display-6">Galleries</h3>
+                <p class="text-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Facere rerum vel explicabo asperiores, et ducimus labore
+                        velit cupiditate eligendi dolore. </p>
+            </div>
+        </div>
+    </footer>
+    <script src="./bs5/jquery-3.6.3.min.js"></script>   
+    <script src="./bs5/js/bootstrap.min.js"></script>
+    <script src="./bs5/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
