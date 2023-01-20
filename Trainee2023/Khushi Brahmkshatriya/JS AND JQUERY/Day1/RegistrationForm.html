@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="../bs5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Day1/registration.css">
+</head>
+<body>
+
+    <div class="container">
+        <form id="regForm" action="">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <h1>REGISTRATION</h1>
+                    <div class="tab">PERSONAL DETAILS
+                        <p><input type="text" placeholder="Enter Your First name" class="form-control" oninput="this.className = ''" id="fname" name="fname"></p>
+                        <p><input type="text" placeholder="Enter Your Last name" class="form-control" oninput="this.className = ''" id="lname" name="lname"></p>
+                        <p><select class="form-select" aria-label="Default select example" required>
+                            <option selected>Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </p>
+                        <p><input type="number" placeholder="Enter Zip Code" class="form-control" type="text" onKeyUp="validateInput()"  id="zipCode" oninput="this.className = ''" name="code"></p>
+                        <div id="msg" ></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab">PROFILE INFORMATION:
+                <p><input type="email" placeholder="Enter Your Email" class="form-control" oninput="this.className = ''" name="email"></p>
+                <p><input type="text" placeholder="Enter Your Username" class="form-control" oninput="this.className = ''"  name="username"></p>
+                <p><input type="password" placeholder="password" class="form-control" oninput="this.className = ''" id="password" onkeyup="check()" name="password"></p>
+                <p><input type="password" placeholder="Confirm password" class="form-control" oninput="this.className = ''" id="confirm_password"  onkeyup='check();' name="cpassword"></p>
+                <div id="pmsg" ></div>
+            </div>
+            
+            <div class="tab">BANK INFORMATION:
+                <p><select class="form-select" aria-label="Default select example" required>
+                    <option selected disabled>Choose Bank</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="SBI">SBI</option>
+                  </select>
+                </p>
+                <p><select class="form-select" aria-label="Default select example" required>
+                    <option selected disabled>Choose Branch</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="SBI">SBI</option>
+                  </select>
+                </p>
+                <p><select class="form-select" aria-label="Default select example" required> 
+                    <option selected disabled>Choose Account</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="SBI">SBI</option>
+                  </select>
+                </p>
+                <p><input type="number" placeholder="Account Number" class="form-control" oninput="this.className = ''"  onkeyup="acMatch();" id="acnumber" name="cnumber"></p>
+            </div>
+            <div class="tab">PAYMENT INFORMATION:
+                <p><select class="form-select" aria-label="Default select example" required>
+                    <option selected disabled>Master Card</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="SBI">SBI</option>
+                  </select>
+                </p>
+                <p><input type="text" placeholder="Holder Name" class="form-control" oninput="this.className = ''"  name="holdername"></p>
+                <p><input type="number" placeholder="Card Number" class="form-control" oninput="this.className = ''"  name="cardnumber"></p>
+                <p><input type="number" placeholder="CVV" class="form-control" oninput="this.className = ''"  name="cvv"></p>
+                <p><input type="month" placeholder="" class="form-control" oninput="this.className = ''"  name="date"></p>
+            </div>
+            <div class="tab">USER DETAILS:
+                <table class="table-responsive border">
+
+                    <tbody>
+                        <tr>
+                            <td>First name</td>
+                            <td id="tdfname"></td>
+                        </tr>
+                        <tr>
+                            <td>Last name</td>
+                            <td id="tdlname"></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td id="tdgender"></td>
+                        </tr>
+                        <tr>
+                            <td>Zip Code</td>
+                            <td id="tdzipcode"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td id="tdemail"></td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td id="tduname"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td id="tdpassword"></td>
+                        </tr>
+                        <tr>
+                            <td>Bank Name</td>
+                            <td id="tdbname"></td>
+                        </tr>
+                        <tr>
+                            <td>Branch Name</td>
+                            <td id="tdbranch"></td>
+                        </tr>
+                        <tr>
+                            <td>Account Name</td>
+                            <td id="tdacname"></td>
+                        </tr>
+                        <tr>
+                            <td>Account Number</td>
+                            <td id="tdacnumber"></td>
+                        </tr>
+                        <tr>
+                            <td>Payment Type</td>
+                            <td id="tdptype"></td>
+                        </tr>
+                        <tr>
+                            <td>Holder Name</td>
+                            <td id="tdhname"></td>
+                        </tr>
+                        <tr>
+                            <td>Card Number</td>
+                            <td id="tdcardnum"></td>
+                        </tr>
+                        <tr>
+                            <td>CVV</td>
+                            <td id="tdcvv"></td>
+                        </tr>
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td id="tdedate"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                  <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                  <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+              </div>
+              <!-- Circles which indicates the steps of the form: -->
+              <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+              </div>
+        </form>
+    </div>
+    <script src="../Day1/registrationForm.js"></script>
+    <script src="../bs5/js/bootstrap.min.js"></script>
+    <script src="../bs5/jquery-3.6.3.min.js"></script>
+</body>
+</html>
