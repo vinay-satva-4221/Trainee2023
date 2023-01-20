@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_5</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+        }
+        .shipping_h2{
+            color: rgb(0, 174, 255);
+        }
+        .shipping_btn{
+            background-color: rgb(165, 118, 31);
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 100px;
+            border: rgb(165, 118, 31);
+        }
+    </style>
+</head>
+<body>
+    <div class="container border border-dark mt-5 pb-5">
+        <div class="container">
+            <form class="was-validated">
+                <h2 class="shipping_h2 mb-4 mt-5">Shipping Address</h2>
+                <div class="row mb-2">
+                    <div class="col-md-7 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-5 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-9 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="Address" required>
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="Apt" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="City" required>
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-3">
+                        <select class="form-select" required>
+                            <option value="">State</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-3">
+                        <input type="text" class="form-control" placeholder="ZIP Code" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-9 col-sm-12 mb-3">
+                        <input type="email" class="form-control" placeholder="Email address for receipt" required>
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-3">
+                        <input type="tel" class="form-control" placeholder="Primary Phone" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <button type="submit" class="shipping_btn  text-white">CONTINUE</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
