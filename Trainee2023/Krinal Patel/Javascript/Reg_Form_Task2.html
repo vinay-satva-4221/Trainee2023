@@ -231,8 +231,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <select class="form-select " id="account" aria-label="Default select example"
-                        onchange="return validatetype()">
+                    <select class="form-select " id="account" aria-label="Default select example" onchange="return validatetype()">
                         <option selected disabled value="">Choose Account</option>
                         <option value="Current">Current</option>
                         <option value="Savings">Savings</option>
@@ -261,11 +260,14 @@
                 <h3><b>PAYMENT INFORMATION</b></h3>
             </div>
             <div class="col-lg-12">
-                <select class="form-select " id="card" aria-label="Default select example">
-                    <option selected value="Master Card">Master Card</option>
+                <select class="form-select " id="card" aria-label="Default select example"  onchange="return validate_card()">
+                    <option selected value="">Master Card</option>
                     <option value="Visa">Visa</option>
                     <option value="Rupay">Rupay</option>
+    
                 </select>
+                <p id="cardmsg"></p>
+
             </div>
             <div class="row">
                 <div class="col-lg-12 mt-3">
@@ -298,12 +300,11 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <p><input type="month" placeholder="--/--/--" id="date" oninput="this.className = ''" name="expiry">
-
+                    <p><input type="month" placeholder="--/--/--" id="date" onchange="return validate_Exp()" oninput="this.className = ''" name="expiry">
+                        <p id="msgexp"></p>
                     </p>
                 </div>
             </div>
-            <!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> -->
         </div>
 
 
