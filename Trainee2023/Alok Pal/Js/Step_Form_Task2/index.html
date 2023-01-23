@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+    <form id="regForm" action="/action_page.php">
+        <h1><b> Registration </b></h1>
+        <!-- One "tab" for each step in the form: -->
+
+        <div class="tab">
+            <div>
+                <h3><b>Personal Details</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="First name..." id="fname" oninput="this.className = ''"  onchange="return validate()" name="fname"></p>
+                    <span id="navalid" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Last name..." id="lname" oninput="this.className = ''" name="lname" onchange="return validateL()"></p>
+                </div>
+                <span id="navalid1" style="font-size: 12px; color: red;"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-select " id="gen" onchange="return genderV()" aria-label="Default select example">
+                        <option value="">Choose</option>
+                        <option value="Male">Male</option>
+                        <option value="Female" >Female</option>
+                    </select>
+                    <span id="gen1" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-lg-12">
+                    <p><input placeholder="Enter Zip Code..." id="zip" onkeyup="return zipV()" oninput="this.className = ''" name="lname"></p>
+                </div>
+                <span id="vzip1" style="font-size: 12px; color: red;"></span>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <h3><b>Profile Information</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="E-mail..." id="email" onchange="return validateEmail()" oninput="this.className = ''" name="email"></p>
+                    <span id="vemail" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Username" id="usr" onchange="return validateusername()" oninput="this.className = ''" name="username"></p>
+                    <span id="vusr" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="password" placeholder="Password" id="pass" onkeyup="return checkPassword()" oninput="this.className = ''" name="Password"></p>
+                    <span id="vpass" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="password" placeholder="Confirm Password" onkeyup=" return verifyPassword()" id="cpass" oninput="this.className = ''" name="Confirm Password"></p>
+                    <span id="vcpass" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> -->
+        </div>
+        <div class="tab">
+            <div>
+                <h3><b>Bank Information</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mt-3">
+                    <select class="form-select " id="bank" onclick="return bankv()" aria-label="Default select example">
+                        <option value="">Choose Bank..</option>
+                        <option >State Bank of India</option>
+                        <option >Bank of India</option>
+                        <option >HDFC</option>
+
+                    </select>
+                    <span id="vbb" style="font-size: 12px; color: red;"></span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <select class="form-select " onclick="return branchv()" id="branch" aria-label="Default select example">
+                        <option value="">Choose Branch</option>
+                        <option value="Ahemdabad">Ahemdabad</option>
+                        <option value="Anand">Anand</option>
+                        <option value="Vadodra">Vadodra</option>
+                    </select>
+                    <span id="vbranch" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-select " id="account" onclick="return accountv()" aria-label="Default select example">
+                        <option value="">Choose Account</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Current">Current</option>
+                        <option value="Savings">Savings</option>
+                    </select>
+                    <span id="vacc" style="font-size: 12px; color: red;"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <p><input placeholder="Account Number" id="accn" onchange="return validateAcctNo()" oninput="this.className = ''" name="Account Number"></p>
+                </div>
+                <span id="vaccno" style="font-size: 12px; color: red;"></span>
+            </div>
+            <!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> -->
+        </div>
+
+        <div class="tab">
+            <div>
+                <h3><b>Payment Information</b></h3>
+            </div>
+            <div class="col-lg-12">
+                <select class="form-select " id="card" onclick="return cardV()" aria-label="Default select example">
+                    <option value="">Card</option>
+                    <option value="Master Card">Master Card</option>
+                    <option  value="Visa">Visa</option>
+                    <option value="Rupay">Rupay</option>
+                </select>
+                <span id="vcard" style="font-size: 12px; color: red;"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mt-3">
+                    <p><input placeholder="Holdername" id="hname" onchange="return validate_acc_holder() " oninput="this.className = ''" name="Holdername"></p>
+                </div>
+                <span id="vhname" style="font-size: 12px; color: red;"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Card Number" id="cnum" onkeyup="return validate_card_no()" oninput="this.className = ''" name="Card Number"></p>
+                </div>
+                <span id="vcnum" style="font-size: 12px; color: red;"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="CVV" id="cvv" onchange="return validate_CVV()" oninput="this.className = ''" name="CVV"></p>
+                </div>
+                <span id="vcvv" style="font-size: 12px; color: red;"></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="month" placeholder="--/--/--" id="date" oninput="this.className = ''" name="CVV"></p>
+                </div>
+            </div>
+            <!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> -->
+        </div>
+
+
+        <div class="tab">
+            <div class="mb-2">
+                <h3><b>Payment Information</b></h3>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    First Name:
+                </div>
+                <div class="col-lg-6 py-2">
+                    <p id="namef"></p>
+                </div>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Last Name:
+                </div>
+                <div class="col-lg-6 ">
+                    <p id="lname1"></p>
+                </div>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Gender:
+                </div>
+                <div class="col-lg-6">
+                    <p id="gender1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Zip Code:
+                </div>
+                <div class="col-lg-6">
+                    <p id="zip1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Email:
+                </div>
+                <div class="col-lg-6">
+                    <p id="email1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Username:
+                </div>
+                <div class="col-lg-6">
+                    <p id="username1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Password:
+                </div>
+                <div class="col-lg-6">
+                    <p id="pass1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Bank Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="bank1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Branch Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="branch1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Account Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="acc1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Account Number:
+                </div>
+                <div class="col-lg-6">
+                    <p id="accn1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Payment Type:
+                </div>
+                <div class="col-lg-6">
+                    <p id="pay1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Holder Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="hname1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Card Number:
+                </div>
+                <div class="col-lg-6">
+                    <p id="cnum1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    CVV:
+                </div>
+                <div class="col-lg-6">
+                    <p id="cvv1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Expiry Date:
+                </div>
+                <div class="col-lg-6">
+                    <p id="date1"></p>
+                </div>
+            </div>
+            
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn"  onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
+
+
+
+</body>
+<script src="index.js"></script>
+
+</html>
