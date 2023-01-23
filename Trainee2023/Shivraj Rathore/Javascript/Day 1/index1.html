@@ -111,8 +111,8 @@
       <p>
         <select class="form-select" aria-label="Default select example" id="gender">
           <option selected disabled>Gender</option>
-          <option value="1">Male</option>
-          <option value="2">Female</option>
+          <option value="male">male</option>
+          <option value="female">female</option>
         </select>
       </p>
       <p id="gender1"></p>
@@ -145,24 +145,24 @@
       <p>
         <select class="form-select" aria-label="Default select example" id="cbank">
           <option selected disabled>Choose Bank</option>
-          <option value="1">ICICI</option>
-          <option value="2">HDFC</option>
+          <option value="icici">icici</option>
+          <option value="hdfc">hdfc</option>
         </select>
       </p>
       <div id="cbank1"></div>
       <p>
         <select class="form-select" aria-label="Default select example" id="cbranch">
           <option selected disabled>Choose Branch</option>
-          <option value="1">Jaipur</option>
-          <option value="2">Lucknow</option>
+          <option value="surat">surat</option>
+          <option value="surat">goa</option>
         </select>
       <div id="cbranch1"></div>
       </p>
       <p>
         <select class="form-select" aria-label="Default select example" id="caccount">
           <option selected disabled>Choose Account</option>
-          <option value="1">Saving</option>
-          <option value="2">Current</option>
+          <option value="saving">saving</option>
+          <option value="current">current</option>
         </select>
       </p>
       <div id="caccount1"></div>
@@ -176,8 +176,8 @@
       <p>
         <select class="form-select" aria-label="Default select example" id="ccard">
           <option selected disabled>Choose A Card</option>
-          <option value="1">Mastercard</option>
-          <option value="2">Visa</option>
+          <option value="mastercard">mastercard</option>
+          <option value="visa">visa</option>
         </select>
       </p>
       <span id="ccard1"></span>
@@ -361,8 +361,8 @@
       }
 
       if (
-        document.getElementById("gender").value == "1" ||
-        document.getElementById("gender").value == "2"
+        document.getElementById("gender").value == "male" ||
+        document.getElementById("gender").value == "female"
       ) {
         valid = true;
       } else {
@@ -376,8 +376,8 @@
         name.test(lname) &&
         number.test(zip)
         &&
-        ((document.getElementById("gender").value == "1") ||
-          (document.getElementById("gender").value == "2"))
+        ((document.getElementById("gender").value == "male") ||
+          (document.getElementById("gender").value == "female"))
       ) {
         isFunValid = true;
       } else {
@@ -428,14 +428,14 @@
     function bankdetails(cbank, cbranch, caccount, number, accnum) {
       debugger;
       var bankdetail = false;
-      if ((document.getElementById("cbank").value == "1") || (document.getElementById("cbank").value == "2")) {
+      if ((document.getElementById("cbank").value == "icici") || (document.getElementById("cbank").value == "hdfc")) {
         valid = true;
       } else {
         valid = false;
         document.getElementById("cbank1").innerHTML = "Choose a Bank";
       }
 
-      if ((document.getElementById("cbranch").value == "1") || (document.getElementById("cbranch").value == "2")) {
+      if ((document.getElementById("cbranch").value == "surat") || (document.getElementById("cbranch").value == "goa")) {
         valid = true;
       } else {
         valid = false;
@@ -443,7 +443,7 @@
       }
 
 
-      if ((document.getElementById("caccount").value == "1") || (document.getElementById("caccount").value == "2")) {
+      if ((document.getElementById("caccount").value == "saving") || (document.getElementById("caccount").value == "current")) {
         valid = true;
       } else {
         valid = false;
@@ -456,11 +456,11 @@
         document.getElementById("accnum1").innerHTML = "Enter valid account number";
       }
 
-      if (((document.getElementById("cbank").value == "1") || (document.getElementById("cbank").value == "2"))
+      if (((document.getElementById("cbank").value == "icici") || (document.getElementById("cbank").value == "hdfc"))
         &&
-        ((document.getElementById("cbranch").value == "1") || (document.getElementById("cbranch").value == "2"))
+        ((document.getElementById("cbranch").value == "surat") || (document.getElementById("cbranch").value == "goa"))
         &&
-        ((document.getElementById("caccount").value == "1") || (document.getElementById("caccount").value == "2"))
+        ((document.getElementById("caccount").value == "saving") || (document.getElementById("caccount").value == "current"))
         &&
         (number.test(accnum))) {
         bankdetail = true;
@@ -475,7 +475,7 @@
     function payinfo(name, holname, cvv, cvvnum, cardnum, vcnumber) {
       var payin = false;
       debugger
-      if (document.getElementById("ccard").value == "1" || document.getElementById("ccard").value == "2") {
+      if (document.getElementById("ccard").value == "mastercard" || document.getElementById("ccard").value == "visa") {
         valid = true;
       }
       else {
@@ -508,7 +508,7 @@
       }
 
 
-      if ((document.getElementById("ccard").value == "1" || document.getElementById("ccard").value == "2")
+      if ((document.getElementById("ccard").value == "mastercard" || document.getElementById("ccard").value == "visa")
         &&
         (name.test(holname))
         &&
