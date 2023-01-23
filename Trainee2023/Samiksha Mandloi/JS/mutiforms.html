@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiForms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form {
+            box-sizing: border-box;
+        }
+
+        #regForm {
+            background-color: #ffffff;
+            margin: 100px auto;
+            font-family: Raleway;
+            padding: 40px;
+            width: 70%;
+            min-width: 300px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 17px;
+            font-family: Raleway;
+            border: 1px solid #aaaaaa;
+        }
+
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+            background-color: #ffdddd;
+        }
+
+        /* Hide all steps by default: */
+        .tab {
+            display: none;
+        }
+
+        button {
+            background-color: #04AA6D;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 17px;
+            font-family: Raleway;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #prevBtn {
+            background-color: #bbbbbb;
+        }
+
+        /* Make circles that indicate the steps of the form: */
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color: #04AA6D;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form id="regForm" style="background-color:lightgray;">
+        <h1><b>Registration:</b></h1>
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab "><b>Personal Details</b>
+            <p><input placeholder="First name..." oninput="this.className = ''" name="fname" id="fname"
+                    onkeyup="fnamevalidate()" required></p>
+            <div id="name"></div>
+
+            <p><input placeholder="Last name..." oninput="this.className = ''" name="lname" id="lname"
+                    onkeyup="lnamevalidate()" required></p>
+                    <div id="name2"></div>
+
+            <p><select class="form-select" id="sel1" name="sellist1"  required>
+                    <option value="0" disabled selected >select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select></p>
+                <div id="sname"></div>
+            <p><input type="text" id="zipcode" placeholder="Zip code" onkeyup="validateInput()" name="Eneter Zip code">
+            </p>
+            <div id="msg"></div>
+        </div>
+        <div class="tab"><b>Profile Information</b>
+            <p><input type="email" placeholder="E-mail..." oninput="this.className = ''" onchange="emailValidate()" name="email" id="email"></p>
+            <div id="mailname"></div>
+            <p><input placeholder="Username" oninput="this.className = ''" name="Username" id="usrname" onkeyup=" usernameValidate()"></p>
+            <div id="usname"></div>
+            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password" id="paswd"
+                    onblur="validatePassword()" required>
+            </p>
+            <div id="pwdmsg"></div>
+            <p><input placeholder="Confirm Password" oninput="this.className = ''" name="cpword" type="password"
+                    id="cnpas" onblur="passValidate()" value="0" required></p>
+            <div id="cpmsg"></div>
+        </div>
+        <div class="tab"><b>Bank Information</b>
+            <p><select class="form-select" id="banksel" name="sellist1" onchange="bankValidate()">
+                    <option value="0" disabled selected>Choose Bank</option>
+                    <option>BOI</option>
+                    <option>SBI</option>
+                    <option>HDFC</option>
+                    <option>ICICI</option>
+                </select></p>
+                <div id="bname"></div>
+            <p><select class="form-select" id="branch" name="sellist1" onchange="branchValidate()">
+                    <option value="0" disabled selected>Choose Branch</option>
+                    <option>Mid cooprate branch cgroad ahmdabad</option>
+                    <option>sola bridge ahmdabad</option>
+                </select></p>
+                <div id="brnchname"></div>
+            <p><select class="form-select" id="account" name="sellist1" onchange="selectacValidate()">
+                    <option value="0" disabled selected>Choose Account</option>
+                    <option>Savings Account</option>
+                    <option>Current Account</option>
+                    <option>Salary Account</option>
+                    <option>Fixed Deposit (FD) Accounts</option>
+                </select></p>
+                <div id="sacname"></div>
+            <p><input placeholder="Account number" oninput="this.className = ''" name="acnumber" id="acno"
+                    onkeyup="acnoValidate()" required></p>
+            <div id="cpacno"></div>
+        </div>
+        <div class="tab"><b>Payment Information</b>
+            <p><select class="form-select" id="mastercard" name="sellist1">
+                    <option value="0" disabled selected>Master Card</option>
+                    <option>Standard.</option>
+                    <option>World</option>
+                    <option>World Elite</option>
+                </select></p>
+                <div id="mcrdname"></div>
+            <p><input placeholder="holder Name" oninput="this.className = ''" name="holder" id="holder" onkeyup="holderValidate()"></p>
+            <div id="hname"></div>
+            <p><input placeholder="Card Number" oninput="this.className = ''" name="cardno" id="cardno" onkeyup="cardnoValidate()"></p>
+            <div id="crdname"></div>
+            <p><input placeholder="CVV" oninput="this.className = ''" name="cvv" id="cvv" onblur="cVVNumber()">
+            </p>
+            <div id="valcvv"></div>
+            <p><input type="month" placeholder="expiry date" oninput="this.className = ''" name="month" id="month" onkeydown="checkMonth()">
+            </p>
+            <div id="monthname"></div>
+        </div>
+        <div class="tab"><h4 class="text-center">USER DETAILS:</h4>
+            <table class="table-responsive">
+
+                <tr>
+                    <td>First Name:</td>
+                    <td id="fnme"></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td id="lnme"></td>
+                </tr>
+                <tr>
+                    <td>select Gender:</td>
+                    <td id="select"></td>
+                </tr>
+                <tr>
+                    <td>Zip code:</td>
+                    <td id="zcode"></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td id="mail"></td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td id="unme"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td id="pwd"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td id="cpwd"></td>
+                </tr>
+                <tr>
+                    <td>Choose Bank:</td>
+                    <td id="cbnk"></td>
+                </tr>
+                <tr>
+                    <td>Choose Branch:</td>
+                    <td id="cbrnch"></td>
+                </tr>
+                <tr>
+                    <td>Choose Account:</td>
+                    <td id="cac"></td>
+                </tr>
+                <tr>
+                    <td>Account number:</td>
+                    <td id="cano"></td>
+                </tr>
+                <tr>
+                    <td>Master Card:</td>
+                    <td id="mcard"></td>
+                </tr>
+                <tr>
+                    <td>holder Name:</td>
+                    <td id="holname"></td>
+                </tr>
+                <tr>
+                    <td>Card Number:</td>
+                    <td id="crdno"></td>
+                </tr>
+                <tr>
+                    <td>CVV:</td>
+                    <td id="cvno"></td>
+                </tr>
+                <tr>
+                    <td>Expiry Date:</td>
+                    <td id="exdate"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
+    <script src="mnyform.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

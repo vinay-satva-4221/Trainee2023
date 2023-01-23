@@ -1,0 +1,39 @@
+h1{
+    text-align: center;
+}
+table,tr,th,td{
+    border: 1px black solid;
+}
+table{
+    width: 100%;
+}
+div.upper{
+    border: 1px solid black;
+    height: 44%;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+div.lowwer{
+    border: 1px solid black;
+    height: 44%;
+    text-align: center;
+    margin-top: 4px;
+}
+td#special {
+    overflow: hidden;
+    position: relative;
+    /* margin: 2px;
+    padding: 2px; */
+    padding-left: 5px;
+}
+div.span3{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.center{
+    text-align: center;
+}
