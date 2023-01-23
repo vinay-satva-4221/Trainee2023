@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway" />
+
+  <title>Multi-Step Form</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f1f1f1;
+    }
+
+    #regForm {
+      background-color: #ffffff;
+      margin: 100px auto;
+      font-family: Raleway;
+      padding: 40px;
+      width: 70%;
+      min-width: 300px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      font-size: 17px;
+      font-family: Raleway;
+      border: 1px solid #aaaaaa;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+      background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+      display: none;
+    }
+
+    button {
+      background-color: #04aa6d;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 17px;
+      font-family: Raleway;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    #prevBtn {
+      background-color: #bbbbbb;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbbbbb;
+      border: none;
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0.5;
+    }
+
+    .step.active {
+      opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+      background-color: #04aa6d;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="regForm" action="/action_page.php">
+    <h1>Register:</h1>
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab">
+      <h2>Profile Information:</h2>
+      <p>
+        <input placeholder="First Name" oninput="this.className = ''" name="fname" id="fname" />
+      </p>
+      <p id="fname1"></p>
+      <p>
+        <input placeholder="Last name..." oninput="this.className = ''" name="lname" id="lname" />
+      </p>
+      <p id="lname1"></p>
+      <p>
+        <select class="form-select" aria-label="Default select example" id="gender">
+          <option selected disabled>Gender</option>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+      </p>
+      <p id="gender1"></p>
+      <p>
+        <input placeholder="Enterzipcode" oninput="this.className = ''" name="zip" id="zip" />
+      </p>
+      <p id="zip1"></p>
+    </div>
+    <div class="tab">
+      <h2>Profile Information:</h2>
+      <p>
+        <input placeholder="E-mail" oninput="this.className = ''" name="mail" id="mail" />
+      </p>
+      <div id="mail1"></div>
+      <p>
+        <input placeholder="UserName" oninput="this.className = ''" name="uname" id="uname" />
+      </p>
+      <div id="uname1"></div>
+      <p>
+        <input placeholder="Password" oninput="this.className = ''" name="password" id="password" />
+      </p>
+      <div id="password1"></div>
+      <p>
+        <input placeholder="Confirm Password" oninput="this.className = ''" name="cpassword" id="cpassword" />
+      </p>
+      <div id="cpassword1"></div>
+    </div>
+    <div class="tab">
+      <h2>Bank Details</h2>
+      <p>
+        <select class="form-select" aria-label="Default select example" id="cbank">
+          <option selected disabled>Choose Bank</option>
+          <option value="1">ICICI</option>
+          <option value="2">HDFC</option>
+        </select>
+      </p>
+      <div id="cbank1"></div>
+      <p>
+        <select class="form-select" aria-label="Default select example" id="cbranch">
+          <option selected disabled>Choose Branch</option>
+          <option value="1">Jaipur</option>
+          <option value="2">Lucknow</option>
+        </select>
+      <div id="cbranch1"></div>
+      </p>
+      <p>
+        <select class="form-select" aria-label="Default select example" id="caccount">
+          <option selected disabled>Choose Account</option>
+          <option value="1">Saving</option>
+          <option value="2">Current</option>
+        </select>
+      </p>
+      <div id="caccount1"></div>
+      <p>
+        <input placeholder="AccountNumber" oninput="this.className = ''" name="account" id="accnum" />
+      </p>
+      <div id="accnum1"></div>
+    </div>
+    <div class="tab">
+      <h2>Payment Information</h2>
+      <p>
+        <select class="form-select" aria-label="Default select example" id="ccard">
+          <option selected disabled>Choose A Card</option>
+          <option value="1">Mastercard</option>
+          <option value="2">Visa</option>
+        </select>
+      </p>
+      <span id="ccard1"></span>
+      <p>
+        <input placeholder="Holder Name" oninput="this.className = ''" id="holname" />
+      </p>
+      <span id="holname1"></span>
+      <p>
+        <input placeholder="Card Number" oninput="this.className = ''" id="cardnum" />
+      </p>
+      <span id="cardnum1"></span>
+      <p>
+        <input placeholder="CVV" oninput="this.className = ''" id="cvv" />
+      </p>
+      <span id="cvv1"></span>
+
+      <p>
+        <input placeholder="Date" oninput="this.className = ''" name="date" type="month" id="date" />
+      </p>
+      <span id="date1"></span>
+    </div>
+    <div class="tab">
+      <h3>USER DETAILS</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">First Name</div>
+          <div class="col-6">
+            <p id="fn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Last Name</div>
+          <div class="col-6">
+            <p id="ln"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Gender</div>
+          <div class="col-6">
+            <p id="gen"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">ZipCode</div>
+          <div class="col-6">
+            <p id="zc"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Email</div>
+          <div class="col-6">
+            <p id="em"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">UserName</div>
+          <div class="col-6">
+            <p id="un"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Password</div>
+          <div class="col-6">
+            <p id="pwd"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Bank Name</div>
+          <div class="col-6">
+            <p id="bn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Branch Name</div>
+          <div class="col-6">
+            <p id="brn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Account Name</div>
+          <div class="col-6">
+            <p id="acn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Payment Type</div>
+          <div class="col-6">
+            <p id="pty"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Holder Name</div>
+          <div class="col-6">
+            <p id="hn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Card Number</div>
+          <div class="col-6">
+            <p id="crdn"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">CVV</div>
+          <div class="col-6">
+            <p id="cv"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">Expiry Date</div>
+          <div class="col-6">
+            <p id="expd"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="overflow: auto">
+      <div style="float: right">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+          Previous
+        </button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+  </form>
+
+  <script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      //... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == x.length - 1) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      //... and run a function that will display the correct step indicator:
+      fixStepIndicator(n);
+    }
+
+    function checkPersonalInfo(name, zip, fname, lname, number) {
+      debugger;
+      var isFunValid = false;
+      if (name.test(fname)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("fname1").innerHTML =
+          "Enter Alphabetical First name";
+      }
+
+      if (name.test(lname)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("lname1").innerHTML =
+          "Enter Alphabetical last name";
+      }
+
+      if (number.test(zip)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("zip1").innerHTML = "Enter 6 digit pin code";
+      }
+
+      if (
+        document.getElementById("gender").value == "1" ||
+        document.getElementById("gender").value == "2"
+      ) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("gender1").innerHTML =
+          "Please Select an option";
+      }
+
+      if (
+        name.test(fname) &&
+        name.test(lname) &&
+        number.test(zip)
+        &&
+        ((document.getElementById("gender").value == "1") ||
+          (document.getElementById("gender").value == "2"))
+      ) {
+        isFunValid = true;
+      } else {
+        isFunValid = false;
+      }
+      return isFunValid;
+    }
+
+    function profileinfo(vmail, mail, vuname, uname, password, cpassword,paswd) {
+      var proinfo = false;
+      debugger;
+      if (vmail.test(mail)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("mail1").innerHTML = "Enter valid mail";
+      }
+
+      if (vuname.test(uname)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("uname1").innerHTML = "Enter valid user name";
+      }
+
+      if (paswd.test(password)) { valid = true; }
+      else {
+        valid = false;
+        document.getElementById("password1").innerHTML = "Password must be 7 character and contain a alphabet,digit and special character "
+      }
+
+      if (document.getElementById("password").value == document.getElementById("cpassword").value) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("cpassword1").innerHTML = "Password Do Not Match";
+      }
+
+      if ((vmail.test(mail)) && (vuname.test(uname)) && (paswd.test(password))&& (document.getElementById("password").value == document.getElementById("cpassword").value)) {
+        proinfo = true;
+      } else {
+        proinfo = false
+      }
+      return proinfo;
+
+    }
+
+    function bankdetails(cbank, cbranch, caccount, number, accnum) {
+      debugger;
+      var bankdetail = false;
+      if ((document.getElementById("cbank").value == "1") || (document.getElementById("cbank").value == "2")) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("cbank1").innerHTML = "Choose a Bank";
+      }
+
+      if ((document.getElementById("cbranch").value == "1") || (document.getElementById("cbranch").value == "2")) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("cbranch1").innerHTML = "Choose a Branch";
+      }
+
+
+      if ((document.getElementById("caccount").value == "1") || (document.getElementById("caccount").value == "2")) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("caccount1").innerHTML = "Choose an account type";
+      }
+      if (number.test(accnum)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("accnum1").innerHTML = "Enter valid account number";
+      }
+
+      if (((document.getElementById("cbank").value == "1") || (document.getElementById("cbank").value == "2"))
+        &&
+        ((document.getElementById("cbranch").value == "1") || (document.getElementById("cbranch").value == "2"))
+        &&
+        ((document.getElementById("caccount").value == "1") || (document.getElementById("caccount").value == "2"))
+        &&
+        (number.test(accnum))) {
+        bankdetail = true;
+      }
+      else {
+        bankdetail = false;
+      }
+      return bankdetail;
+
+    }
+
+    function payinfo(name, holname, cvv, cvvnum, cardnum, vcnumber) {
+      var payin = false;
+      debugger
+      if (document.getElementById("ccard").value == "1" || document.getElementById("ccard").value == "2") {
+        valid = true;
+      }
+      else {
+        valid = false;
+        document.getElementById("ccard1").innerHTML = "Choose a card";
+      }
+
+      if (name.test(holname)) {
+        valid = true;
+      }
+      else {
+        valid = false;
+        document.getElementById("holname1").innerHTML = "Enter card holder's name";
+      }
+
+      if (cvvnum.test(cvv)) {
+        valid = true;
+      }
+      else {
+        valid = false;
+        document.getElementById("cvv1").innerHTML = "Enter card's cvv";
+      }
+
+
+      if (cardnum.test(vcnumber)) {
+        valid = true;
+      } else {
+        valid = false;
+        document.getElementById("cardnum1").innerHTML = "Enter valid cardnumber";
+      }
+
+
+      if ((document.getElementById("ccard").value == "1" || document.getElementById("ccard").value == "2")
+        &&
+        (name.test(holname))
+        &&
+        (cvvnum.test(cvv))
+        &&
+        (cardnum.test(vcnumber))) {
+        payin = true;
+      } else {
+        payin = false;
+      }
+
+      return payin;
+
+
+    }
+
+
+
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x,
+        y,
+        i,
+        valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      zip = document.getElementById("zip").value;
+      mail = document.getElementById("mail").value;
+      fname = document.getElementById("fname").value;
+      lname = document.getElementById("lname").value;
+      uname = document.getElementById("uname").value;
+      accnum = document.getElementById("accnum").value;
+      holname = document.getElementById("holname").value;
+      cvv = document.getElementById("cvv").value;
+      cardnum = document.getElementById("cardnum").value;
+      password = document.getElementById("password").value;
+
+      let vmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      let name = /^[a-zA-Z ]+$/;
+      let vcnumber = /^[0-9]{8}$/;
+      let paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+      let number = /^[0-9]{6}$/;
+      let vuname = /^[a-zA-Z0-9]{6}$/;
+      let cvvnum = /^[0-9]{4}$/;
+
+
+
+      if (currentTab == 0) {
+        if (checkPersonalInfo(name, zip, fname, lname, number)) {
+          valid = true;
+        } else {
+          valid = false;
+        }
+      }
+
+      if (currentTab == 1) {
+        if (profileinfo(vmail, mail, vuname, uname, password, cpassword, paswd)) { valid = true; }
+        else {
+          valid = false;
+        }
+      }
+
+
+      if (currentTab == 2) {
+        if (bankdetails(cbank, cbranch, caccount, number, accnum)) { valid = true; }
+        else {
+          valid = false;
+        }
+      }
+
+      if (currentTab == 3) {
+        if (payinfo(name, holname, cvv, cvvnum, vcnumber, cardnum)) { valid = true; }
+        else {
+          valid = false;
+        }
+      }
+
+      if (currentTab == 4) {
+        document.getElementById("fn").innerHTML = document.getElementById("fname").value;
+        document.getElementById("ln").innerHTML = document.getElementById("lname").value;
+        document.getElementById("gen").innerHTML = document.getElementById("gender").value;
+        document.getElementById("zc").innerHTML = document.getElementById("zip").value;
+        document.getElementById("em").innerHTML = document.getElementById("mail").value;
+        document.getElementById("un").innerHTML = document.getElementById("uname").value;
+        document.getElementById("pwd").innerHTML = document.getElementById("password").value;
+        document.getElementById("bn").innerHTML = document.getElementById("cbank").value;
+        document.getElementById("brn").innerHTML = document.getElementById("cbranch").value;
+        document.getElementById("acn").innerHTML = document.getElementById("caccount").value;
+        document.getElementById("pty").innerHTML = document.getElementById("ccard").value;
+        document.getElementById("hn").innerHTML = document.getElementById("holname").value;
+        document.getElementById("crdn").innerHTML = document.getElementById("cardnum").value;
+        document.getElementById("cv").innerHTML = document.getElementById("cvv").value;
+        document.getElementById("expd").innerHTML = document.getElementById("date").value;
+      }
+
+
+      // A loop that checks every input field in the current tab:
+
+      for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className +=
+          " finish";
+      }
+      return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i,
+        x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class on the current step:
+      x[n].className += " active";
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
