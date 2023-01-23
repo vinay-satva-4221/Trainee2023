@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(157, 224, 240);
+}
+h1{
+    text-align: center;
+}
+table{
+    width: 100%;
+}
+table,tr,td{
+    border: 2px solid grey;
+    border-collapse: collapse;
+    color: blue;
+    border-style: groove;
+    border-color: white;
+}
+img{
+    width: 150px;
+    height: 95px;
+    border: 2px blue solid;
+}
+td{
+   
+    text-align: center;
+}
+/* table tr#firstrow{
+    color: blue;
+} */

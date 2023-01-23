@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="../bs5/css/bootstrap.min.css">
+
+    <style>
+        * {
+            font-family: sans-serif;
+            margin: 0;
+        }
+        .bg{
+            background-color: rgb(214, 212, 212);
+        }
+        .row{
+            padding: 3%;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5 p-5">
+        <form action="" class="align-content-center">
+            <div class="row bg">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="t1" class="form-label">T1</label>
+                    <input type="text" class="form-control" id="t1" required>
+                    <p class="text-danger" id="n1"></p>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="t2" class="form-label">T2</label>
+                    <input type="text" class="form-control" id="t2" required>
+                    <p class="text-danger" id="n2"></p>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="t3" class="form-label">T3</label>
+                    <input type="text" class="form-control" id="t3" required>
+                    <p class="text-danger" id="n3"></p>
+                </div>
+            </div>
+            <div class="row bg">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <label for="ans" class="form-label">ANS</label>
+                    <input type="text" class="form-control" id="ans" disabled>
+                    
+                </div>
+            </div>
+            <div class="row bg">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <button type="button" class="btn btn-primary" id="calculate" onclick="Mycal()">CALCULATE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../Day1/calculate.js"></script>
+    <script src="../bs5/js/bootstrap.min.js"></script>
+    <script src="../bs5/jquery-3.6.3.min.js"></script>
+    
+</body>
+
+</html>
