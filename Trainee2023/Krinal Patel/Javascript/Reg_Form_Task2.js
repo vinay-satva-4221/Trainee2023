@@ -148,16 +148,26 @@ function validateForm() {
 
 
     if (currentTab == 3) {
+
+        if(!validate_card()){
+            valid = false;
+
+        }
+        
         if (!validate_acc_holder()) {
             valid = false;
 
         }
-        if (!validate_card_no) {
+        if (!validate_card_no()) {
             valid = false;
         }
         if (!validate_CVV()) {
             valid = false;
         }
+        if (!validate_Exp()) {
+            valid = false;
+        }
+      
 
     }
 
@@ -424,3 +434,37 @@ function validatetype() {
 
 
 }
+
+function validate_Exp() {
+
+    let exp = document.getElementById("date");
+
+    if (exp.value == "") {
+        document.getElementById("msgexp").innerHTML = "Please select an option";
+        document.getElementById("msgexp").style.display = "unset";
+        return false;
+    } else {
+        document.getElementById("msgexp").style.display = "none";
+        return true;
+    }
+
+
+}
+
+function validate_card() {
+
+    let card = document.getElementById("card");
+
+    if (card.value == "") {
+        document.getElementById("cardmsg").innerHTML = "Please select an option";
+        document.getElementById("cardmsg").style.display = "unset";
+        return false;
+    } else {
+        document.getElementById("cardmsg").style.display = "none";
+        return true;
+    }
+
+
+}
+
+
