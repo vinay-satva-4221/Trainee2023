@@ -1,0 +1,13 @@
+.container{
+    font-family: 'roboto', sans-serif;
+    background-image: linear-gradient(to right,lightblue,purple);
+    background-repeat: no-repeat;
+}
+h3{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.bt{
+    margin-left: 40%;
+}
