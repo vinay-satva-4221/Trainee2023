@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container bg-secondary mt-5">
+        <form>
+            <div class="row border p-4">
+                <div class="col-md-4">
+                    <label>T1</label>
+                    <input type="text" id="t1" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label>T2</label>
+                    <input type="text" id="t2" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label>T3</label>
+                    <input type="text" id="t3" class="form-control" required>
+                </div>
+            </div>
+            <div class="row border p-4">
+                <div class="col-md-12">
+                    <label>ANS</label>
+                    <input type="text" id="ans" class="form-control" disabled>
+                </div>
+            </div>
+            <div class="mt-3 p-4">
+                <button type="button" onclick="mycalculater();" class="btn btn-primary"> Calculate</button>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        function mycalculater() {
+            var numOne, numTwo, sum, numThree;
+            numOne = document.getElementById("t1").value;
+            numTwo = document.getElementById("t2").value;
+            numThree = document.getElementById("t3").value;
+
+            if (!isNaN(numOne) && !isNaN(numTwo) && !isNaN(numThree)) {
+                sum = parseInt(numOne) + parseInt(numTwo);
+                document.getElementById("ans").value = sum + " | " + numThree + " | " + sum + "" + numThree;
+            } else if(!isNaN(numOne) && !isNaN(numTwo)){
+                document.getElementById("ans").value = "T3 is not a Number";
+            }else if(!isNaN(numOne) && !isNaN(numThree)){
+                document.getElementById("ans").value = "T2 is not a Number";
+            }else if(!isNaN(numOne) ){
+                document.getElementById("ans").value = "T3 and T2 is not a Number";
+            }else if(!isNaN(numTwo) && !isNaN(numThree)){
+                document.getElementById("ans").value = "T1 is not a Number";
+            }else if(!isNaN(numTwo)){
+                document.getElementById("ans").value = "T1 and T3 is not a Number";
+            }
+            
+            else {
+                document.getElementById("ans").value = " All are not numbers";
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

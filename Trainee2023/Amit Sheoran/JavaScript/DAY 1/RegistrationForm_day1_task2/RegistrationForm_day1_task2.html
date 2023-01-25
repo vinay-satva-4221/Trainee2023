@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+<script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #f1f1f1;
+    }
+
+    #regForm {
+        background-color: #8b8989;
+        margin: 100px auto;
+        font-family: Raleway;
+        padding: 40px;
+        width: 70%;
+        min-width: 300px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+        background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+    }
+
+    button {
+        background-color: #04AA6D;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    .step.active {
+        opacity: 1;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #04AA6D;
+    }
+
+    .form-select {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+</style>
+
+<body>
+
+    <form name="myForm" id="regForm" action="/action_page.php">
+        <h1>Registration</h1>
+        <!-- One "tab" for each step in the form:-->
+        <div class="tab">
+            <h2>Personal Details</h2>
+            <p><input placeholder="Enter your First Name" onchange="return validate()" oninput="this.className = ''"
+                    id="fname" name="fname"></p>
+            <p id="navalid" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Enter your last Name" onchange="return validateL()" oninput="this.className = ''"
+                    id="lname" name="lname"></p>
+            <p id="navalidL" style="font-size: 12px; color: red;"></p>
+            <p><select class="form-select" id="gen" onclick="return genderV()" name="Gen">
+                    <option value="" >Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <span id="vgen1" style="font-size: 12px; color: red;"></span>
+            </p>
+            <p><input placeholder="Enter Zip Code" onchange="return validatezip()" oninput="this.className = ''"
+                    id="zcode" name="zcode"></p>
+            <p id="navalidz" style="font-size: 12px; color: red;"></p>
+        </div>
+        <div class="tab">
+            <h2>Profile Information</h2>
+            <p><input placeholder="E-mail.." onchange="return emailvalidate()" oninput="this.className = ''" id="Eemail"
+                    name="Eemail"></p>
+            <p id="navalide" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Username..." onchange="return usernamevalidate()" oninput="this.className = ''"
+                    id="Uusername" name="Uusername"></p>
+            <p id="navalidu" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Password.." onchange="return passwordvalidate()" oninput="this.className = ''"
+                    id="Ppassword" name="Ppassword"></p>
+            <p id="navalidp" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Confirm Password.." onchange="return confirmpasswordvalidate()" oninput="this.className = ''" id="Cconfirmpassword"
+                    name="Cconfirmpassword"></p>
+            <p id="navalidcp" style="font-size: 12px; color: red;"></p>
+        </div>
+        <div class="tab">
+            <h2>Bank Information</h2>
+            <p><select class="form-select" id="choosebank"  onclick="return ChooseBANK()">
+                    <option value="">Choose Bank</option>
+                    <option>Sbi</option>
+                </select></p>
+                <span id="bank" style="font-size: 12px; color: red;" ></span>
+            <p><select class="form-select" id="choosebranchA"  onclick="return ChooseBRANCH()">
+                    <option value="">Choose Branch</option>
+                    <option>Haryana</option>
+                </select></p>
+                <span id="branch" style="font-size: 12px; color: red;" ></span>
+            <p><select class="form-select" id="chooseaccountA" onclick="return Chooseaccount()">
+                    <option value="">Choose Account</option>
+                    <option>Saving</option>
+                </select></p>
+                <span id="account" style="font-size: 12px; color: red;" ></span>
+            <p><input placeholder="Account Number" id="accno" onchange="return chooseaccountnumber()" oninput="this.className = ''" name="phone"></p>
+            <p id="navalidacc" style="font-size: 12px; color: red;"></p>
+        </div>
+        <div class="tab">
+            <h2>Payment Information</h2>
+            <p><select class="form-select" id="card" onclick="return Choosecard()">
+                    <option value="">MaterCard</option>
+                    <option>VisaCard</option>
+                </select></p>
+                <span id="CARDS" style="font-size: 12px; color: red;" ></span>
+            <p><input placeholder="Holder name..." id="pname" onchange="return personname()" oninput="this.className = ''" name="uname"></p>
+            <p id="navalidapa" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Card Number..." id="cnumber" onchange="return cardnumber()" oninput="this.className = ''" name="uname"></p>
+            <p id="navalidacn" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Cvv..." id="cvv" onchange="return cvvvv()" oninput="this.className = ''" name="uname"></p>
+            <p id="navalidacncvv" style="font-size: 12px; color: red;"></p>
+            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="month"></p>
+        </div>
+
+        <div class="tab">
+            <h2>Personal Details</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    First name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="namef"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Gender:
+                </div>
+                <div class="col-lg-6">
+                    <p id="gen1"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Last name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="namel"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Zip Code:
+                </div>
+                <div class="col-lg-6">
+                    <p id="codez"></p>
+                </div>
+            </div>
+            <!-- <h2>Profile Information</h2> -->
+            <div class="row">
+                <div class="col-lg-6">
+                    Email :
+                </div>
+                <div class="col-lg-6">
+                    <p id="Eemail"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    User Name :
+                </div>
+                <div class="col-lg-6">
+                    <p id="username1"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Password :
+                </div>
+                <div class="col-lg-6">
+                    <p id="password1"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    Confirm Password :
+                </div>
+                <div class="col-lg-6">
+                    <p id="confirmpassword1"></p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
+</body>
+<script src="./RegistrationForm_day1_task2.js"></script>
+
+</html>
