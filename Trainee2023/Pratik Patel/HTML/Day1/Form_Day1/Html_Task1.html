@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Task1</title>
+    <link rel="stylesheet" href="Style2.css">
+    <link rel="shortcut icon" href="smily.jpg" type="image/x-icon">
+</head>
+<body>
+    <nav>
+       
+        <ul>
+            <li><a href="https://www.google.co.in/">Home</a></li>
+            <li><a href="https://www.w3schools.com/">Images</a></li>
+            <li><a href="https://stackoverflow.com/">About</a></li>
+        </ul>
+    </nav>
+    <div class="Regiform">
+        <fieldset>
+        <legend>Personal Details</legend>
+        <h1 onmouseenter="h1MouseEnter()" id="h1">Form</h1>
+        <form action="/action_page.php" onsubmit="return inputadded()" method="post" name="Form">
+            <!-- Name-->
+            <label class="Elements">First Name:-</label>
+            <input type="text" name="FirstName" class="Elements"><br>
+            <label class="Elements">Middle  Name:-</label>
+            <input type="text" name="MiddleName" class="Elements"><br>
+            <label class="Elements" >Last Name:-</label>
+            <input type="text" name="LastName" class="Elements"><br>
+            <!-- Gender-->
+            <label class="Elements">Select Gender:</label><br>
+            <input type="radio" name="Gender" class="Elements">
+            <label class="Elements">Male</label>
+            <input type="radio" name="Gender" class="Elements">
+            <label class="Elements">Female</label><br>
+            <!-- Hobby-->
+            <label class="Elements" >Hobby:-</label><br>
+            <input class="Elements" type="checkbox" name="cricket" id="cricket" value="cricket">
+            <label class="Elements">cricket</label>
+            <input type="checkbox" name="football" id="football" value="football" class="Elements">
+            <label class="Elements">football</label>
+            <input  class="Elements" type="checkbox" name="other" id="other" value="other" checked>
+            <label class="Elements">other</label><br>
+            <!--City-->
+            <label class="Elements">City</label>
+            <select class="Elements" name="City" id="city">
+                <option value="amdavad">amdavad</option>
+                <option value="surat">surat</option>
+                <option value="Navsari">Navsari</option>
+                <option value="Rajkot">Rajkot</option>
+            </select><br>
+            <!--Birthday-->
+            <label class="Elements">BirthDay:-</label>
+            <input type="Date" name="BirthDay" class="Elements"><br>
+            <!--Email-->
+            <label class="Elements">Email:-</label>
+            <input type="email" name="Email" class="Elements" onfocus="focous()" onblur="blure()" id="email"><br>
+            <!--Password-->
+            <label class="Elements">Password:-</label>
+            <input class="Element" type="password" name="password" id="password">
+            <br>
+            <label class="Elements">Confirm Password:-</label>
+            <input class="Elements" type="password" name="confirm_password" id="confirm_password">
+            <br>
+            <input class="Elements" type="submit" value="Submit">
+            <input  class="Elements" type="reset" value="Reset">
+            <Button class="Elements" onclick="BtnClick()">Click Here</Button>
+            <br>
+            <br>
+            <a class="Atag" href="#imgdiv">GotoImage</a>
+            <br>
+        </fieldset>
+            </div>
+            <div class="Image">
+                <img src="image.jfif" alt="Image" onmouseover="smallimg(this)" onmouseout="bigimg(this)" style="height: 400px;">
+                <img src="image.jfif" alt="Image" style="height: 400px;">
+            </div>
+            <div id="imgdiv">
+            <h2 onmouseover="h2MouseOver()" onmouseout="h2MouseOut()" id="h2">Image Section</h2>
+            <img src="smily.jpg" alt="Smily Image" style="width: 100px;" ondblclick="DbClickImg()" >
+            <a  href="https://www.amazon.com/"><img src="smily.jpg" alt="smily" style="width: 100px;"></a>
+            <br>
+            <br>
+            <a class="Atag" href="https://satvasolutions.com/"> Satva Solutions</a>
+            <a  class="Atag"href="https://satvasolutions.com/" target="_blank"> Satva Solutions</a>
+        </form>
+    </div>
+    <div>
+     <h3>Display Tag Example</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quis, in iusto ab veniam minus aliquid ratione
+             velit libero quod maxime ullam tenetur consequatur neque cum illo commodi? Suscipit, dolores.</p>
+        <span>span is a inline element which allows other element to enter after span tag in same line.</span>
+        <span>this is the example of the span tag</span>
+       <q> The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</q>
+    </div>
+
+    <script>
+        function BtnClick(){
+            alert("Button Click ")
+        }
+        function h1MouseEnter(){
+            document.getElementById("h1").innerHTML="Registration Form"
+        }
+        function DbClickImg(){
+           alert("Double Click on Image")
+        }
+        function h2MouseOver(){
+            document.getElementById("h2").innerHTML="Image"
+        }
+        function h2MouseOut(){
+            document.getElementById("h2").innerHTML="Image Div"
+        }
+        function inputadded(){
+           let firstname = document.forms["Form"]["FirstName"].value;
+           console.log(firstname)
+            let middlename = document.forms["Form"]["MiddleName"].value;
+           console.log(middlename)
+            let lastname = document.forms["Form"]["LastName"].value;
+           console.log(lastname)
+            return false;
+        }
+        function focous(){
+            document.getElementById("email").style.background="yellow"
+        }
+        function blure(){
+            document.getElementById("email").style.background="white"
+        }
+        function smallimg(x){
+            x.style.height="50px"
+        }
+        function bigimg(x){
+            x.style.height="400px"
+        }
+    </script>
+</body>
+</html>
