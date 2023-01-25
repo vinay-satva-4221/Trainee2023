@@ -21,6 +21,19 @@ function validateForm() {
 }
 var form = $("#form");
 
+
+function getValid(){
+  var isvalid = validateForm();
+  if (isvalid){
+    $("#mod1").modal("show");
+
+  }
+  else{
+    $("#mod1").modal("hide")
+    console.log("isvalid")
+  }
+}
+
 function nameV() {
   let regName = /^[A-Za-z]+$/;
   let name = document.getElementById("fname").value;
