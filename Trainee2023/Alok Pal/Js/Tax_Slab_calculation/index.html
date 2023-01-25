@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -19,11 +19,12 @@
                 <p><b>TAX SLAB CALCULATION</b></p>
             </div>
         </div>
-        <form action="">
+        <form action="" id="form">
             <div class="row my-2">
                 <div class="col-lg-6 col-sm-12">
                     <label for="fname" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="fname" onkeyup="return nameV()" required>
+                    <input type="text" class="form-control" id="fname" onchange="return nameV()"
+                        onclick="return updatemodal()" required>
                     <p class="error1" id="vname"></p>
                 </div>
                 <div class="col-lg-6 col-sm-12">
@@ -36,7 +37,7 @@
             <div class="row my-2">
                 <div class="col-lg-6 col-sm-12">
                     <label for="fbirthdate" class="form-label">Birthdate:</label>
-                    <input type="text" class="form-control" name="birthday" id="fbirthdate"    required>
+                    <input type="text" class="form-control" name="birthday" id="fbirthdate" required>
                     <p class="error1" id="vdate"></p>
 
                 </div>
@@ -66,49 +67,54 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <label for="finvestment" class="form-label">Investment:</label>
-                    <input type="text" class="form-control" id="finvestment" onkeyup="return investV()"  required>
+                    <input type="text" class="form-control" id="finvestment" onkeyup="return investV()" required>
                     <p class="error1" id="vinvest"></p>
                 </div>
             </div>
 
             <div class="row ">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <button type="submit" class="btn btn-success mx-1" onclick="return validateForm()"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center my-2">
+                    <button type="submit" class="btn btn-success mx-1"
+                        onclick="return validateForm(),updatemodal(),percentage_1(),payableTaX()" data-bs-toggle="modal" id="mod1"
+                        data-bs-target="#exampleModal">
                         Calculate</button>
-                    <button class="btn btn-warning mx-1" type="submit">Reset</button>
+                    <button class="btn btn-warning mx-1" type="submit" onclick="return resetFunc()">Reset</button>
                 </div>
 
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-12 my-2">
-                                    <span><b>Name:</b></span> <span id="mname"></span>
+            <div class="cont1">
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <span><b>Name:</b></span> <span id="mname"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <span><b>Taxable Amount:</b></span> <span id="taxam"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 my-2">
+                                        <span><b>Payable Tax:</b></span> <span id="payt"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12 my-2">
-                                    <span><b>Taxable Amount:</b></span> <span id="taxam"></span>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
-                            <div class="row">
-                                <div class="col-12 my-2">
-                                    <span><b>Payable Tax:</b></span> <span id="payt"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

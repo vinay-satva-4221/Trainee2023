@@ -1,10 +1,25 @@
-// validations
-function validateForm() {
+// Global 
+var payableT;
 
-  if (!nameV() && !mobileV() && !genderV() && !incomeV() && !loanV() && !investV()) {
+
+
+
+
+// validations
+
+function validateForm() {
+  if (
+    !nameV() &&
+    !mobileV() &&
+    !genderV() &&
+    !incomeV() &&
+    !loanV() &&
+    !investV()
+  ) {
     valid = false;
   }
 }
+var form = $("#form");
 
 function nameV() {
   let regName = /^[A-Za-z]+$/;
@@ -58,8 +73,7 @@ function incomeV() {
     document.getElementById("vincome").style.display = "unset";
     document.getElementById("vincome").focus();
     return false;
-  }
-  else {
+  } else {
     document.getElementById("vincome").style.display = "none";
     return true;
   }
@@ -73,8 +87,7 @@ function loanV() {
     document.getElementById("vloan").style.display = "unset";
     document.getElementById("vloan").focus();
     return false;
-  }
-  else {
+  } else {
     document.getElementById("vloan").style.display = "none";
     return true;
   }
@@ -88,27 +101,16 @@ function investV() {
     document.getElementById("vinvest").style.display = "unset";
     document.getElementById("vinvest").focus();
     return false;
-  }
-  else {
+  } else {
     document.getElementById("vinvest").style.display = "none";
     return true;
   }
 }
- function checkD (){
-  let years = document.getElementById("fbirthdate").value;
-  if (years < 18) {
-    document.getElementById("vdate").innerHTML =
-      "**Age Should be minimum 18 years!";
-    document.getElementById("vdate").style.display = "unset";
-    document.getElementById("vdate").focus();
-  } else {
-    document.getElementById("vdate").style.display = "none";
-  }
- }
 
-
-
-
+function resetFunc() {
+  var element = document.getElementById("form");
+  element.reset();
+}
 
 //DATE RANGE PICKER
 
@@ -134,5 +136,102 @@ $(document).ready(function () {
       }
     }
   );
- 
+
+  // $("#mod1").click(function (){
+  //   $("#exampleModal").modal();
+  // })
 });
+
+// tax calculations
+
+// to set name in modal;
+function updatemodal() {
+  var name = document.getElementById("fname").value;
+  document.getElementById("mname").innerHTML = name;
+}
+
+function percentage_1() {
+  var income = parseInt(document.getElementById("fincome").value);
+  var loan = parseInt(document.getElementById("floan").value);
+  var investment = parseInt(document.getElementById("finvestment").value);
+  // condition
+  if (investment > 100000) {
+    document.getElementById("vinvest").value = 100000;
+  } else if (investment <= 100000) {
+    document.getElementById("vinvest").value =
+      document.getElementById("finvestment").value;
+  }
+
+  var incomePercent = 0.2 * income;
+  var loanPercent = 0.8 * loan;
+
+  var investPercent = parseInt(document.getElementById("vinvest").value);
+
+  console.log("invest", document.getElementById("vinvest").value);
+
+  console.log(Math.min(incomePercent, loanPercent));
+
+  document.getElementById("taxam").innerHTML =
+    income - (Math.min(incomePercent, loanPercent) + investPercent);
+
+  // taxable value
+  var valueTax =
+    income - (Math.min(incomePercent, loanPercent) + investPercent);
+}
+
+function payableTaX() {
+  var income = parseInt(document.getElementById("fincome").value);
+  var loan = parseInt(document.getElementById("floan").value);
+  var investment = parseInt(document.getElementById("finvestment").value);
+  // condition
+  if (investment > 100000) {
+    document.getElementById("vinvest").value = 100000;
+  } else if (investment <= 100000) {
+    document.getElementById("vinvest").value =
+      document.getElementById("finvestment").value;
+  }
+
+  var incomePercent = 0.2 * income;
+  var loanPercent = 0.8 * loan;
+
+  var investPercent = parseInt(document.getElementById("vinvest").value);
+
+  console.log("invest", document.getElementById("vinvest").value);
+
+  console.log(Math.min(incomePercent, loanPercent));
+
+  document.getElementById("taxam").innerHTML =
+    income - (Math.min(incomePercent, loanPercent) + investPercent);
+
+  // taxable value
+  var valueTax =
+    income - (Math.min(incomePercent, loanPercent) + investPercent);
+
+  //
+
+  console.log("h");
+  let gender = document.getElementById("gender").value;
+
+  console.log(document.getElementById("taxam").value);
+
+  if (valueTax < 240000 && gender == "Male") {
+    document.getElementById("payt").innerHTML = "No need to pay tax";
+  } else if (valueTax > 240000) {
+    let valueTax1 = valueTax - 240000;
+
+    if (valueTax1 > 360000) {
+      var valuetax3 = 36000; // 10% of 3.6
+      var valueTax4 = valueTax1 - 360000; // ValueTax1 - 3.6
+    } else {
+      var valuetax2 = valueTax1 * 0.1;
+      payableT = valuetax2;
+    }
+    document.getElementById("payt").value = valueTax;
+  } if (valueTax4 > 0) {
+    var valueTax5 = valueTax4 * 0.2;
+    payableT = valueTax5 + valuetax3;
+
+  }
+  document.getElementById("payt").innerHTML = payableT;
+
+}
