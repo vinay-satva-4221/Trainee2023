@@ -1,0 +1,12 @@
+table,tr,th,td{
+    border: 1px black solid;
+}
+table{
+    width: 100%;
+}
+td{
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
