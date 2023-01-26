@@ -1,9 +1,5 @@
-// Global 
+// Global
 var payableT;
-
-
-
-
 
 // validations
 
@@ -17,20 +13,18 @@ function validateForm() {
     !investV()
   ) {
     valid = false;
+  } else {
+    return true;
   }
 }
 var form = $("#form");
 
-
-function getValid(){
+function getValid() {
   var isvalid = validateForm();
-  if (isvalid){
-    $("#mod1").modal("show");
-
-  }
-  else{
-    $("#mod1").modal("hide")
-    console.log("isvalid")
+  if (isvalid) {
+    $("#exampleModal").modal("show");
+  } else {
+    $("#exampleModal").modal("hide");
   }
 }
 
@@ -137,7 +131,7 @@ $(document).ready(function () {
     },
     function (start, end, label) {
       var years = moment().diff(start, "years");
-      console.log("You are " + years + " years old!");
+      console.log("You are " + years + " years old!"); //date of birth
 
       if (years < 18) {
         document.getElementById("vdate").innerHTML =
@@ -221,30 +215,78 @@ function payableTaX() {
     income - (Math.min(incomePercent, loanPercent) + investPercent);
 
   //
+  console.log(valueTax);
 
-  console.log("h");
   let gender = document.getElementById("gender").value;
 
-  console.log(document.getElementById("taxam").value);
+  // console.log(document.getElementById("taxam").value);
 
-  if (valueTax < 240000 && gender == "Male") {
-    document.getElementById("payt").innerHTML = "No need to pay tax";
-  } else if (valueTax > 240000) {
-    let valueTax1 = valueTax - 240000;
+  // if (gender == "Male" && valueTax < 240000){
+  //   (document.getElementById("payt").innerHTML= ("No need to pay tax"));
+  // }
 
-    if (valueTax1 > 360000) {
-      var valuetax3 = 36000; // 10% of 3.6
-      var valueTax4 = valueTax1 - 360000; // ValueTax1 - 3.6
+  if (gender == "Male") {
+    if (valueTax < 240000) {
+      console.log(
+        (document.getElementById("payt").innerHTML = "No need to pay tax")
+      );
     } else {
-      var valuetax2 = valueTax1 * 0.1;
-      payableT = valuetax2;
+      var tax1 = valueTax - 240000;
+      if (tax1 > 360000) {
+        var tax2 = 36000;
+        var tax3 = tax1 - 360000;
+      } else {
+        tax2 = 0.1 * tax1;
+        document.getElementById("payt").innerHTML = tax2;
+      }
+      if (tax3 <= 0) {
+        document.getElementById("payt").innerHTML = tax3;
+      } else {
+        let tax4 = 0.2 * tax3;
+        document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+      }
     }
-    document.getElementById("payt").value = valueTax;
-  } if (valueTax4 > 0) {
-    var valueTax5 = valueTax4 * 0.2;
-    payableT = valueTax5 + valuetax3;
-
   }
-  document.getElementById("payt").innerHTML = payableT;
+  else if (gender == "Female") {
+    if (valueTax < 260000) {
+      console.log(
+        (document.getElementById("payt").innerHTML = "No need to pay tax")
+      );
+    } else {
+      var tax1 = valueTax - 260000;
+      if (tax1 > 440000) {
+        var tax2 = 44000;
+        var tax3 = tax1 - 440000;
+      } else {
+        tax2 = 0.1 * tax1;
+        document.getElementById("payt").innerHTML = tax2;
+      }
+      if (tax3 <= 0) {
+        document.getElementById("payt").innerHTML = tax3;
+      } else {
+        let tax4 = 0.2 * tax3;
+        document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+      }
+    }
+  }
 
+  //   if (valueTax < 240000 && gender == "Male") {
+  //     document.getElementById("payt").innerHTML = "No need to pay tax";
+  //   } else if (valueTax > 240000) {
+  //     let valueTax1 = valueTax - 240000;
+
+  //     if (valueTax1 > 360000) {
+  //       var valuetax3 = 36000; // 10% of 3.6
+  //       var valueTax4 = valueTax1 - 360000; // ValueTax1 - 3.6
+  //     } else {
+  //       var valuetax2 = valueTax1 * 0.1;
+  //       payableT = valuetax2;
+  //     }
+  //     document.getElementById("payt").value = valueTax;
+  //   }
+  //   if (valueTax4 > 0) {
+  //     var valueTax5 = valueTax4 * 0.2;
+  //     payableT = valueTax5 + valuetax3;
+  //   }
+  //   document.getElementById("payt").innerHTML = payableT;
 }
