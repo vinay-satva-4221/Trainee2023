@@ -1,5 +1,6 @@
 // Global
-var payableT;
+// var payableT;
+var years;
 
 // validations
 
@@ -130,7 +131,7 @@ $(document).ready(function () {
       maxYear: parseInt(moment().format("YYYY"), 10),
     },
     function (start, end, label) {
-      var years = moment().diff(start, "years");
+       years = moment().diff(start, "years");
       console.log("You are " + years + " years old!"); //date of birth
 
       if (years < 18) {
@@ -225,7 +226,9 @@ function payableTaX() {
   //   (document.getElementById("payt").innerHTML= ("No need to pay tax"));
   // }
 
-  if (gender == "Male") {
+  console.log("Age",years)
+
+  if (gender == "Male" && years <= 60) {
     if (valueTax < 240000) {
       console.log(
         (document.getElementById("payt").innerHTML = "No need to pay tax")
@@ -247,7 +250,7 @@ function payableTaX() {
       }
     }
   }
-  else if (gender == "Female") {
+  else if (gender == "Female" && years <= 60) {
     if (valueTax < 260000) {
       console.log(
         (document.getElementById("payt").innerHTML = "No need to pay tax")
@@ -269,16 +272,16 @@ function payableTaX() {
       }
     }
   }
-  else if (gender == "Female") {
-    if (valueTax < 260000) {
+  else {
+    if (valueTax < 300000) {
       console.log(
         (document.getElementById("payt").innerHTML = "No need to pay tax")
       );
     } else {
-      var tax1 = valueTax - 260000;
-      if (tax1 > 440000) {
-        var tax2 = 44000;
-        var tax3 = tax1 - 440000;
+      var tax1 = valueTax - 300000;
+      if (tax1 > 400000) {
+        var tax2 = 40000;
+        var tax3 = tax1 - 400000;
       } else {
         tax2 = 0.1 * tax1;
         document.getElementById("payt").innerHTML = tax2;
