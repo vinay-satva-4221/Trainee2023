@@ -269,6 +269,32 @@ function payableTaX() {
       }
     }
   }
+  else if (gender == "Female") {
+    if (valueTax < 260000) {
+      console.log(
+        (document.getElementById("payt").innerHTML = "No need to pay tax")
+      );
+    } else {
+      var tax1 = valueTax - 260000;
+      if (tax1 > 440000) {
+        var tax2 = 44000;
+        var tax3 = tax1 - 440000;
+      } else {
+        tax2 = 0.1 * tax1;
+        document.getElementById("payt").innerHTML = tax2;
+      }
+      if (tax3 <= 0) {
+        document.getElementById("payt").innerHTML = tax3;
+      } else {
+        let tax4 = 0.2 * tax3;
+        document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+      }
+    }
+  }
+
+
+
+
 
   //   if (valueTax < 240000 && gender == "Male") {
   //     document.getElementById("payt").innerHTML = "No need to pay tax";
