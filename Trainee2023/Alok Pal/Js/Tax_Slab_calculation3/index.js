@@ -12,6 +12,7 @@ function validateForm() {
     !incomeV() &&
     !loanV() &&
     !investV()
+    
   ) {
     valid = false;
   } else {
@@ -115,6 +116,46 @@ function investV() {
   }
 }
 
+// function dateV(){
+//   let dateCheck = years;
+//   if (dateCheck < 18) {
+//     document.getElementById("vdate").innerHTML =
+//       "**Age Should be minimum 18 years!";
+//     document.getElementById("vdate").style.display = "unset";
+//     document.getElementById("vdate").focus();
+//     return false;
+//   } else {
+//     document.getElementById("vdate").style.display = "none";
+//     return true;
+//   }
+// }
+function checkdate(){
+  var currentdate =  new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
+  if(years < 18 || date1 == currentdate){
+     document.getElementById("dateerror").innerHTML = "Only 18+ are allowed";
+     document.getElementById("dateerror").style.display = "unset";
+     return false;
+  }
+  else{
+     document.getElementById("dateerror").style.display = "none";
+     return true;
+  }
+}
+
+function checkcurrentdate(){
+  date1 = document.getElementById("date").value;
+  var currentdate =  new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
+  if(date1 == currentdate){
+     document.getElementById("dateerror").innerHTML = "Select Date";
+     document.getElementById("dateerror").style.display = "unset";
+     return false;
+  }
+  else{
+     document.getElementById("dateerror").style.display = "none";
+     return true;
+  }
+}
+
 function resetFunc() {
   var element = document.getElementById("form");
   element.reset();
@@ -131,7 +172,7 @@ $(document).ready(function () {
       maxYear: parseInt(moment().format("YYYY"), 10),
     },
     function (start, end, label) {
-       years = moment().diff(start, "years");
+      years = moment().diff(start, "years");
       console.log("You are " + years + " years old!"); //date of birth
 
       if (years < 18) {
@@ -139,8 +180,10 @@ $(document).ready(function () {
           "**Age Should be minimum 18 years!";
         document.getElementById("vdate").style.display = "unset";
         document.getElementById("vdate").focus();
+        return false;
       } else {
         document.getElementById("vdate").style.display = "none";
+        return true;
       }
     }
   );
@@ -226,13 +269,13 @@ function payableTaX() {
   //   (document.getElementById("payt").innerHTML= ("No need to pay tax"));
   // }
 
-  console.log("Age",years)
+  console.log("Age", years);
 
   if (gender == "Male" && years <= 60) {
     if (valueTax < 240000) {
-      console.log(
-        (document.getElementById("payt").innerHTML = "No need to pay tax")
-      );
+      document.getElementById("payt").innerHTML = "No need to pay tax";
+      document.getElementById("taxam").style.backgroundColor = "green";
+      document.getElementById("payt").style.backgroundColor = "green";
     } else {
       var tax1 = valueTax - 240000;
       if (tax1 > 360000) {
@@ -241,20 +284,23 @@ function payableTaX() {
       } else {
         tax2 = 0.1 * tax1;
         document.getElementById("payt").innerHTML = tax2;
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
       if (tax3 <= 0) {
         document.getElementById("payt").innerHTML = tax3;
       } else {
         let tax4 = 0.2 * tax3;
         document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
     }
-  }
-  else if (gender == "Female" && years <= 60) {
+  } else if (gender == "Female" && years <= 60) {
     if (valueTax < 260000) {
-      console.log(
-        (document.getElementById("payt").innerHTML = "No need to pay tax")
-      );
+      document.getElementById("payt").innerHTML = "No need to pay tax";
+      document.getElementById("taxam").style.backgroundColor = "green";
+      document.getElementById("payt").style.backgroundColor = "green";
     } else {
       var tax1 = valueTax - 260000;
       if (tax1 > 440000) {
@@ -263,20 +309,23 @@ function payableTaX() {
       } else {
         tax2 = 0.1 * tax1;
         document.getElementById("payt").innerHTML = tax2;
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
       if (tax3 <= 0) {
         document.getElementById("payt").innerHTML = tax3;
       } else {
         let tax4 = 0.2 * tax3;
         document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
     }
-  }
-  else {
+  } else {
     if (valueTax < 300000) {
-      console.log(
-        (document.getElementById("payt").innerHTML = "No need to pay tax")
-      );
+      document.getElementById("payt").innerHTML = "No need to pay tax";
+      document.getElementById("taxam").style.backgroundColor = "green";
+      document.getElementById("payt").style.backgroundColor = "green";
     } else {
       var tax1 = valueTax - 300000;
       if (tax1 > 400000) {
@@ -285,19 +334,19 @@ function payableTaX() {
       } else {
         tax2 = 0.1 * tax1;
         document.getElementById("payt").innerHTML = tax2;
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
       if (tax3 <= 0) {
         document.getElementById("payt").innerHTML = tax3;
       } else {
         let tax4 = 0.2 * tax3;
         document.getElementById("payt").innerHTML = parseInt(tax4 + tax2);
+        document.getElementById("taxam").style.backgroundColor = "red";
+        document.getElementById("payt").style.backgroundColor = "red";
       }
     }
   }
-
-
-
-
 
   //   if (valueTax < 240000 && gender == "Male") {
   //     document.getElementById("payt").innerHTML = "No need to pay tax";
