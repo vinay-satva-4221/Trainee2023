@@ -116,45 +116,8 @@ function investV() {
   }
 }
 
-// function dateV(){
-//   let dateCheck = years;
-//   if (dateCheck < 18) {
-//     document.getElementById("vdate").innerHTML =
-//       "**Age Should be minimum 18 years!";
-//     document.getElementById("vdate").style.display = "unset";
-//     document.getElementById("vdate").focus();
-//     return false;
-//   } else {
-//     document.getElementById("vdate").style.display = "none";
-//     return true;
-//   }
-// }
-function checkdate(){
-  var currentdate =  new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
-  if(years < 18 || date1 == currentdate){
-     document.getElementById("dateerror").innerHTML = "Only 18+ are allowed";
-     document.getElementById("dateerror").style.display = "unset";
-     return false;
-  }
-  else{
-     document.getElementById("dateerror").style.display = "none";
-     return true;
-  }
-}
 
-function checkcurrentdate(){
-  date1 = document.getElementById("date").value;
-  var currentdate =  new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'});
-  if(date1 == currentdate){
-     document.getElementById("dateerror").innerHTML = "Select Date";
-     document.getElementById("dateerror").style.display = "unset";
-     return false;
-  }
-  else{
-     document.getElementById("dateerror").style.display = "none";
-     return true;
-  }
-}
+
 
 function resetFunc() {
   var element = document.getElementById("form");
