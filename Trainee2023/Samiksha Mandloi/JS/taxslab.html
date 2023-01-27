@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,9 +53,9 @@
             <div class="col-md-6 col-sm-12">
                 <label for="validationServer02" class="form-label">Gender:</label>
                 <select class="form-select" id="gen" name="sellist1" onkeyup="checkgendererror()" required>
-                    <option value="0" disabled selected >select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="" selected >select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                 </select>
                 <p id="sname"></p>
               </div>
@@ -101,7 +102,7 @@
                 </div>
               </div>
               <div style="text-align: center;">
-              <button type="button" class="btn btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="calculatetax()">Calculate</button>
+              <button type="button" class="btn btn-success" data-target="#exampleModalToggle" data-bs-toggle="modal" onclick="checkvalidation()">Calculate</button>
                 <button type="reset" class="btn btn-warning">Reset</button>
               </div>
             </div>
