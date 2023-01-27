@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <title>Tax Slab Calculation</title>
+</head>
+<body>
+    <!-- <div class="container-fluid p-5">
+        <div class="header bg-dark text-light text-center">
+            <h3>TAX SLAB CALCULATION</h3>
+        </div>
+        <div class="section">
+            <form name="myform" >
+             
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="">Name:</label>
+                        <input type="text" class="form-control" id="name" onchange="validateName()">
+                        <span id="NAME" style="color: red;"></span>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="">Mobile:</label>
+                        <input type="text" class="form-control" id="mobile" onchange="validateMobile()">
+                        <span id="MOBILE" style="color: red;"></span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Birthdate:</label>
+                        <input type="text"  name="datetimes"  id="date" class="form-control mb-3" required>
+                        <p id="dateerror"></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Gender:</label>
+                        <select class="form-select" id="gender" onclick="return genderfor()">
+                     
+                            <option value="" >Select Gender</option>
+                            <option>male</option>
+                            <option>female</option>
+                        </select>
+                        <span id="gen1"></span>
+
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Income:</label>
+                        <input type="text" class="form-control  mb-3" id="income" onchange="validateincome()">
+                    
+                        <span id="incomeerror" style="color: red;"></span>
+                   
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Loan:</label>
+                        <input type="text" class="form-control mb-3"  id="loan" onchange="validateloan()" >
+                        <span id="loanerror" style="color: red;"></span>
+                      
+                    
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Investment:</label>
+                        <input type="text" class="form-control  mb-3" id="investment" onchange="validateinvestment()" >
+                        <span id="investmenterror" style="color: red;"></span>
+                     
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                      
+                        <button type="button" class="btn bg-success text-light px-4"  onclick="validateall(),modelname(), percentage_1(),getv()">Calculate</button>
+                    
+                        <span id="validate" style="color: red;"></span>
+
+                        <button type="reset" class="btn bg-warning  px-3 " >Reset</button>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <b>Name:-</b> <input type="text" id="namemodel" >
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <b>Income:-</b><input type="text" id="value1" >
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <b>Payable Tax:-</b><input type="text" id="value2" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </form>
+        </div>
+    </div> -->
+    <div class="container-fluid p-5">
+        <div class="header bg-dark text-light text-center">
+            <h3>TAX SLAB CALCULATION</h3>
+        </div>
+        <div class="section">
+            <form name="myform" id="form">
+                <!-- <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Name:</label>
+                        <input type="text" class="form-control mb-3" id="fname"  onchange="validatename()"  >
+                        <p id="errorname"></p>
+                       
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Mobile:</label>
+                        <input type="tel" class="form-control " id="mobile" onchange="validatemobile()" >
+                        <p id="errornumber"></p>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="">Name:</label>
+                        <input type="text" class="form-control" id="name" onchange="return validateName()">
+                        <span id="NAME" style="color: red;"></span>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="">Mobile:</label>
+                        <input type="text" class="form-control" id="mobile" onchange="return validateMobile()">
+                        <span id="MOBILE" style="color: red;"></span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Birthdate:</label>
+                        <input type="text"  name="datetimes"  id="date" class="form-control mb-3" required >
+                        <p id="dateerror"></p>
+                        <p id="vage"></p>
+                        <!-- <span id="age"></span> -->
+                        <!-- <input type="text" id="vage"></input> -->
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="text-dark">Gender:</label>
+                        <select class="form-select" id="gender" onclick="return genderfor()">
+                     
+                            <option value="" >Select Gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                        </select>
+                        <span id="gen1" style="color: red;"></span>
+
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Income:</label>
+                        <input type="text" class="form-control  mb-3" id="income" onchange="return validateincome()">
+                    
+                        <span id="incomeerror" style="color: red;"></span>
+                   
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Loan:</label>
+                        <input type="text" class="form-control mb-3"  id="loan" onchange="return validateloan()" >
+                        <span id="loanerror" style="color: red;"></span>
+                      
+                    
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <label class="text-dark">Investment:</label>
+                        <input type="text" class="form-control  mb-3" id="investment" onchange="return validateinvestment()" >
+                        <span id="investmenterror" style="color: red;"></span>
+                     
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                      
+                        <button type="button" class="btn bg-success text-light px-4" id="button1" onclick="getdata()">Calculate</button>
+                    
+                        <!-- <span id="validate" style="color: red;"></span> -->
+                        <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                        <button type="reset" class="btn bg-warning  px-3 " >Reset</button>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!-- <div class="col-md-12 mb-3">
+                                    <b>Name:-</b> <input type="text" id="namemodel" >
+                                </div> -->
+                                <div class="col-md-12 mb-3 ">
+                                    <span>Name:</span>
+                                    <input type="text" id="namemodel"></input>
+                                    </div>
+                                <!-- <div class="col-md-12 mb-3">
+                                    <b>Taxable Amount:-</b><input type="text" id="value1" >
+                                </div> -->
+                                <div class="col-md-12 mb-3">
+                                    <span>Taxable Amount:</span>
+                                    <input type="text" id="value1"></input>
+                                    </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <b>Payable Tax:-</b><input type="text" id="value2" >
+                                </div>
+
+                        
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </form>
+        </div>
+    </div>
+    
+</body>
+
+<script src="./tabslab.js"></script>
+</html>
