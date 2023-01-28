@@ -28,7 +28,9 @@ function showTab(n) {
     document.getElementById('branchnamef').innerHTML=document.getElementById('branch').value;
     document.getElementById('accountnamef').innerHTML=document.getElementById('account').value;
     document.getElementById('accountnumberf').innerHTML=document.getElementById('accountnumber').value;
-    document.getElementById('card').innerHTML=document.getElementById('card').value;
+    document.getElementById('paymenttypef').innerHTML=document.getElementById('card').value;
+
+    // document.getElementById('card').innerHTML=document.getElementById('card').value;
     document.getElementById('holdernamef').innerHTML=document.getElementById('holdername').value;
     document.getElementById('cardnumberf').innerHTML=document.getElementById('password').value;
     document.getElementById('cvvf').innerHTML=document.getElementById('cvv').value;
@@ -137,6 +139,27 @@ function validateForm() {
         
 
 
+
+    }
+
+    if(currentTab==3)
+    {
+            if(!paymentdetail())
+            {
+                valid=false;
+            }
+            if(!holdernamecheck())
+            {
+                valid=false;
+            }
+            if(!cardnumberdetail())
+            {
+                valid=false;
+            }
+            if(!cvvnumber())
+            {
+                valid=false;
+            }
 
     }
 
@@ -303,9 +326,8 @@ function passwordvalidate()
     var passworderror=document.getElementById('errorpassword')  ;
     document.getElementById('password').focus();
     if(!regName.test(password)){
-        passworderror.innerHTML=('Please enter password.');
+        passworderror.innerHTML=('*Please enter password.');
         document.getElementById('errorpassword').style.display="unset";
-    
         return false    ;
     }
 
@@ -438,7 +460,6 @@ function paymentdetail()
         document.getElementById("paymenterror").style.display="unset";
         document.getElementById("paymenterror").focus();
         return false;
-
 
     }
     else{
