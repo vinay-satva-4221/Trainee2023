@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jquery/jquery-3.6.3.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+</head>
+
+<body class="bg-secondary">
+    <form id="form">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">Mobile</label>
+                <input type="text" id="mobile" name="mobile" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Email</label>
+                <input type="text" id="email" name="email" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">College Name </label>
+                <input type="text" id="college" name="college" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">CGPA</label>
+                <input type="text" id="cgpa" name="cgpa" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">Branch Name  </label>
+                <input type="text" id="branch" name="branch" class="form-control">
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="saveData()">Save</button>
+    </form>
+
+    <!--HTML Table-->
+    <table id="table" class="border">
+        <thead>
+            <tr>
+                <th class="border" >Name</th>
+                <th class="border">Mobile</th>
+                <th class="border">Email</th>
+                <th class="border">College Name</th>
+                <th class="border">CGPA</th>
+                <th class="border">Branch Name</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+
+
+
+
+
+
+    <script src="./localstorage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
