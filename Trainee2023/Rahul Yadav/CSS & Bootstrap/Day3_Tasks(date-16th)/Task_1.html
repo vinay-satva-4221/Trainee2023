@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <style>
+        body{
+            background-image: linear-gradient(to right, rgb(145, 145, 247) , rgb(220, 97, 220));
+        }
+        button{
+            background-image: linear-gradient(to right, rgb(145, 145, 247) , rgb(220, 97, 220));
+        }
+        .btn-close {
+            margin-left: auto;
+        }
+        h4,p{
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container bg-light card " style="width: 400px;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="row">
+            <h4>Login Form</h4>
+        </div>
+        <form class="row g-3">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email or phone</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="row g-3">
+                <div class="col">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="button">Login</button>
+                    </div>
+                </div>
+            </div>
+            <p>Not a member? Signup now</p>
+        </form>
+    </div>
+</body>
+</html>

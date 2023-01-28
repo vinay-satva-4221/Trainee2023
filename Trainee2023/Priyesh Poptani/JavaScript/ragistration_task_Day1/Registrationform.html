@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <link rel="stylesheet" href="../Bootstrap_setup/css/bootstrap.min.css">
+<head>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #f1f1f1;
+  }
+  #regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  h1 {
+    text-align: center;  
+  }
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  button {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .step.active {
+    opacity: 1;
+  }
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #04AA6D;
+  }
+</style>
+</head>
+
+<body>
+    <div class="container  p-1">
+<form class="bg-secondary" id="regForm" action=" " name="form1">
+  <h1>REGISTRATION</h1>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab ">
+    <h3>Personal Details</h3>
+    <p><input class="form-control" placeholder="Enter Your First name" id="fname"  name="fname" onchange="return validate()" required></p>
+    <p id="errorname"></p>
+    <p><input class="form-control" placeholder="Enter Your Last name" id="lname" name="lname" onchange="return validatelastname()"></p>
+    <p id="errorlastname"></p>
+
+    <P><select class="form-select" id="gender" onclick="return genderfor()">
+      <option value="">Gender</option>
+        <option>male</option>
+        <option>female</option>
+    </select></P>
+    <span id="gen1"></span>
+
+    <p><input class="form-control" placeholder="Enter Zip Code" id="zipcode" onchange="return zipcode1()" name="lname"></p>
+    <p id="errorzipcode"></p>
+</div>
+  <div class="tab"><h4>Profile Information</h4>
+    <p><input class="form-control" id="email" placeholder="E-mail..."  name="email" onchange="return emailvalidate()"></p>
+    <p id="erroremail"></p>
+    <p><input class="form-control" id="uname" placeholder="Username..."  name="uname" onchange="return useernamevalidate()"></p>
+    <p id="errorusername"></p>
+    <p><input type="password" class="form-control" id="password" placeholder="Password..."  name="pwd" onchange="return passwordvalidate()"></p>
+    <p id="errorpassword"></p>
+    <p><input  type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password..."  name="pwd" onchange="return confirmpasswordvalidate()"></p>
+    <p id="errorconfirmpasword"></p>
+
+</div>
+  <div class="tab"><h4>BANK INFORMATION</h4>
+    <P><select class="form-select" id="bank" onclick="return bankvalidate()">
+        <option value="">Choose Bank..</option>
+        <option>HDFC</option>
+        <option>ICICI</option>
+        <option>SBI</option>
+    </select></P>
+    <span id="bankerror"></span>
+    <P><select class="form-select" id="branch" onclick="return branchvalidate()">
+        <option value="">Choose Branch</option>
+        <option>Science City</option>
+        <option>Gota</option>
+        <option>satelight</option>
+    </select></P>
+    <span id="brancherror"></span>
+
+    <P><select class="form-select" id="account"  onclick="return accountdetail()">
+        <option value="">Choose Account</option>
+        <option>Saving</option>
+        <option>Current</option>
+        <option>Salary</option>
+    </select></P>
+    <span id="accounterror"></span>
+
+    <p><input placeholder="Account Number"  id="accountnumber" onchange="return accountnumberdetail()"></p>
+    <p id="accountnumbererror"></p>
+
+  </div>
+  <div class="tab"><h4>PAYMENT INFORMATION</h4>
+    <P><select class="form-select" id="card" onclick="return paymentdetail()">
+        <option value="">Master  Card</option>
+        <option>Debit Card</option>
+        <option>Credit Card</option>
+    </select></P>
+    <span id="paymenterror"></span>
+
+
+    <p><input placeholder="Holder name..."  name="uname" id="holdername" onchange="return holdernamecheck()" ></p>
+    <p id="holdernameerror"></p>
+
+
+    <p><input placeholder="Card Number..."  id="cardnumber" type="password" onchange="return cardnumberdetail()"></p>
+    <p id="cardnumbererror"></p>
+
+    <p><input placeholder="CVV..."  id="cvv" type="password" onchange="return cvvnumber()"></p>
+    <p id="cvvnumbererror"></p>
+
+    <p><input   name="pword" type="month" id="exdate"></p>
+</div>
+
+ <div class="tab">USER DETAILS:
+
+  <div class="row border">
+    <div class="col-md-6">
+      First Name
+    </div>
+    <div class="col-md-6">
+      <p id="namef"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Last Name
+    </div>
+    <div class="col-md-6">
+      <p id="namel"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+       Gender
+    </div>
+    <div class="col-md-6">
+      <p id="genderf"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Zip Code
+    </div>
+    <div class="col-md-6">
+      <p id="zipcodef"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Email
+    </div>
+    <div class="col-md-6">
+      <p id="emailf"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Username
+    </div>
+    <div class="col-md-6">
+      <p id="usernamef"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Password
+    </div>
+    <div class="col-md-6">
+      <p id="passwordf"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Bank Name
+    </div>
+    <div class="col-md-6">
+      <p id="banknamef"></p> 
+    </div>
+  </div>
+  <div class="row border">
+    <div class="col-md-6">
+      Branch Name
+    </div>
+    <div class="col-md-6">
+      <p id="branchnamef"></p> 
+    </div>
+  </div>    
+  <div class="row border">
+    <div class="col-md-6">
+      Account Number
+    </div>
+    <div class="col-md-6">
+      <p id="accountnumberf"></p> 
+    </div>
+  </div>   
+  <div class="row border">
+    <div class="col-md-6">
+      Payment Type
+    </div>
+    <div class="col-md-6">
+      <p id="card1"></p> 
+    </div>
+  </div>   
+  <div class="row border">
+    <div class="col-md-6">
+      Holder Name
+    </div>
+    <div class="col-md-6">
+      <p id="holdernamef"></p> 
+    </div>
+  </div>  
+  <div class="row border">
+    <div class="col-md-6">
+      Card Number
+    </div>
+    <div class="col-md-6">
+      <p id="cardnumberf"></p> 
+    </div>
+  </div>  
+  <div class="row border">
+    <div class="col-md-6">
+      CVV 
+    </div>
+    <div class="col-md-6">
+      <p id="cvvf"></p> 
+    </div>
+  </div>  
+  <div class="row border">
+    <div class="col-md-6">
+      Expiry Date
+    </div>
+    <div class="col-md-6">
+      <p id="expirydatef"></p> 
+    </div>
+  </div>  
+          
+                    
+  
+                      
+                     
+                       
+                      
+  
+                       
+                        
+                       
+                     
+  
+                   
+                    
+                       
+                      
+  
+                        
+                        
+                   
+
+               
+            </div>
+
+  <div style="overflow:auto;">
+    <div style="float:right;margin-top: 10px;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+</div>
+</body>
+<script src="Registration.js"></script>
+ <script src="../Bootstrap_setup/jquery-3.6.3.min.js"></script>
+    <script src="../Bootstrap_setup/js/bootstrap.min.js"></script>
+</html>
