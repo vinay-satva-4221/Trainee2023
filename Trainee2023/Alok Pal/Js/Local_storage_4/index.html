@@ -78,11 +78,12 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label for="fdate" class="form-label">From To When You Studied:</label>
-                    <input type="text" class="form-control" name="daterange" id="fdate" value="01/01/2018 - 01/15/2018" />
+                    <input type="text" class="form-control" name="daterange" id="fdate"
+                        value="01/01/2018 - 01/15/2018" />
                 </div>
             </div>
             <div class="col-12 my-3">
-                <button type="button" class="btn btn_c mover" onclick="">
+                <button type="button" class="btn btn_c mover " onclick="">
                     Some Of Your Result Pic's In Slider
                 </button>
             </div>
@@ -119,30 +120,33 @@
             </div>
 
             <div class="col-12 my-2">
-                <button type="button" class="btn btn-info btn_c " id="save" onclick="return validateForm()">
+                <button type="button" class="btn btn-info btn_c " id="save"
+                    onclick="return validateForm() ,selectData()">
                     Add Row
                 </button>
             </div>
-
-            <table  class="w3-table-all border" id="myTable">
-                <thead>     
+    </div>
+    <div class="container">
+        <table class="w3-table-all border" id="myTable">
+            <thead>
                 <tr class="w3-blue">
-                    <th  nowrap>Sno.</th>
-                    <th  nowrap>Name</th>
-                    <th  nowrap>Mobile</th>
-                    <th  nowrap>Email</th>
-                    <th  nowrap>College Name</th>
-                    <th  nowrap>CGPA</th>
-                    <th  nowrap>Branch Name</th>
-                    <th  nowrap>State</th>
-                    <th  nowrap>City</th>
-                    <th  nowrap>ZipCode</th>
-                    <th  nowrap>Date</th>
+                    <th nowrap class="border p-3">Sno.</th>
+                    <th nowrap class="border p-3">Name</th>
+                    <th nowrap class="border p-3">Mobile</th>
+                    <th nowrap class="border p-3">Email</th>
+                    <th nowrap class="border p-3">College Name</th>
+                    <th nowrap class="border p-3">CGPA</th>
+                    <th nowrap class="border p-3">Branch Name</th>
+                    <th nowrap class="border p-3">State</th>
+                    <th nowrap class="border p-3">City</th>
+                    <th nowrap class="border p-3">ZipCode</th>
+                    <th nowrap class="border p-3">Date</th>
+                    <th nowrap class="border p-3">Edit/Delete</th>
                 </tr>
-                </thead>
-                <tbody >
-                </tbody>
-            </table>
+            </thead>
+            <tbody id="root">
+            </tbody>
+        </table>
         </form>
     </div>
 </body>
