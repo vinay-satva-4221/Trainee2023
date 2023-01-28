@@ -288,7 +288,7 @@ function selectData() {
     for (let i = 0; i < datal.students.length; i++) {
       html =
         html +
-        `<tr>
+        `<tr id = ${i} >
         <td>${i+ 1}</td>
         <td>${datal.students[i].Name}</td>
         <td>${datal.students[i].Mobile}</td>
@@ -306,12 +306,14 @@ function selectData() {
     document.getElementById("root").innerHTML = html;
     $(document).on("click", ".remCF1", function () {
 
-      let del = localStorage.key(this);
-      localStorage.removeItem(del);
+      let del =JSON.parse(localStorage.getItem("studentData"));
+      // localStorage.removeItem(del);
+      console.log(del);
       $(this).parent().parent().remove();
       // $(this).localStorage.removeItems();
       $("#myTable tbody tr").each(function (i) {
         $($(this).find("td")[0]).html(i + 1);
+        
       });
     });
 
