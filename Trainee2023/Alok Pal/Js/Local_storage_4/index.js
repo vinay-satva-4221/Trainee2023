@@ -1,3 +1,7 @@
+//Global
+// var studentData = (localStorage.getItem("studentData"));  //270
+let id = "no";
+
 // VAlidations
 function validateForm() {
   if (
@@ -130,9 +134,9 @@ $(function () {
     function (start, end, label) {
       console.log(
         "A new date selection was made: " +
-        start.format("YYYY-MM-DD") +
-        " to " +
-        end.format("YYYY-MM-DD")
+          start.format("YYYY-MM-DD") +
+          " to " +
+          end.format("YYYY-MM-DD")
       );
     }
   );
@@ -234,20 +238,7 @@ $(document).ready(function () {
   // });
 });
 $("#save").click(function () {
-  let Name = $("#fname").val();
-  let Mobile = $("#fmobile").val();
-  let Email = $("#femail").val();
-  let State = $("#State").val();
-  let City = $("#City").val();
-  let Collage = $("#fcollage").val();
-  let Branch = $("#fbranch").val();
-  let CGPA = $("#fcgpa").val();
-  let FromToWhenYouStudied = $("#fdate").val();
-  let Zip = $("#zip").val();
-
   var StudentDetails = {
-    // id: studentData.length +1 ,
-    id : 1,
     Name: $("#fname").val(),
     Mobile: $("#fmobile").val(),
     Email: $("#femail").val(),
@@ -260,15 +251,22 @@ $("#save").click(function () {
     Zip: $("#zip").val(),
   };
 
-  var studentData = (localStorage.getItem("studentData"));
-  if (studentData != null) {
-    var studentJsonData = JSON.parse(studentData);
-    studentJsonData.students.push(StudentDetails);
-    localStorage.setItem("studentData", JSON.stringify(studentJsonData));
-  } else {
-    var studentData = JSON.parse('{"students": []}');
-    studentData.students.push(StudentDetails);
-    localStorage.setItem("studentData", JSON.stringify(studentData));
+  var studentData = localStorage.getItem("studentData");
+  if (id == "no") {
+    if (studentData != null) {
+      var studentJsonData = JSON.parse(studentData);
+      studentJsonData.students.push(StudentDetails);
+      localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+    } else {
+      var studentData = JSON.parse('{"students": []}');
+      studentData.students.push(StudentDetails);
+      localStorage.setItem("studentData", JSON.stringify(studentData));
+    }
+  }else{
+  let datal = JSON.parse(localStorage.getItem("studentData"));
+  datal[id] = fname;
+  localStorage.setItem("studentData", JSON.stringify(datal));
+
   }
 
   // swal({
@@ -289,7 +287,7 @@ function selectData() {
       html =
         html +
         `<tr id = ${i} >
-        <td>${i+ 1}</td>
+        <td>${i + 1}</td>
         <td>${datal.students[i].Name}</td>
         <td>${datal.students[i].Mobile}</td>
         <td>${datal.students[i].Email}</td>
@@ -300,36 +298,35 @@ function selectData() {
         <td>${datal.students[i].City}</td>
         <td>${datal.students[i].Zip}</td>
         <td>${datal.students[i].FromToWhenYouStudied}</td>
-        <td><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger">Delete</a></td>
+        <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger border">Delete</a><a href="javascript:void(0);"  onclick="editData(${i})" class="remCF1 btn btn-warning">Edit</a></td>
         <tr>`;
     }
     document.getElementById("root").innerHTML = html;
-    $(document).on("click", ".remCF1", function () {
-
-      let del =JSON.parse(localStorage.getItem("studentData"));
-      // localStorage.removeItem(del);
-      console.log(del);
-      $(this).parent().parent().remove();
-      // $(this).localStorage.removeItems();
-      $("#myTable tbody tr").each(function (i) {
-        $($(this).find("td")[0]).html(i + 1);
-        
-      });
-    });
-
-
-
-    function deleteData(rid){
-      var datal = JSON.parse(localStorage.getItem("studentData"))
-      datal.removeItems(rid);
-      localStorage.setItem("studentData", JSON.stringify(studentData));
-      selectData();
-    }
-
-
-    function deleteF(){
-
-    }
-
   }
+}
+
+function deleteData(rid) {
+  let datal = JSON.parse(localStorage.getItem("studentData"));
+  console.log("index", rid);
+  datal.students.splice(rid, 1);
+  localStorage.setItem("studentData", JSON.stringify(datal));
+  selectData();
+}
+
+function editData(rid) {
+  let datal = JSON.parse(localStorage.getItem("studentData"));
+
+  document.getElementById("fname").value = datal.students[rid].Name;
+  document.getElementById("fmobile").value = datal.students[rid].Mobile;
+  document.getElementById("femail").value = datal.students[rid].Email;
+  document.getElementById("fcollage").value = datal.students[rid].Collage;
+  document.getElementById("fcgpa").value = datal.students[rid].CGPA;
+  document.getElementById("fbranch").value = datal.students[rid].Branch;
+  document.getElementById("State").value = datal.students[rid].State;
+  document.getElementById("City").value = datal.students[rid].City;
+  document.getElementById("zip").value = datal.students[rid].Zip;
+  document.getElementById("fdate").value =
+    datal.students[rid].FromToWhenYouStudied;
+
+  localStorage.setItem("studentData", JSON.stringify(datal));
 }
