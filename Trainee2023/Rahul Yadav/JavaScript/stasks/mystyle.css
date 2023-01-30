@@ -32,9 +32,36 @@ label.error {
     counter-increment: serial-number;
     /* Increment the serial number counter */
     content: counter(serial-number);
-   
- /* Display the counter */
+
+    /* Display the counter */
 }
-.save{
+
+#addrow {
+    background-color: skyblue;
+    width: 30%;
+}
+
+#export {
+    background-color: palegreen;
+    width: 30%;
+}
+
+#save {
+    background-color: rgb(114, 231, 114);
+    width: 30%;
     display: none;
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(187, 213, 252), rgb(229, 247, 255));
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
