@@ -21,3 +21,10 @@ body{
 .mover{
     background-color: aquamarine;
 }
+.appBtn{
+    /* display: none; */
+    width:27%;
+    height: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
