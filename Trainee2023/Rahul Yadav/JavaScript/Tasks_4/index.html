@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mystyle.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+</head>
+
+<body>
+    <div class="container p-4">
+        <form id="basic_form">
+            <div class="row mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control " id="name" placeholder="enter name" name="name" required>
+
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="mobile" class="form-label">Mobile:</label>
+                    <input type="tel" class="form-control " name="mobile" id="mobile" maxlength="10"
+                        placeholder="mobile number" minlength="10" min="0" required>
+
+                </div>
+            </div>
+            <div class="row  mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control " name="email" id="email" placeholder="enter your mail id"
+                        required>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <label for="clgname" class="form-label">Collage Name</label>
+                    <input type="text" class="form-control " name="clgname" id="clgname" placeholder="College Name"
+                        required>
+                </div>
+            </div>
+
+
+            <div class="row mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <label for="cgpa" class="form-label">CGPA</label>
+                    <input type="text" class="form-control " name="cgpa" id="cgpa" placeholder="enter cgpa" max="10"
+                        min="0" maxlength="2" required>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <label for="brnchname" class="form-label">Branch Name</label>
+                    <select class="form-select" id="brnchname" name="brnchname" required>
+                        <option value="" selected disabled>choose branch</option>
+                        <option value="CS">CS</option>
+                        <option value="EC">EC</option>
+                        <option value="IC">IC</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row mt-2 text-dark">
+                <div class="col-md-4 col-sm-12">
+                    <label for="state" class="form-label">State:</label>
+                    <select id="State" class="form-control" tabindex="5"></select>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="city" class="form-label">City:</label>
+                    <select id="City" class="form-control" tabindex="5">
+
+                    </select>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="zipcode" class="form-label">Zip code</label>
+                    <input type="number" class="form-control " name="zipcode" id="zipcode" min="0" minlength="6"
+                        maxlength="6" required>
+                </div>
+            </div>
+            <div class="row mt-2   text-light" style="margin-left: 20;">
+                <div class="col-md-12 col-sm-12">
+                    <label for="date" class="form-label">From where to when studies</label>
+                    <input type="text" class="form-control " name="daterange" id="daterange" placeholder="start-End"
+                        required readonly>
+
+                </div>
+            </div>
+            <div class="row mt-2 text-dark" style="margin-right: 60%;">
+                <div id="flip" class="btn">Some of your result pics in slider</div>
+                <div id="panel">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img_forest.jpg" class="d-block w-100%" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img_forest.jpg" class="d-block w-100%" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img_forest.jpg" class="d-block w-100%" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div><br>
+
+
+            <div style="text-align: left;">
+                <button type="button" id="addrow" class="btn me-5 " style="background-color: skyblue; width: 30%;">Add
+                    Row</button>
+                <button type="button" id="export" class="btn me-5"
+                    style="background-color: palegreen; width: 30%;">Export</button>
+                <button class="save">save</button>
+            </div>
+
+            <div class="table-responsive container p-4  ">
+                <table id="table" class=" table table-bordered css-serial ">
+                    <tr class="border">
+                        <th>Sr.no</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>College Name</th>
+                        <th>CGPA</th>
+                        <th>Branch Name</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Zip code</th>
+                        <th>Study Period</th>
+                        <th></th>
+                    </tr>
+                    <tbody id="tableBody">
+                        <tr>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </form>
+    </div>
+    <script src="./myscript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+</html>

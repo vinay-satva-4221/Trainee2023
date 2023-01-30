@@ -148,9 +148,7 @@ function validateinvestment() {
 // validatecheck(),
 //Tax Calculations
 function getdata() {
-
-
-    var isValid = validatecheck()
+  var isValid = validatecheck()
 
     if (isValid) {
         $('#myModal').modal('show')

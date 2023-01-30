@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />    
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<title>Form</title>
+
+</head>
+<body>
+
+    <div class="container">
+        <form name="myform" id="form">
+        
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="">Name:</label>
+                    <input type="text" class="form-control" id="name" class="validate" placeholder="Name" onchange="return validateName()">
+                    <span id="NAME" style="color: red;"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="">Mobile:</label>
+                    <input type="text" class="form-control" id="mobile" class="validate" placeholder="Mobile" onchange="return validateMobile()">
+                    <span id="MOBILE" style="color: red;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="">Email:</label>
+                    <input type="emali" class="form-control" id="email" class="validate" placeholder="Email" onchange="return validateemail()" required>
+                    <span id="emailerror" style="color: red;"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="">Collage Name:</label>
+                    <input type="text" class="form-control" id="collegename" class="validate" placeholder="Collage Name" onchange="return validatecollegename()" >
+                    <span id="collegenameerror" style="color: red;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="">CGPA:</label>
+                    <input type="text" class="form-control" id="cgpa" class="validate" placeholder="CGPA" onchange="return validatecgpa()">
+                    <span id="cgpaerror" style="color: red;"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="">Branch Name:</label>
+                    <select class="form-select" id="branch" class="validate" onclick="return branchfor()">
+                     
+                        <option value="" >Choose Branch</option>
+                        <option value="it">IT</option>
+                        <option value="cs">CS</option>
+                    </select>
+                    <span id="errorbranch" style="color: red;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="state">State:</label>
+                    <select name="state" id="State" class="form-select" onclick="return statefor()">
+                        <option value="" selected="selected">choose state</option>
+                      </select>
+                      <span id="errorstate" style="color: red;"></span>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="">city</label>
+                    <select name="city" id="City" class="form-select">
+                        <option value="" selected="selected">choose city</option>
+                      </select>
+                    <span id="MOBILE" style="color: red;"></span>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <label for="">zip</label>
+                    <input type="text" class="form-control" id="zip" class="validate" placeholder="zip" onclick="return zipfor()">
+
+                    <span id="errorzip" style="color: red;"></span>
+                </div>
+
+            </div>
+
+       
+
+
+
+
+
+
+        
+           
+            <div class="row">
+                
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <label class="text-dark">From To When You Studied</label>
+                    <input type="text"  name="daterange"  id="date" class="form-control mb-3"  placeholder="Start-End" >
+                    
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <button type="button" id="slider">SOME OF YOUR RESULT PIC'S IN SLIDER</button>
+                    
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="./Assets/avenue-815297__340.jpg" class="d-block w-50" alt="">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./Assets/mountains-190055__340.jpg" class="d-block w-50" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./Assets/tree-736885_960_720.jpg" class="d-block w-50" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12 ">        
+                <button type="button" class="btn bg-info" id="save" onclick="addrow()">ADD ROW</button>
+             
+                <button type="button" class="btn bg-success" >Export</button>
+            </div>
+            </form>
+
+            
+            <table  class="w3-table-all border" id="myTable" border="1">
+                <thead>     
+                <tr class="w3-blue">
+                    <th  nowrap>Sno.</th>
+                    <th  nowrap>Name</th>
+                    <th  nowrap>Mobile</th>
+                    <th  nowrap>Email</th>
+                    <th  nowrap>College Name</th>
+                    <th  nowrap>CGPA</th>
+                    <th  nowrap>Branch Name</th>
+                    <th  nowrap>State</th>
+                    <th  nowrap>City</th>
+                    <th  nowrap>ZipCode</th>
+                    <th  nowrap>Date</th>
+                </tr>
+                </thead>
+                <tbody >
+                </tbody>
+            </table>
+       
+
+            
+
+            
+    </div>
+
+    <!-- <table class="table" id="show1">
+        <thead>
+          <tr>
+            <th>SR.NO</th>
+            <th>NAME</th>
+            <th>MOBILE</th>
+            <th>EMAIL</th>
+            <th>COLLEGE NAME</th>
+            <th>CGPA</th>
+            <th>Branch Name</th>
+            <th>Study Period</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Zip</th>
+
+          </tr>
+        </thead>
+       
+      </table>
+
+
+    <script>
+                        var list1=[];
+  var list2=[];
+  var list3=[];
+  var list4=[];
+  var list5=[];
+  var list6=[];
+  var list7=[];
+  var list8=[];
+  var list9=[];
+  var list10=[];
+  var list11=[];
+
+  var n=0;
+  var x=1;
+  function addrow()
+  {
+    var addrow=document.getElementById("show1");
+    var newrow=addrow.insertRow(n);
+
+    list1[x]=document.getElementById("name").value;
+    list2[x]=document.getElementById("mobile").value;
+    list3[x]=document.getElementById("email").value;
+    list4[x]=document.getElementById("collegename").value;
+    list5[x]=document.getElementById("cgpa").value;
+    list6[x]=document.getElementById("branch").value;
+    list7[x]=document.getElementById("State").value;
+    list8[x]=document.getElementById("City").value;
+    list8[x]=document.getElementById("zip").value;
+    list10[x]=document.getElementById("date").value;
+   
+
+    var cel1=newrow.insertCell(0);
+    var cel2=newrow.insertCell(1);
+    var cel3=newrow.insertCell(2);
+    var cel4=newrow.insertCell(3);
+    var cel5=newrow.insertCell(4);
+    var cel6=newrow.insertCell(5);
+    var cel7=newrow.insertCell(6);
+    var cel8=newrow.insertCell(7);
+    var cel9=newrow.insertCell(8);
+    var cel10=newrow.insertCell(9);
+
+    cel1.innerHTML=list1[x];
+    cel2.innerHTML=list2[x];
+    cel3.innerHTML=list3[x];
+    cel4.innerHTML=list4[x];
+    cel5.innerHTML=list5[x];
+    cel6.innerHTML=list6[x];
+    cel7.innerHTML=list7[x];
+    cel8.innerHTML=list8[x];
+    cel9.innerHTML=list9[x];
+    cel10.innerHTML=list10[x];
+
+n++;
+x++;
+
+  }
+  
+                
+    </script> -->
+
+    
+</body>
+<script src="./Registration.js"></script>
+</html>
