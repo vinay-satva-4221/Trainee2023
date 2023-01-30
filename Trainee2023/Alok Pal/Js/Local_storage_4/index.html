@@ -12,10 +12,12 @@
 </head>
 
 <body>
-    <div class="container">
-        <form class="row mt-5 needs-validation" novalidate>
+    <div class="container mt-3">
+        <div class="text-center" style="font-size: 2rem;" ><p><b>CRUD OPERATION</b></p></div>
+        <form class="row mt-2 needs-validation" novalidate>
             <div class="row">
                 <div class="col-lg-6">
+                    <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" />
                     <label for="validationCustom01" class="form-label">First name</label>
                     <input type="text" class="form-control" id="fname" onkeyup="return nameV()" required />
                     <span id="navalid" class="error1"></span>
@@ -78,11 +80,12 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label for="fdate" class="form-label">From To When You Studied:</label>
-                    <input type="text" class="form-control" name="daterange" id="fdate" value="01/01/2018 - 01/15/2018" />
+                    <input type="text" class="form-control" name="daterange" id="fdate"
+                        value="01/01/2018 - 01/15/2018" />
                 </div>
             </div>
             <div class="col-12 my-3">
-                <button type="button" class="btn btn_c mover" onclick="">
+                <button type="button" class="btn btn_c mover " onclick="">
                     Some Of Your Result Pic's In Slider
                 </button>
             </div>
@@ -118,31 +121,35 @@
                 </button>
             </div>
 
-            <div class="col-12 my-2">
-                <button type="button" class="btn btn-info btn_c " id="save" onclick="return validateForm()">
-                    Add Row
+            <div class="col-12 my-2 appbtn">
+                <button type="button" class="btn btn-info btn_c " id="save"
+                    onclick="return validateForm() ,selectData()">
+                  <p>  Add Row</p>
                 </button>
+                
             </div>
-
-            <table  class="w3-table-all border" id="myTable">
-                <thead>     
+    </div>
+    <div class="container mt-2">
+        <table class="w3-table-all border table-responsive" id="myTable">
+            <thead>
                 <tr class="w3-blue">
-                    <th  nowrap>Sno.</th>
-                    <th  nowrap>Name</th>
-                    <th  nowrap>Mobile</th>
-                    <th  nowrap>Email</th>
-                    <th  nowrap>College Name</th>
-                    <th  nowrap>CGPA</th>
-                    <th  nowrap>Branch Name</th>
-                    <th  nowrap>State</th>
-                    <th  nowrap>City</th>
-                    <th  nowrap>ZipCode</th>
-                    <th  nowrap>Date</th>
+                    <th nowrap class="border ">Sno.</th>
+                    <th nowrap class="border p-1">Name</th>
+                    <th nowrap class="border p-1">Mobile</th>
+                    <th nowrap class="border p-1">Email</th>
+                    <th nowrap class="border p-1">College Name</th>
+                    <th nowrap class="border p-1">CGPA</th>
+                    <th nowrap class="border p-1">Branch Name</th>
+                    <th nowrap class="border p-1">State</th>
+                    <th nowrap class="border p-1">City</th>
+                    <th nowrap class="border p-1">ZipCode</th>
+                    <th nowrap class="border p-1">Date</th>
+                    <th nowrap class="border p-1">Edit/Delete</th>
                 </tr>
-                </thead>
-                <tbody >
-                </tbody>
-            </table>
+            </thead>
+            <tbody id="root">
+            </tbody>
+        </table>
         </form>
     </div>
 </body>
