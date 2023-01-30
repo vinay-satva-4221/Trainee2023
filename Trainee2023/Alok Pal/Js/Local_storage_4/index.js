@@ -188,54 +188,7 @@ $(document).ready(function () {
     });
   });
 
-  //Table
-  // $("#save").on("click", function () {
-  //   var name = $("#fname").val();
-  //   var mob = $("#fmobile").val();
-  //   var email = $("#femail").val();
-  //   var clgname = $("#fcollage").val();
-  //   var cgpa = $("#fcgpa").val();
-  //   var branch = $("#fbranch").val();
-  //   var selectS = $("#State").val();
-  //   var selectC = $("#City").val();
-  //   var zip = $("#zip").val();
-  //   var date = $("#fdate").val();
-  //   var count = $("#myTable tr").length;
-  //   if (name != "" && mob != "" && email != "" && clgname != "" && cgpa != "" && branch != "" && selectS != "" && selectC != "" && zip != "" && date != "") {
-  //     $("#myTable tbody").append(
-  //       '<tr class="child"><td>' +
-  //       count +
-  //       "</td><td>" +
-  //       name +
-  //       "</td><td>" +
-  //       mob +
-  //       "</td><td>" +
-  //       email +
-  //       "</td><td>" +
-  //       clgname +
-  //       "</td><td>" +
-  //       cgpa +
-  //       "</td><td>" +
-  //       branch +
-  //       "</td><td>" +
-  //       selectS +
-  //       "</td><td>" +
-  //       selectC +
-  //       "</td><td>" +
-  //       zip +
-  //       "</td><td>" +
-  //       date +
-  //       '</td><td><a href="javascript:void(0);" class="remCF1 btn  btn-danger">Remove</a></td></tr>'
-  //     );
-  //   }
-  // });
-
-  // $(document).on("click", ".remCF1", function () {
-  //   $(this).parent().parent().remove();
-  //   $("#myTable tbody tr").each(function (i) {
-  //     $($(this).find("td")[0]).html(i + 1);
-  //   });
-  // });
+ 
 });
 $("#save").click(function () {
   var StudentDetails = {
@@ -252,7 +205,7 @@ $("#save").click(function () {
   };
 
   var studentData = localStorage.getItem("studentData");
-  if (id == "no") {
+  if (id === "no") {
     if (studentData != null) {
       var studentJsonData = JSON.parse(studentData);
       studentJsonData.students.push(StudentDetails);
@@ -262,12 +215,12 @@ $("#save").click(function () {
       studentData.students.push(StudentDetails);
       localStorage.setItem("studentData", JSON.stringify(studentData));
     }
-  }else{
-  let datal = JSON.parse(localStorage.getItem("studentData"));
-  datal[id] = fname;
-  localStorage.setItem("studentData", JSON.stringify(datal));
-
+  } else {
+    let datal = JSON.parse(localStorage.getItem("studentData"));
+    datal[id] =students.Name;
+    localStorage.setItem("studentData", JSON.stringify(datal));
   }
+  selectData();
 
   // swal({
   //   title: "Student",
@@ -315,7 +268,6 @@ function deleteData(rid) {
 
 function editData(rid) {
   let datal = JSON.parse(localStorage.getItem("studentData"));
-
   document.getElementById("fname").value = datal.students[rid].Name;
   document.getElementById("fmobile").value = datal.students[rid].Mobile;
   document.getElementById("femail").value = datal.students[rid].Email;
@@ -327,6 +279,5 @@ function editData(rid) {
   document.getElementById("zip").value = datal.students[rid].Zip;
   document.getElementById("fdate").value =
     datal.students[rid].FromToWhenYouStudied;
-
-  localStorage.setItem("studentData", JSON.stringify(datal));
+   
 }
