@@ -1,20 +1,37 @@
 $(document).ready(function () {
-    var Data = []
+    var Data = [];
     LocalData = JSON.parse(localStorage.getItem("studentData"));
     if (LocalData != null) {
-        Data = LocalData
+        Data = LocalData;
     }
     Data.forEach((data) => {
-        $("#tabledata").append('<tr><td class="sname">' + data.Name + '</td><td class="smobile">' + data.Mobile + '</td><td class="semail">' + data.Email + '</td><td class="sstate">' + data.State + '</td><td class="scity">' + data.City + '</td><td class="scollege">' + data.College + '</td><td class="sbranch">' + data.Branch + '</td><td class="scgpa">' + data.CGPA + '</td><td class="speriod">' + data.FromToWhenYouStudied + '</td><td class="szip">' + data.Zip + '</td><td><input type="button" value="Delete" class="btn btn-outline-danger btnDelete"  /></td><td><input type="button" value="Edit" class="btn btn-outline-info btn-update" /></td></tr>'
+        $("#tabledata").append('<tr><td class="index">' + data.Id+
+            '</td><td class="sname">' +
+            data.Name +
+            '</td><td class="smobile">' +
+            data.Mobile +
+            '</td><td class="semail">' +
+            data.Email +
+            '</td><td class="sstate">' +
+            data.State +
+            '</td><td class="scity">' +
+            data.City +
+            '</td><td class="scollege">' +
+            data.College +
+            '</td><td class="sbranch">' +
+            data.Branch +
+            '</td><td class="scgpa">' +
+            data.CGPA +
+            '</td><td class="speriod">' +
+            data.FromToWhenYouStudied +
+            '</td><td class="szip">' +
+            data.Zip +
+            '</td><td><input type="button" value="Delete" class="btn btn-outline-danger btnDelete"  /></td><td><input type="button" value="Edit" class="btn btn-outline-info btn-update" /></td></tr>'
         );
-    })
-
-
-
-    $.validator.addMethod('validname', function (value) {
-        return /^[a-zA-Z\s]+$/.test(value)
     });
-
+    $.validator.addMethod("validname", function (value) {
+        return /^[a-zA-Z\s]+$/.test(value);
+    });
     $("#mobile").keypress(function (e) {
         var keyCode = e.which;
 
@@ -29,17 +46,16 @@ $(document).ready(function () {
             return false;
         }
     });
-
-    $('#myform').validate({
+    $("#myform").validate({
         rules: {
             name: {
                 validname: true,
-                minlength: 3
+                minlength: 3,
             },
             mobile: {
                 digits: true,
                 minlength: 10,
-                maxlength: 10
+                maxlength: 10,
             },
             email: {
                 required: true,
@@ -47,8 +63,7 @@ $(document).ready(function () {
             },
             college: {
                 required: true,
-                validname: true
-
+                validname: true,
             },
             cgpa: {
                 required: true,
@@ -59,41 +74,37 @@ $(document).ready(function () {
                 required: true,
             },
             state: {
-                required: true
+                required: true,
             },
             city: {
-                required: true
+                // required: true,
             },
-            zip:
-            {
+            zip: {
                 required: true,
                 minlength: 6,
-                maxlength: 6
+                maxlength: 6,
             },
             daterange: {
-                required: true
-            }
-
+                required: true,
+            },
         },
         messages: {
             name: {
                 validname: "Please enter valid name",
-                minlength: "Enter Full Name"
+                minlength: "Enter Full Name",
             },
             mobile: {
                 digits: "Enter Numeric value",
                 minlength: "Check for 10 digits",
-                maxlength: "Number exceed mobile limit"
+                maxlength: "Number exceed mobile limit",
             },
             email: {
                 required: "Please enter email",
-                email: "Enter Valid Email"
-
+                email: "Enter Valid Email",
             },
             name: {
                 validname: "Please enter valid college name",
-                required: "Enter college name"
-
+                required: "Enter college name",
             },
             cgpa: {
                 digits: "Enter Numeric CGPA",
@@ -105,20 +116,19 @@ $(document).ready(function () {
                 required: "Enter state",
             },
             city: {
-                required: "Enter city",
+                // required: "Enter city",
             },
-            zip:
-            {
+            zip: {
                 minlength: "Enter 6 digit Zip",
-                maxlength: "Zip Code Consist digits"
+                maxlength: "Zip Code Consist digits",
             },
             daterange: {
-                required: "Select Course Duration"
-            }
-        }
+                required: "Select Course Duration",
+            },
+        },
     });
-
-    const CityData = '{"Citys":[' +
+    const CityData =
+        '{"Citys":[' +
         '{"StateId":"1","Id":"1","Name":"Indore"},' +
         '{"StateId":"1","Id":"2","Name":"Bhopal"},' +
         '{"StateId":"2","Id":"3","Name":"Sirohi"},' +
@@ -131,33 +141,44 @@ $(document).ready(function () {
         '{"StateId":"4","Id":"10","Name":"Amritsar"},' +
         '{"StateId":"4","Id":"11","Name":"Patiala"}]}';
 
-    const StateData = '{"States":[' +
+    const StateData =
+        '{"States":[' +
         '{"Id":"1","Name":"Madhya Pradesh"},' +
         '{"Id":"2","Name":"Rajasthan"},' +
         '{"Id":"3","Name":"Gujarat"},' +
-        '{"Id":"4","Name":"Punjab"}]}'
+        '{"Id":"4","Name":"Punjab"}]}';
 
     var StateJsonData = JSON.parse(StateData);
     $.each(StateJsonData.States, function (i, option) {
-        $("#state").append($('<option></option>').val(option.Id).html(option.Name));
-    })
+        $("#state").append($("<option></option>").val(option.Id).html(option.Name));
+    });
 
     $("#state").change(function () {
         var CityJsonData = JSON.parse(CityData);
-        $("#city").html('');
+        $("#city").html("");
         $.each(CityJsonData.Citys, function (i, option) {
             if ($("#state").val() == option.StateId) {
-                $("#city").append($('<option></option>').val(option.Id).html(option.Name));
+                $("#city").append(
+                    $("<option></option>").val(option.Id).html(option.Name)
+                );
             }
-        })
-    })
+        });
+    });
 
     $(function () {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function (start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-        });
+        $('input[name="daterange"]').daterangepicker(
+            {
+                opens: "left",
+            },
+            function (start, end, label) {
+                console.log(
+                    "A new date selection was made: " +
+                    start.format("YYYY-MM-DD") +
+                    " to " +
+                    end.format("YYYY-MM-DD")
+                );
+            }
+        );
     });
 
     $("#pictures").click(function () {
@@ -166,7 +187,11 @@ $(document).ready(function () {
 
     $("#addrow").click(function () {
 
+        
+
         if ($("#myform").valid() == true) {
+
+            let Id = $("#tabledata").length;
             let Name = $("#name").val();
             let Mobile = $("#mobile").val();
             let Email = $("#email").val();
@@ -179,35 +204,72 @@ $(document).ready(function () {
             let Zip = $("#zip").val();
 
             var StudentDetails = {
-                Name: Name, Mobile: Mobile, Email: Email, State: State, City: City, College: College, Branch: Branch, CGPA: CGPA,
-                FromToWhenYouStudied: FromToWhenYouStudied, Zip: Zip
+                Id:Id,
+                Name: Name,
+                Mobile: Mobile,
+                Email: Email,
+                State: State,
+                City: City,
+                College: College,
+                Branch: Branch,
+                CGPA: CGPA,
+                FromToWhenYouStudied: FromToWhenYouStudied,
+                Zip: Zip,
+            };
+            debugger
+            var studentData = [];
+            studentData = JSON.parse(localStorage.getItem("studentData"));
+            //var studentData = sessionStorage.getItem("studentData");
+            if(studentData!=null)
+            {
+                studentData.push(StudentDetails);
+                localStorage.setItem("studentData", JSON.stringify(studentData));
             }
-            Data.push(StudentDetails)
-            localStorage.setItem("studentData", JSON.stringify(Data));
-
-            $("#tabledata").append('<tr><td class="sname">' + StudentDetails.Name + '</td><td>' + StudentDetails.Mobile + '</td><td>' + StudentDetails.Email + '</td><td>' + StudentDetails.State + '</td><td>' + StudentDetails.City + '</td><td>' + StudentDetails.College + '</td><td>' + StudentDetails.Branch + '</td><td>' + StudentDetails.CGPA + '</td><td>' + StudentDetails.FromToWhenYouStudied + '</td><td>' + StudentDetails.Zip + '</td><td><input type="button" value="Delete" class="btn btn-outline-danger btnDelete"  /></td><td><input type="button" value="Edit" class="btn btn-outline-info btn-update" /></td></tr>'
+            else{
+                studentData = [];
+                studentData.push(StudentDetails);
+                localStorage.setItem("studentData",JSON.stringify(studentData));
+                //sessionStorage.setItem("studentData", JSON.stringify(studentData));
+            }
+            $("#tabledata").append(
+                '<tr><td>' + StudentDetails.Id +
+                '</td><td>' +
+                StudentDetails.Name +
+                "</td><td>" +
+                StudentDetails.Mobile +
+                "</td><td>" +
+                StudentDetails.Email +
+                "</td><td>" +
+                StudentDetails.State +
+                "</td><td>" +
+                StudentDetails.City +
+                "</td><td>" +
+                StudentDetails.College +
+                "</td><td>" +
+                StudentDetails.Branch +
+                "</td><td>" +
+                StudentDetails.CGPA +
+                "</td><td>" +
+                StudentDetails.FromToWhenYouStudied +
+                "</td><td>" +
+                StudentDetails.Zip +
+                '</td><td><input type="button" value="Delete" class="btn btn-outline-danger btnDelete"  /></td><td><input type="button" value="Edit" class="btn btn-outline-info btn-update" /></td></tr>'
             );
         }
-    })
+    });
+    $(document).on("click", ".btnDelete", function () {
+        debugger
+        var getData = JSON.parse(localStorage.getItem("studentData"));
+        
+        var row_index = $(this).closest("tr").index();
+        var req_index = row_index - 1;
+        console.log(row_index)
+        console.log(req_index) 
+
+        var getData = JSON.parse(localStorage.getItem("studentData"));
+        $(this).closest('tr').remove();
+        fdef = getData.splice(req_index, 1);
+        localStorage.setItem("studentData", JSON.stringify(getData));
+        
+    });
 });
-
-$(document).on('click', '.btnDelete', function () {
-    $(this).closest('tr').remove();
-    $(this).localStorage.removeItem();
-
-});
-
-$(document).on("click", ".btn-update", function(){  
-    var name = $(this).parents("tr").find("input[name='edit_name']").val();  
-    var email = $(this).parents("tr").find("input[name='edit_email']").val();  
-  
-    $(this).parents("tr").find("td:eq(0)").text(name);  
-    $(this).parents("tr").find("td:eq(1)").text(email);  
-   
-    $(this).parents("tr").attr('data-name', name);  
-    $(this).parents("tr").attr('data-email', email);  
-  
-    $(this).parents("tr").find(".btn-edit").show();  
-    $(this).parents("tr").find(".btn-cancel").remove();  
-    $(this).parents("tr").find(".btn-update").remove();  
-});  
