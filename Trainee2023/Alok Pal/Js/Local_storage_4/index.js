@@ -191,7 +191,9 @@ $(document).ready(function () {
  
 });
 $("#save").click(function () {
+  var studentData = localStorage.getItem("studentData");
   var StudentDetails = {
+    dataId: $("#dataId").val(),
     Name: $("#fname").val(),
     Mobile: $("#fmobile").val(),
     Email: $("#femail").val(),
@@ -204,12 +206,15 @@ $("#save").click(function () {
     Zip: $("#zip").val(),
   };
 
-  var studentData = localStorage.getItem("studentData");
   if (id === "no") {
     if (studentData != null) {
       var studentJsonData = JSON.parse(studentData);
+      if(studentJsonData?.students && studentJsonData?.students[parseInt(StudentDetails.dataId)] ){
+        studentJsonData.students[parseInt(StudentDetails.dataId)]=StudentDetails
+        localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+      }else{
       studentJsonData.students.push(StudentDetails);
-      localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+      localStorage.setItem("studentData", JSON.stringify(studentJsonData));}
     } else {
       var studentData = JSON.parse('{"students": []}');
       studentData.students.push(StudentDetails);
@@ -268,6 +273,7 @@ function deleteData(rid) {
 
 function editData(rid) {
   let datal = JSON.parse(localStorage.getItem("studentData"));
+  document.getElementById("dataId").value = rid;
   document.getElementById("fname").value = datal.students[rid].Name;
   document.getElementById("fmobile").value = datal.students[rid].Mobile;
   document.getElementById("femail").value = datal.students[rid].Email;
@@ -279,5 +285,7 @@ function editData(rid) {
   document.getElementById("zip").value = datal.students[rid].Zip;
   document.getElementById("fdate").value =
     datal.students[rid].FromToWhenYouStudied;
+
+    document.getElementById("save").innerHTML="save"
    
 }
