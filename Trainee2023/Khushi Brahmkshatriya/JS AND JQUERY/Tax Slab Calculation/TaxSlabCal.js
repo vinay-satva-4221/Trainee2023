@@ -10,6 +10,10 @@ $(document).ready(function () {
         return this.optional(element) || (parseFloat(value) > 0);
     }, "* Amount must be greater than zero");
 
+    jQuery.validator.addMethod("Zero", function (value, element) {
+        return this.optional(element) || (parseFloat(value) >= 0);
+    }, "* Amount must be greater than or equal to zero");
+
     $.validator.addMethod("age", function (value, element, min) {
         var today = new Date();
         var birthDate = new Date(value);
@@ -28,7 +32,7 @@ $(document).ready(function () {
         return age >= min;
     }, "You are not old enough!");
 
-
+    $('#birthdate').val(new Date().toJSON().slice(0,10));
 
     $("#form").validate({
         // in 'rules' user have to specify all the constraints for respective fields
@@ -62,7 +66,7 @@ $(document).ready(function () {
             },
             investment: {
                 required: true,
-                greaterThanZero: true,
+                Zero: true,
             },
         },
 
@@ -110,7 +114,20 @@ $(document).ready(function () {
         }
 
     }
+    $('.valiIncome').change(function (e) {
+        var income = parseInt($('#income').val());
+        
+        var investment = parseInt($('#investment').val());
+        if (income<investment) {
 
+            swal("Please enter more income");
+            //$('#age').html("You are not eligible");
+            return false;
+        }
+        else
+            return true;
+        
+    });
 
     $('.allow_decimal').keypress(function (e) {
 
@@ -139,7 +156,7 @@ $(document).ready(function () {
             var loan = parseInt($('#loan').val());
             var investment = parseInt($('#investment').val());
             var age = fnCalculateAge();
-
+            
             var incomeMinimum = (income * 20) / 100;
             var loanminimum = (loan * 80) / 100;
             if (investment > 100000) {
@@ -151,12 +168,8 @@ $(document).ready(function () {
                 $('#tamount').html(taxable);
             }
 
-            if (age < 18) {
-
-                //$('#age').html("You are not eligible");
-
-            }
-            else if ((age >= 18 && age <= 60) && gender == 'Male') {
+           
+            if ((age >= 18 && age <= 60) && gender == 'Male') {
                 if (taxable <= 240000) {
                     $('#tamount').html(taxable);
                     $('#ptax').html('0');

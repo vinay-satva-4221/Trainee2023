@@ -7,6 +7,8 @@
     <title>Tax Slab Calculation</title>
     <link rel="stylesheet" href="/bs5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+
     <link rel="stylesheet" href="./TaxSlabCal.css">
 
 </head>
@@ -57,7 +59,7 @@
                     </div>
                     <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                         <label for="investment" class="form-label allow_decimal">Investment</label>
-                        <input type="text" class="form-control" name="investment" id="investment" autocomplete="off">
+                        <input type="text" class="form-control valiIncome" name="investment" id="investment" autocomplete="off">
                         <div class="invalid" id="validInvest"></div>
                     </div>
                     <div class="col-12 col-xs-12 col-sm-12col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -105,6 +107,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
    
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="/bs5/js/bootstrap.min.js"></script>
 </body>
 </html>
