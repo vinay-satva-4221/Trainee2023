@@ -1,23 +1,6 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-// (function () {
-//     'use strict'
-
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     var forms = document.querySelectorAll('.needs-validation')
-
-//     // Loop over them and prevent submission
-//     Array.prototype.slice.call(forms)
-//       .forEach(function (form) {
-//         form.addEventListener('submit', function (event) {
-//           if (!form.checkValidity()) {
-//             event.preventDefault()
-//             event.stopPropagation()
-//           }
-
-//           form.classList.add('was-validated')
-//         }, false)
-//       })
-//   })()
+//Global
+// var studentData = (localStorage.getItem("studentData"));  //270
+let id = "no";
 
 // VAlidations
 function validateForm() {
@@ -29,7 +12,6 @@ function validateForm() {
     !cgpaV() &&
     !BranchV() &&
     !zipV() &&
-    !investV() &&
     !swal()
   ) {
     valid = false;
@@ -152,9 +134,9 @@ $(function () {
     function (start, end, label) {
       console.log(
         "A new date selection was made: " +
-        start.format("YYYY-MM-DD") +
-        " to " +
-        end.format("YYYY-MM-DD")
+          start.format("YYYY-MM-DD") +
+          " to " +
+          end.format("YYYY-MM-DD")
       );
     }
   );
@@ -182,11 +164,6 @@ const StateData =
   '{"Id":"Gujarat","Name":"Gujarat"},' +
   '{"Id":"Punjab","Name":"Punjab"}]}';
 
-
-
-
-
-
 // Jquery
 $(document).ready(function () {
   //slider
@@ -211,126 +188,104 @@ $(document).ready(function () {
     });
   });
 
-
-
-
-  //Table
-  $("#save").on("click", function () {
-    var name = $("#fname").val();
-    var mob = $("#fmobile").val();
-    var email = $("#femail").val();
-    var clgname = $("#fcollage").val();
-    var cgpa = $("#fcgpa").val();
-    var branch = $("#fbranch").val();
-    var selectS = $("#State").val();
-    var selectC = $("#City").val();
-    var zip = $("#zip").val();
-    var date = $("#fdate").val();
-    var count = $("#myTable tr").length;
-    if (name != "" && mob != "" && email != "" && clgname != "" && cgpa != "" && branch != "" && selectS != "" && selectC != "" && zip != "" && date != "") {
-      $("#myTable tbody").append(
-        '<tr class="child"><td>' +
-        count +
-        "</td><td>" +
-        name +
-        "</td><td>" +
-        mob +
-        "</td><td>" +
-        email +
-        "</td><td>" +
-        clgname +
-        "</td><td>" +
-        cgpa +
-        "</td><td>" +
-        branch +
-        "</td><td>" +
-        selectS +
-        "</td><td>" +
-        selectC +
-        "</td><td>" +
-        zip +
-        "</td><td>" +
-        date +
-        '</td><td><a href="javascript:void(0);" class="remCF1 btn  btn-danger">Remove</a></td></tr>'
-      );
-    }
-  });
-
-  $(document).on("click", ".remCF1", function () {
-    $(this).parent().parent().remove();
-    $("#myTable tbody tr").each(function (i) {
-      $($(this).find("td")[0]).html(i + 1);
-    });
-  });
-
-
-
-
-
-
-
+ 
 });
 $("#save").click(function () {
-  let Name = $("#fname").val();
-  let Mobile = $("#fmobile").val();
-  let Email = $("#femail").val();
-  let State = $("#State").val();
-  let City = $("#City").val();
-  let Collage = $("#fcollage").val();
-  let Branch = $("#fbranch").val();
-  let CGPA = $("#fcgpa").val();
-  let FromToWhenYouStudied = $("#fdate").val();
-  let Zip = $("#zip").val();
-
-  var StudentDetails =
-    "{ " +
-    '"Name":' +
-    Name +
-    ',"Mobile":' +
-    Mobile +
-    ',"Email":' +
-    Email +
-    ", " +
-    '"State":' +
-    State +
-    ',"City":' +
-    City +
-    ',"CollageName":' +
-    Collage +
-    ", " +
-    '"Branch":' +
-    Branch +
-    ',"CGPA":' +
-    CGPA +
-    ',"FromToWhenYouStudied":' +
-    FromToWhenYouStudied +
-    ',"Zip":' +
-    Zip +
-    " " +
-    "}";
-
   var studentData = localStorage.getItem("studentData");
-  //var studentData = sessionStorage.getItem("studentData");
-  if (studentData != null) {
-    var studentJsonData = JSON.parse(studentData);
-    studentJsonData.students.push(StudentDetails);
-    localStorage.setItem(
-      "studentData",
-      JSON.stringify(studentJsonData)
-    );
-    //sessionStorage.setItem("studentData", JSON.stringify(studentData));
+  var StudentDetails = {
+    dataId: $("#dataId").val(),
+    Name: $("#fname").val(),
+    Mobile: $("#fmobile").val(),
+    Email: $("#femail").val(),
+    State: $("#State").val(),
+    Collage: $("#fcollage").val(),
+    City: $("#City").val(),
+    Branch: $("#fbranch").val(),
+    CGPA: $("#fcgpa").val(),
+    FromToWhenYouStudied: $("#fdate").val(),
+    Zip: $("#zip").val(),
+  };
+
+  if (id === "no") {
+    if (studentData != null) {
+      var studentJsonData = JSON.parse(studentData);
+      if(studentJsonData?.students && studentJsonData?.students[parseInt(StudentDetails.dataId)] ){
+        studentJsonData.students[parseInt(StudentDetails.dataId)]=StudentDetails
+        localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+      }else{
+      studentJsonData.students.push(StudentDetails);
+      localStorage.setItem("studentData", JSON.stringify(studentJsonData));}
+    } else {
+      var studentData = JSON.parse('{"students": []}');
+      studentData.students.push(StudentDetails);
+      localStorage.setItem("studentData", JSON.stringify(studentData));
+    }
   } else {
-    var studentData = JSON.parse('{"students": []}');
-    studentData.students.push(StudentDetails);
-    localStorage.setItem("studentData", JSON.stringify(studentData));
-    //sessionStorage.setItem("studentData", JSON.stringify(studentData));
+    let datal = JSON.parse(localStorage.getItem("studentData"));
+    datal[id] =students.Name;
+    localStorage.setItem("studentData", JSON.stringify(datal));
   }
+  selectData();
+
   // swal({
   //   title: "Student",
-  //   text: "Student Detail Added successfully",
+  //   text: "Student Detail Added successfully",S
   //   icon: "success",
   //   button: "Ok",
   // });
   // swal("Here's the title!", "...and here's the text!");
-  $("#myModal").modal("hide");
 });
+
+function selectData() {
+  var datal = JSON.parse(localStorage.getItem("studentData"));
+  if (datal != null) {
+    let html = "";
+
+    for (let i = 0; i < datal.students.length; i++) {
+      html =
+        html +
+        `<tr id = ${i} >
+        <td>${i + 1}</td>
+        <td>${datal.students[i].Name}</td>
+        <td>${datal.students[i].Mobile}</td>
+        <td>${datal.students[i].Email}</td>
+        <td>${datal.students[i].Collage}</td>
+        <td>${datal.students[i].CGPA}</td>
+        <td>${datal.students[i].Branch}</td>
+        <td>${datal.students[i].State}</td>
+        <td>${datal.students[i].City}</td>
+        <td>${datal.students[i].Zip}</td>
+        <td>${datal.students[i].FromToWhenYouStudied}</td>
+        <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger border">Delete</a><a href="javascript:void(0);"  onclick="editData(${i})" class="remCF1 btn btn-warning">Edit</a></td>
+        <tr>`;
+    }
+    document.getElementById("root").innerHTML = html;
+  }
+}
+
+function deleteData(rid) {
+  let datal = JSON.parse(localStorage.getItem("studentData"));
+  console.log("index", rid);
+  datal.students.splice(rid, 1);
+  localStorage.setItem("studentData", JSON.stringify(datal));
+  selectData();
+}
+
+function editData(rid) {
+  let datal = JSON.parse(localStorage.getItem("studentData"));
+  document.getElementById("dataId").value = rid;
+  document.getElementById("fname").value = datal.students[rid].Name;
+  document.getElementById("fmobile").value = datal.students[rid].Mobile;
+  document.getElementById("femail").value = datal.students[rid].Email;
+  document.getElementById("fcollage").value = datal.students[rid].Collage;
+  document.getElementById("fcgpa").value = datal.students[rid].CGPA;
+  document.getElementById("fbranch").value = datal.students[rid].Branch;
+  document.getElementById("State").value = datal.students[rid].State;
+  document.getElementById("City").value = datal.students[rid].City;
+  document.getElementById("zip").value = datal.students[rid].Zip;
+  document.getElementById("fdate").value =
+    datal.students[rid].FromToWhenYouStudied;
+
+    document.getElementById("save").innerHTML="save"
+   
+}
