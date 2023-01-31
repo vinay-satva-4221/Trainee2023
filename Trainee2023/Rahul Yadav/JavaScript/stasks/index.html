@@ -25,13 +25,14 @@
         <form id="basic_form">
             <div class="row mt-2 text-light">
                 <div class="col-md-6 col-sm-12">
+                    <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" />
                     <label for="name" class="form-label">Name:</label>
                     <input type="text" class="form-control " id="name" placeholder="enter name" name="name" required>
 
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label for="mobile" class="form-label">Mobile:</label>
-                    <input type="tel" class="form-control " name="mobile" id="mobile" maxlength="10"
+                    <input type="number" class="form-control " name="mobile" id="mobile" maxlength="10"
                         placeholder="mobile number" minlength="10" min="0" required>
 
                 </div>
@@ -39,7 +40,7 @@
             <div class="row  mt-2 text-light">
                 <div class="col-md-6 col-sm-12">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control " name="email" id="email" placeholder="enter your mail id"
+                    <input type="text" class="form-control " name="email" id="email" placeholder="enter your email id"
                         required>
                 </div>
 
@@ -55,7 +56,7 @@
                 <div class="col-md-6 col-sm-12">
                     <label for="cgpa" class="form-label">CGPA</label>
                     <input type="text" class="form-control " name="cgpa" id="cgpa" placeholder="enter cgpa" max="10"
-                        min="0" maxlength="2" required>
+                        min="0" maxlength="3" required>
 
                 </div>
 
@@ -131,14 +132,50 @@
 
 
             <div style="text-align: left;">
-                <button type="button" id="addrow" class="btn me-5 " style="background-color: skyblue; width: 30%;">Add
+                <button type="button" id="addrow" class="btn me-5 ">Add
                     Row</button>
-                <button type="button" id="export" class="btn me-5"
-                    style="background-color: palegreen; width: 30%;">Export</button>
-                <button class="save">save</button>
+                <button type="button" id="export" class="btn me-5">Export</button>
+                <button type="button" id="save" class="btn me-5">save</button>
             </div>
 
-            <div class="table-responsive container p-4  ">
+
+            <div class="container mt-2">
+                <table class="w3-table-all border table-responsive" id="myTable">
+                    <thead>
+                        <tr class="w3-blue">
+                            <th nowrap class="border ">Sno.</th>
+                            <th nowrap class="border p-1">Name</th>
+                            <th nowrap class="border p-1">Mobile</th>
+                            <th nowrap class="border p-1">Email</th>
+                            <th nowrap class="border p-1">College Name</th>
+                            <th nowrap class="border p-1">CGPA</th>
+                            <th nowrap class="border p-1">Branch Name</th>
+                            <th nowrap class="border p-1">State</th>
+                            <th nowrap class="border p-1">City</th>
+                            <th nowrap class="border p-1">ZipCode</th>
+                            <th nowrap class="border p-1">Date</th>
+                            <th nowrap class="border p-1">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="root">
+                    </tbody>
+                </table>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="table-responsive container p-4  ">
                 <table id="table" class=" table table-bordered css-serial ">
                     <tr class="border">
                         <th>Sr.no</th>
@@ -162,7 +199,7 @@
 
                 </table>
 
-            </div>
+            </div> -->
         </form>
     </div>
     <script src="./myscript.js"></script>

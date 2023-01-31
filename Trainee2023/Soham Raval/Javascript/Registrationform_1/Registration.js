@@ -1,6 +1,9 @@
 
-
+let id = "no";
 $(document).ready(function () {
+
+    
+
 
     const CityData = '{"Citys":[' +
         '{"StateId":"Madhya Pradesh","Id":"Indore","Name":"Indore"},' +
@@ -57,50 +60,28 @@ $(document).ready(function () {
         },
 
     }
-    window.onchange = function () {
-        var state = document.getElementById("state");
-        var city = document.getElementById("city");
 
-        for (var x in state) {
-            state.options[state.options.length] = new Option(x, x);
-        }
-        state.onchange = function () {
-            //empty Chapters- and Topics- dropdowns
-            city.length = 1;
-            //display correct values
-            for (var y in subjectObject[this.value]) {
-                city.options[city.options.length] = new Option(y, y);
-            }
-        }
 
-    }
 
-    
-
-    //
     $("#save").click(function () {
-        let Name = $("#name").val();
-        let Mobile = $("#mobile").val();
-        let Email = $("#email").val();
-        let State = $("#State").val();
-        let City = $("#City").val();
-        let Collage = $("#collegename").val();
-        let Branch = $("#branch").val();
-        let CGPA = $("#cgpa").val();
-        let FromToWhenYouStudied = $("#date").val();
-        let Zip = $("#zip").val();
-        let name=document.getElementById("name").value;
-        let mobile=document.getElementById("mobile").value;
-        let email=document.getElementById("email").value;
-        let state=document.getElementById("State").value;
-        let city=document.getElementById("City").value;
-        let collage=document.getElementById("collegename").value;
-      debugger
+        var studentData = localStorage.getItem("studentData");
+
+        // var Name = $("#name").val();
+        // var Mobile = $("#mobile").val();
+        // var Email = $("#email").val();
+        // var State = $("#State").val();
+        // var City = $("#City").val();
+        // var Collage = $("#collegename").val();
+        // var Branch = $("#branch").val();
+        // var CGPA = $("#cgpa").val();
+        // var FromToWhenYouStudied = $("#date").val();
+        // var Zip = $("#zip").val();
       
+
         var StudentDetails = {
-          // id: studentData.length +1 ,
-          
-         Name:$("name").val(),
+            dataId: $("#dataId").val(),
+            
+          Name: $("#name").val(),
           Mobile: $("#mobile").val(),
           Email: $("#email").val(),
           State: $("#State").val(),
@@ -109,25 +90,81 @@ $(document).ready(function () {
           Branch: $("#branch").val(),
           CGPA: $("#cgpa").val(),
           FromToWhenYouStudied: $("#date").val(),
-          Zip: $("#zip").val()
+          Zip: $("#zip").val(),
         };
-    
-        var studentData = (localStorage.getItem("studentData"));
-        if (studentData != null) {
-          var studentJsonData = JSON.parse(studentData);
-          
-          studentJsonData.students.push(StudentDetails);
-          localStorage.setItem("studentData", JSON.stringify(studentJsonData));
-          
-        } else {
-          var studentData = JSON.parse('{"students": []}');
-          studentData.students.push(StudentDetails);
-          localStorage.setItem("studentData", JSON.stringify(studentData));
-        }
+      
+        if (id === "no") 
+        {
+            if (studentData != null) {
+              var studentJsonData = JSON.parse(studentData);
+              if(studentJsonData.students && studentJsonData.students[parseInt(StudentDetails.dataId)] )
+              {
+                studentJsonData.students[parseInt(StudentDetails.dataId)]=StudentDetails
+                localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+              }
+              else{
+                    studentJsonData.students.push(StudentDetails);
+                    localStorage.setItem("studentData", JSON.stringify(studentJsonData));}
+            } else {
+              var studentData = JSON.parse('{"students": []}');
+              studentData.students.push(StudentDetails);
+              localStorage.setItem("studentData", JSON.stringify(studentData));
+            }
+          } 
+          else 
+          {
+            let datal = JSON.parse(localStorage.getItem("studentData"));
+            datal[id] =students.Name;
+            localStorage.setItem("studentData", JSON.stringify(datal));
+          }
+          selectData();
+
       });
-          
 
 });
+
+
+
+
+function selectData() {
+    var isValid = validateform()
+
+    if (isValid) {
+        swal("your detais are valid!", "done!", "success");
+
+        $("#myTable" ).show();
+  
+    }
+    else{
+        $("#myTable" ).hide();
+    }
+    var datal = JSON.parse(localStorage.getItem("studentData"));
+    if (datal != null) {
+      let addtable = "";
+  
+      for (let i = 0; i < datal.students.length; i++) {
+        addtable =
+        addtable +
+          `<tr id = ${i} >
+          <td>${i + 1}</td>
+          <td>${datal.students[i].Name}</td>
+          <td>${datal.students[i].Mobile}</td>
+          <td>${datal.students[i].Email}</td>
+          <td>${datal.students[i].Collage}</td>
+          <td>${datal.students[i].CGPA}</td>
+          <td>${datal.students[i].Branch}</td>
+          <td>${datal.students[i].State}</td>
+          <td>${datal.students[i].City}</td>
+          <td>${datal.students[i].Zip}</td>
+          <td>${datal.students[i].FromToWhenYouStudied}</td>
+          <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn  border">Delete</a>
+          <a href="javascript:void(0);"  onclick="editData(${i})" id="edit" class="remCF1 btn border">Edit</a></td>
+          <tr>`;
+      }
+      document.getElementById("root").innerHTML = addtable; 
+    }
+    
+  }
 
 function validateName() {
     var regName = /^[a-zA-Z]+$/;
@@ -146,9 +183,13 @@ function validateName() {
             return false;
         } else {
             document.getElementById('NAME').style.display = "none";
+            swal("your name is valid!", "done!", "success");
+            
             return true;
         }
     }
+
+    
 }
 function validateMobile() {
     var regName = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
@@ -166,6 +207,7 @@ function validateMobile() {
             return false;
         } else {
             document.getElementById('MOBILE').style.display = "none";
+
             return true;
         }
     }
@@ -181,6 +223,8 @@ function validateemail() {
         return false;
     } else {
         document.getElementById('emailerror').style.display = "none";
+        swal("your email is valid!", "done!", "success");
+
         return true;
     }
 }
@@ -228,7 +272,7 @@ function branchfor() {
 function statefor() {
     var state = document.getElementById("State");
     if (state.value == "") {
-        document.getElementById("errorstate").innerHTML = "please select branch field";
+        document.getElementById("errorstate").innerHTML = "please select state field";
         document.getElementById("errorstate").style.display = "unset";
         document.getElementById("State").focus();
         return false;
@@ -238,7 +282,7 @@ function statefor() {
 }
 function zipfor() {
 
-    var regName = /^\d{5}$/;
+    var regName = /^\d{6}$/;
     var zip = document.getElementById('zip').value;
     var vzip = document.getElementById('errorzip')
     if (!regName.test(zip)) {
@@ -252,8 +296,58 @@ function zipfor() {
     }
 
 }
+function validateform()
+{
+  
+    
+    if(!validateName() && !validateMobile() && !validateemail() && !validatecollegename() &&  !validatecgpa() && !branchfor() && !statefor() && !zipfor())
+        {
+            return false;
+  
+        }
+        else{
+
+          return true;
+            
+        }
+}
+
+function deleteData(rid)
+{
+    let deleteData=JSON.parse(localStorage.getItem('studentData'))
+    deleteData.students.splice(rid,1);
+    localStorage.setItem("studentData",JSON.stringify(deleteData));
+    swal("your item is deleted!", "done!", "success");
+
+    selectData();
 
 
+}
 
+function editData(rid)
+{
+    let editData=JSON.parse(localStorage.getItem("studentData"));
+    document.getElementById("dataId").value = rid;
 
+    document.getElementById("name").value=editData.students[rid].Name;
+    document.getElementById("mobile").value=editData.students[rid].Mobile;
+    document.getElementById("email").value=editData.students[rid].Email;
+    document.getElementById("State").value=editData.students[rid].State;
+    document.getElementById("collegename").value=editData.students[rid].Collage;
+    document.getElementById("City").value=editData.students[rid].City;
+    document.getElementById("branch").value=editData.students[rid].Branch;
+    document.getElementById("cgpa").value=editData.students[rid].CGPA;
+    document.getElementById("date").value=editData.students[rid].FromToWhenYouStudied;
+    document.getElementById("zip").value=editData.students[rid].Zip;
+    // localStorage.setItem("studentData",JSON.stringify(editData));
+    // var savebutton=document.getElementById("save");
+    // savebutton.innerHTML="update";
+    // savebutton.setAttribute("index",rid);
+    document.getElementById("save").innerHTML="update"
 
+selectData();
+}
+$(document).ready(function () {
+    selectData();
+  
+});
