@@ -150,9 +150,7 @@ function validateinvestment() {
 }
 
 function getdata() {
-
-
-    var isValid = validatecheck()
+  var isValid = validatecheck()
 
     if (isValid) {
         $('#myModal').modal('show')

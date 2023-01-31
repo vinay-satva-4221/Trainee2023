@@ -221,7 +221,7 @@ function lnamevalidate() {
 function genderValidate() {
   var valid = true;
   var e = document.getElementById("sel1");
-  debugger;
+  // debugger;
   var strUser = e.options[e.selectedIndex].value;
   var strUser1 = e.options[e.selectedIndex].text;
   var message = "";
@@ -326,7 +326,7 @@ function passValidate() {
 function bankValidate() {
   var valid = true;
   var e = document.getElementById("banksel");
-  debugger;
+  // debugger;
   var strUser = e.options[e.selectedIndex].value;
   var strUser1 = e.options[e.selectedIndex].text;
   var message = "";
@@ -341,7 +341,7 @@ function bankValidate() {
 function branchValidate() {
   var valid = true;
   var e = document.getElementById("branch");
-  debugger;
+  // debugger;
   var strUser = e.options[e.selectedIndex].value;
   var strUser1 = e.options[e.selectedIndex].text;
   var message = "";
@@ -356,7 +356,7 @@ function branchValidate() {
 function selectacValidate() {
   var valid = true;
   var e = document.getElementById("account");
-  debugger;
+  // debugger;
   var strUser = e.options[e.selectedIndex].value;
   var strUser1 = e.options[e.selectedIndex].text;
   var message = "";
@@ -389,7 +389,7 @@ function acnoValidate() {
 function mcardValidate() {
   var valid = true;
   var e = document.getElementById("mastercard");
-  debugger;
+  // debugger;
   var strUser = e.options[e.selectedIndex].value;
   var strUser1 = e.options[e.selectedIndex].text;
   var message = "";
