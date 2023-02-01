@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+<body>
+    <br>
+<div class="container">
+    <h2>Students</h2>
+    <button class="btn btn-primary" style="float: right;margin-top:-40px" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>  Add Row</button>
+    <button class="btn btn-danger" style="float: right;margin-top:-40px; margin-right:10%;"  id="DeleteAllData"><span class="glyphicon glyphicon-trash"></span>  Delete All Data</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@example.com</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@example.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Student Registration Form</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label  for="Name">Name:</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Enter Name" tabindex="1">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="CollageName">Collage Name:</label>
+                        <input type="text" class="form-control" id="CollageName" placeholder="Enter Collage Name" tabindex="6">
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Mobile">Mobile:</label>
+                        <input type="number" class="form-control" id="Mobile" placeholder="Enter Mobile" tabindex="2">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BranchName">Branch Name:</label>
+                        <input type="text" class="form-control" id="BranchName" placeholder="Enter Branch Name" tabindex="7">
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Email">Email:</label>
+                        <input type="email" class="form-control" id="Email" placeholder="Enter email" tabindex="3">
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="CGPA">CGPA:</label>
+                        <input type="number" class="form-control" id="CGPA" placeholder="Enter CGPA" tabindex="8">
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label  for="State">State:</label>
+                        <select id="State" class="form-control">
+                            <option value="" selected="selected">Select subject</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label  for="studied">From to when you studied:</label>
+                        <input type="text" class="form-control" id="studied" placeholder="From to when you studied" tabindex="9">
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="City">City:</label>
+                        <select id="City" class="form-control" tabindex="5"></select>                        
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label  for="Zip">Zip:</label>
+                        <input type="number" class="form-control" id="Zip" placeholder="Enter Zip" tabindex="10">
+                      </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">            
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="AddRow">Add Row</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    const CityData = '{"Citys":['+
+                    '{"StateId":"1","Id":"1","Name":"Indore"},' +
+                    '{"StateId":"1","Id":"2","Name":"Bhopal"},' +
+                    '{"StateId":"2","Id":"3","Name":"Sirohi"},' +
+                    '{"StateId":"2","Id":"4","Name":"Udaipur"},' +
+                    '{"StateId":"2","Id":"5","Name":"Jaisalmer"},' +
+                    '{"StateId":"3","Id":"6","Name":"Ahmedabad"},' +
+                    '{"StateId":"3","Id":"7","Name":"Vadodara"},' +
+                    '{"StateId":"3","Id":"8","Name":"Surat"},' +
+                    '{"StateId":"4","Id":"9","Name":"Ludhiana"},' +
+                    '{"StateId":"4","Id":"10","Name":"Amritsar"},' +
+                    '{"StateId":"4","Id":"11","Name":"Patiala"}]}';
+
+    const StateData = '{"States":['+
+                    '{"Id":"1","Name":"Madhya Pradesh"},' +
+                    '{"Id":"2","Name":"Rajasthan"},' +
+                    '{"Id":"3","Name":"Gujarat"},' +                    
+                    '{"Id":"4","Name":"Punjab"}]}';
+
+                    //StateData.States[0].Id
+                    //const test = {States:[{"fds":1,"fdsf":1}]}
+                    //{States:[{"fds":1,"fdsf":1}]}
+                    
+
+    $(document).ready(function(){
+        //createCookie("test","t65565",7);
+        //document.cookie="test=1201";
+
+        var StateJsonData = JSON.parse(StateData);
+        $.each(StateJsonData.States,function(i,option){
+            $("#State").append($('<option></option>').val(option.Id).html(option.Name));
+        })
+
+        $("#State").change(function(){
+            var CityJsonData = JSON.parse(CityData);
+            $("#City").html('');
+            $.each(CityJsonData.Citys,function(i,option){
+                if($("#State").val() == option.StateId){
+                    $("#City").append($('<option></option>').val(option.Id).html(option.Name));
+                }
+        })
+
+        });
+
+        $("#AddRow").click(function(){
+
+            let Name = $("#Name").val();
+            let Mobile = $("#Mobile").val();
+            let Email = $("#Email").val();
+            let State = $("#State").val();
+            let City = $("#City").val();
+            let Collage = $("#CollageName").val();
+            let Branch = $("#BranchName").val();
+            let CGPA = $("#CGPA").val();
+            let FromToWhenYouStudied = $("#studied").val();
+            let Zip = $("#Zip").val();
+
+            var StudentDetails = '{ '+
+                '"Name":'+Name+',"Mobile":'+Mobile+',"Email":'+Email+', '+
+                '"State":'+State+',"City":'+City+',"CollageName":'+Collage+', '+
+                '"Branch":'+Branch+',"CGPA":'+CGPA+',"FromToWhenYouStudied":'+FromToWhenYouStudied+',"Zip":'+Zip+' '+
+                '}'
+
+                var studentData = localStorage.getItem("studentData");
+                //var studentData = sessionStorage.getItem("studentData");
+                if(studentData!=null)
+                {
+                    var studentJsonData = JSON.parse(studentData);
+                    studentJsonData.students.push(StudentDetails);
+                    localStorage.setItem("studentData",JSON.stringify(studentJsonData));
+                    //sessionStorage.setItem("studentData", JSON.stringify(studentData));
+                }
+                else{
+                    var studentData = JSON.parse('{"students": []}');
+                    studentData.students.push(StudentDetails);
+                    localStorage.setItem("studentData",JSON.stringify(studentData));
+                    //sessionStorage.setItem("studentData", JSON.stringify(studentData));
+                }
+                swal({
+            title:"Student",
+            text:"Student Detail Added successfully",
+            icon:"success",
+            button:"Ok"
+        });
+                // swal("Here's the title!", "...and here's the text!");
+            $("#myModal").modal('hide');
+        });
+
+        $("#DeleteAllData").click(function(){
+
+            swal({
+  title: "Are you sure you want to delete all student data?",
+  text: "Once data is deleted, you will not be able to recover it!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {    
+  if (willDelete) {
+    localStorage.clear()
+    localStorage.removeItem("studentData");
+
+    // sessionStorage.removeItem("studentData");    
+    // sessionStorage.clear();
+
+    swal("Student Data has been deleted successfully!",{
+      icon: "success",
+    });
+  }
+});
+        })
+            //console.log(States.firstName);
+    });
+    function createCookie(name,value,days) {
+	if (days)
+   {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "expires=''";
+    var curCookie = name + "=" + value + expires     
+    ", path= /";    
+
+  document.cookie = curCookie;
+	//document.cookie = name+"="+value+expires+"; path=/; ";
+}
+
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function eraseCookie(name) {
+	createCookie(name,"",-1);
+}
+  </script>
+</body>
+</html> 
+

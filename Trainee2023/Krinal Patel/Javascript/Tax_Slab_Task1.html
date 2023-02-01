@@ -51,6 +51,7 @@
                     <label for="address" class="form-label">Birthdate:</label>
                     <input type="text" class="form-control" id="birthday" name="birthday" required />
                     <p id="invalid_bday"></p>
+                    <p id="i_ages"></p>
 
                 </div>
 
@@ -60,8 +61,8 @@
                     <select class="form-select " id="gen" onchange="return validategender()" required
                         aria-label="Default select example">
                         <option value=""> Select Gender </option>
-                        <option>Male</option>
-                        <option>Female</option>
+                        <option id="male">Male</option>
+                        <option id="female">Female</option>
                     </select>
                     <p id="genmsg" style="color: red;"></p>
                 </div>
@@ -70,7 +71,7 @@
             <div class="row">
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
                     <label for="income" class="form-label">Income:</label>
-                    <input type="number" class="form-control" id="income" name="income" 
+                    <input type="text" class="form-control" id="income" name="income" 
                     onchange="return validateincome()" placeholder="" required>
                     <p id="invalid_income"></p>
 
@@ -80,7 +81,7 @@
 
                 <div class="col-sm-12  col-xs-12 col-md-12  col-lg-4 col-xl-4">
                     <label for="loan" class="form-label">Loan:</label>
-                    <input type="number" id="loan" class="form-control" placeholder="Loan"
+                    <input type="text" id="loan" class="form-control" placeholder="Loan"
                         onchange="return validateloan()" name="loan" required>
                         <p id="invalid_loan"></p>
 
@@ -123,8 +124,8 @@
                                         <label for="tax_amount"><b>Taxable Amount : </b> <span id="t_amt"></span></label>   <br>
                                      
 
-                                        <label for="payable_tax"><b>Payable Tax : </b> <span id="msgsetloan"></span></label> <br>
-                                        <label for="investtest"><b>Testing investment:</b> <span id="value3"></span></label>
+                                        <label for="payable"><b>Payable Tax : </b> <span id="payable"></span></label> <br>
+                                        <!-- <label for="investtest"><b>Testing investment:</b> <span id="value3"></span></label> -->
 
                                        
                                 <div class="modal-footer">
