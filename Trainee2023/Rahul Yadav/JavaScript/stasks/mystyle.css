@@ -23,10 +23,10 @@ label.error {
     color: red;
 }
 
-.css-serial {
+  /* .css-serial { 
     counter-reset: serial-number;
-    /* Set the serial number counter to 0 */
-}
+    Set the serial number counter to 0
+  } */
 
 .css-serial td:first-child:before {
     counter-increment: serial-number;
@@ -64,4 +64,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+table,tr,td,th{
+    border: 1px solid black;
 }
