@@ -1,0 +1,55 @@
+table,
+td,
+tr,
+th {
+    border: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+td {
+    text-align: center;
+    padding: 0px;
+    width: 80px;
+    height: 80px;
+}
+
+input[type=button] {
+    height: 100%;
+    width: 100%;
+    border: 1px solid gray;
+}
+
+input[type=text] {
+    height: 100%;
+    width: 99%;
+    border: none;
+    color: #fff;
+    background-color: #000;
+    text-align: right;
+    outline: none;
+}
+
+#num {
+    background-color: #fff;
+}
+
+#eq {
+    background-color: #f87d4f;
+}
+
+#op {
+    background-color: #e7e7e7;
+}
+
+#txtDiv {
+    background-color: #000;
+    color: #fff;
+    padding: 0px 15px;
+    height: 100%;
+    border-radius: 10px 10px 0px 0px;
+    text-size-adjust: 80%;
+}

@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation_Task</title>
+    <link rel="stylesheet" href="../Bootstrap_setup/css/bootstrap.min.css">
+    <style>
+    
+    </style>
+ 
+    <script src="./cal.js"></script>
+</head>
+
+<body>
+   
+    <div class="container mt-5 ">
+
+        <form id="check">
+           
+            <div class="row mb-1 bg-secondary p-3 ">
+                <div class="col-12  col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                    <label for="t1" class="form-label">T1</label>
+                    <input type="text" class="form-control" id="t1" aria-describedby="t1value"/>
+                   
+                </div>
+
+                <div class="col-12  col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                    <label for="t2" class="form-label">T2</label>
+                    <input type="text" class="form-control" id="t2" aria-describedby="t2value">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+
+                <div class="col-12  col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                    <label for="t3" class="form-label">T3</label>
+                    <input type="text" class="form-control" id="t3" aria-describedby="t3value">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+           
+            </div>
+            
+         
+            <div class="row mb-1 bg-secondary p-3">
+                <div class="col-12  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="ans" class="form-label">ANS</label>
+                    <input type="text" class="form-control" id="ans" disabled >
+                    
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+            </div>
+
+            
+
+          
+            <div class="row bg-secondary p-3">
+                <div class="col-12  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <button type="button" onclick=" calculate()" class="btn btn-primary mt-4">CALCULATE</button>
+                </div>
+                <!-- <p id="demo"></p> -->
+            </div>
+          
+
+
+        </form>
+
+    </div>
+    
+    <script src="../Bootstrap_setup/js/bootstrap.min.js"></script>
+    <script src="../Bootstrap_setup/jquery-3.6.3.min.js"></script>
+</body>
+
+</html>

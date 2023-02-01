@@ -329,19 +329,7 @@ function accountv() {
     return true;
   }
 }
-// function accv() {
-//   var bankoption = document.getElementById("bank");
-//   if (bankoption.value == "") {
-//       document.getElementById('vbb').innerHTML = ("Please select an option!");
-//       document.getElementById('vbb').style.display = "unset";
-//       document.getElementById('vbb').focus();
-//       return false;
-//   }
-//   else {
-//       document.getElementById('vbb').style.display = "none";
-//       return true;
-//   }
-// }
+
 
 function validateAcctNo() {
   let setaccn = /^([0-9]{4}[\s-]?){3}([0-9]{4})$/;
