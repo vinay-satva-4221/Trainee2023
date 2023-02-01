@@ -17,6 +17,7 @@
         <form class="row mt-2 needs-validation" novalidate>
             <div class="row">
                 <div class="col-lg-6">
+                    <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" />
                     <label for="validationCustom01" class="form-label">First name</label>
                     <input type="text" class="form-control" id="fname" onkeyup="return nameV()" required />
                     <span id="navalid" class="error1"></span>
@@ -125,6 +126,7 @@
                     onclick="return validateForm() ,selectData()">
                   <p>  Add Row</p>
                 </button>
+                
             </div>
     </div>
     <div class="container mt-2">
@@ -150,6 +152,7 @@
         </table>
         </form>
     </div>
+
 </body>
 <script src="js/bootstrap.min.js"></script>
 <script src="jquery/jquery.js"></script>

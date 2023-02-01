@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,13 @@
     <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/jquery-3.6.3.js"></script>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />    
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>Form</title>
 </head>
@@ -21,6 +24,7 @@
         <form name="myform" id="form">
             <div class="row">
                 <div class="col-md-6 mb-4">
+                    <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" />
                     <label for="">Name:</label>
                     <input type="text" class="form-control" id="name" class="validate" placeholder="Name" onchange="return validateName()">
                     <span id="NAME" style="color: red;"></span>
@@ -82,7 +86,9 @@
 
                     <span id="errorzip" style="color: red;"></span>
                 </div>
+
             </div>
+
             <div class="row">
                 
                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -119,32 +125,36 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 ">        
-                <button type="button" class="btn bg-info" id="save" >ADD ROW</button>
+                <button type="button" class="btn bg-info" id="save" onclick="selectData()">ADD ROW</button>
              
-                <button type="button" class="btn bg-success" >Export</button>
             </div>
-            </form>
-            <table  class="w3-table-all border" id="myTable" border="1">
-                <thead>     
-                <tr class="w3-blue">
-                    <th  nowrap>Sno.</th>
-                    <th  nowrap>Name</th>
-                    <th  nowrap>Mobile</th>
-                    <th  nowrap>Email</th>
-                    <th  nowrap>College Name</th>
-                    <th  nowrap>CGPA</th>
-                    <th  nowrap>Branch Name</th>
-                    <th  nowrap>State</th>
-                    <th  nowrap>City</th>
-                    <th  nowrap>ZipCode</th>
-                    <th  nowrap>Date</th>
-                </tr>
-                </thead>
-                <tbody >
-              
-                </tbody>
-            </table> 
-    </div>
+        </form>
+
+            
+            <div class="container mt-2">
+                <table class="w3-table-all border" id="myTable">
+                    <thead>
+                        <tr class="w3-blue">
+                            <th nowrap class="border ">Sno.</th>
+                            <th nowrap class="border p-1">Name</th>
+                            <th nowrap class="border p-1">Mobile</th>
+                            <th nowrap class="border p-1">Email</th>
+                            <th nowrap class="border p-1">College Name</th>
+                            <th nowrap class="border p-1">CGPA</th>
+                            <th nowrap class="border p-1">Branch Name</th>
+                            <th nowrap class="border p-1">State</th>
+                            <th nowrap class="border p-1">City</th>
+                            <th nowrap class="border p-1">ZipCode</th>
+                            <th nowrap class="border p-1">Date</th>
+                            <th nowrap class="border p-1">Button</th>
+                        </tr>
+                    </thead>
+                    <tbody id="root">
+                    </tbody>
+                </table>
+               
+            </div>
+      </div>  
 </body>
 <script src="./Registration.js"></script>
 </html>
