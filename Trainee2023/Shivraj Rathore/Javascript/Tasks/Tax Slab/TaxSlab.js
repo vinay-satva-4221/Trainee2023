@@ -19,27 +19,27 @@ $(document).ready(function () {
         return age >= min;
     });
 
-    $("#income").keypress(function(e){
+    $("#income").keypress(function (e) {
         var keyCode = e.which;
-    
-        if ( (keyCode != 8 || keyCode ==32 ) && (keyCode < 48 || keyCode > 57)) { 
-          return false;
+
+        if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+            return false;
         }
-      });
-      $("#loan").keypress(function(e){
+    });
+    $("#loan").keypress(function (e) {
         var keyCode = e.which;
-      
-        if ( (keyCode != 8 || keyCode ==32 ) && (keyCode < 48 || keyCode > 57)) { 
-          return false;
+
+        if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+            return false;
         }
-      });
-      $("#investment").keypress(function(e){
+    });
+    $("#investment").keypress(function (e) {
         var keyCode = e.which;
-       
-        if ( (keyCode != 8 || keyCode ==32 ) && (keyCode < 48 || keyCode > 57)) { 
-          return false;
+
+        if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
+            return false;
         }
-      });
+    });
 
     function percentage(num, per) {
         return (num / 100) * per;
@@ -59,10 +59,11 @@ $(document).ready(function () {
                 greaterThanZero: true,
             },
             investment: {
-               required : false,
-               greaterThanZero: false
+                required: false,
+                greaterThanZero: false
             },
             loan: {
+                required: false,
                 greaterThanZero: false,
             },
 
@@ -75,8 +76,10 @@ $(document).ready(function () {
             }
         },
         messages: {
-            name: { validname : "Please enter valid name",
-                    minlength : "Enter Full Name"},
+            name: {
+                validname: "Please enter valid name",
+                minlength: "Enter Full Name"
+            },
             mobile: {
                 digits: "Enter Numeric value",
                 minlength: "Check for 10 digits",
@@ -85,13 +88,13 @@ $(document).ready(function () {
             birthday: {
                 required: "Please enter you date of birth.",
                 minAge: "Age Should be 18 years or Above"
-            }, 
+            },
             gender: {
                 required: "Please Select Gender",
             },
             income: "Enter Income-- Can't be blank",
             investment: "Enter Investment-- Can't be blank",
-          
+
         }
     });
     $("#submit").click(function () {
@@ -99,11 +102,13 @@ $(document).ready(function () {
         if ($("#myform").valid() == true) {
             debugger
 
-            var modalname =  $("#name").val() ;
-            var loan = parseInt ( $("#loan").val() );
-            var investment =  $("#investment").val() ;
-            var income = parseInt ( $("#income").val() );
-            var req_investment = 0;
+            var modalname = $("#name").val();
+            var loan = parseInt($("#loan").val());
+            var investment = parseInt($("#investment").val());
+            var income = parseInt($("#income").val());
+
+            req_investment = 0;
+            var taxable_amount = 0;
 
             var dob = $('#birthday').val();
             if (dob != '') {
@@ -113,43 +118,40 @@ $(document).ready(function () {
 
             }
 
-            if (investment == "" || investment == 0)
-            {
+            if (investment == "" || investment == 0) {
                 investment = 0;
             }
 
-            if (loan == "" || loan==0) 
-            {
+            if (loan == "" || loan == 0) {
                 loan = 0;
             }
 
 
-            if (investment >= 100000) 
+            if (investment >= 100000) {
+                req_investment = 100000;
+            }
+            else (investment < 100000)
             {
-             req_investment = 100000;
+                req_investment = investment;
             }
-            else (investment < 100000 || investment == 0  )
-             {
-                 req_investment = investment;
-            }
-debugger
-          
 
-            if ( (income + loan) <= investment)
-            {
+
+            if ((income + loan) < investment) {
                 $("#modaltaxamount").html("Income should be greater than investment");
                 $("#payabletax").html("Income should be greater than investment");
             }
 
 
 
-            if (validage < 60 && $('#gender').val() == 'male' ) {
-              
-            taxable_amount = income - ( Math.min( percentage(income, 20), percentage(loan, 80)  + req_investment) );
+            if (validage < 60 && $('#gender').val() == 'male') {
+
+
+
+                taxable_amount = income - (Math.min(percentage(income, 20), percentage(loan, 80) + req_investment));
                 var tax_payable = taxable_amount - 240000;
                 var tax_slab_2 = 0;
-                var tax_slab_3 =0;
-                 var tax_remaining =  tax_payable - 360000 ;
+                var tax_slab_3 = 0;
+                var tax_remaining = tax_payable - 360000;
 
                 if (taxable_amount < 240000) {
                     $("#modalname").html(modalname);
@@ -162,101 +164,98 @@ debugger
 
 
                         $("#modalname").html(modalname);
-                        $("#modaltaxamount").html( taxable_amount);
+                        $("#modaltaxamount").html(taxable_amount);
                         $("#payabletax").html(tax_slab_2);
                         $("#RowTaxAmt").css("background-color", "red");
                         $("#RowPayableTax").css("background-color", "red");
-                        
-                       
+
+
                     }
-                    if((taxable_amount > 600000))
-                    {
-                          tax_slab_2 = percentage(360000 , 10);
-                          tax_slab_3 = tax_slab_2  + percentage(tax_remaining,20); 
+                    if ((taxable_amount > 600000)) {
+                        tax_slab_2 = percentage(360000, 10);
+                        tax_slab_3 = tax_slab_2 + percentage(tax_remaining, 20);
 
 
-                          $("#modalname").html(modalname);
-                          $("#modaltaxamount").html( taxable_amount);
-                          $("#payabletax").html(tax_slab_3);
-                          $("#RowTaxAmt").css("background-color", "red");
-                          $("#RowPayableTax").css("background-color", "red");
+                        $("#modalname").html(modalname);
+                        $("#modaltaxamount").html(taxable_amount);
+                        $("#payabletax").html(tax_slab_3);
+                        $("#RowTaxAmt").css("background-color", "red");
+                        $("#RowPayableTax").css("background-color", "red");
 
                     }
                 }
             }
-            if (validage < 60 && $('#gender').val() == 'female' ) {
-              
-                taxable_amount = income - ( Math.min( percentage(income, 20), percentage(loan, 80)  + req_investment) );
-    
-                    var tax_payable = taxable_amount - 270000;
-                    var tax_slab_2 = 0;
-                    var tax_slab_3 =0;
-                     var tax_remaining =  tax_payable - 430000 ;
-    
-    
-                    if (taxable_amount < 270000) {
+            if (validage < 60 && $('#gender').val() == 'female') {
+
+                taxable_amount = income - (Math.min(percentage(income, 20), percentage(loan, 80) + req_investment));
+
+                var tax_payable = taxable_amount - 270000;
+                var tax_slab_2 = 0;
+                var tax_slab_3 = 0;
+                var tax_remaining = tax_payable - 430000;
+
+
+                if (taxable_amount < 270000) {
+                    $("#modalname").html(modalname);
+                    $("#modaltaxamount").html("Hurray ! No tax...");
+                    $("#RowTaxAmt").css("background-color", "green");
+                }
+                else {
+                    if (taxable_amount >= 270000 && taxable_amount <= 700000) {
+                        tax_slab_2 = percentage(tax_payable, 10);
                         $("#modalname").html(modalname);
-                        $("#modaltaxamount").html("Hurray ! No tax...");
-                        $("#RowTaxAmt").css("background-color", "green");
+                        $("#modaltaxamount").html(taxable_amount);
+                        $("#payabletax").html(tax_slab_2);
+                        $("#RowTaxAmt").css("background-color", "red");
+                        $("#RowPayableTax").css("background-color", "red");
+
                     }
-                    else {
-                        if (taxable_amount >= 270000 && taxable_amount <= 700000) {
-                            tax_slab_2 = percentage(tax_payable, 10);
-                            $("#modalname").html(modalname);
-                            $("#modaltaxamount").html( taxable_amount);
-                            $("#payabletax").html(tax_slab_2);
-                            $("#RowTaxAmt").css("background-color", "red");
-                            $("#RowPayableTax").css("background-color", "red");
-                           
-                        }
-                        
-                        if((taxable_amount > 700000))
-                        {
-                              tax_slab_2 = percentage(430000, 10);
-                              tax_slab_3 = tax_slab_2  + percentage(tax_remaining,20);  
-                              $("#modalname").html(modalname);
-                              $("#modaltaxamount").html( taxable_amount);
-                              $("#payabletax").html(tax_slab_3);
-                              $("#RowTaxAmt").css("background-color", "red");
-                              $("#RowPayableTax").css("background-color", "red");
-    
-                        }
+
+                    if ((taxable_amount > 700000)) {
+                        tax_slab_2 = percentage(430000, 10);
+                        tax_slab_3 = tax_slab_2 + percentage(tax_remaining, 20);
+                        $("#modalname").html(modalname);
+                        $("#modaltaxamount").html(taxable_amount);
+                        $("#payabletax").html(tax_slab_3);
+                        $("#RowTaxAmt").css("background-color", "red");
+                        $("#RowPayableTax").css("background-color", "red");
+
                     }
                 }
-                if (validage > 60) {
-                    taxable_amount = income - ( Math.min( percentage(income, 20), percentage(loan, 80)  + req_investment) );
-                        var tax_payable = taxable_amount - 300000;
-                        var tax_slab_2 = 0;
-                        var tax_slab_3 =0;
-                         var tax_remaining =  tax_payable - 400000 ;
+            }
+            if (validage > 60) {
+                taxable_amount = income - (Math.min(percentage(income, 20), percentage(loan, 80) + req_investment));
+                var tax_payable = taxable_amount - 300000;
+                var tax_slab_2 = 0;
+                var tax_slab_3 = 0;
+                var tax_remaining = tax_payable - 400000;
 
-                        if (taxable_amount < 300000) {
-                            $("#modalname").html(modalname);
-                            $("#modaltaxamount").html("Hurray ! No tax...");
-                            $("#RowTaxAmt").css("background-color", "green");
-                        }
-                        else {
-                            if (taxable_amount >= 300000 && taxable_amount <= 700000) {
-                                tax_slab_2 = percentage(tax_payable, 10);
-                                $("#modalname").html(modalname);
-                                $("#modaltaxamount").html( taxable_amount);
-                                $("#payabletax").html(tax_slab_2);
-                                $("#RowTaxAmt").css("background-color", "red");
-                                $("#RowPayableTax").css("background-color", "red");
-                               
-                            }
-                            if((taxable_amount > 700000))
-                            {
-                                  tax_slab_2 = percentage(400000, 10);
-                                  tax_slab_3 = tax_slab_2  + percentage(tax_remaining,20); 
-                                  $("#modalname").html(modalname);
-                                  $("#modaltaxamount").html( taxable_amount);
-                                  $("#payabletax").html(tax_slab_3);
-                                  $("#RowTaxAmt").css("background-color", "red");
-                                  $("#RowPayableTax").css("background-color", "red");
-                            }
-                        }
+                if (taxable_amount < 300000) {
+                    $("#modalname").html(modalname);
+                    $("#modaltaxamount").html("Hurray ! No tax...");
+                    $("#RowTaxAmt").css("background-color", "green");
+                }
+                else {
+                    if (taxable_amount >= 300000 && taxable_amount <= 700000) {
+                        tax_slab_2 = percentage(tax_payable, 10);
+                        $("#modalname").html(modalname);
+                        $("#modaltaxamount").html(taxable_amount);
+                        $("#payabletax").html(tax_slab_2);
+                        $("#RowTaxAmt").css("background-color", "red");
+                        $("#RowPayableTax").css("background-color", "red");
+
                     }
+                    if ((taxable_amount > 700000)) {
+                        tax_slab_2 = percentage(400000, 10);
+                        tax_slab_3 = tax_slab_2 + percentage(tax_remaining, 20);
+                        $("#modalname").html(modalname);
+                        $("#modaltaxamount").html(taxable_amount);
+                        $("#payabletax").html(tax_slab_3);
+                        $("#RowTaxAmt").css("background-color", "red");
+                        $("#RowPayableTax").css("background-color", "red");
+                    }
+                }
+            }
             $('#exampleModal').modal('show');
         }
     });

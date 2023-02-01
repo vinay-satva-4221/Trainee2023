@@ -17,6 +17,8 @@
 
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
 
     <!-- Date Picker CDN -->
@@ -153,8 +155,9 @@
                 </div>
             </div>
             <div class="row mt-2 text-center">
-                <div class="col-md-3"> <button class="btn btn-info" type="button" id="addrow">Add Row</button></div>
-                <div class="col-md-3"><button class="btn btn-info" type="button">Extract Data</button></div>
+                <div class="col-md-3" id="divadrow"> <button class="btn btn-info" type="button" id="addrow">Add Row</button></div>
+                <div class="col-md-3" id="divsubmit"> <button class="btn btn-info" type="button" id="submit">Submit</button></div>
+                <div class="col-md-3" id="divextractdata"><button class="btn btn-info" type="button" id="extract">Extract Data</button></div>
             </div>
             <div>
                 <table id="tabledata" class="border table table-responsive auto-index  mt-5 ">

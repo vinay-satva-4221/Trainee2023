@@ -5,28 +5,14 @@
     <title>Tax slab Task 1</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- <link rel="stylesheet" href="CSS\bootstrap.min.css"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="Tax_Slab_Task1.css">
+    <link rel="stylesheet" href="./TaxSlabCalculation_Day2.css">
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
 
 </head>
 
 <body>
-    <div class="container p-4">
-
-        <h3>Tax Slab Calculation</h3><br>
-
+    <div class="container mt-4">
+        <h2 class="text-white">Tax Slab Calculation</h2><br>
         <form class="row needs-validation" id="taxform">
             <div class="row">
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
@@ -34,15 +20,12 @@
                     <input type="text" class="form-control" id="name" onchange="return validatename()" name="name"
                         placeholder="Name" required>
                     <p id="invalid_msg"></p>
-
                 </div>
-
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6">
                     <label for="mobile" class="form-label">Mobile:</label>
-                    <input type="number" id="mobile" class="form-control" onchange="return validatemobile()"
+                    <input type="text" id="mobile" class="form-control" onchange="return validatemobile()"
                         placeholder="Enter Mobile number" name="mobile" required>
                     <p id="invalid_msg1"></p>
-
                 </div>
             </div>
             <br><br><br><br>
@@ -52,10 +35,7 @@
                     <input type="text" class="form-control" id="birthday" name="birthday" required />
                     <p id="invalid_bday"></p>
                     <p id="i_ages"></p>
-
                 </div>
-
-
                 <div class="col-sm-12  col-xs-12 col-md-12  col-lg-6 col-xl-6">
                     <label for="apt" class="form-label">Gender:</label>
                     <select class="form-select " id="gen" onchange="return validategender()" required
@@ -71,28 +51,21 @@
             <div class="row">
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
                     <label for="income" class="form-label">Income:</label>
-                    <input type="text" class="form-control" id="income" name="income" 
-                    onchange="return validateincome()" placeholder="" required>
+                    <input type="text" class="form-control" id="income" name="income" onchange="return validateincome()"
+                        placeholder="" required>
                     <p id="invalid_income"></p>
-
-
                 </div>
-
-
                 <div class="col-sm-12  col-xs-12 col-md-12  col-lg-4 col-xl-4">
                     <label for="loan" class="form-label">Loan:</label>
                     <input type="text" id="loan" class="form-control" placeholder="Loan"
                         onchange="return validateloan()" name="loan" required>
-                        <p id="invalid_loan"></p>
-
-
+                    <p id="invalid_loan"></p>
                 </div>
-
                 <div class="col-sm-12  col-xs-12 col-md-12  col-lg-4 col-xl-4">
                     <label for="investment" class="form-label">Investment:</label>
-                    <input type="text" id="investment" class="form-control" placeholder="Investment" onchange="validateinvestment()" name="investment" required>
-                        <p id="invalid_investment"></p>
-
+                    <input type="text" id="investment" class="form-control" placeholder="Investment"
+                        onchange="validateinvestment()" name="investment" required>
+                    <p id="invalid_investment"></p>
                 </div>
             </div>
 
@@ -101,14 +74,15 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-4 bt">
                     <!--data-bs-toggle="modal" data-bs-target="#myModal"-->
-                    <button type="button" class="btn btn-success btn-lg m-3 text-white"  onclick="getdata()" >Calculate</button>
-                    <button type="button" class="btn btn-warning btn-lg m-3 text-white" value = "Reset data" onclick = "reset()">Reset</button>
+                    <button type="button" class="btn btn-success btn-lg m-3 text-white"
+                        onclick="getdata()">Calculate</button>
+                    <button type="button" class="btn btn-warning btn-lg m-3 text-white" value="Reset data"
+                        onclick="reset()">Reset</button>
 
                     <!-- The Modal -->
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
-
                                 <!-- Modal Header -->
                                 <div class="modal-header">
                                     <h4 class="modal-title">Tax Slab</h4>
@@ -119,23 +93,16 @@
                                 <div class="modal-body">
                                     <div>
                                         <label for="fname"><b>Name : </b> <span id="msgsetname"></span></label><br>
-
-
-                                        <label for="tax_amount"><b>Taxable Amount : </b> <span id="t_amt"></span></label>   <br>
-                                     
-
-                                        <label for="payable"><b>Payable Tax : </b> <span id="payable"></span></label> <br>
+                                        <label for="tax_amount"><b>Taxable Amount : </b> <span
+                                                id="t_amt"></span></label><br>
+                                        <label for="payable"><b>Payable Tax : </b> <span id="payable"></span></label>
+                                        <br>
                                         <!-- <label for="investtest"><b>Testing investment:</b> <span id="value3"></span></label> -->
-
-                                       
-                                <div class="modal-footer">
-                                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
-                                </div>
-
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -145,12 +112,17 @@
     </div>
     </div>
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="./TaxSlabCalculation_Day2.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+
+    <!-- daterangepicker link -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="Tax_Slab_Task1.js"> </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </body>
-
 
 </html>
