@@ -1,31 +1,61 @@
 
-jQuery(function ($) {
-    var StateCityObject = {
-        'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara','Rajkot'],
-        'Goa': ['Panaji','Mapusa'],
-        'Chhattisgarh': ['Raipur ','Bilaspur'],
-        'Bihar': ['Patna','Sharif'],
-        'Assam': ['Guwahati','Silchar','Tezpur'],
-        'Andhra Pradesh': ['Visakhapatnam '],
-        'Himachal Pradesh': ['Lucknow'],
+// jQuery(function ($) {
+//     var StateCityObject = {
+//         'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara','Rajkot'],
+//         'Goa': ['Panaji','Mapusa'],
+//         'Chhattisgarh': ['Raipur ','Bilaspur'],
+//         'Bihar': ['Patna','Sharif'],
+//         'Assam': ['Guwahati','Silchar','Tezpur'],
+//         'Andhra Pradesh': ['Visakhapatnam '],
+//         'Himachal Pradesh': ['Lucknow'],
         
-    }
+//     }
     
-     var $City = $('#City');
-    $('#State').change(function () {
-        var State = $(this).val(), citys = StateCityObject[State] || [];
+//      var $City = $('#City');
+//     $('#State').change(function () {
+//         var State = $(this).val(), citys = StateCityObject[State] || [];
 
-        var html = $.map(citys, function (city) {
-            return '<option value="' + city + '">' + city + '</option>'
-        }).join('');
-        $City.html(html)
-    });
+//         var html = $.map(citys, function (city) {
+//             return '<option value="' + city + '">' + city + '</option>'
+//         }).join('');
+//         $City.html(html)
+//     });
 
-    console.log(StateCityObject);
-});
+//     console.log(StateCityObject);
+// });
+
+var cityList = [
+    { State: 'Gujarat', city: 'Ahmedabad'},
+    { State: 'Gujarat', city: 'Surat' },
+    { State: 'Gujarat', city: 'Vadodara' },
+    { State: 'Gujarat', city: 'Rajkot' },
+    { State: 'Goa', city: 'Panaji' },
+    { State: 'Goa', city: 'Mapusa' },
+    { State: 'Chhattisgarh', city: 'Raipur' },
+    { State: 'Chhattisgarh', city: 'Bilaspur' },
+    { State: 'Bihar', city: 'Patna' },
+    { State: 'Bihar', city: 'Sharif' },
+    { State: 'Assam', city: 'Guwahati' },
+    { State: 'Assam', city: 'Silchar' },
+    { State: 'Assam', city: 'Tezpur' },
+    { State: 'Andhra Pradesh', city: 'Visakhapatnam' },
+    { State: 'Himachal Pradesh', city: 'Lucknow' }
+    
+  ];
 
 $(document).ready(function () {
 
+
+    $("#State").change(function () {
+       
+          $("#City").html("<option selected disabled>Choose city</option>");
+          const citys = cityList.filter(m => m.State == $("#State").val());
+          citys.forEach(element => {
+            const option = "<option val='" + element.city + "'>" + element.city + "</option>";
+            $("#City").append(option);
+          });
+        
+      });
 
     $('#sliderPic').click(function () {
         $("#carouselExampleIndicators").toggle();
@@ -183,16 +213,16 @@ $(document).ready(function () {
         $("#collegeId").val(collegeId);
         $("#cgpa").val(cgpa);
         $("#branch").val(branch);
-        $("#State").val(State);
-        $("#City").val(City).append("<option selected>" + City + "</option>");
+        $("#State").val(State).change();
+        $("#City").val(City);
         $("#zip").val(zip);
         $("#date").val(date);
         $("#txtId").val(id);
         $("#addRow").text("Update");
     });
-
+    
     $('#tblData').on('click', '.btn-delete', function () {
-
+    
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         deleteDataFromLocal(id);
     });
@@ -318,7 +348,7 @@ $(document).ready(function () {
     }
 
     function deleteDataFromLocal(id) {
-
+        
         let localData = localStorage.getItem('studentData');
         let localArray = JSON.parse(localData);
         let i = 0;
