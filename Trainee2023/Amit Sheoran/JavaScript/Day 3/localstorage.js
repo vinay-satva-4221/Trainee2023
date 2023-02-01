@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-
-
-
   $.validator.addMethod('validname', function (value) {
     return /^[a-zA-Z]+$/.test(value)
   });
@@ -33,11 +30,12 @@ $(document).ready(function () {
         minlength: 3
       },
       mobile: {
+        required: true,
         digits: true,
         minlength: 10,
         maxlength: 10
       },
-      collagename: {
+      college: {
         required: true,
         validname: true,
 
@@ -70,7 +68,11 @@ $(document).ready(function () {
         required: true,
         minlength:6,
         maxlength: 6,
-      }
+      },
+      date: {
+        required: true,
+        
+      },
 
     },
     messages: {
@@ -80,11 +82,12 @@ $(document).ready(function () {
         minlength: "minimum 3 alphabets required",
       },
       mobile: {
+        required: "Please enter your Mobile No.",
         digits: "enter only digits",
         minlength: "minimum 10 digits required",
         maxlength: "number should be of 10 digits only"
       },
-      collagename: {
+      college: {
         required: "Please provide college name",
         validname: "only alphabets allowed",
 
@@ -112,6 +115,9 @@ $(document).ready(function () {
         maxlength:"zip code should be of 6 digits",
         minlength:"minimum 6 digits required"
       },
+      date: {
+        required: "please Select date ",
+      },
     }
   });
 
@@ -130,7 +136,7 @@ $(document).ready(function () {
   $('input[name="date"]').on('cancel.daterangepicker', function (ev, picker) {
     $(this).val('');
   });
-
+  $('input[name="date"]').keydown(false);
 
 
   const CityData = '{"Citys":[' +
@@ -212,27 +218,6 @@ function saveData() {
 function clearForm() {
   document.getElementById('form').reset();
 }
-
-
-
-
-
-//   var name = document.getElementById("name").value;
-//   var mobile = document.getElementById("mobile").value;
-//   var email = document.getElementById("email").value;
-//   var college = document.getElementById("college").value;
-//   var cgpa = document.getElementById("cgpa").value;
-//   var branch = document.getElementById("branch").value;
-//   var state = document.getElementById("state").value;
-//   var city = document.getElementById("city").value;
-//   var zip = document.getElementById("zip").value;
-//   var date = document.getElementById("date").value;
-//   var data = JSON.parse(localStorage.getItem("data")) || [];
-//   data.push({ name: name, mobile: mobile, email: email, college: college, cgpa: cgpa, branch: branch, state: state, city: city, zip: zip, date: date  });
-//   localStorage.setItem("data", JSON.stringify(data));
-//   displayData();
-
-
 // Display data in HTML table
 function displayData() {
   var data = JSON.parse(localStorage.getItem("data"));
@@ -269,20 +254,6 @@ function displayData() {
   }
 }
 
-// Edit data in local storage
-// function editData(index) {
-//   var data = JSON.parse(localStorage.getItem("data"));
-//   var name = prompt("Enter new name:", data[index].name);
-//   var mobile = prompt("Enter new mobile:", data[index].mobile);
-//   var email = prompt("Enter new email:", data[index].email);
-//   var college = prompt("Enter new college:", data[index].college);
-//   var cgpa = prompt("Enter new cgpa:", data[index].cgpa);
-//   var branch = prompt("Enter new branch:", data[index].branch);
-//   data[index] = { name: name, mobile: mobile, email: email, college:college, cgpa:cgpa, branch: branch  };
-//   localStorage.setItem("data", JSON.stringify(data));
-//   displayData();
-// }
-
 function editData(index) {
   var data = JSON.parse(localStorage.getItem("data"));
   document.getElementById("name").value = data[index].name;
@@ -299,7 +270,6 @@ function editData(index) {
   saveBtn.innerHTML = "Update";
   saveBtn.setAttribute("data-index", index);
   displayData();
-
 }
 
 // Delete data from local storage
