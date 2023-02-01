@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jquery/jquery-3.6.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+        integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+        integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- for styling -->
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"] {
+            width: 100%;
+           
+            background-color: rgb(41, 6, 241);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+           
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container ">
+        <h1 class="text-center mb-5">CALCULATOR</h1>
+        <div class="row border">
+            <div class="col-md-12 p-0 ">
+                <input type="text" id="result" style="width: 100%;">
+            </div>
+            
+        </div>
+        <div class="row border">
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="1" onclick="inputvalue('1')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="2" onclick="inputvalue('2')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="3" onclick="inputvalue('3')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="/" onclick="inputvalue('/')">
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="4" onclick="inputvalue('4')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="5" onclick="inputvalue('5')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="6" onclick="inputvalue('6')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="*" onclick="inputvalue('*')">
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="7" onclick="inputvalue('7')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="8" onclick="inputvalue('8')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="9" onclick="inputvalue('9')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="-" onclick="inputvalue('-')">
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="0" onclick="inputvalue('0')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="." onclick="inputvalue('.')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="%" onclick="inputvalue('%')">
+            </div>
+            <div class="col-md-3 p-0 border">
+                <input type="button" value="+" onclick="inputvalue('+')">
+            </div>
+        </div>
+        <div class="row border">
+            <div class="col-md-6 p-0 border">
+                <input type="button" value="=" onclick="solve()">
+            </div>
+            <div class="col-md-6 p-0 mb-0 border ">
+                <input type="button" value="AC"  onclick="clr()" >
+            </div>
+        </div>
+    </div>
+    <script src="./calculator.js"></script>
+</body>
+
+</html>
