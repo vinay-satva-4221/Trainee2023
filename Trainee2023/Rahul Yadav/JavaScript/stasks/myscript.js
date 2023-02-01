@@ -155,7 +155,83 @@ $(document).ready(function () {
             localStorage.setItem("studentData", JSON.stringify(datal));
         }
         selectData();
+
+        $("#basic_form")[0].reset();
+
+
+
+
+
     });
+
+    $("#save").click(function () {
+
+        var studentData = localStorage.getItem("studentData");
+        var StudentDetails = {
+            dataId: $("#dataId").val(),
+            Name: $("#name").val(),
+            Mobile: $("#mobile").val(),
+            Email: $("#email").val(),
+            State: $("#State").val(),
+            Collage: $("#clgname").val(),
+            City: $("#City").val(),
+            Branch: $("#brnchname").val(),
+            CGPA: $("#cgpa").val(),
+            FromToWhenYouStudied: $("#daterange").val(),
+            Zip: $("#zipcode").val(),
+        };
+
+        let id = "no";
+
+        if (id === "no") {
+            if (studentData != null) {
+                var studentJsonData = JSON.parse(studentData);
+                if (
+                    studentJsonData?.students &&
+                    studentJsonData?.students[parseInt(StudentDetails.dataId)]
+                ) {
+                    studentJsonData.students[parseInt(StudentDetails.dataId)] =
+                        StudentDetails;
+                    localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+                } else {
+                    studentJsonData.students.push(StudentDetails);
+                    localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+                }
+            } else {
+                var studentData = JSON.parse('{"students": []}');
+                studentData.students.push(StudentDetails);
+                localStorage.setItem("studentData", JSON.stringify(studentData));
+            }
+        } else {
+            let datal = JSON.parse(localStorage.getItem("studentData"));
+            datal[id] = students.Name;
+            localStorage.setItem("studentData", JSON.stringify(datal));
+        }
+        selectData();
+
+        $("#basic_form")[0].reset();
+        $("#save").css('display', 'none')
+        $("#addrow").css("display", "block");
+        $("#export").css("display", "block");
+
+    });
+
+    $(".remCF1 btn btn-warning").on("click", function () {
+        $("#save").css("display", "block");
+        $("addrow").css("display", "none");
+        $("export").css("display", "none");
+
+    });
+
+    $("#export").on("click", function () {
+        window.open('data:application/vnd.ms-excel,' + $('.table-responsive').html());
+        swal("Downloaded!", "Your Imaginary file has been Downloaded", "success");
+    });
+
+
+
+
+
 });
 
 
@@ -181,15 +257,12 @@ function selectData() {
         <td>${datal.students[i].City}</td>
         <td>${datal.students[i].Zip}</td>
         <td>${datal.students[i].FromToWhenYouStudied}</td>
-        <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger border">Delete</a><a href="javascript:void(0);"  onclick="editData(${i})" class="remCF1 btn btn-warning">Edit</a></td>
+        <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger border">Delete</a><a href="javascript:void(0);"  onclick="editData(${i})" class="remCF1 btn btn-warning" >Edit</a></td>
         <tr>`;
         }
         document.getElementById("root").innerHTML = html;
     }
 }
-
-
-
 
 function deleteData(rid) {
     let datal = JSON.parse(localStorage.getItem("studentData"));
@@ -197,6 +270,7 @@ function deleteData(rid) {
     datal.students.splice(rid, 1);
     localStorage.setItem("studentData", JSON.stringify(datal));
     selectData();
+    swal("Deleted!", "Your Imaginary file has been deleted", "success");
 }
 
 function editData(rid) {
@@ -215,7 +289,46 @@ function editData(rid) {
         datal.students[rid].FromToWhenYouStudied;
 
     document.getElementById("addrow").innerHTML = "addrow";
+    $("#save").css('display', 'block')
+    $("#addrow").css("display", "none");
+    $("#export").css("display", "none");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //     var StateJsonData = JSON.parse(StateData);
 //     $.each(StateJsonData.States, function (i, option) {
