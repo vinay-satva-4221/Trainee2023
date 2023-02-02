@@ -36,7 +36,7 @@
     <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
       <div class="form-group">
         <label for="mobile" class="form-label">Mobile:</label>
-        <input type="number" id="mobile" class="form-control" onchange="return validatemobile()" placeholder="Enter Mobile number" name="mobile" required>
+        <input type="text" id="mobile" class="form-control" onchange="return validatemobile()" placeholder="Enter Mobile number" name="mobile" required>
         <p id="invalid_msg1"></p>
     </div>
   </div>
@@ -66,7 +66,7 @@
     <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
         <div class="form-group">
             <label for="CGPA" class="form-label">CGPA:</label>
-            <input type="number" class="form-control" id="cgpa" placeholder="Enter CGPA" onchange="return validatecgpa()">
+            <input type="text" class="form-control" id="cgpa" placeholder="Enter CGPA" onchange="return validatecgpa()">
             <p id="invalid_cgpa"></p>
 
           </div>
@@ -122,7 +122,7 @@
     <div class="form-group">
           <label  for="studied" class="form-label">From to when you studied:</label>
           <input type="text" class="form-control" name="studied" id="studied">
-          <p id="invalid_study"></p>
+           <p id="invalid_study"></p>
 
 
     </div>
@@ -133,7 +133,7 @@
 
 <div class="fades" style="background-image: url(T.jfif); background-repeat: no-repeat; width: 200 px; height: 200px;">  </div> 
 <br><br><br>
-<button class="btn btn-info m-3" style="width: 200px;"  id="btn1" data-toggle="modal" onclick="validateallow()" data-target="#myModal">  Add Row</button>
+<button class="btn btn-info m-3" style="width: 200px;"  id="btn1" data-toggle="modal" onclick="validatecheck()" data-target="#myModal">  Add Row</button>
 <button class="btn btn-success m-3" style=" width: 200px;"> Export</button>
   
 
