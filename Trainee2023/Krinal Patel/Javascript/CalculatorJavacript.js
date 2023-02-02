@@ -1,7 +1,5 @@
 function disp(val){
     document.getElementById("result").value+=val;
-
-
 }
 
 function clr(){
@@ -11,12 +9,8 @@ function clr(){
 function calc(){
 debugger;
 
-    
     let x = document.getElementById("result").value; 
-
-
     y = eval(x);
-
     document.getElementById("result").value = y;
     
 
