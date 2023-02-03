@@ -1,6 +1,17 @@
 //Global
 // var studentData = (localStorage.getItem("studentData"));  //270
 let id = "no";
+let sweetA = true;
+
+
+function sAlerts() {
+  if (sweetA == false) {
+    swal({
+      icon: "warning",
+      text: "Feilds Are Missing!"
+    });
+  }
+}
 
 // VAlidations
 function validateForm() {
@@ -11,10 +22,10 @@ function validateForm() {
     !collageV() &&
     !cgpaV() &&
     !BranchV() &&
-    !zipV() &&
-    !swal()
+    !zipV()
   ) {
     valid = false;
+    sweetA = false;
   } else {
     return true;
   }
@@ -134,9 +145,9 @@ $(function () {
     function (start, end, label) {
       console.log(
         "A new date selection was made: " +
-          start.format("YYYY-MM-DD") +
-          " to " +
-          end.format("YYYY-MM-DD")
+        start.format("YYYY-MM-DD") +
+        " to " +
+        end.format("YYYY-MM-DD")
       );
     }
   );
@@ -188,7 +199,7 @@ $(document).ready(function () {
     });
   });
 
- 
+
 });
 $("#save").click(function () {
   var studentData = localStorage.getItem("studentData");
@@ -209,12 +220,13 @@ $("#save").click(function () {
   if (id === "no") {
     if (studentData != null) {
       var studentJsonData = JSON.parse(studentData);
-      if(studentJsonData?.students && studentJsonData?.students[parseInt(StudentDetails.dataId)] ){
-        studentJsonData.students[parseInt(StudentDetails.dataId)]=StudentDetails
+      if (studentJsonData?.students && studentJsonData?.students[parseInt(StudentDetails.dataId)]) {
+        studentJsonData.students[parseInt(StudentDetails.dataId)] = StudentDetails
         localStorage.setItem("studentData", JSON.stringify(studentJsonData));
-      }else{
-      studentJsonData.students.push(StudentDetails);
-      localStorage.setItem("studentData", JSON.stringify(studentJsonData));}
+      } else {
+        studentJsonData.students.push(StudentDetails);
+        localStorage.setItem("studentData", JSON.stringify(studentJsonData));
+      }
     } else {
       var studentData = JSON.parse('{"students": []}');
       studentData.students.push(StudentDetails);
@@ -222,18 +234,15 @@ $("#save").click(function () {
     }
   } else {
     let datal = JSON.parse(localStorage.getItem("studentData"));
-    datal[id] =students.Name;
+    datal[id] = students.Name;
     localStorage.setItem("studentData", JSON.stringify(datal));
   }
   selectData();
+  
+  //for sweet Alerts
+  sAlerts();
 
-  // swal({
-  //   title: "Student",
-  //   text: "Student Detail Added successfully",S
-  //   icon: "success",
-  //   button: "Ok",
-  // });
-  // swal("Here's the title!", "...and here's the text!");
+
 });
 
 function selectData() {
@@ -286,7 +295,27 @@ function editData(rid) {
   document.getElementById("fdate").value =
     datal.students[rid].FromToWhenYouStudied;
 
-    document.getElementById("save").innerHTML="save"
-   
+  document.getElementById("save").innerHTML = "save"
+
 }
 
+
+
+//Hiding the table untill the fields 
+function hide() {
+  let a = document.getElementById("myTable");
+  a.classList.remove("hide");
+}
+
+
+
+
+
+
+
+
+
+// swal({
+//   icon: "warning",
+//   text: "Feilds Are Missing!"
+// });

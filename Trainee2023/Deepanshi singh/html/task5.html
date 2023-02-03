@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <form>
+    <h1>submit two buttons</h1>
+    <label for="fname">first name:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+    <button type="submit" id="submit1" value="submit1">submit 1</button>
+    <button type="submit" id="submit2" value="submit2">submit 2</button>
+    <table id="table" style="text-align:left;width:300px;height:150px">
+        <tr>
+            <th>first name</th>
+            <th>submitted via</th>
+
+        </tr>
+        <tr>
+            <td style="border:1px solid black">neovic</td>
+            <td style="border:1px solid black">submit1</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black"> gemaiyn</td>
+            <td style="border:1px solid black">submit 2</td>
+        </tr>
+
+    </table>
+    </form>
+    <script>
+         document.getElementById("submit1").onclick=function(){
+            var table=document.getElementById("table");
+            var row=table.insertRow(1);
+            var firstname=row.insertCell(0);
+            var submitvia=row.insertcell(1);
+            firstname.innerhtml=document.getElementById("fname").value;
+            submitVia.innerhtml="submit1";
+        }
+        document.getElementById("submit2").onclick=function(){
+            var table=document.getElementById("table")
+            var row=table.insertRow(1);
+            var firstname=row.insertCell(0);
+            var submitvia=row.insertCell(1);
+            firstname.innerhtml=document.getElementById("fname").value;
+            submitVia.innerHtml="submit2";
+        }
+    </script>
+
+</body>
+</html>
