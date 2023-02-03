@@ -1,63 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        table,td,tr,th{
-            border: none;
-        }
-        td {
-            text-align: center;
-            padding: 0px;
-            width: 80px;
-            height: 80px;
-        }
-        input[type=button]{
-            height: 100%;
-            width: 100%;
-            border: 1px solid gray;
-        }
-        input[type=text]{
-            height: 100%;
-            width: 99%;
-            border: none;
-            color: #fff;
-            background-color: #000;
-            text-align: right;
-            outline: none;
-        }
-        #num {
-            background-color: #fff;
-        }
-        #eq{
-            background-color: #f87d4f;
-        }
-        #op{
-            background-color: #e7e7e7;
-        }
-        #txtDiv {
-            background-color: #000;
-            color: #fff;
-            padding: 0px 15px;
-            height: 100%;
-            border-radius: 10px 10px 0px 0px;
-        }
-    </style>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
+
 <body style="display: flex; justify-content: center;">
     <table cellspacing="0">
         <tr>
             <td colspan="4">
                 <div id="txtDiv">
-                    <input type="text" value="0"/>
+                    <input type="number" value="" />
                 </div>
             </td>
         </tr>
         <tr>
-            <td><input type="button"  value="+"></td>
+            <td><input type="button" value="+"></td>
             <td><input type="button" id="op" value="-"></td>
             <td><input type="button" id="op" value="x"></td>
             <td><input type="button" id="op" value="÷"></td>
@@ -66,12 +28,13 @@
             <td><input id="num" type="button" value="7"></td>
             <td><input id="num" type="button" value="8"></td>
             <td><input id="num" type="button" value="9"></td>
-            <td rowspan="4"><input id="eq" type="button" value="="></td>
+            <td><input type="button" id="op" value="%"></td>
         </tr>
         <tr>
             <td><input id="num" type="button" value="4"></td>
             <td><input id="num" type="button" value="5"></td>
             <td><input id="num" type="button" value="6"></td>
+            <td rowspan="3"><input id="eq" type="button" value="="></td>
         </tr>
         <tr>
             <td><input id="num" type="button" value="1"></td>
@@ -85,6 +48,9 @@
         </tr>
 
     </table>
+
+
     
 </body>
+
 </html>
