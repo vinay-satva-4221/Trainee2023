@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Cascading Dropdown</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+     @media (min-width: 576px) {
+      .jumbotron {
+        padding: 1rem 2rem;
+      }
+    }
+
+    .tdaction {
+      width: 15%;
+    }
+
+    .tdSr {
+      width: 7%;
+    }
+
+    .other label {
+      color: #6154d1;
+    }
+
+    .other input {
+      border: 2px solid #6154d1;
+    } 
+    label {
+      margin-bottom: 0;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Cascading dropdown & value  jQuery</h1>
+      <h3> with local storage </h3>
+    </div>
+    <div class="row pt-3">
+      <div class="col-md-12 col-sm-12 col-12 p-2 ">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputEmail4">Full Name</label>
+              <input type="text" class="form-control inputfullname" id="inputfullname" placeholder="Full Name">
+              <input id="txtId" type="hidden" class="form-control txt">
+            </div>
+            <div class="form-group col-md-3 offset-md-1">
+              <label for="inputPassword4">Mobile</label>
+              <input type="text" class="form-control inputnumber" id="inputnumber" placeholder="Mobile">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputCity">Country</label>
+              <select id="dpdlCountry" class="form-control dpdlCountry">
+                <option selected>Choose Country</option>
+                <option value="India">India</option>
+                <option value="Us">United State</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+           
+            <div class="form-group col-md-2">
+              <label for="inputState">State</label>
+              <select id="dpdlState" class="form-control dpdlState">
+                <option selected>Choose State</option>
+              </select>
+            </div>
+            
+            <div class="form-group col-md-2">
+              <label for="inputState">City</label>
+              <select id="dpdlCity" class="form-control dpdlCity">
+                <option selected>Choose City</option>
+              </select>
+            </div>
+           
+          </div>
+      
+           
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-secondary">Cancel</button>
+    </div>
+     
+          <div class="row pt-3">
+            <div class="col-md-12 col-sm-12 col-12 p-2 ">
+              <table id="tblData" class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Sr No</th>
+                    <th>Full Name</th>
+                    <th>Number</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                </tbody>
+              </table>
+            </div>
+          </div>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    var stateList = [
+      { Country: 'India', State: 'Maharashtra' },
+      { Country: 'India', State: 'Delhi' },
+      { Country: 'India', State: 'Punjab' },
+      { Country: 'Us', State: 'Alabama' },
+      { Country: 'Us', State: 'Arizona' },
+      { Country: 'Us', State: 'California' },
+      { Country: 'Other', State: 'Other' }
+    ];
+    var cityList = [
+      { State: 'Maharashtra', city: 'Pune' },
+      { State: 'Maharashtra', city: 'Mumbai' },
+      { State: 'Maharashtra', city: 'Hydrabad' },
+      { State: 'Delhi', city: 'New Delhi' },
+      { State: 'Delhi', city: 'Balijt Vihar' },
+      { State: 'Punjab', city: 'Ludhiyana' },
+      { State: 'Punjab', city: 'Amritsar' },
+      { State: 'Punjab', city: 'Patiyala' },
+      { State: 'Punjab', city: 'Jalandhar' },
+      { State: 'Alabama', city: 'Abbeville' },
+      { State: 'Alabama', city: 'Adamsville' },
+      { State: 'Arizona', city: 'Phoenix' },
+      { State: 'Arizona', city: 'Tucson' },
+      { State: 'Other', city: 'Other' }
+    ];
+    var emptyRow = "<tr><td colspan='6' class='text-center'> No Records Available</td></tr>";
+    $(document).ready(function () {
+      
+      $(".divOtherCountry").hide();
+      $(".divOtherState").hide();
+      $(".divOtherCity").hide();
+      $("#dpdlCountry").change(function () {
+        
+        if ($("#dpdlCountry").val() == "Other") {
+          $(".divOtherCountry").show();
+          const option = "<option val='Other'>Other</option>";
+          $("#dpdlState").append(option);
+        } else {
+          $(".divOtherCountry").hide();
+          $(".divOtherState").hide();
+          $(".divOtherCity").hide();
+          $("#dpdlState").html("<option selected>Choose State</option>");
+          $("#dpdlCity").html("<option selected>Choose City</option>");
+          const states = stateList.filter(m => m.Country == $("#dpdlCountry").val() || m.Country == "Other");
+          states.forEach(element => {
+            const option = "<option val='" + element.State + "'>" + element.State + "</option>";
+            $("#dpdlState").append(option);
+          });
+        }
+      });
+
+      $("#dpdlState").change(function () {
+     
+        if ($("#dpdlState").val() == "Other") {
+          $(".divOtherState").show();
+          const option = "<option val='Other'>Other</option>";
+          $("#dpdlCity").append(option);
+        } else {
+          $(".divOtherState").hide();
+          $(".divOtherCity").hide();
+          $("#dpdlCity").html("<option selected>Choose City</option>");
+          
+          const states = cityList.filter(m => m.State == $("#dpdlState").val() || m.State == "Other");
+          states.forEach(element => {
+            const option = "<option val='" + element.city + "'>" + element.city + "</option>";
+            $("#dpdlCity").append(option);
+          });
+        }
+      });
+
+
+
+      loaddatafromlocal();
+      $('#tblData').on('click', '.btn-edit', function () {
+        
+        const fullname = $(this).parent().parent().find(".inputfullname").html();
+        const number = $(this).parent().parent().find(".inputnumber").html();
+        const country = $(this).parent().parent().find(".dpdlCountry").html();
+        const state = $(this).parent().parent().find(".dpdlState").html();
+        const city = $(this).parent().parent().find(".dpdlCity").html();
+        const id = $(this).parent().parent().find(".txtName").attr("data-id");
+        $("#inputfullname").val(fullname);
+        $("#inputnumber").val(number);
+        $("#dpdlCountry").val(country);
+        $("#dpdlState").val(state);
+        $("#dpdlCity").val(city);
+        $("#txtId").val(id);
+        $("#btnSave").text("Update");
+      });
+
+      $('#tblData').on('click', '.btn-delete', function () {
+    
+        const id = $(this).parent().parent().find(".txtName").attr("data-id");
+        deleteDataFromLocal(id);
+      });
+
+      $("#btnSave").click(function () {
+        
+        if ($("#txtId").val() == '') {
+          addDataToLocal();
+        } else {
+          updateDataFromLocal();
+        }
+      });
+    
+    });
+
+    //----------------------------------------------------------------------------------
+
+    function clearForm() {
+        $("#inputfullname").val("");
+        $("#inputnumber").val("");
+        $("#dpdlCountry").val("");
+        $("#dpdlState").val("");
+        $("#dpdlCity").val("");
+     
+        $("#btnSave").text("Add");
+    
+    }
+    
+    function loaddatafromlocal() {
+      
+      let localData = localStorage.getItem('localData');
+      if (localData) {
+        $("#tblData tbody").html("");
+        let localArray = JSON.parse(localData);
+        let index = 1;
+        localArray.forEach(element => {
+          let dynamicTR = "<tr>";
+          dynamicTR = dynamicTR + "<td> " + index + "</td>";
+          dynamicTR = dynamicTR + "<td class='inputfullname'  data-id=" + element.id + ">" + element.fullname + "</td>";
+          dynamicTR = dynamicTR + "<td class='inputnumber'>" + element.number + "</td>";
+
+          dynamicTR = dynamicTR + "<td class='dpdlCountry'>" + element.country + "</td>";
+          dynamicTR = dynamicTR + "<td class='dpdlState'>" + element.state + "</td>";
+          dynamicTR = dynamicTR + "<td class='dpdlCity'>" + element.city + "</td>";
+          dynamicTR = dynamicTR + "    <td class='tdAction text-center'>";
+          dynamicTR = dynamicTR + "        <button class='btn btn-sm btn-success btn-edit'> Edit</button>";
+          dynamicTR = dynamicTR + "        <button class='btn btn-sm btn-danger btn-delete'> Delete</button>";
+          dynamicTR = dynamicTR + "    </td>";
+          dynamicTR = dynamicTR + " </tr>";
+          $("#tblData tbody").append(dynamicTR);
+          index++;
+        });
+      }
+     
+    }
+
+    function addDataToLocal() {
+  
+      let localData = localStorage.getItem('localData');
+      if (localData) {
+        let localArray = JSON.parse(localData);
+        const obj = {
+          id: localArray.length + 1,
+
+        fullname:  $("#inputfullname").val(),
+        number:$("#inputnumber").val(),
+        country:$("#dpdlCountry").val(),
+        state: $("#dpdlState").val(),
+        city:$("#dpdlCity").val()
+        };
+        localArray.push(obj);
+        localStorage.setItem('localData', JSON.stringify(localArray));
+        loadDataFromLocal();
+      } else {
+        const arryObj = [];
+        const obj = {
+          id: 1,
+         fullname:  $("#inputfullname").val(),
+        number:$("#inputnumber").val(),
+        country:$("#dpdlCountry").val(),
+        state: $("#dpdlState").val(),
+        city:$("#dpdlCity").val()
+        };
+        arryObj.push(obj);
+        localStorage.setItem('localData', JSON.stringify(arryObj));
+        loadDataFromLocal();
+      }
+      clearForm();
+    }
+
+    function updateDataFromLocal() {
+
+      let localData = localStorage.getItem('localData');
+      let localArray = JSON.parse(localData);
+      const oldRecord = localArray.find(m => m.id == $("#txtId").val());
+      oldRecord.fullname= $("#inputfullname").val(),
+       oldRecord. number=$("#inputnumber").val(),
+       oldRecord.country=$("#dpdlCountry").val(),
+       oldRecord. state= $("#dpdlState").val(),
+       oldRecord.city=$("#dpdlCity").val()
+      localStorage.setItem('localData', JSON.stringify(localArray));
+      loadDataFromLocal();
+      clearForm();
+    }
+
+    function deleteDataFromLocal(id) {
+      
+      let localData = localStorage.getItem('localData');
+      let localArray = JSON.parse(localData);
+      let i = 0;
+      while (i < localArray.length) {
+        if (localArray[i].id === Number(id)) {
+          localArray.splice(i, 1);
+        } else {
+          ++i;
+        }
+      }
+      localStorage.setItem('localData', JSON.stringify(localArray));
+      loadDataFromLocal();
+    }
+
+  </script>
+</body>
+
+</html>
