@@ -1,0 +1,484 @@
+var id = 0;
+var studentsArray = [];
+
+ // Check if any field is empty
+function validatecheck(){
+    
+    if ( !validatename() || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname() ) {
+       
+        return validateallow();
+        
+    } else {
+
+        $(document).ready(function () {
+    
+            $("#btn1").click(function () {
+               
+                swal({
+                    title: "Missing fields",
+                    text: "Please enter all details",
+                    icon: "warning",
+                    button: "Ok"
+                });
+            });
+        });
+
+    }
+}
+function init(){
+    if(studentsArray.length > 0){
+        // studentsArray = JSON.parse(localStorage.StudentDetails);
+        console.log(studentsArray)
+        for (var i=0; i < studentsArray.length; i++){
+            console.log(i);
+
+            prepareTableCell(i, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
+        }
+
+    }
+}
+
+        
+function validateallow() {
+
+    // var isValid = validatecheck()       
+
+    // if(isValid=false){
+  
+            // var i = studentsArray[i];
+            var name = $("#name").val();
+            var mobile = $("#mobile").val();
+            var email = $("#email").val();
+            var cname = $("#cname").val();
+            var cgpa = $("#cgpa").val();
+            var bname = $("#bname").val();
+            var state = $("#state").val();
+            var city = $("#city").val();
+            var zip = $("#zip").val();
+            var studied = $("#studied").val();
+
+
+            id ++;
+            var stuObj = {id:id, name: name, mobile: mobile, email: email, cname: cname, cgpa: cgpa,bname: bname, state: state, city: city, zip:zip, studied: studied}
+
+                studentsArray.push(stuObj);
+            
+
+            localStorage.setItem( 'StudentDetails', JSON.stringify(studentsArray));
+
+
+           
+            // init() ;
+            prepareTableCell(id, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
+
+            // prepareTableCell(i, name, mobile, email, cname, cgpa, bname, state, city, zip, studied);
+
+            document.getElementById("name").value = "";
+            document.getElementById("mobile").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("cname").value = "";
+            document.getElementById("cgpa").value = "";
+            document.getElementById("bname").value = "";
+            document.getElementById("state").value = "";
+            document.getElementById("city").value = "";
+            document.getElementById("zip").value = "";
+            document.getElementById("studied").value = "";
+
+
+        
+}
+
+           
+                   
+
+    //Table insert data
+    function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied) {
+        var index= index
+        console.log('index', index)
+        var table = document.getElementById("mytable");
+        var row = table.insertRow();
+        var currentIndex = studentsArray.findIndex(x=> x.id == index)
+
+        var srCell = row.insertCell(0);
+        var nameCell = row.insertCell(1);
+        var mobileCell = row.insertCell(2);
+        var emailCell = row.insertCell(3);
+        var cnameCell = row.insertCell(4);
+        var cgpaCell = row.insertCell(5);
+        var bnameCell = row.insertCell(6);
+        var stateCell = row.insertCell(7);
+        var cityCell = row.insertCell(8);
+        var zipCell = row.insertCell(9);
+        var studiedCell = row.insertCell(10);
+        var editCell = row.insertCell(11);
+        var deleteCell = row.insertCell(12);
+
+        srCell.innerHTML = currentIndex+1;
+        nameCell.innerHTML=name;
+        mobileCell.innerHTML=mobile;
+        emailCell.innerHTML=email;
+        cnameCell.innerHTML=cname;
+        cgpaCell.innerHTML=cgpa;
+        bnameCell.innerHTML=bname;
+        stateCell.innerHTML=state;
+        cityCell.innerHTML=city;
+        zipCell.innerHTML=zip;
+        studiedCell.innerHTML=studied;
+        editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow('+index+')">Edit</button>';
+        deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
+        
+        $(function() {
+            $("#btn1").click(function(){
+                swal({
+                    title:"Record Added!",
+                    text:"You entered a record!",
+                    icon:"success",
+                    button:"Done..."
+                });
+            });
+            });
+    }
+
+
+    //Delete Row
+    function deleteTableRow(index){
+        var table = document.getElementById("mytable");
+        console.log(index, studentsArray)
+        var currentIndex = studentsArray.findIndex(x=> x.id == index)
+        console.log('currentIndex', currentIndex);
+        table.deleteRow(currentIndex + 1);
+        studentsArray.splice(currentIndex, 1);
+    
+        localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
+       
+        swal({
+            title: "Record deleted",
+            text: "Student Detail Deleted successfully",
+            icon: "success",
+            button: "Ok"
+        });
+    }
+
+     //Edit Row
+     debugger;
+      
+    function editTableRow(index){
+
+    console.log("Index, StudentArray =",index, studentsArray)
+    var stuObj = studentsArray[index];
+
+
+    selectedIndex = index;
+
+
+    document.getElementById("name")=stuObj.name;
+    document.getElementById("btn1").innerHTML = "Update Row";
+
+
+    localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
+   
+}
+   
+    
+   
+
+
+
+
+
+
+
+
+
+
+ $(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#studied').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+
+    $('#studied').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+
+});
+
+
+
+
+//Fade img
+
+$("#fadetoggle_btn").click(function () {
+    $(".fades").fadeToggle(1000);
+});
+
+
+//Javascript Validations
+function validatename() {
+    let setname = /^[a-zA-Z]+$/;
+    let name = document.getElementById("name").value;
+    let msgname = document.getElementById("invalid_msg");
+    if (!setname.test(name)) {
+        msgname.innerHTML = "*Please enter a characters only..";
+        msgname.style.color = "red";
+        document.getElementById("invalid_msg").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_msg").style.display = "none";
+        return true;
+    }
+}
+
+
+
+function validatemobile() {
+    let setmobile = /^[0-9]{10}$/;
+    let mobile = document.getElementById("mobile").value;
+    let msgmobile = document.getElementById("invalid_msg1");
+    if (!setmobile.test(mobile)) {
+        msgmobile.innerHTML = "*Please enter 10 digits..";
+        msgmobile.style.color = "red";
+        document.getElementById("invalid_msg1").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_msg1").style.display = "none";
+        return true;
+    }
+}
+
+function validateemail() {
+    let setemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    let email = document.getElementById("email").value;
+    let msgemail = document.getElementById("invalid_email");
+    if (!setemail.test(email)) {
+        msgemail.innerHTML = "*Please enter @ and .com";
+        msgemail.style.color = "red";
+        document.getElementById("invalid_email").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_email").style.display = "none";
+        return true;
+    }
+}
+
+function validatezip() {
+    let setzip = /^(\d)(?!\1{5})\d{5}$/;
+
+    let zip = document.getElementById("zip").value;
+    let msgzip = document.getElementById("invalid_msg2");
+    if (!setzip.test(zip)) {
+        msgzip.innerHTML = "*Only 6 digits are allowed and all numbers repeated is invalid";
+        msgzip.style.color = "red";
+        document.getElementById("invalid_msg2").style.display = "unset";
+        return false;
+    } else {
+        document.getElementById("invalid_msg2").style.display = "none";
+        return true;
+    }
+}
+
+function validatecgpa() {
+    let setcgpa = /^(10|\d)(\.\d{1,2})?$/;
+    let cgpa = document.getElementById("cgpa").value;
+    let msgcgpa = document.getElementById("invalid_cgpa");
+    if (!setcgpa.test(cgpa)) {
+        msgcgpa.innerHTML = "*Only 1 to 10 are allowed with decimal";
+        msgcgpa.style.color = "red";
+        document.getElementById("invalid_cgpa").style.display = "unset";
+        return false;
+    } else {
+        document.getElementById("invalid_cgpa").style.display = "none";
+        return true;
+    }
+}
+
+function validatecname() {
+    let setcname = /^[a-zA-Z]+$/;
+    let cname = document.getElementById("cname").value;
+    let msgcname = document.getElementById("invalid_cname");
+    if (!setcname.test(cname)) {
+        msgcname.innerHTML = "*Please enter a characters only..";
+        msgcname.style.color = "red";
+        document.getElementById("invalid_cname").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_cname").style.display = "none";
+        return true;
+    }
+}
+
+function validatebname() {
+    let bname = document.getElementById("bname");
+     let msg=document.getElementById("invalid_bname");
+
+    if (bname.value == "") {
+        document.getElementById("invalid_bname").innerHTML = "*Please select any Branch..";
+        msg.style.color = "red";
+        document.getElementById("invalid_bname").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_bname").style.display = "none";
+        return true;
+    }
+}
+
+
+function validatestate() {
+    let state = document.getElementById("State");
+     let msg=document.getElementById("invalid_state");
+
+    if (state.value == "") {
+        document.getElementById("invalid_state").innerHTML = "*Please select any State..";
+        msg.style.color = "red";
+        document.getElementById("invalid_state").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_state").style.display = "none";
+        return true;
+    }
+}
+
+
+
+
+
+//Cascading Dropdown 
+debugger;
+// const CityData = {
+//     "Cities" : [
+//         {
+//             "StateId": 1,
+//             "Id": 1,
+//             "Name": "Indore"
+//         },
+//         {
+//             "StateId": 1,
+//             "Id": 2,
+//             "Name": "Bhopal"
+//         },
+//         {
+//             "StateId": 2,
+//             "Id": 3,
+//             "Name": "Sirohi"
+//         },
+//         {
+//             "StateId": 2,
+//             "Id": 4,
+//             "Name": "Udaipur"
+//         },
+//         {
+//             "StateId": 2,
+//             "Id": 5,
+//             "Name": "Jaisalmer"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 6,
+//             "Name": "Ahmedabad"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 7,
+//             "Name": "Vadodara"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 8,
+//             "Name": "Surat"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 9,
+//             "Name": "Ludhiana"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 10,
+//             "Name": "Amritsar"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 11,
+//             "Name": "Patiala"
+//         }
+//     ]
+// }
+
+// const StateData = {
+//     "States" : [
+//         {
+//             "Id" : 1,
+//             "Name": "Madhya Pradesh"
+//         },
+//         {
+//             "Id" : 2,
+//             "Name": "Rajasthan"
+//         },
+//         {
+//             "Id" : 3,
+//             "Name": "Gujarat"
+//         },
+//         {
+//             "Id" : 4,
+//             "Name": "Punjab"
+//         }
+//     ]
+// }
+
+const CityData = '{"Cities":['+
+'{"StateId":"1","Id":"1","Name":"Indore"},' +
+'{"StateId":"1","Id":"2","Name":"Bhopal"},' +
+'{"StateId":"2","Id":"3","Name":"Sirohi"},' +
+'{"StateId":"2","Id":"4","Name":"Udaipur"},' +
+'{"StateId":"2","Id":"5","Name":"Jaisalmer"},' +
+'{"StateId":"3","Id":"6","Name":"Ahmedabad"},' +
+'{"StateId":"3","Id":"7","Name":"Vadodara"},' +
+'{"StateId":"3","Id":"8","Name":"Surat"},' +
+'{"StateId":"4","Id":"9","Name":"Ludhiana"},' +
+'{"StateId":"4","Id":"10","Name":"Amritsar"},' +
+'{"StateId":"4","Id":"11","Name":"Patiala"}]}';
+
+const StateData = '{"States":['+
+'{"Id":"1","Name":"Madhya Pradesh"},' +
+'{"Id":"2","Name":"Rajasthan"},' +
+'{"Id":"3","Name":"Gujarat"},' +                    
+'{"Id":"4","Name":"Punjab"}]}';
+
+$(document).ready(function(){
+
+    var StateJsonData = JSON.parse(StateData);
+    $.each(StateJsonData.States,function(i,option){
+        $("#state").append($('<option></option>').val(option.Id).html(option.Name));
+    })
+
+    $("#state").change(function(){
+        var CityJsonData = JSON.parse(CityData);
+        $("#city").html('');
+        $.each(CityJsonData.Cities,function(i,option){
+            if($("#state").val() == option.StateId){
+                $("#city").append($('<option></option>').val(option.Id).html(option.Name));
+            }
+    })
+
+    });
+});

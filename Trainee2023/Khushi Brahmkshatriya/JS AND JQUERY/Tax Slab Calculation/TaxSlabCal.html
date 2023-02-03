@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Slab Calculation</title>
+    <link rel="stylesheet" href="/bs5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+
+    <link rel="stylesheet" href="./TaxSlabCal.css">
+
+</head>
+<body>
+
+    <div class="container-fluid p-5">
+        <div class="centerDiv">
+            <form action="" id="form">
+                <div class="row g-3">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <h3 class="form-title">Tax Slab Calculation</h3>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" autocomplete="off">
+                        <div class="invalid" id="validName"></div>
+                        
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <input type="text" class="form-control allow_decimal" name="mobile" id="mobile" autocomplete="off">
+                        <div class="invalid" id="validMobile"></div>
+                       
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="bday" class="form-label">Birthdate</label>
+                        <input type="date" class="form-control" name="birthdate" id="birthdate" max="9999-12-31" onfocus="this.max=new Date().toISOString().split('T')[0]">
+                        <div class="invalid" id="validBirthdate"></div><span id="age"></span>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" aria-label="Default select example" name="gender" id="gender">
+                            <option selected value="null" disabled class="text-black">Select Gender</option>
+                            <option value="Male" class="text-black">Male</option>
+                            <option value="Female" class="text-black">Female</option>
+                          </select>
+                          <div class="invalid" id="validGender"></div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                        <label for="income" class="form-label">Income</label>
+                        <input type="text" class="form-control allow_decimal" name="income" id="income" autocomplete="off">
+                        <div class="invalid" id="validIncome"></div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                        <label for="loan" class="form-label">Loan</label>
+                        <input type="text" class="form-control allow_decimal" name="loan" id="loan" autocomplete="off">
+                        <div class="invalid" id="validLoan"></div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+                        <label for="investment" class="form-label allow_decimal">Investment</label>
+                        <input type="text" class="form-control valiIncome" name="investment" id="investment" autocomplete="off">
+                        <div class="invalid" id="validInvest"></div>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <button type="button" id="calculateTax" class="btn btn-primary text-white float-end">Calculate</button>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <button type="reset" id="reset"  class="btn btn-danger text-white">Reset</button>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Tax Slab Calculation</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <h4 class="fw-bolder">Name: <span class="fw-light" id="mname"></span></h4>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="fw-bolder">Taxable Amount: <span class="fw-light" id="tamount"></span></h4>
+                                </div>
+                                <div id="ptextBg">
+                                    <h4 class="fw-bolder">Payable Tax: <span class="fw-light" id="ptax"></span></h4>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+
+
+    <script src="/bs5/jquery-3.6.3.min.js"></script>
+    <script src="./TaxSlabCal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+   
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <script src="/bs5/js/bootstrap.min.js"></script>
+</body>
+</html>

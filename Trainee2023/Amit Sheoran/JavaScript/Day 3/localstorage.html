@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <style>
+        table,
+        th,
+        td {
+            border: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class=" container bg-secondary">
+    <form id="form">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">Mobile</label>
+                <input type="text" id="mobile" name="mobile" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">Email</label>
+                <input type="email" id="email" name="email" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">College Name </label>
+                <input type="text" id="college" name="college" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name">CGPA</label>
+                <input type="text" id="cgpa" name="cgpa" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="name">Branch Name </label>
+                <select id="branch" class="form-control" name="branch">
+                    <option selected disabled>Select Branch</option>
+                    <option value="primary">primary</option>
+                    <option value="secondary">secondary</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="name">State</label>
+                <select id="state" name="state" class="form-control">
+                    <option value="" selected="selected ">Choose state</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="name">City </label>
+                <select id="city" name="city" class="form-control" >
+                    <option value="" selected="selected">Chooose City </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="name">Zip </label>
+                <input type="text" id="zip" name="zip" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="name">Sudy Duration </label>
+                <input type="text" class="form-control" id="date" name="date" value="start-end"  />
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-warning mt-4 px-5" id="picslider"> pic slider</button>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/CSS AND BOOTSTRAP/Bootstrap exam/scorpio1.webp" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/CSS AND BOOTSTRAP/Bootstrap exam/scorpio2.webp" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/CSS AND BOOTSTRAP/Bootstrap exam/scorpio1.webp" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-4 px-5" id="saveBtn" onclick="saveData()">Save</button>
+    </form>
+
+    <!--HTML Table-->
+    <table id="table" class="border mt-5">
+        <thead>
+            <tr>
+                <th class="border px-5">Name</th>
+                <th class="border px-5">Mobile</th>
+                <th class="border px-5">Email</th>
+                <th class="border  px-5">College Name</th>
+                <th class="border px-5">CGPA</th>
+                <th class="border px-5">Branch Name</th>
+                <th class="border px-5">State</th>
+                <th class="border px-5">City</th>
+                <th class="border px-5">Zip</th>
+                <th class="border px-5">Duration</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+
+
+
+
+
+
+    <script src="./localstorage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
