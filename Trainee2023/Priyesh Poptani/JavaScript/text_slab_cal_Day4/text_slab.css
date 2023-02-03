@@ -1,0 +1,8 @@
+h3{
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+body{
+    background-image:linear-gradient(to right, skyblue, purple);
+}
