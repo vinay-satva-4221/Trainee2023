@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container addB">
+        <!-- Button trigger modal -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+
+                <button type="button" class="btn btn-primary addB1 " data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Add
+                </button>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 px-5">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    FIFO
+                </label>
+
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    LIFO
+                </label>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="validationServer01" class="form-label">First name</label>
+                                <input type="text" class="form-control " id="validationServer01" required>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationServer02" class="form-label">Last name</label>
+                                <input type="text" class="form-control " id="validationServer02" required>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationServer04" class="form-label">State</label>
+                                <select class="form-select " id="State"
+                                    aria-describedby="validationServer04Feedback" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="MadhyaPradesh"> MadhyaPradesh</option>
+                                    <option value="Gujrat"> Gujrat</option>
+                                    <option value="Punjab"> Punjab</option>
+                                    <option value="Rajasthan"> Rajasthan</option>
+
+                                </select>
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validationServer03" class="form-label">City</label>
+                                <select class="form-select " id="City"
+                                    aria-describedby="validationServer04Feedback" required>
+                                    <option selected disabled value="">Choose...</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validationServer05" class="form-label">Zip</label>
+                                <input type="text" class="form-control " id="validationServer05"
+                                    aria-describedby="validationServer05Feedback" required>
+                                <div id="validationServer05Feedback" class="invalid-feedback">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="button">Submit form</button>
+                            </div>
+                        </form>
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="index.js"></script>
+
+</html>
