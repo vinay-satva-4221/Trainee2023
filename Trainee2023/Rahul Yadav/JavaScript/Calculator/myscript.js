@@ -16,5 +16,5 @@ function calculate() {
 
 function myFunction() {
     document.getElementsByClassName("dot").disabled = true;
-  }
+}
 
