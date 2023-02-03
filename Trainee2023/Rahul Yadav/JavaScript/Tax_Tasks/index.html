@@ -27,19 +27,19 @@
         <form class="row g-3" name="contactForm" id="form" onsubmit="return false;">
             <div class="col-md-6">
                 <label class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name"  >
+                <input type="text" class="form-control" id="name" name="name" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" title="4 to 8 lowercase letters">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Mobile:</label>
-                <input type="number" class="form-control" id="" name="number" >
+                <input type="number" class="form-control" id="" name="number" maxlength="10" min="0" minlength="10">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Birthdate:</label>
-                <input type="text" class="form-control" name="birthday" value="" />
+                <input type="text" class="form-control" name="birthday" value="" readonly />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Gender:</label>
-                <select id="inputState" class="form-select" name="gender" >
+                <select id="inputState" class="form-select" name="gender">
                     <option selected disabled value="0">Select Gender</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
@@ -48,15 +48,15 @@
             </div>
             <div class="col-md-4">
                 <label class="form-label">Income:</label>
-                <input type="number" class="form-control" name="income" id="income">
+                <input type="number" class="form-control" name="income" id="income" min="0">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Loan:</label>
-                <input type="number" class="form-control" name="loan" id="loan">
+                <input type="number" class="form-control" name="loan" id="loan" min="0">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Investment:</label>
-                <input type="number" class="form-control" name="investment" id="investment">
+                <input type="number" class="form-control" name="investment" id="investment" min="0">
             </div>
             <div class="text-center">
                 <button type="submit" id="submit" class="btn btn-primary" data-bs-toggle="modal"
