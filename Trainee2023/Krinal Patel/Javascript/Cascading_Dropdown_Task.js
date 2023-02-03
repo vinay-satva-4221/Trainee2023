@@ -1,13 +1,28 @@
 var id = 0;
-// Check if any field is empty
-function validatecheck() {
-    if (!validateemail() && !validatename() && !validatemobile() && !validatezip()  && !validatecgpa() && !validatecname() ) {
+var studentsArray = [];
 
-        return false;
-
-
+ // Check if any field is empty
+function validatecheck(){
+    
+    if ( !validatename() || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname() ) {
+       
+        return validateallow();
+        
     } else {
-        return true;
+
+        $(document).ready(function () {
+    
+            $("#btn1").click(function () {
+               
+                swal({
+                    title: "Missing fields",
+                    text: "Please enter all details",
+                    icon: "warning",
+                    button: "Ok"
+                });
+            });
+        });
+
     }
 }
 function init(){
@@ -23,13 +38,12 @@ function init(){
     }
 }
 
-var studentsArray = [];
         
 function validateallow() {
 
-    var isValid = validatecheck()       
+    // var isValid = validatecheck()       
 
-    // if(isValid){
+    // if(isValid=false){
   
             // var i = studentsArray[i];
             var name = $("#name").val();
@@ -46,10 +60,14 @@ function validateallow() {
 
             id ++;
             var stuObj = {id:id, name: name, mobile: mobile, email: email, cname: cname, cgpa: cgpa,bname: bname, state: state, city: city, zip:zip, studied: studied}
-            studentsArray.push(stuObj);
+
+                studentsArray.push(stuObj);
+            
 
             localStorage.setItem( 'StudentDetails', JSON.stringify(studentsArray));
 
+
+           
             // init() ;
             prepareTableCell(id, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
 
@@ -67,28 +85,21 @@ function validateallow() {
             document.getElementById("studied").value = "";
 
 
+        
+}
+
            
-
-
-            // swal({
-            //     title: "Student",
-            //     text: "Student Detail Added successfully",
-            //     icon: "success",
-            //     button: "Ok"
-            // });
-        // }else{
-        // }
                    
-        //console.log(States.firstName);
 
-    }
+    //Table insert data
     function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied) {
         var index= index
         console.log('index', index)
         var table = document.getElementById("mytable");
         var row = table.insertRow();
+        var currentIndex = studentsArray.findIndex(x=> x.id == index)
 
-        var i = row.insertCell(0);
+        var srCell = row.insertCell(0);
         var nameCell = row.insertCell(1);
         var mobileCell = row.insertCell(2);
         var emailCell = row.insertCell(3);
@@ -102,9 +113,7 @@ function validateallow() {
         var editCell = row.insertCell(11);
         var deleteCell = row.insertCell(12);
 
-
-
-        i.innerHTML = i;
+        srCell.innerHTML = currentIndex+1;
         nameCell.innerHTML=name;
         mobileCell.innerHTML=mobile;
         emailCell.innerHTML=email;
@@ -115,11 +124,23 @@ function validateallow() {
         cityCell.innerHTML=city;
         zipCell.innerHTML=zip;
         studiedCell.innerHTML=studied;
-        editCell.innerHTML= '<button class="btn btn-dark">Edit</button>';
-        deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';
-
+        editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow('+index+')">Edit</button>';
+        deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
         
+        $(function() {
+            $("#btn1").click(function(){
+                swal({
+                    title:"Record Added!",
+                    text:"You entered a record!",
+                    icon:"success",
+                    button:"Done..."
+                });
+            });
+            });
     }
+
+
+    //Delete Row
     function deleteTableRow(index){
         var table = document.getElementById("mytable");
         console.log(index, studentsArray)
@@ -127,35 +148,77 @@ function validateallow() {
         console.log('currentIndex', currentIndex);
         table.deleteRow(currentIndex + 1);
         studentsArray.splice(currentIndex, 1);
-        
-        
-        // console.log(studentsArray)
+    
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
-            // init();
+       
+        swal({
+            title: "Record deleted",
+            text: "Student Detail Deleted successfully",
+            icon: "success",
+            button: "Ok"
+        });
     }
-    //  else {
 
-    //     $(document).ready(function () {
+     //Edit Row
+     debugger;
+      
+    function editTableRow(index){
 
-    //         $("#btn1").click(function () {
-    //             swal("Please fill all details");
-    //         });
-    //     });
-    // }
-
+    console.log("Index, StudentArray =",index, studentsArray)
+    var stuObj = studentsArray[index];
 
 
+    selectedIndex = index;
 
 
-//Date picker and age validation 
+    document.getElementById("name")=stuObj.name;
+    document.getElementById("btn1").innerHTML = "Update Row";
 
-$(function () {
-    $('input[name="studied"]').daterangepicker({
-        opens: 'right'
-    }, function (start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') );
-    });
+
+    localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
+   
+}
+   
+    
+   
+
+
+
+
+
+
+
+
+
+
+ $(function() {
+
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+
+    function cb(start, end) {
+        $('#studied').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+
+    $('#studied').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+
+    cb(start, end);
+
 });
+
+
+
 
 //Fade img
 
@@ -216,11 +279,12 @@ function validateemail() {
 }
 
 function validatezip() {
-    let setzip = /^\d{6}$/;
+    let setzip = /^(\d)(?!\1{5})\d{5}$/;
+
     let zip = document.getElementById("zip").value;
     let msgzip = document.getElementById("invalid_msg2");
     if (!setzip.test(zip)) {
-        msgzip.innerHTML = "*Only 6 digits are allowed";
+        msgzip.innerHTML = "*Only 6 digits are allowed and all numbers repeated is invalid";
         msgzip.style.color = "red";
         document.getElementById("invalid_msg2").style.display = "unset";
         return false;
@@ -231,11 +295,11 @@ function validatezip() {
 }
 
 function validatecgpa() {
-    let setcgpa = /^(?:[1-9]|0[1-9]|10)$/;
+    let setcgpa = /^(10|\d)(\.\d{1,2})?$/;
     let cgpa = document.getElementById("cgpa").value;
     let msgcgpa = document.getElementById("invalid_cgpa");
     if (!setcgpa.test(cgpa)) {
-        msgcgpa.innerHTML = "*Only 1 to 10 are allowed";
+        msgcgpa.innerHTML = "*Only 1 to 10 are allowed with decimal";
         msgcgpa.style.color = "red";
         document.getElementById("invalid_cgpa").style.display = "unset";
         return false;
@@ -299,19 +363,8 @@ function validatestate() {
 
 
 //Cascading Dropdown 
-const CityData = '{"Citys":['+
-'{"StateId":"Madhya Pradesh","Id":"Indore","Name":"Indore"},' +
-'{"StateId":"Madhya Pradesh","Id":"Bhopal","Name":"Bhopal"},' +
-'{"StateId":"Rajasthan","Id":"Sirohi","Name":"Sirohi"},' +
-'{"StateId":"Rajasthan","Id":"Udaipur","Name":"Udaipur"},' +
-'{"StateId":"Rajasthan","Id":"Jaisalmer","Name":"Jaisalmer"},' +
-'{"StateId":"Gujarat","Id":"Ahmedabad","Name":"Ahmedabad"},' +
-'{"StateId":"Gujarat","Id":"Vadodara","Name":"Vadodara"},' +
-'{"StateId":"Gujarat","Id":"Surat","Name":"Surat"},' +
-'{"StateId":"Punjab","Id":"Ludhiana","Name":"Ludhiana"},' +
-'{"StateId":"Punjab","Id":"Amritsar","Name":"Amritsar"},' +
-'{"StateId":"Punjab","Id":"Patiala","Name":"Patiala"}]}';
-// let test = {
+debugger;
+// const CityData = {
 //     "Cities" : [
 //         {
 //             "StateId": 1,
@@ -319,45 +372,113 @@ const CityData = '{"Citys":['+
 //             "Name": "Indore"
 //         },
 //         {
-
+//             "StateId": 1,
+//             "Id": 2,
+//             "Name": "Bhopal"
 //         },
 //         {
-
+//             "StateId": 2,
+//             "Id": 3,
+//             "Name": "Sirohi"
 //         },
+//         {
+//             "StateId": 2,
+//             "Id": 4,
+//             "Name": "Udaipur"
+//         },
+//         {
+//             "StateId": 2,
+//             "Id": 5,
+//             "Name": "Jaisalmer"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 6,
+//             "Name": "Ahmedabad"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 7,
+//             "Name": "Vadodara"
+//         },
+//         {
+//             "StateId": 3,
+//             "Id": 8,
+//             "Name": "Surat"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 9,
+//             "Name": "Ludhiana"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 10,
+//             "Name": "Amritsar"
+//         },
+//         {
+//             "StateId": 4,
+//             "Id": 11,
+//             "Name": "Patiala"
+//         }
 //     ]
 // }
-const StateData = '{"States":['+
-'{"Id":"Madhya Pradesh","Name":"Madhya Pradesh"},' +
-'{"Id":"Rajasthan","Name":"Rajasthan"},' +
-'{"Id":"Gujarat","Name":"Gujarat"},' +                    
-'{"Id":"Punjab","Name":"Punjab"}]}';
 
-//StateData.States[0].Id
-//const test = {States:[{"fds":1,"fdsf":1}]}
-//{States:[{"fds":1,"fdsf":1}]}
-
-// getAllRecords(){
-    //  localStorage.getItem('studentDetails')
+// const StateData = {
+//     "States" : [
+//         {
+//             "Id" : 1,
+//             "Name": "Madhya Pradesh"
+//         },
+//         {
+//             "Id" : 2,
+//             "Name": "Rajasthan"
+//         },
+//         {
+//             "Id" : 3,
+//             "Name": "Gujarat"
+//         },
+//         {
+//             "Id" : 4,
+//             "Name": "Punjab"
+//         }
+//     ]
 // }
+
+const CityData = '{"Cities":['+
+'{"StateId":"1","Id":"1","Name":"Indore"},' +
+'{"StateId":"1","Id":"2","Name":"Bhopal"},' +
+'{"StateId":"2","Id":"3","Name":"Sirohi"},' +
+'{"StateId":"2","Id":"4","Name":"Udaipur"},' +
+'{"StateId":"2","Id":"5","Name":"Jaisalmer"},' +
+'{"StateId":"3","Id":"6","Name":"Ahmedabad"},' +
+'{"StateId":"3","Id":"7","Name":"Vadodara"},' +
+'{"StateId":"3","Id":"8","Name":"Surat"},' +
+'{"StateId":"4","Id":"9","Name":"Ludhiana"},' +
+'{"StateId":"4","Id":"10","Name":"Amritsar"},' +
+'{"StateId":"4","Id":"11","Name":"Patiala"}]}';
+
+const StateData = '{"States":['+
+'{"Id":"1","Name":"Madhya Pradesh"},' +
+'{"Id":"2","Name":"Rajasthan"},' +
+'{"Id":"3","Name":"Gujarat"},' +                    
+'{"Id":"4","Name":"Punjab"}]}';
+
 $(document).ready(function(){
 
-    // getAllRecords()
-//createCookie("test","t65565",7);
-//document.cookie="test=1201";
+    var StateJsonData = JSON.parse(StateData);
+    $.each(StateJsonData.States,function(i,option){
+        $("#state").append($('<option></option>').val(option.Id).html(option.Name));
+    })
 
-var StateJsonData = JSON.parse(StateData);
-$.each(StateJsonData.States,function(i,option){
-$("#state").append($('<option></option>').val(option.Id).html(option.Name));
-})
+    $("#state").change(function(){
+        var CityJsonData = JSON.parse(CityData);
+        $("#city").html('');
+        $.each(CityJsonData.Cities,function(i,option){
+            if($("#state").val() == option.StateId){
+                $("#city").append($('<option></option>').val(option.Id).html(option.Name));
+            }
+    })
 
-$("#state").change(function(){
-var CityJsonData = JSON.parse(CityData);
-$("#city").html('');
-$.each(CityJsonData.Citys,function(i,option){
-if($("#state").val() == option.StateId){
-$("#city").append($('<option></option>').val(option.Id).html(option.Name));
-}
-})
-
-});
+    });
 });

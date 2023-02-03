@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+    integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+    integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="mainDiv">
+        <form name="form">
+        <table class="table-responsive" border="1">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr >
+                <td colspan="5" col-sm-12>
+                    <input type="text" name="text" id="result" >
+                </td>
+            </tr>
+            </div>
+            </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr id="colorgrey" >
+                <td ><input type="button" value="+" name="+"  onclick = "form.text.value += '+' "></td>
+                <td><input type="button" value="-"  onclick = "form.text.value += '-' "></td>
+                <td><input type="button" value="x" onclick = "form.text.value += '*' "></td>
+                <td><input type="button" value="÷"  onclick = "form.text.value += '/' "></td>
+                <td><input type="button" value="%" onclick = "form.text.value += '%' "></td>  
+            </tr>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr >
+                <td class="colorWhite"><input type="button" value="7"  onclick = "form.text.value += '7' "></td>
+                <td class="colorWhite"><input type="button" value="8"  onclick = "form.text.value += '8' "></td>
+                <td class="colorWhite"><input type="button" value="9"  onclick = "form.text.value += '9' "></td>
+                <td rowspan="4" colspan="2" style="background-color: rgb(223, 64, 6); border-radius: 0 0 10px 0;"><input type="button" value="="  onclick = "evaluatation()" ></td>   
+            </tr>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr class="colorWhite" >
+                <td class="colorWhite"><input type="button" value="4"  onclick = "form.text.value += '4' "></td>
+                <td class="colorWhite"><input type="button" value="5"  onclick = "form.text.value += '5' "></td>
+                <td class="colorWhite"><input type="button" value="6"  onclick = "form.text.value += '6' "></td> 
+            </tr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr class="colorWhite" >
+                <td class="colorWhite"><input type="button" value="1"  onclick = "form.text.value += '1' "></td>
+                <td class="colorWhite"><input type="button" value="2"  onclick = "form.text.value += '2' "></td>
+                <td class="colorWhite"><input type="button" value="3"  onclick = "form.text.value += '3' "></td>   
+            </tr>
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+            <tr class="data" class="colorWhite" >
+                <td class="colorWhite data"><input type="button" value="0"  onclick = "form.text.value += '0' "></td>
+                <td class="colorWhite"><input type="button" value="."  onclick = "form.text.value += '.' "></td>
+                <td class="colorWhite"><input type="button" value="AC" onclick = "form.text.value = ' ' " ></td>  
+            </tr>
+        </div>
+    </div>
+        </table>
+    </form>
+    </div>
+</body>
+<script src="./calculator.js"></script>
+</html>
