@@ -18,7 +18,7 @@ function validatecheck(){
                     button: "Ok"
                 });
                
-      
+      /////
     
     } else {                       
         $('#myModal').modal('hide')
