@@ -1,14 +1,17 @@
 
 
 $(document).ready(function () {
-  
+  $.validator.addMethod("validname", function (value) {
+    return /^[a-zA-Z\s]+$/.test(value);
+  });
   $("#form").validate({
-    
+
     rules: {
       name: {
         required: true,
-        Text:true,
-        digits: false
+        Text: true,
+        digits: false,
+        validname:true
       },
       number: {
         required: true,
@@ -43,10 +46,11 @@ $(document).ready(function () {
     messages: {
       name: {
         required: "Enter your name",
-        Text:"hello",
+        Text: "hello",
         minlength: "complete your name",
         maxlenght: "",
-        digits: "invaild Name"
+        digits: "invaild Name",
+        validname:"invalid name"
       },
       number: {
         required: "Enter your Mobile number",
@@ -82,7 +86,6 @@ $(document).ready(function () {
     var c = (parseFloat(amount) * parseFloat(percent)) / 100;
     return parseFloat(c);
   }
-
 
   var taxable_amount = 0;
   var years = 0
