@@ -14,7 +14,7 @@
     <div class="container-fluid p-5">
         <div class="centerDiv row">
 
-            <div class="col-md-8">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
 
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
                     Row</button>
@@ -91,19 +91,19 @@
                 </div>
             </div>
 
-            <div class="col-md-4 mb-5">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
-                        <input class="form-check-input" type="radio" name="FIFO" id="FIFO" value="FIFO" checked>
+                        <input class="form-check-input" type="radio" name="approach" id="FIFO" value="FIFO" checked>
                         <label class="form-check-label">
                             FIFO
                         </label>
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
 
-                        <input class="form-check-input" type="radio" name="FIFO" id="LIFO" value="LIFO">
+                        <input class="form-check-input" type="radio" name="approach" id="LIFO" value="LIFO">
                         <label class="form-check-label">
                             LIFO
                         </label>
@@ -114,23 +114,26 @@
        
 
             <hr>
-            <div class="row m-5">
-                <table class="table-responsive table-bordered col-md-8" id="tblData">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Name</th>
-                            <th>Mobile</th>
-                            <th>State</th>
-                            <th>City</th>
-                            <th>Zip</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                    </tbody>
-                </table>
+            <div class="row mt-5">
+                <div class="centerDiv">
+                    <table class="table table-responsive table-bordered" id="tblData">
+                        <thead>
+                            <tr>
+                                <th scope="col">Index</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Mobile</th>
+                                <th scope="col">State</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Zip</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         </div>
     </div>

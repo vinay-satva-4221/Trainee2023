@@ -17,6 +17,12 @@
   </script>
   <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <style>
+    .hide {
+
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -24,94 +30,120 @@
 
 
     <br>
-    <h3 class="text-center "><b>(LIFO & FIFO)</b></h3><br>
+    <h3 class="text-center "><b>LIFO & FIFO</b></h3><br>
     <hr>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">ADD</button>
-    <br><br>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="fifo">
-      <label class="form-check-label" for="flexRadioDefault1">
-        FIFO
-      </label>
+
+    
+    <br>
+    <div class="text-center">
+      <h34><b>Select Algorithm :</b></h3><br><br>
+        <input class="form-check-input text-center" type="radio" name="flexRadioDefault" id="fifo" checked>
+        <label class="form-label" for="flexRadioDefault1">
+          FIFO
+        </label>
+        <br>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="lifo">
+        <label class="form-label" for="flexRadioDefault2">
+          LIFO
+        </label>
+
+        <br><br>
+        <hr>
+        <button type="button" class="btn btn-primary" style="width:10%" data-bs-toggle="modal"
+          data-bs-target="#myModal">ADD</button>
+
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="lifo">
-      <label class="form-check-label" for="flexRadioDefault2">
-        LIFO
-      </label>
-    </div>
+    <br> <br><br>
+  </div>
 
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-    <div class="modal" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Register</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <div>
-              <label for="name">Name</label>
-              <input type="text" class="form-control is-valid" id="name" placeholder="Enter Name"onchange="return validatename()">   <p id="invalid_msg"></p><br>
-           
-
-              <label for="phone">Phone</label>
-              <input type="text" class="form-control is-valid" id="phone" placeholder="Enter Phone number" onchange="return validatemobile()">              <p id="invalid_msg1"></p>
-              <br>
-
-              <label for="state" class="form-label">State:</label>
-              <select id="state" class="form-select">
-                <option value="" disabled selected="selected">Select State</option>
-              </select>
-
-              <label for="city" class="form-label">City:</label>
-              <select id="city" class="form-select"></select>
-
-              <label for="zip">Zip Code</label>
-              <input type="text" class="form-control needs-validation" id="zip" placeholder="Enter your Zip Code" onchange="return validatezip()"
-                required>                <p id="invalid_msg2"></p>
-                <br>
-
-
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-info" id="madd" onclick="validatecheck(), modaloc()" data-bs-dismiss="modal">Add
-              Data</button>
-          </div>
-
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Register</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Name" onchange="return validatename()">
+            <p id="invalid_msg"></p><br>
 
+
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Enter Phone number"
+              onchange="return validatemobile()">
+            <p id="invalid_msg1"></p><br>
+
+            <div class="form-group">
+              <label for="State" class="form-label">State:</label>
+              <select id="State" class="form-control"><br>    
+                <option value="" disabled selected="selected">Select State</option>
+                <option value="Gujrat">Gujrat</option>
+                <option value="MadhyaPradesh">MadhyaPradesh</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+              </select><p id="invalid_state"></p>
+
+            </div>
+            <div class="form-group">
+              <label for="City" class="form-label">City:</label>
+              <select id="City" class="form-control"></select>
+            </div><p id="invalid_city"></p>
+
+            <div class="form-group">
+
+
+
+              <label for="zip" class="form-label">Zip Code:</label>
+              <input type="text" class="form-control needs-validation" id="zip" placeholder="Enter your Zip Code"
+                onchange="return validatezip()" required>
+              <p id="invalid_msg2"></p>
+              <br>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" onclick="validatecheck()" data-bs-dismiss="modal">Add
+            Data</button>
+        </div>
 
       </div>
+
+
+
     </div>
+  </div>
 
 
-    <table id="mytable" class="table table-responsive hide" style="border: 1px solid lightgray;">
+  <table id="mytable" class="table table-responsive hide" style="border: 1px solid lightgray; width: 50%; margin-left: 25%;">
 
-      <br>
-      <h4 class="text-center hide" id="hide1"><B>RECORDS</B></h4><br>
 
+    <h4 class="text-center hide" id="hide1"><B>RECORDS</B></h4><br>
+    <thead>
       <tr style="background-color: black; color: white;">
-        <td> SR. No </td>
-        <td> Name </td>
-        <td> Phone </td>
-        <td> City </td>
-        <td> Zip </td>
+        <th nowrap class="px-5 py-2">Sr no.</th>
+        <th nowrap class="px-5 py-2">Name</th>
+        <th nowrap class="px-5 py-2">State</th>
+        <th nowrap class="px-5 py-2">City</th>
+        <th nowrap class="px-5 py-2">Zip</th>
 
 
       </tr>
-      <tbody id="tdata">
+    </thead>
+    <tbody id="tbody">
 
-      </tbody>
-    </table>
+    </tbody>
+  </table>
+
   </div>
 
   </div>
