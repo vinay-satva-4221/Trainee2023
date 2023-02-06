@@ -1,0 +1,45 @@
+body {
+    background-image: linear-gradient(to left, #087a90, #007ead, #007ec8, #3779dc, #816de3);
+
+}
+
+.heading {
+    font-size: 20px;
+}
+
+.addB {
+    padding-top: 4%;
+    background-color: rgb(150, 181, 248);
+    padding-bottom: 4%;
+    border-radius: 10px;
+}
+
+.addB1 {
+    width: 12rem
+}
+
+.form-check {
+    margin-top: 4%;
+    margin-left: 2rem;
+}
+
+.fshift {
+    margin-left: 33rem;
+
+}
+
+
+
+.rdbtn {
+    margin-left: 2rem;
+}
+
+.tbody{
+    background-color: #c0b7ed;
+    border-radius: 10px;
+}
+
+.error1{
+    font-size: 12px;
+    color: rgb(205, 8, 8);
+}

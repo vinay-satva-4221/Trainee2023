@@ -11,20 +11,32 @@ $(document).ready(function () {
         }
     });
 
+
+
     $('.calculator').on('click', function () {
-
         var value = $(this).attr('value');
-
-        $('#text').val($('#text').val() + value);
-
+       
+    
+        if (value == '.'.length>2 ) { // only 1 dot
+            return false;
+           
+        }
+        else{
+            $('#text').val($('#text').val() + value);
+        }
     });
+    $('.special').one('click',function(){
+        var value = $(this).attr('value');
+        $('#text').val($('#text').val() + value);
+    })
+
 
     $('#clearText').click(function () {
         $('#text').val("");
     });
 
     $('#equal').click(function () {
-        debugger
+        
         var empty = $('#text').val();
         if (empty == "") {
             $('#text').attr("placeholder", "Please enter numbers").css("font-weight", "lighter");
@@ -35,4 +47,7 @@ $(document).ready(function () {
             $('#text').val(eval($('#text').val()));
         }
     })
+
+
+      
 })  
