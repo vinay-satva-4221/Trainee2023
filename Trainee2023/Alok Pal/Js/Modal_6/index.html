@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <div class="text-center mt-3 heading"><p><b>LIFO/FIFO</b></p>
+    <div class="text-center mt-3 heading">
+        <p><b>LIFO/FIFO</b></p>
     </div>
     <div class="container addB">
         <!-- Button trigger modal -->
@@ -52,12 +53,13 @@
                         <form class="row g-3">
                             <div class="col-md-6">
                                 <label for="validationServer01" class="form-label">First name</label>
-                                <input type="text" class="form-control " id="fname" required>
-                              <span id="navalid" class="error1"></span>
+                                <input type="text" class="form-control " id="fname" onkeyup="return nameV()" required>
+                                <span id="navalid" class="error1"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="validationServer02" class="form-label">Last name</label>
-                                <input type="text" class="form-control " id="lname" required>
+                                <input type="text" class="form-control " id="lname" onkeyup="return lnameV()" required>
+                                <span id="navalid1" class="error1"></span>
 
                             </div>
                             <div class="col-md-4">
@@ -87,10 +89,9 @@
                             <div class="col-md-4">
                                 <label for="validationServer05" class="form-label">Zip</label>
                                 <input type="text" class="form-control " id="fzip"
-                                    aria-describedby="validationServer05Feedback" required>
-                                <div id="validationServer05Feedback" class="invalid-feedback">
-                                    Please provide a valid zip.
-                                </div>
+                                    aria-describedby="validationServer05Feedback" onkeyup="zipV()" required>
+                                <span id="vzip" class="error1"></span>
+
                             </div>
 
                             <!-- <div class="col-12">
@@ -101,8 +102,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick="addData(),showData(),lifo(),nameV(),validateForm()"
-                            data-bs-dismiss="modal">Submit form</button>
+                        <button type="button" class="btn btn-secondary"
+                            onclick="addData(),showData(),lifo(),validateForm()" data-bs-dismiss="modal">Submit
+                            form</button>
                     </div>
                 </div>
             </div>
