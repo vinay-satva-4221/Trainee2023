@@ -13,10 +13,18 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container p-4">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             ADD
         </button>
+        <div class="form-check form-check-inline form-check-reverse">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="flifo" value="option1">
+            <label class="form-check-label" for="inlineRadio1">LIFO</label>
+        </div>
+        <div class="form-check form-check-inline form-check-reverse">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ffifo" value="option2">
+            <label class="form-check-label" for="inlineRadio2">FIFO</label>
+        </div>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -29,8 +37,8 @@
                         <form class="row g-3" id="basic_form">
                             <div class="col-12">
                                 <label for="specificSizeInputName" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="specificSizeInputName"
-                                    placeholder="Enter your First Name" required>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your First Name"
+                                    required>
                             </div>
                             <label for="specificSizeInputName" class="form-label">State</label>
                             <select class="form-select" aria-label="Disabled select example" id="state" name="state">
@@ -44,24 +52,46 @@
                             </select>
                             <div class="col-12">
                                 <label for="specificSizeInputName" class="form-label">Zip Code</label>
-                                <input type="number" class="form-control" id="specificSizeInputName"
-                                    placeholder=" Enter zip code" required maxlength="6" min="0" name="zipcode">
+                                <input type="number" class="form-control" id="zip" placeholder=" Enter zip code"
+                                    required maxlength="6" min="0" name="zipcode">
                             </div>
                             <div class="col-12">
                                 <label for="inputEmail4" class="form-label">Phone</label>
                                 <input type="number" class="form-control" placeholder="mobile number" maxlength="10"
-                                    minlength="10" min="0" name="mobile">
+                                    minlength="10" min="0" name="mobile" id="mobile"> 
                             </div>
 
 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="add">ADD</button>
+                        <button type="button" class="btn btn-primary" id="add" >ADD</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="container mt-2 table-responsive text-center p-4">
+            <table class="w3-table-all border table-responsive table-bordered table table-striped table-hover"
+                id="myTable">
+                <thead class=" table thead-dark">
+                    <tr class="w3-blue">
+                        <th nowrap class="border ">Srno.</th>
+                        <th nowrap class="border p-1">Name</th>
+                        <th nowrap class="border p-1">State</th>
+                        <th nowrap class="border p-1">City</th>
+                        <th nowrap class="border p-1">ZipCode</th>
+                        <th nowrap class="border p-1">Mobile</th>
+                    </tr>
+                </thead>
+                <tbody id="root">
+                </tbody>
+            </table>
+        </div>
+
+
+
+
     </div>
 
 
