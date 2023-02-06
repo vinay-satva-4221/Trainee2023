@@ -93,6 +93,7 @@ function validateallow() {
 }
 
     //Table insert data
+    debugger;
     function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied) {
         var index= index
         console.log('index', index)
