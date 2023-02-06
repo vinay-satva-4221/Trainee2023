@@ -4,16 +4,16 @@ $(document).ready(function () {
 
 
 
-    // var input = '';
-// $("#dot").click(function() {
+    var input = '';
+$("#dot").click(function() {
    
-//  var input = $(this).attr("value");
-//  if (input === '.') {
-//       if (input === '.' + '.') {
-//         input = '';
-//       }
-//     }
-// });
+ var input = $(this).attr("value");
+ if (input === '.') {
+      if (input === '.' + '.') {
+        input = '';
+      }
+    }
+});
     
    
     $(".digit").click(function () {
@@ -34,8 +34,8 @@ $(document).ready(function () {
     })
 
     $("#ac").click(function() {
-        $("#calc1").val("0");
-        $("#calc2").val("0");
+        $("#calc1").val("");
+        $("#calc2").val("");
     })
 
 

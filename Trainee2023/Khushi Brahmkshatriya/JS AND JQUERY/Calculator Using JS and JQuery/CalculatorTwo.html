@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <link rel="stylesheet" href="/bs5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./CalculatorTwo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<body>
+        <div class="d-flex align-items-center justify-content-center text-center vh-100">
+            <div class="row col-md-4">
+                <table class="table-responsive">
+                    <tr class="p-3">
+                        <td colspan="4">    
+                            <input type="text" id="operation" value="" disabled>
+                            <input type="text" id="answer" class="" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" value="C" id="C"class="btn calculator">C</button></td>
+                        <td><button type="button" value="" id="back" onclick="deleteCharacter()"  class="btn bi bi-backspace-fill"></button></td>
+                        <td><button type="button" value="%" id="reminder" class="btn calculator">%</button></td>
+                        <td><button type="button" value="/" id="divide" class="btn calculator">/</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" value="7" id="7"class="btn calculator">7</button></td>
+                        <td><button type="button" value="8" id="8" class="btn calculator">8</button></td>
+                        <td><button type="button" value="9" id="9" class="btn calculator">9</button></td>
+                        <td><button type="button" value="*" id="multi" class="btn calculator">x</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" value="4" id="4" class="btn calculator">4</button></td>
+                        <td><button type="button" value="5" id="5" class="btn calculator">5</button></td>
+                        <td><button type="button" value="6" id="6" class="btn calculator">6</button></td>
+                        <td><button type="button" value="-" id="subtract" class="btn calculator">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" value="1" id="1" class="btn calculator">1</button></td>
+                        <td><button type="button" value="2" id="2" class="btn calculator">2</button></td>
+                        <td><button type="button" value="3" id="3" class="btn calculator">3</button></td>
+                        <td><button type="button" value="+" id="plus" class="btn calculator">+</button></td>
+                    </tr>
+                    <tr>
+                        <td><button type="button" value="0" id="0" class="btn calculator">0</button></td>
+                        <td><button type="button" value="." class="btn calculator" id="dot">.</button></td>
+                        <td colspan="2"><button type="button" value="=" id="equals" class="btn equal">=</button></td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+    <script src="/bs5/jquery-3.6.3.min.js"></script>
+    <script src="./CalculatorTwo.js"></script>
+    <script src="/bs5/js/bootstrap.min.js"></script>
+</body>
+</html>
