@@ -2,21 +2,31 @@ $(document).ready(function(){
 
     $('.calculator').on('click',function(){
         
-        //var answer1 = $('#answer').val();
-        //var ans3 = $(this).val();
-
-        var ans = $(this).val();
-        $("#answer").val(ans);
-
-        
+        var calculatorValue = $("#answer").val();
+        var digitValue = $(this).val();
+        var secondTime = $("#answer").val(calculatorValue + digitValue);
+    
     })
 
-    // $('.againCall').on('click',function(){
+
+    // function fnAddCalString (operator){
+    //         var oldString =   $("#operation").val();
+    //         var ans =  $("#answer").val() ;
+            
+    //         var newStr = oldString + ans + operator ;
+    //         $("#operation").val(newStr);
+    // }
+
+    // $('.operation').click(function () {
+    //      fnAddCalString($(this).val());
+    //     var ans =  $("#answer").val();
         
-    //     $('#operation').val(($(this).val()))
+    //     var opValue = $(this).val();
+    //     console.log(opValue);
+    //     // $("#operation").val(calculatorValue);
+    //     $("#answer").val("");
+    //     // $("#operation").val(calculatorValue + opValue);
     // })
-
-
     $('.operation').click(function () {
         
         var calculatorValue =  $("#answer").val();
@@ -25,6 +35,8 @@ $(document).ready(function(){
         $("#operation").val(calculatorValue);
         $("#answer").val("");
         $("#operation").val(calculatorValue + opValue);
+        
+        
     })
     $("#C").click(function() {
         $("#answer").val("");
@@ -32,27 +44,38 @@ $(document).ready(function(){
     })
     $("#equals").click(function(){
         
-        var value1 = parseFloat($("#operation").val( ));
+        var value1 = parseFloat($("#operation").val());
         var value2 = parseFloat($("#answer").val());
-        var opration =  $("#operation").val();
-        var result = opration.slice(-1);
+        console.log(value2);   
+        debugger
+        if(isNaN(value2))
+        {
+            alert('Not valid');
+            $('#answer').val("");
+        }
+        else
+        {
+            var opration =  $("#operation").val();
+            var result = opration.slice(-1);
+    
+            if(result == "+"){
+                $("#answer").val(value1 + value2);
+    
+            }
+            if(result == "-"){
+                $("#answer").val(value1 - value2);
+            }
+            if(result == "/" ){
+                $("#answer").val(value1 / value2);    
+            }
+            if(result == "*"){
+                $("#answer").val(value1 * value2)
+            }
+            if(result == "%"){
+                $("#answer").val(value1 % value2)
+            }
+        }
         
-        if(result == "+"){
-            $("#answer").val(value1 + value2);
-
-        }
-        if(result == "-"){
-            $("#answer").val(value1 - value2);
-        }
-        if(result == "/" ){
-            $("#answer").val(value1 / value2);    
-        }
-        if(result == "*"){
-            $("#answer").val(value1 * value2)
-        }
-        if(result == "%"){
-            $("#answer").val(value1 % value2)
-        }
 
     })
 })
