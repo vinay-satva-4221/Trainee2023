@@ -1,0 +1,15 @@
+.hide{
+    display: none;
+}
+
+body{
+    /* background-image: linear-gradient(to right bottom, #200537, #57004a, #92004b, #c6003b, #eb1212); */
+    background-image: linear-gradient(to right, #109391, #386298, #008f60, #00be59, #12eb39);
+}
+
+.cont{
+   background-color: rgb(217, 191, 191);
+   border-radius: 15px;
+
+   margin-top: 9rem;
+}
