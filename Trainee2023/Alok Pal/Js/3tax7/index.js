@@ -16,8 +16,8 @@
 
 function getValue() {
     var bank1 = parseInt(document.getElementById("c1").value);
-    var bank2 = parseInt(document.getElementById("c1").value);
-    var bank3 = parseInt(document.getElementById("c1").value);
+    var bank2 = parseInt(document.getElementById("c2").value);
+    var bank3 = parseInt(document.getElementById("c3").value);
 
     var bank21 = parseInt(document.getElementById("c21").value);
     var bank22 = parseInt(document.getElementById("c22").value);
@@ -51,13 +51,13 @@ function getValue() {
     }
 
     if (ind == 1) {
-        document.getElementById("1").innerHTML = "First Client is the richest"
+        document.getElementById("1").innerHTML = "First Client is the richest!!!"
     }
     else if (ind == 2) {
-        document.getElementById("2").innerHTML = "Second Client is the richest"
+        document.getElementById("2").innerHTML = "Second Client is the richest!!!"
     }
-    else if(ind ==3) {
-        document.getElementById("3").innerHTML = "Third Client is the richest"
+    else if(ind == 3) {
+        document.getElementById("3").innerHTML = "Third Client is the richest!!!"
     }
     console.log(ind)
 

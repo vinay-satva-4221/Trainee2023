@@ -13,3 +13,11 @@ body{
 
    margin-top: 9rem;
 }
+.design{
+   font-weight: bold;
+    font-size: 16px;
+    color: red;
+}
+.mar{
+    margin-bottom: 10px;
+}
