@@ -129,7 +129,6 @@ function validateallow() {
         editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow(this)">Edit</button>';
         deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
         
-debugger;   
         $(document).ready(function(){
             $("#btn1").click(function(){
                 swal({
