@@ -8,60 +8,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
-            .container{
-                margin-top: 70px;
-                background-color: yellow;
-                border:3px solid black;
+            #flip,#button{
+                text-align:center;
             }
-            .abc{
+            #button{
                 background-color: aqua;
             }
         </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-     $(":button").click(function(){
-      $("p").hide(1000);
-      $("p").show();
-      $(".container").mouseenter(function(){
-        alert("you have entered in maahi's kingdom");
-      });
-        $("input").focus(function(){
-            $(this).css("background-color", "gray");
-        });
-        $("input").blur(function(){
-            $(this).css("background-color", "blue");
-        });
-          
-        $(this).click(function(){
-    $("#name").val("maahi");
-    $("#kingdom").val(" power of maahis villa");
-  });
         
-    });
-  });
-
-    
-    </script> 
-</head>
-<body class="abc">
-    <div class="container">
-    <h1>about me</h1>
-    <p >i m so loving person with pure intentions anda good heart</p>
-    <p>i mosttly love to develop myself by learning new skills ,and new work everyday</p>
-    <p>i usually give time to my work and myself</p>
-    <p>i love to play basketball and riding bikes</p>
-    <p>this world is so mean,there is no more true relations exist..just ur family is your everything who supports u..other people just joins with when there need comes</p>
-    <p>i love myself so much</p>
-    <button type="button" class="btn btn-primary btn-lg" value="hide me">hide me</button>
-    <button type="button" class="btn btn-danger btn-lg" value="show me">show me</button>
-    
-    
-
-    
-    
-
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("button").click(function(){
+            $("div").animate({'left': '250px'},"slow");
+          });
+        });
+        </script>
+        </head>
+        <body>
+    <button>click</button>        
+    <h1>now see the magic</h1>
+    <div style="background-color:yellow;width:100px;height:100px;position:absolute">
+        sunday funday
     </div>
-</body>
-</html>
+        
+    </body>
+    </html>

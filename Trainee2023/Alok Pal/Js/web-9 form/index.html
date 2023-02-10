@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="container text-center ">
+      <p class="heading">
+        <b>
+          <h5>Request for Taxpayer Identification Number and Certification.</h5>
+        </b>
+      <p>Go to www.irs.gov/FormW9 for instructions and the latest information.</p>
+    </div>
+    <hr>
+    <form>
+      <div class="row mt-2">
+        <div class="form-group">
+          <label for="">1. Name as shown on your income tax return Name is required on this
+            line; do not leave this line blank.</label><span class="star" style="color: red;">*</span>
+          <div class="col-md-8 col-sm-12 mt-2">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="form-group">
+          <label for="">2. Business name/disregarded entity name, if different from
+            above</label></span>
+          <div class="col-md-8 col-sm-12 mt-2">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-md-7 col-sm-12 mt-4">
+        <label class="" id="label_4" for="input_4"> 3. Check appropriate box for federal tax classification of the
+          person whose name is entered on line 1. Check only one of the following seven boxes.</label>
+      </div>
+      <div class="form-check mt-2">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Individual/sole proprietor or single-member LLC
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          C Corporation
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          S Corporation
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Partnership
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Trust/estate
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Limited liability company.
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Other
+        </label>
+      </div>
+
+      <div class="row mt-4">
+        <div class="form-group">
+          <label for="" class="col-md-7 col-sm-12">If you selected "Limited liability company", enter the tax
+            classification (C=C corporation, S=S
+            corporation, P=Partnership)</label>
+          <div class="col-md-8 col-sm-12 mt-2">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="form-group">
+          <label for="">4. Exemptions (codes apply only to certain entities, not individuals; see instructions on page
+            3):</label>
+          <div class="col-md-8 col-sm-12 mt-3">
+            <label for="" class="text-muted">Exempt payee code (if any)</label>
+            <input type="email" class="form-control mt-2">
+          </div>
+          <div class="col-md-8 col-sm-12 mt-3">
+            <label for="" class="text-muted">Exempt payee code (if any)</label>
+            <input type="email" class="form-control mt-2">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="form-group">
+          <label for="">5. Address</label>
+          <div class="col-md-8 col-sm-12 mt-2">
+            <input type="text" class="form-control mb-2">
+            <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">City</small>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">State</small>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="form-group">
+          <div class="col-md-8 col-sm-12">
+            <input type="text" class="form-control mb-2">
+            <small class="form-text text-muted">Zip Code</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <label for="">Requester's name</label>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">First Name</small>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">Last Name</small>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="form-group">
+          <label for="">Requester's address</label>
+          <div class="col-md-8 col-sm-12 mt-2">
+            <input type="text" class="form-control mb-2">
+            <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">City</small>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <input type="text" class="form-control mb-2">
+          <small class="form-text text-muted">State</small>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="form-group">
+          <div class="col-md-8 col-sm-12">
+            <input type="text" class="form-control mb-2">
+            <small class="form-text text-muted">Zip Code</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4 col-sm-12">
+          <label for="">List account number(s) here (optional)</label>
+          <input type="text" class="form-control mt-3 mb-5">
+        </div>
+      </div>
+
+      <b>
+        <h5>Social security number</h5>
+        <div class="col-md-8 col-sm-12">
+          <hr>
+        </div>
+      </b>
+
+
+
+
+    </form>
+  </div>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
