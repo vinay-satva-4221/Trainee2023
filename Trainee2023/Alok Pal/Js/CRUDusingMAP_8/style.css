@@ -1,0 +1,39 @@
+body{
+    background-image: linear-gradient(to right, #b688ce, #eb89ac, #f99c88, #e7bb78, #c2d98e);
+
+}
+.heading{
+    font-size: 20px;
+}
+.addB{
+    background-color: wheat;
+    border-radius: 10px;
+
+}
+.marB{
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.marT{
+    margin-top: 30px;
+    width: 75%;
+}
+.tbody{
+    width: 75%;
+}
+#table{
+    background-color: #b688ce;
+    border-radius: 20px;
+}
+#update{
+    display: none;
+}
+
+.sizep{
+    font-size: 20px;
+}
+
+.error1{
+    font-size: 12px;
+    color: rgb(205, 8, 8);
+}

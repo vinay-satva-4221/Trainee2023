@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="text-center mt-3 heading">
+        <p><b>LIFO/FIFO</b></p>
+    </div>
+    <div class="container addB">
+        <!-- Button trigger modal -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+
+                <button type="button" class="btn btn-primary addB1 " data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    Add
+                </button>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 px-5">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="ffifo" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    FIFO (First in First Out)
+                </label>
+
+                <input class="form-check-input rdbtn" type="radio" name="exampleRadios" id="flifo" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    LIFO (Last in First Out)
+                </label>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="validationServer01" class="form-label">First name</label>
+                                <input type="text" class="form-control " id="fname" onkeyup="return nameV()" required>
+                                <span id="navalid" class="error1"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationServer02" class="form-label">Last name</label>
+                                <input type="text" class="form-control " id="lname" onkeyup="return lnameV()" required>
+                                <span id="navalid1" class="error1"></span>
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationServer04" class="form-label">State</label>
+                                <select class="form-select " id="State" aria-describedby="validationServer04Feedback"
+                                    required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option value="MadhyaPradesh"> MadhyaPradesh</option>
+                                    <option value="Gujrat"> Gujrat</option>
+                                    <option value="Punjab"> Punjab</option>
+                                    <option value="Rajasthan"> Rajasthan</option>
+
+                                </select>
+                                <div id="validationServer04Feedback" class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validationServer03" class="form-label">City</label>
+                                <select class="form-select " id="City" aria-describedby="validationServer04Feedback"
+                                    required>
+                                    <option selected disabled value="">Choose...</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="validationServer05" class="form-label">Zip</label>
+                                <input type="text" class="form-control " id="fzip"
+                                    aria-describedby="validationServer05Feedback" onkeyup="zipV()" required>
+                                <span id="vzip" class="error1"></span>
+
+                            </div>
+
+                            <!-- <div class="col-12">
+                                <button class="btn btn-primary" type="button" onclick="addData()" >Submit form</button>
+                            </div> -->
+                        </form>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="addData(),showData(),lifo(),validateForm()" data-bs-dismiss="modal">Submit
+                            form</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container tbody mt-5">
+        <div class="row">
+            <div class="col-12 margin">
+                <table class="table table-responsive table-bordered" id="crudTable">
+                    <p class="text-center mt-2"><b> TABLE </b></p>
+                    <hr>
+                    <thead>
+                        <tr>
+                            <th nowrap class="px-5 py-2">Sno.</th>
+                            <th nowrap class="px-5 py-2">First Name</th>
+                            <th nowrap class="px-5 py-2">Last Name</th>
+                            <th nowrap class="px-5 py-2">State</th>
+                            <th nowrap class="px-5 py-2">City</th>
+                            <th nowrap class="px-5 py-2">Zip</th>
+                            <th nowrap class="px-5 py-2">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="root">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="index.js"></script>
+
+</html>
