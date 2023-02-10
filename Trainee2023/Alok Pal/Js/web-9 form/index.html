@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,31 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="container text-center ">
             <p class="heading">
-             <b>Request for Taxpayer Identification Number and Certification.</b> <br>
-             
+                <b>Request for Taxpayer Identification Number and Certification.</b> <br>
+
             </p>
             <p>Go to www.irs.gov/FormW9 for instructions and the latest information.</p>
         </div>
         <hr>
         <form>
-           <div class="row">
-            <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> 1. Name as shown on your income tax return Name is required on this line; do not leave this line blank.<span class="star">*</span> </label>
-
-           </div>
-           
-
+            <div class="row mt-2">
+                <div class="form-group">
+                    <label for="">1. Name as shown on your income tax return Name is required on this
+                        line; do not leave this line blank.</label><span class="star" style="color: red;">*</span>
+                    <div class="col-md-8 col-sm-12 mt-2">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </body>
 <script src="js/bootstrap.min.js"></script>
 <script src="index.js"></script>
+
 </html>
