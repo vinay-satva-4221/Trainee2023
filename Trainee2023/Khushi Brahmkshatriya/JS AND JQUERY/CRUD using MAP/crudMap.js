@@ -1,6 +1,13 @@
 $(document).ready(function () {
 
 
+    $( ".txtOnly" ).keypress(function(e) {
+        var key = e.keyCode;
+        if (key >= 48 && key <= 57) {
+            e.preventDefault();
+        }
+    });
+
     $('#Update').hide();
 
     let map = new Map();
@@ -35,7 +42,7 @@ $(document).ready(function () {
             var KEY = (map.size + 1)
 
             var output = map.set(KEY, JSON.stringify(MyData));
-            console.log(output);
+            console.log("SetMap",output);
             showData();
         }
 
@@ -69,6 +76,7 @@ $(document).ready(function () {
 
         $('#AddData').hide();
         $('#Update').show();
+        
         const tname = $(this).parent().parent().find(".txtName").html();
         const tmovie = $(this).parent().parent().find(".txtMovie").html();
         let name = $("#name").val(tname);
@@ -77,10 +85,11 @@ $(document).ready(function () {
         myId = JSON.parse(myId);
 
         $('#Update').click(function () {
-
-
+            
+            
             for (let i = 1; i <= map.size; i++) {
-                debugger
+                
+                
                 if (i == myId) {
                     var myMapData = map.get(i);
                     var getdata = JSON.parse(myMapData);
@@ -92,14 +101,18 @@ $(document).ready(function () {
                     var KEY = (i)
 
                     var output = map.set(KEY, JSON.stringify(getdata));
-                    console.log(output);
+                    console.log("EditMap",output);
 
                 }
             }
 
             showData();
 
+            $('#AddData').show();
+            $('#Update').hide();
+
         })
+
     })
 
     $('#tblData').on('click', '.btn-delete', function () {
@@ -111,11 +124,11 @@ $(document).ready(function () {
             if (i == myId) {
 
                 map.delete(myId)
-                console.log(map);
+                console.log("DeleteMap",map);
 
             }
-
-            // var Details = JSON.parse(map.get(i));
+            
+            // var Details = JSON.parse(map.get(i-1));
             // if (i >= myId) {
 
             //     let key = i;
@@ -124,9 +137,8 @@ $(document).ready(function () {
             //     console.log(map)
             // }
         }
-        //$('#tblData').remove(myId);
-        //$(this).closest("tr").remove(myId);
-        document.getElementById("tblData").deleteRow(myId);
+        
+        $('#tblData tr').eq(myId).remove();
 
     })
 })
