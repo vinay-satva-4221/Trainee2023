@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,57 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="container text-center ">
             <p class="heading">
-             <b>Request for Taxpayer Identification Number and Certification.</b> <br>
-             
+                <b>Request for Taxpayer Identification Number and Certification.</b> <br>
+
             </p>
             <p>Go to www.irs.gov/FormW9 for instructions and the latest information.</p>
         </div>
         <hr>
         <form>
-           <div class="row">
-            <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> 1. Name as shown on your income tax return Name is required on this line; do not leave this line blank.<span class="star">*</span> </label>
 
-           </div>
-           
+            <li class="form-line" >
+                <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4"> 1. Name as shown on
+                    your income tax return Name is required on this line; do not leave this line blank.
+                    <span class="star">*</span>
+                </label>
+                <div id="cid_4" class="form-input-wide jf-required " data-layout="half">
+                    <input type="text" id="input_4" name="q4_1Name4" data-type="input-textbox"
+                        class="form-textbox validate[required]" data-defaultvalue="" style="width:20px" size="20"
+                        value="" data-component="textbox" aria-labelledby="label_4" required="">
+                </div>
 
-        </form>
+
+                <div class="row mt-5">
+                    <div class="col-md-8">
+                        <input type="text" style="width: 100%;">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <input type="text" style="width: 100%;">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" style="width: 100%;">
+                    </div>
+
+                </div>
+    </div>
+
+
+    </li>
+
+
+    </form>
     </div>
 </body>
 <script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.js"></script>
 <script src="index.js"></script>
+
 </html>

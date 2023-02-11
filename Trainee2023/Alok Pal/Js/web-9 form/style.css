@@ -17,3 +17,16 @@
     display: block;
     min-width: 40%;
 } 
+/* 
+.form-line:active{
+    background-color: rgb(244, 244, 147);
+} */
+
+.form-line {
+    padding: 12px 10px;
+    margin: 12px 4px;
+    border-radius: 3px;
+    position: relative;
+    width: 100%;
+    transition: background-color .15s;
+}
