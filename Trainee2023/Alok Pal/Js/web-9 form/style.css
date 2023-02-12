@@ -21,33 +21,93 @@
 
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
-    
+  .media {
+    width: 50%;
+    padding: 12px;
+  }
 }
-  
+
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 481px) and (max-width: 767px) {
-    body {
-        background-color: yellow;
-    }
+  .media {
+    width: 50%;
+    padding: 12px;
+  }
 }
-  
+
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px){
-    body {
-        background-color: blue;
-    }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
 }
-  
+
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px){
-    body {
-        background-color: green;
-    }
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
 }
-  
+
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
-    body {
-        background-color: white;
-    }
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
 }
+
+
+
+
+@media (max-width: 480px) {
+  .security_media {
+    height: 50px;
+    width: 10%;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .security_media {
+    height: 50px;
+    width: 9%;
+    margin: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .security_media {
+    height: 50px;
+    width: 6%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .security_media {
+    height: 50px;
+    width: 6.1%;
+  }
+}
+
+@media (min-width: 1281px) {
+  .security_media {
+    height: 50px;
+    width: 6.1%;
+  }
+}
+
+.btn{
+    width: 160px;
+    height: 43px;
+    background-color: #18bd5b;
+    border-color: #18bd5b;
+    font-size: 1.1rem;
+}
+
+#sig-canvas {
+    border: 2px solid #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
