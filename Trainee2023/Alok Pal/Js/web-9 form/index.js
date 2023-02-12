@@ -54,7 +54,6 @@ window.onload = function () {
 
                 a[0].onChange = function (){
                     if ( a[i] == null){
-                        console.log("empty")
                     }
                 }
                 
