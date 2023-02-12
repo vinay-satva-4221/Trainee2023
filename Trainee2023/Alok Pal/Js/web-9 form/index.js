@@ -45,10 +45,13 @@ window.onload = function () {
         a[i].onclick = function () {
 
             var a = document.getElementsByClassName("colorC1")[i];
+            console.log(a)
             var g1 = document.getElementsByClassName("row")[i];
+            var g2 = document.getElementsByClassName("row")[0];
+
             console.log(a)
             if (i == 0) {
-                g1.style.background = 'yellow';
+                g1.style.background = 'hsl(60, 100%, 93%)';
                 var g2 = document.getElementsByClassName("row")[1];
                 g2.style.background = 'white';
 
@@ -62,10 +65,9 @@ window.onload = function () {
             }
 
             if (i == 1) {
-                var g2 = document.getElementsByClassName("row")[0];
                 g2.style.background = 'white';
 
-                g1.style.background = 'yellow';
+                g1.style.background = 'hsl(60, 100%, 93%)';
 
             
             }
@@ -74,7 +76,15 @@ window.onload = function () {
                 var g2 = document.getElementsByClassName("row")[1];
                 g2.style.background = 'white';
 
-                g1.style.background = 'yellow';
+                g1.style.background = 'hsl(60, 100%, 93%)';
+
+               
+            }
+            if(i==3){
+                var g2 = document.getElementsByClassName("row")[1];
+                g2.style.background = 'white';
+
+                g1.style.background = 'hsl(60, 100%, 93%)';
 
                
             }
