@@ -54,7 +54,7 @@ $(function () {
 
 //Form Validation
 function validateForm() {
-    if (!nameV() ) {
+    if (!nameV1()) {
         valid = false;
     } else {
         return true;
@@ -66,13 +66,14 @@ function nameV1() {
     var errorN = document.getElementById("error");
     if (nameI == '') {
         errorN.innerHTML = "This Field is required";
-        colName.style.background = " #ffcccc";
+        colName.style.background = "#ffcccc";
         return false;
     }
     else {
+        colName.style.background = "white";
         document.getElementById("error").style.display = "none";
         return true;
-        
+
     }
 }
 
@@ -91,56 +92,85 @@ function nameV1() {
 //     }
 // }
 
+
+
 window.onload = function () {
     const g = document.getElementsByClassName("row");
     var a = document.getElementsByClassName("colorC1");
     len = g.length;
-    console.log(len)
+    console.log(g)
     for (let i = 0; i < len; i++) {
         a[i].onclick = function () {
 
             var a = document.getElementsByClassName("colorC1")[i];
             console.log(a)
+
             var g1 = document.getElementsByClassName("row")[i];
+
             var g2 = document.getElementsByClassName("row")[0];
             var g3 = document.getElementsByClassName("row")[1];
+            var g4 = document.getElementsByClassName("row")[2];
+            var g5 = document.getElementsByClassName("row")[3];
+            var g6 = document.getElementsByClassName("row")[4];
+            var g7 = document.getElementsByClassName("row")[5];
+            var g8 = document.getElementsByClassName("row")[9];
+            var g9 = document.getElementsByClassName("row")[12];
+            var g10 = document.getElementsByClassName("row")[15];
+
+
+
+
+
 
             console.log(a)
             if (i == 0) {
                 g1.style.background = 'hsl(60, 100%, 93%)';
                 g3.style.background = 'white';
 
-                // if(nameV1() != true){
-                //     g1.style.background = ' #ffcccc';
-                // }
-
-
-
-
             }
 
             if (i == 1) {
-                g2.style.background = 'white';
-
-                g1.style.background = 'hsl(60, 100%, 93%)';
-
+                if (validateForm() != true) {
+                } else {
+                    g1.style.background = 'hsl(60, 100%, 93%)';
+                }
+                g1.style.background = 'hsl(60, 100%, 93%)'
+                g4.style.background = 'white';
 
             }
 
             if (i == 2) {
-                var g2 = document.getElementsByClassName("row")[1];
-                g2.style.background = 'white';
-
+                // var one = document.getElementsByClassName("row")[1];
+                g3.style.background = 'white';
                 g1.style.background = 'hsl(60, 100%, 93%)';
+
+            }
+
+            if (i == 3 || i == 4 || i == 5 || i == 6 || i == 7 || i == 8 || i == 9 || i == 10) {
+                g3.style.background = 'white';
+                g4.style.background = 'hsl(60, 100%, 93%)';
 
 
             }
-            if (i == 3) {
-                var g2 = document.getElementsByClassName("row")[1];
-                g2.style.background = 'white';
 
-                g1.style.background = 'hsl(60, 100%, 93%)';
+            if (i == 11 || i == 12) {
+                g6.style.background = 'hsl(60, 100%, 93%)'
 
+            }
+            if (i == 13 || i == 14 || i == 15 || i == 16) {
+                g7.style.background = 'hsl(60, 100%, 93%)'
+
+            }
+            if (i == 17 || i == 18) {
+                g8.style.background = 'hsl(60, 100%, 93%)'
+
+
+            }
+            if (i == 19 || i == 20 || i == 21 ) {
+                g9.style.background = 'hsl(60, 100%, 93%)'
+
+            }
+            if(i==23){
 
             }
         }
@@ -166,3 +196,9 @@ var signaturePad = new SignaturePad(canvas, {
 });
 
 
+function cl() {
+    var on = document.getElementsByClassName("row")[2];
+    var of = document.getElementsByClassName("chck");
+
+    on.style.background = "yellow"
+}

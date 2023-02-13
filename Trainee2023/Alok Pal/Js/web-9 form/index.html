@@ -40,7 +40,7 @@
 
         <div class=" row mt-3">
           <div class="form-group form-line">
-            <label for="" class="form-label">2. Business name/disregarded entity name, if different from
+            <label for="" class="form-label ">2. Business name/disregarded entity name, if different from
               above</label></span>
             <div class="col-md-8 col-sm-12 mt-2">
               <input type="text" class="form-control colorC1">
@@ -60,159 +60,166 @@
 
           <div class="chck">
             <div class="form-check mt-2 ">
-              <input class="form-check-input  colorC1 " type="checkbox" value="" id="1">
-              <label class="form-check-label" for="1">
+              <input class="form-check-input  colorC1 " type="checkbox" onclick="cl()" value="" id="First">
+              <label class="form-check-label" for="First">
                 Individual/sole proprietor or single-member LLC
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="2">
-              <label class="form-check-label" for="2">
+              <input class="form-check-input  colorC1" type="checkbox" value="" id="second">
+              <label class="form-check-label" for="second">
                 C Corporation
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="3">
-              <label class="form-check-label" for="3">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="third">
+              <label class="form-check-label" for="third">
                 S Corporation
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="4">
-              <label class="form-check-label" for="4">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="fourth">
+              <label class="form-check-label" for="fourth">
                 Partnership
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="5">
-              <label class="form-check-label" for="5">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="fifth">
+              <label class="form-check-label" for="fifth">
                 Trust/estate
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="6">
-              <label class="form-check-label" for="6">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="sixth">
+              <label class="form-check-label" for="sixth">
                 Limited liability company.
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="7">
-              <label class="form-check-label" for="7">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="seventh">
+              <label class="form-check-label" for="seventh">
                 Other
               </label>
             </div>
 
           </div>
-        </div>
 
-
-
-
-
-
-
-
-
-        <div class="row mt-4">
-          <div class="form-group">
-            <label for="" class="col-md-7 col-sm-12">If you selected "Limited liability company", enter the tax
-              classification (C=C corporation, S=S
-              corporation, P=Partnership)</label>
-            <div class="col-md-8 col-sm-12 mt-2">
-              <input type="text" class="form-control">
+          <div class="row mt-4">
+            <div class="form-group form-line">
+              <label for="" class="col-md-7 col-sm-12 ">If you selected "Limited liability company", enter the tax
+                classification (C=C corporation, S=S
+                corporation, P=Partnership)</label>
+              <div class="col-md-8 col-sm-12 mt-2">
+                <input type="text" class="form-control colorC1 " id="oth">
+              </div>
             </div>
           </div>
         </div>
 
+
+
+        <!-- 4 -->
         <div class="row mt-4">
-          <div class="form-group">
-            <label for="">4. Exemptions (codes apply only to certain entities, not individuals; see instructions on page
+          <div class="form-group form-line">
+            <label for="" class="form-label ">4. Exemptions (codes apply only to certain entities, not individuals; see
+              instructions on page
               3):</label>
             <div class="col-md-8 col-sm-12 mt-3">
-              <label for="" class="text-muted">Exempt payee code (if any)</label>
-              <input type="email" class="form-control mt-2">
+              <label for="" class="text-muted form-label">Exempt payee code (if any)</label>
+              <input type="email" class="form-control mt-2 colorC1">
             </div>
             <div class="col-md-8 col-sm-12 mt-3">
-              <label for="" class="text-muted">Exempt payee code (if any)</label>
-              <input type="email" class="form-control mt-2">
+              <label for="" class="text-muted form-label">Exempt payee code (if any)</label>
+              <input type="email" class="form-control mt-2 colorC1">
             </div>
           </div>
         </div>
 
-        <div class="row mt-4">
-          <div class="form-group">
-            <label for="">5. Address</label>
-            <div class="col-md-8 col-sm-12 mt-2">
-              <input type="text" class="form-control mb-1">
-              <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+
+        <!-- 5 -->
+        <div class="row">
+          <div class="row mt-4">
+            <div class="form-group form-line">
+              <label for="" class="form-label">5. Address</label>
+              <div class="col-md-8 col-sm-12 mt-2 ">
+                <input type="text" class="form-control mb-1 colorC1 ">
+                <small class="form-text text-muted form-label ">Number,Street,and Apt. or Suite No.</small>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row mt-2">
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">City</small>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">City</small>
+            </div>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">State</small>
+            </div>
           </div>
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">State</small>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="form-group">
-            <div class="col-md-8 col-sm-12">
-              <input type="text" class="form-control mb-1">
-              <small class="form-text text-muted">Zip Code</small>
+          <div class="row mt-2">
+            <div class="form-group form-label">
+              <div class="col-md-8 col-sm-12">
+                <input type="text" class="form-control mb-1 colorC1">
+                <small class="form-text text-muted">Zip Code</small>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="row mt-4">
-          <label for="">Requester's name</label>
-        </div>
-        <div class="row mt-2">
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">First Name</small>
+        <div class="row">
+          <div class="row mt-4 form-label ">
+            <label for="">Requester's name</label>
           </div>
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">Last Name</small>
-          </div>
-        </div>
-
-        <div class="row mt-4">
-          <div class="form-group">
-            <label for="">Requester's address</label>
-            <div class="col-md-8 col-sm-12 mt-2">
-              <input type="text" class="form-control mb-1">
-              <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">First Name</small>
             </div>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">City</small>
-          </div>
-          <div class="media">
-            <input type="text" class="form-control mb-1">
-            <small class="form-text text-muted">State</small>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="form-group">
-            <div class="col-md-8 col-sm-12">
-              <input type="text" class="form-control mb-1">
-              <small class="form-text text-muted">Zip Code</small>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">Last Name</small>
             </div>
           </div>
         </div>
 
-        <div class="row mt-4">
-          <div class="col-md-8 col-sm-12">
+        <div class="row">
+          <div class="row mt-4">
+            <div class="form-group form-label ">
+              <label for="">Requester's address</label>
+              <div class="col-md-8 col-sm-12 mt-2">
+                <input type="text" class="form-control mb-1 colorC1">
+                <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">City</small>
+            </div>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">State</small>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="form-group form-label ">
+              <div class="col-md-8 col-sm-12 colorC1">
+                <input type="text" class="form-control mb-1 colorC1">
+                <small class="form-text text-muted colorC1">Zip Code</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="row mt-4  ">
+          <div class="col-md-8 col-sm-12 form-label">
             <label for="">List account number(s) here (optional)</label>
-            <input type="text" class="form-control mt-3 mb-5">
+            <input type="text" class="form-control mt-3 mb-5 colorC1 ">
           </div>
         </div>
 
@@ -223,10 +230,10 @@
           </div>
           <div class="row">
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center colorC1" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center colorC1 " placeholder="_">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center" placeholder="_">
