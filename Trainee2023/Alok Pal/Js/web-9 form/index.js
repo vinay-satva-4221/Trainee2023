@@ -38,6 +38,12 @@ $(function () {
     });
 });
 
+//security number allow only one digit
+$(function() {
+    $("input[name='numonly']").on('input', function(e) {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+});
 
 
 // function col() {
