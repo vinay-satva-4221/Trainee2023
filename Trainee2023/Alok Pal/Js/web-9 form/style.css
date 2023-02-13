@@ -177,7 +177,7 @@ input[type="text"]:disabled{
   font-size: 1.1rem;
 }
 
-#sig-canvas {
+#sig-canvas{
   border: 2px solid #cccccc;
   border-radius: 6px;
   cursor: crosshair;
@@ -194,3 +194,5 @@ input[type="text"]:disabled{
   margin-left: 277px;
   width: 70px;
 }
+
+
