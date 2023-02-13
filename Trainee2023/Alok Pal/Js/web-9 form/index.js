@@ -9,7 +9,6 @@ $(function () {
         maxYear: parseInt(moment().format('YYYY'), 10)
     }, function (start, end, label) {
         var years = moment().diff(start, 'years');
-        alert("You are " + years + " years old!");
     });
 });
 
@@ -163,7 +162,7 @@ window.onload = function () {
                 g7.style.background = 'white';
                 g8.style.background = 'white';
                 g9.style.background = 'white';
-                
+
 
             }
 
@@ -176,20 +175,6 @@ window.onload = function () {
 
 //signature canvas
 
-var canvas = document.getElementById("sig-canvas");
-
-function resizeCanvas() {
-    var ratio = Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    canvas.getContext("2d").scale(ratio, ratio);
-}
-window.onresize = resizeCanvas;
-resizeCanvas();
-
-var signaturePad = new SignaturePad(canvas, {
-    backgroundColor: 'rgb(250,250,250)'
-});
 
 
 //checkbox show and hide
@@ -200,11 +185,27 @@ function showHide(checked) {
 }
 
 // Mouse hover
-$(document).ready(function(){
-    $("input").mouseenter(function(){
-   $(this).css("border-color", "blue");
- });
- $("input").mouseleave(function(){
-     $(this).css("border-color","lightgray");
- });
- });
+$(document).ready(function () {
+    $("input").mouseenter(function () {
+        $(this).css("border-color", "blue");
+    });
+    $("input").mouseleave(function () {
+        $(this).css("border-color", "lightgray");
+    });
+});
+
+
+// var canvas = document.getElementById("sig-canvas");
+
+// function resizeCanvas() {
+//     var ratio = Math.max(window.devicePixelRatio || 1, 1);
+//     canvas.width = canvas.offsetWidth * ratio;
+//     canvas.height = canvas.offsetHeight * ratio;
+//     canvas.getContext("2d").scale(ratio, ratio);
+// }
+// window.onresize = resizeCanvas;
+// resizeCanvas();
+
+// var signaturePad = new SignaturePad(canvas, {
+//     backgroundColor: 'rgb(250,250,250)'
+// });

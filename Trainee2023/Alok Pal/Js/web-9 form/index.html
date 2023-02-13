@@ -99,8 +99,8 @@
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="showHide(this.checked)"
+              <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
+              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="return showHide(this.checked)"
                 id="flexCheckDefault">
               <label class="form-check-label" for="flexCheckDefault">
                 Other
@@ -109,7 +109,7 @@
             <div class="row mt-3">
               <div class="col-md-8 col-sm-12">
                 <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted"
-                    name="hidden" placeholder="Please type another option here" onclick=""></span>
+                    name="hidden" placeholder="Please type another option here" ></span>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
                 classification (C=C corporation, S=S
                 corporation, P=Partnership)</label>
               <div class="col-md-8 col-sm-12 mt-2">
-                <input type="text" class="form-control colorC1 " id="oth">
+                <input type="text" class="form-control colorC1 " id="oth"  maxlength="1">
               </div>
             </div>
           </div>
@@ -357,7 +357,7 @@
         <div class="row mt-2 ">
           <div class="media">
             <label for="">Date</label>
-            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" value="02-12-2023">
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" >
             <small class="form-text text-muted">Date</small>
           </div>
         </div>
