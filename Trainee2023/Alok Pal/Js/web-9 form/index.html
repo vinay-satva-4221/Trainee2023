@@ -8,7 +8,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 
@@ -33,10 +35,11 @@
               line; do not leave this line blank.</label><span class="star"><b>*</b></span>
             <div class="col-md-8 col-sm-12 mt-2 text-center">
               <input type="text" class="form-control form-textbox colorC1" id="inp1" onblur="return nameV1()">
-
             </div>
-            <span id="error"></span>
+            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is required</span>
           </div>
+        </div>
+        <div>  
         </div>
 
         <div class=" row mt-3">
@@ -48,7 +51,6 @@
             </div>
           </div>
         </div>
-
 
 
         <!-- Checkbox -->
@@ -237,10 +239,10 @@
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
-          <div class="row colorC1">
-            <div class="security_media colorC1">
-              <input type="text" class="form-control colorC1 m-1 text-center sec_num sn" name="numonly" maxlength="1"
-                minlength="0" placeholder="_">
+          <div class="row">
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
@@ -248,7 +250,7 @@
             </div>
 
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
                 placeholder="_">
             </div>
             <div class="security_media">
@@ -296,7 +298,7 @@
           </div>
           <div class="row" id="security">
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num emp" name="numonly" maxlength="1" minlength="0"
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
                 placeholder="_" notdisabled>
             </div>
             <div class="security_media">

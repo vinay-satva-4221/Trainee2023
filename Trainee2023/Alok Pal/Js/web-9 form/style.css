@@ -30,7 +30,7 @@ input[type=checkbox]{
 }
 input[type=checkbox]:hover{
   opacity: 10;
-  border: 3px solid rgb(14, 14, 162);
+  border: 3px solid rgb(124, 176, 216);
 }
 
 
@@ -193,6 +193,17 @@ input[type="text"]:disabled{
   border-radius: 3px;
   margin-left: 277px;
   width: 70px;
+}
+
+#error{
+  display: none;
+  background-color: rgb(204, 31, 31);
+  border-radius: 10px;
+  width: 182px;
+  margin-top: 10px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  color: white;
 }
 
 
