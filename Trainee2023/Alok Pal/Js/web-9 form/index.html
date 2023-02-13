@@ -36,10 +36,11 @@
             <div class="col-md-8 col-sm-12 mt-2 text-center">
               <input type="text" class="form-control form-textbox colorC1" id="inp1" onblur="return nameV1()">
             </div>
-            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is required</span>
+            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is
+              required</span>
           </div>
         </div>
-        <div>  
+        <div>
         </div>
 
         <div class=" row mt-3">
@@ -100,8 +101,8 @@
             </div>
             <div class="form-check">
               <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
-              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="return showHide(this.checked)"
-                id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" value="" name="chkbox"
+                onchange="return showHide(this.checked)" id="flexCheckDefault">
               <label class="form-check-label" for="flexCheckDefault">
                 Other
               </label>
@@ -109,7 +110,7 @@
             <div class="row mt-3">
               <div class="col-md-8 col-sm-12">
                 <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted"
-                    name="hidden" placeholder="Please type another option here" ></span>
+                    name="hidden" placeholder="Please type another option here"></span>
               </div>
             </div>
           </div>
@@ -120,7 +121,7 @@
                 classification (C=C corporation, S=S
                 corporation, P=Partnership)</label>
               <div class="col-md-8 col-sm-12 mt-2">
-                <input type="text" class="form-control colorC1 " id="oth"  maxlength="1">
+                <input type="text" class="form-control colorC1 " id="oth" maxlength="1">
               </div>
             </div>
           </div>
@@ -226,10 +227,10 @@
 
 
 
-          <div class="row mt-4 " id="colA" >
+          <div class="row mt-4 " id="colA">
             <div class="col-md-8 col-sm-12 form-label">
               <label for="">List account number(s) here (optional)</label>
-              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 " >
+              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 ">
             </div>
           </div>
         </div>
@@ -245,8 +246,8 @@
                 placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1"
+                minlength="0" placeholder="_">
             </div>
 
             <div class="security_media">
@@ -290,7 +291,7 @@
 
 
 
-        
+
         <b>
           <h4 class="mt-5">Employer identification number</h4>
           <div class="col-md-8 col-sm-12">
@@ -350,14 +351,14 @@
             <canvas id="sig-canvas" width="380" height="130" class="mt-2">
               Get a better browser, bro.
             </canvas>
-            <button class="btn btn butn-Clr">Clear</button>
+            <button class="btn btn butn-Clr" id="clear-signature">Clear</button>
           </div>
         </div>
 
         <div class="row mt-2 ">
           <div class="media">
             <label for="">Date</label>
-            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" >
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date">
             <small class="form-text text-muted">Date</small>
           </div>
         </div>
@@ -375,6 +376,9 @@
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.4/signature_pad.js"
+  integrity="sha512-j36pYCzm3upwGd6JGq6xpdthtxcUtSf5yQJSsgnqjAsXtFT84WH8NQy9vqkv4qTV9hK782TwuHUTSwo2hRF+/A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="jquery/jquery.js"></script>

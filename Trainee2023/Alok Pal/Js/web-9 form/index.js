@@ -204,6 +204,8 @@ var canvas = document.getElementById("sig-canvas");
     });
 
 
+    
+
 //checkbox show and hide
 function showHide(checked) {
     if (checked == true)
