@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 
-
 </head>
 
 <body>
@@ -96,12 +95,18 @@
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input colorC1" type="checkbox" value="" id="seventh">
-              <label class="form-check-label" for="seventh">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="showHide(this.checked)" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
                 Other
               </label>
             </div>
-
+            <div class="row mt-3">
+              <div class="col-md-8 col-sm-12">
+                <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted" name="hidden"
+                    placeholder="Please type another option here" onclick=""></span>
+              </div>
+            </div>
           </div>
 
           <div class="row mt-4">
@@ -224,97 +229,98 @@
         </div>
 
         <b>
-          <h5>Social security number</h5>
+          <h4>Social security number</h4>
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
           <div class="row">
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center colorC1" placeholder="_">
-            </div>
-            <div class="security_media">
-              <input type="text" class="form-control m-1 text-center colorC1 " placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
           </div>
         </b>
 
         <b>
-          <h5 class="mt-5">Employer identification number</h5>
+          <h4 class="mt-5">Employer identification number</h4>
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
           <div class="row">
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_" notdisabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
             </div>
           </div>
         </b>
 
-        <div class="row mt-3">
-          <div class="media">
-            <label for="">Signature</label>
-            <canvas id="sig-canvas" width="380" height="130" class="mt-2">
-              Get a better browser, bro.
-            </canvas>
-          </div>
+      <div class="row mt-3">
+        <div class="media">
+          <label for="">Signature</label>
+          <canvas id="sig-canvas" width="380" height="130" class="mt-2">
+            Get a better browser, bro.
+          </canvas>
+          <button class="btn btn butn-Clr">Clear</button>
         </div>
+      </div>
 
         <div class="row mt-2">
           <div class="media">
@@ -326,7 +332,7 @@
 
         <div class="row mt-4">
           <div>
-            <button class="btn btn-success mb-3">Submit</button>
+            <button class="btn btn-success butn-Sub mb-3">Submit</button>
           </div>
         </div>
     </div>
@@ -338,6 +344,7 @@
 
 </body>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <script src="jquery/jquery.js"></script>
 <script src="index.js"></script>
 

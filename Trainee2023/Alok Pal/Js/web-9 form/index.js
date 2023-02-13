@@ -38,6 +38,12 @@ $(function () {
     });
 });
 
+//security number allow only one digit
+$(function() {
+    $("input[name='numonly']").on('input', function(e) {
+        $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    });
+});
 
 
 // function col() {
@@ -195,10 +201,10 @@ var signaturePad = new SignaturePad(canvas, {
     backgroundColor: 'rgb(250,250,250)'
 });
 
-
-function cl() {
-    var on = document.getElementsByClassName("row")[2];
-    var of = document.getElementsByClassName("chck");
-
-    on.style.background = "yellow"
+       
+//checkbox show and hide
+function showHide(checked){
+    if(checked == true)
+        $("#hiddenfield").fadeIn();
+    else $("#hiddenfield").fadeOut();
 }

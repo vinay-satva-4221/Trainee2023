@@ -1,22 +1,22 @@
-.mainC{
+.mainC {
   width: 70%;
 }
 
-.heading{
-    font-size: 1.5rem;
+.heading {
+  font-size: 1.5rem;
 }
-.star{
-    color: red;
-    font-weight: bold;
+.star {
+  color: red;
+  font-weight: bold;
 }
 .form-label {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
-    word-break: break-word;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  word-break: break-word;
 }
 
-.chck{
+.chck {
   margin-top: -2%;
 }
 /* .form-textbox{   font-size: 1em;
@@ -28,12 +28,12 @@
 }  */
 
 .form-line {
-    padding: 12px 10px;
-    margin: 12px 4px;
-    border-radius: 3px;
-    position: relative;
-    width: 100%;
-    transition: background-color .15s;
+  padding: 12px 10px;
+  margin: 12px 4px;
+  border-radius: 3px;
+  position: relative;
+  width: 100%;
+  transition: background-color 0.15s;
 }
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
@@ -75,9 +75,6 @@
   }
 }
 
-
-
-
 @media (max-width: 480px) {
   .security_media {
     height: 50px;
@@ -114,16 +111,78 @@
   }
 }
 
-.btn{
-    width: 160px;
-    height: 43px;
-    background-color: #18bd5b;
-    border-color: #18bd5b;
-    font-size: 1.1rem;
+/* media query for signature */
+@media (max-width: 480px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+input[type="text"]:disabled{
+  background-color: white;
+  font-size: 150%;
+}
+
+.sec_num{
+  font-size: 150%;
+}
+
+
+.butn-Sub {
+  width: 160px;
+  height: 43px;
+  background-color: #18bd5b;
+  border-color: #18bd5b;
+  font-size: 1.1rem;
 }
 
 #sig-canvas {
-    border: 2px solid #CCCCCC;
-    border-radius: 15px;
-    cursor: crosshair;
-  }
+  border: 2px solid #cccccc;
+  border-radius: 6px;
+  cursor: crosshair;
+}
+
+.butn-Clr {
+  display: inline-block;
+  background-color: #e7effe;
+  font-size: 15px;
+  cursor: pointer;
+  color: #57647e;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-left: 277px;
+  width: 70px;
+}
