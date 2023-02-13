@@ -71,7 +71,8 @@ function nameV1() {
     var colName = document.getElementById("colorC");
     var errorN = document.getElementById("error");
     if (nameI == '') {
-        errorN.innerHTML = "This Field is required";
+        errorN.style.display = "block";
+        // errorN.innerHTML = "This field is required";
         colName.style.background = "#ffcccc";
         return false;
     }
@@ -79,7 +80,6 @@ function nameV1() {
         colName.style.background = "white";
         document.getElementById("error").style.display = "none";
         return true;
-
     }
 }
 
