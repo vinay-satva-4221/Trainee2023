@@ -12,7 +12,8 @@
 </head>
 
 <body>
-  <div class="container mainC">
+
+  <div class="container mainC mt-2">
     <div class="container">
       <div class="container text-center ">
         <p class="heading">
@@ -96,15 +97,16 @@
             </div>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="showHide(this.checked)" id="flexCheckDefault">
+              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="showHide(this.checked)"
+                id="flexCheckDefault">
               <label class="form-check-label" for="flexCheckDefault">
                 Other
               </label>
             </div>
             <div class="row mt-3">
               <div class="col-md-8 col-sm-12">
-                <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted" name="hidden"
-                    placeholder="Please type another option here" onclick=""></span>
+                <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted"
+                    name="hidden" placeholder="Please type another option here" onclick=""></span>
               </div>
             </div>
           </div>
@@ -211,20 +213,21 @@
           <div class="row mt-2">
             <div class="form-group form-label ">
               <div class="col-md-8 col-sm-12 colorC1">
-                <input type="text" class="form-control mb-1 colorC1">
+                <input type="text" class="form-control mb-1">
                 <small class="form-text text-muted colorC1">Zip Code</small>
               </div>
             </div>
           </div>
-        </div>
 
 
 
 
-        <div class="row mt-4  ">
-          <div class="col-md-8 col-sm-12 form-label">
-            <label for="">List account number(s) here (optional)</label>
-            <input type="text" class="form-control mt-3 mb-5 colorC1 ">
+
+          <div class="row mt-4 " id="colA" >
+            <div class="col-md-8 col-sm-12 form-label">
+              <label for="">List account number(s) here (optional)</label>
+              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 " >
+            </div>
           </div>
         </div>
 
@@ -233,99 +236,125 @@
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
-          <div class="row">
-            <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+          <div class="row colorC1">
+            <div class="security_media colorC1">
+              <input type="text" class="form-control colorC1 m-1 text-center sec_num sn" name="numonly" maxlength="1"
+                minlength="0" placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
-            </div>
-            <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
           </div>
         </b>
 
+
+
+        
         <b>
           <h4 class="mt-5">Employer identification number</h4>
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
-          <div class="row">
+          <div class="row" id="security">
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_" notdisabled>
+              <input type="text" class="form-control m-1 text-center sec_num emp" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" notdisabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="-" disabled>
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
           </div>
         </b>
 
-      <div class="row mt-3">
-        <div class="media">
-          <label for="">Signature</label>
-          <canvas id="sig-canvas" width="380" height="130" class="mt-2">
-            Get a better browser, bro.
-          </canvas>
-          <button class="btn btn butn-Clr">Clear</button>
+        <div class="row mt-3">
+          <div class="media">
+            <label for="">Signature</label>
+            <canvas id="sig-canvas" width="380" height="130" class="mt-2">
+              Get a better browser, bro.
+            </canvas>
+            <button class="btn btn butn-Clr">Clear</button>
+          </div>
         </div>
-      </div>
 
-        <div class="row mt-2">
+        <div class="row mt-2 ">
           <div class="media">
             <label for="">Date</label>
-            <input type="text" class="form-control mb-1 mt-2" name="date" value="02-12-2023">
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" value="02-12-2023">
             <small class="form-text text-muted">Date</small>
           </div>
         </div>

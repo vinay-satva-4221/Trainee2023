@@ -1,28 +1,3 @@
-// console.log("hello")
-// $(document).ready(function(){
-//     $("#form-label").on({
-
-//         click: function(){
-//             $(".form-line").css("background-color", "rgb(244, 244, 147)");
-//         },
-//         change : function(){
-//             $(this).css("background-color", "white");
-//         }
-//     });    
-// });
-
-// window.onload = function () {
-//     var input = document.getElementById("colorC1")
-//     var div = document.getElementById("colorC")
-//     input.addEventListener('click', function () {
-//         div.style.background = 'yellow';
-//         // div.style.color = 'bl';
-//     });
-//     input.addEventListener('blur', function() {
-//         div.style.background = 'white';
-//         div.style.color = '#000';
-//       });
-// } 
 
 
 // Daterangepicker
@@ -39,23 +14,14 @@ $(function () {
 });
 
 //security number allow only one digit
-$(function() {
-    $("input[name='numonly']").on('input', function(e) {
+$(function () {
+    $("input[name='numonly']").on('input', function (e) {
         $(this).val($(this).val().replace(/[^0-9]/g, ''));
     });
 });
 
 
-// function col() {
-//     var t = document.getElementsByClassName("row");
-//     console.log(t[0])
-//     console.log(t.length)
 
-//     for (let i = 0; i <= t.length; i++) {
-
-//         console.log(t[i])
-//     }
-// }
 
 
 //Form Validation
@@ -83,20 +49,7 @@ function nameV1() {
     }
 }
 
-// function nameV() {
-//     let regName = /^[A-Za-z]+$/;
-//     let name = document.getElementById("inp1").value;
-//     let vname = document.getElementById("error");
-//     if (!regName.test(name)) {
-//         vname.innerHTML = "**Please enter Alphabets only**";
-//         document.getElementById("error").style.display = "unset";
-//         document.getElementById("inp1").focus();
-//         return false;
-//     } else {
-//         document.getElementById("error").style.display = "none";
-//         return true;
-//     }
-// }
+
 
 
 
@@ -104,6 +57,8 @@ window.onload = function () {
     const g = document.getElementsByClassName("row");
     var a = document.getElementsByClassName("colorC1");
     len = g.length;
+    var b = document.getElementsByClassName("sn");
+    console.log(b)
     console.log(g)
     for (let i = 0; i < len; i++) {
         a[i].onclick = function () {
@@ -113,25 +68,22 @@ window.onload = function () {
 
             var g1 = document.getElementsByClassName("row")[i];
 
-            var g2 = document.getElementsByClassName("row")[0];
             var g3 = document.getElementsByClassName("row")[1];
             var g4 = document.getElementsByClassName("row")[2];
-            var g5 = document.getElementsByClassName("row")[3];
-            var g6 = document.getElementsByClassName("row")[4];
             var g7 = document.getElementsByClassName("row")[5];
-            var g8 = document.getElementsByClassName("row")[9];
-            var g9 = document.getElementsByClassName("row")[12];
-            var g10 = document.getElementsByClassName("row")[15];
-
-
-
-
-
+            var g8 = document.getElementsByClassName("row")[6];
+            var g9 = document.getElementsByClassName("row")[10];
+            var g10 = document.getElementsByClassName("row")[13];
 
             console.log(a)
             if (i == 0) {
                 g1.style.background = 'hsl(60, 100%, 93%)';
                 g3.style.background = 'white';
+                g4.style.background = 'white';
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
 
             }
 
@@ -143,45 +95,83 @@ window.onload = function () {
                 g1.style.background = 'hsl(60, 100%, 93%)'
                 g4.style.background = 'white';
 
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
+
             }
 
             if (i == 2) {
-                // var one = document.getElementsByClassName("row")[1];
                 g3.style.background = 'white';
                 g1.style.background = 'hsl(60, 100%, 93%)';
 
+                g3.style.background = 'white';
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
+
+
+
             }
 
-            if (i == 3 || i == 4 || i == 5 || i == 6 || i == 7 || i == 8 || i == 9 || i == 10) {
+            if (i == 3 || i == 4 || i == 5 || i == 6 || i == 7 || i == 8 || i == 9) {
                 g3.style.background = 'white';
                 g4.style.background = 'hsl(60, 100%, 93%)';
-
-
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
             }
 
-            if (i == 11 || i == 12) {
-                g6.style.background = 'hsl(60, 100%, 93%)'
-
-            }
-            if (i == 13 || i == 14 || i == 15 || i == 16) {
+            if (i == 10 || i == 11) {
                 g7.style.background = 'hsl(60, 100%, 93%)'
+                g3.style.background = 'white';
+                g4.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
 
             }
-            if (i == 17 || i == 18) {
+
+            if (i == 12 || i == 13 || i == 14 || i == 15) {
                 g8.style.background = 'hsl(60, 100%, 93%)'
+                g3.style.background = 'white';
+                g4.style.background = 'white';
+                g7.style.background = 'white';
+                g9.style.background = 'white';
+                g10.style.background = 'white';
 
 
             }
-            if (i == 19 || i == 20 || i == 21 ) {
+
+            if (i == 16 || i == 17) {
                 g9.style.background = 'hsl(60, 100%, 93%)'
+                g3.style.background = 'white';
+                g4.style.background = 'white';
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g10.style.background = 'white';
+
 
             }
-            if(i==23){
+            if (i == 18 || i == 19 || i == 20 || i == 21) {
+                g10.style.background = 'hsl(60, 100%, 93%)'
+                g3.style.background = 'white';
+                g4.style.background = 'white';
+                g7.style.background = 'white';
+                g8.style.background = 'white';
+                g9.style.background = 'white';
+                
 
             }
+
         }
+
     }
 }
+
 
 
 //signature canvas
@@ -201,10 +191,20 @@ var signaturePad = new SignaturePad(canvas, {
     backgroundColor: 'rgb(250,250,250)'
 });
 
-       
+
 //checkbox show and hide
-function showHide(checked){
-    if(checked == true)
+function showHide(checked) {
+    if (checked == true)
         $("#hiddenfield").fadeIn();
     else $("#hiddenfield").fadeOut();
 }
+
+// Mouse hover
+$(document).ready(function(){
+    $("input").mouseenter(function(){
+   $(this).css("border-color", "blue");
+ });
+ $("input").mouseleave(function(){
+     $(this).css("border-color","lightgray");
+ });
+ });
