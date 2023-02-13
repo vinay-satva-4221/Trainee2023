@@ -205,4 +205,14 @@ input[type="text"]:disabled{
   color: white;
 }
 
+#error1{
+  display: none;
+  background-color: rgb(204, 31, 31);
+  border-radius: 10px;
+  width: 182px;
+  margin-top: 10px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  color: white;
+}
 
