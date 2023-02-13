@@ -30,7 +30,7 @@ input[type=checkbox]{
 }
 input[type=checkbox]:hover{
   opacity: 10;
-  border: 3px solid rgb(14, 14, 162);
+  border: 3px solid rgb(124, 176, 216);
 }
 
 
