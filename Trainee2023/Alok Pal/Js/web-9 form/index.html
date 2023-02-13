@@ -14,7 +14,8 @@
 </head>
 
 <body>
-  <div class="container mainC">
+
+  <div class="container mainC mt-2">
     <div class="container">
       <div class="container text-center ">
         <p class="heading">
@@ -214,20 +215,21 @@
           <div class="row mt-2">
             <div class="form-group form-label ">
               <div class="col-md-8 col-sm-12 colorC1">
-                <input type="text" class="form-control mb-1 colorC1">
+                <input type="text" class="form-control mb-1">
                 <small class="form-text text-muted colorC1">Zip Code</small>
               </div>
             </div>
           </div>
-        </div>
 
 
 
 
-        <div class="row mt-4  ">
-          <div class="col-md-8 col-sm-12 form-label">
-            <label for="">List account number(s) here (optional)</label>
-            <input type="text" class="form-control mt-3 mb-5 colorC1 ">
+
+          <div class="row mt-4 " id="colA" >
+            <div class="col-md-8 col-sm-12 form-label">
+              <label for="">List account number(s) here (optional)</label>
+              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 " >
+            </div>
           </div>
         </div>
 
@@ -242,8 +244,10 @@
                 placeholder="_">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center" placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
             </div>
+
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
                 placeholder="_">
@@ -283,12 +287,15 @@
           </div>
         </b>
 
+
+
+        
         <b>
           <h4 class="mt-5">Employer identification number</h4>
           <div class="col-md-8 col-sm-12">
             <hr>
           </div>
-          <div class="row">
+          <div class="row" id="security">
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
                 placeholder="_" notdisabled>
@@ -346,10 +353,10 @@
           </div>
         </div>
 
-        <div class="row mt-2">
+        <div class="row mt-2 ">
           <div class="media">
             <label for="">Date</label>
-            <input type="text" class="form-control mb-1 mt-2" name="date" value="02-12-2023">
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" value="02-12-2023">
             <small class="form-text text-muted">Date</small>
           </div>
         </div>
