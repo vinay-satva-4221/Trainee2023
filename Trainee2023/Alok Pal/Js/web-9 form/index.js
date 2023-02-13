@@ -24,29 +24,72 @@
 //       });
 // } 
 
-$(function() {
+
+// Daterangepicker
+$(function () {
     $('input[name="date"]').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'),10)
-    }, function(start, end, label) {
-      var years = moment().diff(start, 'years');
-      alert("You are " + years + " years old!");
+        singleDatePicker: true,
+        showDropdowns: true,
+        minYear: 1901,
+        maxYear: parseInt(moment().format('YYYY'), 10)
+    }, function (start, end, label) {
+        var years = moment().diff(start, 'years');
+        alert("You are " + years + " years old!");
     });
-  });
+});
 
 
-function col() {
-    var t = document.getElementsByClassName("row");
-    console.log(t[0])
-    console.log(t.length)
 
-    for (let i = 0; i <= t.length; i++) {
+// function col() {
+//     var t = document.getElementsByClassName("row");
+//     console.log(t[0])
+//     console.log(t.length)
 
-        console.log(t[i])
+//     for (let i = 0; i <= t.length; i++) {
+
+//         console.log(t[i])
+//     }
+// }
+
+
+//Form Validation
+function validateForm() {
+    if (!nameV() ) {
+        valid = false;
+    } else {
+        return true;
     }
 }
+function nameV1() {
+    var nameI = document.getElementById("inp1").value;
+    var colName = document.getElementById("colorC");
+    var errorN = document.getElementById("error");
+    if (nameI == '') {
+        errorN.innerHTML = "This Field is required";
+        colName.style.background = " #ffcccc";
+        return false;
+    }
+    else {
+        document.getElementById("error").style.display = "none";
+        return true;
+        
+    }
+}
+
+// function nameV() {
+//     let regName = /^[A-Za-z]+$/;
+//     let name = document.getElementById("inp1").value;
+//     let vname = document.getElementById("error");
+//     if (!regName.test(name)) {
+//         vname.innerHTML = "**Please enter Alphabets only**";
+//         document.getElementById("error").style.display = "unset";
+//         document.getElementById("inp1").focus();
+//         return false;
+//     } else {
+//         document.getElementById("error").style.display = "none";
+//         return true;
+//     }
+// }
 
 window.onload = function () {
     const g = document.getElementsByClassName("row");
@@ -60,20 +103,20 @@ window.onload = function () {
             console.log(a)
             var g1 = document.getElementsByClassName("row")[i];
             var g2 = document.getElementsByClassName("row")[0];
+            var g3 = document.getElementsByClassName("row")[1];
 
             console.log(a)
             if (i == 0) {
                 g1.style.background = 'hsl(60, 100%, 93%)';
-                var g2 = document.getElementsByClassName("row")[1];
-                g2.style.background = 'white';
+                g3.style.background = 'white';
 
-                a[0].onChange = function (){
-                    if ( a[i] == null){
-                    }
-                }
-                
-                
-                
+                // if(nameV1() != true){
+                //     g1.style.background = ' #ffcccc';
+                // }
+
+
+
+
             }
 
             if (i == 1) {
@@ -81,7 +124,7 @@ window.onload = function () {
 
                 g1.style.background = 'hsl(60, 100%, 93%)';
 
-            
+
             }
 
             if (i == 2) {
@@ -90,15 +133,15 @@ window.onload = function () {
 
                 g1.style.background = 'hsl(60, 100%, 93%)';
 
-               
+
             }
-            if(i==3){
+            if (i == 3) {
                 var g2 = document.getElementsByClassName("row")[1];
                 g2.style.background = 'white';
 
                 g1.style.background = 'hsl(60, 100%, 93%)';
 
-               
+
             }
         }
     }
@@ -109,17 +152,17 @@ window.onload = function () {
 
 var canvas = document.getElementById("sig-canvas");
 
-       function resizeCanvas() {
-           var ratio = Math.max(window.devicePixelRatio || 1, 1);
-           canvas.width = canvas.offsetWidth * ratio;
-           canvas.height = canvas.offsetHeight * ratio;
-           canvas.getContext("2d").scale(ratio, ratio);
-       }
-       window.onresize = resizeCanvas;
-       resizeCanvas();
+function resizeCanvas() {
+    var ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+}
+window.onresize = resizeCanvas;
+resizeCanvas();
 
-       var signaturePad = new SignaturePad(canvas, {
-        backgroundColor: 'rgb(250,250,250)'
-       });
+var signaturePad = new SignaturePad(canvas, {
+    backgroundColor: 'rgb(250,250,250)'
+});
 
 
