@@ -112,4 +112,10 @@ var canvas = document.getElementById("sig-canvas");
         backgroundColor: 'rgb(250,250,250)'
        });
 
-
+       
+//checkbox show and hide
+function showHide(checked){
+    if(checked == true)
+        $("#hiddenfield").fadeIn();
+    else $("#hiddenfield").fadeOut();
+}
