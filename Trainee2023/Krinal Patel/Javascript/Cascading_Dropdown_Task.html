@@ -20,14 +20,10 @@
 
 <style>
 
-      .hide{
-
+    
+      #btn2,#btn3,.hide{
         display: none;
       }
-      .hideexp{
-        display: none;
-      }
-
 
 </style>
 
@@ -35,6 +31,9 @@
   </head>
 
 <body style="background-color: aliceblue;">
+
+
+
     <br>
 <div class="container">
   <br><h3 class="text-center "><b>STUDENT REGISTRATION</b></h3><br><hr>
@@ -150,8 +149,11 @@
 <div class="col-lg-9">
 
 <button class="btn btn-success m-3" style="width: 200px;"  id="btn1" data-toggle="modal" onclick="validatecheck()" data-target="#myModal">  Add Row</button>
-<button class="btn btn-primary m-3" style=" width: 200px;" id="btn2" onclick="updateTableRow()">Export</button>
-<button class="btn btn-info m-3" style=" width: 200px;" id="btn3" onclick="updateTableRow()">Export</button>
+<button class="btn btn-primary m-3" style=" width: 200px;" id="btn2" onclick="exportTableToExcel('tblData')">Export</button>
+<button class="btn btn-info m-3" style=" width: 200px;" id="btn3" onclick="updateTableRow()">Save</button>
+<button class="btn btn-info m-3" style=" width: 200px;" id="btn4" onclick="fun()">Reset</button>
+
+
 
 
   </div>
