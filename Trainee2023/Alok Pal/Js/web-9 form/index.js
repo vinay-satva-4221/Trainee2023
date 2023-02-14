@@ -19,13 +19,11 @@ $(function () {
     });
 });
 
-function moveCursor(fromTextBox , toTextBox)
-{
+function moveCursor(fromTextBox, toTextBox) {
     var length = fromTextBox.value.length;
     var maxLength = fromTextBox.getAttribute("maxlength");
-    
-    if(length == maxLength)
-    {
+
+    if (length == maxLength) {
         document.getElementById(toTextBox).focus();
     }
 }
@@ -187,8 +185,7 @@ window.onload = function () {
 
 
 
-
-var canvas = document.getElementById("sig-canvas");
+var canvas = document.getElementById("signature");
     var signaturePad = new SignaturePad(canvas);
 
     $('#clear-signature').on('click', function () {
@@ -196,7 +193,7 @@ var canvas = document.getElementById("sig-canvas");
     });
 
 
-    
+
 
 //checkbox show and hide
 function showHide(checked) {

@@ -122,8 +122,8 @@ input[type=checkbox]:hover{
 /* media query for signature */
 @media (max-width: 480px) {
   #sig-canvas {
-    width: 350px;
-    height: 150px;
+    width:  175%;
+    height: 90%;
   }
 }
 
@@ -183,15 +183,8 @@ input[type="text"]:disabled{
 }
 
 .butn-Clr {
-  display: inline-block;
   background-color: #e7effe;
-  font-size: 15px;
-  cursor: pointer;
   color: #57647e;
-  padding: 4px 10px;
-  border-radius: 3px;
-  margin-left: 277px;
-  width: 70px;
 }
 
 #error{
