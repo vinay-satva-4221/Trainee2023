@@ -1,19 +1,211 @@
-.heading{
-    font-size: 1.5rem;
+.mainC {
+  width: 70%;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 10px;
+  box-shadow: 5px 1px 10px #888888;
 }
-.star{
-    color: red;
+
+.heading {
+  font-size: 1.5rem;
+}
+.star {
+  color: red;
+  font-weight: bold;
 }
 .form-label {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 500;
-    word-break: break-word;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  word-break: break-word;
 }
-.form-textbox{   font-size: 1em;
-    border-radius: 4px;
-    border-width: 1px;
-    border-style: solid;
-    display: block;
-    min-width: 40%;
-} 
+
+.chck {
+  margin-top: -2%;
+}
+
+
+input[type=checkbox]{
+  opacity: 0.5;
+ 
+}
+input[type=checkbox]:hover{
+  opacity: 10;
+  border: 3px solid rgb(124, 176, 216);
+}
+
+
+
+.form-line {
+  padding: 12px 10px;
+  margin: 12px 4px;
+  border-radius: 3px;
+  position: relative;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  .media {
+    width: 50%;
+    padding: 12px;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  .media {
+    width: 50%;
+    padding: 12px;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  .media {
+    width: 33.5%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .security_media {
+    height: 50px;
+    width: 10%;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .security_media {
+    height: 50px;
+    width: 9%;
+    margin: 10px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .security_media {
+    height: 50px;
+    width: 6%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .security_media {
+    height: 50px;
+    width: 6.1%;
+  }
+}
+
+@media (min-width: 1281px) {
+  .security_media {
+    height: 50px;
+    width: 6.1%;
+  }
+}
+
+/* media query for signature */
+@media (max-width: 480px) {
+  #sig-canvas {
+    width:  175%;
+    height: 90%;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  #sig-canvas {
+    width: 350px;
+    height: 150px;
+  }
+}
+
+input[type="text"]:disabled{
+  background-color: white;
+  font-size: 150%;
+}
+
+.sec_num{
+  font-size: 150%;
+}
+
+.butn-Sub {
+  width: 160px;
+  height: 43px;
+  background-color: #18bd5b;
+  border-color: #18bd5b;
+  font-size: 1.1rem;
+}
+
+#sig-canvas{
+  border: 2px solid #cccccc;
+  border-radius: 6px;
+  cursor: crosshair;
+}
+
+.butn-Clr {
+  background-color: #e7effe;
+  color: #57647e;
+}
+
+#error{
+  display: none;
+  background-color: rgb(204, 31, 31);
+  border-radius: 10px;
+  width: 182px;
+  margin-top: 10px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  color: white;
+}
+
+#error1{
+  display: none;
+  background-color: rgb(204, 31, 31);
+  border-radius: 10px;
+  width: 182px;
+  margin-top: 10px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  color: white;
+}
+
