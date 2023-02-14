@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud With Map Function</title>
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="map_crud.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form action="" id="form">
+            <div class="row p-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control name" placeholder="Name">
+                    <input id="txtId" type="hidden" class="form-control txt">
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="moble" class="form-label">Mobile</label>
+                    <input type="text" id="mobile" name="mobile" class="form-control mobile" placeholder="Mobile">
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control email" placeholder="Email">
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="clg" class="form-label">College Name</label>
+                    <input type="text" id="clg" name="clg" class="form-control clg" placeholder="College Name">
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="cgpa" class="form-label">CGPA</label>
+                    <input type="text" id="cgpa" name="cgpa" class="form-control cgpa" placeholder="CGPA">
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <label for="branch" class="form-label">Branch Name</label>
+                    <select name="branch" id="branch" class="form-control form-select branch">
+                        <option value="Choose" disabled selected>Choose Branch...</option>
+                        <option value="MCA">MCA</option>
+                        <option value="BE">BE</option>
+                        <option value="B.TECH">B.TECH</option>
+                        <option value="BCA">BCA</option>
+                    </select>
+                </div>  
+            </div>
+            <div class="row p-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <label for="state" class="form-label">State</label>
+                    <select name="state" id="state" class="form-control form-select state">
+                        <option value="Choose" disabled selected>Choose State...</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Karnataka">Karnataka</option>
+                    </select>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <label for="city" class="form-label">City</label>
+                    <select name="city" id="city" class="form-control form-select city">
+                        <option value="" selected="selected" disabled>Choose city</option>
+                    </select>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <label for="zip" class="form-label">Zip</label>
+                    <input type="text" id="zip" name="zip" class="form-control zip" placeholder="Zip">
+                </div>
+            </div>
+            <div class="row p-3">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="date" class="form-label">From To When You Studied</label>
+                    <input type="text" name="daterange" id="daterange" value="Start-End" class="form-control daterange">
+                </div>
+            </div>
+        </form>
+        <button id="fad">Some Of Your Result Pic's In Slider</button><br><br>
+        <div id="div1" aria-hidden="true">
+        <img src="nature.jpeg" alt="">
+        </i></div>
+
+        <div class="container-fluid p-3">
+            <button type="button" class="btn btn-success btn-lg" onclick="showData()" id="submit">
+                Add
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="updateData(i)" id="update">
+                Update
+            </button>
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-md-12 col-sm-12 col-12 p-2 ">
+              <table id="tblData" class="table table-bordered table-hover text-center bg-primary">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>College Name</th>
+                    <th>CGPA</th>
+                    <th>Branch Name</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Zip</th>
+                    <th>Study Period</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="root"> 
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+    <script src="./bootstrap-5.0.2-dist/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="./bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="map_crud.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+   
+</body>
+
+</html>
