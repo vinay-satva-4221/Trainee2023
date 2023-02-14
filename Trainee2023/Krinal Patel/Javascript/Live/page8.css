@@ -20,6 +20,15 @@ form{
     text-indent: -20px; 
 
 }
+#note1_pg8,#note2_pg8{
+    font-size: 15px;
+    margin-left: 3%;
+    padding: 12px;
+    text-indent: -20px; 
+    
+}
+
+
 #ins{
     color: gray;
     margin-left: 2%;
