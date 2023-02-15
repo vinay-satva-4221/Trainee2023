@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jquery cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <head>
+    <title>mapfunction</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>CRUD Operations with Map Function</h1>
+    <form>
+      <input type="text" placeholder="Enter your name" id="name"/><br>
+      <input type="tel" placeholder="Enter your Phone no" id="phone"/><br>
+      <input type="text" placeholder="Enter your Address" id="address"/><br></br>
+
+      <button type="button" id="get">Get Data</button>
+      <button type="button" id="set">set Data</button>
+      <button type="button" id="clear">Delete Data</button>
+</form><br>
+
+    <table>
+        <tr>
+            <th>UserName</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </tr>
+
+        <tbody id="tbl">
+            <tr>
+                <td><div id="d1"></div></td>
+                <td><div id="d2"></div></td>
+                <td><div id="d3"></div></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+      $(document).ready(function(){
+        let detail = new Map();
+        $("#clear").click(function(){
+            // debugger
+            detail.delete("1");
+            detail.delete("2");
+            detail.delete("3");
+           
+            $("#d1").html(detail.get("1"));
+            $("#d2").html(detail.get("2"));
+            $("#d3").html(detail.get("3"));
+        })
+
+        $("#get").click(function(){
+            // debugger
+            var Name = $("#name").val();
+            var Phone = $("#phone").val();
+            var Address = $("#address").val();
+
+            detail.set("1",Name);
+            detail.set("2",Phone);
+            detail.set("3",Address);
+
+            $("#d1").html(detail.get("1"));
+            $("#d2").html(detail.get("2"));
+            $("#d3").html(detail.get("3"));
+        })
+
+        $("#set").click(function(){
+            // debugger
+            var Name = $("#name").val();
+            var Phone = $("#phone").val();
+            var Address = $("#address").val();
+
+            detail.set("1",Name);
+            detail.set("2",Phone);
+            detail.set("3",Address);
+
+            detail.set("1","Samiksha");
+            detail.set("2","9992387651");
+            detail.set("3","Nahargarh");
+
+            $("#d1").html(detail.get("1"));
+            $("#d2").html(detail.get("2"));
+            $("#d3").html(detail.get("3"));
+        })
+      })
+</script>
+</body>
+</html>
+
