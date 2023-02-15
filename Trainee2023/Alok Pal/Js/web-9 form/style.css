@@ -124,7 +124,7 @@ input[type=checkbox]:hover{
 
 @media (max-width: 480px) {
   #sig-canvas {
-    width: 220%;
+    width: 350px;
     height: 150px;
   }
 }
@@ -192,3 +192,5 @@ input[type="text"]:disabled{
   padding-left: 7px;
   color: white;
 }
+
+
