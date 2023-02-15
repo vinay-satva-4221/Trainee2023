@@ -1,0 +1,29 @@
+function addDataToCookie()
+    {
+        
+        let cookiedata =$.cookie("Color");
+        if(cookiedata)
+        {
+            let localArray = JSON.parse(cookiedata);
+           
+            const color = { 
+                        id:localArray.length + 1,
+                        color: $("#color").val()
+                    };
+            localArray.push(color);
+            $.cookie("color", JSON.stringify(localArray));
+            
+        }
+        else
+        {
+            const arryObj = [];
+            const color = 
+            {
+                id: 1,
+                color: $("#color").val(),
+            }
+            arryObj.push(color);
+            $.cookie("color", JSON.stringify(arryObj));
+        }
+        
+    }
