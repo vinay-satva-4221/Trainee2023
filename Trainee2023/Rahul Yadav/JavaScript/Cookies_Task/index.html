@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mystyle.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+</head>
+
+<body>
+    <div class="container p-4">
+        <form id="basic_form">
+            <div class="row mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" />
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control " id="name" placeholder="enter name" name="name" required>
+
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="mobile" class="form-label">Mobile:</label>
+                    <input type="number" class="form-control " name="mobile" id="mobile" maxlength="10"
+                        placeholder="mobile number" minlength="10" min="0" required>
+
+                </div>
+            </div>
+            <div class="row  mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control " name="email" id="email" placeholder="enter your email id"
+                        required>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <label for="clgname" class="form-label">Collage Name</label>
+                    <input type="text" class="form-control " name="clgname" id="clgname" placeholder="College Name"
+                        required>
+                </div>
+            </div>
+
+
+            <div class="row mt-2 text-light">
+                <div class="col-md-6 col-sm-12">
+                    <label for="cgpa" class="form-label">CGPA</label>
+                    <input type="text" class="form-control " name="cgpa" id="cgpa" placeholder="enter cgpa" max="10"
+                        min="0" maxlength="3" required>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <label for="brnchname" class="form-label">Branch Name</label>
+                    <select class="form-select" id="brnchname" name="brnchname" required>
+                        <option value="" selected disabled>choose branch</option>
+                        <option value="CS">CS</option>
+                        <option value="EC">EC</option>
+                        <option value="IC">IC</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-2 text-dark">
+                <div class="col-md-4 col-sm-12">
+                    <label for="state" class="form-label">State:</label>
+                    <select id="State" class="form-control" tabindex="5"></select>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="city" class="form-label">City:</label>
+                    <select id="City" class="form-control" tabindex="5">
+
+                    </select>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <label for="zipcode" class="form-label">Zip code</label>
+                    <input type="number" class="form-control " name="zipcode" id="zipcode" min="0" minlength="6"
+                        maxlength="6" required>
+                </div>
+            </div>
+            <div class="row mt-2   text-light" style="margin-left: 20;">
+                <div class="col-md-12 col-sm-12">
+                    <label for="date" class="form-label">From where to when studies</label>
+                    <input type="text" class="form-control " name="daterange" id="daterange" placeholder="start-End"
+                        required readonly>
+
+                </div>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-12 ">
+                <select class="form-select" aria-label=" select example" id="color">
+                    <option selected>Open this select menu</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="blue">Blue</option>
+                </select>
+            </div>
+            <br>
+    </div><br>
+
+
+    <div style="text-align: right;">
+        <button type="button" id="addrow" class="btn me-5 " >Add
+            Row</button>
+        <button type="button" id="export" class="btn me-5">Export</button>
+        <button type="button" id="removecookies" class="btn me-5">Remove Cookies</button>
+        <button type="button" id="save" class="btn me-5">save</button>
+    </div>
+
+
+    <div class="container mt-2">
+        <table class="w3-table-all border table-responsive table-bordered" id="myTable">
+            <thead>
+                <tr class="w3-blue">
+                    <th nowrap class="border ">Sno.</th>
+                    <th nowrap class="border p-1">Name</th>
+                    <th nowrap class="border p-1">Mobile</th>
+                    <th nowrap class="border p-1">Email</th>
+                    <th nowrap class="border p-1">College Name</th>
+                    <th nowrap class="border p-1">CGPA</th>
+                    <th nowrap class="border p-1">Branch Name</th>
+                    <th nowrap class="border p-1">State</th>
+                    <th nowrap class="border p-1">City</th>
+                    <th nowrap class="border p-1">ZipCode</th>
+                    <th nowrap class="border p-1">Date</th>
+                    <th nowrap class="border p-1">Color</th>
+                    <th nowrap class="border p-1">Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody id="root">
+            </tbody>
+        </table>
+    </div>
+    </form>
+    </div>
+
+    <script src="./myscript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+</html>
