@@ -33,6 +33,8 @@ const CityData = '{"Citys":[' +
         const State = $(this).parent().parent().find(".txtState").html();
         const City = $(this).parent().parent().find(".txtCity").html();
         const zipcode = $(this).parent().parent().find(".txtzipcode").html();
+        const color = $(this).parent().parent().find(".txtcolor").html();
+ 
         const daterange = $(this).parent().parent().find(".txtdaterange").html();
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         $("#name").val(name);
@@ -44,6 +46,7 @@ const CityData = '{"Citys":[' +
         $("#State").val(State);
         $("#City").val(City);
         $("#zipcode").val(zipcode);
+        $("#color").val(color);
         $("#daterange").val(daterange);
         $("#txtId").val(id);
         $("#btnSave").text("Update");
@@ -230,6 +233,7 @@ const CityData = '{"Citys":[' +
         $("#State").val("");
         $("#City").val("");
         $("#zipcode").val("");
+        $("#color").val("");
         $("#daterange").val("");
         $("#btnSave").text("Add");
     }
@@ -241,15 +245,27 @@ const CityData = '{"Citys":[' +
       }
     }
 
+    // Function to set cookie
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+
     function loadDataFromLocal() {
       debugger;
-      let localData = localStorage.getItem('localData');
+      let localData = localStorage.getItem('localData') || cookieStorage.getItem('localData');
       if (localData) {
         $("#tblData tbody").html("");
         let localArray = JSON.parse(localData);
         let index = 1;
         localArray.forEach(element => {
-            let dtr = "<tr>";
+            let dtr = "<tr class='custom-row'>";
             dtr = dtr + "<td>" + index + "</td>";
             dtr = dtr + "<td class='txtName' data-id= " + element.id + " >" + element.name + "</td>";
             dtr = dtr + "<td class='txtMobile' >" + element.mobile +  "</td>";
@@ -260,6 +276,7 @@ const CityData = '{"Citys":[' +
             dtr = dtr + "<td class='txtState' >" + element.State +  "</td>";
             dtr = dtr + "<td class='txtCity' >" + element.City +  "</td>";
             dtr = dtr + "<td class='txtzipcode' >" + element.zipcode +  "</td>";
+            dtr = dtr + "<td class='txtcolor' >" + element.color +  "</td>";
             dtr = dtr + "<td class='txtdaterange' >" + element.daterange +  "</td>";
             dtr = dtr + "<td class='tdAction'><button class='btn btn-sm btn-success btn-edit' type='button'> Edit </button><button class='btn btn-sm btn-danger btn-delete' > Delete </button></td>";
             dtr = dtr + "</tr>";
@@ -269,6 +286,8 @@ const CityData = '{"Citys":[' +
       }
       addEmptyRow();
     }
+
+
 
     function addDataToLocal() {
       debugger;
@@ -287,6 +306,7 @@ const CityData = '{"Citys":[' +
             
             City: $('#City').val(),
             zipcode: $('#zipcode').val(),
+            color: $('#color').val(),
             daterange: $('#daterange').val()
         };
         localArray.push(obj);
@@ -305,6 +325,7 @@ const CityData = '{"Citys":[' +
             State: $('#State').val(),
             City: $('#City').val(),
             zipcode: $('#zipcode').val(),
+            color: $('#color').val(),
             daterange: $('#daterange').val()
         };
         arryObj.push(obj);
@@ -328,6 +349,7 @@ const CityData = '{"Citys":[' +
         oldRecord.State = $("#State").val();
         oldRecord.City = $("#City").val();
         oldRecord.zipcode = $("#zipcode").val();
+        oldRecord.color = $("#color").val();
         oldRecord.daterange = $("#daterange").val();
       localStorage.setItem('localData', JSON.stringify(localArray));
       loadDataFromLocal();
@@ -349,3 +371,27 @@ const CityData = '{"Citys":[' +
       localStorage.setItem('localData', JSON.stringify(localArray));
       loadDataFromLocal();
     }
+
+    function storeColor() {
+        debugger
+        // Get the selected color from the select box
+        var colorSelect = document.getElementById("color");
+        var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+    
+        // Store the selected color in a cookie
+        document.cookie = "selectedColor=" + selectedColor + "; path=/";
+    
+        // Update the background color of each row in the table
+        var rows = document.getElementsByTagName("tr");
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].style.backgroundColor = selectedColor;
+        }
+    
+        // Update the background color of the table header
+        var header = document.getElementsByTagName("th")[0];
+        header.style.backgroundColor = selectedColor;
+    
+        // Update the body background color
+        document.body.style.backgroundColor = selectedColor;
+    }
+    
