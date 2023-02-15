@@ -36,9 +36,13 @@ function hide1(){
     h.classList.remove("hide");
 }
 function hideexp(){
-    var h = document.getElementById("hide1"); 
-    h.classList.remove("hide");
+
+    document.getElementById("btn2").style.display ='inline';
 }
+function showSave(){
+    document.getElementById("btn3").style.display ='inline';
+}
+
 
 
 function init(){
@@ -129,7 +133,6 @@ function validateallow() {
         editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow(this)">Edit</button>';
         deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
         
-debugger;   
         $(document).ready(function(){
             $("#btn1").click(function(){
                 swal({
@@ -153,7 +156,15 @@ debugger;
         studentsArray.splice(currentIndex, 1);
     
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
-       
+        
+        if(currentIndex==0){
+            document.getElementById("btn2").style.display ='none';
+        }
+        else{
+            document.getElementById("btn2").style.display ='inline';
+
+        }
+
         swal({
             title: "Record deleted",
             text: "Student Detail Deleted successfully",
@@ -178,8 +189,8 @@ debugger;
         document.getElementById("city").value =  SelectedRow.cells[8].innerHTML;
         document.getElementById("zip").value =  SelectedRow.cells[9].innerHTML;
         document.getElementById("studied").value =  SelectedRow.cells[10].innerHTML;
-        document.getElementById("btn2").innerHTML = "Update Row";
-       
+        // document.getElementById("btn2").innerHTML = "Update Row";
+        showSave();
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
 
 }
@@ -202,7 +213,7 @@ debugger;
         SelectedRow.cells[8].innerHTML = formData.city;
         SelectedRow.cells[9].innerHTML = formData.zip;
         SelectedRow.cells[10].innerHTML = formData.studied;
-        document.getElementById("btn2").innerHTML = "Export";
+        // document.getElementById("btn2").innerHTML = "Export";
 
     }
 
@@ -392,93 +403,6 @@ function validatestate() {
     }
 }
 
-
-
-
-
-//Cascading Dropdown 
-debugger;
-// const CityData = {
-//     "Cities" : [
-//         {
-//             "StateId": 1,
-//             "Id": 1,
-//             "Name": "Indore"
-//         },
-//         {
-//             "StateId": 1,
-//             "Id": 2,
-//             "Name": "Bhopal"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 3,
-//             "Name": "Sirohi"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 4,
-//             "Name": "Udaipur"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 5,
-//             "Name": "Jaisalmer"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 6,
-//             "Name": "Ahmedabad"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 7,
-//             "Name": "Vadodara"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 8,
-//             "Name": "Surat"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 9,
-//             "Name": "Ludhiana"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 10,
-//             "Name": "Amritsar"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 11,
-//             "Name": "Patiala"
-//         }
-//     ]
-// }
-
-// const StateData = {
-//     "States" : [
-//         {
-//             "Id" : 1,
-//             "Name": "Madhya Pradesh"
-//         },
-//         {
-//             "Id" : 2,
-//             "Name": "Rajasthan"
-//         },
-//         {
-//             "Id" : 3,
-//             "Name": "Gujarat"
-//         },
-//         {
-//             "Id" : 4,
-//             "Name": "Punjab"
-//         }
-//     ]
-// }
-
 const CityData = '{"Cities":['+
 '{"StateId":"1","Id":"1","Name":"Indore"},' +
 '{"StateId":"1","Id":"2","Name":"Bhopal"},' +
@@ -516,3 +440,35 @@ $(document).ready(function(){
 
     });
 });
+
+
+function exportTableToExcel(tableSelect, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById("mytable");
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'Employee.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}

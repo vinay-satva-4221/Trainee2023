@@ -1,0 +1,55 @@
+label {
+    color: black
+}
+
+span {
+    color: red;
+}
+
+
+
+label.error {
+    color: red;
+}
+
+  /* .css-serial { 
+    counter-reset: serial-number;
+    Set the serial number counter to 0
+  } */
+
+.css-serial td:first-child:before {
+    counter-increment: serial-number;
+    /* Increment the serial number counter */
+    content: counter(serial-number);
+
+    /* Display the counter */
+}
+
+#addrow {
+    background-color: skyblue;
+    width: 30%;
+}
+
+
+#save {
+    background-color: rgb(114, 231, 114);
+    width: 30%;
+    display: none;
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(157, 181, 246), rgb(80, 119, 126));
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+table,tr,td,th{
+    border: 1px solid black;
+}

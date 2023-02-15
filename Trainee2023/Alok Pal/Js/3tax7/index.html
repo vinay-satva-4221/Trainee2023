@@ -11,61 +11,75 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-3">
-                <label for="client_1" id="c">Client 1</label>
-            </div>
-            <div class="col-3">
-                <input type="number" id="c1">
-            </div>
-            <div class="col-3">
-                <input type="number" id="c2">
+    <div class="container  cont">
+        <div class="text-center pt-3"><p><b>FIND THE RICHEST ONE</b></p></div>
+        <form action="">
+            <div class="row">
+                <div class="col-3">
+                    <label for="client_1" id="c">Client 1</label>
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c1">
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c2">
+
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c3">
+
+                </div>
 
             </div>
-            <div class="col-3">
-                <input type="number" id="c3">
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label for="client_2" id="c2">Client 2</label>
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c21">
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c22">
+
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c23">
+
+                </div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-3">
+                    <label for="client_3" id="c3">Client 3</label>
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c31">
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c32">
+
+                </div>
+                <div class="col-3">
+                    <input type="number" id="c33">
+
+                </div>
 
             </div>
 
-        </div>
-        <div class="row mt-2">
-            <div class="col-3">
-                <label for="client_2" id="c2">Client 2</label>
+            <div class="text-center mt-3">
+                <p id="1" class="design"></p>
             </div>
-            <div class="col-3">
-                <input type="number" id="c21">
+            <div class="text-center mt-3">
+                <p id="2" class="design"></p>
             </div>
-            <div class="col-3">
-                <input type="number" id="c22">
-
+            <div class="text-center mt-3">
+                <p id="3" class="design"></p>
             </div>
-            <div class="col-3">
-                <input type="number" id="c23">
-
+            <div class="text-center mt-4 ">
+                <button type="button" class="btn btn-primary mar " onclick="return getValue()">Calculate</buttontype>
+                <button type="reset" class="btn btn-warning mx-3 mar ">Reset</button>
             </div>
-
-        </div>
-        <div class="row mt-2">
-            <div class="col-3">
-                <label for="client_3" id="c3">Client 3</label>
-            </div>
-            <div class="col-3">
-                <input type="number" id="c31">
-            </div>
-            <div class="col-3">
-                <input type="number" id="c32">
-
-            </div>
-            <div class="col-3">
-                <input type="number" id="c33">
-
-            </div>
-
-        </div>
-        <div class="text-center mt-4">
-            <button class="btn btn-outline-primary" onclick="return getValue()">Calculate</button>
-        </div>
+        </form>
     </div>
 </body>
 <script src="js/bootstrap.min.js"></script>
