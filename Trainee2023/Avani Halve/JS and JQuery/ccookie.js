@@ -1,13 +1,20 @@
 var id = 0;
 var studentsArray = [];
 
+function delcookie(){
+    document.cookie = "username=; expires=Tue, 14 Feb 2023 00:00:00 UTC; path=/;";
+
+}
+// || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname() 
  // Check if any field is empty
 function validatecheck(){
     
-    if ( !validatename() && !validatemobile() && !validateemail() && !validatezip() && !validatecgpa() && !validatecname() && !validatebname()) 
-    { 
+    if ( !validatename()   ) {
+           
         $(document).ready(function () {
+    
             $("#btn1").click(function () {
+               
                 swal({
                     title: "Missing fields",
                     text: "Please enter all details",
@@ -16,8 +23,10 @@ function validatecheck(){
                 });
             });
         });
+
+        
     } else {        
-            return validateallow(),hide();
+            return validateallow(),hide(),hide1(),hideexp();
     }
 }
 
@@ -27,14 +36,18 @@ function hide(){
     var h = document.getElementById("mytable"); 
     h.classList.remove("hide");
 }
-// function hide1(){
-//     var h = document.getElementById("hide1"); 
-//     h.classList.remove("hide");
-// }
-// function hideexp(){
-//     var h = document.getElementById("hide1"); 
-//     h.classList.remove("hide");
-// }
+function hide1(){
+    var h = document.getElementById("hide1"); 
+    h.classList.remove("hide");
+}
+function hideexp(){
+
+    document.getElementById("btn2").style.display ='inline';
+}
+function showSave(){
+    document.getElementById("btn3").style.display ='inline';
+}
+
 
 
 function init(){
@@ -46,11 +59,13 @@ function init(){
 
             prepareTableCell(i, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
         }
+
     }
+
 }
         
 function validateallow() {
-
+debugger;
             // var i = studentsArray[i];
             var name = $("#name").val();
             var mobile = $("#mobile").val();
@@ -62,16 +77,24 @@ function validateallow() {
             var city = $("#city").val();
             var zip = $("#zip").val();
             var studied = $("#studied").val();
+            var color = $("#color").val();
 
             id ++;
-            var stuObj = {id:id, name: name, mobile: mobile, email: email, cname: cname, cgpa: cgpa,bname: bname, state: state, city: city, zip:zip, studied: studied}
+            var stuObj = {id:id, name: name, mobile: mobile, email: email, cname: cname, cgpa: cgpa,bname: bname, state: state, city: city, zip:zip, studied: studied,color: color}
 
                 studentsArray.push(stuObj);
-            
+
+                //set cookie
+                document.cookie="color"+"="+$("#color").val();
+
+               
+                  
+
+                  
             localStorage.setItem( 'StudentDetails', JSON.stringify(studentsArray));
 
             // init() ;
-            prepareTableCell(id, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
+            prepareTableCell(id, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied, stuObj.color)
 
             document.getElementById("name").value = "";
             document.getElementById("mobile").value = "";
@@ -83,17 +106,38 @@ function validateallow() {
             document.getElementById("city").value = "";
             document.getElementById("zip").value = "";
             document.getElementById("studied").value = ""; 
+            document.getElementById("color").value = ""; 
+
+            
         
 }
 
+
+
+
+// function getCookie(color) {
+//     let name = color + "=";
+
+//     for(let i = 0; i <name.length; i++) {
+//       let c = name[i];
+//       while (c.charAt(0) == ' ') {
+//         c = c.substring(1);
+//       }
+//       if (c.indexOf(name) == 0) {
+//         return c.substring(name.length, c.length);
+
+//       }
+//     }
+//     return "";
+//   }
+
     //Table insert data
-    debugger;
-    function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied) {
-        var index= index
+    function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied,color) {
+        var index= index;
         console.log('index', index)
         var table = document.getElementById("mytable");
-        var row = table.insertRow();
-        var currentIndex = studentsArray.findIndex(x=> x.id == index)
+        var row = table.insertRow();    
+        var currentIndex = studentsArray.findIndex(x=> x.id == index);
 
         var srCell = row.insertCell(0);
         var nameCell = row.insertCell(1);
@@ -106,8 +150,9 @@ function validateallow() {
         var cityCell = row.insertCell(8);
         var zipCell = row.insertCell(9);
         var studiedCell = row.insertCell(10);
-        var editCell = row.insertCell(11);
-        var deleteCell = row.insertCell(12);
+        var colorCell = row.insertCell(11);
+        var editCell = row.insertCell(12);
+        var deleteCell = row.insertCell(13);
 
         srCell.innerHTML = currentIndex+1;
         nameCell.innerHTML=name;
@@ -120,9 +165,59 @@ function validateallow() {
         cityCell.innerHTML=city;
         zipCell.innerHTML=zip;
         studiedCell.innerHTML=studied;
-        editCell.innerHTML= '<button class="btn btn-primary" onclick="editTableRow(this)">Edit</button>';
+        colorCell.innerHTML=color;
+        editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow(this)">Edit</button>';
         deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
+        console.log(row)
+        //Color
+debugger;
         
+        //get cookie
+        let x = document.cookie;
+        let part = x.slice(6);  
+        console.log("Slice",part);
+
+        //red
+        
+        
+        
+
+        var selectElement = document.querySelector('#color');
+        var output = selectElement.value;
+        console.log("Local",output);
+       
+
+        if(part=="Green" && output=="Green"){
+ 
+                row.style.backgroundColor ='lightgreen';
+                document.getElementById("con").style.backgroundColor ='lightgreen';
+
+
+        }else if(part=="Red" && output=="Red"){
+            row.style.backgroundColor ='lightcoral';
+            document.getElementById("con").style.backgroundColor ='lightcoral';
+
+
+        }
+        else if(part=="Blue" && output=="Blue"){
+            row.style.backgroundColor ='lightblue';
+            document.getElementById("con").style.backgroundColor ='lightblue';
+
+        }
+        else if(part=="Yellow" && output=="Yellow"){
+            row.style.backgroundColor ='yellow';
+            document.getElementById("con").style.backgroundColor ='yellow';
+
+        }
+        else{
+            alert("Please select any color !!");
+        }
+
+
+        // y=document.cookie.valueOf();
+        // console.log(y);
+        // document.cookie = "color=blue";
+
         $(document).ready(function(){
             $("#btn1").click(function(){
                 swal({
@@ -146,18 +241,15 @@ function validateallow() {
         studentsArray.splice(currentIndex, 1);
     
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
+        
+        if(currentIndex==0){
+            document.getElementById("btn2").style.display ='none';
+        }
+        else{
+            document.getElementById("btn2").style.display ='inline';
 
-        document.getElementById("").value = SelectedRow.cells[1].innerHTML;
-        document.getElementById("").value = SelectedRow.cells[2].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[3].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[4].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[5].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[6].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[7].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[8].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[9].innerHTML;
-        document.getElementById("").value =  SelectedRow.cells[10].innerHTML;
-       
+        }
+
         swal({
             title: "Record deleted",
             text: "Student Detail Deleted successfully",
@@ -166,8 +258,8 @@ function validateallow() {
         });
     }
 
-
      //Edit Row
+      
     function editTableRow(td){
 
         SelectedRow = td.parentElement.parentElement;
@@ -182,27 +274,19 @@ function validateallow() {
         document.getElementById("city").value =  SelectedRow.cells[8].innerHTML;
         document.getElementById("zip").value =  SelectedRow.cells[9].innerHTML;
         document.getElementById("studied").value =  SelectedRow.cells[10].innerHTML;
-        document.getElementById("btn2").innerHTML = "Update Row";
-       
+        // document.getElementById("btn2").innerHTML = "Update Row";
+        showSave();
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
 
 }
 
     
     //Update Row
-    function updateTableRow(){
-
-    var formData = {};
-        formData["name"] = document.getElementById("name").value;
-        formData["mobile"] = document.getElementById("mobile").value;
-        formData["email"] = document.getElementById("email").value;
-        formData["cname"] = document.getElementById("cname").value;
-        formData["cgpa"] = document.getElementById("cgpa").value;
-        formData["bname"] = document.getElementById("bname").value;
-        formData["state"] = document.getElementById("state").value;
-        formData["city"] = document.getElementById("city").value;
-        formData["zip"] = document.getElementById("zip").value;
-        formData["studied"] = document.getElementById("studied").value;
+      
+    function updateTableRow(formData){
+   
+        var formData = readFormData();
+    debugger;
 
         SelectedRow.cells[1].innerHTML = formData.name;
         SelectedRow.cells[2].innerHTML = formData.mobile;
@@ -216,11 +300,76 @@ function validateallow() {
         SelectedRow.cells[10].innerHTML = formData.studied;
         // document.getElementById("btn2").innerHTML = "Export";
 
+          //Color
+debugger;
+        
+                //set cookie
+                document.cookie="color"+"="+$("#color").val();
+
+//get cookie
+let x = document.cookie;
+let part = x.slice(6);  
+console.log("Slice",part);
+
+//red
+
+
+
+
+var selectElement = document.querySelector('#color');
+var output = selectElement.value;
+console.log("Local",output);
+
+
+if(part=="Green" && output=="Green"){
+
+        row.style.backgroundColor ='lightgreen';
+        document.getElementById("con").style.backgroundColor ='lightgreen';
+
+
+}else if(part=="Red" && output=="Red"){
+    row.style.backgroundColor ='lightcoral';
+    document.getElementById("con").style.backgroundColor ='lightcoral';
+
+
+}
+else if(part=="Blue" && output=="Blue"){
+    row.style.backgroundColor ='lightblue';
+    document.getElementById("con").style.backgroundColor ='lightblue';
+
+}
+else if(part=="Yellow" && output=="Yellow"){
+    row.style.backgroundColor ='yellow';
+    document.getElementById("con").style.backgroundColor ='yellow';
+
+}
+else{
+
+}
+    }
+
+    function readFormData() {
+        var formData = {};
+        formData["name"] = document.getElementById("name").value;
+        formData["mobile"] = document.getElementById("mobile").value;
+        formData["email"] = document.getElementById("email").value;
+        formData["cname"] = document.getElementById("cname").value;
+        formData["cgpa"] = document.getElementById("cgpa").value;
+        formData["bname"] = document.getElementById("bname").value;
+        formData["state"] = document.getElementById("state").value;
+        formData["city"] = document.getElementById("city").value;
+        formData["zip"] = document.getElementById("zip").value;
+        formData["studied"] = document.getElementById("studied").value;
+
+        return formData;
     }
     
+    debugger;
+   
 
 //Date Picker
- $(function() {
+$(function() {
+
     var start = moment().subtract(29, 'days');
     var end = moment();
 
@@ -243,6 +392,13 @@ function validateallow() {
 
     cb(start, end);
 
+});
+//Fade img
+
+$("#fadetoggle_btn").click(function () {
+
+    
+    $(".fades").fadeToggle(1000);
 });
 
 
@@ -301,7 +457,7 @@ function validatezip() {
     let zip = document.getElementById("zip").value;
     let msgzip = document.getElementById("invalid_msg2");
     if (!setzip.test(zip)) {
-        msgzip.innerHTML = "*Only 6 digits are allowed and repeated number is not valid";
+        msgzip.innerHTML = "*Only 6 digits are allowed and all numbers repeated is invalid";
         msgzip.style.color = "red";
         document.getElementById("invalid_msg2").style.display = "unset";
         return false;
@@ -413,24 +569,34 @@ $(document).ready(function(){
     });
 });
 
-$("#table").hide();
-$("#carouselExampleControls").hide();
-$("#slider").click(function () {
-  $("#carouselExampleControls").toggle("show");
-});
 
-
-// function Export(){
-//     debugger;
-//     TableToExcel.convert(document.getElementById("mytable"));
-// }
-
-
-
-function Export(type, fn, dl) {
-    var elt = document.getElementById('mytable');
-    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
-    return dl ?
-        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
-        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+function exportTableToExcel(tableSelect, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById("mytable");
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'Employee.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
 }

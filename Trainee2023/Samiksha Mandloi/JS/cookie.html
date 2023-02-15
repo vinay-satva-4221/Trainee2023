@@ -142,12 +142,12 @@
             <br>
             <div class="row mt-2   text-light" style="margin-left: 20;">
                 <div class="col-md-12 col-sm-12">
-                    <label for="color" class="form-label">Dropdown Color</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select Colors</option>
-                        <option value="1" selected>Grey</option>
-                        <option value="2">lightPink</option>
-                        <option value="3">yellow</option>
+                    <label for="color" class="form-label" >Dropdown Color</label>
+                    <select class="form-select" aria-label="Default select example" id="color" name="color" required>
+                        <option disabled>Open this select Colors</option>
+                        <option value="Grey" selected>Grey</option>
+                        <option value="lightPink">lightPink</option>
+                        <option value="yellow">yellow</option>
                       </select>
                 </div>
             </div><br>
@@ -191,13 +191,15 @@
 
 
             <div style="text-align: left;">
-                <button type="button" value="validate" id="btnSave" class="btn me-5 "
+                <button type="button" value="validate" onclick="storeColor()" id="btnSave" class="btn me-5 "
                     style="background-color: skyblue; width: 30%;">Add
                     Row</button>
                 <button type="button" id="btnClear" class="btn me-5" style="background-color:orange; width: 10%;">Clear
                 </button>
                 <button type="button" id="btnExport" class="btn me-5"
                     style="background-color: palegreen; width: 30%;">Export</button>
+                    <button type="button" id="btncookie" class="btn  btn-primary me-5" style=" width: 10%;">Delete Cookie
+                    </button>
             </div>
 
             <!-- create table -->
@@ -216,6 +218,7 @@
                             <th>State</th>
                             <th>City</th>
                             <th>Zipcode</th>
+                            <th>color</th>
                             <th>Study Period</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -229,7 +232,7 @@
             </div>
         </form>
     </div>
-    <script src="./edit.js"></script>
+    <script src="./cookie.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>

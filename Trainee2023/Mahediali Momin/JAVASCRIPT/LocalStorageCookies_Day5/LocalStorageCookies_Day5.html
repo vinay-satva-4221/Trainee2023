@@ -21,19 +21,20 @@
         .hide {
             display: none;
         }
-
         /* .hideexp {
             display: none;
         } */
         .mainC {
             width: 70%;
+            height: 880px;
             border: 1px solid rgb(182, 182, 182);
             border-radius: 10px;
             box-shadow: 5px 1px 10px #888888;
             padding-bottom: 30px;
         }
+
         .mainC1 {
-           margin-left: 230px;
+            margin-left: 150px;
         }
     </style>
 
@@ -41,7 +42,7 @@
 </head>
 
 <body>
-    <div class="container mainC mt-4">
+    <div class="container mainC mt-4" id="mainCon1">
         <div class="container">
             <div class="row mt-4">
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
@@ -91,7 +92,7 @@
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
                     <div class="form-group">
                         <label for="bname" class="form-label">Branch Name:</label>
-                        <select class="form-select" id="bname">
+                        <select class="form-select" id="bname" onchange="validatebname()">
                             <option value="" disabled selected="selected">Select Branch</option>
                             <option> MCA</option>
                             <option> BCA</option>
@@ -105,8 +106,8 @@
             <div class="row">
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
                     <div class="form-group">
-                        <label for="State" class="form-label">State:</label>
-                        <select id="state" class="form-control">
+                        <label for="state" class="form-label">State:</label>
+                        <select id="state" class="form-control" onchange="validatestate()">
                             <option value="" disabled selected="selected">Select State</option>
                         </select>
                         <p id="invalid_state"></p>
@@ -139,13 +140,15 @@
             </div>
             <hr>
             <div class="row mt-4">
-                <div class="col-lg-9">
+                <div class="">
                     <button class="btn btn-primary m-3" style="width: 200px;" id="btn1" data-toggle="modal"
                         onclick="validatecheck()" data-target="#myModal"> Add Row</button>
                     <button class="btn btn-success m-3" style=" width: 200px;" id="btn3"
                         onclick="Export()">Export</button>
                     <button class="btn btn-warning m-3" style=" width: 200px;" id="btn2"
                         onclick="updateTableRow()">Save</button>
+                    <button class="btn btn-info m-3" style=" width: 200px;" id="btn2"
+                        onclick="updateTableRow()">Remove Cookie</button>
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -178,14 +181,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12 col-xs-12 col-md-12 col-lg-6 col-xl-6 mt-4">
+                    <div class="form-group">
+                        <label for="bname" class="form-label">Colors</label>
+                        <select class="form-select" id="color">
+                            <option value="" disabled selected="selected">Select color</option>
+                            <option> skyblue</option>
+                            <option> lightyellow</option>
+                            <option> lightgreen</option>
+                            <option> lightpink</option>
+                        </select>
+                        <p id="invalid_color"></p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
     <div class="col-md-6 col-sm-12 mt-4 mainC1">
         <table id="mytable" class="table table-responsive table-bordered hide mt-5"
             style="border: 1px solid rgb(0, 0, 0);">
-            <tr>
+            <tr style="background-color: rgb(43, 42, 42); color: white;">
                 <th> SR. No </th>
                 <th> Name </th>
                 <th> Mobile </th>
@@ -197,6 +214,7 @@
                 <th> City </th>
                 <th> Zip </th>
                 <th> Study Period </th>
+                <th>Colors</th>
                 <th> Edit</th>
                 <th> Delete</th>
             </tr>
@@ -205,9 +223,6 @@
             </tbody>
         </table>
     </div>
-
-
-
 
 
     <script src="/Trainee2023/Mahediali Momin/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
@@ -220,9 +235,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-
-
-    <script src="./LocalStorageForm_Day3.js"></script>
+    <script src="./LocalStorageCookies_Day5.js"></script>
 
 </body>
 

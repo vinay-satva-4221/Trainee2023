@@ -33,6 +33,8 @@ const CityData = '{"Citys":[' +
         const State = $(this).parent().parent().find(".txtState").html();
         const City = $(this).parent().parent().find(".txtCity").html();
         const zipcode = $(this).parent().parent().find(".txtzipcode").html();
+        const color = $(this).parent().parent().find(".txtcolor").html();
+ 
         const daterange = $(this).parent().parent().find(".txtdaterange").html();
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         $("#name").val(name);
@@ -44,6 +46,7 @@ const CityData = '{"Citys":[' +
         $("#State").val(State);
         $("#City").val(City);
         $("#zipcode").val(zipcode);
+        $("#color").val(color);
         $("#daterange").val(daterange);
         $("#txtId").val(id);
         $("#btnSave").text("Update");
@@ -230,6 +233,7 @@ const CityData = '{"Citys":[' +
         $("#State").val("");
         $("#City").val("");
         $("#zipcode").val("");
+        $("#color").val("");
         $("#daterange").val("");
         $("#btnSave").text("Add");
     }
@@ -243,15 +247,15 @@ const CityData = '{"Citys":[' +
 
     function loadDataFromLocal() {
       debugger;
-      let localData = localStorage.getItem('localData');
+      let localData = localStorage.getItem('localData') || cookieStorage.getItem('localData');
       if (localData) {
         $("#tblData tbody").html("");
         let localArray = JSON.parse(localData);
         let index = 1;
         localArray.forEach(element => {
-            let dtr = "<tr>";
-            dtr = dtr + "<td>" + index + "</td>";
-            dtr = dtr + "<td class='txtName' data-id= " + element.id + " >" + element.name + "</td>";
+            let dtr = "<tr id='custom-row'>";
+            dtr = dtr + "<td >" + index + "</td>";
+            dtr = dtr + "<td class='txtName'  data-id= " + element.id + " >" + element.name + "</td>";
             dtr = dtr + "<td class='txtMobile' >" + element.mobile +  "</td>";
             dtr = dtr + "<td class='txtEmail' >" + element.email +  "</td>";
             dtr = dtr + "<td class='txtCollegeName' >" + element.clgname +  "</td>";
@@ -260,6 +264,7 @@ const CityData = '{"Citys":[' +
             dtr = dtr + "<td class='txtState' >" + element.State +  "</td>";
             dtr = dtr + "<td class='txtCity' >" + element.City +  "</td>";
             dtr = dtr + "<td class='txtzipcode' >" + element.zipcode +  "</td>";
+            dtr = dtr + "<td class='txtcolor' >" + element.color +  "</td>";
             dtr = dtr + "<td class='txtdaterange' >" + element.daterange +  "</td>";
             dtr = dtr + "<td class='tdAction'><button class='btn btn-sm btn-success btn-edit' type='button'> Edit </button><button class='btn btn-sm btn-danger btn-delete' > Delete </button></td>";
             dtr = dtr + "</tr>";
@@ -287,9 +292,11 @@ const CityData = '{"Citys":[' +
             
             City: $('#City').val(),
             zipcode: $('#zipcode').val(),
+            color: $('#color').val(),
             daterange: $('#daterange').val()
         };
         localArray.push(obj);
+        document.cookie = "selectedColor=" + color;
         localStorage.setItem('localData', JSON.stringify(localArray));
         loadDataFromLocal();
       } else {
@@ -305,9 +312,12 @@ const CityData = '{"Citys":[' +
             State: $('#State').val(),
             City: $('#City').val(),
             zipcode: $('#zipcode').val(),
+            color: $('#color').val(),
             daterange: $('#daterange').val()
         };
         arryObj.push(obj);
+        document.cookie = "selectedColor=" + color;
+
         localStorage.setItem('localData', JSON.stringify(arryObj));
         loadDataFromLocal();
       }
@@ -328,6 +338,7 @@ const CityData = '{"Citys":[' +
         oldRecord.State = $("#State").val();
         oldRecord.City = $("#City").val();
         oldRecord.zipcode = $("#zipcode").val();
+        oldRecord.color = $("#color").val();
         oldRecord.daterange = $("#daterange").val();
       localStorage.setItem('localData', JSON.stringify(localArray));
       loadDataFromLocal();
@@ -349,3 +360,32 @@ const CityData = '{"Citys":[' +
       localStorage.setItem('localData', JSON.stringify(localArray));
       loadDataFromLocal();
     }
+
+    function storeColor() {
+        
+        var colorSelect = document.getElementById("color");
+        var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+    
+        document.cookie = "selectedColor=" + selectedColor + "; path=/";
+    
+        
+        var rows = document.getElementsByTagName("tr");
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].style.backgroundColor = selectedColor;
+        }
+    
+   
+        var header = document.getElementsByTagName("th")[0];
+        header.style.backgroundColor = selectedColor;
+    
+        
+        document.body.style.backgroundColor = selectedColor;
+    
+        
+        var customRow = document.getElementById("custom-row");
+        if (customRow) {
+            customRow.style.backgroundColor = selectedColor;
+        }
+    }
+    
+    
