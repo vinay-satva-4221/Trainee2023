@@ -1,5 +1,3 @@
-
-
 // Daterangepicker
 $(function () {
     $('input[name="date"]').daterangepicker({
@@ -9,7 +7,6 @@ $(function () {
         maxYear: parseInt(moment().format('YYYY'), 10)
     }, function (start, end, label) {
         var years = moment().diff(start, 'years');
-        alert("You are " + years + " years old!");
     });
 });
 
@@ -20,12 +17,17 @@ $(function () {
     });
 });
 
-$(function () {
-    $("input[name='numonly1']").on('input', function (e) {
-        $(this).val($(this).val().replace(/^\w{1}$/g, ''));
-    });
-});
 
+function moveCursor(fromTextBox , toTextBox)
+{
+    var length = fromTextBox.value.length;
+    var maxLength = fromTextBox.getAttribute("maxlength");
+    
+    if(length == maxLength)
+    {
+        document.getElementById(toTextBox).focus();
+    }
+}
 
 
 
@@ -169,7 +171,7 @@ window.onload = function () {
                 g7.style.background = 'white';
                 g8.style.background = 'white';
                 g9.style.background = 'white';
-                
+
 
             }
 
@@ -197,13 +199,15 @@ window.onload = function () {
 //     backgroundColor: 'rgb(250,250,250)'
 // });
 
-var canvas = document.getElementById("sig-canvas");
+var canvas = document.getElementById("signature");
     var signaturePad = new SignaturePad(canvas);
 
     $('#clear-signature').on('click', function () {
         signaturePad.clear();
     });
 
+
+    
 
 //checkbox show and hide
 function showHide(checked) {
@@ -213,11 +217,27 @@ function showHide(checked) {
 }
 
 // Mouse hover
-$(document).ready(function(){
-    $("input").mouseenter(function(){
-   $(this).css("border-color", "blue");
- });
- $("input").mouseleave(function(){
-     $(this).css("border-color","lightgray");
- });
- });
+$(document).ready(function () {
+    $("input").mouseenter(function () {
+        $(this).css("border-color", "blue");
+    });
+    $("input").mouseleave(function () {
+        $(this).css("border-color", "lightgray");
+    });
+});
+
+
+// var canvas = document.getElementById("sig-canvas");
+
+// function resizeCanvas() {
+//     var ratio = Math.max(window.devicePixelRatio || 1, 1);
+//     canvas.width = canvas.offsetWidth * ratio;
+//     canvas.height = canvas.offsetHeight * ratio;
+//     canvas.getContext("2d").scale(ratio, ratio);
+// }
+// window.onresize = resizeCanvas;
+// resizeCanvas();
+
+// var signaturePad = new SignaturePad(canvas, {
+//     backgroundColor: 'rgb(250,250,250)'
+// });

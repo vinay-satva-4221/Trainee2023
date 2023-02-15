@@ -36,10 +36,11 @@
             <div class="col-md-8 col-sm-12 mt-2 text-center">
               <input type="text" class="form-control form-textbox colorC1" id="inp1" onblur="return nameV1()">
             </div>
-            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is required</span>
+            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is
+              required</span>
           </div>
         </div>
-        <div>  
+        <div>
         </div>
 
         <div class=" row mt-3">
@@ -99,9 +100,9 @@
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <input class="form-check-input" type="checkbox" value="" name="chkbox" onchange="showHide(this.checked)"
-                id="flexCheckDefault">
+              <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
+              <input class="form-check-input" type="checkbox" value="" name="chkbox"
+                onchange="return showHide(this.checked)" id="flexCheckDefault">
               <label class="form-check-label" for="flexCheckDefault">
                 Other
               </label>
@@ -109,7 +110,7 @@
             <div class="row mt-3">
               <div class="col-md-8 col-sm-12">
                 <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted"
-                    name="hidden" placeholder="Please type another option here" onclick=""></span>
+                    name="hidden" placeholder="Please type another option here"></span>
               </div>
             </div>
           </div>
@@ -120,7 +121,7 @@
                 classification (C=C corporation, S=S
                 corporation, P=Partnership)</label>
               <div class="col-md-8 col-sm-12 mt-2">
-                <input type="text" class="form-control colorC1 " id="oth">
+                <input type="text" class="form-control colorC1 " id="oth" maxlength="1">
               </div>
             </div>
           </div>
@@ -226,10 +227,10 @@
 
 
 
-          <div class="row mt-4 " id="colA" >
+          <div class="row mt-4 " id="colA">
             <div class="col-md-8 col-sm-12 form-label">
               <label for="">List account number(s) here (optional)</label>
-              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 " >
+              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 ">
             </div>
           </div>
         </div>
@@ -242,16 +243,16 @@
           <div class="row">
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text1" onkeyup="moveCursor(this,'text2')">
             </div>
             <div class="security_media">
-              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1"
+                minlength="0" placeholder="_" id="text2" onkeyup="moveCursor(this,'text3')">
             </div>
 
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text3" onkeyup="moveCursor(this,'text4')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
@@ -259,11 +260,11 @@
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text4" onkeyup="moveCursor(this,'text5')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text5" onkeyup="moveCursor(this,'text6')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
@@ -271,26 +272,26 @@
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text6" onkeyup="moveCursor(this,'text7')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text7" onkeyup="moveCursor(this,'text8')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text8" onkeyup="moveCursor(this,'text9')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="text9" onkeyup="moveCursor(this,'text10')">
             </div>
           </div>
         </b>
 
 
 
-        
+
         <b>
           <h4 class="mt-5">Employer identification number</h4>
           <div class="col-md-8 col-sm-12">
@@ -299,11 +300,11 @@
           <div class="row" id="security">
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_" notdisabled>
+                placeholder="_" id="TEXT1" onkeyup="moveCursor(this,'TEXT2')" notdisabled>
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT2" onkeyup="moveCursor(this,'TEXT3')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
@@ -311,53 +312,57 @@
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT3" onkeyup="moveCursor(this,'TEXT4')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT4" onkeyup="moveCursor(this,'TEXT5')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT5" onkeyup="moveCursor(this,'TEXT6')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT6" onkeyup="moveCursor(this,'TEXT7')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT7" onkeyup="moveCursor(this,'TEXT8')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT8" onkeyup="moveCursor(this,'TEXT9')">
             </div>
             <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
+                placeholder="_" id="TEXT9" onkeyup="moveCursor(this,'TEXT10')">
             </div>
-            <div class="security_media">
+            <!-- <div class="security_media">
               <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
-                placeholder="_">
-            </div>
+                placeholder="_" id="TEXT10" onkeyup="moveCursor(this,'TEXT11')">
+            </div> -->
           </div>
         </b>
 
-        <div class="row mt-3">
-          <div class="media">
+        <div class="row mt-3 mainrow">
+          <div class="col-md-6">
             <label for="">Signature</label>
-            <canvas id="sig-canvas" width="380" height="130" class="mt-2">
-              Get a better browser, bro.
-            </canvas>
-            <button class="btn btn butn-Clr">Clear</button>
+            <div>
+              <div class="form-control mt-3">
+                <canvas id="signature"></canvas>
+              </div>
+            </div>
+            <div style="text-align:right;" class="mt-2">
+              <button type="button" id="clear-signature" class="btn btn butn-Clr  p-0 px-2">Clear</button>
+            </div>
           </div>
         </div>
 
         <div class="row mt-2 ">
           <div class="media">
             <label for="">Date</label>
-            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date" value="02-12-2023">
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date">
             <small class="form-text text-muted">Date</small>
           </div>
         </div>
@@ -375,6 +380,9 @@
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.4/signature_pad.js"
+  integrity="sha512-j36pYCzm3upwGd6JGq6xpdthtxcUtSf5yQJSsgnqjAsXtFT84WH8NQy9vqkv4qTV9hK782TwuHUTSwo2hRF+/A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="jquery/jquery.js"></script>
