@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern</title>
+</head>
+
+<body>
+    <h1>Pyramid Patterns</h1>
+    <script>
+  var userdetails = {"Name":"Samiksha", "Phone":"7898596571"}
+  users.set((users.size+1),JSON.stringify(userdetails))
+  users;
+  var u = users.get(1)
+
+let myMap = new Map();
+  
+  // Adding key value pair with chaining
+  myMap.set(1, "Rohan").set(2, "Sohan").set(3, "Trojan");
+  
+  // Getting the values back
+  console.log(myMap.get(1));
+  console.log(myMap.get(2));
+  console.log(myMap.get(3));
+        let rows = 5;
+
+        // half star  pattern variable carries the final pattern in string format
+        let pattern = "";
+        for (let n = 1; n <= rows; n++) {
+            for (let num = 1; num <= n; num++) {
+                pattern += "*";
+            }
+            pattern += "\n";
+        }
+        console.log(pattern);
+
+        // star pyramid
+
+        var x = 8;
+        var spc = "";
+        for (let i = 1; i <= x; i++) {
+            for (let j = 1; j <= x - i; j++) {
+                spc += " ";
+            }
+            for (let k = 1; k <= 2 * i - 1; k++) {
+                spc += "*";
+            }
+            spc += "\n";
+        }
+        console.log(spc);
+        //  diamond pattern pyramid
+        let m = 5;
+        let str = "";
+        for (let a = 1; a <= m; a++) {
+            for (let b = m; b > a; b--) {
+                str += " ";
+            }
+            for (let c = 0; c < a * 2 - 1; c++) {
+                str += "*";
+            }
+            str += "\n";
+        }
+        for (let a = 1; a <= m - 1; a++) {
+            for (let b = 0; b < a; b++) {
+                str += " ";
+            }
+            for (let c = (m - a) * 2 - 1; c > 0; c--) {
+                str += "*";
+            }
+            str += "\n";
+        }
+        console.log(str);
+
+
+    </script>
+</body>
+
+</html>
