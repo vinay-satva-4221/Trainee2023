@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container mt-3">
+    <div class="container mt-3" id="whole">
         <div class="text-center" style="font-size: 2rem;">
             <p><b>CRUD OPERATION WITH COOKIES</b></p>
         </div>
@@ -138,7 +138,7 @@
             </div>
 
             <div class="col-12 my-2 appbtn">
-                <button type="button" class="btn btn-info btn_c " id="save" onclick="return addData(),showData(),addCookie(),getCookie(),deleteData(index)">
+                <button type="button" class="btn btn-info btn_c " id="save" onclick="return addData(),showData(),getCookie()">
                     <p> Add Row</p>
                 </button>
                 <button type="button" class="btn btn-info btn_c " id="update">
@@ -172,6 +172,7 @@
                             <th nowrap class="px-1 py-2">City</th>
                             <th nowrap class="px-1 py-2">Zip</th>
                             <th nowrap class="px-1 py-2">Date</th>
+                            <th nowrap class="px-1 py-2">Color</th>
                             <th nowrap class="px-1 py-2">Edit/Delete</th>
                         </tr>
                     </thead>

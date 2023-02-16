@@ -188,6 +188,8 @@ function showData() {
     var html = "";
 
     peopleList.forEach(function (element, index) {
+        var color = getCookie(peopleList[index].firstName);
+
         html += "<tr class=text-center>";
         html += "<td>" + (index + 1) + "</td>";
         html += "<td>" + element.firstName + "</td>";
@@ -200,7 +202,7 @@ function showData() {
         html += "<td>" + element.city + "</td>";
         html += "<td>" + element.zip + "</td>";
         html += "<td>" + element.date + "</td>";
-
+        html += "<td>" + color + "</td>"
         html +=
             '<td><button onclick="deleteData( ' +
             index +
@@ -235,7 +237,7 @@ function addData() {
 
     var peopleList;
 
-    
+
 
     if (validateForm() == true) {
 
@@ -260,8 +262,8 @@ function addData() {
 
 
 
-        document.cookie=Name+"="+$("#colors").val()+";"
-        
+        document.cookie = firstName + "=" + $("#fcolor").val() + ";"
+
         localStorage.setItem("peopleList", JSON.stringify(peopleList));
         showData()
         document.getElementById("fname").value = "";
@@ -275,6 +277,9 @@ function addData() {
         document.getElementById("fzip").value = "";
         document.getElementById("fdate").value = "";
     }
+
+    backgroundColor();
+    tableRowColor();
 }
 
 //Delete
@@ -296,13 +301,17 @@ function updateData(index) {
     document.getElementById("save").style.display = "none";
     document.getElementById("update").style.display = "block";
     document.getElementById("update").style.marginBottom = '10px'
+
+    let CookieName = $('#crudTable tr:eq(' + index + ') td:nth-child(2)').text()
+    // alert(CookieName)
+    document.cookie = CookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+
     var peopleList;
     if (localStorage.getItem("peopleList") == null) {
         peopleList = [];
     } else {
         peopleList = JSON.parse(localStorage.getItem("peopleList"));
     }
-
     document.getElementById("fname").value = peopleList[index].firstName;
     document.getElementById("fmobile").value = peopleList[index].mobile;
     document.getElementById("femail").value = peopleList[index].email;
@@ -327,6 +336,9 @@ function updateData(index) {
         peopleList[index].zip = document.getElementById("fzip").value;
         peopleList[index].date = document.getElementById("fdate").value;
 
+        // document.cookie = peopleList[index].firstName + "=" + $("#fcolor").val() + ";"
+
+
         localStorage.setItem("peopleList", JSON.stringify(peopleList));
         showData()
         document.getElementById("fname").value = "";
@@ -339,60 +351,56 @@ function updateData(index) {
         document.getElementById("City").value = "";
         document.getElementById("fzip").value = "";
         document.getElementById("fdate").value = "";
-
+        document.getElementById("fcolor").value = "";
     }
 }
 
-// function createC() {
-//     const myArray = ['apple', 'banana', 'cherry'];
-//     const jsonString = JSON.stringify(myArray);
-//     document.cookie = "myArray=" + encodeURIComponent(jsonString);
 
 
-// }
-
-function addCookie() {
-    let cookiedata = $.cookie("color");
-    if (cookiedata) {
-        let localArray = JSON.parse(cookiedata);
-
-        const color = {
-            id: localArray.length + 1,
-            color: $("#fcolor").val()
-        };
-        localArray.push(color);
-        $.cookie("color", JSON.stringify(localArray));
-
-    }
-    else {
-        const arryObj = [];
-        const color =
-        {
-            id: 1,
-            color: $("#fcolor").val(),
+function getCookie(uname) {
+    let nameq = uname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-        arryObj.push(color);
-        $.cookie("color", JSON.stringify(arryObj));
+        if (c.indexOf(nameq) == 0) {
+            return c.substring(nameq.length, c.length);
+        }
     }
-
+    return "";
 }
 
 
-// function getCookie(cname) {
-//     let name = cname + "=";
-//     let decodedCookie = decodeURIComponent(document.cookie);
-//     let ca = decodedCookie.split(';');
-//     for(let i = 0; i <ca.length; i++) {
-//       let c = ca[i];
-//       while (c.charAt(0) == ' ') {
-//         c = c.substring(1);
-//       }
-//       if (c.indexOf(name) == 0) {
-//         return c.substring(name.length, c.length);
-//       }
-//     }
-//     return "";
-//   }
-//   console.log(getCookie())
 
 
+function backgroundColor() {
+    let bgcolor = $('#crudTable tr:last td:nth-child(12)').text()
+    console.log(bgcolor)
+    // $("whole").css("background-color", bgcolor);
+    document.getElementById("whole").style.backgroundColor = bgcolor
+}
+
+function tableRowColor() {
+    debugger
+    var rowCount = $("#crudTable tr").length;
+    for (let i = 1; i < rowCount; i++) {
+        let trcolor = $('#crudTable tr:eq(' + i + ') td:nth-child(12)').text()
+        //alert($(this).text())
+        $('#crudTable tr:eq(' + i + ')').css("background-color", trcolor);
+    }
+}
+
+$("#remove").click(function () {
+    debugger
+    var rowCount = $("#crudTable tr").length;
+    for (let i = 1; i < rowCount; i++) {
+        let Trname = $('#crudTable tr:eq(' + i + ') td:nth-child(2)').text()
+        //alert($(this).text())
+        document.cookie = Trname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+    }
+    doShowAll()
+
+})
