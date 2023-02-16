@@ -292,7 +292,7 @@ $(document).ready(function(){
         return City
     }
     function addlocalstorage(){
-
+            debugger
             let Name = $("#name").val();
             let Mobile = $("#mobile").val();
             let Email = $("#email").val();
@@ -307,9 +307,16 @@ $(document).ready(function(){
             let Zip = $("#zip").val();
             debugger
 
+
                 StudentDetails=new Array()
               var StudentDetails= JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
-
+                let check=true
+              for ( let i = 0; i < StudentDetails.length; i++){
+                if(StudentDetails[i].name==Name){
+                    check=false
+                }
+              }
+              if(check==true){
                 // //alert(StudentDetails.length)
                 // document.cookie=Name[StudentDetails.length=1]+"="+$("#colors").val()+";"
                 StudentDetails.push({
@@ -339,6 +346,10 @@ $(document).ready(function(){
                 });
                 $("#myModal").modal('hide');
                 document.getElementById("myform").reset()
+            }
+            else{
+                alert("same Name")
+            }
     }
    
 
@@ -481,7 +492,7 @@ $(document).ready(function(){
         })
         function backgroundColor(){
             let bgcolor= $('#table tr:last td:nth-child(12)').text()
-       $("body").css("background-color", bgcolor);
+       $("#myform").css("background-color", bgcolor);
         }
         function Tablerow(){
             debugger 

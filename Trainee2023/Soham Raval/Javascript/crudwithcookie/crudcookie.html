@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cookie</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/jquery-3.6.3.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <style>
+        /* .hide {
+            display: none;
+        } */
+
+        /* .hideexp {
+            display: none;
+        } */
+        /* .mainC {
+            width: 70%;
+            border: 1px solid rgb(182, 182, 182);
+            border-radius: 10px;
+            box-shadow: 5px 1px 10px #888888;
+            padding-bottom: 30px;
+        }
+        .mainC1 {
+           margin-left: 230px;
+        } */
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container  mt-4" id="colorchange">
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" onchange="return validatename()" name="name"
+                            placeholder="Name" required>
+                        <p id="invalid_msg"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="mobile" class="form-label">Mobile:</label>
+                        <input type="text" id="mobile" class="form-control" onchange="return validatemobile()"
+                            placeholder="Enter Mobile number" name="mobile" required>
+                        <p id="invalid_msg1"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="Email" class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="email" onchange="return validateemail()"
+                            placeholder="Enter email">
+                        <p id="invalid_email"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="cname" class="form-label">Collage Name:</label>
+                        <input type="text" class="form-control" id="cname" placeholder="Enter Collage Name"
+                            onchange="return validatecollegename()">
+                        <p id="invalid_cname"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="CGPA" class="form-label">CGPA:</label>
+                        <input type="text" class="form-control" id="cgpa" placeholder="Enter CGPA"
+                            onchange="return validatecgpa()">
+                        <p id="invalid_cgpa"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="bname" class="form-label">Branch Name:</label>
+                        <select class="form-select" id="bname" onchange="return validatebranchname()">
+                            <option value="" disabled selected="selected">Select Branch</option>
+                            <option> MCA</option>
+                            <option> BCA</option>
+                            <option> MBA</option>
+                            <option> MSc IT</option>
+                        </select>
+                        <p id="invalid_bname"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
+                    <div class="form-group">
+                        <label for="State" class="form-label">State:</label>
+                        <select  class="form-select" id="state" onchange="return validatestate()">
+                            <option value="" disabled selected="selected">Select State</option>
+                        </select>
+                        <p id="invalid_state"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
+                    <div class="form-group">
+                        <label for="City" class="form-label">City:</label>
+                        <select id="city" class="form-control" tabindex="5"></select>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-4 col-xl-4 ">
+                    <div class="form-group">
+                        <label for="zip" class="form-label">Zip:</label>
+                        <input type="number" class="form-control" id="zip" placeholder="Enter Zip"
+                            onchange="return validatezip()">
+                        <p id="invalid_msg2"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <br><br>
+                <div class="col-sm-12  col-xs-12 col-md-6 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="studied" class="form-label">From to when you studied:</label>
+                        <input type="text" class="form-control" name="studied" id="studied">
+                        <p id="invalid_study"></p>
+                    </div>
+                </div>
+                <div class="col-sm-12  col-xs-12 col-md-6 col-lg-6 col-xl-6 ">
+                    <div class="form-group">
+                        <label for="color" class="form-label">Colors:</label>
+                        <select class="form-select" id="color"  >
+                            <!-- onchange="saveTheme(this.value); -->
+                            <option value="" disabled selected="selected">Select Colors</option>
+                            <option value="Gray"> Gray</option>
+                            <option value="Violet"> Violet</option>
+                            <option value="LightGray"> LightGray</option>
+                        </select>
+                        
+                    </div>
+                </div>
+            </div>
+          
+            <div class="row mt-4">
+                <div class="col-lg-9">
+                    <button class="btn btn-primary m-3" style="width: 200px;" id="btn_add" data-toggle="modal"
+                        onclick="validatecheck()" data-target="#myModal"> Add Row</button>
+                    <!-- <button class="btn btn-success m-3" style=" width: 200px;" id="btn3"
+                        onclick="Export()">Export</button> -->
+                    <button class="btn btn-warning m-3" style=" width: 200px;" id="btn2"
+                        onclick="updateTableRow()">Save</button>
+                        <button class="btn btn-secondary m-3" style=" width: 200px;" id="removecookie"
+                        onclick = "deleteCookies()">Deletecookie</button>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <button type="button" id="slider" class="btn btn-success bg-success">SOME OF YOUR RESULT PIC'S
+                            IN
+                            SLIDER</button>
+
+                        <div id="carouselExampleControls" class="carousel slide mt-3" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="./Assets/avenue-815297__340.jpg" class="d-block w-50" alt="">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./Assets/mountains-190055__340.jpg" class="d-block w-50" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="./Assets/tree-736885_960_720.jpg" class="d-block w-50" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="row mt-4">
+    <div class="col-md-6 col-sm-12  ml-4">
+        <table id="mytable" class="table table-responsive table-bordered  mt-5"
+            style="border: 1px solid rgb(0, 0, 0);">
+            <tr>
+                <th> SR. No </th>
+                <th> Name </th>
+                <th> Mobile </th>
+                <th> Email </th>
+                <th> College name </th>
+                <th> CGPA </th>
+                <th> Branch name </th>
+                <th> State </th>
+                <th> City </th>
+                <th> Zip </th>
+                <th> Study Period </th>
+                <th>colors</th>
+                <th> Edit</th>
+                <th> Delete</th>
+            </tr>
+            <tbody id="thata">
+
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+    <script src="/bootstrap-5.3.0-alpha1-dist/jquery-3.6.3.js"></script>
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <!-- <script type="text/javascript" src="../dist/tableToExcel.js"></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+
+    <script src="./crudcookie.js"></script>
+
+</body>
+
+</html>

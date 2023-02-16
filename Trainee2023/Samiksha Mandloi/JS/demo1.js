@@ -1,6 +1,6 @@
-var obj = { hello: "world" };
-console.log(obj);
-console.log(this);
+// var obj = { hello: "world" };
+// console.log(obj);
+// console.log(this);
 
 // (function( $ ){
 //     $.fn.myfunction = function() {
@@ -23,7 +23,7 @@ console.log(this);
 // }
 
 
-    $(document).ready (function(){
+    // $(document).ready (function(){
     
         // $("#btn1").click(function(){
         //     $('p').empty();
@@ -55,14 +55,14 @@ console.log(this);
     //     });
     //     });
 
-    $('.fade').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear'
-      });
-    });
+    // $('.fade').slick({
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 500,
+    //     fade: true,
+    //     cssEase: 'linear'
+    //   });
+    // });
         // $("#stop").click(function(){
         //     $("#pannel").stop();
         // });
@@ -116,3 +116,4 @@ console.log(this);
         // $("tr:odd").css("background-color", "yellow");
 
     // });
+const operator
