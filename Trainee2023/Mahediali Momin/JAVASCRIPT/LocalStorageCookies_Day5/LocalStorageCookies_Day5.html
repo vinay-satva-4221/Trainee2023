@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" href="CSS\bootstrap.min.css"> -->
     <link rel="stylesheet"
-        href="/Trainee2023/Mahediali Momin/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+        href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script
-        src="/Trainee2023/Mahediali Momin/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+        src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
@@ -34,7 +34,7 @@
         }
 
         .mainC1 {
-            margin-left: 150px;
+            margin-left: 110px;
         }
     </style>
 
@@ -48,7 +48,7 @@
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
                     <div class="form-group">
                         <label for="name" class="form-label">Name:</label>
-                        <input type="text" class="form-control" id="name" onchange="return validatename()" name="name"
+                        <input type="text" class="form-control" id="name" onchange="validatename()" name="name"
                             placeholder="Name" required>
                         <p id="invalid_msg"></p>
                     </div>
@@ -56,7 +56,7 @@
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
                     <div class="form-group">
                         <label for="mobile" class="form-label">Mobile:</label>
-                        <input type="text" id="mobile" class="form-control" onchange="return validatemobile()"
+                        <input type="text" id="mobile" class="form-control" onchange="validatemobile()"
                             placeholder="Enter Mobile number" name="mobile" required>
                         <p id="invalid_msg1"></p>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
                     <div class="form-group">
                         <label for="Email" class="form-label">Email:</label>
-                        <input type="text" class="form-control" id="email" onchange="return validateemail()"
+                        <input type="text" class="form-control" id="email" onchange="validateemail()"
                             placeholder="Enter email">
                         <p id="invalid_email"></p>
                     </div>
@@ -148,7 +148,7 @@
                     <button class="btn btn-warning m-3" style=" width: 200px;" id="btn2"
                         onclick="updateTableRow()">Save</button>
                     <button class="btn btn-info m-3" style=" width: 200px;" id="btn2"
-                        onclick="updateTableRow()">Remove Cookie</button>
+                        onclick="deleteAllCookies()">Remove Cookie</button>
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -186,10 +186,10 @@
                         <label for="bname" class="form-label">Colors</label>
                         <select class="form-select" id="color">
                             <option value="" disabled selected="selected">Select color</option>
-                            <option> skyblue</option>
-                            <option> lightyellow</option>
-                            <option> lightgreen</option>
-                            <option> lightpink</option>
+                            <option>skyblue</option>
+                            <option>lightyellow</option>
+                            <option>lightgreen</option>
+                            <option>lightpink</option>
                         </select>
                         <p id="invalid_color"></p>
                     </div>
@@ -225,7 +225,7 @@
     </div>
 
 
-    <script src="/Trainee2023/Mahediali Momin/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
 
     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     <!-- <script type="text/javascript" src="../dist/tableToExcel.js"></script> -->
