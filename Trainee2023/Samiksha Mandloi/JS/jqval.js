@@ -157,9 +157,15 @@ $("#addrow").on("click", function () {
             zipcode +
             "</td><td>" +
             daterange +
-            '</td><td><a href="javascript:void(0);" class="remCF1 btn btn-small btn-danger">Remove</a></td></tr>'
+            '</td><td><a href="javascript:void(0);" class="remCF1 btn btn-small btn-warning">Edit</a></td><td><a href="javascript:void(0);" class="remCF1 btn btn-small btn-danger">Remove</a></td></tr>'
         )
       }
+      var StudentDetails = '{ '+
+      '"name":'+name+',"mobile":'+mobile+',"email":'+email+', '+
+      '"clgname":'+clgname+',"cgpa":'+cgpa+',"brnchname":'+brnchname+', '+
+      '"State":'+State+',"City":'+City+',"zipcode":'+zipcode+',"daterange":'+daterange+' '+
+      '}'
+
       var studentData = localStorage.getItem("studentData");
                 //var studentData = sessionStorage.getItem("studentData");
                 if(studentData!=null)

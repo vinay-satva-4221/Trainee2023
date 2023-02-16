@@ -22,7 +22,7 @@ const CityData = '{"Citys":[' +
             return /^[a-zA-Z\s]+$/.test(value)
         });
       loadDataFromLocal();
-      $('#tblData').on('click', '.btn-edit', function () {
+      $('#dataTable').on('click', '.btn-edit', function () {
         debugger;
         const name = $(this).parent().parent().find(".txtName").html();  //parent is complete tr & td]
         const mobile = $(this).parent().parent().find(".txtMobile").html();
@@ -55,7 +55,7 @@ const CityData = '{"Citys":[' +
         $("#basic_form").valid();
     });
 
-      $('#tblData').on('click', '.btn-delete', function () {
+      $('#dataTable').on('click', '.btn-delete', function () {
         debugger;
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         deleteDataFromLocal(id);
@@ -204,7 +204,7 @@ const CityData = '{"Citys":[' +
     });
        
     $("#btnExport").click(function() {
-      $("#tblData").table2excel({
+      $("#dataTable").table2excel({
         exclude: ".noExl",
         name: "Excel Document Name",
         filename: "table2excel",
@@ -240,8 +240,8 @@ const CityData = '{"Citys":[' +
 
     function addEmptyRow() {
       // debugger;
-      if ($("#tblData tbody").children().children().length == 0) {
-        $("#tblData tbody").append(emptyRow);
+      if ($("#dataTable tbody").children().children().length == 0) {
+        $("#dataTable tbody").append(emptyRow);
       }
     }
 
@@ -249,7 +249,7 @@ const CityData = '{"Citys":[' +
       // debugger;
       let localData = localStorage.getItem('localData') || cookieStorage.getItem('localData');
       if (localData) {
-        $("#tblData tbody").html("");
+        $("#dataTable tbody").html("");
         let localArray = JSON.parse(localData);
         let index = 1;
         localArray.forEach(element => {
@@ -268,7 +268,7 @@ const CityData = '{"Citys":[' +
             dtr = dtr + "<td class='txtdaterange' >" + element.daterange +  "</td>";
             dtr = dtr + "<td class='tdAction'><button class='btn btn-sm btn-success btn-edit' type='button'> Edit </button><button class='btn btn-sm btn-danger btn-delete' > Delete </button></td>";
             dtr = dtr + "</tr>";
-            $("#tblData tbody").append(dtr);
+            $("#dataTable tbody").append(dtr);
           index++;
         });
       }
@@ -361,29 +361,114 @@ const CityData = '{"Citys":[' +
       loadDataFromLocal();
     }
 
-    function storeColor() {
-      debugger
-      var nameS = document.getElementById("name").value;
-      var colorSelect = document.getElementById("color").value;
+        // function to handle form submission
+        function storeData() {
+            debugger
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var mobile = document.getElementById("mobile").value;
+      var clgname = document.getElementById("clgname").value;
+      var cgpa = document.getElementById("cgpa").value;
+      var branchname = document.getElementById("brnchname").value;
+      var State = document.getElementById("State").value;
+      var City = document.getElementById("City").value;
+      var zipcode = document.getElementById("zipcode").value;
+      var date = document.getElementById("daterange").value;
+      var color = document.getElementById("color").value;
     
-      document.cookie = nameS + "=" + colorSelect;
+      // Get existing data from localStorage or create an empty object
+      var data = JSON.parse(localStorage.getItem("formData")) || {};
     
-      var rowIdx =  parseInt(nameS) - 1;
+      // Add the new data to the object
+      data[name] = {email: email, color: color, mobile: mobile, clgname: clgname, cgpa: cgpa,branchname: branchname, State: State, City: City, zipcode: zipcode, date: date};
     
-      if (rowIdx) {
-        var rows = document.getElementsByTagName("tr");
+      // Store the updated object in localStorage
+      localStorage.setItem("formData", JSON.stringify(data));
     
-        if (rows.length > rowIdx && rowIdx >= 0) {
-          rows[rowIdx].style.backgroundColor = colorSelect;
-        } else {
-          console.error("Invalid row index: " + rowIdx);
-        }
+      // Add the color value to a cookie
+      document.cookie = name + "=" + color;
     
-        document.body.style.backgroundColor = colorSelect;
-      } else {
-        console.error("Invalid row number: " + nameS);
+      // Update the table
+      updateTable();
+    }
+    
+    
+    function updateTable() {
+        debugger
+      var tableBody = document.querySelector("#dataTable tbody");
+      tableBody.innerHTML = "";
+    
+      // Get the data from localStorage
+      var data = JSON.parse(localStorage.getItem("formData"));
+    
+      // Add a row to the table for each entry in the data object
+      for (var name in data) {
+        var row = document.createElement("tr");
+    
+        var nameCell = document.createElement("td");
+        nameCell.textContent = name;
+        row.appendChild(nameCell);
+    
+        var emailCell = document.createElement("td");
+        emailCell.textContent = data[name].email;
+        row.appendChild(emailCell);
+
+        
+        var mobileCell = document.createElement("td");
+        mobileCell.textContent = data[name].mobile;
+        row.appendChild(mobileCell);
+
+        
+        var clgnameCell = document.createElement("td");
+        clgnameCell.textContent = data[name].clgname;
+        row.appendChild(clgnameCell);
+
+        
+        var cgpaCell = document.createElement("td");
+        cgpaCell.textContent = data[name].cgpa;
+        row.appendChild(cgpaCell);
+
+        
+        var branchnameCell = document.createElement("td");
+        branchnameCell.textContent = data[name].branchname;
+        row.appendChild(branchnameCell);
+
+        
+        var StateCell = document.createElement("td");
+        StateCell.textContent = data[name].State;
+        row.appendChild(StateCell);
+
+        
+        var CityCell = document.createElement("td");
+        CityCell.textContent = data[name].City;
+        row.appendChild(CityCell);
+
+        
+        var zipcodeCell = document.createElement("td");
+        zipcodeCell.textContent = data[name].zipcode;
+        row.appendChild(zipcodeCell);
+
+        
+        var dateCell = document.createElement("td");
+        dateCell.textContent = data[name].date;
+        row.appendChild(dateCell);
+
+        
+
+    
+        var colorCell = document.createElement("td");
+        colorCell.textContent = data[name].color;
+        row.style.backgroundColor = data[name].color;
+        document.body.style.backgroundColor = data[name].color;
+        row.appendChild(colorCell);
+    
+        tableBody.appendChild(row);
       }
     }
+    
+    // Call updateTable when the page loads to display any existing data
+    updateTable();
+
     
     
     
