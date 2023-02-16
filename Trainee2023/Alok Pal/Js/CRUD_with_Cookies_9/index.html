@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+    <div class="container mt-3" id="whole">
+        <div class="text-center" style="font-size: 2rem;">
+            <p><b>CRUD OPERATION WITH COOKIES</b></p>
+        </div>
+        <form class="row mt-2 needs-validation" onsubmit="" novalidate>
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- <input type="hidden" class="form-control" id="dataId" onkeyup="return nameV()" /> -->
+                    <label for="validationCustom01" class="form-label"><b> First name </b></label>
+                    <input type="text" class="form-control" id="fname" onkeyup="return nameV()" required />
+                    <span id="navalid" class="error1"></span>
+                </div>
+                <div class="col-lg-6">
+                    <label for="fmobile" class="form-label"><b> Mobile: </b></label>
+                    <input type="text" class="form-control" id="fmobile" onkeyup="return mobileV()" required />
+                    <p class="error1" id="vmobile"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="femail" class="form-label"><b> Email: </b></label>
+                    <input type="text" class="form-control" id="femail" onkeyup="return emailV() " required />
+                    <p class="error1" id="vemail"></p>
+                </div>
+                <div class="col-lg-6">
+                    <label for="fcollage" class="form-label"><b> Collage Name:</b></label>
+                    <input type="text" class="form-control" id="fcollage" onkeyup="return collageV() " required />
+                    <p class="error1" id="vcollage"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="fcgpa" class="form-label"><b> CGPA:</b></label>
+                    <input type="text" class="form-control" id="fcgpa" onkeyup="return cgpaV()" required />
+                    <p class="error1" id="vcgpa"></p>
+                </div>
+                <div class="col-lg-6">
+                    <label for="fbranch" class="form-label"><b> Branch Name:</b></label>
+                    <select class="form-select" id="fbranch" onchange="return BranchV()" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Computer Science</option>
+                        <option>Electical Engg.</option>
+                        <option>Marine Engg.</option>
+                        <option>Mechanical Engg.</option>
+                    </select>
+                    <p class="error1" id="vbranch"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <label for="validationCustom07" class="form-label"><b> State:</b></label>
+                    <select class="form-select " id="State" aria-describedby="validationServer04Feedback" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="MadhyaPradesh"> MadhyaPradesh</option>
+                        <option value="Gujrat"> Gujrat</option>
+                        <option value="Punjab"> Punjab</option>
+                        <option value="Rajasthan"> Rajasthan</option>
+
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <label for="validationCustom08" class="form-label"><b> City:</b></label>
+                    <select class="form-select" id="City" required>
+                        <option selected disabled value="">Choose...</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <label for="validationCustom09" class="form-label"><b> Zip:</b></label>
+                    <input type="text" class="form-control" id="fzip" onkeyup="return zipV()" required />
+                    <span id="vzip1" class="error1"></span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <label for="fdate" class="form-label"><b> From To When You Studied: </b></label>
+                    <input type="text" class="form-control" name="daterange" id="fdate"  value="01/01/2018 - 01/15/2018"/>
+                </div>
+                <div class="col-lg-6">
+                    <label for="fcolor" class="form-label"><b> Color:</b></label>
+                    <select class="form-select" id="fcolor" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Red</option>
+                        <option>Yellow</option>
+                        <option>Blue</option>
+                        <option>Green</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 my-3">
+                <button type="button" class="btn btn_c mover " onclick="">
+                    Some Of Your Result Pic's In Slider
+                </button>
+            </div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style="width: 400px">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Images/n5.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/n2.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/n3.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div class="col-12 my-2 appbtn">
+                <button type="button" class="btn btn-info btn_c " id="save" onclick="return addData(),showData(),getCookie()">
+                    <p> Add Row</p>
+                </button>
+                <button type="button" class="btn btn-info btn_c " id="update">
+                    <p> update</p>
+                </button>
+                <button type="button" class="btn btn-info btn_c " id="export" onclick="exportF()">
+                    <p>Export</p>
+                </button>
+                <button type="button" class="btn btn-info btn_c " id="remove">
+                    <p> Remove Cookie</p>
+                </button>
+
+            </div>
+    </div>
+    <div class="container tbody mt-5">
+        <div class="row">
+            <div class="col-12 margin">
+                <table class="table table-responsive table-bordered" id="crudTable">
+                    <p class="text-center mt-2"><b> TABLE </b></p>
+                    <hr>
+                    <thead>
+                        <tr>
+                            <th nowrap class="px-1 py-2">Sno.</th>
+                            <th nowrap class="px-1 py-2">First Name</th>
+                            <th nowrap class="px-1 py-2">Mobile</th>
+                            <th nowrap class="px-1 py-2">Email</th>
+                            <th nowrap class="px-1 py-2">Collage</th>
+                            <th nowrap class="px-1 py-2">Cgpa</th>
+                            <th nowrap class="px-1 py-2">Branch</th>
+                            <th nowrap class="px-1 py-2">State</th>
+                            <th nowrap class="px-1 py-2">City</th>
+                            <th nowrap class="px-1 py-2">Zip</th>
+                            <th nowrap class="px-1 py-2">Date</th>
+                            <th nowrap class="px-1 py-2">Color</th>
+                            <th nowrap class="px-1 py-2">Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="root">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </form>
+
+
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="/path/to/jquery.cookie.js"></script>
+<script src="index.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="table2excel.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+</html>

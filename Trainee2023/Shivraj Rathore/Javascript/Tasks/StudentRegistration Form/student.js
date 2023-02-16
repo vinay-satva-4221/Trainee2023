@@ -32,104 +32,7 @@ $(document).ready(function () {
           '</td><td><input type="button" value="Delete" class="btn btn-outline-danger btnDelete"  /></td><td><input type="button" value="Edit" class="btn btn-outline-info btn-update" /></td></tr>'
       );
     });
-    $.validator.addMethod("validname", function (value) {
-      return /^[a-zA-Z\s]+$/.test(value);
-    });
-    $("#mobile").keypress(function (e) {
-      var keyCode = e.which;
-  
-      if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
-        return false;
-      }
-    });
-    $("#zip").keypress(function (e) {
-      var keyCode = e.which;
-  
-      if ((keyCode != 8 || keyCode == 32) && (keyCode < 48 || keyCode > 57)) {
-        return false;
-      }
-    });
-    $("#myform").validate({
-      rules: {
-        name: {
-          validname: true,
-          minlength: 3,
-        },
-        mobile: {
-          digits: true,
-          minlength: 10,
-          maxlength: 10,
-        },
-        email: {
-          required: true,
-          email: true,
-        },
-        college: {
-          required: true,
-          validname: true,
-        },
-        cgpa: {
-          required: true,
-          digits: true,
-        },
-  
-        branch: {
-          required: true,
-        },
-        state: {
-          required: true,
-        },
-        city: {
-          // required: true,
-        },
-        zip: {
-          required: true,
-          minlength: 6,
-          maxlength: 6,
-        },
-        daterange: {
-          required: true,
-        },
-      },
-      messages: {
-        name: {
-          validname: "Please enter valid name",
-          minlength: "Enter Full Name",
-        },
-        mobile: {
-          digits: "Enter Numeric value",
-          minlength: "Check for 10 digits",
-          maxlength: "Number exceed mobile limit",
-        },
-        email: {
-          required: "Please enter email",
-          email: "Enter Valid Email",
-        },
-        name: {
-          validname: "Please enter valid college name",
-          required: "Enter college name",
-        },
-        cgpa: {
-          digits: "Enter Numeric CGPA",
-        },
-        branch: {
-          required: "Enter branch",
-        },
-        state: {
-          required: "Enter state",
-        },
-        city: {
-          // required: "Enter city",
-        },
-        zip: {
-          minlength: "Enter 6 digit Zip",
-          maxlength: "Zip Code Consist digits",
-        },
-        daterange: {
-          required: "Select Course Duration",
-        },
-      },
-    });
+    
     const CityData =
       '{"Citys":[' +
       '{"StateId":"1","Id":"1","Name":"Indore"},' +
@@ -267,7 +170,6 @@ $(document).ready(function () {
       }).then((willDelete) => {
         if (willDelete) {
           var getData = JSON.parse(localStorage.getItem("studentData"));
-  
           var row_index = $(this).closest("tr").index();
           var req_index = row_index - 1;
           console.log(row_index);
@@ -288,14 +190,10 @@ $(document).ready(function () {
     });
   
     $(document).on("click", ".btn-update", function () {
-  
-      
       debugger;
       var getData = JSON.parse(localStorage.getItem("studentData"));
-  
       var row_index = $(this).closest("tr").index();
       var req_index = row_index - 1;
-  
       document.getElementById("name").value = getData[req_index].Name;
       document.getElementById("mobile").value = getData[req_index].Mobile;
       document.getElementById("email").value = getData[req_index].Email;
@@ -306,15 +204,6 @@ $(document).ready(function () {
       document.getElementById("city").value = getData[req_index].City;
       document.getElementById("zip").value = getData[req_index].Zip;
       document.getElementById("daterange").value = getData[req_index].FromToWhenYouStudied;
-    
-
-
-
-
-
-
-
-
     });
   });
   

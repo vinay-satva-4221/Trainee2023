@@ -17,12 +17,26 @@
     </script>
     <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>    
+
+<style>
+
+    
+      #btn2,#btn3,.hide{
+        display: none;
+      }
+
+</style>
+
+
   </head>
 
 <body style="background-color: aliceblue;">
+
+
+
     <br>
 <div class="container">
-    <h2>Task 1 </h2>
+  <br><h3 class="text-center "><b>STUDENT REGISTRATION</b></h3><br><hr>
     
   <div class="row">
     <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
@@ -36,7 +50,7 @@
     <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
       <div class="form-group">
         <label for="mobile" class="form-label">Mobile:</label>
-        <input type="number" id="mobile" class="form-control" onchange="return validatemobile()" placeholder="Enter Mobile number" name="mobile" required>
+        <input type="text" id="mobile" class="form-control" onchange="return validatemobile()" placeholder="Enter Mobile number" name="mobile" required>
         <p id="invalid_msg1"></p>
     </div>
   </div>
@@ -66,7 +80,7 @@
     <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 ">
         <div class="form-group">
             <label for="CGPA" class="form-label">CGPA:</label>
-            <input type="number" class="form-control" id="cgpa" placeholder="Enter CGPA" onchange="return validatecgpa()">
+            <input type="text" class="form-control" id="cgpa" placeholder="Enter CGPA" onchange="return validatecgpa()">
             <p id="invalid_cgpa"></p>
 
           </div>
@@ -122,24 +136,40 @@
     <div class="form-group">
           <label  for="studied" class="form-label">From to when you studied:</label>
           <input type="text" class="form-control" name="studied" id="studied">
-          <p id="invalid_study"></p>
+           <p id="invalid_study"></p>
 
 
     </div>
   </div>
 </div>
+<hr>
 <br><br>
-<button  id="fadetoggle_btn" >Some of your result pics in slider</button><br><br>
+<div class="row">
+  
+<div class="col-lg-9">
+
+<button class="btn btn-success m-3" style="width: 200px;"  id="btn1" data-toggle="modal" onclick="validatecheck()" data-target="#myModal">  Add Row</button>
+<button class="btn btn-primary m-3" style=" width: 200px;" id="btn2" onclick="exportTableToExcel('tblData')">Export</button>
+<button class="btn btn-info m-3" style=" width: 200px;" id="btn3" onclick="updateTableRow()">Save</button>
+<!-- <button class="btn btn-info m-3" style=" width: 200px;" id="btn4" onclick="fun()">Reset</button> -->
+
+
+
+  </div>
+  <div class="col-lg-3">
+    <button  id="fadetoggle_btn" >Some of your result pics in slider</button><br><br>
 
 <div class="fades" style="background-image: url(T.jfif); background-repeat: no-repeat; width: 200 px; height: 200px;">  </div> 
-<br><br><br>
-<button class="btn btn-info m-3" style="width: 200px;"  id="btn1" data-toggle="modal" onclick="validateallow()" data-target="#myModal">  Add Row</button>
-<button class="btn btn-success m-3" style=" width: 200px;"> Export</button>
+<br></div>
+</div>
+<br>
+<hr><br>
+
+<table id="mytable" class="table table-responsive hide" style="border: 1px solid lightgray;" >
   
+  <br><h4 class="text-center hide" id="hide1"><B>STUDENT RECORDS</B></h4><br>
 
-
-<table id="mytable" class="table table-responsive" style="border: 1px solid black;">
-  <tr>
+  <tr style="background-color: black; color: white;">
     <td> SR. No </td>
     <td> Name </td>
     <td> Mobile </td>
@@ -154,7 +184,7 @@
     <td> Edit</td>
     <td> Delete</td>
 
-
+    
   </tr>
   <tbody id="tdata">
   

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W-8_Form</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  
+</head>
+<body>
+    <div class="container mainbody" id="main">
+      <form id="form">
+        <header class="text-center margin">
+            <h2 id="tittle">Certificate of Foreign Status of Beneficial Owner for United States Tax Withholding and Reporting (Individuals)</h2>
+            <span id="subtittle">Department of the Treasury Internal Revenue Service</span>
+            <hr id="top">
+        </header>
+        <div id="part1">
+            <div class="part1tittle margin">
+                <h4>Part I: Identification of Beneficial Owner</h4>
+                <small class="subtext">See instructions</small>
+                <hr>
+            </div>
+            <div class="part1form margin">
+                 
+                    <div class="form-group row mainrow">
+                        <div class="col-sm-4">
+                      <label for="name">1. Name of individual who is the beneficial owner</label>
+                    </div>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" tabindex="1">   
+                        <small id="namefails"></small>
+                       </div>
+                    </div>
+                    <div class="form-group row mainrow">
+                      <div class="col-sm-4">
+                    <label for="country">2. Country of citizenship</label>
+                  </div>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="country" tabindex="2">  
+                      <small id="countryfails"></small> 
+                     </div>
+                  </div>
+                  <div class="form-group row mainrow">
+                    <div class="col-sm-4">
+                  <label for="country">3.Permanent residence address street, apt. or suite no., or rural routeDo not use a P.O. box or in-care-of address.
+                  </label>
+                </div>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="streetaddress" tabindex="3">
+                    <small id="streetaddressfails"></small><br id="streetaddressfailss"> 
+                    <small class="subtext">Street Address</small>
+                    <br>
+                      <br>
+                    <input type="text" class="form-control" id="streetaddressline2" tabindex="4"> 
+                    <small id="streetaddressline2fails"></small><br id="streetaddressline2failss"> 
+                    <small class="subtext">Street AddressLine 2</small>
+                    <br>
+                      <br> 
+                      <div class="row"> 
+                      <div class="col">
+                        <input type="text" class="form-control" id="city" tabindex="5">
+                        <small id="cityfails"></small><br id="cityfailss">
+                        <small class="subtext">City</small>
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" id="state" tabindex="6">
+                        <small id="statefails"></small><br id="statefailss">
+                        <small class="subtext">State / Province</small>
+                          </div>
+                      </div>
+                      <br>
+                      <div class="row"> 
+                        <div class="col">
+                          <input type="text" class="form-control" id="zip" maxlength="5" tabindex="7">
+                          <small id="zipfails"></small><br id="zipfailss">
+                          <small class="subtext">Postal/Zip Code</small>
+                        </div>
+                        <div class="col">
+                          <select name="countryy" id="countryy" class="form-control" tabindex="8">
+                            <option value="0" selected disabled>Please Select</option>
+                            <option value="india">India</option>
+                            <option value="afghanistan">Afghanistan</option>
+                            <option value="china">China</option>
+                          </select>
+                          <small id="countryyfails"></small><br id="countryyfailss">
+                          <small class="subtext">Country</small>
+                            </div>
+                        </div>
+                      
+                   </div>
+                </div>
+
+                <div class="form-group row mainrow">
+                  <div class="col-sm-4">
+                <label for="country">4. Mailing address (if different from above)</label>
+              </div>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="streetaddress" tabindex="9"> 
+                  <small class="subtext">Street Address</small>
+                  <br>
+                    <br>
+                  <input type="text" class="form-control" id="streetaddressline2" tabindex="10"> 
+                  <small class="subtext">Street AddressLine 2</small>
+                  <br>
+                    <br> 
+                    <div class="row"> 
+                    <div class="col">
+                      <input type="text" class="form-control" id="city" tabindex="11">
+                      <small class="subtext">City</small>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" id="state" tabindex="12">
+                      <small class="subtext">State / Province</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row"> 
+                      <div class="col">
+                        <input type="text" class="form-control" id="zip" tabindex="13">
+                        <small class="subtext">Postal/Zip</small>
+                      </div>
+                      <div class="col">
+                        <select name="country" id="counry" class="form-control" tabindex="14">
+                          <option value="0" selected disabled>Please Select</option>
+                          <option value="india">India</option>
+                          <option value="afghanistan">Afghanistan</option>
+                          <option value="china">China</option>
+                        </select>
+                        <small class="subtext">Country</small>
+                          </div>
+                      </div>
+                      <br>
+                      
+                 </div>
+              </div>
+              <div class="form-group row mainrow">
+                <div class="col-md-4">
+                  <label for="SSN" class="col-sm-8 col-form-label form-label-left form-label-auto">
+                    5. U.S. taxpayer identification number (SSN or ITIN), if required (see instructions)
+                  </label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control onlynumber" id="SSN" name="ssnname">
+                  <small id="ssnvalid"></small>
+                </div>
+              </div>
+              <div class="form-group row mainrow">
+                <div class="col-md-4">
+                  <label for=" ForeignTaxIdentifyingNumber" class="col-sm-8 col-form-label form-label-left form-label-auto">
+                    6. Foreign tax identifying number (see instructions)
+                  </label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control onlynumber" id="TTN" name="ttnname" placeholder="">
+                  <small id="ttnvalid"></small>
+                </div>
+              </div>
+              <div class="form-group row mainrow">
+                <div class="col-md-4">
+                  <label for="ReferenceNumber" class="col-sm-8 col-form-label form-label-left form-label-auto">
+                    7. Reference number(s) (see instructions)
+                  </label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control onlynumber" name="ReferenceNumbername" id="ReferenceNumber" placeholder="">
+                  <small id="ReferenceNumbervalid"></small>
+                </div>
+              </div>
+              <div class="form-group row mainrow DateValidation" >
+                <div class="col-md-4">
+                  <label for="DOB" class="col-sm-8 col-form-label form-label-left form-label-auto">
+                    8. Date of birth (MM-DD-YYYY) (see instructions)
+                  </label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" name="txtDate" id="DOB" placeholder="MM/DD/YYYY" maxlength="10" autocomplete="off">
+                  <small id="birthdayfails"></small><br id="birthdayfailss">
+                  <small class="subtext">Date</small>
+                  <div class="dateError text-danger"></div>
+                </div>
+            </div>
+            <br>
+          </div>
+             <div id="part2">
+                <div class="part1tittle margin">
+                    <h4>Part II: Claim of Tax Treaty Benefits</h4>
+                    <small class="subtext">See instructions (for chapter 3 purposes only)</small>
+                    <hr>
+                </div>
+                <div class="part2form margin">
+              <div class="form-group row mainrow">
+                <div class="col-md-12">
+                  <p class="col-sm-12 text-justify">
+                    9.I certify that the beneficial owner is a resident of
+                    <span>
+                      <input type="text" id="blank" class="blank" placeholder="blanks">
+                      <small id="balnkfails"></small>
+                    </span>
+                    within the meaning of the income tax treaty between the United States and that country.
+                  </p>
+                </div>
+              </div>
+              <div class="form-group row  mainrow">
+                <div class="col-md-12">
+                  <p class="col-sm-12 text-justify">
+                    10. Special rates and conditions (if applicable-see instructions):
+                    The beneficial owner is claiming the provisions of Article and paragraph
+                    <span>
+                      <input type="text" class="blank" id="blank1" >
+                    </span>
+                    of the treaty identified on line 9 above to claim a
+                    <span>
+                      <input type="text" class="smallwidth" id="specialRate">
+                    </span>
+    
+                    % rate of withholding on (specify type of income):
+                    <span>
+                      <input type="text" class="nomorethan100" id="blank2" >
+                    </span>
+                    .
+                    Explain the additional conditions in the Article and paragraph
+                    the beneficial owner meets to be eligible for the rate of withholding:
+                    <span>
+                      <input type="text" class="blank" id="blank3" >
+                    </span>
+                  </p>
+                </div>
+                <small id="tenthfails"></small>
+              </div>
+            </div>
+          </div>
+              <div id="part3">
+                <div class="part1tittle margin">
+                    <h4>Part III: Certification</h4>
+                    <hr>
+                </div>
+                <div class="part1form margin">
+              <div class="row mt-3 mainrow">
+                <div class="col-md-4 ">
+                  <label for="">Signature of beneficial owner </label>
+                  <label for="">(or individual authorized to sign for beneficial owner) </label>
+                </div>
+                <div class="col-md-8">
+                  <div>
+                    <div class="signature-box form-control" >
+                      <canvas id="signature"></canvas>
+                    </div>
+                  </div>
+                  <div style="text-align:right;" class="mt-2" >
+                    <button type="button" id="clear-signature" class="btn btn-primary  p-0 px-2"   >Clear</button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row mainrow DateValidation">
+                <div class="col-md-4">
+                  <label for="date" class="col-sm-8 col-form-label form-label-left form-label-auto">
+                    Date (MM-DD-YYYY)
+                  </label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control txtDate" name="txtDate"  id="date" placeholder="MM/DD/YYYY" maxlength="10">
+                  <div class="dateError text-danger"></div>
+                </div>
+              </div>
+              <div class="row mt-3 mainrow">
+                <div class="col-md-4 ">
+                  <label for="">Print name of signer</label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="printname">
+                  <small id="printnamevalid"></small>
+                </div>
+              </div>
+              <div  iv class="row mt-3 mainrow ">
+                <div class="col-md-4">
+                  <label for="">Capacity in which acting (if form is not signed by beneficial owner)</label>
+                </div>
+                <div class="col-md-8">
+                  <input type="text" class="form-control" id="capacity">
+                  <small id="capacityvalid"></small>
+                </div>
+              </div>
+              <div class="row mt-3 mainrow text-center">
+                <div class="col">
+                  <button type="button" class="btn btn-success" id="submit">Submit</button>
+                </div>
+                
+              </div>
+            </div>
+            </div>
+          </form>   
+    </div>
+    <script src="W8-formJS.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.4/signature_pad.js" integrity="sha512-j36pYCzm3upwGd6JGq6xpdthtxcUtSf5yQJSsgnqjAsXtFT84WH8NQy9vqkv4qTV9hK782TwuHUTSwo2hRF+/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -15,6 +15,7 @@ Array.from(buttons).forEach((button) => {
             document.querySelector("input").value = string;
 
         }
+       
         else {
             console.log(e.target);
             string = string + e.target.innerHTML;
