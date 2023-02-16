@@ -17,7 +17,7 @@ const StateData = '{"States":['+
                     '{"Id":"3","Name":"Gujarat"},' +                    
                     '{"Id":"4","Name":"Punjab"}]}';
 $(document).ready(function(){
-    debugger
+   
     doShowAll()
    
    
@@ -95,7 +95,7 @@ $(document).ready(function(){
             $("#namefails").html("Pelase Enter Proper Name")
             valid=true
             }
-            var string=/^[a-zA-Z]+$/
+            var string=/^[a-z A-Z]+$/
             if($("#name").val().match(string)){
             $("#namefails").html("")
             valid=false
@@ -292,7 +292,7 @@ $(document).ready(function(){
         return City
     }
     function addlocalstorage(){
-            debugger
+
             let Name = $("#name").val();
             let Mobile = $("#mobile").val();
             let Email = $("#email").val();
@@ -307,16 +307,9 @@ $(document).ready(function(){
             let Zip = $("#zip").val();
             debugger
 
-
                 StudentDetails=new Array()
               var StudentDetails= JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
-                let check=true
-              for ( let i = 0; i < StudentDetails.length; i++){
-                if(StudentDetails[i].name==Name){
-                    check=false
-                }
-              }
-              if(check==true){
+
                 // //alert(StudentDetails.length)
                 // document.cookie=Name[StudentDetails.length=1]+"="+$("#colors").val()+";"
                 StudentDetails.push({
@@ -346,20 +339,16 @@ $(document).ready(function(){
                 });
                 $("#myModal").modal('hide');
                 document.getElementById("myform").reset()
-            }
-            else{
-                alert("same Name")
-            }
     }
    
 
     $(".edit").click(function(){
-        debugger
+       
         //alert("Edit button Click");
       });
 
     function doShowAll() {
-        debugger
+  
         var student_data=new Array()
          student_data=JSON.parse(localStorage.getItem("users"));
             var list = "<tr><th>SR.No</th><th>Name</th><th>Mobile</th><th>Email</th><th>College Name</th><th>CGPA</th><th>Branch Name</th><th>study period</th><th>State</th><th>City</th><th>zip</th><th>Color</th><th></th><th></th> </tr>\n";
@@ -412,7 +401,7 @@ $(document).ready(function(){
 
       $(document).on('click','.edit',function () {
 
-        debugger
+        
         $("#addrow").hide()
         $("#export").hide()
         $("#editMain").show()
@@ -439,7 +428,7 @@ $(document).ready(function(){
       });
       
       $(document).on('click','#editMain',function () {
-        debugger
+        
         //alert("hello")
         let Name = $("#name").val();
         let Mobile = $("#mobile").val();
@@ -492,7 +481,7 @@ $(document).ready(function(){
         })
         function backgroundColor(){
             let bgcolor= $('#table tr:last td:nth-child(12)').text()
-       $("#myform").css("background-color", bgcolor);
+       $("body").css("background-color", bgcolor);
         }
         function Tablerow(){
             debugger 
