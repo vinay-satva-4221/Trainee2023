@@ -2,7 +2,13 @@ var id = 0;
 var studentsArray = [];
 
 function delcookie(){
-    document.cookie = "id=; expires=Tue, 14 Feb 2023 00:00:00 UTC; path=/;";
+    
+        // retrieve all cookies
+        var Cookies = document.cookie.split(';');
+        // set past expiry to all cookies
+        for (var i = 0; i < Cookies.length; i++) {
+        document.cookie = Cookies[i] + "=; expires="+ new Date(0).toUTCString();
+        }
 }
 
 function getCookie(id) {
@@ -120,7 +126,7 @@ debugger;
                 //set cookie
                 document.cookie=id+"="+$("#color").val();
 
-          
+                var cookie=document.cookie;
                   
 
                   
@@ -300,6 +306,24 @@ console.log("cookie:",x)
 
   }
 
+        var alast = $("#mytable").find("tr").last().find("td:nth-child(12)").text();
+        console.log(alast)
+        if(alast=="Blue"){
+            document.getElementById("con").style.backgroundColor ='lightblue';
+        }
+        else if(alast=="Green"){
+            document.getElementById("con").style.backgroundColor ='lightgreen';
+        }
+        else if(alast=="Red"){
+            document.getElementById("con").style.backgroundColor ='lightcoral';
+        }
+        else if(alast=="Yellow"){
+            document.getElementById("con").style.backgroundColor ='yellow';
+        }
+        else{
+            document.getElementById("con").style.backgroundColor ='unset';
+        }
+
         swal({
             title: "Record deleted",
             text: "Student Detail Deleted successfully",
@@ -308,10 +332,10 @@ console.log("cookie:",x)
         });
 
         
-        var lastRowIndex = table.rows.length-1;
-        alert(lastRowIndex);
+    //     var lastRowIndex = table.rows.length-1;
+    //     alert(lastRowIndex);
 
-        var lastind = document.getElementById("color")
+    //     var lastind = document.getElementById("color")
 
     }
 
