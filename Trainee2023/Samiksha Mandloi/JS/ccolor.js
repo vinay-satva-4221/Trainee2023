@@ -111,8 +111,7 @@ $(document).ready(function(){
             var valid=true
             
             var string1=/^\d{10}$/
-            // var a=$("#mobile").val()
-            // //alert(a)
+            
             if($("#mobile").val().match(string1)){
                 $("#mobilefails").html("")
                 valid=false
@@ -326,7 +325,7 @@ $(document).ready(function(){
 
                 })
                 
-                document.cookie=Name+"="+$("#colors").val()+";"
+                document.cookie=Email+"="+$("#colors").val()+";"
 
                 localStorage.setItem("users",JSON.stringify(StudentDetails));
 
@@ -344,7 +343,7 @@ $(document).ready(function(){
 
     $(".edit").click(function(){
         debugger
-        //alert("Edit button Click");
+       
       });
 
     function doShowAll() {
@@ -352,11 +351,11 @@ $(document).ready(function(){
         var student_data=new Array()
          student_data=JSON.parse(localStorage.getItem("users"));
             var list = "<tr><th>SR.No</th><th>Name</th><th>Mobile</th><th>Email</th><th>College Name</th><th>CGPA</th><th>Branch Name</th><th>study period</th><th>State</th><th>City</th><th>zip</th><th>Color</th><th></th><th></th> </tr>\n";
-            // var i = 0;
+           
             if(student_data){
             for ( let i = 0; i < student_data.length; i++) {
             
-               let coloor= getCookie(student_data[i].name)
+               let coloor= getCookie(student_data[i].email)
                 list+="<tr><td>"+[i+1]+"</td><td>"+student_data[i].name+"</td><td>"+student_data[i].mobile+"</td><td>"+student_data[i].email+"</td><td>"+student_data[i].college+"</td><td>"+student_data[i].cgpa+"</td><td>"+student_data[i].branch+"</td><td>"+student_data[i].fromtowhenyoustudied+"</td><td>"+student_data[i].state+"</td><td>"+student_data[i].city+"</td><td>"+student_data[i].zip+"</td><td>"+coloor+"</td> <td> <button type='button' data-val="+[i+1]+" class='edit btn btn-success'>Edit</button><td> <button type='button' data-val="+[i+1]+" data-val='1' class='delete btn btn-danger'>Delete</button></td></tr>\n"
                
             }
@@ -368,7 +367,7 @@ $(document).ready(function(){
     }
 
     function getCookie(uname){
-        debugger
+        // debugger
         let nameq = uname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let ca = decodedCookie.split(';');
@@ -420,7 +419,7 @@ $(document).ready(function(){
         $("#State").val(Data[index].state)
         $("#City").val(Data[index].city)
         $("#zip").val(Data[index].zip)
-        $("#colors").val(getCookie(Data[index].name))
+        $("#colors").val(getCookie(Data[index].email))
         $("#hidden").val(index)
 
          
@@ -445,6 +444,7 @@ $(document).ready(function(){
         let index=$("#hidden").val();
         
     var student_data=new Array()
+    debugger
      student_data=JSON.parse(localStorage.getItem("users"));
      student_data[index].name=Name
      student_data[index].mobile=Mobile
@@ -457,7 +457,7 @@ $(document).ready(function(){
      student_data[index].fromtowhenyoustudied=FromToWhenYouStudied
      student_data[index].zip=Zip
      
-     document.cookie=Name+"="+$("#colors").val()+";"
+     document.cookie=Email+"="+$("#colors").val()+";"
      localStorage.setItem("users",JSON.stringify(student_data));
    
      doShowAll()
