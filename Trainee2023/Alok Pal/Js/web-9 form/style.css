@@ -3,6 +3,7 @@
   border: 1px solid rgb(182, 182, 182);
   border-radius: 10px;
   box-shadow: 5px 1px 10px #888888;
+  margin-bottom: 20px;
 }
 
 .heading {
@@ -120,25 +121,18 @@ input[type=checkbox]:hover{
 }
 
 /* media query for signature */
-@media (max-width: 480px) {
-  #sig-canvas {
-    width:  175%;
-    height: 90%;
-  }
-}
 
-/* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 480px) {
   #sig-canvas {
     width: 350px;
     height: 150px;
   }
 }
 
-/* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
   #sig-canvas {
-    width: 350px;
+    width: 212%;
     height: 150px;
   }
 }
@@ -146,7 +140,7 @@ input[type=checkbox]:hover{
 /* Media Query for Laptops and Desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
   #sig-canvas {
-    width: 350px;
+    width: 158%;
     height: 150px;
   }
 }
@@ -154,9 +148,16 @@ input[type=checkbox]:hover{
 /* Media Query for Large screens */
 @media (min-width: 1281px) {
   #sig-canvas {
-    width: 350px;
+    width: 108%;
     height: 150px;
   }
+}
+
+#sig-canvas{
+  border: 2px solid #cccccc;
+  border-radius: 6px;
+  cursor: crosshair;
+
 }
 
 input[type="text"]:disabled{
@@ -176,12 +177,6 @@ input[type="text"]:disabled{
   font-size: 1.1rem;
 }
 
-#sig-canvas{
-  border: 2px solid #cccccc;
-  border-radius: 6px;
-  cursor: crosshair;
-}
-
 .butn-Clr {
   background-color: #e7effe;
   color: #57647e;
@@ -198,14 +193,4 @@ input[type="text"]:disabled{
   color: white;
 }
 
-#error1{
-  display: none;
-  background-color: rgb(204, 31, 31);
-  border-radius: 10px;
-  width: 182px;
-  margin-top: 10px;
-  padding-bottom: 3px;
-  padding-left: 7px;
-  color: white;
-}
 
