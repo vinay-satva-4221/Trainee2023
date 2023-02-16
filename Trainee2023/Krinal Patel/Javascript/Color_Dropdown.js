@@ -2,10 +2,13 @@ var id = 0;
 var studentsArray = [];
 
 function delcookie(){
-    debugger;
-    // document.cookie = "id; expires=Mon, 13 Feb 2023 12:00:00 UTC;";
-    document.cookie=id+";max-age=0";  
-    alert("Cookie deleted success");
+    
+        // retrieve all cookies
+        var Cookies = document.cookie.split(';');
+        // set past expiry to all cookies
+        for (var i = 0; i < Cookies.length; i++) {
+        document.cookie = Cookies[i] + "=; expires="+ new Date(0).toUTCString();
+        }
 }
 
 function getCookie(id) {
