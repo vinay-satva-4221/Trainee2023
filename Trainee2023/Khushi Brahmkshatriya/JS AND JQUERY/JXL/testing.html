@@ -1,0 +1,44 @@
+<html>
+<script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+<link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css" />
+
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+
+<div id="spreadsheet"></div>
+
+<script>
+    var data1 = [
+        ['US', 'Cheese', '2019-02-12'],
+        ['CA', 'Apples', '2019-03-01'],
+        ['CA', 'Carrots', '2018-11-10'],
+        ['BR', 'Oranges', '2019-01-12'],
+    ];
+
+    mySpreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
+        data: data1,
+        columns: [
+            {
+                type: 'dropdown',
+                title: 'khusi',
+                width: 200,
+            },
+            {
+                type: 'text',
+                width: 200,
+            },
+            {
+                type: 'calendar',
+                width: 200,
+            }
+        ],
+        allowComments: true,
+    });
+</script>
+
+<button type="button" onclick="mySpreadsheet.setComments('khusi1', 'This is the comments from A1');"
+    style="width:220px;">Set A1 comments</button>
+<button type="button" onclick="alert(mySpreadsheet.getComments('khusi1'));" style="width:220px;">Get A1 comments</button>
+<button type="button" onclick="mySpreadsheet.setComments('khusi1', '');" style="width:220px;">Reset A1 comments</button>
+
+</html>
