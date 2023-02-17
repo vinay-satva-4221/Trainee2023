@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,11 @@
                     <label for="State">State:-</label>
                     <select name="State" id="state" class="form-control" tabindex="2">
                         <option value="0">Choose State</option>
+                        <option>Gujarat</option>
+                        <option>Maharastra</option>
+                        <option>MadhyaPradesh</option>
                     </select>
+                    <small id="statefails"></small>
                 </div>
                 <div class="form-group">
                     <label for="City">City:-</label>
@@ -49,10 +54,12 @@
                 <div class="form-group">
                     <label for="zip">Zip:-</label>
                     <input type="text" class="form-control" id="zip" placeholder="Enter Zip Code" tabindex="4">
+                    <small id="zipfails"></small>
                 </div>
                 <div class="form-group">
                     <label for="mobile">Mobile:-</label>
                     <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile Number" tabindex="5">
+                    <small id="mobilefails"></small>
                 </div>
             </form>
         </div>
@@ -66,9 +73,9 @@
   <div class="radio d-flex flex-row-reverse">
   <form action="">
     <label for="LIFO">LIFO</label>
-    <input type="radio" name="LF" id="lifo">
+    <input type="radio" name="LF" id="lifo" class="radio">
     <label for="FIFO">FIFO</label>
-    <input type="radio" name="LF" id="fifo">
+    <input type="radio" name="LF" id="fifo" class="radio">
   </form>
 </div>
 </div>

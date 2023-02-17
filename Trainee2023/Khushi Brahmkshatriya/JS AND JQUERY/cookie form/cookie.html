@@ -17,7 +17,7 @@
 <body>
 
     <div class="container-fluid p-5">
-        <div class="centerDiv">
+        <div class="centerDiv" id="colorBck">
             <form action="" id="form">
                 <div class="row g-3">
                     <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
@@ -76,7 +76,7 @@
                             <option value="Assam">Assam</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Himachal Pradesh">Himachal Pradesh</option>
-                            
+
                         </select>
                         <div class="invalid" id="validState"></div>
                     </div>
@@ -89,8 +89,8 @@
                     </div>
                     <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
                         <label for="zip" class="form-label">Zip</label>
-                        <input type="text" class="form-control allow_numeric" name="zip" id="zip" placeholder="Enter Zip"
-                            autocomplete="off">
+                        <input type="text" class="form-control allow_numeric" name="zip" id="zip"
+                            placeholder="Enter Zip" autocomplete="off">
                         <div class="invalid" id="validZip"></div>
                     </div>
                     <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
@@ -106,7 +106,7 @@
                         </select>
                         <div class="invalid" id="validColor"></div>
                     </div>
-                    
+
                 </div>
             </form>
             <div class="text-center mt-5">
@@ -114,7 +114,9 @@
                     <button type="button" id="addRow" class="btn btn-secondary text-white">Add Row</button>
 
                     <button type="button" id="export" class="btn btn-bg export-btn text-white"><i
-                        class="fa fa-file-excel-o"></i>Export</button>
+                            class="fa fa-file-excel-o"></i>Export</button>
+
+                    <button type="button" id="deletecookie" class="btn btn-danger text-white">Delete Cookie</button>
                 </div>
             </div>
 
@@ -161,7 +163,8 @@
         <script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
 
         <script src="https://rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script src="../bs5/js/bootstrap.min.js"></script>
 </body>
 
