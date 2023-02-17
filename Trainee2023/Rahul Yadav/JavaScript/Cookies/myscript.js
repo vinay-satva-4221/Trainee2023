@@ -100,6 +100,9 @@ $(document).ready(function () {
     $.each(StateJsonData.States, function (i, option) {
         $("#State").append($("<option></option>").val(option.Id).html(option.Name));
     });
+
+
+
     $("#State").change(function () {
         var CityJsonData = JSON.parse(CityData);
         $("#City").html("");
@@ -111,6 +114,9 @@ $(document).ready(function () {
             }
         });
     });
+
+
+
 
     $("#addrow").click(function () {
         var studentData = localStorage.getItem("studentData");
@@ -128,6 +134,8 @@ $(document).ready(function () {
             Zip: $("#zipcode").val(),
 
         };
+
+        // document.cookie = Name + "=" + $("#color").val() + ";"
 
         let id = "no";
 
@@ -156,17 +164,25 @@ $(document).ready(function () {
             localStorage.setItem("studentData", JSON.stringify(datal));
         }
 
-        var name=$("#name").val();
+        var name = $("#name").val();
         document.cookie = name + "=" + $("#color").val() + ";"
+
+
+
+
+
         selectData();
 
         $("#basic_form")[0].reset();
 
-
+        backgroundColor();
+        Tablerow()
 
 
 
     });
+
+    document.onload = selectData();
 
     $("#save").click(function () {
 
@@ -186,6 +202,7 @@ $(document).ready(function () {
             // color: $("#color").val()
         };
 
+
         let id = "no";
 
         if (id === "no") {
@@ -213,7 +230,10 @@ $(document).ready(function () {
             localStorage.setItem("studentData", JSON.stringify(datal));
         }
         selectData();
-        document.cookie = Name + "=" + $("#color").val() + ";"
+
+        var name = $("#name").val();
+        document.cookie = name + "=" + $("#color").val() + ";"
+
 
         $("#basic_form")[0].reset();
         $("#save").css('display', 'none')
@@ -237,61 +257,21 @@ $(document).ready(function () {
         swal("Downloaded!", "Your Imaginary file has been Downloaded", "success");
     });
 
-    function getCookie(uname) {
-        let nameq = uname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(nameq) == 0) {
-                return c.substring(nameq.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    function backgroundColor() {
-        let bgcolor = $('#table tr:last td:nth-child(12)').text()
-        $("body").css("background-color", bgcolor);
-    }
-    function Tablerow() {
-        debugger
-        var rowCount = $("#table tr").length;
-        for (let i = 1; i < rowCount; i++) {
-            let trcolor = $('#table tr:eq(' + i + ') td:nth-child(12)').text()
-            //alert($(this).text())
-            $('#table tr:eq(' + i + ')').css("background-color", trcolor);
-        }
-    }
-    $("#removeCookie").click(function () {
-        debugger
-        var rowCount = $("#table tr").length;
-        for (let i = 1; i < rowCount; i++) {
-            let Trname = $('#table tr:eq(' + i + ') td:nth-child(2)').text()
-            //alert($(this).text())
-            document.cookie = Trname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
-        }
-        doShowAll()
-
-    })
-
-
 
 
 
 });
-
-
 
 function selectData() {
     var datal = JSON.parse(localStorage.getItem("studentData"));
     if (datal != null) {
         let html = "";
 
+
+
         for (let i = 0; i < datal.students.length; i++) {
+            // let name=document.getElementById("name").value;
+            let coloritem = getCookie(datal.students[i].Name)
             html =
                 html +
                 `<tr id = ${i} >
@@ -306,13 +286,69 @@ function selectData() {
         <td>${datal.students[i].City}</td>
         <td>${datal.students[i].Zip}</td>
         <td>${datal.students[i].FromToWhenYouStudied}</td>
+        <td>${coloritem}</td>
+
         <td nowrap><a href="javascript:void(0);"  onclick="deleteData(${i})" class="remCF1 btn btn-danger border">Delete</a><a href="javascript:void(0);"  onclick="editData(${i})" class="remCF1 btn btn-warning" >Edit</a></td>
         <tr>`;
         }
         document.getElementById("root").innerHTML = html;
+
+        backgroundColor()
+
     }
 
+
+
 }
+
+
+function backgroundColor() {
+    let bgcolor;
+    bgcolor = $("#myTable tr:last td:nth-child(12)").text()
+    console.log(bgcolor)
+    // $("whole").css("background-color", bgcolor);
+    document.getElementById("colorBack").style.backgroundColor = bgcolor
+}
+function Tablerow() {
+    debugger
+    var rowCount = $("#myTable tr").length;
+    for (let i = 1; i < rowCount; i++) {
+        let trcolor = $('#myTable tr:eq(' + i + ') td:nth-child(11)').text()
+        //alert($(this).text())
+        $('#myTable tr:eq(' + i + ')').css("background-color", trcolor);
+    }
+}
+
+$("#removeCookie").click(function () {
+    debugger
+    var rowCount = $("#table tr").length;
+    for (let i = 1; i < rowCount; i++) {
+        let Trname = $('#table tr:eq(' + i + ') td:nth-child(2)').text()
+        //alert($(this).text())
+        document.cookie = Trname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+    }
+    selectData();
+
+})
+
+function getCookie(uname) {
+    let nameq = uname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(nameq) == 0) {
+            return c.substring(nameq.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+
 
 function deleteData(rid) {
     let datal = JSON.parse(localStorage.getItem("studentData"));
@@ -321,11 +357,16 @@ function deleteData(rid) {
     localStorage.setItem("studentData", JSON.stringify(datal));
     selectData();
     swal("Deleted!", "Your Imaginary file has been deleted", "success");
-    let CookieName = $('#table tr:eq(' + index + ') td:nth-child(2)').text()
-    console.log(deleteData)
-    $(this).parent().parent().hide()
-    deleteData.splice(index - 1, 1);
-    document.cookie = CookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+
+
+
+    // cookie
+    // let CookieName = $('#table tr:eq(' + rid + ') td:nth-child(2)').text()
+    // console.log(deleteData)
+    // $(this).parent().parent().hide()
+
+    // deleteData.splice(index, 1);
+    // document.cookie = CookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 }
 
 function editData(rid) {

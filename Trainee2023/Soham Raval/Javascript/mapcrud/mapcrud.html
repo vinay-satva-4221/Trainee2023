@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/bootstrap-5.3.0-alpha1-dist/jquery-3.6.3.js"></script>
+
+<title>Form</title>
+<style>
+        #update{
+            display: none;
+        }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <form name="myform" id="form">
+        
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="">Name:</label>
+                    <input type="text" class="form-control" id="name" class="validate"   placeholder="Name"  onchange="validatename()">
+                    <span id="NAME" style="color: red;"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="">Mobile:</label>
+                    <input type="text" class="form-control" id="mobile" class="validate"   placeholder="Mobile" onchange="validateMobile()" >
+                    <span id="MOBILE" style="color: red;"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="">Email:</label>
+                    <input type="emali" class="form-control" id="email" class="validate"   placeholder="Email" onchange="validateEmail()" >
+                    <span id="emailerror" style="color: red;"></span>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="">Collage Name:</label>
+                    <input type="text" class="form-control" id="collegename" class="validate"   placeholder="Collage Name" onchange="validateClg()">
+                    <span id="clgNAME" style="color: red;"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">        
+                <button type="button" class="btn bg-info" id="save" onclick="showdata()">ADD ROW</button>
+                <button type="button" class="btn bg-info" id="update"  >update ROW</button>
+
+             
+            </div>
+            </form>
+            <!-- <table  class="w3-table-all table-bordered" id="myTable" border="1">
+                <thead>     
+                <tr class="w3-blue border-1">
+                   
+                </tr>
+                </thead>
+                <tbody id="root">
+                </tbody>
+            </table> -->
+
+          
+ 
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Mobile</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">College</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody id="root"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="./mycrud.js"></script>
+</body>
+
+</html>
