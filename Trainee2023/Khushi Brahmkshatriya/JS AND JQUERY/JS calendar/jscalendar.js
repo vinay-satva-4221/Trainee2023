@@ -16,10 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
            
         },
 
-        eventClick: function (event) {
-
-
-        },
+        eventClick: function(calEvent, jsEvent, view) {
+            var title = prompt('Event Title:', calEvent.title, { buttons: { Ok: true, Cancel: false} });
+            console.log(calEvent);
+  
+            if (title){
+                calEvent.title = title;
+               
+                // $('#calendar').fullCalendar('updateEvent', calEvent);     
+            }
+  }
       
       
   
@@ -45,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     id:inp1,
                     start: date,
                     allDay: true,
-                    eventColor: '#378006'
+                    color: inp2
                 })
             }
         }
