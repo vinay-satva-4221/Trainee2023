@@ -1,7 +1,4 @@
-
-
 $(document).ready(function () {
-
   $.validator.addMethod("validname", function (value) {
     return /^[a-zA-Z\s]+$/.test(value);
   });
@@ -58,7 +55,6 @@ $(document).ready(function () {
     },
   });
 
-
   //DateRange Picker 📅
   $(function () {
     $('input[name="daterange"]').daterangepicker(
@@ -78,7 +74,6 @@ $(document).ready(function () {
 });
 
 // DropDown Data
-
 const cityList = [
   { State: "MadhyaPradesh", CityName: "Indore" },
   { State: "MadhyaPradesh", CityName: "Bhopal" },
@@ -221,8 +216,6 @@ function deleteData(index) {
   localStorage.setItem("peopleList", JSON.stringify(peopleList));
   showData();
 }
-
-
 
 function updateData(index) {
   document.getElementById("addrow").style.display = "none";

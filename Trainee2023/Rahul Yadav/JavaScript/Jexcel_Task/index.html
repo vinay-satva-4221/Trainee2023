@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+    <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+</head>
+
+<body>
+    <div class="container p-4">
+        <div id="spreadsheet"></div>
+        <br>
+        <button type="button" class="btn btn-danger" id="deleterow">Delete Last Row</button>
+        <br>
+        <div class="input-group mb-5 p-4">
+            <input type="number" class="form-control" placeholder="Number Of Row" id="input" >
+            <button class="btn btn-primary" type="button" id="addrow" >Add Row</button>
+        </div>
+        <button id="table">Table</button>
+
+    </div>
+    <!-- <table id="example" class="display" width="100%"></table> -->
+    <div class="container tbody mt-5">
+        <div class="row">
+            <div class="col-12 margin">
+                <table class="table table-responsive table-bordered" id="Table">
+                    <hr>
+                    <thead>
+                        <tr>
+                            <th nowrap class="px-1 py-2">Sno.</th>
+                            <th nowrap class="px-1 py-2">Project Name</th>
+                            <th nowrap class="px-1 py-2">Date</th>
+                            <th nowrap class="px-1 py-2">Phases</th>
+                            <th nowrap class="px-1 py-2">Status</th>
+                            <th nowrap class="px-1 py-2">Logged Hours</th>
+                            <th nowrap class="px-1 py-2">Billable Hours</th>
+                            <th nowrap class="px-1 py-2">Noted</th>
+                            <th nowrap class="px-1 py-2">Out Of Stock</th>
+                            <th nowrap class="px-1 py-2">BC Link</th>
+                            <th nowrap class="px-1 py-2">BC Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="root">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+</body>
+
+</html>
