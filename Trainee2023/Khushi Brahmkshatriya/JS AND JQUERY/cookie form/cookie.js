@@ -150,10 +150,9 @@ $(document).ready(function () {
     var emptyRow = "<tr><td colspan='13' class='text-center'> No Records Available</td></tr>";
 
     loadDataFromLocal();
-    //changeColor();
+    backgroundColor()
 
     $('#tblData').on('click', '.btn-edit', function () {
-
 
         const name = $(this).parent().parent().find(".txtName").html();
         const mobile = $(this).parent().parent().find(".txtMobile").html();
@@ -164,7 +163,7 @@ $(document).ready(function () {
         const State = $(this).parent().parent().find(".txtState").html();
         const City = $(this).parent().parent().find(".txtCity").html();
         const zip = $(this).parent().parent().find(".txtZip").html();
-        const color = $(this).parent().parent().find(".txtColor").html();
+        const color = $(this).parent().parent().find(".txtcolor").html();
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         $("#name").val(name);
         $("#mobile").val(mobile);
@@ -183,7 +182,14 @@ $(document).ready(function () {
     $('#tblData').on('click', '.btn-delete', function () {
 
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
+        deleteCookie(id);
         deleteDataFromLocal(id);
+
+    });
+    $("#deletecookie").click(function () {
+        $.removeCookie("color");
+
+        location.reload(true);
     });
 
 
@@ -195,19 +201,18 @@ $(document).ready(function () {
 
         }
         else {
-            
-            
-            //var mycolor = $('#color').val();
             if ($("#txtId").val() == '') {
                 addDataToLocal();
-                
-            } else {
+                addDataToCookie();
+            }
+            else {
                 updateDataFromLocal();
             }
         }
 
-
+        backgroundColor();
     });
+
     function addEmptyRow() {
 
         if ($("#tblData tbody").children().children().length == 0) {
@@ -217,26 +222,16 @@ $(document).ready(function () {
 
     function loadDataFromLocal() {
 
+        let localData = localStorage.getItem('CookieData');
 
-        let localData = localStorage.getItem('studentData');
-        
         if (localData) {
             $("#tblData tbody").html("");
             let localArray = JSON.parse(localData);
             let index = 1;
-            debugger
-            let mycookie = $.cookie("color");
-            
-                
-                console.log("Cookie" +mycookie);
-
-            
-                
             localArray.forEach(element => {
 
-
                 let dynamicTR = "<tr class='color'>";
-                dynamicTR = dynamicTR + "<td> " + index + "</td>";
+                dynamicTR = dynamicTR + "<td class='myindex'> " + index + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtName'  data-id=" + element.id + ">" + element.name + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtMobile'>" + element.mobile + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtEmail'>" + element.email + "</td>";
@@ -254,22 +249,24 @@ $(document).ready(function () {
                 $("#tblData tbody").append(dynamicTR);
 
                 index++;
-            }); 
-
+            });
         }
-    
-    addEmptyRow();
+        addEmptyRow();
+        backgroundColor();
+        tableRowColor();
 
-}
-
+    }
 
     function addDataToLocal() {
 
-        let localData = localStorage.getItem('studentData');
+        let localData = localStorage.getItem('CookieData');
+
         if (localData) {
             let localArray = JSON.parse(localData);
+            let myId = localArray.length - 1;
+            myId = localArray.map(x => x.id)[myId];
             const obj = {
-                id: localArray.length + 1,
+                id: myId + 1,
                 name: $("#name").val(),
                 mobile: $("#mobile").val(),
                 email: $("#email").val(),
@@ -280,15 +277,14 @@ $(document).ready(function () {
                 City: $("#City").val(),
                 zip: $("#zip").val(),
                 color: $("#color").val(),
-               
+
             };
-             
+
             localArray.push(obj);
-            mycolor = $('#color').val();
-            $.cookie(localArray.id,mycolor);
-            localStorage.setItem('studentData', JSON.stringify(localArray));
+            localStorage.setItem('CookieData', JSON.stringify(localArray));
             loadDataFromLocal();
-        } else {
+        }
+        else {
             const arryObj = [];
             const obj = {
                 id: 1,
@@ -304,68 +300,82 @@ $(document).ready(function () {
                 color: $("#color").val()
 
             };
-            
+
             arryObj.push(obj);
-            mycolor = $('#color').val();
-            $.cookie(localArray.id,mycolor);
-            localStorage.setItem('studentData', JSON.stringify(arryObj));
-            
+            maxId = localStorage.setItem('CookieData', JSON.stringify(arryObj));
             loadDataFromLocal();
+
         }
-        
-        
+
+
     }
 
-    //function addDataToCookie() {
-        // debugger
-        // let localData = localStorage.getItem('studentData');
-        
-        //     let localArray = JSON.parse(localData);
-        //     for(let i=1;i<localArray.length;i++)
-        //     {
-        //         localArray[i].color==$.cookie(localArray[i].id,color);
-        //     }
-        
-    //}
-    
-    // function changeColor() {
+    function addDataToCookie() {
+
+        let cookiedata = $.cookie("color");
+        if (cookiedata) {
+            let localArray = JSON.parse(cookiedata);
+            let myId = localArray.length - 1;
+            myId = localArray.map(x => x.id)[myId];
+            const color = {
+                id: myId + 1,
+                color: $("#color").val()
+            };
+            localArray.push(color);
+            $.cookie("color", JSON.stringify(localArray));
+
+        }
+        else {
+            const arryObj = [];
+            const color =
+            {
+                id: 1,
+                color: $("#color").val(),
+            }
+            arryObj.push(color);
+            $.cookie("color", JSON.stringify(arryObj));
+        }
+        location.reload(true);
+    }
 
 
-    //     let cookiedata = $.cookie("color");
-    //     let localCookieArray = JSON.parse(cookiedata);
+    function backgroundColor() {
+        let bgcolor = $("#tblData tr:last td:nth-child(11)").text();
+        console.log(bgcolor);
+        $("#colorBck").css("background-color", bgcolor);
 
-    //     let localData = localStorage.getItem('studentData');
+    }
 
-    //     let localArray = JSON.parse(localData);
+    function deleteCookie(id) {
 
-
-    //     for(let i=0;i<localCookieArray.length;i++)
-    //     {
-    //         for(let j=0;j<localArray.length;j++)
-    //         {
-
-    //             if(localCookieArray[i].id===localArray[j].id)
-    //             {
-    //                 $('.color').css('background-color', localCookieArray[i].color);
-    //                 //$(this).find('.color').css('background-color', mycolor);
-
-    //             }
-    //         }
-
-
-    //     }
-
-
-    // }
-
-
+        let cookiedata = $.cookie("color");
+        let localCookieArray = JSON.parse(cookiedata);
+        if (localCookieArray) {
+            let i = 0;
+            while (i < localCookieArray.length) {
+                console.log(localCookieArray[i].id);
+                if (localCookieArray[i].id === Number(id)) {
+                    localCookieArray.splice(i, 1)
+                    //$.removeCookie(localCookieArray[i]);
+                    //localCookieArray.splice(i, 1);
+                    //$.removeCookie(dcookie);
+                }
+                else {
+                    ++i;
+                }
+            }
+        }
 
 
+        $.cookie("color", JSON.stringify(localCookieArray));
+
+    }
     function updateDataFromLocal() {
 
-        let localData = localStorage.getItem('studentData');
+        let localData = localStorage.getItem('CookieData');
         let localArray = JSON.parse(localData);
         const oldRecord = localArray.find(m => m.id == $("#txtId").val());
+
         oldRecord.name = $("#name").val();
         oldRecord.mobile = $("#mobile").val();
         oldRecord.email = $("#email").val();
@@ -375,27 +385,47 @@ $(document).ready(function () {
         oldRecord.State = $("#State").val();
         oldRecord.City = $("#City").val();
         oldRecord.zip = $("#zip").val();
-        //oldRecord.date = $("#date").val();
+        oldRecord.color = $("#color").val();
 
+        let cookiedata = $.cookie("color");
+        let localCookieArray = JSON.parse(cookiedata);
+        const oldcookie = localCookieArray.find(m => m.id == $("#txtId").val());
+        oldcookie.color = $("#color").val();
 
-        localStorage.setItem('studentData', JSON.stringify(localArray));
+        localStorage.setItem('CookieData', JSON.stringify(localArray));
+        $.cookie("color", JSON.stringify(localCookieArray));
         loadDataFromLocal();
 
     }
 
+    function tableRowColor() {
+
+        var rowCount = $("#tblData tr").length;
+        for (let i = 1; i < rowCount; i++) {
+            let trcolor = $("#tblData tr:eq(" + i + ") td:nth-child(11)").text();
+
+            $("#tblData tr:eq(" + i + ")").css("background-color", trcolor);
+
+        }
+    }
+
     function deleteDataFromLocal(id) {
 
-        let localData = localStorage.getItem('studentData');
+        let localData = localStorage.getItem('CookieData');
         let localArray = JSON.parse(localData);
         let i = 0;
         while (i < localArray.length) {
             if (localArray[i].id === Number(id)) {
                 localArray.splice(i, 1);
-            } else {
+
+            }
+            else {
                 ++i;
             }
         }
-        localStorage.setItem('studentData', JSON.stringify(localArray));
+
+
+        localStorage.setItem('CookieData', JSON.stringify(localArray));
         loadDataFromLocal();
     }
     $('#export').on('click', function (e) {
@@ -404,18 +434,15 @@ $(document).ready(function () {
         ResultsToTable();
     });
 
-function ResultsToTable() {
+    function ResultsToTable() {
 
-    TableToExcel.convert(document.getElementById("tblData"), {
-        name: "Students.xlsx",
-        sheet: {
-            name: "Sheet 1"
-        }
-    });
-    // $("#tblData").table2excel({
-    //     exclude: ".noExl",
-    //     filename: "Students"
-    // });
-}
+        TableToExcel.convert(document.getElementById("tblData"), {
+            name: "Students.xlsx",
+            sheet: {
+                name: "Sheet 1"
+            }
+        });
+
+    }
 
 });
