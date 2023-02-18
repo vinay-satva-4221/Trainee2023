@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Two</title>
+</head>
+<body>
+    <h2>Full Star Diamond Pattern</h2>
+    <script>
+        let n =10;
+        let string = "";
+        for(var i=1; i<=n; i++)
+        {
+            for(var s=n-1; s>=i; s--)
+            {
+                string += (" ");
+            }
+            for(var j=1; j<=i; j++)
+            {
+                string += ("* ");
+            }
+            string += "\n";
+        }
+        if(i == n+1)
+        {
+            for(var i=1; i<=n-1; i++)
+            {
+                for(var s=1; s<=i; s++)
+                {
+                    string += (" ");
+                }
+                for(j=i; j<=n-1; j++)
+                {
+                    string += ("* ");
+                }
+                string += "\n";
+            }
+            console.log(string);
+        }
+       
+    </script>
+</body>
+</html>
