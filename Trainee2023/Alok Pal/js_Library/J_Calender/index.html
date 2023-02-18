@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="" id="fname">Patient Name:</label><br>
+                    <input class="mt-1" type="text" style="width: 100%" placeholder="Enter Patient Name">
+
+                    <label for="" id="fnumber" class="mt-1">Contact Number:</label><br>
+                    <input class="mt-1" type="text" style="width: 100%" placeholder="Enter Contact Number">
+                    <label for="" id="fnumber" class="mt-1" style="width: 100%">Select Color:</label><br>
+                    <select name="" id="" style="width: 100%" >
+                        <option value=""  disabled aria-placeholder="hello">Choose</option>
+                        <option value=""  >Red</option>
+                        <option value=""  >Blue</option>
+                        <option value=""  >Green</option>
+
+                    </select>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="calendar"></div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+<script src="index.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</html>

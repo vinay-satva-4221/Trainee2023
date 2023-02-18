@@ -66,7 +66,13 @@ function hide() {
 //   }
 // }
 
+
+
 function validateallow() {
+
+  var test;
+  //localStorage.setItem("StudentDetails", JSON.parse(studentsArray));
+
   // var i = studentsArray[i];
   var name = $("#name").val();
   var mobile = $("#mobile").val();
@@ -99,12 +105,12 @@ function validateallow() {
   studentsArray.push(stuObj);
 
   //set cookie
-  document.cookie="color"+ "=" +$("#color").val()+";"
-  
+  document.cookie = "color" + "=" + $("#color").val() + ";"
+
 
   localStorage.setItem("StudentDetails", JSON.stringify(studentsArray));
-  
-  
+
+
 
   // init() ;
   prepareTableCell(
@@ -136,6 +142,7 @@ function validateallow() {
 }
 
 //Table insert data
+
 function prepareTableCell(
   index,
   name,
@@ -150,6 +157,7 @@ function prepareTableCell(
   studied,
   color
 ) {
+  debugger;
   var index = index;
   console.log("index", index);
   var table = document.getElementById("mytable");
@@ -190,40 +198,38 @@ function prepareTableCell(
     index +
     ')">Delete</button>';
 
+  
+
   //get cookie  
-  let x = document.cookie; 
+  let x = document.cookie;
   let part = x.slice(6);
   console.log(part);
 
-  selectElement = document.querySelector("#color");
-  output = selectElement.value;
+  var selectElement = document.querySelector("#color");
+  var output = selectElement.value;
   console.log(output);
 
-  
-  if(part=="skyblue" && output=="skyblue")
-  {
-    row.style.backgroundColor='skyblue';
-    document.getElementById("mainCon1").style.backgroundColor="skyblue";
+
+  if (part == "skyblue" && output == "skyblue") {
+    row.style.backgroundColor = 'skyblue';
+    document.getElementById("mainCon1").style.backgroundColor = "skyblue";
   }
-  else if(part=="lightgreen" && output=="lightgreen")
-  {
-    row.style.backgroundColor="lightgreen";
-    document.getElementById("mainCon1").style.backgroundColor="lightgreen";
+  else if (part == "lightgreen" && output == "lightgreen") {
+    row.style.backgroundColor = "lightgreen";
+    document.getElementById("mainCon1").style.backgroundColor = "lightgreen";
 
   }
-  else if(part=="lightpink" && output=="lightpink")
-  {
-    row.style.backgroundColor="lightpink";
-    document.getElementById("mainCon1").style.backgroundColor="lightpink";
+  else if (part == "lightpink" && output == "lightpink") {
+    row.style.backgroundColor = "lightpink";
+    document.getElementById("mainCon1").style.backgroundColor = "lightpink";
 
   }
-  else if(part=="lightyellow" && output=="lightyellow")
-  {
-    row.style.backgroundColor="lightyellow";
-    document.getElementById("mainCon1").style.backgroundColor="lightyellow";
+  else if (part == "lightyellow" && output == "lightyellow") {
+    row.style.backgroundColor = "lightyellow";
+    document.getElementById("mainCon1").style.backgroundColor = "lightyellow";
 
   }
-  else{
+  else {
     alert("please select any color..");
   }
 
@@ -240,8 +246,14 @@ function prepareTableCell(
   });
 }
 
+// window.onload = function () {
+//   prepareTableCell();
+// }
+//document.onload =  prepareTableCell();
+
 //Delete Row
 function deleteTableRow(index) {
+  debugger;
   var table = document.getElementById("mytable");
   console.log(index, studentsArray);
   var currentIndex = studentsArray.findIndex((x) => x.id == index);
@@ -251,17 +263,57 @@ function deleteTableRow(index) {
 
   localStorage.setItem("StudentDetails", JSON.stringify(studentsArray));
 
-  document.getElementById("").value = SelectedRow.cells[1].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[2].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[3].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[4].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[5].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[6].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[7].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[8].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[9].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[10].innerHTML;
-  document.getElementById("").value = SelectedRow.cells[11].innerHTML;
+
+  // document.getElementById("").value = SelectedRow.cells[1].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[2].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[3].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[4].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[5].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[6].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[7].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[8].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[9].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[10].innerHTML;
+  // document.getElementById("").value = SelectedRow.cells[11].innerHTML;
+
+  // document.SelectedRow.cookie = "color=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+  if (currentIndex == 0) {
+    document.getElementById("btn2").style.display = 'none';
+
+  }
+  else {
+    document.getElementById("btn2").style.display = 'inline';
+  }
+
+  var xt = document.getElementById("mytable").rows.length; //1
+
+  if (xt == 1) {
+    document.getElementById("mainCon1").style.backgroundColor = 'unset';
+
+    // document.getElementById("tabCont").style.visibility = "hidden";
+
+  }
+
+  var alast = $("#mytable").find("tr").last().find("td:nth-child(12)").text();
+  console.log(alast)
+
+
+  if (alast == "skyblue") {
+    document.getElementById("mainCon1").style.backgroundColor = 'skyblue';
+  }
+  else if (alast == "lightgreen") {
+    document.getElementById("mainCon1").style.backgroundColor = 'lightgreen';
+  }
+  else if (alast == "lightpink") {
+    document.getElementById("mainCon1").style.backgroundColor = 'lightpink';
+  }
+  else if (alast == "lightyellow") {
+    document.getElementById("mainCon1").style.backgroundColor = 'lightyellow';
+  }
+  else {
+    document.getElementById("mainCon1").style.backgroundColor = 'unset';
+  }
 
   swal({
     title: "Record deleted",
@@ -289,10 +341,13 @@ function editTableRow(td) {
   document.getElementById("btn2").innerHTML = "Update Row";
 
   localStorage.setItem("StudentDetails", JSON.stringify(studentsArray));
+
 }
+
 
 //Update Row
 function updateTableRow() {
+  debugger;
   var formData = {};
   formData["name"] = document.getElementById("name").value;
   formData["mobile"] = document.getElementById("mobile").value;
@@ -318,29 +373,52 @@ function updateTableRow() {
   SelectedRow.cells[10].innerHTML = formData.studied;
   SelectedRow.cells[11].innerHTML = formData.color;
   // document.getElementById("btn2").innerHTML = "Export";
+
+  //set
+  document.cookie = "color" + "=" + $("#color").val() + ";"
+
+  //get
+  let x = document.cookie;
+  let part = x.slice(6);
+  console.log(part);
+
+  var selectElement = document.querySelector("#color");
+  var output = selectElement.value;
+  console.log(output);
+
+  if (part == "skyblue" && output == "skyblue") {
+    SelectedRow.style.backgroundColor = 'skyblue';
+    document.getElementById("mainCon1").style.backgroundColor = "skyblue";
+  }
+  else if (part == "lightgreen" && output == "lightgreen") {
+    SelectedRow.style.backgroundColor = "lightgreen";
+    document.getElementById("mainCon1").style.backgroundColor = "lightgreen";
+
+  }
+  else if (part == "lightpink" && output == "lightpink") {
+    SelectedRow.style.backgroundColor = "lightpink";
+    document.getElementById("mainCon1").style.backgroundColor = "lightpink";
+
+  }
+  else if (part == "lightyellow" && output == "lightyellow") {
+    SelectedRow.style.backgroundColor = "lightyellow";
+    document.getElementById("mainCon1").style.backgroundColor = "lightyellow";
+
+  }
+  else {
+    alert("please select any color..");
+  }
 }
 
-// function getCookie(color) {
-//   // Split cookie string and get all individual name=value pairs in an array
-//   var cookieArr = document.cookie.split(";");
-
-//   // Loop through the array elements
-//   for(var i = 0; i < cookieArr.length; i++) {
-//       var cookiePair = cookieArr[i].split("=");
-
-//       /* Removing whitespace at the beginning of the cookie name
-//       and compare it with the given string */
-//       if(color == cookiePair[0].trim()) {
-//           // Decode the cookie value and return
-//           return decodeURIComponent(cookiePair[1]);
-//       }
-//   }
-
-//   // Return null if not found
-//   return null;
-// }
 
 
+deleteAllCookies = () => {
+  let c = document.cookie.split(';')
+  for (const k of c) {
+    let s = k.split('=')
+    document.cookie = s[0].trim() + '=;expires=Fri, 20 Aug 2021 00:00:00 UTC'
+  }
+}
 
 //Date Picker
 $(function () {
@@ -377,16 +455,16 @@ $(function () {
 
 //set cookie
 
-function setCookie(name,value,exp_days) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exp_days*24*60*60*1000));
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+// function setCookie(name,value,exp_days) {
+//   var d = new Date();
+//   d.setTime(d.getTime() + (exp_days*24*60*60*1000));
+//   var expires = "expires=" + d.toGMTString();
+//   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 
-  document.cookie = "color=" + cookievalue;
-  document.write ("Setting Cookies : " + "color=" + cookievalue );
+//   document.cookie = "color=" + cookievalue;
+//   document.write ("Setting Cookies : " + "color=" + cookievalue );
 
-}
+// }
 
 //Javascript Validations
 function validatename() {
