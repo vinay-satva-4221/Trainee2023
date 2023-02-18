@@ -223,7 +223,7 @@ const CityData = '{"Citys":[' +
   
 
     function clearForm() {
-      debugger;
+      // debugger;
       $("#name").val("");
         $("#mobile").val("");
         $("#email").val("");
@@ -239,14 +239,14 @@ const CityData = '{"Citys":[' +
     }
 
     function addEmptyRow() {
-      debugger;
+      // debugger;
       if ($("#tblData tbody").children().children().length == 0) {
         $("#tblData tbody").append(emptyRow);
       }
     }
 
     function loadDataFromLocal() {
-      debugger;
+      // debugger;
       let localData = localStorage.getItem('localData') || cookieStorage.getItem('localData');
       if (localData) {
         $("#tblData tbody").html("");
@@ -276,7 +276,7 @@ const CityData = '{"Citys":[' +
     }
 
     function addDataToLocal() {
-      debugger;
+      // debugger;
       let localData = localStorage.getItem('localData');
       if (localData) {
         let localArray = JSON.parse(localData);
@@ -325,7 +325,7 @@ const CityData = '{"Citys":[' +
     }
 
     function updateDataFromLocal() {
-      debugger;
+      // debugger;
       let localData = localStorage.getItem('localData');
       let localArray = JSON.parse(localData);
       const oldRecord = localArray.find(m => m.id == $("#txtId").val());
@@ -346,7 +346,7 @@ const CityData = '{"Citys":[' +
     }
 
     function deleteDataFromLocal(id) {
-      debugger;
+      // debugger;
       let localData = localStorage.getItem('localData');
       let localArray = JSON.parse(localData);
       let i = 0;
@@ -362,30 +362,30 @@ const CityData = '{"Citys":[' +
     }
 
     function storeColor() {
-        
-        var colorSelect = document.getElementById("color");
-        var selectedColor = colorSelect.options[colorSelect.selectedIndex].value;
+      debugger
+      var nameS = document.getElementById("name").value;
+      var colorSelect = document.getElementById("color").value;
     
-        document.cookie = "selectedColor=" + selectedColor + "; path=/";
+      document.cookie = nameS + "=" + colorSelect;
     
-        
+      var rowIdx =  parseInt(nameS) - 1;
+    
+      if (rowIdx) {
         var rows = document.getElementsByTagName("tr");
-        for (var i = 0; i < rows.length; i++) {
-            rows[i].style.backgroundColor = selectedColor;
+    
+        if (rows.length > rowIdx && rowIdx >= 0) {
+          rows[rowIdx].style.backgroundColor = colorSelect;
+        } else {
+          console.error("Invalid row index: " + rowIdx);
         }
     
-   
-        var header = document.getElementsByTagName("th")[0];
-        header.style.backgroundColor = selectedColor;
-    
-        
-        document.body.style.backgroundColor = selectedColor;
-    
-        
-        var customRow = document.getElementById("custom-row");
-        if (customRow) {
-            customRow.style.backgroundColor = selectedColor;
-        }
+        document.body.style.backgroundColor = colorSelect;
+      } else {
+        console.error("Invalid row number: " + nameS);
+      }
     }
+    
+    
+    
     
     
