@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    
+    <style>
+        .container {
+            margin-top: 100px;
+            border: 5px;
+            background-color: aqua;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <table class="container">
+        <tr>
+            <thread>
+                <th>srno</th>
+                <th>name</th>
+                <th>number</th>
+                <th>city</th>
+                <th>state</th>
+                <th>zipcode</th>
+            </thread>
+        </tr>
+        <tbody id="display">
+            <td id="t1"></td>
+            <td></td>
+            <td></td>
+
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        Add
+    </button>
+    <input type="radio" data-bs-toggle="modal" id="fifo" data-bs-target="#myModal">
+    fifo
+    <input type="radio" data-bs-toggle="modal" id="fifo" data-bs-target="#myModal">
+    lifo
+
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"> Add</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="needs-validation" novalidate>
+                        
+                        <label for="fname">Name</label>
+                        <input type="text" class="form-control is-valid" id="name" placeholder="Enter name"><br>
+                        
+
+                        <label for="number">number</label>
+                        <input type="number" class="form-control is-valid" id="number" placeholder="Enter number"><br>
+
+                        <label for="city">city</label>
+                        <select class="form-select form-select-lg" id="city" name="city">
+                            <option>Select your city</option>
+                            <option>meerut</option>
+                            <option>ahemdabad</option>
+                            <option>moradabad</option>
+                            <option></option>
+
+                        </select><br>
+
+
+
+                        <label for="state">state</label><br>
+                        <select class="form-select form-select-lg" id="state" name="state">
+                            <option>select your state</option>
+                            <option>uttar pradesh</option>
+                            <option>madhya pradesh</option>
+                            <option>gujrat</option>
+                            <option>assam</option>
+                            <option>maharashtra</option>
+                        </select><br>
+
+                        <label for="zip code">zip code</label><br>
+                        <input type="number" placeholder="zipcode" id="zipcode"><br>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" onclick="clickkk()">click</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            <script>
+                function clickkk() {
+
+                    debugger
+                    var srno=document.getElementById("1").value;
+                    1.innerhtml=srno;
+                    var name = document.getElementById("name").value;
+                    var number = document.getElementById("number").value;
+                    var city = document.getElementById("city").value;
+                    var state = document.getElementById("state").value;
+                    var zipcode = document.getElementById("zipcode").value;
+                     
+                    var table = `<tr id="1">
+                        <td>${srno}</td>
+                        <td>${name}</td>
+                        <td>${number}</td>
+                        <td>${city}</td>
+                        <td>${state}</td>
+                        <td>${zipcode}</td>
+                        </tr>`;
+                    document.getElementById("display").innerHTML += table;
+                    
+                   
+                 
+
+                }
+
+            </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</html>
