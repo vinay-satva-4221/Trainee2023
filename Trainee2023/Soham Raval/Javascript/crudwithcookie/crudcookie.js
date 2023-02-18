@@ -109,7 +109,6 @@ function validatecheck() {
 //         }
 //     }
 // }
-
 function validateall() {
     debugger
     // var i = studentsdetails[i];
