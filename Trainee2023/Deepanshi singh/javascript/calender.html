@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+     -->
+     <!-- <link rel="stylesheet" href="./jcalender.css"> -->
+   
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        .modal-header{
+            text-align: center;
+            background-color: aqua;
+        }
+    </style>
+  </head>
+  <body>
+    <div id='calendar'></div>
+    
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" data-toggle="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">PATIENT DETAILS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <label for="patient name">PATIENT NAME:</label>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="name" id="name" class="form-control">
+                </div>
+                <div class="row">
+                    <label for="contact number">CONTACT NUMBER:</label>
+                </div>
+                <div class="row">
+                    <input type="number" placeholder="number" id="numbers" class="form-control">
+                </div>
+                <div class="row">
+                    <label for="contact number">SELECT COLORS:</label>
+                </div>
+                <div class="row">
+                    <select name="select" class="form-control" id="colors">
+                        <option value="select colors">select colors</option>
+                        <option value="red">red</option>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="aqua">aqua</option>
+                    </select>
+                </div>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="add">ADD EVENT</button>
+          <button type="button" class="btn btn-danger">CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="calender.js"></script>
+  
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="calender.js"></script>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <style>
+            .container{
+               margin-top:50px;
+               margin-bottom: 20px;
+            }
+            .row{
+                margin-top: 10px;
+            }
+            .crud{
+                background-color:aqua;
+            }
+            #update{
+                display:none;
+            }
+        </style>
+     
+</head>
+<body id="crud">
+    <div class="container">
+        <form class="needs-validation"novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="name">name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text"placeholder="name" class="form-control" id="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="name">
+                        age
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number"placeholder="age" class="form-control" maxlength="2" id="age">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="name">
+                        Address
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text"placeholder="Address" class="form-control" id="address">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="name">
+                        Email
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="email"placeholder="Email" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="colors">colors</label>
+                </div>
+            </div>
+           <div class="row">
+            <div class="col-md-6">
+            <select name="colors" class="form-control" id="colors">
+            <option value="select colors">select colors</option>   
+            <option value="red">red</option>
+            <option value="yellow">yellow</option>
+            <option value="pink">pink</option>
+            <option value="aqua">aqua</option>
+           </select>
+           </div>
+        </div>
+            <div class="row">
+                <button type="button" class="btn btn-lg btn-success" value="add" onclick="adddata(),getCookie()" id="submit">ADD</button>
+                <button type="button" class="btn btn-lg btn-primary" value="add" onclick="adddata()" id="update">update</button>
+            </div>
+            
+        </form>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover"  id="crudTable">
+                <thead>
+                    <tr>
+                    <th>name</th>
+                    <th> age</th>
+                    <th>address</th>
+                    <th>email</th>
+                    <th>colors</th>
+                    <th>actions</th>
+                    </tr>
+                </thead>
+                <thread>
+                <tbody>
+                  <tr>
+                    
+                    
+                 
+        
+                  </tr>
+                </tbody>
+            </thread>
+              </table>
+        </div> 
+    </div>
+
+    <script src="crud.js"></script>
+    
+    <!-- <script src="jquery/jquery.js"></script> -->
+    <!-- <script src="/path/to/jquery.cookie.js"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+     -->
+</body>
+</html>
