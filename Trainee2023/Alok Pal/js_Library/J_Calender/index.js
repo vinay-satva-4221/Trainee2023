@@ -1,71 +1,97 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
+document.addEventListener("DOMContentLoaded", function () {
+  var calendarEl = document.getElementById("calendar");
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: "dayGridMonth",
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    headerToolbar: {
+      left: "prev,next today",
+      center: "title",
+      right: "dayGridMonth,timeGridWeek,timeGridDay",
+    },
+    selectable: true,
+    editable: true,
+    eventResourceEditable: true,
+    eventClick: function (info) {
+      SweetA(info);
+    },
+  });
+  calendar.render();
 
-      headerToolbar: {
-        left: "prev,next today",
-        center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay",
-      },
-      selectable: true,
-      selectHelper: true,
+  calendar.on("dateClick", function (info) {
+    $("#myM").modal("toggle");
 
-      select: function () {},
+    document.getElementById("saveData").onclick = function () {
+      var inp = document.getElementById("name").value;
+      var inp1 = document.getElementById("num").value;
+      var inp2 = document.getElementById("fcolor").value;
+      var date = info.dateStr;
+      var check = date.includes("+");
+      var tittle = inp + " " + inp1;
 
-      eventClick: function (calEvent, jsEvent, view) {
-        var title = prompt("Event Title:", calEvent.title, {
-          buttons: { Ok: true, Cancel: false },
-        });
-        console.log(calEvent);
-        if (title) {
-          calEvent.title = title;
+      if (inp != "" && inp1 != "") {
+        if (check) {
+          calendar.addEvent({
+            title: tittle,
+            start: date,
+            allDay: false,
+            color: inp2,
+          });
 
-          // $('#calendar').fullCalendar('updateEvent', calEvent);
+        } else {
+          calendar.addEvent({
+            title: tittle,
+            start: date,
+            allDay: true,
+            color: inp2,
+          });
         }
-      },
-    });
+      }
+    };
+  });
 
-    calendar.on('dateClick', function(info)
- {
-        let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal'))
-        modal.show();
-        
-        
-
-        document.getElementById("saveData").onclick = function () {
-            var inp = document.getElementById("name").value;
-            var inp1 = document.getElementById("num").value;
-            var inp2 = document.getElementById("fcolor").value;
-
-            var date = info.dateStr;
-            if (inp != '') {
-
-                console.log(inp);
-                calendar.addEvent({
-                    title:[ inp,inp1,inp2,],
-                    id:inp1,
-                    start: date,
-                    allDay: true,
-                    color: inp2
-                })
-            }
-
-        }
-        
-        
-    });
-    
-
-    calendar.render();
-
+  calendar.render();
 });
 
-// function addMyData()
-// {
-   
+function SweetA(info) {
+  console.log(info);
+  Swal.fire({
+    title: "Do you want to save the changes?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Edit",
+    denyButtonText: "Delete",
+    customClass: {
+      actions: "my-actions",
+      cancelButton: "order-1 right-gap",
+      confirmButton: "order-2",
+      denyButton: "order-3",
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $("#myM").modal("toggle");
 
+      let value = info.event.title;
+      const myArray = value.split(" ");
+
+      $("#name").val(myArray[0]);
+      $("#num").val(myArray[1]);
+      $("#fcolor").val(info.event.backgroundColor);
+
+      document.getElementById("saveData").onclick = function () {
+        var inp = document.getElementById("name").value;
+        var contact = document.getElementById("num").value;
+        var color = document.getElementById("fcolor").value;
+        var tittle = inp + " " + contact;
+        info.event.setProp("title", tittle);
+        info.event.setProp("color", color);
+
+      };
+    } else if (result.isDenied) {
+      info.event.remove();
+    }
+  });
+}
+
+// function resetF() {
+//   document.getElementById("name").value = "";
 // }
-// var c = document.getElementById("saveData").onclick()
-//         console.log(c)
