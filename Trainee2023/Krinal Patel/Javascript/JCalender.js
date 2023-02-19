@@ -5,50 +5,60 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
 
       selectable: true,  
+     
       timeZone: 'UTC',
       initialView: 'dayGridMonth',
+
       headerToolbar: { 
         left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-  
-      dateClick: function(info){
-        //Modal
-        $('#myModal').modal('toggle');
 
-
-      },headerToolbar: {
-        center: 'addEventButton'
+    eventClick: function(info) {
+        alert('Event: ' + info.event.title);
+        console.log(info)
       },
-      customButtons: {
-        addEventButton: {
-          text: 'add event...',
-          click: function() {
-            var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-  
-            if (!isNaN(date.valueOf())) { // valid?
-              calendar.addEvent({
-                title: 'dynamic event',
-                start: date,
-                allDay: true
-              });
-              alert('Great. Now, update your database...');
-            } else {
-              alert('Invalid date.');
-            }
-          }
-        }
-      },  
-
 
       editable: true,
 
     //   events: 'https://fullcalendar.io/api/demo-feeds/events.json'
     });
   
+    calendar.on('dateClick', function(info)
 
+    {
+          //It resets all value when adding new event using Modal 
+          var element = document.getElementById("f");
+          element.reset()
+         
+          let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('myModal'))
+          modal.show();
+         
+    
+          document.getElementById("add").onclick = function () {
+              var name = document.getElementById("name").value;
+              var contact = document.getElementById("cno").value;
+              var colors = document.getElementById("color").value;
+              var date = info.dateStr;
+            //   && contact!='' && colors!=''
+              if (name != '') {
+                  calendar.addEvent({
+                      title: name+"\n"+contact,
+                      start: date,
+                      allDay: true,
+                      color: colors
+                 })
+              }
+        
+              else{
+                alert("Please Enter all the Details to add Event..!!")
+              }
+             
+          }
+  
+        });
+        
     calendar.render();
+  
   });
-
