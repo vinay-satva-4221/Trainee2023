@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jquery/jquery-3.6.3.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Add Data
+                </button>
+
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal Heading</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form id="myform">
+                                    <div class="row">
+                                        <label>Name</label>
+                                        <input class="form-control " id="name" placeholder="enter your Name"
+                                            name="name">
+                                    </div>
+                                    <div class="row">
+                                        <label>State</label>
+                                        <select id="choosestate" class="form-control" name="choosestate">
+                                            <option value="" selected>choose State</option>
+                                            <option value="Haryana">Haryana</option>
+                                            <option value="Punjab">Punjab</option>
+                                            <option value="Rajasthan">Rajasthan</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <label>City</label>
+                                        <select id="choosecity" class="form-control" name="choosecity">
+                                            <option value="">Choose City</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <label>Zip Code</label>
+                                        <input class="form-control " id="zipcode" name="zipcode"
+                                            placeholder="enter your Mobile Number">
+                                    </div>
+                                    <div class="row">
+                                        <label>Phone</label>
+                                        <input class="form-control " id="mobile" name="mobile"
+                                            placeholder="enter your Mobile Number">
+                                    </div>
+
+                                    <input type="button" class="btn btn-primary mt-2" value="Add Data"
+                                        onclick="addData()">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="table-responsive">
+                <table id="dataTable" class="border">
+                    <tr>
+                        <th class="border px-5 ">Name</th>
+                        <th class="border px-5 ">State</th>
+                        <th class="border px-5 ">City</th>
+                        <th class="border px-5 ">Zipcode</th>
+                        <th class="border px-5 ">Mobile</th>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="orderSelection" style="display: none;">
+                <br>
+                <input type="radio" id="LIFO" name="order" value="LIFO" selected>
+                <label for="LIFO">LIFO</label><br>
+                <input type="radio" id="FIFO" name="order" value="FIFO">
+                <label for="FIFO">FIFO</label><br>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script src="./ModalJavaScript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</html>

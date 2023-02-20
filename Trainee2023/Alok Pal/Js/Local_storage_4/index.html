@@ -13,7 +13,9 @@
 
 <body>
     <div class="container mt-3">
-        <div class="text-center" style="font-size: 2rem;" ><p><b>CRUD OPERATION</b></p></div>
+        <div class="text-center" style="font-size: 2rem;">
+            <p><b>CRUD OPERATION</b></p>
+        </div>
         <form class="row mt-2 needs-validation" novalidate>
             <div class="row">
                 <div class="col-lg-6">
@@ -123,14 +125,17 @@
 
             <div class="col-12 my-2 appbtn">
                 <button type="button" class="btn btn-info btn_c " id="save"
-                    onclick="return validateForm() ,selectData()">
-                  <p>  Add Row</p>
+                    onclick="return validateForm() ,selectData(),hide()">
+                    <p> Add Row</p>
                 </button>
-                
+                <button type="button" class="btn btn-info btn_c " id="export" onclick="exportF()">
+                    <p>Export</p>
+                </button>
+
             </div>
     </div>
     <div class="container mt-2">
-        <table class="w3-table-all border table-responsive" id="myTable">
+        <table class="w3-table-all border table-responsive hide" id="myTable">
             <thead>
                 <tr class="w3-blue">
                     <th nowrap class="border ">Sno.</th>
@@ -152,6 +157,7 @@
         </table>
         </form>
     </div>
+
 </body>
 <script src="js/bootstrap.min.js"></script>
 <script src="jquery/jquery.js"></script>
@@ -160,5 +166,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="table2excel.js"></script>
 </html>

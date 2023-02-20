@@ -1,0 +1,10 @@
+body{
+    background-image: linear-gradient(to right, white , skyblue);
+}
+#div1{
+    width:80px;
+    height:80px;
+  
+    src: url(./image.jfif)
+    
+}

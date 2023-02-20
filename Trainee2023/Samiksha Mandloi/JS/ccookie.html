@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaSK</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script src="../Cookie_Task/table-to-excel-master/dist/tableToExcel.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   <style>
+    small{
+    color: red;
+}
+.fade{
+    background-color: rgb(20, 21, 21);
+}
+   </style>
+</head>
+<body>
+
+<!-- 
+    <button type='button' class='edit btn btn-success'>Edit</button>
+    <button type='button' class='delete btn btn-danger'>Delete</button> -->
+    <div class="container">
+        <h2 style="text-align:center;">Cookie Task</h2>
+        <form action="#" id="myform">
+            <div class="row m-3">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" >
+                        <small id="namefails"></small>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >Mobile</label>
+                        <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile">
+                        <small id="mobilefails"></small>
+                      </div>
+                  </div>    
+            </div>
+            <div class="row m-3">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email" >
+                        <small id="emailfails"></small>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >College Name</label>
+                        <input type="text" class="form-control" id="college" placeholder="Enter College Name">
+                        <small id="collegefails"></small>
+                      </div>
+                  </div>    
+            </div>
+            <div class="row m-3">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >CGPA</label>
+                        <input type="text" class="form-control" id="cgpa" placeholder="Enter CGPA" >
+                        <small id="cgpafails"></small>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >Branch Name</label>
+                        <select id="branchname" class="form-control">
+                            <option value="0" selected="" disabled>Select Branch</option>
+                            <option value="computer">Computer</option>
+                            <option value="it">IT</option>
+                            <option value="civil">Civil</option>
+                        </select> 
+                        <small id="branchfails"></small>
+                      </div>
+                  </div>    
+            </div>
+            <div class="row m-3">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label  for="State">State:</label>
+                        <select id="State" class="form-control">
+                            <option value="0" selected="" disabled>Select State</option>
+                        </select>
+                        <small id="statefails"></small>
+                      </div>
+                </div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="City">City:</label>
+                        <select id="City" class="form-control">
+                            <option value="0" selected="selected">Select City</option>
+                        </select>       
+                        <small id="cityfails"></small>
+                      </div>
+                </div> 
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label >Zip</label>
+                        <input type="text" class="form-control" id="zip" placeholder="Enter ZIP" >
+                        <small id="zipfails"></small>
+                      </div>
+                </div>    
+            </div>
+            <div class="row m-3">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label >From to when you studied</label>
+                        <input type="text" class="form-control" id="daterange" value="01/01/2018 - 01/15/2018" />
+                        <small id="studyyears"></small>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label >Colors</label>
+                        <select name="colors" id="colors" class="form-control">
+                            <option value="0">Choose Color</option>
+                            <option value="red">RED</option>
+                            <option value="blue">BLUE</option>
+                            <option value="green">GREEN</option>
+                        </select>
+                        <small id="colorsfails"></small>
+                      </div>
+                </div>
+
+            </div>
+            <div class="row m-3">
+                <div class="col-sm">
+                    <button type="button" id="addrow" class="btn btn-primary">Add Row</button>
+                     <button type="button" id="export" class="btn btn-primary">Export</button>
+                     <button type="button" id="editMain" class="btn btn-primary">Edit</button>
+                     <input type="hidden" name="hidden" id="hidden">
+                     <!-- <button type="button" id="slide" class="btn btn-primary">Slide</button> -->
+                     <button type="button" id="removeCookie" class="btn btn-primary">RemoveCookie</button>
+                </div>
+            </div>
+        </form>
+        <!-- <div class="main">
+            <img src="./website.jpg" alt="this is image">
+        </div> -->
+    </div>
+   
+    <div class="container m-5 text-center">
+        <table class="table  table-responsive container" id="table">
+            
+              
+          </table>
+
+    </div>
+
+
+    <script src="./ccokie.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

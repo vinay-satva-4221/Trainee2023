@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculator</title>
+
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 23px
+    }
+
+    table {
+
+      width: 50%;
+      margin-left: 25%;
+      border: 1px solid black;
+    }
+
+    td {
+      width: 25%;
+      border: 1px solid black;
+    }
+
+    button {
+      width: 100%;
+      height: 70px;
+      font-size: 24px;
+      background-color: white;
+      border: none;
+    }
+
+    #screen {
+      height: 120px;
+      font-size: 40px;
+      vertical-align: bottom;
+      text-align: right;
+      padding-right: 16px;
+      background-color: #ececec;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-family: 'bold';
+      text-align: center;
+    }
+    #screen{
+      background-color: black;
+      color: white;
+    }
+
+    #colr {
+      background-color: orangered;
+    }
+
+    #col {
+      background-color: orangered;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Calculator </h1>
+    <div class="calculator-keys">
+      <table cellspacing="0">
+        <tr>
+           <input type="text" class="calculator-screen" value="" disabled />
+          <td colspan="4" id="screen">0</td>
+        </tr>
+        <tr>
+          <td><button class="operator" onclick="clickbtn(this);">+</button></td>
+          <td><button class="operator" onclick="clickbtn(this);">-</button></td>
+          <td><button class="operator" onclick="clickbtn(this);">*</button></td>
+          <td><button class="operator"  onclick="clickbtn(this);">/</button></td>
+        </tr>
+        <tr>
+          <td><button  onclick="clickbtn(this);">7</button></td>
+          <td><button onclick="clickbtn(this);">8</button></td>
+          <td><button onclick="clickbtn(this);">9</button></td>
+          <td><button onclick="clickbtn(this)">%</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="clickbtn(this);">4</button></td>
+          <td><button onclick="clickbtn(this);">5</button></td>
+          <td><button onclick="clickbtn(this);">6</button></td>
+          <td rowspan="3" id="colr"><button class="equal-sign operator" id="col" onclick="clickbtn(this);">=</button></td>
+        </tr>
+        <tr>
+          <td><button onclick="clickbtn(this);">1</button></td>
+          <td><button onclick="clickbtn(this);">2</button></td>
+          <td><button onclick="clickbtn(this);">3</button></td>
+
+        </tr>
+        <tr>
+          <td><button onclick="clickbtn(this);">0</button></td>
+          <td><button class="decimal" onclick="clickbtn(this);">.</button></td>
+          <td><button class="all-clear" onclick="clickbtn(this);">C</button></td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</body>
+<script>
+  var screen = document.getElementById('screen');
+  // var click = document.getElementById("#inp").innerHTML(clickbtn());
+  function clickbtn(obj) {
+    var click = obj.innerHTML;
+    if (click == '=') {
+      screen.innerHTML = eval(screen.innerHTML);
+    } else if (click == 'C') {
+      screen.innerHTML = '0';
+    } else {
+      if (screen.innerHTML == '0') {
+        screen.innerHTML = click;
+
+      } else {
+        screen.innerHTML += click;
+      }
+    }
+  }
+  const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
+  const { target } = event;
+  if (!target.matches('button')) {
+    return;
+  }
+
+  if (target.classList.contains('operator')) {
+    console.log('operator', target.value);
+    return;
+  }
+
+  if (target.classList.contains('decimal')) {
+    console.log('decimal', target.value);
+    return;
+  }
+
+  if (target.classList.contains('all-clear')) {
+    console.log('clear', target.value);
+    return;
+  }
+
+  console.log('digit', target.value);
+});
+  
+
+
+</script>
+
+</html>

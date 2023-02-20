@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./Jcalendar.css">
+
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ADD PATIENTS DETAILS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                
+                        <label for="">PATIENT NAME:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Patient Name">
+                        <label for="" class="mt-2">CONTACT NUMBER:</label>
+
+                        <input type="text" class="form-control" id="number" placeholder="Enter Contact Number">
+                        <label for="" class="mt-2">Select Color</label>
+
+                        <select name="cars" id="color" class="form-select">
+                            <option value="colors">select colors</option>
+                            <option style="background-color: red;;">Red</option>
+                            <option style="background-color: skyblue">Skyblue</option>
+                            <option style="background-color: yellow;">Yellow</option>
+                            <option style="background-color: green">Green</option>
+                          </select>
+                 
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="saveBtn" data-bs-dismiss="modal">Add Event</button>
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2>JS Task (Calendar)</h2>
+    </div>
+
+    <div id='calendar'></div>
+
+
+    <script src="./Jcalendar.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>
