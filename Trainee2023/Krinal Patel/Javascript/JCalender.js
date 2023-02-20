@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
               var contact = document.getElementById("cno").value;
               var colors = document.getElementById("color").value;
               var date = info.dateStr;
-            //   && contact!='' && colors!=''
-              if (name != '') {
+           
+              if (name != ''   && contact!='' && colors!='') {
                   calendar.addEvent({
                       title: name+"\n"+contact,
                       start: date,
@@ -62,3 +62,36 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
   
   });
+
+
+  function validatename() {
+    let setname = /^[a-zA-Z]+$/;
+    let name = document.getElementById("name").value;
+    let msgname = document.getElementById("invalid_msg");
+    if (!setname.test(name)) {
+        msgname.innerHTML = "*Please enter a characters only..";
+        msgname.style.color = "red";
+        document.getElementById("invalid_msg").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_msg").style.display = "none";
+        return true;
+    }
+}
+
+function validatemobile() {
+    let setmobile = /^[0-9]{10}$/;
+    let mobile = document.getElementById("cno").value;
+    let msgmobile = document.getElementById("invalid_msg1");
+    if (!setmobile.test(mobile)) {
+        msgmobile.innerHTML = "*Please enter 10 digits..";
+        msgmobile.style.color = "red";
+        document.getElementById("invalid_msg1").style.display = "unset";
+
+        return false;
+    } else {
+        document.getElementById("invalid_msg1").style.display = "none";
+        return true;
+    }
+}

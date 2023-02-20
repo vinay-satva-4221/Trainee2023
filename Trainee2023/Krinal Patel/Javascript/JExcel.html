@@ -28,15 +28,13 @@
 <link rel="stylesheet" href="https://bossanova.uk/Jspreadsheet/v4/jexcel.css" type="text/css" />  
 
 <style>
-   #spreadsheet,#tb,table,#button{
+   #spreadsheet,#tb,#button{
     margin-left: 10%;
     width: 100%;
     margin-top: 5%;
     text-align: center;    
 }
-td{
-    width: 100%;
-}
+
 </style>
 
 
@@ -48,13 +46,13 @@ td{
     <div id="spreadsheet"></div>
     <div id="button">    
       <input type="text" id="no">      
-      <button type="button" id="add" class="btn btn-primary" onclick="add(),adddata()">ADD ROW</button><br><br>
+      <button type="button" id="add" class="btn btn-primary" onclick="add()">ADD ROW</button><br><br>
 
 
       <button type="button" id="lastdel" class="btn btn-danger" onclick="j1.deleteRow(1,0);">DELETE LAST ROW</button>
     </div>
     <div id="tb">
-    <table id="table" class="table table-responsive" style="border: 1px solid lightgray;" >
+    <!-- <table id="mytable" class="table table-responsive" style="border: 1px solid lightgray;" >
 
         <tr>
             <td></td>
@@ -70,7 +68,7 @@ td{
         </tr>
          
       
-      </table> 
+      </table>  -->
       
 
     </div>
