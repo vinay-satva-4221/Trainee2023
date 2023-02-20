@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var inp2 = document.getElementById("fcolor").value;
 
             var date = info.dateStr;
-            enterDetails(inp,contact,color);
+            enterDetails(inp,inp1,inp2);
             var check = date.includes("+");
             var tittle = inp + " " + inp1;
 

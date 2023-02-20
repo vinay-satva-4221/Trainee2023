@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var locations = {
-        'Gujarat': ['Ahemdabad', 'Surat', 'Rajkot'],
+        Gujarat: ['Ahemdabad', 'Surat', 'Rajkot'],
         'Maharastra': ['Mumbai','Nashik','Pune'],
         'MadhyaPradesh': ['Indore','Bhopal']
     }

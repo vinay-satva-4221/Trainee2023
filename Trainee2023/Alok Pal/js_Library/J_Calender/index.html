@@ -24,32 +24,32 @@
   <div class="modal fade" id="myM" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <div class="modal-header" style="background-color: rgb(81, 240, 240);">
+          <h5 class="modal-title" id="exampleModalLabel" >Add Patient Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <form id="myForm">
+        <div class="modal-body" style="background-color: rgb(221, 233, 223);">
+          <form  class=" needs-validation" id="myForm">
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Name:</label>
-              <input type="text" class="form-control" id="name">
+              <input type="text" class="form-control" id="name" onkeyup="return vName(key)">
               <label for="message-text" class="col-form-label">Number:</label>
               <input type="text" class="form-control" id="num">
-              <label for="message-text" class="col-form-label">Color:</label> <br>
+              <label for="message-text" class="col-form-label" onkeyup="return vNum(evt)">Color:</label> <br>
               <select name="" id="fcolor" class="form-select">
                 <option value="">Select colors</option>
-                <option value="Green">Green</option>
-                <option value="Voilet">Voilet</option>
-                <option value="red">Red</option>
-                <option value="red">Red</option>
+                <option value="Green" style="background-color: green;">Green</option>
+                <option value="blue" style="background-color: blue;">blue</option>
+                <option value="red" style="background-color: Red;">Red</option>
+                <option value="red" style="background-color: orange;">orange</option>
 
               </select>
             </div>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveData" data-bs-dismiss="modal">Save changes</button>
+        <div class="modal-footer" style="background-color: rgb(221, 233, 223);">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success" id="saveData" data-bs-dismiss="modal">Add Event</button>
         </div>
       </div>
     </div>
