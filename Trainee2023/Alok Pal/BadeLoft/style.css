@@ -38,17 +38,17 @@ body {
 
 #email {
     font-size: .8rem;
-    font-weight: 600;
-    color: rgb(49, 49, 49);
+    font-weight: bold;
+    color: rgb(29, 28, 28);
 }
 
 #password {
     font-size: .8rem;
-    font-weight: 600;
-    color: rgb(75, 75, 75);
+    font-weight: bold;
+    color: rgb(39, 38, 38);
 
 
 }
-#email{
+/* #email{
     font-weight: 500;
-}
+} */
