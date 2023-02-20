@@ -17,66 +17,91 @@ document.addEventListener('DOMContentLoaded', function () {
         //     $("#exampleModal").modal("toggle");
         // },
 
-        dateClick: function (info) {
-            // alert('clicked ' + info.dateStr);
-        },
         selectable: true,
         selectHelper: true,
-
-        // eventClick: function (calEvent, jsEvent, view) {
-        //     if (confirm("Are you sure you want to delete this event?")) {
-        //         $('#calendar').calendar('removeEvents', calEvent.id);
-        //         alert('Event deleted');
-        //     }
-        // },
-        //     let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('deleteModal'))
-        // modal.show();
-
-
-
+        eventResourceEditable: true,
+        eventClick: function (info) {
+            SweetA(info);
+        },
 
         editable: true,
     });
-    calendar.on('eventClick',function(){
-        let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('deleteModal'))
-        modal.show();
-        // alert("delete")
-        // removeEventListener();
 
-    });
 
     calendar.on('dateClick', function (info) {
         let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModal'))
         modal.show();
 
-
-
         document.getElementById("submit").onclick = function () {
             var inp = document.getElementById("name").value;
             var inp1 = document.getElementById("num").value;
             var inp2 = document.getElementById("fcolor").value;
-
             var date = info.dateStr;
-            if (inp != '') {
-
-                console.log(inp);
-                calendar.addEvent({
-                    title: [inp, inp1, inp2,],
-                    id: inp1,
-                    start: date,
-                    allDay: true,
-                    color: inp2
-                })
-
+            var check = date.includes("+");
+            var tittle = inp + " " + inp1;
+            if (inp != "" && inp1 != "") {
+                if (check) {
+                    calendar.addEvent({
+                        title: tittle,
+                        start: date,
+                        allDay: false,
+                        color: inp2,
+                    });
+                } else {
+                    calendar.addEvent({
+                        title: tittle,
+                        start: date,
+                        allDay: true,
+                        color: inp2,
+                    });
+                }
             }
         }
 
 
     });
-
-
     calendar.render();
 });
+
+function SweetA(info) {
+    console.log(info);
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Edit",
+        denyButtonText: "Delete",
+        customClass: {
+            actions: "my-actions",
+            cancelButton: "order-1 right-gap",
+            confirmButton: "order-2",
+            denyButton: "order-3",
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $("#exampleModal").modal("toggle");
+
+            let value = info.event.title;
+            const myArray = value.split(" ");
+
+            $("#name").val(myArray[0]);
+            $("#num").val(myArray[1]);
+            $("#fcolor").val(info.event.backgroundColor);
+
+            document.getElementById("submit").onclick = function () {
+                var inp = document.getElementById("name").value;
+                var contact = document.getElementById("num").value;
+                var color = document.getElementById("fcolor").value;
+                var tittle = inp + " " + contact;
+                info.event.setProp("title", tittle);
+                info.event.setProp("color", color);
+
+            };
+        } else if (result.isDenied) {
+            info.event.remove();
+        }
+    });
+}
 
 
 
