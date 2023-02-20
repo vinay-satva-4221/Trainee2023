@@ -40,9 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
   calendar.on("dateClick", function (info) {
     let modal = bootstrap.Modal.getOrCreateInstance(
       document.getElementById("myModal")
+
     );
     modal.show();
-
+    document.getElementById("patient_name").value=""
+    document.getElementById("mobile").value=""
+    document.getElementById("colors").value=""
+    
     document.getElementById("save").onclick = function () {
       var inp = document.getElementById("patient_name").value;
       var contact = document.getElementById("mobile").value;

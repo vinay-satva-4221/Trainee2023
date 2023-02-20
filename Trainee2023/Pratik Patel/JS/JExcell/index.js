@@ -23,17 +23,17 @@ var table1 = jexcel(document.getElementById('myTable'), {
         // mask: 'h:mm'
     ],
     updateTable: function (instance, cell, col, row, val, label, cellName) {
-        // console.log('instance',instance)
-        // console.log('cell', cell)
-        // console.log('col', col)
-        // console.log('row', row)
-        // console.log('val', val)
-        // console.log('label', label)
-        // console.log('cellName', cellName)
+        // //console.log('instance',instance)
+        // //console.log('cell', cell)
+        // //console.log('col', col)
+        // //console.log('row', row)
+        // //console.log('val', val)
+        // //console.log('label', label)
+        // //console.log('cellName', cellName)
         // alert(data)
-        // console.log(data)
+        // //console.log(data)
         var r = cellName
-        console.log(r)
+        //console.log(r)
 
         var html = "";
 
@@ -44,8 +44,10 @@ var table1 = jexcel(document.getElementById('myTable'), {
 
         data.forEach(function (value, index) {
             var a = index + 1;
+            let value4=timeL(value[4])
+            let value5=timeL(value[5])
             if(col==5){
-                debugger
+                //debugger
                 if(value[5]>value[4]){
                     value[5]=value[4]
                     alert(value[5])
@@ -53,20 +55,16 @@ var table1 = jexcel(document.getElementById('myTable'), {
                 }
             }
             if (col == 6 && cell.innerText != '') {
-                console.log("col value", col);
-                
-                if(value[5]>value[4]){
-                    value[5]=value[4]
-                }
+                //console.log("col value", col);
+            
                 html += "<tr class=text-center>";
                 html += "<td>" + a + "</td>";
                 html += "<td>" + (value)[0] + "</td>";
                 html += "<td>" + (value)[1] + "</td>";
                 html += "<td>" + (value)[2] + "</td>";
                 html += "<td>" + (value)[3] + "</td>";
-                html += "<td>" + (value)[4] + "</td>";
-                html += "<td>" + (value)[5] + "</td>";
-
+                html += "<td>" + value4 + "</td>";
+                html += "<td>" + value5 + "</td>";
                 html += "<td>" + (value)[6] + "</td>";
                 html += "<td>" + (value)[7] + "</td>";
                 html += "<td>" + (value)[8] + "</td>";
@@ -75,7 +73,7 @@ var table1 = jexcel(document.getElementById('myTable'), {
 
 
                 document.getElementById("root").innerHTML = html;
-                
+                timeL(value)
             }
         });
     }
@@ -93,14 +91,14 @@ function addrow() {
 }
 
 function delRow() {
-    debugger
+    //debugger
     alert(data)
-    console.log(data)
+    //console.log(data)
     // alert (data.length)
     let i=data.length
     // alert(data[1][0])
     for (i;i>=0;i--){
-        debugger
+        //debugger
         var s=true
         for (let j=0;j<=9;j++){
             
@@ -125,9 +123,25 @@ function delRow() {
     }
    
 }
+function timeL(value){
+    let r = value
+    // let p=value[5]
+    let time=24*r
+    
+    let a=parseInt(time)
+    // alert(a)
+    let minute=time%a
+    // alert(minute)
+    let b=Math.floor( minute*60)
+    // alert(b)
+     let  time1=a+":"+b;
+    //  alert(time1)
+     return time1
+    
+    }
 
 // function addData() {
 
 //     var r = myTable.getRowData()
-//     console.log(r)
+//     //console.log(r)
 // }

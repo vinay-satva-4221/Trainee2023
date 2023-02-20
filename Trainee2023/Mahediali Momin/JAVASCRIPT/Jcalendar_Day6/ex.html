@@ -61,3 +61,165 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type='module'>
+        document.addEventListener("DOMContentLoaded", function () {
+            var calendarEl = document.getElementById("calendar");
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: "dayGridMonth",
+                headerToolbar: {
+                    left: 'prev next today',
+                    center: "title",
+                    right: "dayGridMonth,timeGridWeek,timeGridDay",
+                },
+                selectable: true,
+                editable: true,
+                eventResourceEditable: true,
+                eventClick: function (info) {
+                    console.log(info);
+                    Swal.fire({
+                        title: "Do you want to save the changes?",
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: "Edit",
+                        denyButtonText: "Delete",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $("#myModal").modal("toggle");
+                            debugger
+                            let value = info.event.title;
+                            const name = value.split(" ");
+
+                            $("#patient_name").val(name[0]);
+                            $("#mobile").val(name[1]);
+                            $("#colors").val(info.event.backgroundColor);
+
+                            document.getElementById("save").onclick = function () {
+                                var patientname = document.getElementById("patient_name").value;
+                                var contactnumber = document.getElementById("mobile").value;
+                                var color = document.getElementById("colors").value;
+                                var label = patientname + " " + contactnumber;
+                                info.event.setProp("title", label);
+                                info.event.setProp("color", color);
+
+                            };
+                        } else if (result.isDenied) {
+                            info.event.remove();
+                        }
+                    });
+                },
+            });
+            calendar.render();
+
+            calendar.on("dateClick", function (info) {
+                $("#myModal").modal("toggle");
+
+                document.getElementById("save").onclick = function () {
+                    let patientname = document.getElementById("patient_name").value;
+                    let contactnumber = document.getElementById("mobile").value;
+                    let color = document.getElementById("colors").value;
+                    var date = info.dateStr;
+                    var dateinsert = date.includes("+");
+                    let label = patientname + " " + contactnumber;
+
+                    if (patientname != "" && contactnumber != "") {
+                        if (dateinsert) {
+                            calendar.addEvent({
+                                title: label,
+                                start: date,
+                                allDay: false,
+                                color: color,
+                            });
+
+                        } else {
+                            calendar.addEvent({
+                                title: label,
+                                start: date,
+                                allDay: true,
+                                color: color,
+                            });
+                        }
+                    }
+                    document.getElementById("patient_name").value = "";
+                    document.getElementById("mobile").value = "";
+                    document.getElementById("colors").value = "";
+                };
+            });
+            calendar.render();
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id='calendar'></div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ADD PATIENT DETAILS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label for="">PATIENT Name:</label>
+                            <input type="text" class="form-control" id="patient_name" placeholder="Enter Patient Name">
+                            <span id="NAME" style="color: red;"></span>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                            <label for="">CONTACT NUMBER:</label>
+                            <input type="text" class="form-control" id="mobile" placeholder="Enter Contact Number">
+                            <span id="MOBILE" style="color: red;"></span>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                            <select name="colors" id="colors" class="form-select">
+                                <option value="">select colors</option>
+                                <option value="green" style="background-color: green;">green</option>
+                                <option value="yellow" style="background-color: yellow;">yellow</option>
+                                <option value="red" style="background-color: red;">red</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">close</button>
+                    <button type="button" id="save" class="btn btn-primary" data-bs-dismiss="modal">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>
