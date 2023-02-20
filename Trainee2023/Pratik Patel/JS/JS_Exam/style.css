@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.image{
+    padding-top: 10%;
+}
+#sideImage{
+    width: 650px;
+    height: 780px;
+    border: 1px black solid;
+    position: relative;
+    box-shadow: 0px 4px 10px #ACACAC33;
+    opacity: 0.7;
+
+}
+#LOGO{
+    position: absolute;
+    top: 500px;
+    left: 350px;
+}
+.loginContents{
+    padding-left: 10%;
+    padding-top: 30%;
+}
+#welcomeText{
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(148, 148, 148);
+    padding-left: 10px;
+}
+img{
+    width: 300px;
+}
+input{
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 4px 10px #ACACAC33;
+border: 1px solid #326C96;
+opacity: 1;
+}
