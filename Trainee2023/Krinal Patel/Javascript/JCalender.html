@@ -16,7 +16,7 @@
     
     <style>
         #calendar{
-            margin: 20%;
+            margin: 10%;
         }
     </style>
   </head>
@@ -25,7 +25,7 @@
 
     <div id='calendar'></div>
 
-    
+    <form id="f">
     <!-- The Modal -->
     <div class="modal" id="myModal" >
         <div class="modal-dialog">
@@ -45,7 +45,7 @@
 
                         
                         <label for="cno">Contact Number</label>
-                        <input type="number" class="form-control" id="cno"><br>
+                        <input type="text" class="form-control" id="cno"><br>
 
                         <label for="color" class="form-label">Color:</label>
                         <select class="form-select" id="color">
@@ -61,14 +61,14 @@
                 </div>
                <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">ADD EVENT</button>
+                    <button type="button" id="add" class="btn btn-success" data-bs-dismiss="modal" >ADD EVENT</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CANCEL</button>
                 </div> 
             </div>
         </div>
 
-        </div>
-
+    </div>
+    </form>
     <script src="JCalender.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

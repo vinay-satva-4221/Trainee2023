@@ -59,21 +59,13 @@ var table = jspreadsheet(document.getElementById('spreadsheet'), {
         });
 
 
-
-
-
-
-
-          
-      
-
     }
     
 
 });
 console.log(data);
 var x=table.getColumnData([3]);
-console.log(x)
+console.log("Hello",Number(x))
 document.getElementById("addrow").onclick = function () {
     var int = document.getElementById('input').value;
     if ((Number(int)) > 0) {
@@ -92,7 +84,8 @@ document.getElementById("deleterow").onclick = function () {
 
 function log1(col) {
 
-    console.log('v',v)
+
+    
 
     var v1 = data[5]
     console.log('v1', v1)
