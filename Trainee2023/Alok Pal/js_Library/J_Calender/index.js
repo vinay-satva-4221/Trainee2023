@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   calendar.on("dateClick", function (info) {
     $("#myM").modal("toggle");
+    $("#name").val("");
+    $("#num").val("");
+    $("#fcolor").val("");
 
     document.getElementById("saveData").onclick = function () {
       var inp = document.getElementById("name").value;
@@ -36,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
             allDay: false,
             color: inp2,
           });
-
         } else {
           calendar.addEvent({
             title: tittle,
@@ -69,6 +71,9 @@ function SweetA(info) {
   }).then((result) => {
     if (result.isConfirmed) {
       $("#myM").modal("toggle");
+      $("#name").val("");
+      $("#num").val("");
+      $("#fcolor").val("");
 
       let value = info.event.title;
       const myArray = value.split(" ");
@@ -77,14 +82,23 @@ function SweetA(info) {
       $("#num").val(myArray[1]);
       $("#fcolor").val(info.event.backgroundColor);
 
-      document.getElementById("saveData").onclick = function () {
-        var inp = document.getElementById("name").value;
-        var contact = document.getElementById("num").value;
-        var color = document.getElementById("fcolor").value;
-        var tittle = inp + " " + contact;
-        info.event.setProp("title", tittle);
-        info.event.setProp("color", color);
-
+      document.getElementById("saveData").onclick = function (e) {
+        let form = document.getElementsByClassName("needs-validation");
+        if (form[0].checkValidity() === false) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        form[0].classList.add("was-validated");
+        if (form[0].checkValidity() === true) {
+          e.preventDefault();
+          e.stopPropagation();
+          var inp = document.getElementById("name").value;
+          var contact = document.getElementById("num").value;
+          var color = document.getElementById("fcolor").value;
+          var tittle = inp + " " + contact;
+          info.event.setProp("title", tittle);
+          info.event.setProp("color", color);
+        }
       };
     } else if (result.isDenied) {
       info.event.remove();
@@ -92,6 +106,20 @@ function SweetA(info) {
   });
 }
 
-// function resetF() {
-//   document.getElementById("name").value = "";
-// }
+function vName(key) {
+  var keycode = key.which ? key.which : key.keyCode;
+
+  if ((keycode > 64 && keycode < 91) || (keycode > 96 && keycode < 123)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function vNum(evt) {
+  evt = evt ? evt : window.event;
+  var charCode = evt.which ? evt.which : evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+}
