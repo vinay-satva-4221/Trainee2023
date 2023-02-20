@@ -22,40 +22,47 @@ data = [
 
         ],
         updateTable: function (instance, cell, col, row, val, label, cellName) {
-
-            console.log('row', row)
-
-
             var r = cellName
             console.log(r)
-
+    
             var html = "";
-
+    
             data.forEach(function (value, index) {
+                var a = index + 1;
+                if(col==5){
+                    debugger
+                    if(value[5]>value[4]){
+                        value[5]=value[4]
+                      
+                        Mytable.updateCell(x=5,y=index,value=value[5],mask= 'h:mm')
+                    }
+                }
                 if (col == 6 && cell.innerText != '') {
                     console.log("col value", col);
-                    var a = index + 1;
+                   
                     html += "<tr class=text-center>";
                     html += "<td>" + a + "</td>";
                     html += "<td>" + (value)[0] + "</td>";
                     html += "<td>" + (value)[1] + "</td>";
                     html += "<td>" + (value)[2] + "</td>";
                     html += "<td>" + (value)[3] + "</td>";
-                    html += "<td>" + (value)[4] + "</td>";
-                    html += "<td>" + (value)[5] + "</td>";
+                    html += "<td>" + (value)[4].mask('h:mm') + "</td>";
+                    html += "<td>" + (value)[5].mask('h:mm') + "</td>";
+    
                     html += "<td>" + (value)[6] + "</td>";
                     html += "<td>" + (value)[7] + "</td>";
                     html += "<td>" + (value)[8] + "</td>";
                     html += "<td>" + (value)[9] + "</td>";
                     html += "</tr>";
-
-
+    
+    
                     document.getElementById("root").innerHTML = html;
+                    
                 }
             });
         }
-});
-    
+    });
+     
 function addrow() {
     var r = parseInt(document.getElementById("num").value)
 

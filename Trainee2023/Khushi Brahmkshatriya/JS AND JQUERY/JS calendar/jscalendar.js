@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var inp = document.getElementById("name").value;
             var inp1 = document.getElementById("num").value;
             var inp2 = document.getElementById("fcolor").value;
-
+            
             var date = info.dateStr;
             enterDetails(inp,inp1,inp2);
             var check = date.includes("+");
@@ -118,11 +118,12 @@ function isNumber(evt) {
     }
     return true;
 }
-function enterDetails(inp,contact,color) {
+function enterDetails(inp,inp1,inp2) {
+    
     // var inp = document.getElementById("name").value;
     // var contact = document.getElementById("num").value;
     // var color = document.getElementById("fcolor").value;
-    if (inp == '' || contact == '' || color == '') {
+    if (inp == '' || inp1 == '' || inp2 == '') {
         document.getElementsByClassName('error').innerHTML = "enter details"
     }
 
