@@ -22,3 +22,21 @@ a{
 #logout{
     margin-right: 5%;
 }
+.mainbody{
+    background-color: rgb(236, 235, 235);
+}
+#stock{
+    font-size: 2rem;
+    color: black;
+}
+#addStock{
+    background-color: #326C96;
+    color: white;
+    margin-left: 70%;
+    height: 50px;
+}
+
+.modal-content{
+    /* width: 200%; */
+    
+}
