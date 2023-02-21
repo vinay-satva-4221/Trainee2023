@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.image{
+    padding-top: 10%;
+}
+#imagediv{
+    
+    background: url(./assets/Background.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 790px;
+    overflow: hidden;
+}
+
+#LOGO{
+    padding-top: 45%;
+}
+.loginContents{
+    padding: 20% 10%;
+
+}
+#welcomeText{
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(148, 148, 148);
+    padding-left: 10px;
+}
+img{
+    width: 300px;
+}
+input{
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 0px 4px 10px #ACACAC33;
+border: 1px solid #326C96;
+opacity: 1;
+}
+.error{
+    color: red;
+}
+/* hr{
+    
+    width: 50px;
+
+} */

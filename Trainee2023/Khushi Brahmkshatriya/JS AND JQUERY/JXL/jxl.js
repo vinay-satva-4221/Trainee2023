@@ -1,115 +1,86 @@
-$(document).ready(function () {
-    var Mytable = jspreadsheet(document.getElementById('spreadsheet'), {
-        data: [[]],
-        columns:
-            [
-                { type: 'dropdown', title: 'Project Name', width: 200, source: ['ABC', 'XYZ', 'PQR'], },
-                { type: 'calendar', title: 'Timelog Date', width: 100, },
-                { type: 'dropdown', title: 'Phase', width: 100, source: [{ id: 1, name: 'Analysis' }, { id: 2, name: 'Design' }, { id: 3, name: 'Development' }, { id: 2, name: 'Bug' }], },
-                { type: 'dropdown', title: 'Status', width: 100, source: [{ id: 1, name: 'Working' }, { id: 2, name: 'Completed' }], },
-                { type: 'text', title: 'Logged Hours', width: 50, mask: 'h:mm' },
-                { type: 'text', title: 'Bilable Hours', width: 50, mask: 'h:mm' },
-                { type: 'text', title: 'Notes', width: 100 },
-                { type: 'checkbox', title: 'Out Of Stock', width: 50 },
-                { type: 'text', title: 'BC link', width: 100 },
-                { type: 'text', title: 'Bs Description', width: 150 },
 
-            ],
-        // updateTable: function (instance, cell, col, row, val, label, cellName) {
+data = [
+    ['', '', '', '', '', '', ''],
 
-        //     if (col == 5) {
-        //         // Get text
+]
 
-        //         txt = cell.innerText;
-        //         // Format text
-        //         col=6
-        //         col.innerHTML = txt;
-        //     }
-        // }
+    var Mytable = jexcel(document.getElementById('spreadsheet'), {
+   
+        data: data,
+        columns: [
+            { title: 'Project \n Name*', width: 150, type: 'dropdown', source: ['ABC', 'XYZ','PQR'] },
+            { title: 'TimeLog \n Date*', width: 100, type: 'calendar', options: { format: 'DD/MM/YYYY' } },
+            { title: 'Phase*', width: 100, type: 'dropdown', source: ['Analysis', 'Bug Fixing', 'Communiction', 'Devlopment', 'Design', 'Estimation', 'Prototype'] },
+            { title: 'Status*', width: 100, type: 'dropdown', source: ['Completed', 'Pending', 'Solved', 'Working'] },
+            { title: 'Logged \n Hours*', width: 80, type: 'text', mask: 'h:mm' },
+            { title: 'Billable \n hours*', width: 80, type: 'text', mask: 'h:mm' },
+            { title: 'Notes*', width: 180, type: 'text' },
+            { title: 'Out\n of \nStock', width: 100 , type: 'checkbox' },
+            { title: 'BC \nlink', width: 100, type: 'text' },
+            { title: 'BC \n Description', width: 100, type: 'text' },
 
 
-
-    });
-
-    // $('#DeleteRow').click(function () {
-    //     for(let i=0;i<Mytable.row.length;i++){
-    //         var r = Mytable.getRowData([i]);
-    //         for(let j=0;j<=9;j++){
-    //             var o=true
-    //             if(j==7)
-    //             {
-    //                 if(r[i][j]==false){
-    //                     o=false
-    //                     break
-
-    //                 }
-
-    //             }
-    //             if(r[i][j]=="" && o==false){
-
-    //                 Mytable.deleteRow(i)
-
-    //             }
-    //         }
-    //         console.log(r)
-    //     }
-
-    // })
-    $('#addrow').click(function () {
-        var row = parseInt($('#rownumber').val());
-        Mytable.insertRow(row);
-
-        var r1 = Mytable.getRowData([0]);
-        console.log(r1)
+        ],
+        updateTable: function (instance, cell, col, row, val, label, cellName) {
+            var r = cellName
+            console.log(r)
     
-        for (let i = 1; i <= Mytable; i++) {
+            var html = "";
     
-            html += "<tr class=text-center>";
-            html += "<td>" + (i + 1) + "</td>";
-            html += "<td>" + Mytable[i].cell[0] + "</td>";
-            // html += "<td>" + element.mobile + "</td>";
-            // html += "<td>" + element.email + "</td>";
-            // html += "<td>" + element.collage + "</td>";
-            // html += "<td>" + element.cgpa + "</td>";
-            // html += "<td>" + element.branch + "</td>";
-            // html += "<td>" + element.state + "</td>";
-            // html += "<td>" + element.city + "</td>";
-            // html += "<td>" + element.zip + "</td>";
-            // html += "<td>" + element.date + "</td>";
-            // html += "<td>" + color + "</td>";
-            html += "</tr>";
+            data.forEach(function (value, index) {
+                var a = index + 1;
+                if(col==5){
+                    debugger
+                    if(value[5]>value[4]){
+                        value[5]=value[4]
+                      
+                        Mytable.updateCell(x=5,y=index,value=value[5],mask= 'h:mm')
+                    }
+                }
+                if (col == 6 && cell.innerText != '') {
+                    console.log("col value", col);
+                   
+                    html += "<tr class=text-center>";
+                    html += "<td>" + a + "</td>";
+                    html += "<td>" + (value)[0] + "</td>";
+                    html += "<td>" + (value)[1] + "</td>";
+                    html += "<td>" + (value)[2] + "</td>";
+                    html += "<td>" + (value)[3] + "</td>";
+                    html += "<td>" + (value)[4] + "</td>";
+                    html += "<td>" + (value)[5] + "</td>";
     
-            
+                    html += "<td>" + (value)[6] + "</td>";
+                    html += "<td>" + (value)[7] + "</td>";
+                    html += "<td>" + (value)[8] + "</td>";
+                    html += "<td>" + (value)[9] + "</td>";
+                    html += "</tr>";
+    
+    
+                    document.getElementById("root").innerHTML = html;
+                    
+                }
+            });
         }
-        document.getElementById("root").innerHTML = html;
-    
+    });
+     
+function addrow() {
+    var r = parseInt(document.getElementById("num").value)
 
+    for (let i = 0; i < r; i++) {
+        Mytable.insertRow();
+    }
 
-    })
-    $('#DeleteRow').click(function () {
-        Mytable.deleteRow();
-    })
+    document.getElementById("num").value = ""
 
+}
 
-  
+function delRow() {
+    Mytable.deleteRow();
+}
 
-})
+function addData() {
 
+    var r = spreadsheet.getRowData()
+    console.log(r)
+}
 
-// if (row == 0) {
-//     if (col == 1 || col == 2 || col == 3 || col == 4 || col == 5 || col == 6) {
-//         r = cell.innerHTML
-//         console.log(r)
-
-//         for (let i = 0; i < Mytable; i++) {
-//             if (col == 1 || col == 2 || col == 3 || col == 4 || col == 5 || col == 6) {
-//                 if (r == '') {
-//                     Mytable.deleteRow(i);
-//                 }
-//             }
-//         }
-//     }
-
-//     // cell.style.backgroundColor = '#f46e42';
-//     // cell.style.color = '#ffffff';
-// }
