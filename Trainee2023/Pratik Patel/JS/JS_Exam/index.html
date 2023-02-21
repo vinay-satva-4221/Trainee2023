@@ -16,11 +16,11 @@
 
     </head>
     <body>
-        <div class="container ">
+        <div class="container-fluid ">
             <div class="row">
-                <div class="col-lg-6 text-center">
-                    <img src="./assets/Background.png" alt="background image"
-                        id="sideImage" class="img-fluid">
+                <div class="col-lg-6 text-center d-none d-md-block" id="imagediv">
+                    <!-- <img src="./assets/Background.png" alt="background image"
+                        id="sideImage" class="img-fluid"> -->
                     <img src="./assets/White-logo.png" alt="Company Logo" id="LOGO"
                         class="img-fluid">
                 </div>
@@ -29,7 +29,7 @@
                         <img src="./assets/02@2x.png" alt="Company Logo"
                             class="img-fluid">
                         <br>
-                        <span id="welcomeText">Wlcome,Let's Get Started</span>
+                        <span id="welcomeText">Welcome,Let's Get Started</span>
                         <form class="m-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b> Email
@@ -45,7 +45,7 @@
                                     placeholder="Password">
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-primary from-control">Submit</button>
+                            <button type="button" class="btn btn-primary form-control" id="submit">Log In</button>
                         </form>
                     </div>
                 </div>

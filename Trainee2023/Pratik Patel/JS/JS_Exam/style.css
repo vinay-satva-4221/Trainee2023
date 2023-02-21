@@ -3,23 +3,20 @@
 .image{
     padding-top: 10%;
 }
-#sideImage{
-   height: 780px;
-    width: 1500px;
-    border: 1px black solid;
-    position: relative;
-    box-shadow: 0px 4px 10px #ACACAC33;
-    opacity: 0.7;
-
+#imagediv{
+    
+    background: url(./assets/Background.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 745px;
 }
+
 #LOGO{
-    position: absolute;
-    top: 500px;
-    left: 350px;
+    padding-top: 60%;
 }
 .loginContents{
-    padding-left: 10%;
-    padding-top: 30%;
+    padding: 30% 10%;
+
 }
 #welcomeText{
     font-size: 1.3rem;
