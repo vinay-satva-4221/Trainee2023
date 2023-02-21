@@ -1,7 +1,7 @@
 $(document).ready(function () {
   var users = [
-    ["pratik@gmail.com", "Pratik123", "Pratik", "Admin"],
-    ["alok@gmail.com", "12345678", "Alok", "Admin"],
+    ["pratik@gmail.com", "Pratik@123", "Pratik", "Admin","./assets/stock/user.jpg"],
+    ["alok@gmail.com", "Alok@123", "Alok", "Admin","./assets/stock/user2.jpg"],
   ];
   $.validator.addMethod("Emailcheck", function (value) {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
@@ -43,7 +43,7 @@ $(document).ready(function () {
       let email = $("#email").val();
       let password = $("#password").val();
       // window.location.href = "stock.html";
-
+      debugger
       var logInUser = new Array();
       debugger;
       for (let i = 0; i < users.length; i++) {
@@ -54,11 +54,14 @@ $(document).ready(function () {
             Name: users[i][2],
             Email: users[i][0],
             Type: users[i][3],
+            Picture:users[i][4]
           });
         }
       }
+      localStorage.setItem("LogedinUser",JSON.stringify(logInUser))
       window.location.href = "stock.html";
     }
     alert(result);
   });
+  
 });
