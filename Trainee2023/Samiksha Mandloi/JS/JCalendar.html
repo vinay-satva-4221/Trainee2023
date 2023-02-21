@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <title>JCalendar Task</title>
+  <head>
+    <meta charset='utf-8' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <style>
+        html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: 1100px;
+  margin: 40px auto;
+}
+h1{
+    text-align: center;
+}
+    </style>
+   
+  </head>
+  <body>
+
+    <h1>JCalendar Task</h1>
+    <div id='calendar'></div>
+
+    <!-- Modal popup -->
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Patient Name</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <form class="was-validated">
+                    <div class="form-group">
+                        <label>Patient Name</label>
+                        <input type="text" class="form-control is-invalid" id="patient_name" placeholder="Enter your  Name " required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact number</label>
+                        <input type="tel" class="form-control is-invalid" id="mobile" placeholder="Enter your Contact number " required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label>Select color</label>
+                        <select class="form-select is-invalid" aria-label="Default select example" id="colors" required>
+                            <option disabled selected>Select a Color</option>
+                            <option value="Blue" style="background-color: blue;">Blue</option>
+                            <option value="Red" style="background-color: Red;">Red</option>
+                            <option value="Yello" style="background-color: yellow;">Yellow</option>
+                        </select>
+    
+                    </div>
+                    </form>
+                    
+            </div>
+        </div>
+        <div class="modal-footer" style="float:left">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="save">Add Event</button>
+          <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+        
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            editable: 'true',
+            initialView: 'dayGridMonth',
+            initialDate: '2023-02-07',
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            selectable: true,
+        selectHelper: true,
+        select: function (start, end, allDay) {
+            console.log(start, end, allDay)
+            $(".modal").modal("show");
+      $(".modal")
+        .find("#fname")
+        .val("");
+      $(".modal")
+        .find("#lname")
+        .val("");
+      $(".modal")
+        .find("#select")
+        .val("");
+      $("#exampleModal").show();
+      $("input").prop("readonly", false);
+            
+            $("#exampleModal").modal("toggle");
+        },
+        eventClick: function(calEvent, jsEvent) {
+            debugger;
+      // Display the modal and set event values.
+      $(".modal").modal("show");
+      $(".modal")
+        .find("#fname")
+        .val(calEvent.title);
+      $(".modal")
+        .find("#lname")
+        .val(calEvent.start);
+      $(".modal")
+        .find("select")
+        .val(calEvent.end);
+      $("#save").hide();
+      $("input").prop("readonly", true);
+    },
+        
+            dateClick: function(info) {
+                
+                $('#calendar').append(eventData);
+    // alert('Clicked on: ' + info.dateStr);
+    // info.dayEl.style.backgroundColor = 'red';
+  },
+            events: [
+              {
+                title: 'All Day Event',
+                start: '2023-02-01'
+              },
+             
+            ]
+          });
+          $("#save").on("click", function(event) {
+            debugger;
+            
+    var title = $("#fname").val();
+    if (title) {
+      var eventData = {
+        title: title,
+        start: $("#lname").val(),
+        end: $("#select").val()
+      }
+    }
+});
+     
+
+        
+          calendar.render();
+
+         
+
+        });
+
+        
+        
+            </script>
+  </body>

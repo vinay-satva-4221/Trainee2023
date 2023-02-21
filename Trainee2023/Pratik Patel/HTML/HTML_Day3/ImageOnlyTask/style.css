@@ -1,0 +1,12 @@
+.container{
+    margin: 10%;
+    border: 2px solid black;
+    width: 70%;
+    height: 200px;
+    }
+#first{
+    margin: 30px; font-size: 25px;
+}
+#second{
+    margin: 30px; margin-top: 10px
+}

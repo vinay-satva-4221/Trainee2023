@@ -56,6 +56,11 @@ const CityData = '{"Citys":[' +
         debugger;
         const id = $(this).parent().parent().find(".txtName").attr("data-id");
         deleteDataFromLocal(id);
+        swal({ 
+          title: "Delete", 
+          text: "deleted successfully", 
+          type: "success" 
+      }); 
       });
 
       $("#btnSave").click(function () {
@@ -69,13 +74,34 @@ const CityData = '{"Citys":[' +
           updateDataFromLocal();
         }
     }
-    else  {}  
+    else  {} 
+    swal({ 
+      title: "Save", 
+      text: "Your data has been saved", 
+      type: "success" 
+  }); 
       });
+
+
 
       $("#btnClear").click(function () {
         debugger;
         clearForm();
       });
+
+    //   $(function () {
+    //     $("#btnExport").click(function () {
+    //         $("#tblData").table2excel({
+    //           exclude: ".noExl",
+    //           name: "Excel Document Name",
+    //           filename: "table2excel",
+    //           fileext: ".xls",
+    //           exclude_img: true,
+    //           exclude_links: true,
+    //           exclude_inputs: true
+    //         });
+    //     });
+    // });
       
     $("#basic_form").validate({
 
@@ -173,8 +199,25 @@ const CityData = '{"Citys":[' +
             }
         });
     });
-
+       
+    $("#btnExport").click(function() {
+      $("#tblData").table2excel({
+        exclude: ".noExl",
+        name: "Excel Document Name",
+        filename: "table2excel",
+        fileext: ".xls",
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true
+      });
+      swal({ 
+        title: "Download this File", 
+        text: "Downloaded successfully", 
+        type: "success" 
+    }); 
     });
+  });
+  
 
     function clearForm() {
       debugger;
@@ -218,10 +261,7 @@ const CityData = '{"Citys":[' +
             dtr = dtr + "<td class='txtCity' >" + element.City +  "</td>";
             dtr = dtr + "<td class='txtzipcode' >" + element.zipcode +  "</td>";
             dtr = dtr + "<td class='txtdaterange' >" + element.daterange +  "</td>";
-            dtr = dtr + "<td class='tdAction text-center'>";
-            dtr = dtr + "<button class='btn btn-sm btn-success btn-edit' type='button'> Edit </button>"; 
-            dtr = dtr + "<button class='btn btn-sm btn-danger btn-delete' > Delete </button>";
-            dtr = dtr + "</td>";
+            dtr = dtr + "<td class='tdAction'><button class='btn btn-sm btn-success btn-edit' type='button'> Edit </button><button class='btn btn-sm btn-danger btn-delete' > Delete </button></td>";
             dtr = dtr + "</tr>";
             $("#tblData tbody").append(dtr);
           index++;

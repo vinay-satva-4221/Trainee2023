@@ -100,19 +100,22 @@ $(document).ready(function () {
         console.log(result);
 
         if (result == true) {
-          
+
             addDataToLocal();
-            
+            location.reload(true);
         }
     });
 
+
     function addDataToLocal() {
-        debugger
+
         var name = $('#name').val();
         var mobile = $('#mobile').val();
         var State = $('#State').val();
         var City = $('#City').val();
         var zip = $('#zip').val();
+        var approach = $("input[name='approach']:checked").val();
+        console.log(approach);
 
         var FifoLifoData = {
             Name: name,
@@ -121,24 +124,42 @@ $(document).ready(function () {
             City: City,
             Zip: zip
         }
-        
+
         var localData = JSON.parse(localStorage.getItem("FifoLifoData"));
 
         if (localData === null) {
             MyArray = [];
-           
+
         }
-        else if(localData.lenght===5){
-            
-            MyArray= localData;
+        else {
+
+            MyArray = localData;
         }
-        
-        
-        if($('#FIFO').val()==="FIFO"){
-            MyArray.pop();
+
+        console.log(MyArray.length);
+        var sizeOFarray = MyArray.length;
+        if (sizeOFarray < 5) {
             MyArray.push(FifoLifoData);
             localStorage.setItem('FifoLifoData', JSON.stringify(MyArray));
         }
+
+        if (approach === "LIFO") {
+
+            var popData = MyArray.pop();
+            console.log(popData);
+            MyArray.push(FifoLifoData);
+            localStorage.setItem('FifoLifoData', JSON.stringify(MyArray));
+
+        }
+        if (approach === "FIFO") {
+
+            var popData = MyArray.shift();
+            console.log(popData);
+            MyArray.push(FifoLifoData);
+            localStorage.setItem('FifoLifoData', JSON.stringify(MyArray));
+
+        }
+
 
     }
 
@@ -150,18 +171,20 @@ $(document).ready(function () {
             $("#tblData tbody").html("");
             let localArray = JSON.parse(localData);
             let dynamicTR = "";
+            let srNo = 1;
+            localArray.forEach((data) => {
 
-            localArray.forEach((data, index) => {
                 dynamicTR = dynamicTR + "<tr>";
-                dynamicTR = dynamicTR + "<td> " + index + "</td>";
+                dynamicTR = dynamicTR + "<th scope='row'> " + srNo + "</th>";
                 dynamicTR = dynamicTR + "<td class='txtName'>" + data.Name + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtMobile'>" + data.Mobile + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtMobile'>" + data.State + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtMobile'>" + data.City + "</td>";
                 dynamicTR = dynamicTR + "<td class='txtMobile'>" + data.Zip + "</td>";
                 dynamicTR = dynamicTR + " </tr>";
-
+                srNo++;
             });
+
             $("#tblData tbody").append(dynamicTR);
         }
     }

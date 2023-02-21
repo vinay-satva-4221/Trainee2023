@@ -114,7 +114,6 @@ function showData() {
     html += "</tr>";
 
     document.getElementById("root").innerHTML = html;
-    // document.querySelector("crudTable tbody").innerHTML = html;
   });
 }
 

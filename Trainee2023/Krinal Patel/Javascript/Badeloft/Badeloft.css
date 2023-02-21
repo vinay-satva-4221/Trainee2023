@@ -1,0 +1,48 @@
+.parent {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 50%;
+  }
+  
+  .image1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:700px;
+    height:700px;
+
+  }
+  
+  .image2 {
+    position: absolute;
+    top: 280px;
+    left: 150px;
+  }
+  .head_login{
+    top: 500px;
+  }
+ .parentright{
+    /* position: fixed; */
+    margin-top: 8%;
+    margin-left: 60%;
+
+ }
+ #login_form{
+    margin: 10%;
+ }
+ .container{
+    position: fixed;
+ }
+ .lg1{
+    background-color: #326C96;
+ }
+
+ @media only screen and (max-width: 700px) {
+   .parent {
+     display: none;
+   }
+   .parentright{
+      margin-left: 0;
+   }
+ }
