@@ -8,7 +8,7 @@ data = [
    
         data: data,
         columns: [
-            { title: 'Project \n Name*', width: 150, type: 'dropdown', source: ['New', 'Used'] },
+            { title: 'Project \n Name*', width: 150, type: 'dropdown', source: ['ABC', 'XYZ','PQR'] },
             { title: 'TimeLog \n Date*', width: 100, type: 'calendar', options: { format: 'DD/MM/YYYY' } },
             { title: 'Phase*', width: 100, type: 'dropdown', source: ['Analysis', 'Bug Fixing', 'Communiction', 'Devlopment', 'Design', 'Estimation', 'Prototype'] },
             { title: 'Status*', width: 100, type: 'dropdown', source: ['Completed', 'Pending', 'Solved', 'Working'] },
@@ -46,8 +46,8 @@ data = [
                     html += "<td>" + (value)[1] + "</td>";
                     html += "<td>" + (value)[2] + "</td>";
                     html += "<td>" + (value)[3] + "</td>";
-                    html += "<td>" + (value)[4].mask('h:mm') + "</td>";
-                    html += "<td>" + (value)[5].mask('h:mm') + "</td>";
+                    html += "<td>" + (value)[4] + "</td>";
+                    html += "<td>" + (value)[5] + "</td>";
     
                     html += "<td>" + (value)[6] + "</td>";
                     html += "<td>" + (value)[7] + "</td>";
