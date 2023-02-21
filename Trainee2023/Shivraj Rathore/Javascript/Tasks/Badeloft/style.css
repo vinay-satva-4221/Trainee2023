@@ -11,41 +11,7 @@
   line-height: 34px;
 }
 
-.password-input-container {
+#logiamge {
   position: relative;
 }
 
-.input-group {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.input-group>input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.input-group>button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-@media (max-width: 768px) {
-  .password-input-container {
-    width: 100%;
-  }
-
-  .input-group>input,
-  .input-group>button {
-    width: 100%;
-    border-radius: 0;
-  }
-
-  .input-group>button {
-    position: static;
-  }
-}
