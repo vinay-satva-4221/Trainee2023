@@ -11,35 +11,49 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <img src="Images/login page.png" alt="" srcset="" id="loginpageimg">
-                <img src="Images/logo.png" alt="" srcset="" id="titlelogo">
-            </div>
-            <div class="col-lg-6">
-                <form class="row g-3">
-                    <img src="Images/logo title.png" id="logo" alt="logo" srcset="">
-                    <div class="col-md-10">
-                        <label for="inputEmail4" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="inputemail" placeholder="Email Address" required>
+    <section class="vh-100" id="basic_form">
+        <div class="container-fluid">
+            <!-- images on Login page -->
+            <div class="row">
+                <div class="col-md-6 px-0 d-none d-md-block">
+                    <img src="Images/Background@2x.png" alt="" srcset="" id="loginpageimg" class="w-100 vh-100"
+                        style="object-fit: cover">
+                    <img src="Images/logo.png" alt="" srcset="" id="titlelogo">
+                </div>
+
+
+                <!-- form side -->
+                <div class="col-md-6 text-black">
+                    <div class="d-flex align-items-center px-5  mt-5 pt-5">
+                        <form class="row g-3" style="width: 23rem" id="login_form">
+                            <img src="Images/02@2x.png" class="mt-5" />
+                            <p class="mt-3 fw-bold">Welcome, Let's Get Started!</p>
+                            <div class="form-outline mb-4 mt-5">
+                                <label for="inputEmail4" class="form-label" id="emaillable">Email Address</label>
+                                <input type="email" class="form-control" id="inputemail" placeholder="Email Address"
+                                    name="email">
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label for="inputPassword4" class="form-label" id="passwordlable">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    name="password">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn " id="login">Log in</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-10">
-                        <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
-                    </div>
-                    <div class="col-md-10 d-grid gap-1">
-                        <button type="submit" class="btn " id="login">Log in</button>
-                    </div>
-                </form>
+
+                </div>
             </div>
         </div>
+    </section>
 
-
-    </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="jquery/jquery.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Lora', serif;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: hidden;
 }
 
 .image {
@@ -15,15 +17,20 @@ body {
     margin-left: 5%;
 }
 
+/* Shifting the image */
+#logo {
+    margin-left: -4.5%;
+}
+
 .logo1 {
     margin-left: -1%;
-    width: 60%;
+    width: 50%;
 }
 
 .head {
-    font-weight: 600;
-    color: rgb(75, 75, 75);
-
+    font-size: 15px;
+    color: #313030;
+    opacity: 80%;
 }
 
 .formS {
@@ -31,24 +38,132 @@ body {
 }
 
 .form {
-    width: 55%;
+    width: 60%;
     margin-left: 25%;
     margin-top: 23%;
 }
 
 #email {
-    font-size: .8rem;
-    font-weight: 600;
-    color: rgb(49, 49, 49);
+    font-size: .7rem;
+    font-weight: bold;
+    color: #313131;
+    opacity: 90%;
 }
 
 #password {
-    font-size: .8rem;
-    font-weight: 600;
-    color: rgb(75, 75, 75);
+    font-size: .7rem;
+    font-weight: bold;
+    color: #313131;
 
 
 }
-#email{
-    font-weight: 500;
+
+.femail {
+    font-weight: bold;
+    color: rgb(39, 38, 38);
+}
+
+.btnLog{
+   width: 100%; background-color: #003153; color: white;
+}
+
+.line{
+    width: 8%;
+    margin-top: -4%;
+}
+hr:not([size]) {
+    height: 2px;
+    background-color: #0004ff;
+}
+
+
+/* Eroors */
+#errorE {
+    font-size: 11px;
+    font-weight: bold;
+    color: red;
+}
+
+#errorP {
+    font-size: 11px;
+    font-weight: bold;
+    color: red;
+}
+
+
+
+/* Media Queries */
+@media only screen and (max-width: 767px) {
+    #logo {
+        display: none;
+    }
+
+    .form {
+        width: 80%;
+        margin-left: 15%;
+        margin-top: 23%;
+    }
+}
+
+
+
+
+
+
+/*Dashboard Css  */
+/* nav */
+body{
+    overflow-x: hidden;
+}
+.Dlogo {
+    width: 165px;
+    margin-left: -5%;
+}
+
+.nav-item {
+    margin-right: 5%;
+}
+.navItem{
+    margin-right: 25%;
+}
+
+.dimg{
+    width: 20%;
+}
+
+.adminImg {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.welcome {
+    font-size: 11px;
+    opacity: 70%;
+    margin-bottom: -0%;
+    margin-top: 7%;
+}
+.getN{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dynamicN{
+    font-size: medium;
+    font-weight: bold;
+    margin-top: -29%;
+
+}
+
+.table_head{
+    background-color: black;
+    color: white;
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 575px) {
+    .Dlogo {
+        width: 165px;
+        margin-left: -2%;
+    }
 }

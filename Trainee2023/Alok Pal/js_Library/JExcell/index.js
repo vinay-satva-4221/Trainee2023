@@ -78,14 +78,15 @@ function addData() {
     var r = myTable.getRowData()
 }
 
+
 function timeL(value){
-let r = value[4]
-console.log(r)
-let a =toString( 24*r)
-
-console.log(typeof(a))
-
-let b =a.split(".")
-console.log(b)
-
-}
+    let r = value
+    let time=24*r
+    
+    let a=parseInt(time)
+    let minute=time%a
+    let b=Math.floor( minute*60)
+     let  time1=a+":"+b;
+     return time1
+    
+    }

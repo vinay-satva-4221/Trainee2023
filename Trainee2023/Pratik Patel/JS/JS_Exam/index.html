@@ -16,12 +16,14 @@
 
     </head>
     <body>
-        <div class="container ">
+        <div class="container-fluid ">
             <div class="row">
-                <div class="col-lg-6 text-center">
-                    <img src="./assets/Background.png" alt="background image"
-                        id="sideImage" class="img-fluid">
-                    <img src="./assets/White-logo.png" alt="Company Logo" id="LOGO"
+                <div class="col-lg-6 text-center d-none d-md-block"
+                    id="imagediv">
+                    <!-- <img src="./assets/Background.png" alt="background image"
+                        id="sideImage" class="img-fluid"> -->
+                    <img src="./assets/White-logo.png" alt="Company Logo"
+                        id="LOGO"
                         class="img-fluid">
                 </div>
                 <div class="col-lg-6">
@@ -29,64 +31,38 @@
                         <img src="./assets/02@2x.png" alt="Company Logo"
                             class="img-fluid">
                         <br>
-                        <span id="welcomeText">Wlcome,Let's Get Started</span>
-                        <form class="m-3">
+                        
+                        <span id="welcomeText">Welcome,Let's Get Started</span>
+                        <!-- <hr> -->
+                        <form class="m-3" id="form">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b> Email
                                         address</b></label>
                                 <input type="email" class="form-control "
-                                    id="email" placeholder="Enter email">
+                                    id="email" placeholder="Enter email"
+                                    name="email">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b> Password</b></label>
                                 <input type="password" class="form-control"
-                                    id="exampleInputPassword1"
+                                    id="password" name="password"
                                     placeholder="Password">
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-primary from-control">Submit</button>
+                            <button type="button" class="btn btn-primary
+                                form-control" id="submit">Log In</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <!-- <div class="container d-flex">
-               
-                <div class="image">
-                    <img src="./assets/bgIMAGE.png" alt="background image"
-                        id="sideImage" class="img-fluid">
-                </div>
-                
-                <div class="formContents">
-                    <img src="./assets/logo.webp" alt="Company Logo"
-                        class="img-fluid">
-                    <br>
-                    <span id="welcomeText">Let's Get Started</span>
-                    <form class="m-3">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"><b> Email address</b></label>
-                            <input type="email" class="form-control " id="email"
-                                placeholder="Enter email" required>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1"><b> Password</b></label>
-                            <input type="password" class="form-control"
-                                id="password" placeholder="Password" required>
-                        </div>
-                        <br>
-                        <button type="button" class="btn btn-primary
-                            form-control" id="submit">Submit</button>
-                    </form>
-                </div>
-
-            </div> -->
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="jquery/jquery.js"></script>
         <script src="index.js"></script>
+        <script src="stock.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>
     </body>
-
 </html>
