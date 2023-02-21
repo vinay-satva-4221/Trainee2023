@@ -1,0 +1,155 @@
+                         /* login page css */
+#loginpageimg {
+    position: relative;
+}
+
+#titlelogo {
+    position: absolute;
+    width: 200px;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#emaillable,
+#passwordlable {
+    font-size: 16px;
+}
+
+#login {
+    color: #f7fdff;
+    background-color: #07678d;
+}
+
+label.error {
+    color: red;
+}
+
+#dasboardlogo {
+    width: 200px;
+}
+
+#dasboardlogo {
+    font-size: 0.5em;
+}
+
+body {
+    font-size: 13px;
+}
+
+#links {
+    margin-right: 10%;
+}
+
+#PrifleImage {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+table {
+   
+    text-align: center;
+    background-color: #ffffff;
+}
+/* #logout{
+    margin-right: 5%;
+} */
+
+.partno {
+    text-align: left;
+}
+
+.container-bg {
+    background-color: lightgrey;
+
+}
+
+ul li {
+    display: inline-block;
+    font-size: 16px;
+}
+
+ul li a {
+    color: #110d0d;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+    transition: color 0.5s;
+}
+
+ul li .underline {
+    height: 2px;
+    background-color: transparent;
+    width: 0%;
+    transition: width 0.2s, background-color 0.5s;
+    margin: 0 auto;
+
+}
+
+ul li.active-link .underline {
+    width: 100%;
+    background-color: rgb(22, 18, 18);
+}
+
+ul li:hover .underline {
+    background-color: rgb(17, 10, 10);
+    width: 100%;
+}
+
+ul li:active a {
+    transition: none;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+ul li:active .underline {
+    transition: none;
+    background-color: rgba(255, 255, 255, 0.76);
+}
+
+#para {
+    color: gray;
+}
+
+ul li a {
+    color: #110d0d;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+    transition: color 0.5s;
+}
+
+ul li .underline {
+    height: 2px;
+    background-color: transparent;
+    width: 0%;
+    transition: width 0.2s, background-color 0.5s;
+    margin: 0 auto;
+
+}
+
+ul li.active-link .underline {
+    width: 100%;
+    background-color: rgb(22, 18, 18);
+}
+
+ul li:hover .underline {
+    background-color: rgb(17, 10, 10);
+    width: 100%;
+}
+
+ul li:active a {
+    transition: none;
+    color: rgba(255, 254, 254, 0.76);
+}
+
+ul li:active .underline {
+    transition: none;
+    background-color: rgba(247, 241, 241, 0.76);
+}
+
+ul li {
+    display: inline-block;
+    font-size: 16px;
+}

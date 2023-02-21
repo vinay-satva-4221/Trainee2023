@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+    <link rel="stylesheet" href="stock.css">
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css"
+      type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!--------------- NAVBAR -------------->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="./assets/02@2x.png"
+            alt="Company logo" id="navlogo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <div class="tabs ms-auto pe-5" id="links">
+            <ul class="navbar-nav me-auto nav-ul">
+              <li class="nav-item">
+                <a class="nav-link m-auto ms-lg-5" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active ms-lg-5" href="#">Stock</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ms-lg-5" href="#">Status</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ms-lg-5" href="#">Assigment</a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="navbarProfile d-flex m-3">
+            <div me-3>
+              <img src="./assets/02.png" alt="Profile Image" id="PrifleImage">
+            </div>
+            <div class="ms-2">
+              <small id="welcome">Welcome</small><br>
+              <span id="loginUseName">Hello</span>
+            </div>
+          </div>
+          <button class="btn" id="logout"><img src="./assets/Log-Out.svg"
+              alt="Exit logo"></button>
+        </div>
+      </div>
+    </nav>
+
+    <!------------------ MAIN BODY ------------------>
+    <div class="mainbody">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 p-3 "><b><span id="stock" class="m-lg-5"> Stock</span></b></div>
+          <div class="col-lg-2 offset-lg-4 p-3"><button type="button"
+              class="btn" id="addStock"><b>+New</b></button></div>
+          <div class="col-lg-3 p-3 "> <div class="form-group has-search">
+              <span class="fa fa-search form-control-feedback"></span>
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+          </div>
+        </div>
+
+        <!------------------ Modal ---------------->
+        <div class="modal fade" id="addStockModal" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><b> Add New Stock</b></h5>
+                <button type="button" class="close" data-dismiss="modal"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Stock Name</label>
+                      <input type="email" class="form-control" id="stockName"
+                        placeholder="Enter Stock Name">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">EtA Date</label>
+                      <input type="email" class="form-control" id="etaDate"
+                        placeholder="Enter Date">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closemodal">Close</button>
+                <button type="button" class="btn btn-primary" id="savestock">Save
+                  changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script src="jquery/jquery.js"></script>
+    <script src="stock.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  </body>
+</html>

@@ -1,7 +1,4 @@
 
-
-
-
 data = [
     ['', '', '', '', '', '', ''],
 
@@ -13,8 +10,8 @@ var table1 = jexcel(document.getElementById('myTable'), {
         { title: 'TimeLog \n Date*', width: 100, type: 'calendar', options: { format: 'DD/MM/YYYY' } },
         { title: 'Phase*', width: 170, type: 'dropdown', source: ['Analysis', 'Bug Fixing', 'Communiction', 'Devlopment', 'Design', 'Estimation', 'Prototype'] },
         { title: 'Status*', width: 120, type: 'dropdown', source: ['Completed', 'Pending', 'Solved', 'Working'] },
-        { title: 'Logged \n Hours*', width: 100, type: 'text', mask: 'h:mm' },
-        { title: 'Billable \n hours*', width: 100, type: 'text', mask: 'h:mm' },
+        { title: 'Logged \n Hours*', width: 100, type: 'number', mask: 'h:mm' },
+        { title: 'Billable \n hours*', width: 100, type: 'number', mask: 'h:mm' },
         { title: 'Notes*', width: 180, type: 'text' },
         { title: 'Out\n of \nStock', width: 80, type: 'checkbox' },
         { title: 'BC \nlink', width: 100, type: 'text' },
@@ -23,25 +20,18 @@ var table1 = jexcel(document.getElementById('myTable'), {
 
     ],
     updateTable: function (instance, cell, col, row, val, label, cellName) {
-        // console.log('instance',instance)
-        // console.log('cell', cell)
-        // console.log('col', col)
-        console.log('row', row)
-        // console.log('val', val)
-        // console.log('label', label)
-        // console.log('cellName', cellName)
-
-        var r = cellName
-        console.log(r)
+     
 
         var html = "";
 
 
-
-
-
-
         data.forEach(function (value, index) {
+            if(col==5){
+                if(value[5]>value[4]){
+                    value[5]=value[4]
+                    table1.updateCell(x=5,y=index,value=value[5],mask= 'h:mm')
+                }
+            }
             if (col == 6 && cell.innerText != '') {
                 console.log("col value", col);
                 var a = index + 1;
@@ -61,8 +51,10 @@ var table1 = jexcel(document.getElementById('myTable'), {
 
 
                 document.getElementById("root").innerHTML = html;
+                timeL(value);
             }
         });
+
     }
 });
 
@@ -84,5 +76,17 @@ function delRow() {
 function addData() {
 
     var r = myTable.getRowData()
-    console.log(r)
 }
+
+
+function timeL(value){
+    let r = value
+    let time=24*r
+    
+    let a=parseInt(time)
+    let minute=time%a
+    let b=Math.floor( minute*60)
+     let  time1=a+":"+b;
+     return time1
+    
+    }
