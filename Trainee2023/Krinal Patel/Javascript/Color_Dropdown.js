@@ -29,11 +29,11 @@ function getCookie(id) {
         return "";
       }
 
-// || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname() 
+// || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname()
  // Check if any field is empty
 function validatecheck(){
     
-    if ( !validatename()   ) {
+    if ( !validatename()    ) {
            
         
         $(document).ready(function () {
@@ -94,15 +94,38 @@ function init(){
 function validateallow() {
     
 
-debugger;
-
+ 
+    debugger;
 // var xt = document.getElementById("mytable").rows.length; //1
+document.onload = showData();
 
 // if (xt == 1) {
    
 //     var id=0;
 
-// }
+// // }        
+//             let text = localStorage.getItem("StudentDetails");
+//             let cart = JSON.parse(text);
+
+//             console.log(cart)
+
+//                     $.each(cart, function(key, value){
+//                     $('tdata').append(`<tr>
+//                     <td>${cart.id}</td>
+//                     <td>${cart.name}</td>
+//                     <td>${cart.mobile}</td>
+//                     <td>${cart.email}</td>
+//                     <td>${cart.cname}</td>
+//                     <td>${cart.cgpa}</td>
+//                     <td>${cart.bname}</td>
+//                     <td>${cart.state}</td>
+//                     <td>${cart.city}</td>
+//                     <td>${cart.zip}</td>
+//                     <td>${cart.studied}</td>
+//                     <td>${cart.color}</td>
+//                     </tr>`) 
+//                 })
+            
 
             // var i = studentsArray[i];
             var name = $("#name").val();
@@ -126,7 +149,6 @@ debugger;
                 //set cookie
                 document.cookie=id+"="+$("#color").val();
 
-                var cookie=document.cookie;
                   
 
                   
@@ -153,26 +175,51 @@ debugger;
 
 
 
+function showData() {
+    var studentsArray= [];
+  
+    if (localStorage.getItem("StudentDetails") == null) {
+        studentsArray = [];
+    } else {
+        studentsArray = JSON.parse(localStorage.getItem("StudentDetails"));
+    }
+  
+    var html = "";
+  
+    studentsArray.forEach(function (element, index) {
+      var color = getCookie(studentsArray[index].name);
+  
+      html += "<tr class=text-center>";
+      html += "<td>" + (index + 1) + "</td>";
+      html += "<td>" + element.name + "</td>";
+      html += "<td>" + element.mobile + "</td>";
+      html += "<td>" + element.email + "</td>";
+      html += "<td>" + element.cname + "</td>";
+      html += "<td>" + element.cgpa + "</td>";
+      html += "<td>" + element.bname + "</td>";
+      html += "<td>" + element.state + "</td>";
+      html += "<td>" + element.city + "</td>";
+      html += "<td>" + element.zip + "</td>";
+      html += "<td>" + element.studied + "</td>";
+      html += "<td>" + color + "</td>";
+      html +=
+        '<td><button onclick="deleteData( ' +
+        index +
+        ' )"  class= "btn btn-danger">Delete</button> <button onclick="updateData(' +
+        index +
+        ')" class= "btn btn-warning m-2">Edit</button></td>';
+  
+      html += "</tr>";
+  
+      document.getElementById("mytable").innerHTML = html;
+    
+    });
+  }
 
-// function getCookie(color) {
-//     let name = color + "=";
-
-//     for(let i = 0; i <name.length; i++) {
-//       let c = name[i];
-//       while (c.charAt(0) == ' ') {
-//         c = c.substring(1);
-//       }
-//       if (c.indexOf(name) == 0) {
-//         return c.substring(name.length, c.length);
-
-//       }
-//     }
-//     return "";
-//   }
 
     //Table insert data
     function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied,color) {
-       debugger;
+        
        
         var index= index;
        
@@ -212,7 +259,7 @@ debugger;
         editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow(this)">Edit</button>';
         deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
         //Color
-debugger;
+ 
         
         //get cookie
 
@@ -280,7 +327,7 @@ console.log("cookie:",x)
 
     //Delete Row
     function deleteTableRow(index){
-        debugger;   var table = document.getElementById("mytable");
+            var table = document.getElementById("mytable");
         console.log(index, studentsArray)
         var currentIndex = studentsArray.findIndex(x=> x.id == index)
         console.log('currentIndex', currentIndex);
@@ -366,10 +413,10 @@ console.log("cookie:",x)
       
     function updateTableRow(formData){
 
-        debugger;
+         
       
         var formData = readFormData();
-        debugger;
+         
 
     SelectedRow.cells[1].innerHTML = formData.name;
     SelectedRow.cells[2].innerHTML = formData.mobile;
@@ -384,7 +431,7 @@ console.log("cookie:",x)
     SelectedRow.cells[11].innerHTML = formData.color;
 
           //Color
-debugger;
+ 
         
                 //set cookie
     document.cookie=id+"="+$("#color").val();
