@@ -27,6 +27,7 @@ function showdata()
 }
 function adddata()
 {
+    debugger
     var name=document.getElementById("name").value;
     var age=document.getElementById("age").value;
 
