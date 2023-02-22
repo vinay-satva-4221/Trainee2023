@@ -13,6 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
     </script>
     <style>
         .dataTables_length {
@@ -79,63 +81,23 @@
             <input type="search" class="form-control" placeholder="search here...">
         </div>
     </div>
-    <section id="dataTable" class="dataTable">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="container-fluid">
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>QB Invoice#</th>
+                <th>Name</th>
+                <th>QB Ship date</th>
+                <th>QB Payment Status</th>
+                <th>C101</th>
+                <th>C102</th>
+            </tr>
+        </thead>
+    </table>
 
-                    <br />
-                    <div id="table_box_bootstrap">
-                        <table id="example" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Part Number</th>
-                                    <th>In warehouse</th>
-                                    <th>Available</th>
-                                    <th>C100</th>
-                                    <th>C101</th>
-                                    <th>C102</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
     <script>
         $(document).ready(function () {
-            var data = [
-                { name: 'Stock Location', age: 30, city: ' <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>', day: 'AMit' },
-                { name: 'ETA Date', age: 25, city: 'Los Angeles', day: 'AMit' },
-                { name: 'BW-01-S-M', age: 40, city: 'Chicago', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-01-QM-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-            ];
-            var tableRows = '';
-            data.forEach(function (item) {
-                tableRows += '<tr class="text-center"><td>' + item.name + '</td><td data-bs-toggle="popover" data-bs-content="Age: ' + item.age + '">' + item.age + '</td><td>' + item.city + '</td> <td>' + item.day + '</td> <td>' + item.city + '</td><td>' + item.city + '</td></tr>';
-            });
-            $('tbody').html(tableRows);
-            var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
-            $("#activeuser").html(activeuser.username);
-            $('#example').DataTable({
-                "paging": true,
-                "order": [[0, "asc"]],
-                "columnDefs": [
-                    { "targets": 0, "orderable": true },
-                    { "targets": [1, 2, 3, 4, 5], "orderable": false }
-                ],
-                "createdRow": function (row, data, dataIndex) {
-                    $('td:eq(1)', row).popover({
-                        placement: 'top'
-                    });
-                }
-            });
+
             const logoutButton = document.getElementById('logout-btn');
             logoutButton.addEventListener('click', function (event) {
                 event.preventDefault();
@@ -145,8 +107,92 @@
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 
             $("#active").html(activeuser.name);
-            $('[data-toggle="popover"]').popover();  
+            $('[data-toggle="popover"]').popover();
+
+
+
+            /* Formatting function for row details - modify as you need */
+            function format(d) {
+                // `d` is the original data object for the row
+                return (
+                    '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                    '<tr>' +
+                    '<td>Full name:</td>' +
+                    '<td>' +
+                    d.name +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Extension number:</td>' +
+                    '<td>' +
+                    d.extn +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Extra info:</td>' +
+                    '<td>And any further details here (images etc)...</td>' +
+                    '</tr>' +
+                    '</table>'
+                );
+            }
+
+
+            var data = [
+                {
+                    name: 'John Doe',
+                    position: 'Software Engineer',
+                    office: 'New York',
+                    salary: '$120,000'
+                },
+                {
+                    name: 'Jane Smith',
+                    position: 'Product Manager',
+                    office: 'San Francisco',
+                    salary: '$150,000'
+                },
+                // Add more data objects here...
+            ];
+
+
+            var table = $('#example').DataTable({
+                data: data,
+                columns: [
+                    {
+                        className: 'dt-control',
+                        orderable: false,
+                        data: null,
+                        defaultContent: '',
+                    },
+                    { data: 'name' },
+                    { data: 'position' },
+                    { data: 'office' },
+                    { data: 'salary' },
+                ],
+                order: [[1, 'asc']],
+            });
+
+
+            // Add event listener for opening and closing details
+            $('#example tbody').on('click', 'td.dt-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
         });
+
+
+
+
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

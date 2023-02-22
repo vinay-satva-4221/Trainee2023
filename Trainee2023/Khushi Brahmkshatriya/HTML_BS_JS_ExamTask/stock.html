@@ -14,43 +14,7 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid px-5">
-                <a class="navbar-brand" href="#"> <img src="./images/02.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse justify-content-center align-items-center w-100"
-                    id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link active">Stock</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Status</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Assignment</a>
-                        </li>
-                    </ul>
-                    <ul class="d-flex list-unstyled ">
-                        <li class="nav-item">
-                            <h5 class="nav-item fw-bold textColor nav-link" id="diplayName"></h5>
-                        </li>
-                        <li class="nav-item"><a href="./login.html" class="nav-item textColor nav-link">
-                                <i class="bi bi-box-arrow-in-right badge-dark bi--8xl" id="deleteLoggedUser"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header id="AddNavbar"></header>
     <section>
         <div class="container-fluid mt-3">
             <div class="bg-light px-5 ">
@@ -113,8 +77,10 @@
 
                                         </div>
                                         <div class="col-md-12">
-                                            <label for="partNum" class="form-label text-secondary fw-light">
-                                                <i class="bi bi-plus-circle"></i> Add Part Number</label><br>
+                                            <label for="partNum" class="form-label text-secondary fw-light btn" data-bs-toggle="popover" role="button">
+                                                <i class="bi bi-plus-circle"></i> Add Part Number</a> </label><br>
+                                                <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+                
                                         </div>
 
 
@@ -164,8 +130,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
-
-
+    
+    <script src="./bs5/js/bootstrap.bundle.min.js"></script>
     <script src="./bs5/js/bootstrap.min.js"></script>
 </body>
 

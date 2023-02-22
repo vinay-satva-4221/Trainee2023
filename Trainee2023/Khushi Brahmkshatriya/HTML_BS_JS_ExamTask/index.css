@@ -39,3 +39,26 @@ a:hover {
   background-color: #326C96;
   opacity: 1;
 }
+
+
+.table_head{
+  background-color: black;
+  color: white;
+ 
+}
+
+
+th{
+  
+  color: white;
+  font-weight: 400;
+}
+
+thead{
+  background-color: black;
+}
+tbody{
+ 
+  font-weight: 400;
+  color: black;
+}
