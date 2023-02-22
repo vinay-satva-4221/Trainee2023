@@ -14,51 +14,19 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"> <img src="./images/02.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link active">Stock</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Status</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-item textColor mx-3 fw-bolder nav-link">Assignment</a>
-              </li>
-            </ul>
-            <ul class="d-flex">
-                <li class="nav-item">
-                    <h5 class="nav-item fw-bold textColor nav-link" id="diplayName"></h5>
-                </li>
-                <li class="nav-item"><a href="./index.html" class="nav-item textColor nav-link"> <i
-                            class="bi bi-box-arrow-in-right badge-dark bi--8xl"></i></a> </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    <!-- place navbar here -->
-  </header>
-  <main>
 
-  </main>
-  <footer>
-    <!-- place footer here -->
-  </footer>
+  <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
   </script>
 
+<script>
+ var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>

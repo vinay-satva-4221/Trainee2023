@@ -33,12 +33,13 @@ localStorage.setItem('Logindata', JSON.stringify(LoginData));
 $(document).ready(function () {
     var loggedData = localStorage.getItem('LoggedInUser');
     if (loggedData) {
-        window.location.replace("stock.html");
+        window.location.replace("dashboard.html");
     }
     else
     {
-      
-        
+        //window.location.href = 'login.html';
+        //$(redirect).click();
+        //header('location:login.html');
     }
     $("#form").validate({
         // in 'rules' user have to specify all the constraints for respective fields
@@ -97,7 +98,7 @@ $(document).ready(function () {
                 ]
                 localStorage.setItem('LoggedInUser', JSON.stringify(loggedUser));
                 //alert("Logged in");
-                window.location.replace("stock.html");
+                window.location.replace("dashboard.html");
 
             }
 

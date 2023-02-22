@@ -4,6 +4,8 @@ var emailC2 = "amitK@gmail.com";
 var emailC3 = "avinash22@gmail.com";
 var emailC4 = "ronak345@gmail.com";
 
+
+
 var passwordC1 = "123456789";
 var passwordC2 = "123456789";
 var passwordC3 = "123456789";
@@ -19,33 +21,33 @@ var image2 = "images/second.png";
 var image3 = "images/third.png";
 var image4 = "images/fourth.png";
 
-// $( document ).ready(function() {
-//
-// }
-// })
-// window.onload(onL());
+var email = document.getElementById("femail").value;
+var e = email.toLowerCase()
 
-// function onL() {
-//   if (localStorage.getItem("user") != '') {
+
+console.log(e)
+window.onload = (event) => {
+  if (localStorage.getItem("user") != null) {
+    window.location.replace("Dashboard.html");
+  }
+};
+// $(document).ready(function () {
+//   if (localStorage.getItem("user") != null) {
 //     window.location.replace("Dashboard.html");
 //     checkEntry();
 //   }
-// }
+// });
+
 function checkEntry() {
   // i can put here the validations
   var email = document.getElementById("femail").value;
   var password = document.getElementById("fpassword").value;
-
+  
+  
   var user = [];
-
-  $(document).ready(function () {
-    if (localStorage.getItem("user") != null) {
-      window.location.replace("Dashboard.html");
-      checkEntry();
-    }
-  });
-
-  if (email == emailC1 && password == passwordC1) {
+ 
+  
+  if (email.toLowerCase() == emailC1 && password == passwordC1) {
     user.push({
       Email: emailC1,
       Admin: adminC1,
@@ -53,7 +55,7 @@ function checkEntry() {
     });
     console.log("Log in");
     window.location.replace("Dashboard.html");
-  } else if (email == emailC2 && password == passwordC2) {
+  } else if (email.toLowerCase()  == emailC2 && password == passwordC2) {
     user.push({
       Email: emailC2,
       Admin: adminC2,
@@ -61,7 +63,7 @@ function checkEntry() {
     });
     console.log("Log in");
     window.location.replace("Dashboard.html");
-  } else if (email == emailC3 && password == passwordC3) {
+  } else if (email.toLowerCase()  == emailC3 && password == passwordC3) {
     user.push({
       Email: emailC3,
       Admin: adminC3,
@@ -69,7 +71,7 @@ function checkEntry() {
     });
     console.log("Log in");
     window.location.replace("Dashboard.html");
-  } else if (email == emailC4 && password == passwordC4) {
+  } else if (email.toLowerCase()  == emailC4 && password == passwordC4) {
     user.push({
       Email: emailC4,
       Admin: adminC4,
