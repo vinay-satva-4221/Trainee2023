@@ -29,6 +29,8 @@ a {
   font-size: 2rem;
   color: black;
 }
+
+/* Modal */
 #addStock {
   background-color: #326c96;
   color: white;
@@ -52,19 +54,36 @@ label{
     background-color :#326C96;
     color: white;
 }
-table{
-    border: #212529;
-    border-radius: 6px;
 
-}
-thead {
+  /* Table */
+
+  #table_div  thead {
     color: #ffffff;
     background-color: #212529;
     border-color: #32383e;
+    border-radius: 6px;
   }
 .displayTable{
     padding: 0% 5%;
 }
-#table_div_length,#table_div_filter,#table_div_info{
+#table_div_length,#table_div_filter{
     display: none;
+}
+#table_div_info{
+  margin-left: 69%;
+}
+@media only screen and (max-width: 800px) {
+  #table_div_info {
+    margin-left: 30%;
+  }
+}
+
+/* popover */
+
+
+
+/* Dropdown */
+
+#AddParts{
+  text-decoration: none;
 }

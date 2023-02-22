@@ -24,6 +24,16 @@ body {
     display: none;
   }
 }
+.line{
+  width: 8%;
+  margin-top: -4%;
+}
+hr:not([size]) {
+  height: 2px;
+  background-color: #0004ff;
+}
+
+
 #welcomeText {
   font-size: 1.3rem;
   font-family: "Roboto", sans-serif;
