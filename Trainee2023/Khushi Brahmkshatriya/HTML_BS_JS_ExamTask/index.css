@@ -1,0 +1,64 @@
+* {
+  font-family: sans-serif;
+}
+
+#loginScreen {
+  background: url(./images/White-logo.png) center no-repeat, url(./images/Background.png) no-repeat;
+}
+@media only screen and (max-width: 1000px) {
+  .logo {
+    display: none;
+  }
+} 
+.buttonColor {
+  background-color: #326C96
+}
+
+label.error {
+  color: red;
+}
+
+.textColor {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.LineUnderWelcome{
+  width: 10%;
+  border: 1px solid#326C96;
+  background-color: #326C96;
+  opacity: 1;
+}
+
+
+.table_head{
+  background-color: black;
+  color: white;
+ 
+}
+
+
+th{
+  
+  color: white;
+  font-weight: 400;
+}
+
+thead{
+  background-color: black;
+}
+tbody{
+ 
+  font-weight: 400;
+  color: black;
+}
