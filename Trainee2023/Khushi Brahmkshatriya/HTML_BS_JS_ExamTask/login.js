@@ -37,8 +37,9 @@ $(document).ready(function () {
     }
     else
     {
-      
-        
+        //window.location.href = 'login.html';
+        //$(redirect).click();
+        //header('location:login.html');
     }
     $("#form").validate({
         // in 'rules' user have to specify all the constraints for respective fields

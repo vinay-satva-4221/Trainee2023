@@ -43,7 +43,7 @@
                         <li class="nav-item">
                             <h5 class="nav-item fw-bold textColor nav-link" id="diplayName"></h5>
                         </li>
-                        <li class="nav-item"><a href="./index.html" class="nav-item textColor nav-link">
+                        <li class="nav-item"><a href="./login.html" class="nav-item textColor nav-link">
                                 <i class="bi bi-box-arrow-in-right badge-dark bi--8xl" id="deleteLoggedUser"></i></a>
                         </li>
                     </ul>
@@ -92,18 +92,29 @@
                                         <div class="col-md-12">
                                             <label for="sstatus" class="form-label text-secondary fw-light">Stock
                                                 Status</label><br>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button type="radio" class="btn changebgcolor  btn-outline-secondary">On
-                                                    Production</button>
-                                                <button type="radio" class="btn changebgcolor  btn-outline-secondary">On
-                                                    Water</button>
-                                                <button type="radio" class="btn changebgcolor  btn-outline-secondary">In
-                                                    Warehouse</button>
+
+                                            <div class="btn-group" role="group"
+                                                aria-label="Basic radio toggle button group">
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                                    autocomplete="off" checked>
+                                                <label class="btn btn-outline-secondary" for="btnradio1">On
+                                                    Production</label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                                    autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="btnradio2">On
+                                                    Water</label>
+
+                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                    autocomplete="off">
+                                                <label class="btn btn-outline-secondary" for="btnradio3">In
+                                                    Warehouse</label>
                                             </div>
+
                                         </div>
                                         <div class="col-md-12">
                                             <label for="partNum" class="form-label text-secondary fw-light">
-                                                Add Part Number</label><br>
+                                                <i class="bi bi-plus-circle"></i> Add Part Number</label><br>
                                         </div>
 
 
