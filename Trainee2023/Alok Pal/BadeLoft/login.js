@@ -19,18 +19,14 @@ var image2 = "images/second.png";
 var image3 = "images/third.png";
 var image4 = "images/fourth.png";
 
-// $( document ).ready(function() {
-//
-// }
-// })
-// window.onload(onL());
 
-// function onL() {
-//   if (localStorage.getItem("user") != '') {
-//     window.location.replace("Dashboard.html");
-//     checkEntry();
-//   }
-// }
+
+window.onload = (event) => {
+  if (localStorage.getItem("user") != null) {
+    window.location.replace("Dashboard.html");
+  }
+};
+
 function checkEntry() {
   // i can put here the validations
   var email = document.getElementById("femail").value;
