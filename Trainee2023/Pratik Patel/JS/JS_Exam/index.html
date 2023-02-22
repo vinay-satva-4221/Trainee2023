@@ -18,10 +18,11 @@
     <body>
         <div class="container-fluid ">
             <div class="row">
-                <div class="col-lg-6 text-center d-none d-md-block" id="imagediv">
+                <div class="col-lg-6 text-center" id="imagediv">
                     <!-- <img src="./assets/Background.png" alt="background image"
                         id="sideImage" class="img-fluid"> -->
-                    <img src="./assets/White-logo.png" alt="Company Logo" id="LOGO"
+                    <img src="./assets/White-logo.png" alt="Company Logo"
+                        id="LOGO"
                         class="img-fluid">
                 </div>
                 <div class="col-lg-6">
@@ -29,31 +30,38 @@
                         <img src="./assets/02@2x.png" alt="Company Logo"
                             class="img-fluid">
                         <br>
+                        
                         <span id="welcomeText">Welcome,Let's Get Started</span>
+                        <div class="line pt-3">
+                        <hr>
+                    </div>
+                        <!-- <hr> -->
                         <form class="m-3" id="form">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"><b> Email
                                         address</b></label>
                                 <input type="email" class="form-control "
-                                    id="email" placeholder="Enter email" name="email">
+                                    id="email" placeholder="Enter email"
+                                    name="email">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="exampleInputPassword1"><b> Password</b></label>
                                 <input type="password" class="form-control"
-                                    id="password" name="password" placeholder="Password">
+                                    id="password" name="password"
+                                    placeholder="Password">
                             </div>
                             <br>
-                            <button type="button" class="btn btn-primary form-control" id="submit">Log In</button>
+                            <button type="button" class="btn btn-primary
+                                form-control" id="submit">Log In</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.2/sweetalert2.min.js" integrity="sha512-jSNGQoIZ0qago6DK45skZbDI1JC8bmANSwItgDnMXiAnJm0Lq6QB4yXY8QPKqS68iR3ngZi0pM5+wZvg1kCCKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="jquery/jquery.js"></script>
         <script src="index.js"></script>
-        <script src="stock.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>
