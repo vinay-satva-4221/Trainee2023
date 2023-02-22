@@ -20,82 +20,12 @@
             <div class="bg-light px-5 ">
                 <div class="row pt-3">
                     <div class="col-md-4">
-                        <h4 class=" fw-bolder">Stock</h4>
+                        <h4 class=" fw-bolder">Dashboard</h4>
                     </div>
                     <div class="col-md-8 d-flex justify-content-end">
-                        <button type="button" class="btn buttonColor text-white" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">+ New</button>
+                        
                         <div id="example_filter" class="dataTables_filter  px-3">
                             <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Add New Stock</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="">
-                                    <div class="row g-2">
-
-                                        <div class="col-md-6">
-                                            <label for="stockName" class="form-label text-secondary fw-light">Stock
-                                                Name</label>
-                                            <input type="text" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="ETADate" class="form-label text-secondary fw-light">ETA
-                                                Date</label>
-                                            <input type="date" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="sstatus" class="form-label text-secondary fw-light">Stock
-                                                Status</label><br>
-
-                                            <div class="btn-group" role="group"
-                                                aria-label="Basic radio toggle button group">
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                    autocomplete="off" checked>
-                                                <label class="btn btn-outline-secondary" for="btnradio1">On
-                                                    Production</label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                    autocomplete="off">
-                                                <label class="btn btn-outline-secondary" for="btnradio2">On
-                                                    Water</label>
-
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                    autocomplete="off">
-                                                <label class="btn btn-outline-secondary" for="btnradio3">In
-                                                    Warehouse</label>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="partNum" class="form-label text-secondary fw-light btn"
-                                                data-bs-toggle="popover" role="button">
-                                                <i class="bi bi-plus-circle"></i> Add Part Number</a> </label><br>
-                                            <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover"
-                                                title="Popover title"
-                                                data-bs-content="And here's some amazing content. It's very engaging. Right?">Click
-                                                to toggle popover</button>
-
-                                        </div>
-
-
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer justify-content-start">
-
-                                <button type="button" class="btn buttonColor text-white" id="saveStock">Save</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
                         </div>
                     </div>
                 </div>
