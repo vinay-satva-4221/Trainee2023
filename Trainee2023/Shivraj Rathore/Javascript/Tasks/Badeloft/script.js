@@ -1,37 +1,104 @@
-const passwordInput = document.getElementById('password');
-const passwordToggle = document.getElementById('password-toggle');
-const passwordIcon = document.getElementById('password-icon');
-
-passwordToggle.addEventListener('click', function() {
-  if (passwordInput.type === 'password') {
-    passwordInput.type = 'text';
-    passwordIcon.classList.remove('fa-eye-slash');
-    passwordIcon.classList.add('fa-eye');
-  } else {
-    passwordInput.type = 'password';
-    passwordIcon.classList.remove('fa-eye');
-    passwordIcon.classList.add('fa-eye-slash');
+$(document).ready(function () {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (loggedInUser) {
+    location.replace("main.html");
   }
+
+  const users = [
+    {
+      username: "JohnDoe",
+      password: "pass123",
+      email: "johndoe@example.com"
+    },
+    {
+      username: "JaneDoe",
+      password: "pass456",
+      email: "janedoe@example.com"
+    },
+    {
+      username: "BobSmith",
+      password: "pass789",
+      email: "bobsmith@example.com"
+    },
+    {
+      username: "AliceLee",
+      password: "pass123",
+      email: "alicelee@example.com"
+    },
+    {
+      username: "DavidKim",
+      password: "pass567",
+      email: "davidkim@example.com"
+    }
+  ];
+
+  localStorage.setItem("userData", JSON.stringify(users));
+
+  $.validator.addMethod('validemail', function (value) {
+    return /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value)
+  });
+
+  $.validator.addMethod('validpass', function (value) {
+    return /^[a-zA-Z0-9]*$/.test(value)
+  });
+
+  $("#myform").validate({
+    rules: {
+      email: {
+        validemail: true,
+      },
+      password: {
+        validpass: true,
+        minlength: 6,
+        maxlength: 10
+      }
+    },
+    messages: {
+      email: {
+        validemail: "Enter Valid Email",
+      },
+      password: {
+        validpass: "Enter Valid Password",
+        minlength: "Minimum Length 6",
+        maxlength: "Maximum Length 10"
+      }
+    }
+  })
+
+  $("#login").click(function () {
+    if ($("#myform").valid() == true) {
+      // Check email and password with input and alert if matches
+      const inputEmail = document.getElementById('validationCustom01').value;;
+      const inputPassword = document.getElementById('validationCustom02').value;
+      const storedUsers = JSON.parse(localStorage.getItem("userData"));
+      const user = storedUsers.find(u => u.email === inputEmail && u.password === inputPassword);
+
+      if (user) {
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        location.replace("main.html");
+      } else {
+        alert("Email or password is incorrect.");
+      }
+    }
+  });
+
 });
 
-(function () {
-  'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
 
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -1,22 +1,22 @@
 $(document).ready(function () {
   var logedinuser = JSON.parse(localStorage.getItem("LogedinUser"));
   if (logedinuser != null) {
-    window.location.href="stock.html";
+    window.location.href = "stock.html";
   } else {
     var users = [
       [
         "pratik@gmail.com",
         "Pratik@123",
-        "Pratik",
+        "Pratik Patel",
         "Admin",
-        "./assets/stock/user.jpg"
+        "./assets/stock/user.jpg",
       ],
       [
         "alok@gmail.com",
         "Alok@123",
         "Alok",
         "Admin",
-        "./assets/stock/user2.jpg"
+        "./assets/stock/user2.jpg",
       ],
     ];
     $.validator.addMethod("Emailcheck", function (value) {

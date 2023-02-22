@@ -1,32 +1,27 @@
-
+// var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+// var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+//   return new bootstrap.Popover(popoverTriggerEl)
+// })
+// var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+//     container: 'body'
+//   })
 $(document).ready(function () {
+    
+    $("#AddNavbar").load("navbar.html");  
 
-    var loggedData = localStorage.getItem('LoggedInUser');
-    var myarray = JSON.parse(loggedData);
-    var displayName = myarray.find(
-        x => x.UserName);
-    $('#diplayName').text(displayName.UserName);
+    // var table = $('#example').DataTable({
+    //     "dom": 'rtip',
+    //     "ordering": false,
 
-    $(".changebgcolor").on('click', (function () {
-        $(this).css('background-color', '#326C96');
-    }));
-    $("#deleteLoggedUser").click(function () {
-        localStorage.removeItem('LoggedInUser');
-    })
+    //     language: {
+    //         oPaginate: {
+    //             sNext: '<i class="bi bi-caret-right-fill"></i>',
+    //             sPrevious: '<i class="bi bi-caret-left-fill"></i>',
 
-    var table = $('#example').DataTable({
-        "dom": 'rtip',
-        "ordering": false,
+    //         }
+    //     }
 
-        language: {
-            oPaginate: {
-                sNext: '<i class="bi bi-caret-right-fill"></i>',
-                sPrevious: '<i class="bi bi-caret-left-fill"></i>',
-
-            }
-        }
-
-    });
-    $('#example').removeClass('display').addClass('table table-striped table-bordered');
-    $('#saveStock')
+    // });
+    // $('#example').removeClass('display').addClass('table table-striped table-bordered');
+    // $('#saveStock')
 })

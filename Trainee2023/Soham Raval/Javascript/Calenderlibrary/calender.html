@@ -42,51 +42,8 @@
                         console.log(title);
                     })
                 },
-                // eventClick: function (event, element) {
-                //     // Display the modal and set the values to the event values.
-                //     $('#myModal').modal('show');
-                //     var a = $('#myModal').find('#patient_name').val(event.patient_name);
 
-
-                //     $('#myModal').find('#mobile').val(event.mobile);
-                //     $('#myModal').find('#colors').val(event.colors);
-
-                // }
-                // },
-                // editable: true,
-                // eventLimit: true // allow "more" link when too many events
-                // eventClick: function (event, element) {
-                //     document.getElementById("saveData").onclick = function () {
-                //         var inp = document.getElementById("name").value;
-                //         var date = info.dateStr;
-                //         if (inp != '') {
-
-                //             console.log(inp);
-                //             calendar.addEvent({
-                //                 title: inp,
-                //                 start: date,
-                //                 allDay: true
-                //             })
-                //         }
-                //     }
-                // }
-
-                // events: 'https://fullcalendar.io/api/demo-feeds/events.json'
             });
-
-
-
-
-        
-            //     // Display the modal and set the values to the event values.
-            //     $('#myModal').modal('show');
-            //     $('#myModal').find('#patient_name').val(event.patient_name);
-            //     $('#myModal').find('#mobile').val(event.mobile);
-            //     $('#myModal').find('#colors').val(event.colors);
-            // eventClick: function (event, element) {
-
-            // }
-
 
 
             calendar.on('dateClick', function (info) {
@@ -116,27 +73,6 @@ debugger
             });
             calendar.render();
         });
-
-
-        // $('#save').on('click', function () {
-        //     var patient_name = $('#patient_name').val();
-        //     if (patient_name) {
-        //         var eventData = {
-        //             patient_name: $('#patient_name').val(),
-        //             mobile: $('#mobile').val(),
-        //             colors: $('#colors').val()
-        //         };
-        //         $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-        //     }
-        //     $('#calendar').fullCalendar('unselect');
-
-        //     // Clear modal inputs
-        //     $('#myModal').find('input').val('');
-
-        //     // hide modal
-        //     $('#myModal').modal('hide');
-        // });
-
 
     </script>
 </head>
@@ -192,3 +128,6 @@ debugger
 </body>
 
 </html>
+
+
+
