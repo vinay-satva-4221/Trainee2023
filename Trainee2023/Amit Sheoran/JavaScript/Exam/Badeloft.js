@@ -1,93 +1,76 @@
 $(document).ready(function () {
-    $.validator.addMethod('validname', function (value) {
-        return /^[a-zA-Z]+$/.test(value)
-    });
-    
 
-$('#myform').validate({
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (loggedInUser) {
+    // Redirect to dashboard.html if a user is logged in
+    location.replace("./dashboard.html");
+  }
+
+
+
+  $.validator.addMethod('validname', function (value) {
+    return /^[a-zA-Z]+$/.test(value)
+  });
+
+
+  $('#myform').validate({
     rules: {
-        email: {
-            required:true,
-           
-        },
-        password:{
-            required:true,
-        }
+      email: {
+        required: true,
+
+      },
+      password: {
+        required: true,
+      }
     },
     messages: {
-        email: { 
-            required: "Please enter your email",
-            
-        },
-        password: { 
-            required: "Please enter your Password",
-            
-        },
+      email: {
+        required: "Please enter your email",
+
+      },
+      password: {
+        required: "Please enter your Password",
+
+      },
 
     }
-});
+  });
 
-$("#submit").click(function () {
+  const data = [
+    { email: "amit@gmail.com", password: "amit", name: "Amit", image: "https://picsum.photos/200" },
+    { email: "sumit@gmail.com", password: "sumit", name: "Sumit", image: "https://picsum.photos/200" },
+    { email: "sohambhai@gmail.com", password: "sohambhai", name: "Soham Bhai", image: "https://picsum.photos/200" },
+    { email: "alibhai@gmail.com", password: "alibhai", name: "Ali Bhai", image: "https://picsum.photos/200" },
+    { email: "alokbhai@gmail.com", password: "alokbhai", name: "Alok Bhai", image: "https://picsum.photos/200" }
+  ];
 
-    const data = {
-        "amit@gmail.com": "amit",
-        "sumit@gmail.com": "sumit",
-        "sohambhai@gmail.com": "sohambhai",
-        "alibhai@gmail.com": "alibhai",
-        "alokbhai@gmail.com": "alokbhai"
-      };
-      
-      localStorage.setItem("users", JSON.stringify(data));
-  
-      const users = JSON.parse(localStorage.getItem("users"));
+  // Save data to local storage
+  localStorage.setItem('users', JSON.stringify(data));
 
-      $("#submit").click(function () {
-        if ($("#myform").valid() == true){
-          var mail = $("#email").val();
-          var pass = $("#password").val();
-          if (users.hasOwnProperty(mail) && users[mail] === pass) {       
-            window.location.href=("dashboard.html");
-          } else {
-            alert("Invalid email or password. Please try again.");
-          }
+  $("#submit").on("click", function () {
+
+    if ($("#myform").valid()) {
+
+      var mail = $("#email").val();
+      var pass = $("#password").val();
+
+      // Loop through the data in localStorage and check for a match
+      const storedData = JSON.parse(localStorage.getItem("users"));
+      for (let i = 0; i < storedData.length; i++) {
+        if (storedData[i].email === mail && storedData[i].password === pass) {
+          // Set the data for the logged-in user in a new key
+          const user = storedData[i];
+          localStorage.setItem("loggedInUser", JSON.stringify(user));
+          // Redirect to dashboard.html if there is a match
+          location.replace("dashboard.html");
+          return;
+
         }
-      });
-      
+      }
 
-
-
+      alert("No match found.");
+    }
+  });
 });
 
 
-
-
-
-});
-
-function checkLoggedIn() {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function login(event) {
-    event.preventDefault();
-  
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-  
-    if (username === 'admin' && password === 'password') {
-      const userData = {
-        username: username,
-        isLoggedIn: true
-      };
-      localStorage.setItem('userData', JSON.stringify(userData));
-      window.location.href = 'dashboard.html';
-    } else {
-      alert('Invalid username or password');
-    }
-  }
-  
