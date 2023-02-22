@@ -1,0 +1,20 @@
+.nav_logo{
+    margin: 10px;
+    height: 20px;
+    width: 170px;
+    padding-left: 20px;
+}
+#example{
+    text-align: center;
+}
+.maintable{
+    background-color: black;
+    color: white;
+    border: 1px;
+}
+.start{
+    text-align: start;
+}
+.stock{
+    margin: 35px;
+}

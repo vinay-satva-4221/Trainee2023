@@ -1,0 +1,74 @@
+.fa-sign-out{
+    color: black;
+}
+#myTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+.Dashboard-logo{
+    height: 25px;
+    width: 130px;
+}
+#myTable_filter{
+    margin-bottom: 20;
+}
+.toolbar {
+    float: left;
+}
+#myTable thead tr th{
+    text-align: center;
+}
+/* #myTable tbody tr td{
+    text-align: center;
+} */
+table.dataTable tbody tr td:first-child {
+   text-align: left;
+}
+table.dataTable  tr  {
+    text-align: center;
+ }
+/* .active{
+    border-bottom: 3px solid black;
+} */
+
+/* Code By Webdevtrick ( https://webdevtrick.com ) */
+
+  .site-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  ul:hover li:not(:hover) a {
+    opacity: 0.2;
+  }
+  ul li {
+    position: relative;
+    cursor: pointer;
+  }
+  ul li::after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    width: 90%;
+    height: 2px;
+    background: black;
+    transform: scaleX(0);
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  ul li:hover::after, ul li.active::after {
+    transform: scaleX(1);
+  }
+  ul li a {
+    position: relative;
+    display: flex;
+    color: white;
+    font-family: Lato, sans-serif;
+    text-decoration: none;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
