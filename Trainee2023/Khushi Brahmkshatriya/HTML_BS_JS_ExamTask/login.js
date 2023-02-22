@@ -33,7 +33,7 @@ localStorage.setItem('Logindata', JSON.stringify(LoginData));
 $(document).ready(function () {
     var loggedData = localStorage.getItem('LoggedInUser');
     if (loggedData) {
-        window.location.replace("stock.html");
+        window.location.replace("dashboard.html");
     }
     else
     {
@@ -98,7 +98,7 @@ $(document).ready(function () {
                 ]
                 localStorage.setItem('LoggedInUser', JSON.stringify(loggedUser));
                 //alert("Logged in");
-                window.location.replace("stock.html");
+                window.location.replace("dashboard.html");
 
             }
 
