@@ -53,10 +53,10 @@ body{
 .dataTables_length{
     display: none;
 }
-label{
+/* label{
     display: none;
 
-}
+} */
 .dataTables_paginate {
     display: none;
 

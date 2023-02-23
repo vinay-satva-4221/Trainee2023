@@ -59,12 +59,13 @@ $(document).ready(function () {
         let email = $("#email").val();
         let password = $("#password").val();
         // window.location.href = "stock.html";
-        debugger;
+        // debugger;
+
         var logInUser = new Array();
-        debugger;
+        // debugger;
         for (let i = 0; i < users.length; i++) {
           // alert(users[i][0])
-          if (email === users[i][0] && password === users[i][1]) {
+          if (email.toLowerCase() === users[i][0].toLowerCase() && password === users[i][1]) {
             // alert("inside if")
             logInUser.push({
               Name: users[i][2],
@@ -81,7 +82,7 @@ $(document).ready(function () {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
+          text: "User is not Registered!",
         });
       }
     });
