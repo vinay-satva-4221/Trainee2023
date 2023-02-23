@@ -1,3 +1,18 @@
+window.onload = (event) => {debugger;
+  if (localStorage.getItem("LoginDetails") != null) {
+    window.location.replace("Dashboard.html");
+  }
+};
+
+
+//Data table Dashboard
+
+
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+
 var user = [];
 
 function validatecheck() {
@@ -5,22 +20,71 @@ function validatecheck() {
     var password = document.getElementById("password").value;
  
     var emailC1 = "krinalpatel@gmail.com";
-    var emailC2 = "k@gmail.com";
-    var emailC3 = "np@gmail.com";
-    var emailC4 = "kp@gmail.com";
+    var emailC2 = "rahul@gmail.com";
+    var emailC3 = "preet@gmail.com";
+    var emailC4 = "ram@gmail.com";
 
     var passwordC1 ="Krinal@123";
     var passwordC2 ="Krinal@123";
     var passwordC3 ="Krinal@123";
     var passwordC4 ="Krinal@123";
+
+
+
 debugger;
-    if(email == emailC1 && password== passwordC1 || email == emailC2 && password== passwordC2||email == emailC3 && password== passwordC3 || email == emailC4 && password== passwordC4){
+    if(email == emailC1 && password== passwordC1){
         console.log("Log in");
-        window.location.replace("Dashboard.html")
-        var userObj = {email:email,password: password}
+
+        var userObj = {
+          email:email,
+          password: password,
+          username: "Krinal"
+        }
+      
         user.push(userObj);
             
         localStorage.setItem( 'LoginDetails', JSON.stringify(user));
+  
+        window.location.replace("Dashboard.html")
+
+    }
+    else if( email == emailC2 && password== passwordC2){
+      window.location.replace("Dashboard.html")
+      var userObj = {
+        email:email,
+        password: password,
+        username: "Rahul"
+
+      }
+      user.push(userObj);
+          
+      localStorage.setItem( 'LoginDetails', JSON.stringify(user));
+    }
+    else if( email == emailC3 && password== passwordC3 ){
+      window.location.replace("Dashboard.html")
+      var userObj = {
+        email:email,
+        password: password,
+        username: "Preet"
+
+        
+      }
+      user.push(userObj);
+          
+      localStorage.setItem( 'LoginDetails', JSON.stringify(user));
+    }
+    else if( email == emailC4 && password== passwordC4){
+      window.location.replace("Dashboard.html")
+      var userObj = {
+        email:email,
+        password: password,
+        username: "Ram"
+
+        
+      }
+      user.push(userObj);
+          
+      localStorage.setItem( 'LoginDetails', JSON.stringify(user));
     }
     else{
         if(email=="" && password==""){
@@ -36,36 +100,6 @@ debugger;
   
   }
 
-// function validateemail() {
-//     let setemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-//     let email = document.getElementById("email").value;
-//     let msgemail = document.getElementById("invalid_email");
-//     if (!setemail.test(email)) {
-//         msgemail.innerHTML = "*Please enter @ and .com";
-//         msgemail.style.color = "red";
-//         document.getElementById("invalid_email").style.display = "unset";
-
-//         return false;
-//     } else {
-//         document.getElementById("invalid_email").style.display = "none";
-//         return true;
-//     }
-// }
-// function validatepassword() {
-//     let setpass =/^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{10,16}$/;
-//     let pass = document.getElementById("password").value;
-//     let msgpass = document.getElementById("invalid_password");
-//     if (!setpass.test(pass)) {
-//         msgpass.innerHTML = "*Please enter correct password";
-//         msgpass.style.color = "red";
-//         document.getElementById("invalid_password").style.display = "unset";
-
-//         return false;
-//     } else {
-//         document.getElementById("invalid_password").style.display = "none";
-//         return true;
-//     }
-// }
 $.validator.addMethod("Emailcheck", function (value) {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
   });
@@ -99,4 +133,3 @@ $("form[name='login_form']").validate({
       form.submit();
     }
   });
-

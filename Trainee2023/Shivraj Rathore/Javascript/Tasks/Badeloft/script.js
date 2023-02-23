@@ -1,9 +1,11 @@
 $(document).ready(function () {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (loggedInUser) {
-    location.replace("main.html");
-  }
 
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (loggedInUser) {
+    location.replace("dashboard.html");
+  }
+  
   const users = [
     {
       username: "JohnDoe",
@@ -70,12 +72,17 @@ $(document).ready(function () {
       // Check email and password with input and alert if matches
       const inputEmail = document.getElementById('validationCustom01').value;;
       const inputPassword = document.getElementById('validationCustom02').value;
+
       const storedUsers = JSON.parse(localStorage.getItem("userData"));
+
       const user = storedUsers.find(u => u.email === inputEmail && u.password === inputPassword);
 
       if (user) {
+
         localStorage.setItem("loggedInUser", JSON.stringify(user));
-        location.replace("main.html");
+        
+        location.replace("dashboard.html");
+
       } else {
         alert("Email or password is incorrect.");
       }

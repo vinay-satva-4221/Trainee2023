@@ -11,7 +11,7 @@ $(document).ready(function () {
         },
         messages: {
             email: {
-                required: "Please enter your email"
+                required: "Please enter your email",
             },
             password: {
                 required: "Please enter your password",
@@ -25,52 +25,62 @@ $(document).ready(function () {
 });
 
 
-window.history.forward();
-function noBack() {
-    window.history.forward();
-}
-
 function addData() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+  
+    if ($("#myfrm").valid() == true) {
+        const data = [
 
-    var email1 = "admin@gmail.com";
-    var email2 = "user@gmail.com";
-    var email3 = "momin12@gmail.com";
-
-    var password1 = "admin1";
-    var password2 = "user12";
-    var password3 = "momin1";
-
-    var details;
-    if (localStorage.getItem("details") == null) {
-        details = [];
-    }
-    else {
-        details = JSON.parse(localStorage.getItem("details"));
-
-        if (email == email1 && password == password1 || email == email2 && password == password2 || email == email3 && password == password3) {
-            details.push({
+            {email: "admin@gmail.com", password: "admin1", name: "Mahediali",Image:"/Badeloft/Assets/3_image.jfif" },
+            {email: "user@gmail.com", password: "user12", name: "Soham",Image:"/Badeloft/Assets/4_image.jfif" },
+            {email:"momin12@gmail.com",password:"momin1",name:"Momin",Image:"/badeloft/assets/5_image.jfif" },
+          ];
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+        
+          var details;
+          if (localStorage.getItem("details") == null) {
+            details = [];
+          }
+          else {
+            details = JSON.parse(localStorage.getItem("details"));
+            if ((email == data[0].email  && password==data[0].password) )
+             {
+              details.push({
                 email: email,
-                password: password,
-                uname: "Mahediali",
-                picture: ""
-            });
-            window.location.href = ("Dashboard.html");
-        }
-        else {
-            if (email == "" && password == "") {
-                document.getElementById("EMAIL").innerHTML = "This Field is required*"
+                name:data[0].name,
+                image:data[0].Image
+      
+              });
+              window.location.replace("Dashboard.html");
+            }
+            else if((email == data[1].email && password==data[1].password ))
+            {
+              details.push({
+                email: email,
+                name:data[1].name,
+                image:data[1].Image
+      
+              });
+              window.location.replace("Dashboard.html");
+            }
+      
+            else if((email == data[2].email && password==data[2].password ))
+            {
+              details.push({
+                email: email,
+                name:data[2].name,
+                 image:data[2].Image
+      
+              });
+              window.location.replace("Dashboard.html");
+            }      
+            else {
+              if ((email != data[0].email) && (password != data[0].password)) {
+                document.getElementById("EMAIL").innerHTML = "This  is not login user*"
                 document.getElementById("PASSWORD").innerHTML = "This Field is required*"
+              }
             }
-            else if (email != email1 && password != password1 || email != email2 && password != password2 || email != email3 && password != password3) {
-                document.getElementById("EMAIL").innerHTML = "Email id is wrong*"
-                document.getElementById("PASSWORD").innerHTML = "Password is wrong*"
-            }
-        }
-
+          }
+          localStorage.setItem("details", JSON.stringify(details));
     }
-
-    localStorage.setItem("details", JSON.stringify(details));
-
 }

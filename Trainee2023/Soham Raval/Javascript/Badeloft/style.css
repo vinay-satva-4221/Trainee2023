@@ -14,6 +14,11 @@
       #loginbtn{
         background-color: #326c96;
       }
+      .style1{
+        width: 50px;
+        height: 5px;
+        color: #326c96;
+      }
 
       
     @media screen and (max-width: 767px) {
