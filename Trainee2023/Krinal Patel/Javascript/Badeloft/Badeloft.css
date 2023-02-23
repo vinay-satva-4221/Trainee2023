@@ -58,3 +58,33 @@ li{
  margin: 10px;
 
 }
+.navbar a.active{
+  border-bottom: 3px solid #000000;
+  
+}
+.hr{
+  border-bottom: 2px solid #175480;
+  width: 6%;
+  margin-left: 2%;
+
+}
+
+.msgerror{
+  color: red;
+}
+
+.status{
+    width: 80px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+
+}
+
+.modal:nth-of-type(even) {
+  z-index: 1052 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+  z-index: 1051 !important;
+}
+  

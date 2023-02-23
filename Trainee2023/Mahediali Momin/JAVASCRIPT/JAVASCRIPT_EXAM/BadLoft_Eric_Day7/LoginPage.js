@@ -1,76 +1,90 @@
 $(document).ready(function () {
-    $('#myfrm').validate({
-        rules: {
-            email: {
-                required: true,
-            },
-            password: {
-                required: true,
-                minlength: 5
-            }
-        },
-        messages: {
-            email: {
-                required: "Please enter your email"
-            },
-            password: {
-                required: "Please enter your password",
-                minlength: "minimum 5 alphabet required"
-            }
-        },
-        // submitHandler: function (form) {
-        //     form.submit();
-        // }
-    });
+  $('#myfrm').validate({
+    errorClass: 'error',
+    rules: {
+      email: {
+        required: true,
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    messages: {
+      email: {
+        required: "Please enter your email",
+      },
+      password: {
+        required: "Please enter your password",
+        minlength: "minimum 5 alphabet required"
+      }
+    },
+    // submitHandler: function (form) {
+    //     form.submit();
+    // }
+  });
 });
 
 
-window.history.forward();
-function noBack() {
-    window.history.forward();
-}
+const data = [
 
-function addData() {
+  { email: "admin@gmail.com", password: "admin1", name: "Mahediali", },
+  { email: "user@gmail.com", password: "user12", name: "User", },
+  { email: "momin12@gmail.com", password: "momin1", name: "Momin", },
+];
+
+localStorage.setItem("details", JSON.stringify(data));
+
+function add() {
+  
+  if ($("#myfrm").valid() == true) {
+
     var email = document.getElementById("email").value;
+    var checkEmail = email.toLowerCase();
     var password = document.getElementById("password").value;
+    var checkPass = password.toLowerCase();
 
-    var email1 = "admin@gmail.com";
-    var email2 = "user@gmail.com";
-    var email3 = "momin12@gmail.com";
 
-    var password1 = "admin1";
-    var password2 = "user12";
-    var password3 = "momin1";
-
-    var details;
-    if (localStorage.getItem("details") == null) {
-        details = [];
+    var loggUser;
+    if (localStorage.getItem("loggUser") == null) {
+      loggUser = [];
     }
     else {
-        details = JSON.parse(localStorage.getItem("details"));
+      loggUser = JSON.parse(localStorage.getItem("loggUser"));
+      if ((checkEmail == data[0].email && checkPass == data[0].password)) {
+        loggUser.push({
+          email: checkEmail,
+          name: data[0].name,
+        });
+        window.location.replace("Dashboard.html");
+      }
+      else if ((checkEmail == data[1].email && checkPass == data[1].password)) {
+        loggUser.push({
+          email: checkEmail,
+          name: data[1].name,
+        });
+        localStorage.setItem("loggUser", JSON.stringify(loggUser));
 
-        if (email == email1 && password == password1 || email == email2 && password == password2 || email == email3 && password == password3) {
-            details.push({
-                email: email,
-                password: password,
-                uname: "Mahediali",
-                picture: ""
-            });
-            window.location.href = ("Dashboard.html");
-        }
-        else {
-            if (email == "" && password == "") {
-                document.getElementById("EMAIL").innerHTML = "This Field is required*"
-                document.getElementById("PASSWORD").innerHTML = "This Field is required*"
-            }
-            else if (email != email1 && password != password1 || email != email2 && password != password2 || email != email3 && password != password3) {
-                document.getElementById("EMAIL").innerHTML = "Email id is wrong*"
-                document.getElementById("PASSWORD").innerHTML = "Password is wrong*"
-            }
-        }
+        window.location.replace("Dashboard.html");
+      }
 
+      else if ((checkEmail == data[2].email && checkPass == data[2].password)) {
+        loggUser.push({
+          email: checkEmail,
+          name: data[2].name,
+        });
+        localStorage.setItem("loggUser", JSON.stringify(loggUser));
+
+        window.location.replace("Dashboard.html");
+      }
+      else {
+        if ((checkEmail != data[0].email) && (checkPass != data[0].password)) {
+          document.getElementById("EMAIL").innerHTML = "This  is not login user*"
+          document.getElementById("PASSWORD").innerHTML = "This is not correct password*"
+        }
+      }
     }
+    localStorage.setItem("loggUser", JSON.stringify(loggUser));
 
-    localStorage.setItem("details", JSON.stringify(details));
-
+  }
 }

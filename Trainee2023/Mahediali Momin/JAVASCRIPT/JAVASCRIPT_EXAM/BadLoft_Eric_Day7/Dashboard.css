@@ -4,17 +4,44 @@
     width: 170px;
     padding-left: 20px;
 }
-#example{
-    text-align: center;
+.rounded-circle
+{
+    width: 35px;
+    height: 35px;
 }
 .maintable{
     background-color: black;
     color: white;
     border: 1px;
 }
-.start{
-    text-align: start;
+#example_length,#example_filter,#example_paginate,#example_info{
+    display: none;
 }
-.stock{
-    margin: 35px;
+#example1_length,#example1_filter,#example1_paginate,#example1_info{
+    display: none;
 }
+.pagination{
+ margin-right: 17px;
+}
+.page-link
+{
+    color: black;
+}
+#logout{
+    color: rgb(150, 147, 143);
+}
+#img{
+    margin-right: 10px;
+}
+#Uname{
+    margin-right: 15px;
+    margin-top: 5px;
+}
+.sorting_asc{
+    background-position: 10px !important;
+}
+
+
+
+
+

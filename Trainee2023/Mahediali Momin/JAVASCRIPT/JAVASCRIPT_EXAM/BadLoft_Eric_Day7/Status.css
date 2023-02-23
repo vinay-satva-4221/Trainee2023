@@ -1,0 +1,35 @@
+#example_length,#example_filter,#example_paginate,#example_info{
+    display: none;
+}
+.nav_logo{
+    margin: 10px;
+    height: 20px;
+    width: 170px;
+    padding-left: 20px;
+}
+.maintable{
+    background-color: black;
+    color: white;
+    border: 1px;
+}
+.styl{
+    height: 50px;
+    width: 60px;
+    padding-bottom: 10px;
+   
+}
+#logout{
+    color: rgb(150, 147, 143);
+}
+.rounded-circle
+{
+    width: 35px;
+    height: 35px;
+}
+#img{
+    margin-right: 10px;
+}
+#Uname{
+    margin-right: 15px;
+    margin-top: 5px;
+}

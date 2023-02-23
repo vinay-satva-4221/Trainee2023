@@ -58,3 +58,38 @@ a {
     transition: none;
     background-color: rgba(255, 255, 255, 0.76);
 }
+body {
+    font-family: "Roboto", sans-serif;
+ }
+ h3 {
+    float: left;
+ }
+ .container-fluid {
+    background-color: rgb(255, 254, 254);
+ }
+
+ .form-input {
+    height: auto;
+    text-indent: 33px;
+    border-radius: 10px;
+    float: right;
+ }
+
+
+.main {
+    width: 30%;
+   float: right;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+/* .dataTables_wrapper .dataTables_filter {
+    float: none;
+    text-align: center;
+} */
+
+

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 .image {
   padding-top: 10%;
 }
@@ -14,7 +15,7 @@ body {
 }
 
 #LOGO {
-  padding-top: 45%;
+  padding-top: 50%;
 }
 .loginContents {
   padding: 25% 10%;
@@ -24,21 +25,22 @@ body {
     display: none;
   }
 }
-.line{
-  width: 8%;
-  margin-top: -4%;
+hr{
+  height: 3px;
+  width: 10%;
 }
 hr:not([size]) {
-  height: 2px;
-  background-color: #0004ff;
+  height: 3px;
+  color: #326c96;
 }
-
-
 #welcomeText {
   font-size: 1.3rem;
-  font-family: "Roboto", sans-serif;
-  color: rgb(148, 148, 148);
+  /* font-family: "Roboto", sans-serif; */
+  color: rgb(73, 73, 73);
   padding-left: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 800;
+  /* padding-top: 10%; */
 }
 img {
   width: 300px;
