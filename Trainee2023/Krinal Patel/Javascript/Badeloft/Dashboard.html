@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b>Dashboard</b> </a>
+                        <a class="nav-link active" href="#"><b>Dashboard</b> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Stock.html">Stock</a>
@@ -78,139 +78,51 @@
 
         <!-- </nav>  -->
    
-        <div class="tblcontent table-responsive bg-light">
-            
-            <div class="m-5">
-                <table class="table" id="Dashboard">
-                    <b><h3>Stock</h3></b><br>
-                    <thead style="background-color: black; color: white;">
-                        <tr>
-                            <td scope="col">Part Number</td>
-                            <td scope="col">In Warehouse</td>
-                            <td scope="col">Available</td>
-                            <td scope="col">C100</td>
-                            <td scope="col">C101</td>
-                            <td scope="col">C102</td>
-
-                        </tr>
-                    </thead>
-                    <tbody style="background-color: white;">
-                        <tr>
-                            <td>Stock Location</td>
-                            <td></td>
-                            <td></td>
-                            <td>On Water</td>
-                            <td>On Water</td>
-                            <td>In Production</td>
-                        </tr>
-                        <tr>
-                            <td>ETA Date</td>                           
-                            <td></td>
-                            <td></td>
-                            <td>10/08/2021</td>
-                            <td>10/08/2021</td>
-                            <td>10/08/2021</td>
-                        </tr>
-                        <tr>
-                            <td>BW-01-S-M</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td><a data-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">3</a></td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-G</td>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-01-Q-L</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-Y</td>
-                            <td>4</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-G</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-G</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-G</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>BW-03-XL-G</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>1</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-        
-            <br><br><br>
-
-
-        </div>
-
-    </div>
     
+        <div class="tblcontent table-responsive bg-light">
+
+            <div class="m-5">
+           
+                    <b><h3>Stock</h3></b>
+
+                <table class="table border rounded" id="Dashboard">
+                    <thead class="table rounded-top table-dark" style="background: no-repeat;">
+                    </thead>
+                    <tdata></tdata>
+                </table>
+               
+            </div>
+  
+         
+    </div>
+   
+      <!-- <button id="button" aria-describedby="tooltip">My button</button>
+            <div id="tooltip" role="tooltip">My tooltip</div>
+            <div id="tooltip" role="tooltip">
+                My tooltip
+                <div id="arrow" data-popper-arrow></div>
+              </div>         -->
 
     <script src="JQ/jquery-3.6.3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-    <!-- <script src="JS/bootstrap.min.js"></script>  -->
+ 
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Popper -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
-    
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
 
-    <script src="Badeloft.js"></script>
     <script src="Dashboard.js"></script>
 
 
-
-
-
+    <!-- <script src="JQ/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> -->
+    <!-- <script src="JS/bootstrap.min.js"></script>  -->
+     
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
 </body>
 
 </html>
