@@ -15,7 +15,7 @@ window.onload = (event) => {
 function format(d) {
   // `d` is the original data object for the row
   return (
-      '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+      '<table  cellpadding="2" cellspacing="0" class="table border rounded">' +
       '<tr>' +
       '<th>#</th>' +
       '<th>Part Number</th>' +
@@ -40,31 +40,43 @@ function format(d) {
 
       '</table>'
   );
+
+
 }
 
 $(document).ready(function () {
   var table = $('#status').DataTable({
       data:dataSet,
-      
+      lengthChange: false,  
+      info: false,
       columns: [
           {
               className: 'dt-control',
               orderable: false,
               data: null,
               defaultContent: '',
+             
+             
           },
 
-          { title: 'QB Invoice#' },
-          { title: 'Name' },
-          { title: 'QB Ship date' },
-          { title: 'QB Payment status' },
-          { title: 'QB Status' },
-          { title: 'QB Delivery Phone' },
-          { title: 'Called' },
-          { title: 'QB Tracking' },
+          { title: 'QB Invoice#'},
+          { title: 'Name',className: "text-center" },
+          { title: 'QB Ship date' ,className: "text-center"},
+          { title: 'QB Payment status',orderable:false ,className: "text-center",render: function(){return '<button class="alert alert-success status" role="alert"><i class="fa-solid fa-check"></i> &nbsp;Paid</button>'}},
+          { title: 'QB Status' ,orderable:false, className: "text-center"},
+          { title: 'QB Delivery Phone' ,orderable:false,className: "text-center"},
+          { title: 'Called' ,orderable:false,render:function(){return '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="form-check-input">'},className: "text-center" },
+          { title: 'QB Tracking' ,orderable:false,className: "text-center"},
+
 
 
       ],
+      
+
+      select: {
+        style:    'os',
+        selector: 'td:first-child'
+    },
       order: [[1, 'asc']],
   });
 
@@ -85,8 +97,15 @@ $(document).ready(function () {
   });
 });
 var dataSet = [
-  ["","AAAA", "Kenneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647","Tick","WBC-123"],
-  ["","AAAA", "Kenneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647","Tick","WBC-123"],
-  ["","AAAA", "Kenneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647","Tick","WBC-123"],
-  ["","AAAA", "Kenneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647","Tick","WBC-123"]
+  ["","150000", "Kenneth Woodard", "12/08/2021", "", "Shipped", "617-235-7647","","WBC-123"],
+  ["","150001", "James Fenske", "10/08/2021", "", "Shipped", "618-234-6400","","WBC-123"],
+  ["","150002", "Kelly McCrory", "08/08/2021", "", "Shipped", "630-367-8448","","WBC-123"],
+  ["","150003", "Linda Englund", "05/08/2021", "", "Shipped", "203-963-9428","","WBC-123"]
 ];
+
+
+
+function logout(){
+  window.location.replace("Badeloft.html")
+  localStorage.clear();
+}
