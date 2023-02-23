@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+
+
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -46,7 +50,7 @@
                         <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stock</a>
+                        <a class="nav-link" href="stock.html">Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="status.html">Status</a>
@@ -85,7 +89,8 @@
                 <div class="container-fluid">
 
                     <br />
-                    <div id="table_box_bootstrap">
+                    <div id="table_box_bootstrap " class="table-responsive">
+                       
                         <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
@@ -105,7 +110,7 @@
         </div>
     </section>
 
-    
+
     <script>
         $(document).ready(function () {
             var data = [
@@ -118,7 +123,7 @@
             ];
             var tableRows = '';
             data.forEach(function (item) {
-                tableRows += '<tr class="text-center"><td>' + item.name + '</td><td data-bs-toggle="popover" data-bs-content="Age: ' + item.age + '">' + item.age + '</td><td>' + item.city + '</td> <td>' + item.day + '</td> <td>' + item.city + '</td><td>' + item.city + '</td></tr>';
+                tableRows += '<tr"><td>' + item.name + '</td><td data-bs-toggle="popover" data-bs-content="Age: ' + item.age + '">' + item.age + '</td><td>' + item.city + '</td> <td>' + item.day + '</td> <td>' + item.city + '</td><td>' + item.city + '</td></tr>';
             });
             $('tbody').html(tableRows);
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -145,7 +150,7 @@
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 
             $("#active").html(activeuser.name);
-            $('[data-toggle="popover"]').popover();  
+            $('[data-toggle="popover"]').popover();
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
