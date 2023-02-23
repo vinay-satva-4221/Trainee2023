@@ -19,9 +19,6 @@
 
     <link href="Badeloft.css" rel="stylesheet" type="text/css">
 
-
-
-    <link href="Badeloft.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -40,13 +37,13 @@
                         <a class="nav-link" href="Dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b>Stock</b></a>
+                        <a class="nav-link active" href="#"><b>Stock</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Status.html">Status</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Assignment</a>
+                        <a class="nav-link" href="Assignment.html ">Assignment</a>
                     </li>
                 </ul>
             </div>
@@ -71,7 +68,7 @@
             <form class="form-outline">
 
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                    ADD
+                    + NEW 
                   </button>
                 <!-- <input type="search" class="form-control" id="datatable-search-input" placeholder="Search here"> -->
 
@@ -84,7 +81,7 @@
                 <!-- <b><h3>Stock</h3></b> -->
 
 
-                <table class="table" id="status">
+                <table class="table" id="stock">
                     <thead style="background-color: black; color: white;">
                         </thead>
                 
@@ -119,14 +116,16 @@
 
                                 <div class="input-group mb-3">
 
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">On Production</button>
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">On Water</button>
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">In Warehouse</button>
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon1">On Production</button>
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon1">On Water</button>
+                                    <button class="btn btn-outline-primary" type="button" id="button-addon1">In Warehouse</button>
 
                                   </div>
+                                  
                               
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Schedule Appointment</button>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                                 </div>
         
                             </div>
@@ -156,7 +155,7 @@
 
 
 
-    <script src="Badeloft.js"></script>
+    <!-- <script src="Badeloft.js"></script> -->
     <script src="Stock.js"></script>
 
 

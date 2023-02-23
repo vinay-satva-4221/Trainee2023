@@ -12,6 +12,8 @@
       href="https://jsuites.net/v4/jsuites.css"
       type="text/css"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -20,7 +22,7 @@
     <!--------------- NAVBAR -------------->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand ms-3 ps-2" href="#"
+        <a class="navbar-brand ms-3 ps-2" id="companylogoAtag" href="#"
           ><img src="./assets/02@2x.png" alt="Company logo" id="navlogo"
         /></a>
         <button
@@ -38,10 +40,10 @@
           <div class="tabs ms-auto pe-5" id="links">
             <ul class="navbar-nav me-auto nav-ul">
               <li class="nav-item">
-                <a class="nav-link m-auto ms-4" href="#">Dashboard</a>
+                <a class="nav-link m-auto ms-4" href="Dashboard.html">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active ms-4" href="#">Stock</a>
+                <a class="nav-link active ms-4" href="stock.html">Stock</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ms-4" href="#">Status</a>
@@ -130,21 +132,34 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="form-group">
                       <label for="Status" class="mb-2">Status</label>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-grp">On Production</button>
-                        <button type="button" class="btn btn-grp">On Water</button>
-                        <button type="button" class="btn btn-grp">In Water</button>
+                      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+                      
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+                      
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <div class="col-lg-2">
+                  <div class="col-lg-6">
                       <div class="form-group">
-                        <a href=""><img id="AddParts" src="./assets/stock/Plus.svg" alt="">Add Part Number</a>
+                        <div class="btn-group dropend">
+                          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropright
+                          </button>
+                          <ul class="dropdown-menu">
+                            <!-- Dropdown menu links -->
+                          </ul>
+                        </div>
+                        
                         </div>
                       </div>
                     </div>
@@ -170,22 +185,15 @@
 
         <!-- <table id="table_div" class="table  .table-responsive-lg"> -->
           <thead class="thead-dark"> 
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                
-            </tr>
-        </thead>
+            
         </table>
       </div>
       </div>
-    </div>
 
     <script src="jquery/jquery.js"></script>
     <script src="stock.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script
