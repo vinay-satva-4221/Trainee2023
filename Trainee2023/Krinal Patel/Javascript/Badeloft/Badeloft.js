@@ -87,15 +87,22 @@ debugger;
       localStorage.setItem( 'LoginDetails', JSON.stringify(user));
     }
     else{
-        if(email=="" && password==""){
-            document.getElementById("invalid_email").innerHTML = "This Field is required*"
-            document.getElementById("invalid_password").innerHTML = "This Field is required*"
-        }
-        else if(email != emailC1 && password!= passwordC1 || email != emailC2 && password!= passwordC2||email != emailC3 && password!= passwordC3 || email != emailC4 && password!= passwordC4){
-            document.getElementById("invalid_email").innerHTML = "Email id is wrong*"
-            document.getElementById("invalid_password").innerHTML = "Password is wrong*"
-        }
-
+      swal({
+        title: "Invalid or missing",
+        text: "Please enter all the details apropriately",
+        icon: "warning",
+        button: "Ok"
+    });
+      
+        // if(email=="" && password==""){
+        //     document.getElementById("invalid_email").innerHTML = "This Field is required*"
+        //     document.getElementById("invalid_password").innerHTML = "This Field is required*"
+        // }
+        // else if(email != emailC1 && password!= passwordC1 || email != emailC2 && password!= passwordC2||email != emailC3 && password!= passwordC3 || email != emailC4 && password!= passwordC4){
+        //     document.getElementById("invalid_email").innerHTML = "Email id is wrong*"
+        //     document.getElementById("invalid_password").innerHTML = "Password is wrong*"
+        // }
+      
     }
   
   }
@@ -106,8 +113,14 @@ $.validator.addMethod("Emailcheck", function (value) {
   $.validator.addMethod("password", function (value) {
     return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
   });
+  // $("#checkConfirmPass").css("color", "red");
+  
+
 
 $("form[name='login_form']").validate({
+
+  
+  errorClass: 'msgerror',
     rules: {
       email: {
         required: true,
@@ -122,11 +135,11 @@ $("form[name='login_form']").validate({
       email: {
         required: "Enter your Email",
         email: true,
-        Emailcheck: "Please Enter Email correctly",
+        Emailcheck: "Enter valid Email",
       },
       password: {
         required: "Enter your Password",
-        password: "Please Enter Password correctly",
+        password: "Enter valid Password",
       },
     },
     submitHandler: function (form) {

@@ -15,17 +15,17 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light m-0 h-50">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="#"> <img src="./images/02.png" alt=""></a>
+                <a class="navbar-brand" href="#"> <img src="./images/02.png" alt="" id="navImageLogo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse justify-content-center align-items-center w-100"
+                <div class="navbar-collapse collapse w-100"
                     id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
                             <a href="dashboard.html" class="nav-item textColor mx-3 fw-bolder nav-link active">Dashboard</a>
                         </li>
@@ -39,16 +39,28 @@
                             <a href="assignment.html" class="nav-item textColor mx-3 fw-bolder nav-link">Assignment</a>
                         </li>
                     </ul>
-                    <ul class="d-flex list-unstyled ">
+                    <!-- <ul class="list-unstyled d-flex ms-5 justify-content-end">
                         <li class="nav-item">
+                            <h6 class="nav-item">Welcome</h6>
                             <h5 class="nav-item fw-bold textColor nav-link" id="diplayName"></h5>
                         </li>
                         <li class="nav-item"><a href="./login.html" class="nav-item textColor nav-link">
                                 <i class="bi bi-box-arrow-in-right badge-dark bi--8xl" id="deleteLoggedUser"></i></a>
                         </li>
-                    </ul>
+                    </ul> -->
+                </div>
+                <div class='d-flex ms-auto mt-2 align-items-center p-0'>
+                    <div class="inline-block">
+                        <p class="text-secondary p-0 m-0 fs-6">Welcome</p>
+                        <p id="diplayName" class="fw-bold fs-6"></p> 
+                    </div>
+                    <div class="ms-5">
+                        <i class="bi bi-box-arrow-in-right Bold" id="deleteLoggedUser"></i>
+                    </div>
+                    
                 </div>
             </div>
+            
         </nav>
     </header>
     <script src="./bs5/jquery-3.6.3.min.js"></script>
