@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
+    </script>
+    <style>
+        .dataTables_length {
+            display: none;
+        }
+
+        .dataTables_filter {
+            display: none;
+        }
+
+        thead {
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="status.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Assignment</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center" id="welcome">
+                <div class="collapse navbar-collapse justify-content-start">
+                    <span class="navbar-text d-none d-lg-block">Welcome</span>
+                    <div class="collapse navbar-collapse justify-content-start">
+                        <span class=" " id="active"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nav-item logoutbutton">
+                        <button id="logout-btn" class="btn btn-primary">Logout</button>
+                    </div>
+                </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-9 ">
+            <h3>Stock</h3>
+        </div>
+        <div class="col-md-3">
+            <input type="search" class="form-control" placeholder="search here...">
+        </div>
+    </div>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>QB Invoice#</th>
+                <th>Name</th>
+                <th>QB Ship date</th>
+                <th>QB Payment Status</th>
+                <th>C101</th>
+                <th>C102</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+
+            const logoutButton = document.getElementById('logout-btn');
+            logoutButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                localStorage.removeItem('loggedInUser');
+                window.location.href = 'BadeloftLoginPage.html';
+            });
+            var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+            $("#active").html(activeuser.name);
+            $('[data-toggle="popover"]').popover();
+
+
+
+            /* Formatting function for row details - modify as you need */
+            function format(d) {
+                // `d` is the original data object for the row
+                return (
+                    '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                    '<tr>' +
+                    '<td>Full name:</td>' +
+                    '<td>' +
+                    d.name +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Extension number:</td>' +
+                    '<td>' +
+                    d.extn +
+                    '</td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>Extra info:</td>' +
+                    '<td>And any further details here (images etc)...</td>' +
+                    '</tr>' +
+                    '</table>'
+                );
+            }
+
+
+            var data = [
+                {
+                    name: 'John Doe',
+                    position: 'Software Engineer',
+                    office: 'New York',
+                    salary: '$120,000'
+                },
+                {
+                    name: 'Jane Smith',
+                    position: 'Product Manager',
+                    office: 'San Francisco',
+                    salary: '$150,000'
+                },
+                // Add more data objects here...
+            ];
+
+
+            var table = $('#example').DataTable({
+                data: data,
+                columns: [
+                    {
+                        className: 'dt-control',
+                        orderable: false,
+                        data: null,
+                        defaultContent: '',
+                    },
+                    { data: 'name' },
+                    { data: 'position' },
+                    { data: 'office' },
+                    { data: 'salary' },
+                ],
+                order: [[1, 'asc']],
+            });
+
+
+            // Add event listener for opening and closing details
+            $('#example tbody').on('click', 'td.dt-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

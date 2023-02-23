@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    </script>
+    <style>
+        .dataTables_length {
+            display: none;
+        }
+
+        .dataTables_filter {
+            display: none;
+        }
+
+        thead {
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="status.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Assignment</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center" id="welcome">
+                <div class="collapse navbar-collapse justify-content-start">
+                    <span class="navbar-text d-none d-lg-block">Welcome</span>
+                    <div class="collapse navbar-collapse justify-content-start">
+                        <span class=" " id="active"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nav-item logoutbutton">
+                        <button id="logout-btn" class="btn btn-primary">Logout</button>
+                    </div>
+                </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-9 ">
+            <h3>Stock</h3>
+        </div>
+        <div class="col-md-3">
+            <input type="search" class="form-control" placeholder="search here...">
+        </div>
+    </div>
+    <section id="dataTable" class="dataTable">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+
+                    <br />
+                    <div id="table_box_bootstrap">
+                        <table id="example" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>In warehouse</th>
+                                    <th>Available</th>
+                                    <th>C100</th>
+                                    <th>C101</th>
+                                    <th>C102</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+        $(document).ready(function () {
+            var data = [
+                { name: 'Stock Location', age: 30, city: ' <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>', day: 'AMit' },
+                { name: 'ETA Date', age: 25, city: 'Los Angeles', day: 'AMit' },
+                { name: 'BW-01-S-M', age: 40, city: 'Chicago', day: 'AMit' },
+                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
+                { name: 'BW-01-QM-G', age: 35, city: 'San Francisco', day: 'AMit' },
+                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
+            ];
+            var tableRows = '';
+            data.forEach(function (item) {
+                tableRows += '<tr class="text-center"><td>' + item.name + '</td><td data-bs-toggle="popover" data-bs-content="Age: ' + item.age + '">' + item.age + '</td><td>' + item.city + '</td> <td>' + item.day + '</td> <td>' + item.city + '</td><td>' + item.city + '</td></tr>';
+            });
+            $('tbody').html(tableRows);
+            var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+            $("#activeuser").html(activeuser.username);
+            $('#example').DataTable({
+                "paging": true,
+                "order": [[0, "asc"]],
+                "columnDefs": [
+                    { "targets": 0, "orderable": true },
+                    { "targets": [1, 2, 3, 4, 5], "orderable": false }
+                ],
+                "createdRow": function (row, data, dataIndex) {
+                    $('td:eq(1)', row).popover({
+                        placement: 'top'
+                    });
+                }
+            });
+            const logoutButton = document.getElementById('logout-btn');
+            logoutButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                localStorage.removeItem('loggedInUser');
+                window.location.href = 'BadeloftLoginPage.html';
+            });
+            var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+            $("#active").html(activeuser.name);
+            $('[data-toggle="popover"]').popover();  
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

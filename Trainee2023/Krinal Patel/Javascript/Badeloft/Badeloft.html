@@ -13,6 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js" integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js" integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="Badeloft.css" rel="stylesheet" type="text/css">
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css"
+        type="text/css" />
 </head>
 
 <body>
@@ -23,38 +26,47 @@
                 <img class="image1" src="images/Loginpage.png">
                 <img class="image2" src="images/White-logo.png">
             </div>
-            <form id="login_form" action="Dashboard.html" >
+            <form id="login_form" name="login_form">
             <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 parentright">
                 <img class="image3" src="images/Black-logo.png">
-                <h6 class="head_login"><br>&nbsp; Welcome, Let's Get Started!</h6>
+                <h4  style="color: rgb(119, 119, 119); font-family:sans-serif ;"><br>&nbsp; <b>Welcome, Let's Get Started!</b></h4>
+        
+                 <hr class="hr" style="color: #326C96;">
 
                 <div class="col-sm-10  col-xs-10 col-md-10 col-lg-10 col-xl-10 my-5">
                     <div class="form-group">
                         <label for="Email" class="form-label">Email:</label>
-                        <input type="text" class="form-control" id="email" onchange="return validateemail()" placeholder="Enter email" required>
+                        <input type="text" name="email" class="form-control" id="email" onchange="return validateemail()" placeholder="Enter email" required>
                         <p id="invalid_email"></p>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" id="password" onchange="return validatepassword()" placeholder="Enter password" required>
+                        <input type="password" class="form-control" id="password" name="password" onchange="return validatepassword()" placeholder="Enter password" required>
                         <p id="invalid_password"></p>
                     </div><br>
-                    <input type="submit" class="btn btn-primary btn-block w-100 lg1" value="LOGIN" onclick="validatecheck()" id="loginbtn" src="www.googke.com">
+                    <input type="button" class="btn btn-primary btn-block w-100 lg1" value="LOGIN" onclick="validatecheck()" id="loginbtn">
                 </div>
             
             </div>
             </form>
-        
+        </div>
     </div>
 
 <script src="JQ/jquery-3.6.3.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="Badeloft.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-<script src="Badeloft.js"></script>
 
 </body>
 

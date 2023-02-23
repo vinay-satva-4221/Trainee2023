@@ -4,10 +4,6 @@ var data1 = [
     []
 ];
 
-    
-
-
- 
 var alldata=jspreadsheet(document.getElementById('spreadsheet'), {
     minDimensions: [],
     data:data1,
@@ -60,14 +56,16 @@ var alldata=jspreadsheet(document.getElementById('spreadsheet'), {
             type:'numeric',
             title:'Logged Hours*',
             width:120,
-            mask:'00:00'
+            mask:'00:00',
+            class:'logged'
 
         },
         {
             type:'numeric',
             title:'Billable Hours*',
             width:120,
-            mask:'00:00'
+            mask:'00:00',
+            id:'billable'
 
         },
       
@@ -165,4 +163,46 @@ var t1 = jspreadsheet(document.getElementById('myTable'), {
         { title:'BC Description', width:200 },
         
     ]
+});
+
+
+// var update=function(val,cel)
+// {
+//     var table=document.getElementById("spreadsheet");
+//     var cell5=table.cells[5];
+//     var cell6=cell5.innerText;
+//     cell5.innerText=cell6;
+// }
+// // Get the table and the rows
+// var table = document.getElementById("myTable");
+// var row1 = table.rows[0];
+// var row2 = table.rows[1];
+
+// // Get the cell in the first row
+// var cell1 = row1.cells[0];
+
+// // Get the value in the cell
+// var value = cell1.innerText;
+
+// // Set the value in the cell in the second row
+// var cell2 = row2.cells[0];
+// cell2.innerText = value;
+
+
+
+// $(document).ready(function() {
+//     $('#spreadsheet').jspreadsheet({
+//         data:data1,
+//         onchange:update,
+//     });
+// });
+$('#billable').on('change',function(event) {
+    // var total_amount = $('.logged').val();
+    // var delivery_charge = $(this).val();
+    // var grand_total_amount = total_amount + delivery_charge;
+    // $('.logged').val(grand_total_amount);
+    var table=document.getElementById("spreadsheet");
+    var cell5=table.cells[5];
+    var cell6=cell5.innerText;
+    cell5.innerText=cell6;
 });
