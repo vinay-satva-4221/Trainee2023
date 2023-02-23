@@ -1,0 +1,64 @@
+.container-fluid {
+    display: flex;
+}
+
+.responsive {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+#formimg {
+    width: 80%;
+    height: auto;
+}
+
+#rightside {
+
+    margin-top: 8%;
+
+
+}
+
+form {
+    margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* Hide the .responsive and #mainimg elements on smaller screens */
+    .responsive,
+    #mainimg {
+        display: none;
+    }
+
+    /* Adjust the size of the #formimg element on smaller screens */
+    #formimg {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust the margins and font sizes for the #rightside element on smaller screens */
+    #rightside {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    #rightside b {
+        font-size: 1.5rem;
+    }
+
+    #rightside label {
+        font-size: 1.2rem;
+    }
+
+    #rightside input {
+        font-size: 1.2rem;
+    }
+
+    #rightside button {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
