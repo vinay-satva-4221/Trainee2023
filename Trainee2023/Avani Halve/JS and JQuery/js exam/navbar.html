@@ -6,114 +6,71 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Badeloft</title>
       <!-- jquery cdn -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-      <!-- Bootsrap Cdn  -->
 
-      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
       <link
          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
          rel="stylesheet"
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
          crossorigin="anonymous"
       />
-      <link
-         rel="stylesheet"
-         href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
-         integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm"
-         crossorigin="anonymous"
-      />
-      <style>
-         a {
-            outline: none;
-         }
-
-         .navbar-container {
-            text-align: center;
-            background-color: #ffffff;
-            box-shadow: 0px -20px 5px 20px #ffffff;
-            padding: 10px;
-            font-size: 0;
-         }
-
-         .navbar-container ul {
-            margin: 0;
-            padding: 0;
-            text-align: right;
-            display: inline-block;
-            vertical-align: middle;
-         }
-
-         .navbar-container ul li {
-            display: inline-block;
-            font-size: 16px;
-         }
-
-         .navbar-container ul li a {
-            color: #110d0d;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px;
-            transition: color 0.5s;
-         }
-
-         .navbar-container ul li .underline {
-            height: 3px;
-            background-color: transparent;
-            width: 0%;
-            transition: width 0.2s, background-color 0.5s;
-            margin: 0 auto;
-         }
-
-         .navbar-container ul li.active-link .underline {
-            width: 100%;
-            background-color: rgb(22, 18, 18);
-         }
-
-         .navbar-container ul li:hover .underline {
-            background-color: rgb(17, 10, 10);
-            width: 100%;
-         }
-
-         .navbar-container ul li:active a {
-            transition: none;
-            color: rgba(255, 255, 255, 0.76);
-         }
-
-         .navbar-container ul li:active .underline {
-            transition: none;
-            background-color: rgba(255, 255, 255, 0.76);
-         }
-
-         #dasboardlogo {
-            float: left;
-            margin-top: 2%;
-         }
-      </style>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="navbar.css"/>
    </head>
    <body>
-      <div class="navbar-container">
-         <img src="02.png" id="dasboardlogo" height="20" />
-         <ul>
-            <li class="nav-link active-link">
-               <a href="#">Home </a>
-               <div class="underline"></div>
-            </li>
-            <li class="nav-link">
-               <a href="#">About Us</a>
-               <div class="underline"></div>
-            </li>
-            <li class="nav-link">
-               <a href="#">Testimonials</a>
-               <div class="underline"></div>
-            </li>
-            <li class="nav-link">
-               <a href="#">Contact</a>
-               <div class="underline"></div>
-            </li>
-         </ul>
-         <i class="bi bi-person-circle"></i>
-      </div>
-      <script src="login.js"></script>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+         <div class="container-fluid">
+            <img src="02.png" alt="" srcset="" id="badeloftlogo" height="20" />
+            <button
+               class="navbar-toggler"
+               type="button"
+               data-bs-toggle="collapse"
+               data-bs-target="#navbarTogglerDemo02"
+               aria-controls="navbarTogglerDemo02"
+               aria-expanded="false"
+               aria-label="Toggle navigation"
+            >
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+               <div class="tabs " id="navlinks">
+                  <ul class="navbar-nav" >
+                     <li class="nav-link active-link ">
+                        <a href="./dashboard.html" style="text-decoration: none;">Dashboard </a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="./stock.html" style="text-decoration: none;">Stock</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="status.html" style="text-decoration: none;">Status</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="assignment.html" style="text-decoration: none;">Assignment</a>
+                        <div class="underline"></div>
+                     </li>
+                  </ul>
+               </div>
+               <div style="float: right;" class="mt-4">
+                  <span><img src="person1.jfif" class="rounded-circle" height="25"></span>
+                  <span id="user"></span>
+                  <button type="button" class="btn btn-light" onclick="logout()">
+                     <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  </button>
+              </div> 
+          </div>
+      </nav>
+      <!-- <script src="navbar.js"></script> -->
+
+      <script src="navbar.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <!-- Bootsrap Cdn  -->
+
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
    </body>

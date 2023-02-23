@@ -19,6 +19,9 @@
         height: 5px;
         color: #326c96;
       }
+      .msg{
+        color: red;
+      }
 
       
     @media screen and (max-width: 767px) {
