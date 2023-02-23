@@ -57,7 +57,7 @@ $(document).ready(function () {
       // Loop through the data in localStorage and check for a match
       const storedData = JSON.parse(localStorage.getItem("users"));
       for (let i = 0; i < storedData.length; i++) {
-        if (storedData[i].email === mail && storedData[i].password === pass) {
+        if (storedData[i].email === mail.toLowerCase() && storedData[i].password === pass.toLowerCase()) {
           // Set the data for the logged-in user in a new key
           const user = storedData[i];
           localStorage.setItem("loggedInUser", JSON.stringify(user));
