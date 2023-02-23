@@ -48,7 +48,7 @@
                         <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stock</a>
+                        <a class="nav-link" href="stock.html">Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="status.html">Status</a>
@@ -89,8 +89,10 @@
                 <th>Name</th>
                 <th>QB Ship date</th>
                 <th>QB Payment Status</th>
-                <th>C101</th>
-                <th>C102</th>
+                <th>QB Status</th>
+                <th>QB Delivery Phone</th>
+                <th>Called</th>
+                <th>QB Tracking </th>
             </tr>
         </thead>
     </table>
@@ -116,7 +118,7 @@
                 // `d` is the original data object for the row
                 return (
                     '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-                    '<tr>' +
+                    '<tr class="text-center">' +
                     '<td>Full name:</td>' +
                     '<td>' +
                     d.name +
@@ -125,7 +127,7 @@
                     '<tr>' +
                     '<td>Extension number:</td>' +
                     '<td>' +
-                    d.extn +
+                    d.position +
                     '</td>' +
                     '</tr>' +
                     '<tr>' +
@@ -139,16 +141,64 @@
 
             var data = [
                 {
-                    name: 'John Doe',
-                    position: 'Software Engineer',
-                    office: 'New York',
-                    salary: '$120,000'
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
                 },
                 {
-                    name: 'Jane Smith',
-                    position: 'Product Manager',
-                    office: 'San Francisco',
-                    salary: '$150,000'
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
+                },
+                {
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
+                },
+                {
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
+                },
+                {
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
+                },
+                {
+                    name: '15000',
+                    position: 'Kenneth Woodard',
+                    office: '12/08/2021',
+                    salary: '',
+                    status:'shipped',
+                    deliveryphone:'123-123-1234',
+                    called:'',
+                    tracking:'WBC-123'
                 },
                 // Add more data objects here...
             ];
@@ -166,7 +216,17 @@
                     { data: 'name' },
                     { data: 'position' },
                     { data: 'office' },
-                    { data: 'salary' },
+                    { data: 'salary',
+          render: function(data, type, row, meta) {
+              return data + ' <button type="button" class="alert alert-primary p-1"><i class="fa fa-check">Paid</i></button>';
+          }
+        },
+        { data: 'status' },
+        { data: 'deliveryphone' },
+        { data: 'called',render: function(data,  row, meta) {
+              return '<input type="checkbox">';
+          } },
+        { data: 'tracking' },
                 ],
                 order: [[1, 'asc']],
             });
