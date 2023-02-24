@@ -1,11 +1,8 @@
 $(document).ready(function () {
-
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
   if (loggedInUser) {
     location.replace("dashboard.html");
   }
-  
   const users = [
     {
       username: "JohnDoe",
