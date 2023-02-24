@@ -1,72 +1,87 @@
-.nav_logo{
+.nav_logo {
     margin: 10px;
     height: 20px;
     width: 170px;
     padding-left: 20px;
 }
-.rounded-circle
-{
-    width: 35px;
-    height: 35px;
+
+.rounded-circle {
+    width: 40px;
+    height: 40px;
 }
-.maintable{
+
+.maintable {
     background-color: black;
     color: white;
     border: 1px;
 }
-#example_length{
+
+#example_length, #example_filter, #example_paginate, #example_info {
     display: none;
 }
-#example_filter{
+
+#example1_length, #example1_filter, #example1_paginate, #example1_info {
     display: none;
 }
-#example_paginate{
-    display: none;
+
+.pagination {
+    margin-right: 17px;
 }
-#example_info{
-    display: none;
-}
-#example1_length{
-    display: none;
-}
-#example1_filter{
-    display: none;
-}
-#example1_paginate{
-    display: none;
-}
-#example1_info{
-    display: none;
-}
-.pagination{
- margin-right: 17px;
-}
-.page-link
-{
+
+.page-link {
     color: black;
 }
-#logout{
+
+.navbar a.active {
+    border-bottom: 3px solid #000000;
+}
+
+#logout {
     color: rgb(150, 147, 143);
+    margin-top: 30px;
 }
-/* .nav-link{
-    position: relative;
+
+#img {
+    margin-right: 10px;
+    margin-top: 13px;
 }
-.nav-link::after{
-    opacity: 0;
-    transition: all 0.2s;
-    height: 2px;
-    width: 100px;
-    background-color: black;
+
+#Uname {
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+.sorting_asc {
+    background-position: 10px !important;
+}
+
+#bade_logo {
+    width: 110%;
+    margin-left: -35px;
+}
+table.dataTable thead>tr>th.sorting_asc:before{
+    margin-right: 310px;
     position: absolute;
-    bottom: 0;
-    top: 0;
 }
-.nav-link:hover::after{
-    content: '';
-    opacity: 1;
-    
-} */
+table.dataTable thead>tr>th.sorting_asc:after{
+    margin-right: 310px;
+    position: absolute;
+    padding-top: 3px;
+}
+.pagination {
+    display: inline-block;
+}
 
-
-
-
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+.pagination a.active {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+  }

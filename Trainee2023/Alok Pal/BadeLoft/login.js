@@ -86,9 +86,26 @@ function validate() {
   var email = document.getElementById("femail").value;
   var password = document.getElementById("fpassword").value;
   if (email == "" && password == "") {
-    document.getElementById("errorE").innerHTML = "This Field is required*";
-    document.getElementById("errorP").innerHTML = "This Field is required*";
-  } else if (
+    document.getElementById("errorE").innerHTML = "Email is required*";
+    document.getElementById("errorP").innerHTML = "Password is required*";
+  }else if((email != '' && password == '')){
+    document.getElementById("errorP").innerHTML = "Password is required*";
+  }else if((email == '' && password != '')){
+    document.getElementById("errorE").innerHTML = "Email is required*";
+  }
+  else if((email == emailC1 && password != passwordC1)){
+    document.getElementById("errorP").innerHTML = "Password is wrong*";
+  }
+  else if((email != emailC1 && password == passwordC1)){
+    document.getElementById("errorE").innerHTML = "Email is wrong*";
+  }
+  
+  
+  
+  
+  
+  
+  else if (
     (email != emailC1 && password != passwordC1) ||
     (email != emailC2 && password != passwordC2) ||
     (email != emailC3 && password != passwordC3) ||

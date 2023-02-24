@@ -6,11 +6,24 @@ var dataSet = [
   ];
   
 $(document).ready(function(){
-    $("#AddNavbar").load("navbar.html"); 
+    $("#AddNavbar").load("./navbar.html");
+
+    var loggedData = localStorage.getItem('LoggedInUser');
+    if (loggedData) {
+        //window.location.replace("dashboard.html");
+    }
+    else{
+        window.location.replace("./login.html");
+    }
     $("#example").DataTable({
         data: dataSet,
         "dom": 'rtip',
-        "ordering": false,
+        rowReorder: true,
+        columnDefs: [
+            { orderable: true, className: 'reorder', targets: 0 },
+            { orderable: false, targets: '_all' }
+        ],
+       
         columns: [
           { title: "Part Number","sortable": true },
           { title: "In Warehouse" },
@@ -20,5 +33,5 @@ $(document).ready(function(){
           { title: "C102" },
         ],
       });
-      $('#example').removeClass('display').addClass('table table-striped table-bordered');
+      $('#example').removeClass('display');
 })

@@ -8,7 +8,7 @@
 
 
 window.onload = () => {
-    if (localStorage.getItem("details") == null) {
+    if (localStorage.getItem("loggUser") == null) {
         
       window.location.replace("LoginPage.html");
     }
@@ -21,47 +21,49 @@ var data1 = [
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
-    ["ZK-08-X2P", "1", "0", "3", "0", "1"]
+    ["ZK-08-X2P", "1", "0", "3", "0", "1"],
+    // <a data-toggle="popover" title="Assigned to" data-content="Description" data-trigger="hover">
+    // popover</a>
 ]
 
 $(document).ready(function () {
     $('#example').DataTable({
         data: data1,
         columns: [
-            { title: 'Part Number' },
-            { title: 'In Warehouse' },
-            { title: 'Available' },
-            { title: 'C100' },
-            { title: 'C101' },
-            { title: 'C102' },
+            { title: 'Part Number',  "sortable": true,},
+            { title: 'In Warehouse',  "sortable": false },
+            { title: 'Available',  "sortable": false },
+            { title: 'C100' ,"sortable": false, fnDrawCallback : function() {
+                $('[data-toggle="popover"]').popover(); 
+            }},
+            { title: 'C101',"sortable": false },
+            { title: 'C102', "sortable": false },
         ],
+        
         columnDefs: [
             {
-                targets: -1,
-                className: 'dt-center'
+                targets: [1,2,3,4,5],
+                className: 'text-center'
+            },
+            {
+                "width": "34%" , "targets": 0
             }
           ]
-
     });
+
     $('.sorting').removeClass('sorting');
 
-    var user = JSON.parse(localStorage.getItem("details"));
-    console.log(user)
-    $("#uname").html(user.name);
+    var user = JSON.parse(localStorage.getItem("loggUser"));
+    console.log("user",user);
+    $("#Uname").html(user[0].name);
 });
-
-
-
-debugger;
-
-
-
 
 
 function logout() {
     window.location.replace("LoginPage.html");
     localStorage.clear();
 }
+
 
 // var img1 = localStorage.getItem("details");
 // console.log(img1)
