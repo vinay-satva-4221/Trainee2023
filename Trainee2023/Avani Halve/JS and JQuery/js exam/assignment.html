@@ -37,19 +37,18 @@ border:none;
         <!-- fontawesome -->
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-
+        <!-- Select2 cdn -->
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
             rel="stylesheet">
         <link href="./stock.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-        <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script> -->
-       
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
     </head>
-
 <body>
     <div class="container-fluid ">
         <!-- Navbar -->
@@ -65,20 +64,20 @@ border:none;
                     <div class="tabs ms-auto pe-5" id="navlinks">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link active-link">
-                                <a href="./dashboard.html">Dashboard
+                                <a href="./dashboard.html" style="text-decoration: none;">Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="./stock.html">Stock</a>
+                                <a href="./stock.html" style="text-decoration: none;">Stock</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="./status.html">Status</a>
+                                <a href="./status.html" style="text-decoration: none;">Status</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="assignment.html">Assignment</a>
+                                <a href="assignment.html" style="text-decoration: none;">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
@@ -96,9 +95,7 @@ border:none;
                                 <i class="fa fa-sign-out" aria-hidden="true"></i></button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </nav>
     </div>
@@ -106,188 +103,113 @@ border:none;
     <!-- Navbar END -->
 
     <div class="container">
-
-        <div class="">
             <h3 class="">Assignment</h3>
             <a data-toggle="modal" href="#myModal" class="btn btn-light mt-2"
             style="background-color:#326C96 ; color:white;margin-left: 600px;">+ New</a>
-            <div class="main">
-               
-                <div class="form-group has-search ">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search" />
-                </div>
-            </div>
             </button>
-            <!-- </form> -->
-        </div>
-        <br>
-        <!-- Modal -->
-        <div class="modal" id="myModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="m-4">
-                        <h4 class="modal-title">New Assignment</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="container"></div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <form>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="">Choose Customer</label>
-                                            <select class="form-select" aria-label="Default select example">
-                                             <option selected disabled>Choose Customer</option>
-                                             <option value="1">Kenneth Wooded</option>
-                                             <option value="2">James Fenske</option>
-                                             <option value="3">Kelly McCrony</option>
-                                             <option value="3">Jack Mark</option>
-                                             <option value="3">Alex John</option>
-                                           </select>
-
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add New Stock</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="container"></div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                               
+                                                <label for="category">Choose Customer</label>
+                                                <select name="category" class="form-select" id="category">
+                                                    <option value="">Choose Customer</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="subcategory">QuickBooks Invoice #</label>
+                                                <select name="subcategory"  class="form-select" id="subcategory">
+                                                    <option value="">Select Invoice</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="">QuickBooks Invoice #</label>
-                                            <input type="text" class="form-control " id="eta_date" >
-
+                                       <div class="mt-4"><strong>Add Stock</strong></div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label for="">Stock</label>
+                                                <select  class="form-select" id="stock">
+                                                    <option value="">Select Invoice</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label for="">Parts</label>
+                                                <select  class="js-example-basic-multiple" id="e1" name="states[]" multiple="multiple" class="form-select">
+                                                    <option value="BW-01-5-M">BW-01-5-M</option>
+                                                    <option value="AT-01-BLK">AT-01-BLK</option>
+                                                    <option value="BW-03-XL-G">BW-03-XL-G</option>
+                                                    <option value="BW-02-L-M">BW-02-L-M</option>
+                                                    <option value="WB-05-M-G">WB-05-M-G</option>
+                                                    <option value="ZK-0B-X2P">ZK-0B-X2P</option>
+                                                  </select>
+                                                  
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn mt-4"  style="background-color:#326C96 ; color:white;" id="btnadd">Add</button>
+                                            </div>
                                         </div>
-                                    </div><br>
-                                    <strong>Add Stock</strong>
-                                    <div class="row">
-                                       <div class="col-md-5">
-                                           <label for="">Stock</label>
-                                           <input type="text" class="form-control" id="customer">
-
-                                       </div>
-                                       <div class="col-md-5">
-                                           <label for="">Parts</label>
-                                           <input type="text" class="form-control " id="eta_date" required>
-                                       </div>
-                                       <div class="col-md-2 mt-4">
-                                         <button class="btn btn-primary" style="background-color:#326C96 ; color:white;">Add</button>
-                                      </div>
-                                   </div>
                                     </div>
-                                    <br>
-                                    <div class="row">
-                                        <a data-toggle="modal" href="#myModal2" class="btn btn-light col-md-3">Add Part
-                                            Number</a>
-                                        <!-- <button type="button" class="btn btn-light col-md-6 " data-keyboard="true"
-                                    data-bs-toggle="modal" id="addptno" data-target=".bd-example-modal-sm"
-                                    data-bs-target="#exampleModal2">
-                                    Add Part Number
-                                </button> -->
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary">Launch modal</a> -->
-                        <div class="p-4">
-                           <button type="button" class="btn btn-outline-dark" >Save</button>
-                           <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-   
-                       </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="modal" id="myModal2" data-backdrop="static">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add New Stock</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row my-2">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control " id="npart_no" placeholder="Enter Part Number"
-                                    required>
+                                </form>
+                            </div>
+                            <div class="m-5">
+                                <button type="button" class="btn btn-outline-dark" onclick="addStock()">Save</button>
+                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
-                        <div class="row my-2">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control " id="nporder_no" placeholder="Ordered" required>
-                            </div>
-                        </div>
-                        <div class="row my-2">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control " id="nnotes_no" placeholder="Notes" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer float-start">
-                        <button type="button" class="btn btn-primary float-start" id="addpart" onclick=" partNumber()">Save
-                        </button>
-                        <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
-
+                       
                     </div>
                 </div>
             </div>
-        </div>
-
-    </div>
-
-
     </div>
     <div class="table-responsive">
-        <!-- <table class="table ">
-            <thead class=" table text-light bg-dark">
-                <tr>
-                    <th scope="col">Stock Name</th>
-                    <th scope="col">ETA Date</th>
-                    <th scope="col">Stock Location</th>
-                    <th scope="col">Created By</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Notes</th>
-                    <th scope="col">Action</th>
-
-                    <th scope="col">C102</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider bg-light">
-
-
-            </tbody>
-        </table> -->
-
         <table id="example" class="display" style="width:100%">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th></th>
-                    <th>Stock Name</th>
-                    <th>ETA Date</th>
-                    <th>Stock Location</th>
+                    <th>QB Invoice #</th>
+                    <th>Name</th>
                     <th>Created By</th>
                     <th>Created Date</th>
-                    <th>Notes</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody></tbody>
-            
         </table>
-
-
     </div>
-    </div>
-   
-    <script src="./stock.js"></script>
+
+    </div>   
+    <script src="./assignment.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>  
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-            
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 </body>
+<!-- <script>
+   var selectedValuesTest = ["BW-01-5-M", "AT-01-BLK", "BW-03-XL-G", "BW-02-L-M", "WB-05-M-G", "ZK-0B-X2P"];
+$(document).ready(function() {
+  $("#e1").select2({
+    multiple: true,
+  });
+  $('#e1').val(selectedValuesTest).trigger('change');
+});
+</script> -->
 
 </html>
