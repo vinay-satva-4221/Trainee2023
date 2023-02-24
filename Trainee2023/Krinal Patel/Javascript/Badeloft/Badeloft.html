@@ -35,16 +35,16 @@
 
                 <div class="col-sm-10  col-xs-10 col-md-10 col-lg-10 col-xl-10 my-5">
                     <div class="form-group">
-                        <label for="Email" class="form-label">Email:</label>
+                        <label for="Email" class="form-label">Email*</label>
                         <input type="text" name="email" class="form-control" id="email" onchange="return validateemail()" placeholder="Enter email" required>
                         <p id="invalid_email"></p>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="form-label">Password:</label>
+                        <label for="password" class="form-label">Password*</label>
                         <input type="password" class="form-control" id="password" name="password" onchange="return validatepassword()" placeholder="Enter password" required>
                         <p id="invalid_password"></p>
                     </div><br>
-                    <input type="button" class="btn btn-primary btn-block w-100 lg1" value="LOGIN" onclick="validatecheck()" id="loginbtn">
+                    <input type="submit" class="btn btn-primary btn-block w-100 lg1" value="Log in" onclick="validatecheck()" id="loginbtn">
                 </div>
             
             </div>

@@ -9,53 +9,134 @@ window.onload = () => {
 function format(d) {
     // `d` is the original data object for the row
     return (
-        '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<table class="table table-rounded" cellpadding="7" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<thead  style="background-color: rgb(233, 233, 233);">' +
         '<tr>' +
-        '<td>Full name:</td>' +
+        '<td></td>' +
+        '<td>#</td>' +
+        '<td></td>' +
+        '<td>Part Number</td>' + 
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td>Stock Location</td>' + 
+        '<td></td>' +
         '<td>' +
-        d.name +
+        '</td>' +
+        '</tr>' +
+        '</thead>' +
+        '<tr>' +
+        '<td></td>' +
+        '<td>1</td>' +
+        '<td></td>' +
+        '<td>BW-01-S-M</td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td>Warehouse</td>' +
+        '<td>' +
         '</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Extension number:</td>' +
-        '<td>' +
-        d.extn +
-        '</td>' +
+        '<td></td>' +
+        '<td>2</td>' +
+        '<td></td>' +
+        '<td>AT-01-BLK</td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td>C-101</td>' +
         '</tr>' +
         '<tr>' +
-        '<td>Extra info:</td>' +
-        '<td>And any further details here (images etc)...</td>' +
+        '<td></td>' +
+        '<td>3</td>' +
+        '<td></td>' +
+        '<td>BW-03-XLG</td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td></td>' +
+        '<td>E-501</td>' +
         '</tr>' +
         '</table>'
     );
 }
 
-// var data1 = [
-//     ["Stock Location", "", "", "On water", "On water", "In Production"],
-//     ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-//     ["BW-01-S-M", "1", "0", "3", "0", "0"],
-//     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
-//     ["BW-01-Q-M", "", "0", "3", "0", "1"],
-//     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
-//     ["ZK-08-X2P", "1", "0", "3", "0", "1"]
-// ]
-
 var data1 = [
     {
-        PartNumber: 'Stock Location',
-        InWarehouse: '1',
-        Available: '0',
-        C100: '3',
-        C101: '0',
-        C102: '0'
+        QBInvoice: '150000',
+        Name: 'kenneth Woodard',
+        QBShipdate: '12/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '617-235-7647',
+        QBTracking: 'WBC-123'
     },
     {
-        PartNumber: 'Stock Location',
-        InWarehouse: '1',
-        Available: '0',
-        C100: '3',
-        C101: '0',
-        C102: '0'
+        QBInvoice: '150001',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    {
+        QBInvoice: '150002',
+        Name: 'kelly McCrory',
+        QBShipdate: '08/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'STD',
+        QBDeliveryPhone: '630-367-8448',
+        QBTracking: ''
+    },
+    {
+        QBInvoice: '150003',
+        Name: 'Linda Englund',
+        QBShipdate: '05/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '203-963-9428',
+        QBTracking: 'WBC-125'
+    },
+    {
+        QBInvoice: '150004',
+        Name: 'Frances Badger',
+        QBShipdate: '03/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'STD',
+        QBDeliveryPhone: '508-206-0722',
+        QBTracking: ''
+    },
+    {
+        QBInvoice: '150005',
+        Name: 'Tasha Tapia',
+        QBShipdate: '02/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '201-905-4664',
+        QBTracking: 'WBC-127'
+    },
+    {
+        QBInvoice: '150006',
+        Name: 'Samantha Southard',
+        QBShipdate: '01/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '707-271-9412',
+        QBTracking: 'WBC-128'
+    },
+    {
+        QBInvoice: '150007',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '3',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
     },
 ];
  
@@ -70,15 +151,23 @@ $(document).ready(function () {
                 data: null,
                 defaultContent: '',
             },
-            { data: 'PartNumber' },
-            { data: 'InWarehouse' },
-            { data: 'Available' },
-            { data: 'C100' },
-            { data: 'C101' },
-            { data: 'C102' },
+            { data: 'QBInvoice',"sortable": true },
+            { data: 'Name', "sortable": false },
+            { data: 'QBShipdate', "sortable": false },
+            { data: 'QBPaymentStatus' ,"sortable": false, render: function(){
+                return '<div class="alert alert-primary styl" role="alert">Paid</div>';
+             }},
+            { data: 'QBStatus',"sortable": false },
+            { data: 'QBDeliveryPhone',"sortable": false },
+            { data: 'Called' ,"sortable": false, render: function(){
+                return '<input type="checkbox">';
+            }},
+            { data: 'QBTracking', "sortable": false }
         ],
-        order: [[1, 'asc']],
+        'order': [[1, 'asc']]
+
     });
+   
  
     // Add event listener for opening and closing details
     $('#example tbody').on('click', 'td.dt-control', function () {
@@ -97,22 +186,11 @@ $(document).ready(function () {
     });
 });
 
-
-// var data = [
-//     {
-//         name: 'John Doe',
-//         position: 'Software Engineer',
-//         office: 'New York',
-//         salary: '$120,000'
-//     },
-//     {
-//         name: 'Jane Smith',
-//         position: 'Product Manager',
-//         office: 'San Francisco',
-//         salary: '$150,000'
-//     },
-//     // Add more data objects here...
-// ];
+$(document).ready(function (){
+    var user = JSON.parse(localStorage.getItem("loggUser"));
+    console.log("user",user);
+    $("#Uname").html(user[0].name);
+})
 function logout() {
     window.location.replace("LoginPage.html");
     localStorage.clear();

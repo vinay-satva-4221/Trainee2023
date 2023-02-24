@@ -40,11 +40,11 @@ $(document).ready(function () {
           // },
 
           { title: 'Part Number' },
-          { title: 'In Warehouse' ,orderable:false},
-          { title: 'Available' ,orderable:false },
-          { title: 'C100',orderable:false },
-          { title: 'C101' ,orderable:false},
-          { title: 'C102',orderable:false },
+          { title: 'In Warehouse' ,orderable:false,className: "text-center"},
+          { title: 'Available' ,orderable:false ,className: "text-center"},
+          { title: 'C100',orderable:false,className: "text-center" },
+          { title: 'C101' ,orderable:false,className: "text-center"},
+          { title: 'C102',orderable:false,className: "text-center" },
 
       ],
   });
@@ -72,10 +72,73 @@ var dataSet = [
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
   ["BW-01-Q-M","", "0", "3", "0", "1"],
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
-  ["ZK-08-X2P","1", "0", "3", "0", "1"],
+  ["BR-08-X2P","1", "0", "3", "0", "1"],
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
   
   
   
   
 ];
+
+      const button = document.querySelector('#button');
+      const tooltip = document.querySelector('#tooltip');
+
+      const popperInstance = Popper.createPopper(button, tooltip, {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ],
+      });
+
+      function show() {
+        // Make the tooltip visible
+        tooltip.setAttribute('data-show', '');
+
+        // Enable the event listeners
+        popperInstance.setOptions((options) => ({
+          ...options,
+          modifiers: [
+            ...options.modifiers,
+            { name: 'eventListeners', enabled: true },
+          ],
+        }));
+
+        // Update its position
+        popperInstance.update();
+      }
+
+      function hide() {
+        // Hide the tooltip
+        tooltip.removeAttribute('data-show');
+
+        // Disable the event listeners
+        popperInstance.setOptions((options) => ({
+          ...options,
+          modifiers: [
+            ...options.modifiers,
+            { name: 'eventListeners', enabled: false },
+          ],
+        }));
+      }
+
+      const showEvents = ['mouseenter', 'focus'];
+      const hideEvents = ['mouseleave', 'blur'];
+
+      showEvents.forEach((event) => {
+        button.addEventListener(event, show);
+      });
+
+      hideEvents.forEach((event) => {
+        button.addEventListener(event, hide);
+      });
+
+
+
+
+
+      $('#mytext').popover();
+$('#name').popover();
