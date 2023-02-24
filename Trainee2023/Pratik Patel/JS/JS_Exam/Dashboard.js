@@ -2,11 +2,10 @@ $(document).ready(function () {
 
     if (localStorage.getItem('LogedinUser') !== null) {
       
-  
+        $("#navigation").load("Navbar.html");
        //Display name in Navbar
     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
-    $("#loginUseName").html(logedinUser[0].Name);
-    $("#PrifleImage").attr("src", logedinUser[0].Picture);
+   
 
     //Dashboard
 
@@ -38,17 +37,9 @@ $(document).ready(function () {
         { title: 'C102' },
     ],
   });
-  $("#logout").click(function () {
-    debugger;
-    localStorage.removeItem("LogedinUser");
-    window.location.replace("index.html");
-  });
-  
-  
-  
+
   $('.sorting').removeClass('sorting')
   
-  $('[data-toggle="popover"]').popover()
 
 
     }
