@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Source+Sans+Pro:wght@300&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="dashboard.css">
-    <script src="jquery/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.css">
+
 
 </head>
 
@@ -67,7 +67,7 @@
     <section>
         <div class="container d-flex mt-3">
             <div class="container">
-                <p class="stock"><b >Dashboard </b></p>
+                <p class="stock"><b>Dashboard </b></p>
             </div>
             <div>
                 <input type="text" placeholder="Search here">
@@ -76,7 +76,7 @@
 
         <div class="container table-responsive ">
             <table id="example" class="table border " style="width:100%">
-
+              <thead class="bg-dark"></thead>
             </table>
 
         </div>
@@ -84,34 +84,42 @@
     </section>
     <div class="container d-flex justify-content-end">
         <nav aria-label="Page navigation example">
-           
+
             <ul class="pagination mt-2">
-                <div class="d-flex mt-2 pageNo" >
+                <div class="d-flex mt-2 pageNo">
                     <p>Items 1 to 5 of 1 total</p>
                 </div>
-              <li class="page-item ">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
+                <li class="page-item ">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
             </ul>
-          </nav>
+        </nav>
     </div>
 
-    
 
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="Dashboard.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>
