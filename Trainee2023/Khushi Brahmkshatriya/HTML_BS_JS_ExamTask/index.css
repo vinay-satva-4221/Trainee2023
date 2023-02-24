@@ -27,17 +27,27 @@ label.error {
 
 }
 
-a:active {
-    text-decoration: underline;
-    text-underline-position: under;
+a {text-decoration:none;}
+.active {
+    border-bottom: 1px solid black;
     
-}
+    color: black;
+    font-weight: bold;
+} 
 
-a:hover {
+/* a:hover {
  
     text-decoration: underline;
     text-underline-position: under;
-}
+} */
+/* 
+.navbar a {
+	text-decoration: none;
+	color: white;
+	padding: 1rem;
+} */
+
+
 
 .LineUnderWelcome{
   width: 10%;
@@ -45,4 +55,5 @@ a:hover {
   background-color: #326C96;
   opacity: 1;
 }
+
 
