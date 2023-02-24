@@ -5,10 +5,13 @@ thead {
     background-color: black;
     border-collapse: collapse;
     border-radius: 1em;  
+    
 }
 table{
    font-size: small;
    border-collapse: collapse;
    border-radius: 1em;
    overflow: hidden;
+   
 }
+

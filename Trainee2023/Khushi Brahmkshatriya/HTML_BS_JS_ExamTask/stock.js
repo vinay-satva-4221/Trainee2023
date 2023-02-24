@@ -36,7 +36,7 @@ $(document).ready(function () {
         console.log(localArray);
         loggedData = JSON.parse(loggedData);
         console.log(loggedData);
-        var dataSet = localArray.push(...loggedData)
+        //var dataSet = localArray.push(...loggedData)
         console.log(localArray)
     
         var table = $("#example").DataTable({
@@ -74,6 +74,7 @@ $(document).ready(function () {
     
     $('#AddNewSNum').on("click", function () {
 
+       
         // $('#partnumber').val();
         // $('#ordred').val();
         // $('#notes').val();
@@ -108,6 +109,30 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+    $('input[name="etaDate"]').daterangepicker({
+        singleDatePicker: true,
+        
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        },
+        maxYear: parseInt(moment().format('YYYY'),10)
+      
+      });
+    
+    $("#etaDate").keypress(function(event) {
+        return ( ( event.keyCode || event.which ) === 9 ? true : false );
+    });
+    $('input[name="etaDate"]').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $("#date-error").hide();
+        $(".error").removeClass("error");
+    });
+
+    $('input[name="etaDate"]').on('cancel.daterangepicker', function (ev, picker) {
+        $(this).val('');
+    });
+
     $("#stockForm").validate({
         // in 'rules' user have to specify all the constraints for respective fields
 
