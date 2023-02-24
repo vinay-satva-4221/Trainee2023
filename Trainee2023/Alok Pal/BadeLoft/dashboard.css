@@ -13,7 +13,7 @@ body{
     margin-right: 5%;
 }
 .navItem{
-    margin-right: 25%;
+    margin-right: 18%;
 }
 
 .dimg{
@@ -62,11 +62,11 @@ body{
 
 }
 
-th{
+/* th{
     font-size: 12px;
     color: white;
     font-weight: 400;
-}
+} */
 
 tbody{
     font-size: 12px;
@@ -91,6 +91,14 @@ tbody{
 .page-link {
     color: black;
 }
+
+.fa-solid{
+    color: #858585;
+}
+
+
+
+
 @media only screen and (max-width: 575px) {
     .Dlogo {
         width: 165px;
@@ -98,12 +106,3 @@ tbody{
     }
 }
 
-
-/* html, body {
-    color: goldenrod;
-    background-color: darkslategray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-} */
