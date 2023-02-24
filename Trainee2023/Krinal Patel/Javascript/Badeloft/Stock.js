@@ -11,8 +11,11 @@ window.onload = (event) => {debugger;
       uname.innerHTML = u;
     }
   };
-
-// Data table status
+  function logout(){
+    window.location.replace("Badeloft.html")
+    localStorage.clear();
+  }
+// Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
     // `d` is the original data object for the row
@@ -49,13 +52,13 @@ function format(d) {
                 
             },
   
-            { title: 'Stock Name' },
-            { title: 'ETA Date' },
-            { title: 'Stock Location' },
-            { title: 'Created By' },
-            { title: 'Created Date' },
-            { title: 'Notes' },
-            { title: 'Action' }  
+            { title: 'Stock Name' ,orderable:false,className: "text-center"},
+            { title: 'ETA Date' ,orderable:false,className: "text-center"},
+            { title: 'Stock Location',orderable:false,className: "text-center" },
+            { title: 'Created By' ,orderable:false,className: "text-center"},
+            { title: 'Created Date' ,orderable:false,className: "text-center"},
+            { title: 'Notes',orderable:false,className: "text-center" },
+            { title: 'Action' ,orderable:false,className: "text-center"}  
   
         ],
         order: [[1, 'asc']],
@@ -81,3 +84,4 @@ function format(d) {
     ["","C100", "12/08/2021", "Warehouse", "Kenneth Woodard", "12/08/2021", "Lorem lpsum is simply dummy text",""],
    
   ];
+ 

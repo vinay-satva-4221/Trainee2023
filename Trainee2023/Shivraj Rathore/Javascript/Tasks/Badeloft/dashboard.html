@@ -81,7 +81,7 @@
             <a class="nav-link" href="./stock.html">Stock</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Status</a>
+            <a class="nav-link" aria-current="page" href="./status.html">Status</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Assignment</a>
@@ -157,16 +157,16 @@
  
 
   $('#example').DataTable({
-    "data": DashboardData,
-    "paging": true,
-    "dom": '<"toolbar">frtip',
-    bFilter: true,
-    bInfo: true,
-
-    fnInitComplete: function () {
-      $('div.toolbar').html('<h2>Dashboard</h2>');
-    }
-  });
+  "data": DashboardData,
+  "paging": true,
+  "dom": '<"toolbar">frtip',
+  "bFilter": true,
+  "bInfo": true,
+  
+  "fnInitComplete": function () {
+    $('div.toolbar').html('<h2>Dashboard</h2>');
+  }
+});
 
   var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 

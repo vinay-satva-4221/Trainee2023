@@ -51,31 +51,23 @@ function format(d) {
     "</table>"
 
 
-    // '<table class="table border"  style="padding-left:50px;">'+
-    // "<tr>" +
-    // "<th>#</th>"+
-    // "<th>#</th>"+
-    // "<th>#</th>"+
-    // "<tr>"
+
   );
 }
 var dataSet = [
-  // {
-  //   QB  : "150000",
-  //   Name : 'Keneth Woodard',
-  //   QB_Ship_date : '12/08/2021',
-  // }
-  [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-  [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-  [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-  [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-  [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-  
+
+  ["150000", "Keneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647", "chk", "WBC-123", "-"],
+  ["150000", "Keneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647", "chk", "WBC-123", "-"],
+  ["150000", "Keneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647", "chk", "WBC-123", "-"],
+  ["150000", "Keneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647", "chk", "WBC-123", "-"],
+  ["150000", "Keneth Woodard", "12/08/2021", "Paid", "Shipped", "617-235-7647", "chk", "WBC-123", "-"],
+
 ];
 
 $(document).ready(function () {
   var table = $("#example").DataTable({
     data: dataSet,
+    dom: "rtip",
     columns: [
       {
         className: "dt-control",
@@ -112,4 +104,115 @@ $(document).ready(function () {
       tr.addClass("shown");
     }
   });
+
+
+
+
+  $(function () {
+    $('input[name="birthday"]').daterangepicker({
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 1901,
+      maxYear: parseInt(moment().format('YYYY'), 10)
+    }, function (start, end, label) {
+      var years = moment().diff(start, 'years');
+      // alert("You are " + years + " years old!");
+    });
+  });
+
+
+
+  $('#stable').DataTable({
+
+    dom: "rtip",
+    columns: [
+      {
+        className: "dt-control",
+        orderable: false,
+        data: null,
+        defaultContent: "",
+      },
+      { title: "Part Number" },
+      { title: "Invoice#" },
+      { title: "Odered" },
+      { title: "Notes" },
+
+
+
+    ],
+    order: [[1, "asc"]],
+  });
 });
+
+
+// second modal number validation
+// document.querySelector(".numV").addEventListener("keypress", function (evt) {
+//   if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+//   {
+//       evt.preventDefault();
+//   }
+// });
+
+// var t = document.querySelector(".numV").value
+
+var parts =[];
+
+function getM(){
+  var partN = document.getElementById("pNum").value
+  var order = document.getElementById("order").value
+  var comments = document.getElementById("floatingTextarea").value
+
+
+
+  parts.push({
+    PartN :partN,
+    Order :order,
+    Comments :comments
+  })
+}
+
+function getData() {
+  // parts
+
+
+
+
+  var stockN = document.getElementById("stock").value
+  var dateM = document.getElementById("date").value
+
+  var r1 = document.getElementById('btnradio1').checked
+  var r2 = document.getElementById('btnradio1').checked
+  var r3 = document.getElementById('btnradio1').checked
+
+
+
+  var r1V = '';
+
+  if (r1 == true) {
+    r1V = "Production"
+  }
+  else if (r2 == true) {
+    r1V = "Production"
+  }
+  else if (r3 == true) {
+    r1V = "Production"
+  }
+
+  var newStock;
+
+  if (localStorage.getItem("newStock") == null) {
+    newStock = [];
+  } else {
+    newStock = JSON.parse(localStorage.getItem("newStock"));
+    newStock.push({
+      stock: stockN,
+      date: dateM,
+      stock_S: r1V,
+      Part:parts
+    })
+  }
+
+
+  localStorage.setItem("newStock", JSON.stringify(newStock));
+}
+

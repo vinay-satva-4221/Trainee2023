@@ -7,8 +7,10 @@ $(document).ready(function () {
     $('#diplayName').text(displayName.UserName);
 
     $("#deleteLoggedUser").click(function () {
-        window.location.replace("login.html");
+        
+        window.location.replace("./login.html");
         localStorage.removeItem('LoggedInUser');
+        
     })
 
 
