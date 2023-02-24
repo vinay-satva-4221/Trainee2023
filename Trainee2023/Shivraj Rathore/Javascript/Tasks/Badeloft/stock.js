@@ -35,6 +35,7 @@ $(document).ready(function () {
     bFilter: true,
     bInfo: true,
     fnInitComplete: function () {
+      $('div.toolbar').html('<h2>Stock</h2>');
       $('#example_filter label').prepend(myButton);
     }
   });
