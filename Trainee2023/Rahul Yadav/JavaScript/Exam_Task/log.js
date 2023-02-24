@@ -47,25 +47,21 @@ $(document).ready(function () {
                 "abc@gmail.com",
                 "Abc@12345",
                 "Abc",
-
             ],
             [
                 "rahul@gmail.com",
                 "Rah@12321",
                 "Rahul",
-
             ],
             [
                 "jay@gmail.com",
                 "Jay@12321",
                 "Jay",
-
             ],
             [
                 "eric@gmail.com",
                 "Eric@12321",
                 "Eric",
-
             ],
         ];
         $.validator.addMethod("Emailcheck", function (value) {
@@ -109,14 +105,13 @@ $(document).ready(function () {
                 let password = $("#password").val();
                 // window.location.href = "stock.html";
                 // debugger;
-
-                var logInUser = new Array();
+                var loggedInUser = new Array();
                 // debugger;
                 for (let i = 0; i < users.length; i++) {
                     // alert(users[i][0])
                     if (email.toLowerCase() === users[i][0].toLowerCase() && password === users[i][1]) {
                         // alert("inside if")
-                        logInUser.push({
+                        loggedInUser.push({
                             Name: users[i][2],
                             Email: users[i][0],
                         });
@@ -125,7 +120,9 @@ $(document).ready(function () {
                     }
                 }
                 document.getElementById("form").reset();
-                localStorage.setItem("LogedinUser", JSON.stringify(logInUser));
+                localStorage.setItem("LogedinUser", JSON.stringify(loggedInUser));
+            }else{
+                swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
             }
         });
     }

@@ -111,7 +111,7 @@ border:none;
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">Assignment</a>
+                                <a href="Assignment.html">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
@@ -173,31 +173,38 @@ border:none;
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="">Choose Customer:</label>
-                                            <input type="text" class="form-control " id="customer"
-                                                placeholder="Enter Stock Name" required>
+                                            <br>
+                                            <select name="customer" id="customer" style="width: 100%;">
+                                                <option value="" disabled>Choose Customer</option>
+                                                <option value="Eric Jensen">Eric Jensen</option>
+                                                <option value="Kenneth Woodard">Kenneth Woodard</option>
+                                                <option value="Frances Badger">Frances Badger</option>
+                                                <option value="John doe">John doe</option>
+                                              </select>
 
                                         </div>
                                         <div class="col-md-6">
                                             <label for="">Quickbooks Invoice #</label>
-                                            <input type="date" class="form-control " id="eta_date" required>
+                                            <input type="text" class="form-control " id="eta_date" required>
 
                                         </div>
                                     </div>
-
+                                    <b>Add Stock</b>
+                                    <br>
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <label for="">Stock</label>
-                                            <input type="date" class="form-control " id="eta_date" required>
+                                            <input type="text" class="form-control " id="eta_date" required>
 
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <label for="">Parts</label>
-                                            <input type="date" class="form-control " id="eta_date" required>
+                                            <input type="tetx" class="form-control " id="eta_date" required>
 
                                         </div>
 
-                                        <div class="col-md-3">
-                                            <button type="button" class="btn btn-primary" >Save</button>
+                                        <div class="col-md-2 mt-2">
+                                            <button type="button" class="btn btn-primary" style="margin-top: 22px;" >Save</button>
 
                                         </div>
 
@@ -209,7 +216,7 @@ border:none;
                         </div>
                         <!-- <a data-toggle="modal" href="#myModal2" class="btn btn-primary">Launch modal</a> -->
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer float-start">
                         <button type="button" class="btn btn-primary" >Save</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
@@ -245,7 +252,7 @@ border:none;
     </div>
     </div>
    
-    <script src="./stock.js"></script>
+    <!-- <script src="./stock.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
