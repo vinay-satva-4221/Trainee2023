@@ -46,13 +46,7 @@ function format(d) {
         '</table>'
     );
 }
-// var data1 = [
-//     ["15000","Kenneth Woodard","Stock Location", "", "", "On water", "On water", "In Production"],
-//     ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-//     ["BW-01-S-M", "1", "0", "3", "0", "0"],
-//     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
-//     ["BW-01-Q-M", "", "0", "3", "0", "1"],
-// ]
+
 
 var data1=[
     {
@@ -76,7 +70,19 @@ var data1=[
          QBTracking:'WBC-124',
 
        
-    }
+    },
+    {
+        QBInvoice:'15000',
+        name:'James Fenske',
+        QBShipdate:'10/08/2021',
+        QBShipaymentstatus:'paid',
+        QBStatus:'shipped',
+         QBDeliveryPhone:'618-234-6400',
+         called:'yes',
+         QBTracking:'WBC-124',
+
+       
+    },
 ]
 $(document).ready(function () {
     var table = $('#example').DataTable({
@@ -91,40 +97,46 @@ $(document).ready(function () {
             },
            
             { data: 'QBInvoice' },
-            { data: 'name',"sortable": false  },
+            { data: 'name'  },
             { data: 'QBShipdate' ,"sortable": false },
             { data: 'QBShipaymentstatus' ,"sortable": false },
             { data: 'QBStatus' ,"sortable": false },
-             { data: 'QBDeliveryPhone',"sortable": false  },
+            { data: 'QBDeliveryPhone',"sortable": false},
             { data: 'called',render:function(){
                 return '<input type="checkbox">';
             },"sortable": false  },
              { data: 'QBTracking' ,"sortable": false },
         ],
+        columnDefs: [
+            {
+                targets: [1,2,3,4,5],
+                className: 'text-center'
+            }
+          ],
       
         order: [[1, 'asc']],
     })
-$('#example tbody').on('click', 'td.dt-control', function () {
-    var tr = $(this).closest('tr');
-    var row = table.row(tr);
 
-    if (row.child.isShown()) {
-        // This row is already open - close it
-        row.child.hide();
-        tr.removeClass('shown');
-    } else {
-        // Open this row
-        row.child(format(row.data())).show();
-        tr.addClass('shown');
-    }
-});
+    $('#example tbody').on('click', 'td.dt-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+ 
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row
+            row.child(format(row.data())).show();
+            tr.addClass('shown');
+        }
+    });
+
 });
 let a=JSON.parse(localStorage.getItem("details"));
 console.log("a",a); 
 
 $("#Uname").html(a[0].Name);
-
-
 function logout() {
     window.location="Badeloft.html"
     localStorage.clear();

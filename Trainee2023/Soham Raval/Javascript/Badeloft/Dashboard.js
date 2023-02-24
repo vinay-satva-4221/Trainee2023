@@ -13,8 +13,6 @@ var data1 = [
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
 ]
 // var getdata1=data1[0].
-
-
 $(document).ready(function () {
    var table= $('#example').DataTable({
         data: data1,
@@ -25,7 +23,15 @@ $(document).ready(function () {
             { title: 'C100',"sortable": false },
             { title: 'C101',"sortable": false },
             { title: 'C102',"sortable": false },
+ 
         ],
+
+        columnDefs: [
+            {
+                targets: [1,2,3,4,5],
+                className: 'text-center'
+            }
+          ]
         
     });
     var oneSelectedCell = table.cell(2,3);

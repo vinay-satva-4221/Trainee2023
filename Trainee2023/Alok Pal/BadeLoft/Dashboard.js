@@ -23,15 +23,15 @@ window.onload = (event) => {
 
 //Logout
 function logout() {
+  localStorage.removeItem('user')
   window.location.replace("Login.html");
-  localStorage.clear("user");
 }
 
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
   ["Eta Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
   ["BW-01-S-M", "1", "0", "3", "0", "0"],
-  ["BW-03-XL-G", "1", "1", "2", "2", "1"],
+  ["BW-03-XL-G", "1", "1", '<button type="button" class="" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">2</button>', "2", "1"],
   ["BW-01-Q-M", "", "0", "3", "0", "1"],
 ];
 

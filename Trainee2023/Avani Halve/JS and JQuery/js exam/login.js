@@ -8,8 +8,6 @@ $("#basic_form").validate({
        },
        password: {
            required: true,
-           minlength: 6,
-           maxlength: 6
        }
    },
    messages:{
@@ -19,8 +17,6 @@ $("#basic_form").validate({
        },
        password: {
            required: " Enter your password",
-           minlength: "please enter 6 digits",
-           maxlength: "only 6 digits are allowed"
        }
    }
 });
@@ -171,6 +167,9 @@ function validate() {;
             loggedIn = true;
             break;
          }
+         else{
+            document.getElementById("error").innerHTML = "Wrong Email or Password!"
+         }
       }
    }
 
@@ -193,10 +192,5 @@ function validate() {;
    if (loggedIn) {
       localStorage.setItem("loginUser", JSON.stringify(obj));
       location.replace("dashboard.html");
-   } else if (email == "" || password == "") {
-     
-   } else {
-      
    }
 }
-

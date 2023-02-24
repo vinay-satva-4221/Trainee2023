@@ -87,9 +87,15 @@ body {
     padding-left: 2.375rem;
 }
 
-/* .dataTables_wrapper .dataTables_filter {
-    float: none;
-    text-align: center;
-} */
+#example_length{
+    display: none;
+}
+body {
+    font-family: Myriad Pro;
+}
+#example {
+    border-radius:10%;
+}
+
 
 
