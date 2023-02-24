@@ -15,33 +15,33 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
-
-
-
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
     </script>
     <style>
+        #example_filter {
+            display: none;
+        }
+
+        #example_length {
+            display: none;
+        }
+
         thead {
             background-color: black;
             color: aliceblue;
+        }
+
+        .navbar a.active {
+            border-bottom: 3px solid #000000;
+        }
+
+        body {
+            overflow-x: hidden;
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg p-0">
         <div class="container-fluid">
             <div class="navbar-brand">
                 <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
@@ -53,235 +53,187 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
+                        <a class="nav-link " aria-current="page" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Stock</a>
+                        <a class="nav-link  active" href="stock.html">Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="status.html">Status</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Assignment</a>
+                        <a class="nav-link" aria-current="page" href="assignment.html">Assignment</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="d-flex align-items-center" id="welcome">
-                <div class="collapse navbar-collapse justify-content-start">
-                    <span class="navbar-text d-none d-lg-block">Welcome</span>
-                    <div class="collapse navbar-collapse justify-content-start">
-                        <span class=" " id="active"></span>
+            <div class="d-flex align-items-center justify-content-between" id="welcome"
+                style="height: 80px; width:200px;">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="./avatar-g96e80651b_1280.png" class="rounded-circle" height="40px" width="40px"
+                            alt="">
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="small mb-0">Welcome</p>
+                        <p id="active" class="mb-0"><b></b></p>
+                    </div>
+                    <div class="col-3 text-right p-0">
+                        <div class="nav-item logoutbutton">
+                            <button id="logout-btn" class="btn "> <i
+                                    class="fa-solid fa-arrow-right-from-bracket mx-3 mt-2"></i></button>
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <div class="nav-item logoutbutton">
-                        <button id="logout-btn" class="btn btn-primary">Logout</button>
-                    </div>
-                </div>
+            </div>
     </nav>
-    <div class="row">
-        <div class="col-md-6 ">
-            <h3>Stock</h3>
-        </div>
-        <div class="col ">
-            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"
-                id="addbutton"> New</button>
-        </div>
-        <div class="col-md-3">
-            <input type="search" class="form-control" placeholder="search here...">
-        </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog  modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 ">
+                <h3>Stock</h3>
+            </div>
+            <div class="col-md-3  text-end">
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"
+                    id="addbutton">+ New</button>
+            </div>
+            <div class="col-md-3">
+                <input type="search" class="form-control" placeholder="search here...">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
+                   
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Stock name:</label>
+                            <input type="text" class="form-control" id="name" class="validate">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">ETA Date:</label>
+                            <input type="date" class="form-control" id="etaDate">
+                        </div>
                     </div>
-                    <div class="modal-body">
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <label for="">Stock Status</label>
+                            <div>
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="btnradio1">OnProduction</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio2">OnWater</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio3">InWarehouse</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Stock name:</label>
-                                <input type="text" class="form-control" id="name" class="validate">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">ETA Date:</label>
-                                <input type="date" class="form-control" id="etaDate">
+                            <div class="col-md-12">
+                                <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal1"
+                                    id="nestedadd">add</button>
+                                <table id="stock-table" class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Part Number</th>
+                                            <th>Ordered</th>
+                                            <th>Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row">
                             <div class="col-md-12">
-                                <label for="">Stock Status</label>
-                                <div>
-                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                            autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
-
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-secondary" id="parentclosebutton">Close</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="savechanges">Save
+                                    changes</button>
                             </div>
-
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="button" class="btn " data-toggle="modal"
-                                        data-target="#exampleModal1">add</button>
-
-                                    <table id="stock-table" class="table table-responsive">
-                                        <thead>
-                                            <tr>
-                                                <th>Part Number</th>
-                                                <th>Ordered</th>
-                                                <th>Notes</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="button" class="btn btn-secondary">Close</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="savechanges">Save changes</button>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12 mb-1">
-                                <input type="text" class="form-control" id="partnumber" class="validate"
-                                    placeholder="Part Number">
-                            </div>
-                            <div class="col-md-12 mb-1">
-                                <input type="text" class="form-control" id="order" placeholder="Ordered">
-                            </div>
-                            <div class="col-md-12 mb-1">
-                                <input type="text" class="form-control" id="notes" placeholder="Notes">
-                            </div>
-                            <div class="col-md-12">
-                                <button type="button" class="btn btn-secondary" >Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nestedsave">Save changes</button>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-        <table id="example" class="display" style="width:100%">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Stock Name</th>
-                    <th>ETA Date</th>
-                    <th>Stock Location</th>
-                    <th>Created By</th>
-                    <th>Created Date</th>
-                    <th>Notes</th>
-                    <th>Action</th>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
                     
-                </tr>
-            </thead>
-        </table>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mb-1">
+                            <input type="text" class="form-control" id="partnumber" class="validate"
+                                placeholder="Part Number">
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <input type="text" class="form-control" id="order" placeholder="Ordered">
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <input type="text" class="form-control" id="notes" placeholder="Notes">
+                        </div>
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-secondary" id="nestedclosebutton">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="nestedsave">Save
+                                changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-color: #e0e3ec;">
+        <section id="dataTable" class="dataTable">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container-fluid">
 
-        <script>
-            $(document).ready(function () {
+                        <br />
+                        <div id="table_box_bootstrap " class="table-responsive">
 
-                const logoutButton = document.getElementById('logout-btn');
-                logoutButton.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    localStorage.removeItem('loggedInUser');
-                    window.location.href = 'BadeloftLoginPage.html';
-                });
-                var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr class="text-start" style="border-radius: 10px;">              
+                                            <th></th>
+                                            <th>Stock Name</th>
+                                            <th>ETA Date</th>
+                                            <th>Stock Location</th>
+                                            <th>Created By</th>
+                                            <th>Created Date</th>
+                                            <th>Notes</th>
+                                            <th>Action</th> 
+                                    </tr>
+                                </thead>
 
-                $("#active").html(activeuser.name);
-                $('[data-toggle="popover"]').popover();
-
-                $('#nestedsave').click(function () {
-                    // Get the values of the input fields
-                    var partnumber = $('#partnumber').val();
-                    var ordered = $('#order').val();
-                    var notes = $('#notes').val();
-
-                    // Create a new row
-                    var newRow = $('<tr>');
-                    newRow.append('<td>' + partnumber + '</td>');
-                    newRow.append('<td>' + ordered + '</td>');
-                    newRow.append('<td>' + notes + '</td>');
-
-                    // Append the new row to the table body
-                    $('#stock-table tbody').append(newRow);
-                });
-
-                // Attach event listener to the Save Changes button
-                $('#savechanges').click(function () {
-                    // Get the values of the input fields
-                    var name = $('#name').val();
-                    var etaDate = $('#etaDate').val();
-                    var status = $('input[name="btnradio"]:checked').val();
-                    var partnumber = $('#partnumber').val();
-                    var ordered = $('#order').val();
-                    var notes = $('#notes').val();
-
-                    // Create a new object to store the data
-                    var stock = {
-                        name: name,
-                        etaDate: etaDate,
-                        status: status,
-                        partnumber: partnumber,
-                        ordered: ordered,
-                        notes: notes,
-                    };
-                    localStorage.setItem('stockData', JSON.stringify(stock));
-                    var existingData = JSON.parse(localStorage.getItem('stockData'));
-                });
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+<script src="./stock.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

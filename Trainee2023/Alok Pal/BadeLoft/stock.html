@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Stock</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Source+Sans+Pro:wght@300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="stock.css">
 </head>
 
 <body>
@@ -32,7 +35,7 @@
                         <a class="nav-link active" href="Dashboard.html" aria-current="page">Dashboard </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stock.html">Stock</a>
+                        <a class="nav-link" href="stock.html" >Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="status.html">Status</a>
@@ -64,53 +67,154 @@
 
     <section>
         <div class="container d-flex mt-3">
-            <div class="container">
-                <p class="stock"><b > Stock </b></p>
+            <div class="container butS">
+                <p class="stock"><b> Stock </b></p>
+            </div>
+            <div>
+                <!-- Button trigger modal -->
+                <div class="container btnNew">
+                    <button type="button" class="btnLog" data-bs-toggle="modal" data-bs-target="#exampleModal" nowrap>+
+                        New </button>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade st" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content stModal1">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="">Stock Name</label>
+                                        <input type="text" class="form-control" id="stock"   maxlength="15">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">ETA Date</label>
+
+                                        <input type="date" name="birthday" class="form-control" id="date" />
+                                    </div>
+                                </div>
+
+
+                                <div class="row mt-2">
+                                    <label for="">Stock Status</label>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                            autocomplete="off">
+                                        <label class="btn radioCol" for="btnradio1">On Production</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                            autocomplete="off">
+                                        <label class="btn radioCol" for="btnradio2">On Water</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                            autocomplete="off">
+                                        <label class="btn radioCol" for="btnradio3">On Warehouse</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2 btnDiv">
+                                        <button type="button" class=" btnM mt-2" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal1"><i
+                                                class="fa-sharp fa-solid fa-circle-plus"></i> Add Part Number </button>
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="container table-responsive  mt-3">
+                                        <table id="stable" class="table text-center border " style="width:100%">
+                                            <thead class="bg-dark rounded">
+                                                <th>Part Number</th>
+                                                <th>Invoice#</th>
+                                                <th>Ordered</th>
+                                                <th>Notes</th>
+                                            </thead>
+                                            <tbody id="root">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="myMod"  onclick="getData()">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div>
                 <input type="text" placeholder="Search here">
             </div>
         </div>
 
-        <div class="container table-responsive ">
-            <table id="example" class="table border " style="width:100%">
-                <thead class="bg-dark"></thead>
-            </table>
-           
+        <!-- Button trigger modal -->
+
+        <!-- Modal 2-->
+        <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content stModat2">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form >
+                            <div class="row">
+                                <input type="text" class="form-control" id="pNum" placeholder="Part Number" maxlength="15">
+                            </div>
+                            <div class="row mt-2">
+                                <input type="number" class="form-control" id="order" class="numV" placeholder="Ordered" >
+                            </div>
+                            <div class="row mt-2 form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Comments</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                         <!-- check for valid direct data toggle -->
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="getM() ,showMt2()">Save </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
-    <div class="container d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
-           
-            <ul class="pagination mt-2">
-                <div class="d-flex mt-2 pageNo" >
-                    <p>Items 1 to 5 of 1 total</p>
-                </div>
-              <li class="page-item ">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+    <div class="container table-responsive mt-3">
+        <table id="example" class="table border" style="width:100%">
+            <thead class="bg-dark"></thead>
+        </table>
+        <!-- <div class="container table-responsive ">
+            <table id="example" class="table border " style="width:100%">
+                <thead class="bg-dark"></thead>
+            </table>
+
+        </div> -->
     </div>
 
-    
 
     <script src="jquery/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="Dashboard.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="stock.js"></script>
 </body>
 
 </html>
