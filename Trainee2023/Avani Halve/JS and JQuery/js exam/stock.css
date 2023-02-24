@@ -101,3 +101,37 @@ h3 {
     display: none;
 }
 
+body {
+    font-family: Myriad Pro;
+}
+
+h3 {
+    float: left;
+}
+
+.container-fluid {
+    background-color: lightgray;
+}
+
+.form-input {
+
+    height: auto;
+    text-indent: 33px;
+    border-radius: 10px;
+    float: right;
+}
+
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+}
+
+#example_length{
+    display: none;
+}
+.a{
+    text-decoration: none;
+}

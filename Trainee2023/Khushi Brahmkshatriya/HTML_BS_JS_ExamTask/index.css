@@ -5,11 +5,13 @@
 #loginScreen {
   background: url(./images/White-logo.png) center no-repeat, url(./images/Background.png) no-repeat;
 }
-@media only screen and (max-width: 1000px) {
+
+
+/* @media only screen and (max-width: 1000px) {
   .logo {
     display: none;
   }
-} 
+}  */
 .buttonColor {
   background-color: #326C96
 }
@@ -26,11 +28,15 @@ label.error {
 }
 
 a:active {
-  text-decoration: underline;
+    text-decoration: underline;
+    text-underline-position: under;
+    
 }
 
 a:hover {
-  text-decoration: underline;
+ 
+    text-decoration: underline;
+    text-underline-position: under;
 }
 
 .LineUnderWelcome{
@@ -40,25 +46,3 @@ a:hover {
   opacity: 1;
 }
 
-
-.table_head{
-  background-color: black;
-  color: white;
- 
-}
-
-
-th{
-  
-  color: white;
-  font-weight: 400;
-}
-
-thead{
-  background-color: black;
-}
-tbody{
- 
-  font-weight: 400;
-  color: black;
-}

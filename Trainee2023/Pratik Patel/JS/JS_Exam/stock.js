@@ -1,12 +1,10 @@
 $(document).ready(function () {
 
   if (localStorage.getItem('LogedinUser') !== null) {
-    
+    $("#navigation").load("Navbar.html");
      //Display name in Navbar
   var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
-  $("#loginUseName").html(logedinUser[0].Name);
-  $("#PrifleImage").attr("src", logedinUser[0].Picture);
-
+ 
   // Table Data
   // var data = [
   //   {
@@ -117,11 +115,7 @@ $(document).ready(function () {
     }
   );
   //Logout
-  $("#logout").click(function () {
-    debugger;
-    localStorage.removeItem("LogedinUser");
-    window.location.replace("index.html");
-  });
+
   $("#addStock").click(function () {
     debugger;
     $("#addStockModal").modal("show");
