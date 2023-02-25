@@ -1,5 +1,5 @@
 * {
-  font-family: sans-serif;
+
 }
 
 #loginScreen {
@@ -27,17 +27,25 @@ label.error {
 
 }
 
-a:active {
-    text-decoration: underline;
-    text-underline-position: under;
-    
-}
+a {text-decoration:none;}
+.active {
+    border-bottom: 2px solid black;
+    height: 65px;
+    color: black;
+    font-weight: bold;
+} 
 
-a:hover {
+/* a:hover {
  
     text-decoration: underline;
     text-underline-position: under;
-}
+} */
+/* 
+.navbar a {
+	text-decoration: none;
+	color: white;
+	padding: 1rem;
+} */
 
 .LineUnderWelcome{
   width: 10%;
@@ -46,3 +54,8 @@ a:hover {
   opacity: 1;
 }
 
+#loginuserImage{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%
+}

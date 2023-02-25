@@ -35,8 +35,7 @@ $(document).ready(function () {
     if (loggedData) {
         window.location.replace("./dashboard.html");
     }
-    else
-    {
+    else {
         //window.location.replace("login.html");
         //window.location.href = 'login.html';
         //$(redirect).click();
@@ -57,9 +56,11 @@ $(document).ready(function () {
         },
         messages: {
             email: {
+                required: "Please enter email",
                 email: "Please enter a valid email address",
             },
             password: {
+                required: "Please enter password",
                 password: "Please enter password"
             }
         }
