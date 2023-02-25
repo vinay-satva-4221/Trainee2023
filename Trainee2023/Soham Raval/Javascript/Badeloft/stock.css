@@ -19,8 +19,15 @@ height:90% ;
 .navbar a.active{
     border-bottom: 1px solid #000000;
   }
-
-
+  #newbuttonstock{
+    background-color: #326C96;
+  }
+  #inner_model{
+    background-color: #326C96;
+  }
+  #savechange{
+    background-color: #326C96;
+  }
 /* @media screen and (max-width: 574px) {
   
     .navbar_list {

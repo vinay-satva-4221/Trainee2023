@@ -1,0 +1,31 @@
+table.dataTable tbody tr :nth-child(2) {
+    color:#1188FF;
+  }
+
+.toolbar{
+    float: left;
+    padding: 15px;
+   
+}
+
+table.dataTable tbody tr th:first-child{
+    text-align: left ;
+}
+table.dataTable th {
+    background-color: black;
+    color: white;
+    border-right: none;
+    
+}
+
+/* .modal:nth-of-type(even) {
+    z-index: 1052 !important;
+} */
+/* .modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+} */
+    
+.btn{
+    background-color: #326C96;
+    color: white;
+}

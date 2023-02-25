@@ -1,0 +1,22 @@
+point1:-First Done Proper Desigan of all pages and login page(small things can we cover in desiging part).
+point2:- in deshbored page first insert data in static formate , otherwise use DataTable Liberary so frist proper
+         understand and than impliment.
+	-use localstorage or any other storage to store a data
+	-in C100 field use suggesuion/dropdown/popo and check it is working otherwise use defrent things.
+point3:-in stock page is fully dynamic so first understand user requirement and tha start working.
+	-in stocklocation use dropdown
+	-in action create edit option for adit any field
+	-in action second things i cant understand.
+	-for add_NEW_stock use popup for fill details and in popup one more button add part number so in this use 
+	 droppdown and according changes data are reflect to main table so use localstorage and submit old table data
+	 are change so write login and thing to how to perform this operation.
+	-in stock name i dont know how to impliment + or - functinality , first i understand and than impliment.
+point4:-in status page store data in static formate and implement functinality in GB invoice + or -.
+	-in QB PAyment status use event accroding data.
+	-in called field impliment checkbox.
+point5:-in assignment page store data static and impliment basic functinality and in action give edit and delete event and
+	is also working proper.
+
+
+"This is my plan for this task according my understanding and i tray to complete task as soon as posible
+and also take care of all small things"  

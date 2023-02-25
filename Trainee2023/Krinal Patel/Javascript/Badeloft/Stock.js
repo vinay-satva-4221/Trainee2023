@@ -1,3 +1,5 @@
+var partDetails=[]; //global variables
+
 window.onload = (event) => {debugger;
     if (localStorage.getItem("LoginDetails") == null) {
       window.location.replace("Badeloft.html");
@@ -97,56 +99,43 @@ function format(d) {
 
 function addpartData() {
 debugger;
-
-var PartList = localStorage.getItem("partDetails");
+// var partDetails = [];
+console.log(partDetails);
+// var partDetails = localStorage.getItem("partDetails");
 debugger
 
   var partno = document.getElementById("partno").value
   var ordered = document.getElementById("ordered").value
   var notes = document.getElementById("notes").value
 
-  var partDetails= JSON.parse(PartList);
+  // var partDetails= JSON.parse(partDetails);
 if(partDetails==null){
 
     partDetails=[];
-    partDetails.push({
-    partno: partno,
-    ordered: ordered,
-    notes: notes,   
-});
-localStorage.setItem("partDetails", JSON.stringify(partDetails));
-}
-//  partDetails.push({
-//   partno: partno,
-//   ordered: ordered,
-//   notes: notes,   
-// });
-  //var partDetails=[];
   
-
-  //var partDetails;
+}
+partDetails.push({
+  partno: partno,
+  ordered: ordered,
+  notes: notes,   
+});
+// localStorage.setItem("partDetails", JSON.stringify(partDetails));
 
   var html = "";
 
-  // html += "<td>" + partno + "</td>";
-  //       html += "<td>" + Date.now() + "</td>";
-  //       html += "<td>" + ordered + "</td>";
-  //       html += "<td>" + notes + "</td>";
-   //partDetails.forEach(function (element, index) {
-        // html += "<tr>";
-        
 
   //document.getElementById("tdata").innerHTML =document.getElementById("tdata").innerHTML+ html;
 
   partDetails.forEach(function (element, index) {
-      // html += "<tr>";
+      html += "<tr>";
       html += "<td>" + element.partno + "</td>";
       html += "<td>" + Date.now() + "</td>";
       html += "<td>" + element.ordered + "</td>";
       html += "<td>" + element.notes + "</td>";
-   
+      html += "</tr>";
 
-  document.getElementById("tdata").innerHTML =document.getElementById("tdata").innerHTML+ html;
+
+  document.getElementById("tdata").innerHTML = html;
   });
 
   document.getElementById("partno").value="";
@@ -159,7 +148,7 @@ localStorage.setItem("partDetails", JSON.stringify(partDetails));
 function addstockdata(){
   debugger;
   var stockDetails =[];
-
+console.log("Partdetails in stock function:",partDetails);
 
   //Todo
   // 1.Get data from Form
@@ -175,12 +164,13 @@ function addstockdata(){
   // var partno = document.getElementById("partno").value
   // var ordered = document.getElementById("ordered").value
   // var notes = document.getElementById("notes").value
-  stockDetails = JSON.parse(localStorage.getItem("partDetails"));
-  console.log(partDetails)
+  // stockDetails = JSON.parse(localStorage.getItem("partDetails"));
+  // console.log(partDetails)
 
   var sname = $("#sname").val();
   var etadate = $("#etadate").val();
   var stkstatus = $("#stkstatus").val();
+  var createdby = $("#username").val();
   // var partno = $("#partno").val();
   // var ordered = $("#ordered").val();
   // var notes = $("#notes").val();
@@ -189,34 +179,40 @@ function addstockdata(){
   stockDetails.push({
                 sname: sname,
                 etadate: etadate,
-                stkstatus: stkstatus,
-                // partno: partno,
-                // ordered: ordered,
-                // notes: notes
-                
-  });
-  partDetails.push({
-                partno: partno,
-                ordered: ordered,
-                notes: notes
+                stkstatus: stkstatus,   
+                createdby: createdby,             
   });
 
-  localStorage.setItem("stockDetails", JSON.stringify(stockDetails));
+  var stockList = [
+    {
+      "sname" : sname,
+      "etadate" : etadate,
+      "stkstatus" : stkstatus,
+      "createdby" : createdby,
+      "partlist" :[{
+        partDetails
+      }]
+    }
+  ]
+
+ console.log("SList",stockList)
+
+  localStorage.setItem("stockList", JSON.stringify(stockList));
   
-  stockDetails = JSON.parse(localStorage.getItem("stockDetails"));
+  var stockList = JSON.parse(localStorage.getItem("stockList"));
 
 var html = "";
 
 stockDetails.forEach(function (element, index) {
-      // html += "<tr>";
+      html += "<tr>";
       html += "<td>" + "" + "</td>";
       html += "<td>" + element.sname + "</td>";
       html += "<td>" + element.etadate + "</td>";
       html += "<td>" + element.stkstatus + "</td>";
-      html += "<td>" + element.partno + "</td>";
+      html += "<td>" + element.createdby + "</td>";
       html += "<td>" + element.ordered + "</td>";
       html += "<td>" + element.notes + "</td>";
-
+      html += "</tr>";
    
 
   document.getElementById("maintdata").innerHTML =document.getElementById("maintdata").innerHTML+ html;
