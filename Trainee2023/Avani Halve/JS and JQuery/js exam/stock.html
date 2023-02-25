@@ -72,7 +72,7 @@
                     </div>
                     <div class="navbarProfile d-flex m-3">
                         <div me-3>
-                            <img src="person1.jfif" alt="Profile Image" id="userimg1" style="height: 40px;">
+                            <img src="person1.jfif" alt="Profile Image" class="rounded-circle" style="height: 40px;">
                         </div>
                         <div class="ms-2">
                             <span id="user"></span>
@@ -80,23 +80,20 @@
                                 <i class="fa fa-sign-out" aria-hidden="true"></i></button>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </nav>
     </div>
 
     <!-- Navbar END -->
 
-    <div class="container">
-
+<div class="container">
         <div class="row">
             <div class="col-md-6"><h2>Stock</h2></div>
             <div class="col-md-6">
-            <a data-toggle="modal" href="#myModal"  class="btn btn-light mt-5"
-            style="background-color:#326C96 ; color:white;">+ New</a>
-        </div>
+                <a data-toggle="modal" href="#myModal"  class="btn btn-light my-5"
+                style="background-color:#326C96 ; color:white;">+ New</a>
+            </div>
         </div>
         <br>
         <!-- Modal -->
@@ -130,37 +127,24 @@
                                         <div class="col-md-6">
                                             <label for="">Stock Status:</label>
                                             <br>
-                                            <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                <label class="btn btn-primary  active">
-                                                    <input type="radio" name="options" id="option1" checked> Active
-                                                </label>
-                                                <label class="btn btn-light">
-                                                    <input type="radio" name="options" id="option2"> Radio
-                                                </label>
-                                                <label class="btn btn-light">
-                                                    <input type="radio" name="options" id="option3"> Radio
-                                                </label>
-                                            </div> -->
                                             <div class="btn-group" role="group"
-                                        aria-label="Basic radio toggle button group" id="location">
-                                        <input type="radio" class="btn-check" name="OnProduction" id="btnradio1"
-                                            autocomplete="off" >
-                                        <label class="btn btn-outline-primary border-secondary"
-                                            for="btnradio1">OnProduction
-                                        </label>
-        
-                                        <input type="radio" class="btn-check" name="OnWater" id="btnradio2"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-primary border-secondary"
-                                            for="btnradio2">OnWater
-                                        </label>
-        
-                                        <input type="radio" class="btn-check" name="InWareHouse" id="btnradio3"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline-primary border-secondary"
-                                            for="btnradio3">InWareHouse
-                                        </label>
-                                    </div>
+                                                aria-label="Basic radio toggle button group" id="location">
+                                                <input type="radio" class="btn-check" name="stock_status"
+                                                    id="on_production" value="OnProduction" checked>
+                                                <label class="btn btn-outline-primary border-secondary"
+                                                    for="on_production">On Production</label>
+
+                                                <input type="radio" class="btn-check" name="stock_status" id="on_water"
+                                                    value="OnWater">
+                                                <label class="btn btn-outline-primary border-secondary"
+                                                    for="on_water">On Water</label>
+
+                                                <input type="radio" class="btn-check" name="stock_status"
+                                                    id="in_warehouse" value="InWareHouse">
+                                                <label class="btn btn-outline-primary border-secondary"
+                                                    for="in_warehouse">In Warehouse</label>
+
+                                            </div>
                                         </div>
                                     </div>
                                     <br>
@@ -203,7 +187,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
         <div class="modal" id="myModal2" data-backdrop="static">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -233,16 +217,11 @@
                         <button type="button" class="btn btn-primary float-start" id="addpart" onclick="addItemDetails()">Save
                         </button>
                         <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
-
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-
-
-    </div>
+        </div>
     <div class="table-responsive">
         <table id="example" class="display " style="width:100%">
             <thead class="table-dark">
@@ -257,14 +236,10 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody></tbody>
-            
+            <tbody></tbody>   
         </table>
-
-
     </div>
-    </div>
-   
+
     <script src="./stock.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
