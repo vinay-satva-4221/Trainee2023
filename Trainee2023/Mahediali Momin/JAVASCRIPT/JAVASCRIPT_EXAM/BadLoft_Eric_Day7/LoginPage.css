@@ -20,6 +20,18 @@ form {
 .error{
     color: red;
 }
+/* hr:not([size]) {
+    height: 3px !important;
+    color: #326c96;
+  } */
+  
+  .hr{
+    border-bottom: 2px solid #175480;
+    width: 6%;
+    margin-left: 2%;
+  
+  }
+  
 
 @media only screen and (max-width: 767px) {
     .bg_logo {

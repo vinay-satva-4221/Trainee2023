@@ -1,0 +1,178 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <a data-toggle="modal" href="#myModal" class="btn btn-primary">Launch modal</a>
+<div class="modal" id="myModal">
+	<div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal title</h4>    
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div><div class="container"></div>
+        <div class="modal-body">
+          Content for the dialog / modal goes here.
+          <a data-toggle="modal" href="#myModal2" class="btn btn-primary">Launch modal</a>
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal" id="myModal2" data-backdrop="static">
+	<div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">2nd Modal title</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div><div class="container"></div>
+        <div class="modal-body">
+          Content for the dialog / modal goes here.
+          Content for the dialog / modal goes here.
+          Content for the dialog / modal goes here.
+          Content for the dialog / modal goes here.
+          Content for the dialog / modal goes here.
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+          <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+      </div>
+    </div>
+</div><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel"><b>Add New Stock</b></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <label for="StockName" class="form-label"><b>Stock Name</b></label>
+              <input type="text" class="form-control" id="StockName" name="StockName">
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <label for="ETADate" class="form-label"><b>ETA Date</b></label>
+              <input type="date" name="ETADate" class="form-control" value="10/24/1984"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <label for="StockStatus" class="form-label"><b>Stock Status</b></label>
+            </div>
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+            
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+            
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+           <button type="button" id="SecondModal" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn justify-content-start"><i class="bi bi-plus-circle"></i> Add Part Number</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" id="save">Save</button>
+          <button type="button" class="btn bg-light" data-bs-dismiss="modal" id="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> 
+
+
+
+  <div class="row">
+    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+     <button type="button"  href="#myModal2" data-bs-toggle="modal" class="btn justify-content-start"><i class="bi bi-plus-circle"></i> Add Part Number</button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+<div class="modal" id="myModal">
+	<div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel"><b>Add New Stock</b></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="container"></div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <label for="StockName" class="form-label"><b>Stock Name</b></label>
+                  <input type="text" class="form-control" id="StockName" name="StockName">
+                </div>
+                <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <label for="ETADate" class="form-label"><b>ETA Date</b></label>
+                  <input type="date" name="ETADate" class="form-control" value="10/24/1984"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <label for="StockStatus" class="form-label"><b>Stock Status</b></label>
+                </div>
+              <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <a data-toggle="modal" href="#myModal2" class="btn btn-primary">Launch modal</a>
+                </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" id="save">Save</button>
+            <button type="button" class="btn bg-light" data-bs-dismiss="modal" id="cancel">Cancel</button>
+          </div>
+      </div>
+    </div>
+</div>

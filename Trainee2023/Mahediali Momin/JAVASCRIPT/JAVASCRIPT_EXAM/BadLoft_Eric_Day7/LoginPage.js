@@ -36,7 +36,7 @@ const data = [
 localStorage.setItem("details", JSON.stringify(data));
 
 function add() {
-  
+  debugger;
   if ($("#myfrm").valid() == true) {
 
     var email = document.getElementById("email").value;
@@ -78,10 +78,8 @@ function add() {
         window.location.replace("Dashboard.html");
       }
       else {
-        if ((checkEmail != data[0].email) && (checkPass != data[0].password)) {
           document.getElementById("EMAIL").innerHTML = "This  is not login user*"
           document.getElementById("PASSWORD").innerHTML = "This is not correct password*"
-        }
       }
     }
     localStorage.setItem("loggUser", JSON.stringify(loggUser));

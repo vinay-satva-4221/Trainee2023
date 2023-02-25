@@ -13,8 +13,6 @@ var data1 = [
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
 ]
 // var getdata1=data1[0].
-
-
 $(document).ready(function () {
    var table= $('#example').DataTable({
         data: data1,
@@ -26,20 +24,25 @@ $(document).ready(function () {
             { title: 'C101',"sortable": false },
             { title: 'C102',"sortable": false },
         ],
+
+        columnDefs: [
+            {
+                targets: [1,2,3,4,5],
+                className: 'text-center'
+            },
+            {
+                "width": "10%" , "targets": 0
+            }
+          ]
         
     });
     var oneSelectedCell = table.cell(2,3);
     console.log(oneSelectedCell.data());
-    
-   
 });
 
 let a=JSON.parse(localStorage.getItem("details"));
 console.log("a",a); 
-
 $("#Uname").html(a[0].Name);
-
-
 function logout() {
     window.location="Badeloft.html"
     localStorage.clear();

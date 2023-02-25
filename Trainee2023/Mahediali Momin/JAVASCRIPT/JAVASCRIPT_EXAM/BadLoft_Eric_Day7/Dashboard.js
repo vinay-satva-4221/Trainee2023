@@ -8,7 +8,7 @@
 
 
 window.onload = () => {
-    if (localStorage.getItem("details") == null) {
+    if (localStorage.getItem("loggUser") == null) {
         
       window.location.replace("LoginPage.html");
     }
@@ -44,6 +44,9 @@ $(document).ready(function () {
             {
                 targets: [1,2,3,4,5],
                 className: 'text-center'
+            },
+            {
+                "width": "34%" , "targets": 0
             }
           ]
     });
