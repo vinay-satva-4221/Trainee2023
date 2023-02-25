@@ -23,8 +23,8 @@ window.onload = (event) => {
 
 //Logout
 function logout() {
+  localStorage.removeItem('user')
   window.location.replace("Login.html");
-  localStorage.clear("user");
 }
 
 var dataSet = [

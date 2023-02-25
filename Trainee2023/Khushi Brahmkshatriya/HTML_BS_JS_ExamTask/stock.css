@@ -1,14 +1,20 @@
-th {
+#example th {
     color: white;
 }
-thead {
+#example thead {
     background-color: black;
     border-collapse: collapse;
     border-radius: 1em;  
 }
-table{
+#example table{
    font-size: small;
    border-collapse: collapse;
    border-radius: 1em;
    overflow: hidden;
 }
+
+/* #StockStatus .btn-check :active{
+    background-color: #326C96;
+    color: white;
+} */
+

@@ -1,0 +1,66 @@
+table.dataTable tr.dt-hasChild td.dt-control::before {
+    
+    background-color: rgb(248 249 250);
+    color: blue;
+}
+table.dataTable td.dt-control:before {
+    background-color: rgb(248 249 250);
+    color: blue;
+}
+
+.butS{
+    height: 2rem;
+}
+.btnLog{
+    width: 100%;
+    background-color: #024a7d; color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 32px;
+    font-size: 11px;
+    width: 60px;
+   
+ }
+ 
+ .radioCol{
+    background-color: #024a7d; color: white;
+ }
+ 
+ .btnDiv{
+    width: 14%;
+    
+ }
+ .btnM{
+    font-size: 12px;
+    /* width: 120%; */
+    background-color: white;
+    border: 1px solid white;
+    margin-left: -10%;
+    width: 175%;
+ }
+
+ .notes{
+    height: 110px;
+ }
+
+ th{
+  font-size: 12px; color: white; font-weight: 400;
+ }
+
+ .stModal2{
+   margin-left: 15%;
+   margin-top: 41%;
+   width: 40%;
+ 
+   height: 311px;
+}
+ 
+.stModal1{
+   width: 137%;
+}
+
+/* .btnNew{
+   position: absolute;
+   margin-top: 46px;
+   margin-left: -9%;
+} */
