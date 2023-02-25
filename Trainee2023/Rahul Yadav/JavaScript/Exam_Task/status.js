@@ -2,12 +2,8 @@ $(document).ready(function () {
 
     if (localStorage.getItem('LogedinUser') !== null) {
 
-
-        //Display name in Navbar
         var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
         $("#username").html(logedinUser[0].Name);
-
-
 
         function format(d) {
             // `d` is the original data object for the row
@@ -55,7 +51,6 @@ $(document).ready(function () {
             ['', '150006', 'Kenneth', '12/08/2021', '<span class="alert alert-success"><i class="bi bi-check"></i>Paid</span>', 'Shipped', '201-905-4664', '<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">', 'WBC-126'],
         ]
 
-
         $(document).ready(function () {
             var table = $('#table_div1').DataTable({
                 data: datasets,
@@ -95,17 +90,6 @@ $(document).ready(function () {
             });
         });
 
-
-
-
-
-
-
-
-
-
-
-
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
             window.location.replace("log.html");
@@ -114,7 +98,6 @@ $(document).ready(function () {
         $('.sorting').removeClass('sorting')
 
         $('[data-toggle="popover"]').popover()
-
 
     }
     else {

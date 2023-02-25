@@ -5,28 +5,30 @@ $(document).ready(function() {
       "dom": '<"toolbar">frtip',
             bFilter: true, bInfo: true,
             fnInitComplete: function(){
-                $('div.toolbar').html('<h2>Stock</h2>');
+                $('div.toolbar').html('<h2>Dashboard</h2>');
               },
         columnDefs: [{
+        // "targets":0,"width":"8%",
         orderable: false,
         targets: "no-sort",
-        // "aoColumnDefs": [{
-        //     'bSortable': true,
-        //     'aTargets': [0]
-        // }]
         "paging": false, "info": false, order: [] ,
       }]
     });
-   
-
   });
- // Code By Webdevtrick ( https://webdevtrick.com )
-"use strict";
-var underlineMenuItems = document.querySelectorAll("ul li");
-underlineMenuItems[0].classList.add("active");
-underlineMenuItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-        underlineMenuItems.forEach(function (item) { return item.classList.remove("active"); });
-        item.classList.add("active");
-    });
-});
+  function logout(){
+    window.location.replace("Badeloft.html")
+    localStorage.clear();
+  }
+
+  
+window.onload = (event) => {debugger;
+  if (localStorage.getItem("Badeloft-Details") == null) {
+    window.location.replace("Badeloft.html");
+  }
+  else{
+    var par = JSON.parse(localStorage.getItem('Badeloft-Details'));
+    var u = par[0].username;
+    var uname = document.getElementById("username");
+    uname.innerHTML = u;
+  }
+};

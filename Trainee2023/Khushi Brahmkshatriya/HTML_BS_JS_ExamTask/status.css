@@ -12,3 +12,12 @@ table{
    border-radius: 1em;
    overflow: hidden;
 }
+table.dataTable td.dt-control:before{
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    
+}
+table.dataTable td.dt-control{
+    text-align: start !important;
+}

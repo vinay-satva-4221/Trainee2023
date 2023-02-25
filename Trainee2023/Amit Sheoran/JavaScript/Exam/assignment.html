@@ -91,7 +91,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 ">
-                <h3>Stock</h3>
+                <h3>Assignment</h3>
             </div>
             <div class="col-md-3  text-end">
                 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"
@@ -108,43 +108,39 @@
         <div class="modal-dialog  modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">New Assignment</h5>
                    
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="">Stock name:</label>
-                            <input type="text" class="form-control" id="name" class="validate">
+                            <label for="">Choose Customers</label>
+                            <select id="select1" class="form-control">
+                              <option value="">Select an option</option>
+                            </select>
                         </div>
                         <div class="col-md-6">
-                            <label for="">ETA Date:</label>
-                            <input type="date" class="form-control" id="etaDate">
+                            <label for="">QuickBooks Invoice #</label>
+                            <input type="text" class="form-control" id="etaDate">
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12">
+                        <h6> Add Stock</h6>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-5">
                             <label for="">Stock Status</label>
-                            <div>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                        autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="btnradio1">OnProduction</label>
-
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio2">OnWater</label>
-
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio3">InWarehouse</label>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" id="etaDate">
                         </div>
-                        <div class="row">
+                        <div class="col-md-5">
+                            <label for="">Stock Status</label>
+                            <input type="text" class="form-control" id="etaDate">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary form-control mt-4" >Add</button>
+                        </div>
+                        <div class="row mt-4">
                             <div class="col-md-12">
-                                <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal1"
-                                    id="nestedadd">add</button>
                                 <table id="stock-table" class="table table-responsive">
                                     <thead>
                                         <tr>
@@ -200,9 +196,9 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="background-color: #e0e3ec;">
+    <div class="container-fluid " style="background-color: #e0e3ec;">
         <section id="dataTable" class="dataTable">
-            <div class="row">
+            <div class="row ">
                 <div class="col-md-12">
                     <div class="container-fluid">
 
@@ -230,7 +226,7 @@
             </div>
         </section>
     </div>
-<script src="./stock.js"></script>
+<script src="./assignment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
