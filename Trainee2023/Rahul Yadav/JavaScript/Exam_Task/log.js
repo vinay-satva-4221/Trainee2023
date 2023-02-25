@@ -1,41 +1,3 @@
-//  Validation for log in form
-// $(document).ready(function () {
-
-
-//     // $("#login").click(function () {
-//     //     $("#login_form").valid();
-//     // });
-//     // $("#login_form").validate({
-//     //     rules: {
-//     //         email: {
-//     //             required: true,
-//     //             email: true,
-//     //         },
-//     //         password: {
-//     //             required: true
-//     //         }
-//     //     },
-//     //     messages: {
-//     //         email: {
-//     //             required: "Enter your email",
-//     //             email: "Please enter valid email with @",
-//     //         },
-//     //         password: {
-//     //             required: "Enter the Password"
-//     //         }
-//     //     },
-//     // });
-
-//     // var logged = JSON.parse(localStorage.getItem("logged"));
-//     // $("#username").html(logged[0].Name);
-
-
-//     // $('#example').DataTable();
-
-
-// });
-
-
 
 $(document).ready(function () {
     var logedinuser = JSON.parse(localStorage.getItem("LogedinUser"));
@@ -103,14 +65,9 @@ $(document).ready(function () {
             if (result == true) {
                 let email = $("#inputemail").val();
                 let password = $("#password").val();
-                // window.location.href = "stock.html";
-                // debugger;
                 var loggedInUser = new Array();
-                // debugger;
                 for (let i = 0; i < users.length; i++) {
-                    // alert(users[i][0])
                     if (email.toLowerCase() === users[i][0].toLowerCase() && password === users[i][1]) {
-                        // alert("inside if")
                         loggedInUser.push({
                             Name: users[i][2],
                             Email: users[i][0],
@@ -121,7 +78,7 @@ $(document).ready(function () {
                 }
                 document.getElementById("form").reset();
                 localStorage.setItem("LogedinUser", JSON.stringify(loggedInUser));
-            }else{
+            } else {
                 swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
             }
         });
