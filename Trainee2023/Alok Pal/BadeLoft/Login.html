@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Source+Sans+Pro:wght@300&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container-fluid row" >
-        <div class="col-lg-6 col-md-6 col-sm-12" id="logo" >
+    <div class="container-fluid row">
+        <div class="col-lg-6 col-md-6 col-sm-12" id="logo">
             <!-- <div id="logo"></div> -->
             <img class="image" src="images/White-logo.png" alt="">
             <img class="image1" src="images/Background.png" alt="">
@@ -26,22 +27,24 @@
                         <img class="logo1" src="images/logo2.jpg" alt="">
                     </div>
                     <div class="row mt-2">
-                        <p class="head"><b> Welcome, Let's Get Started!</b></p>
+                        <p class="head">Welcome, Let's Get Started!</p>
                     </div>
                     <div class="line">
-                        <hr>
+                        <hr >
                     </div>
 
                     <!-- Email input -->
                     <div class="form-outline mb-2 mt-2">
-                        <label class="form-label" id="email" for="form2Example1">Email Address</label>
+                        <label class="form-label" id="email" for="form2Example1">Email Address <span
+                                class="star">*</span></label>
                         <input type="email" id="femail" class="form-control" />
                         <span id="errorE"></span>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                        <label class="form-label" id="password" for="form2Example2">Password</label>
+                        <label class="form-label" id="password" for="form2Example2">Password<span
+                                class="star">*</span></label>
                         <input type="password" id="fpassword" class="form-control" />
                         <span id="errorP"></span>
 
@@ -51,9 +54,8 @@
                     <!-- Submit button -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="button" class="btn btn-block mb-4 btnLog"
-                                onclick="return checkEntry(),  validate();">Log
-                                in</button>
+                            <button type="button" class="  btnLog" onclick="return checkEntry(),  validate();"> Log
+                                    in </button>
                         </div>
                     </div>
                 </form>
