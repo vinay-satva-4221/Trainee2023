@@ -37,7 +37,7 @@
                          #savepart,
                          #btnradio1,
                          #btnradio2,
-                         #btnradio3 {
+                         #btnradio3,#addassignment {
                              color: #f7fdff;
                              background-color: #07678d;
                          }
@@ -249,12 +249,12 @@
                          }
 
                          #table_div1_filter {
-                            padding-bottom: 20px;
-                            padding-top: 0px;
-                            width: 100%;
-                            position: relative;
-                            min-width: 100px;
-                        }
+                             padding-bottom: 20px;
+                             padding-top: 0px;
+                             width: 100%;
+                             position: relative;
+                             min-width: 100px;
+                         }
 
                          /* #table_div_filter label{
                             display: none;
@@ -284,6 +284,7 @@
                              border: 1px solid black;
 
                          }
-                         td{
-                            background-color: #ffffff;
+
+                         td {
+                             background-color: #ffffff;
                          }
