@@ -43,11 +43,7 @@
 
   }
   .pagination a:hover:not(.active) {background-color: #ddd;}
- 
-
-
 @media screen and (max-width: 574px) {
-  
     .navbar_list {
        padding-left: 0px;
       }
