@@ -1,0 +1,398 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+        
+    <link rel="stylesheet" href="./dashboard.css" />
+  </head>
+  <body>
+    <nav class="navbar site-nav navbar-expand-lg navbar-lighT">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="./02.png"
+            alt=""
+            class="d-inline-block align-text-top Dashboard-logo"
+          />
+        </a>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+          <div class="navbar-nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Dashboard.html"><b>Dashboard</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="stock.html"><b>Stock</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><b>Status</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><b>Assignment</b></a>
+            </li>
+          </ul>
+          </div>
+        </div>
+        <div>
+          <a href="badeloft.html">
+            <i class="fa fa-sign-out" style="font-size: 24px"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid mt-3" style="background-color: #F7F8FA">
+        <table id="myTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Part Number:</th>
+              <th class="no-sort">In Warehouse</th>
+              <th class="no-sort">Available</th>
+              <th class="no-sort">C100</th>
+              <th class="no-sort">C101</th>
+              <th class="no-sort">C102</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Stock Location</td>
+              <td></td>
+              <td></td>
+              <td>On Water</td>
+              <td>On Water</td>
+              <td>In Production</td>
+            </tr>
+            <tr>
+              <td>ETA Date</td>
+              <td></td>
+              <td></td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+            </tr>
+            <tr>
+              <td>BW-01-S-M</td>  
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-01-Q-M</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>AP-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Stock Location</td>
+              <td></td>
+              <td></td>
+              <td>On Water</td>
+              <td>On Water</td>
+              <td>In Production</td>
+            </tr>
+            <tr>
+              <td>ETA Date</td>
+              <td></td>
+              <td></td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+            </tr>
+            <tr>
+              <td>BW-01-S-M</td>
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-01-Q-M</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>AP-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Stock Location</td>
+              <td></td>
+              <td></td>
+              <td>On Water</td>
+              <td>On Water</td>
+              <td>In Production</td>
+            </tr>
+            <tr>
+              <td>ETA Date</td>
+              <td></td>
+              <td></td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+              <td>10/08/2021</td>
+            </tr>
+            <tr>
+              <td>BW-01-S-M</td>
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-01-Q-M</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>BW-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>AP-03-XL-G</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td>3</td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="./dashboard.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle="popover"]').popover();
+      });
+    </script>
+  </body>
+</html>

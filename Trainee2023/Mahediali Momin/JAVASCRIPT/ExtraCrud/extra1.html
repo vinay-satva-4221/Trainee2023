@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <P id="demo"></P>
+    <p id="demo1"></p>
+</body>
+<script>
+
+
+
+
+    const data = ["fruit", "cars", "food", "boat"];
+
+    let text = "";
+    for(let i=0; i<data.length; i++){
+        text +=data[i]+ "<br>";
+    }
+    document.getElementById("demo1").innerHTML = text;
+
+
+
+
+    const number = [10, 4, 5, 20, 9];
+
+    let txt = "";
+    number.forEach(myFunction);
+    document.getElementById("demo").innerHTML = txt;
+
+    function myFunction(value, index, array) {
+        txt += value + "<br>";
+    }
+</script>
+
+</html>

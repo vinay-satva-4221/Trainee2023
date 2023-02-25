@@ -4,12 +4,8 @@ var studentsArray = [];
  // Check if any field is empty
 function validatecheck(){
     
-    if ( !validatename() || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname() ) {
-       
-        return validateallow();
-        
-    } else {
-
+    if ( !validatename() || !validatemobile() || !validateemail() || !validatezip() || !validatecgpa() || !validatecname() || !validatebname()) {
+           
         $(document).ready(function () {
     
             $("#btn1").click(function () {
@@ -23,11 +19,35 @@ function validatecheck(){
             });
         });
 
+        
+    } else {        
+            return validateallow(),hide(),hide1(),hideexp();
     }
 }
+
+
+function hide(){
+    
+    var h = document.getElementById("mytable"); 
+    h.classList.remove("hide");
+}
+function hide1(){
+    var h = document.getElementById("hide1"); 
+    h.classList.remove("hide");
+}
+function hideexp(){
+
+    document.getElementById("btn2").style.display ='inline';
+}
+function showSave(){
+    document.getElementById("btn3").style.display ='inline';
+}
+
+
+
 function init(){
     if(studentsArray.length > 0){
-        // studentsArray = JSON.parse(localStorage.StudentDetails);
+        studentsArray = JSON.parse(localStorage.StudentDetails);
         console.log(studentsArray)
         for (var i=0; i < studentsArray.length; i++){
             console.log(i);
@@ -36,15 +56,11 @@ function init(){
         }
 
     }
-}
 
+}
         
 function validateallow() {
 
-    // var isValid = validatecheck()       
-
-    // if(isValid=false){
-  
             // var i = studentsArray[i];
             var name = $("#name").val();
             var mobile = $("#mobile").val();
@@ -57,21 +73,15 @@ function validateallow() {
             var zip = $("#zip").val();
             var studied = $("#studied").val();
 
-
             id ++;
             var stuObj = {id:id, name: name, mobile: mobile, email: email, cname: cname, cgpa: cgpa,bname: bname, state: state, city: city, zip:zip, studied: studied}
 
                 studentsArray.push(stuObj);
             
-
             localStorage.setItem( 'StudentDetails', JSON.stringify(studentsArray));
 
-
-           
             // init() ;
             prepareTableCell(id, stuObj.name,stuObj.mobile,stuObj.email,stuObj.cname, stuObj.cgpa, stuObj.bname, stuObj.state, stuObj.city,stuObj.zip,stuObj.studied)
-
-            // prepareTableCell(i, name, mobile, email, cname, cgpa, bname, state, city, zip, studied);
 
             document.getElementById("name").value = "";
             document.getElementById("mobile").value = "";
@@ -82,16 +92,12 @@ function validateallow() {
             document.getElementById("state").value = "";
             document.getElementById("city").value = "";
             document.getElementById("zip").value = "";
-            document.getElementById("studied").value = "";
-
-
+            document.getElementById("studied").value = ""; 
         
 }
 
-           
-                   
-
     //Table insert data
+    debugger;
     function prepareTableCell(index, name, mobile, email, cname, cgpa, bname, state, city, zip,  studied) {
         var index= index
         console.log('index', index)
@@ -124,10 +130,10 @@ function validateallow() {
         cityCell.innerHTML=city;
         zipCell.innerHTML=zip;
         studiedCell.innerHTML=studied;
-        editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow('+index+')">Edit</button>';
+        editCell.innerHTML= '<button class="btn btn-dark" onclick="editTableRow(this)">Edit</button>';
         deleteCell.innerHTML= '<button class="btn btn-danger" onclick="deleteTableRow('+index+')">Delete</button>';   
         
-        $(function() {
+        $(document).ready(function(){
             $("#btn1").click(function(){
                 swal({
                     title:"Record Added!",
@@ -136,8 +142,8 @@ function validateallow() {
                     button:"Done..."
                 });
             });
-            });
-    }
+    })
+}
 
 
     //Delete Row
@@ -150,7 +156,15 @@ function validateallow() {
         studentsArray.splice(currentIndex, 1);
     
         localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
-       
+        
+        if(currentIndex==0){
+            document.getElementById("btn2").style.display ='none';
+        }
+        else{
+            document.getElementById("btn2").style.display ='inline';
+
+        }
+
         swal({
             title: "Record deleted",
             text: "Student Detail Deleted successfully",
@@ -160,38 +174,72 @@ function validateallow() {
     }
 
      //Edit Row
-     debugger;
       
-    function editTableRow(index){
+    function editTableRow(td){
 
-    console.log("Index, StudentArray =",index, studentsArray)
-    var stuObj = studentsArray[index];
+        SelectedRow = td.parentElement.parentElement;
 
+        document.getElementById("name").value = SelectedRow.cells[1].innerHTML;
+        document.getElementById("mobile").value = SelectedRow.cells[2].innerHTML;
+        document.getElementById("email").value =  SelectedRow.cells[3].innerHTML;
+        document.getElementById("cname").value =  SelectedRow.cells[4].innerHTML;
+        document.getElementById("cgpa").value =  SelectedRow.cells[5].innerHTML;
+        document.getElementById("bname").value =  SelectedRow.cells[6].innerHTML;
+        document.getElementById("state").value =  SelectedRow.cells[7].innerHTML;
+        document.getElementById("city").value =  SelectedRow.cells[8].innerHTML;
+        document.getElementById("zip").value =  SelectedRow.cells[9].innerHTML;
+        document.getElementById("studied").value =  SelectedRow.cells[10].innerHTML;
+        // document.getElementById("btn2").innerHTML = "Update Row";
+        showSave();
+        localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
 
-    selectedIndex = index;
-
-
-    document.getElementById("name")=stuObj.name;
-    document.getElementById("btn1").innerHTML = "Update Row";
-
-
-    localStorage.setItem('StudentDetails', JSON.stringify(studentsArray));
-   
 }
-   
+
     
+    //Update Row
+      
+    function updateTableRow(formData){
+   
+        var formData = readFormData();
+    debugger;
+
+        SelectedRow.cells[1].innerHTML = formData.name;
+        SelectedRow.cells[2].innerHTML = formData.mobile;
+        SelectedRow.cells[3].innerHTML = formData.email;
+        SelectedRow.cells[4].innerHTML = formData.cname;
+        SelectedRow.cells[5].innerHTML = formData.cgpa;
+        SelectedRow.cells[6].innerHTML = formData.bname;
+        SelectedRow.cells[7].innerHTML = formData.state;
+        SelectedRow.cells[8].innerHTML = formData.city;
+        SelectedRow.cells[9].innerHTML = formData.zip;
+        SelectedRow.cells[10].innerHTML = formData.studied;
+        // document.getElementById("btn2").innerHTML = "Export";
+
+    }
+
+    function readFormData() {
+        var formData = {};
+        formData["name"] = document.getElementById("name").value;
+        formData["mobile"] = document.getElementById("mobile").value;
+        formData["email"] = document.getElementById("email").value;
+        formData["cname"] = document.getElementById("cname").value;
+        formData["cgpa"] = document.getElementById("cgpa").value;
+        formData["bname"] = document.getElementById("bname").value;
+        formData["state"] = document.getElementById("state").value;
+        formData["city"] = document.getElementById("city").value;
+        formData["zip"] = document.getElementById("zip").value;
+        formData["studied"] = document.getElementById("studied").value;
+
+        return formData;
+    }
+    
+    debugger;
    
 
-
-
-
-
-
-
-
-
-
+//Date Picker
  $(function() {
+
+    
 
     var start = moment().subtract(29, 'days');
     var end = moment();
@@ -217,12 +265,11 @@ function validateallow() {
 
 });
 
-
-
-
 //Fade img
 
 $("#fadetoggle_btn").click(function () {
+
+    
     $(".fades").fadeToggle(1000);
 });
 
@@ -243,8 +290,6 @@ function validatename() {
         return true;
     }
 }
-
-
 
 function validatemobile() {
     let setmobile = /^[0-9]{10}$/;
@@ -358,93 +403,6 @@ function validatestate() {
     }
 }
 
-
-
-
-
-//Cascading Dropdown 
-debugger;
-// const CityData = {
-//     "Cities" : [
-//         {
-//             "StateId": 1,
-//             "Id": 1,
-//             "Name": "Indore"
-//         },
-//         {
-//             "StateId": 1,
-//             "Id": 2,
-//             "Name": "Bhopal"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 3,
-//             "Name": "Sirohi"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 4,
-//             "Name": "Udaipur"
-//         },
-//         {
-//             "StateId": 2,
-//             "Id": 5,
-//             "Name": "Jaisalmer"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 6,
-//             "Name": "Ahmedabad"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 7,
-//             "Name": "Vadodara"
-//         },
-//         {
-//             "StateId": 3,
-//             "Id": 8,
-//             "Name": "Surat"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 9,
-//             "Name": "Ludhiana"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 10,
-//             "Name": "Amritsar"
-//         },
-//         {
-//             "StateId": 4,
-//             "Id": 11,
-//             "Name": "Patiala"
-//         }
-//     ]
-// }
-
-// const StateData = {
-//     "States" : [
-//         {
-//             "Id" : 1,
-//             "Name": "Madhya Pradesh"
-//         },
-//         {
-//             "Id" : 2,
-//             "Name": "Rajasthan"
-//         },
-//         {
-//             "Id" : 3,
-//             "Name": "Gujarat"
-//         },
-//         {
-//             "Id" : 4,
-//             "Name": "Punjab"
-//         }
-//     ]
-// }
-
 const CityData = '{"Cities":['+
 '{"StateId":"1","Id":"1","Name":"Indore"},' +
 '{"StateId":"1","Id":"2","Name":"Bhopal"},' +
@@ -482,3 +440,35 @@ $(document).ready(function(){
 
     });
 });
+
+
+function exportTableToExcel(tableSelect, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById("mytable");
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'Employee.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}

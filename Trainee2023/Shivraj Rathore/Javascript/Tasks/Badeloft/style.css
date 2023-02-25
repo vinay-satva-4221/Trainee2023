@@ -1,0 +1,17 @@
+.my-div {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: 34px;
+  width: 268px;
+}
+
+.my-div span {
+  font-size: 18px;
+  line-height: 34px;
+}
+
+#logiamge {
+  position: relative;
+}
+

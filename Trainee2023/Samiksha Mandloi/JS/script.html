@@ -66,20 +66,20 @@
 <body>
   <div class="container">
     <h1>Calculator </h1>
-    <div>
+    <div class="calculator-keys">
       <table cellspacing="0">
         <tr>
-          <!-- <input type="text" class="calculator-screen" value="" disabled /> -->
+           <input type="text" class="calculator-screen" value="" disabled />
           <td colspan="4" id="screen">0</td>
         </tr>
         <tr>
-          <td><button onclick="clickbtn(this);">+</button></td>
-          <td><button onclick="clickbtn(this);">-</button></td>
-          <td><button onclick="clickbtn(this);">*</button></td>
-          <td><button onclick="clickbtn(this);">/</button></td>
+          <td><button class="operator" onclick="clickbtn(this);">+</button></td>
+          <td><button class="operator" onclick="clickbtn(this);">-</button></td>
+          <td><button class="operator" onclick="clickbtn(this);">*</button></td>
+          <td><button class="operator"  onclick="clickbtn(this);">/</button></td>
         </tr>
         <tr>
-          <td><button onclick="clickbtn(this);">7</button></td>
+          <td><button  onclick="clickbtn(this);">7</button></td>
           <td><button onclick="clickbtn(this);">8</button></td>
           <td><button onclick="clickbtn(this);">9</button></td>
           <td><button onclick="clickbtn(this)">%</button></td>
@@ -88,7 +88,7 @@
           <td><button onclick="clickbtn(this);">4</button></td>
           <td><button onclick="clickbtn(this);">5</button></td>
           <td><button onclick="clickbtn(this);">6</button></td>
-          <td rowspan="3" id="colr"><button id="col" onclick="clickbtn(this);">=</button></td>
+          <td rowspan="3" id="colr"><button class="equal-sign operator" id="col" onclick="clickbtn(this);">=</button></td>
         </tr>
         <tr>
           <td><button onclick="clickbtn(this);">1</button></td>
@@ -98,8 +98,8 @@
         </tr>
         <tr>
           <td><button onclick="clickbtn(this);">0</button></td>
-          <td><button onclick="clickbtn(this);">.</button></td>
-          <td><button onclick="clickbtn(this);">C</button></td>
+          <td><button class="decimal" onclick="clickbtn(this);">.</button></td>
+          <td><button class="all-clear" onclick="clickbtn(this);">C</button></td>
 
         </tr>
       </table>
@@ -125,6 +125,30 @@
       }
     }
   }
+  const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
+  const { target } = event;
+  if (!target.matches('button')) {
+    return;
+  }
+
+  if (target.classList.contains('operator')) {
+    console.log('operator', target.value);
+    return;
+  }
+
+  if (target.classList.contains('decimal')) {
+    console.log('decimal', target.value);
+    return;
+  }
+
+  if (target.classList.contains('all-clear')) {
+    console.log('clear', target.value);
+    return;
+  }
+
+  console.log('digit', target.value);
+});
   
 
 

@@ -335,16 +335,11 @@ function confirmpasswordvalidate()
         document.getElementById('confirmpassword').focus();
         return true;
     }
-   
-    
-
     else{
 
         document.getElementById('errorconfirmpasword').style.display="none";
         return true;
     }
-   
-
 }
 
 function bankvalidate()
@@ -356,8 +351,6 @@ function bankvalidate()
         document.getElementById("bankerror").style.display="unset";
         document.getElementById("bankerror").focus();
         return false;
-
-
     }
     else{
     document.getElementById("bankerror").style.display="none";
@@ -375,8 +368,6 @@ function branchvalidate()
         document.getElementById("brancherror").style.display="unset";
         document.getElementById("brancherror").focus();
         return false;
-
-
     }
     else{
     document.getElementById("brancherror").style.display="none";
@@ -388,7 +379,6 @@ function branchvalidate()
 
 function accountdetail()
 {
-
     var accountname=document.getElementById("account");
     if(accountname.value=="")
     {
@@ -396,14 +386,11 @@ function accountdetail()
         document.getElementById("accounterror").style.display="unset";
         document.getElementById("accounterror").focus();
         return false;
-
-
     }
     else{
     document.getElementById("accounterror").style.display="none";
     return true;
     }
-
 }
 
 function accountnumberdetail()
@@ -430,7 +417,6 @@ function accountnumberdetail()
 }
 function paymentdetail()
 {
-
     var paymentname=document.getElementById("card");
     if(paymentname.value=="")
     {
