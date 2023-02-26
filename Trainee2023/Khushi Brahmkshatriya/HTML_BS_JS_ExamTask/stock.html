@@ -13,17 +13,19 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
    
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body>
     <header id="AddNavbar"></header>
 
     <section>
-        <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="stockModal" role="dialog" aria-labelledby="stockModal" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold" id="exampleModalLabel">Add New Stock</h5>
+                        <h5 class="modal-title fw-bold" id="stockModal">Add New Stock</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -64,7 +66,7 @@
                                 </div>
                                 <div class="col-md-12 mt-2">
                                     <lable for="partNum" class="form-label text-secondary fw-light"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal2" id="partnum">
+                                        data-bs-toggle="modal" data-bs-target="#PartModal" id="partnum">
                                         <i class="bi bi-plus-circle"></i> Add Part Number
                                     </lable>
                                 </div>
@@ -86,12 +88,12 @@
         </div>
     </section>
     <section>
-        <div class="modal fade in" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+        <div class="modal fade in" id="PartModal" tabindex="-1" aria-labelledby="PartModal"
             aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold" id="exampleModalLabel2">Add New Part Number</h5>
+                        <h5 class="modal-title fw-bold" id="PartModal">Add New Part Number</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -130,7 +132,7 @@
                     </div>
                     <div class="col-md-8 d-flex justify-content-end">
                         <button type="button" class="btn buttonColor text-white" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">+ New
+                            data-bs-target="#stockModal">+ New
                         </button>
 
                         <div id="example_filter" class="dataTables_filter  px-3">
@@ -176,6 +178,8 @@
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
 </body>
 
