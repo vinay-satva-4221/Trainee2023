@@ -18,28 +18,72 @@ window.onload = (event) => {debugger;
     window.location.replace("Badeloft.html")
     localStorage.clear();
   }
+
+
+//  function format(d) {
+//   let dynamicChildRow = "";
+//   if (d.partDetails && d.partDetails.length > 0) {
+//     dynamicChildRow +=
+//       '<table cellpadding="2" cellspacing="0" class="table border rounded">';
+//     dynamicChildRow +=
+//       '<thead class ="table text-center"><tr style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th></tr></thead>';
+//       '<tr> <th>#</th> <th>Part Number</th> <th>Ordered</th> <th>Assigned</th> <th>Action</th> </tr>'
+//     dynamicChildRow += "<tbody  class ='table '  >";
+//     d.partDetails.forEach((e, index) => {
+//       let indx = (index + 1);
+//       dynamicChildRow +=
+//         "<tr><td>" +
+//         indx +
+//         "</td><td>" +
+//         e.partno +
+//         "</td><td>" +
+//         e.ordered +
+//         "</td><td>" +
+//         e.notes +
+//         "</td></tr>";
+//     });
+//     dynamicChildRow += "</tbody></table>";
+//   }
+//   return dynamicChildRow;
+// } 
 // Data table stock
 /* Formatting function for row details - modify as you need */
-function format(d) {
+function format(d) {debugger;
     // `d` is the original data object for the row
-    return (
-        '<table cellpadding="2" cellspacing="0" class="table border rounded"' +
-        '<tr>' +
-        '<th>#</th>' +
-        '<th>Part Number</th>' +
-        '<th>Ordered</th>' +
-        '<th>Assigned</th>' +
-        '<th>Action</th>'+
-        '</tr>' +
-        '<td>1</td>' +
-        '<td>BW-01-S-M</td>' +
-        '<td>5</td>' +
-        '<td>5</td>' +
-        '<td>Close</td>' +
+    var p = partDetails;
+    console.log(p)
+    let childrow = "";
+    if (d.stockDetails && d.stockDetails.length > 0) {
+    // console.log(partDetails)
+    // if(d.partDetails && d.partDetails.length>0){
+      childrow += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+      childrow += '<thead><tr><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
+      childrow += '<tbody>';
+      d.stockDetails.forEach((e) => {
+        childrow += '<tr><td>' + 1 + '</td><td>' +3+ '</td><td>' +4 + '</td></tr>';
+      });
+      childrow += '</tbody></table>';;
+}
+    return childrow;
+}
+    // return (
+    //     '<table cellpadding="2" cellspacing="0" class="table border rounded"' +
+    //     '<tr>' +
+    //     '<th>#</th>' +
+    //     '<th>Part Number</th>' +
+    //     '<th>Ordered</th>' +
+    //     '<th>Assigned</th>' +
+    //     '<th>Action</th>'+
+    //     '</tr>' +
+    //     '<td>1</td>' +
+    //     '<td>BW-01-S-M</td>' +
+    //     '<td>5</td>' +
+    //     '<td>5</td>' +
+    //     '<td>Close</td>' +
       
-        '</table>'
-    );
-  }
+    //     '</table>'
+    // );
+  
   
   $(document).ready(function () {
     
@@ -184,10 +228,9 @@ console.log("Partdetails in stock function:",partDetails);
 
   var sname = $("#sname").val();
   var etadate = $("#etadate").val();
-  var stkstatus = $("#stkstatus").val();
-  // var partno = $("#partno").val();
-  // var ordered = $("#ordered").val();
-  // var notes = $("#notes").val();
+  var partno = $("#partno").val();
+  var ordered = $("#ordered").val();
+  var notes = $("#notes").val();
   //Getting username for created by
   var par = JSON.parse(localStorage.getItem('LoginDetails'));
   var createdby = par[0].username;
@@ -196,6 +239,22 @@ console.log("Partdetails in stock function:",partDetails);
   var cdate = new Date(Date.now()).toLocaleString().split(',')[0] ;
 console.log(partDetails)
   var notes = partDetails[0].notes;
+  
+
+  //Getting Stock status
+  var production = document.getElementById("production").checked;
+  var water = document.getElementById("Water").checked;
+  var warehouse = document.getElementById("Warehouse").checked;
+
+  var stkstatus = "";
+
+  if (production == true) {
+    stkstatus = "On Production";
+  } else if (water == true) {
+    stkstatus = "On Water";
+  } else if (warehouse == true) {
+    stkstatus = "In Warehouse";
+  }
 
 
   stockDetails.push({
@@ -204,7 +263,8 @@ console.log(partDetails)
                 stkstatus: stkstatus,   
                 createdby: createdby,  
                 cdate: cdate,    
-                notes:notes,       
+                part:partDetails
+                
   });
 
   // tableData.row.add({
@@ -215,6 +275,7 @@ console.log(partDetails)
   //   cdate: cdate,    
   //   notes:notes}).draw();
   tableData.row.add( ['',sname,etadate,stkstatus,createdby,cdate,notes,''] ).draw();
+  
   var stockList = [
     {
       "sname" : sname,
@@ -267,3 +328,4 @@ console.log(partDetails)
 
 
 }
+
