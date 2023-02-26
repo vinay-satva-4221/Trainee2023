@@ -3,7 +3,28 @@ var dataSet = [
     ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
     ['BW-01-S-M','1','0','3','0','0'],
     ['BW-03-XL-G','1','1','2','2','1'],
+    ['BW-01-Q-M','','0','3','0','1'],
+    ["Stock Location", "", "", "On Water", "On Water", "In production"],
+    ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
+    ['BW-01-S-M','1','0','3','0','0'],
+    ['BW-03-XL-G','1','1','2','2','1'],
+    ['BW-01-Q-M','','0','3','0','1'],
+    ["Stock Location", "", "", "On Water", "On Water", "In production"],
+    ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
+    ['BW-01-S-M','1','0','3','0','0'],
+    ['BW-03-XL-G','1','1','2','2','1'],
+    ['BW-01-Q-M','','0','3','0','1'],
+    ["Stock Location", "", "", "On Water", "On Water", "In production"],
+    ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
+    ['BW-01-S-M','1','0','3','0','0'],
+    ['BW-03-XL-G','1','1','2','2','1'],
+    ['BW-01-Q-M','','0','3','0','1'],
+    ["Stock Location", "", "", "On Water", "On Water", "In production"],
+    ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
+    ['BW-01-S-M','1','0','3','0','0'],
+    ['BW-03-XL-G','1','1','2','2','1'],
     ['BW-01-Q-M','','0','3','0','1']
+
   ];
   
 $(document).ready(function(){
@@ -20,6 +41,12 @@ $(document).ready(function(){
         data: dataSet,
         "order": [],
         "dom": 'rtip',
+        language: {
+          paginate: {
+            next: '&#62',
+            previous: '&#60' 
+          }
+        },
        
         columnDefs: [
             { orderable: true, targets: 0 },
@@ -42,5 +69,6 @@ $(document).ready(function(){
         }
         
       });
-      $('#example').removeClass('display');
+      
+      
 })
