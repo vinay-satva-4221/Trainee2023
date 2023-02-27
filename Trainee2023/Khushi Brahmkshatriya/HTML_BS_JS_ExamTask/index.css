@@ -1,9 +1,7 @@
-* {
-  font-family: sans-serif;
-}
+* {}
 
-#loginScreen {
-  background: url(./images/White-logo.png) center no-repeat, url(./images/Background.png) no-repeat;
+#loginbackground {
+  right: 58%;
 }
 
 
@@ -13,6 +11,14 @@
   }
 }  */
 .buttonColor {
+  background-color: #326C96
+}
+
+.buttonColor:hover,
+.buttonColor:focus,
+.buttonColor:active,
+.buttonColor.active {
+
   background-color: #326C96
 }
 
@@ -27,22 +33,26 @@ label.error {
 
 }
 
-a:active {
-    text-decoration: underline;
-    text-underline-position: under;
-    
+a {
+  text-decoration: none;
 }
 
-a:hover {
- 
-    text-decoration: underline;
-    text-underline-position: under;
+.active {
+  border-bottom: 2px solid black;
+  height: 65px;
+  color: black;
+  font-weight: bold;
 }
 
-.LineUnderWelcome{
+.LineUnderWelcome {
   width: 10%;
   border: 1px solid#326C96;
   background-color: #326C96;
   opacity: 1;
 }
 
+#loginuserImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%
+}

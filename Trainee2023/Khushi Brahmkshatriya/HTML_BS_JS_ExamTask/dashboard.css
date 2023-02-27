@@ -1,14 +1,42 @@
 th {
     color: white;
 }
+
 thead {
     background-color: black;
     border-collapse: collapse;
-    border-radius: 1em;  
+    border-radius: 1em;
+
 }
-table{
-   font-size: small;
-   border-collapse: collapse;
-   border-radius: 1em;
-   overflow: hidden;
+
+table {
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: black;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+
+}
+li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+}
+li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+
+}
+.dataTables_info {
+    margin-left: 75%;
+}
+.AddColor {
+    color: rgb(95, 159, 248);
 }

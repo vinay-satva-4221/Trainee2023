@@ -21,8 +21,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg ">
-            <div class="container p-0 m-6">
-                <img src="Images/img logo.jpg" alt="" srcset="" id="dasboardlogo">
+            <div class="container-fluid ps-0 pe-4">
+                <a class="navbar-brand ms-5 ps-1" href=""> <img src="Images/img logo.jpg" alt="" srcset=""
+                        id="dasboardlogo"></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -32,12 +34,12 @@
                     <div class="tabs ms-auto pe-5" id="links">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link ">
-                                <a href="db.html">Dashboard
+                                <a href="db.html"> Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
-                            <li class="nav-link active-link ">
-                                <a href=""> <b> Stock</b></a>
+                            <li class="nav-link  active-link">
+                                <a href="#"> <b>Stock</b> </a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
@@ -45,7 +47,7 @@
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">Assignment</a>
+                                <a href="assignment.html">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
@@ -68,32 +70,21 @@
     </header>
     <section>
         <div class="container-fluid p-0">
-            <div class="bg-light px-4 ">
-                <div class="row pt-2">
-                    <div class="col-md-4">
-                        <h4 class=" fw-bolder pt-5 m-0">Stock</h4>
+            <div class="row">
+                <div class="col-lg-3 p-3">
+                    <b><span id="stock" class="m-lg-5"> Stock</span></b>
+                </div>
+                <div class="col-lg-2 offset-lg-4 p-3">
+                    <button type="button" class="btn" id="addStock" data-bs-toggle="modal"
+                        data-bs-target="#stockModal"><b>+New</b></button>
+                </div>
+                <div class="col-lg-3 p-3">
+                    <div class="form-group has-search me-5 pe-1">
+                        <input type="text" class="form-control" placeholder="Search" id="datatablesearch" />
                     </div>
-                    <div class="col-md-6 d-flex justify-content-end pt-5 m-0">
-                        <button type="button" class="btn " id="new" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            + New
-                        </button>
-                        <!-- <div id="filter table_div_filter" class="dataTables_filter  px-3">
-                            <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
-                        </div> -->
-                    </div>
-                    <!-- <div class=" dataTables_filter col-md-4" id="table_div_filter">
-                        <label for="">"Search" <input type="search" class placeholder aria-controls="table_div"></label>
-                    </div> -->
-                    <!-- <div class="col-md-8 d-flex justify-content-end pt-4 m-0">
-                        <div id="filter table_div_filter" class="dataTables_filter  px-3">
-                            <input class="form-control" type="search" placeholder="Search Here" aria-label="Search">
-                        </div>
-                    </div> -->
                 </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="stockModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -109,7 +100,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">ETA Date</label>
-                                        <input type="text" class="form-control" name="birthday" value="10/24/1984"
+                                        <input type="text" class="form-control" name="etadate" value="10/24/1984"
                                             id="date" />
                                     </div>
                                     <div class="col-md-12">
@@ -131,12 +122,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#Modal2"> <img src="Images/Plus.svg" alt="" srcset="">
+                                            data-bs-target="#partModal"> <img src="Images/Plus.svg" alt="" srcset="">
                                             <label for="">Add Part Number</label>
                                         </button>
                                     </div>
 
-                                    <table class="table rounded">
+                                    <table class="table rounded table-display  table-sm border border-dark ">
                                         <thead>
                                             <tr>
                                                 <th>Part name</th>
@@ -146,23 +137,19 @@
                                             </tr>
                                         </thead>
                                         <tbody id="root">
-
                                         </tbody>
                                     </table>
-
-
                                 </form>
-
                             </div>
                             <div class="modal-footer justify-content-start">
-                                <button type="button" class="btn " id="save">Save </button>
+                                <button type="button" class="btn " id="savestock">Save </button>
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="partModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
                         <div class="modal-content">
@@ -195,39 +182,15 @@
                     </div>
                 </div>
 
-                <div class=" displayTable">
-                    <table id="table_div1" class="table table-display table-hover  table-sm " style="width:100%">
-
-                        <!-- <table id="table_div" class="table  .table-responsive-lg"> -->
-                        <thead class="thead-dark">
-
+                <div class=" displayTable table-responsive pt-4 px-5">
+                    <table id="table_div1" class="table table-display  table-sm border border-dark rounded"
+                        style="width:100%">
+                        <thead class="thead-dark rounded">
                     </table>
                 </div>
-                <!-- <div class="container d-flex justify-content-end " id="navpart">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination mt-2">
-                            <div class="d-flex mt-2 pageNo">
-                                <p>Items 1 to 5 of 1 total</p>
-                            </div>
-                            &nbsp;&nbsp;
-                            <li class="page-item ">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> -->
-
             </div>
+
+        </div>
         </div>
     </section>
 

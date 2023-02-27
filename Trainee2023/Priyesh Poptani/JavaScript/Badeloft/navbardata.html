@@ -1,0 +1,149 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVBAR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        #logo {
+            width: auto;
+            max-height: 25px;
+        }
+
+
+
+         ul {
+            display: flex;
+
+            list-style-type: none;
+        }
+
+        ul:hover li:not(:hover) a {
+            opacity: 0.5;
+        }
+
+        ul li {
+            position: relative;
+
+            cursor: pointer;
+        } */
+
+         ul li::after {
+            position: absolute;
+            content: "";
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #070707;
+            transform: scaleX(0);
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        } 
+
+         ul li:hover::after,
+        ul li.active::after {
+            transform: scaleX(1);
+        } 
+
+         ul li a {
+            position: relative;
+            display: flex;
+            color: white;
+            font-family: Lato, sans-serif;
+            text-decoration: none;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        } 
+
+
+         .wider {
+            display: block;
+            margin: 20px 0;
+            padding: 15px 8px;
+            line-height: 23px;
+            width: 100%;
+        } */
+       
+
+        #Uname {
+            padding-left: 550px;
+
+        }
+
+       
+    </style>
+</head>
+
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid navbar-container">
+            <a class="navbar-brand " href="#">
+                <img src="./02.png" alt="" id="logo" />
+            </a>
+
+            <div class="collapse navbar-collapse  justify-content-center" id="navbarTogglerDemo01">
+
+
+                <ul class="navbar-nav d-flex">
+
+                    <li class="nav-item active-link">
+                        <a class="nav-link mx-3 " href="dashbord.html">DashBoard</a>
+                        <div class="underline"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="stock.html">Stock</a>
+                        <div class="underline"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-3" href="status.html">Status</a>
+                        <div class="underline"></div>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="assignment.html">Assignment</a>
+                        <div class="underline"></div>
+                    </li>
+                </ul>
+
+              
+
+
+
+            </div>
+
+            <img src="./swamivivekanan.jfif" alt="" height="2%" width="3%" class="rounded-5 " id="frisuser">
+
+            <a href="#" class="nav-link" id="Uname">DashBord</a>
+</div>
+        <a class="navbar-brand mx-1 " href="badeloft.html">
+            <i class="fa fa-sign-out" style="font-size:24px"></i>
+        </a>
+    </nav>
+    <script>
+        var underlineMenuItems = document.querySelectorAll("ul li");
+        underlineMenuItems[0].classList.add("active");
+
+        underlineMenuItems.forEach(function (item) {
+            item.addEventListener("click", function () {
+                underlineMenuItems.forEach(function (item) { return item.classList.remove("active"); });
+                item.classList.add("active");
+            });
+        })
+        $(document).ready(function () {
+
+            var loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+            console.log("a", loggedUser.name);
+
+            $("#Uname").html(loggedUser.name);
+
+           
+             
+        });
+
+
+    </script>
+</body>
+
+</html>

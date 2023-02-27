@@ -1,0 +1,20 @@
+#AssignmentTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+.toolbar {
+    float: left;
+}
+#ModalPopup{
+    background-color: #326C96;
+    color: #F7F8FA;
+}
+#AddId{
+    background-color: #326C96;
+    color: #F7F8FA;
+    margin-top: 32px;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+}

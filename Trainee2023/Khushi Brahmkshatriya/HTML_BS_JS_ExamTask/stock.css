@@ -4,11 +4,70 @@ th {
 thead {
     background-color: black;
     border-collapse: collapse;
-    border-radius: 1em;  
+      
 }
 table{
    font-size: small;
    border-collapse: collapse;
    border-radius: 1em;
    overflow: hidden;
+}
+table.dataTable td.dt-control:before{
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    margin: 3px;
+    
+}
+table.dataTable td.dt-control{
+    text-align: start !important;
+    padding-right: 3px;
+}
+
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: black;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+
+}
+li.paginate_button.page-item.active{
+    background: none !important;
+    border: none !important;
+}
+li.paginate_button.page-item:hover{
+    background: none !important;
+    border: none !important;
+}
+.dataTables_info {
+    margin-left: 75%;  
+}
+table #partTable{
+        font-size: small;
+        border-collapse: collapse;
+        border-radius: 1em;
+        overflow: hidden;
+     }
+
+table #partTable thead{
+    background-color: rgb(228, 232, 235);
+    border-collapse: collapse;
+}
+
+table #partTable thead th{
+    color: gray;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #fff;
+    background-color: #326C96 !important;
+    border-color: #326C96 !important; 
+}
+a.editor-create {
+    display: inline-block;
+    margin-bottom: 0.5em;
 }

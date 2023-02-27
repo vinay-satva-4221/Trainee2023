@@ -27,6 +27,8 @@ function logout() {
   window.location.replace("Login.html");
 }
 
+
+// Table Populating
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
   ["Eta Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
@@ -54,15 +56,11 @@ $(document).ready(function () {
     ],
   });
 
-  var options = {
-    html: true,
-    title: "Optional: HELLO(Will overide the default-the inline title)",
-    //html element
-    //content: $("#popover-content")
-    content: $('[data-name="popover-content"]'),
-    //Doing below won't work. Shows title only
-    //content: $("#popover-content").html()
-  };
-  var exampleEl = document.getElementById("example");
-  var popover = new bootstrap.Popover(exampleEl, options);
+
+  var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
+  $('.nav-item a').each(function(){
+      if ($(this).attr('href') == pathname){
+      $(this).addClass('active');
+      }
+  });
 });
