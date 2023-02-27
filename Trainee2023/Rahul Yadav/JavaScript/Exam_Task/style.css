@@ -37,7 +37,7 @@
                          #savepart,
                          #btnradio1,
                          #btnradio2,
-                         #btnradio3 {
+                         #btnradio3,#addassignment {
                              color: #f7fdff;
                              background-color: #07678d;
                          }
@@ -45,7 +45,7 @@
                          #new {
                              color: #ffffff;
                              background-color: #326C96;
-                             width: 95px;
+                             width: 85px;
                              height: 38px;
                          }
 
@@ -223,11 +223,7 @@
                          }
 
                          #table_div_length,
-                         #table_div_paginate,
-                         #table_div_info,
-                         #table_div1_length,
-                         #table_div1_paginate,
-                         #table_div1_info {
+                         #table_div1_length {
                              display: none;
                          }
 
@@ -238,7 +234,7 @@
                              position: relative;
                              display: flex;
                              min-width: 100px;
-                             
+
 
                          }
 
@@ -246,6 +242,18 @@
 
                              margin-left: 87%;
 
+                         }
+
+                         #table_div1_filter label {
+                             margin-left: 20%;
+                         }
+
+                         #table_div1_filter {
+                             padding-bottom: 20px;
+                             padding-top: 0px;
+                             width: 100%;
+                             position: relative;
+                             min-width: 100px;
                          }
 
                          /* #table_div_filter label{
@@ -265,4 +273,18 @@
                          .alert {
                              padding: 4px;
 
+                         }
+
+                         #table_div_info,
+                         #table_div1_info {
+                             margin-left: 74%;
+                         }
+
+                         .statustable {
+                             border: 1px solid black;
+
+                         }
+
+                         td {
+                             background-color: #ffffff;
                          }

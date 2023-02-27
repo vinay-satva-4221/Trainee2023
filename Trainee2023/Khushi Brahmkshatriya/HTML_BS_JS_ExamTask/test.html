@@ -1,117 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./bs5/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"> 
 
-  
-  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
 </head>
+
 <body>
 
+    
+    <table id="example" class="table table-striped" style="width:100%">
+    </table>
+    <script src="./bs5/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="./bs5/js/bootstrap.min.js"></script>
+    <script src="./dashbord.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
-    <section>
-        <div id="PopoverContent" class="d-none">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-   ">
-                <button class="btn btn-outline-primary" type="button" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" data-bs-title="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Test modal</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
-                                        <button class="btn btn-outline-primary callPopover" type="button" data-bs-toggle="popover">
-                                            <i class="fas fa-user-plus"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger" type="button">
-                                            <i class="fas fa-user-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="container">
-        <div class="row">
-            <div class="col mt-5">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                </button>
-            </div>
-        </div>
-    </div>
-  <script src="./bs5/jquery-3.6.3.min.js"></script>
-  <script src="./bs5/js/bootstrap.bundle.min.js"></script>
-  <script>
- const popover = new bootstrap.Popover(document.querySelector('.callPopover'), {
-    container: 'body',
-    title: 'Search',
-    html: true,
-    placement: 'bottom',
-    sanitize: false,
-    content() {
-        return document.querySelector('#PopoverContent').innerHTML;
-    }
-})
-  </script>
- 
-  <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"></script>
-  <script src="./bs5/js/bootstrap.min.js"></script>
-  
 </body>
+
 </html>
-<!-- 
-<div class="row g-2">
-  <form action="">
-      <div class="form-title fw-bold">
-          Add New Stock Number
-      </div>
-      <div class="col-md-12">
-          <input type="text" class="form-control"
-              placeholder="Part Number">
-      </div>
-      <div class="col-md-12">
-          <input type="text" class="form-control"
-              placeholder="Ordered">
-      </div>
-      <div class="col-md-12">
-          <input type="text" class="form-control"
-              placeholder="Notes">
-      </div>
-      <div class="col-md-12">
-          <button type="button"
-              class="btn  btn-primary text-white">Save</button>
-
-          <button type="button"
-              class="btn btn-secondary text-white">Cancel</button>
-      </div>
-  </form>
-
-</div> -->

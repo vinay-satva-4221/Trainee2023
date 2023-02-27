@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="/Badeloft/stock.css">
     <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -20,102 +20,62 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-   
-    <style>
-      .navbar_list{
-          padding-left: 300px;
-      }
-      .dataTables_length,.DataTables_info{
-        display: none;
-      }
-      #example_filter,#example_info,#example_paginate{
-        display: none;
-      }
-      .img_round{
-        height: 70%;
-        width: 37%;
-      }
-      .modal-dialog{
-    height:90% ;
-}
-   
-   
-      @media screen and (max-width: 574px) {
-        
-          .navbar_list {
-             padding-left: 0px;
-            }
-        }
-  </style>
 </head>
-
-<body>
-
-
-    <nav class="navbar navbar-expand-sm ">
-      <div class="container-fluid">
-        <img src="./Assets/02.png" style="height:18px">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+      <div class="container-fluid ">
+        <a class="navbar-brand" href="#"> <img src="./Assets/02.png" style="height:20px" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center navbar_list" id="collapsibleNavbar">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Dashboard.html">Dashboard</a>
+              <a class="nav-link nav-item  mx-3 fw-bolder " href="Dashboard.html">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Stock</a>
+              <a class="nav-link nav-item  mx-3 fw-bolder active" href="stock.html">Stock</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="status.html">Status</a>
-            </li>  
+              <a class="nav-link nav-item  mx-3 fw-bolder" href="status.html">Status</a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Assignment</a>
-              </li>    
+              <a class="nav-link nav-item  mx-3 fw-bolder" href="#">Assignment</a>
+            </li>
           </ul>
         </div>
-  
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-  
-              <!-- <a class="nav-link" href="#" img src="./Assets/1.jpeg" class="rounded-circle" alt="Cinque Terre" width="104" height="136"> </a> -->
-              <p><a href="#"><img src="./Assets/1.jpeg" class="rounded-circle" style="width:50px;height:50px;"></a></p>
-          </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#" id="Uname">Dashboard</a>
-
-              </li>
-          </ul>
+        <div class="d-flex align-items-center justify-content-between"  style="height: 80px; width:200px;">
+          <div class="row">
+            <div class="col-3">
+              <img src="./Assets/1.jpeg" class="rounded-circle" height="40px" width="40px" alt="">
+            </div>
+            <div class="col-6 text-center">
+              <p class="small mb-0">Welcome</p>
+              <b><p id="Uname" class="mb-0"></b></p>
+            </div>
+            <div class="col-3 text-right p-0">
+              <div class="nav-item ">
+                <button id="logout-btn" class="btn "> <i
+                    class="fa-solid fa-arrow-right-from-bracket   mt-2" onclick="logout()"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    
-        </div>
-        <div class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
-                <li class="nav-item" onclick="logout()">
-                    <a class="nav-link active mx-2" aria-current="page" href="#"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                </li>
-            </ul>
-        </div>
       </div>
     </nav>
-
     <div class="container-fluid bg-light">
         <div class="row">
             <div class="col-md-8">
                 <h4><strong>Stock</strong></h4>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" id="newbuttonstock" class="btn text-light " data-toggle="modal" data-target="#exampleModal">
                     +New
                   </button>
             </div>
-        
-            
             <!--  -->
-
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-lg" role="document">
                   <div class="modal-content">
@@ -129,69 +89,58 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Stock name:</label>
-                                <input type="text" class="form-control" id="name" class="validate">
+                                <input type="text" class="form-control" id="stockname" class="validate">
                             </div>
                             <div class="col-md-6">
                                 <label for="">ETA Date:</label>
-                                <input type="date" class="form-control">
+                                <input type="date" id="date" class="form-control">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <label for="">Stock Status</label>
                                 <div>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <div class="btn-group" id="btnradio" role="group" aria-label="Basic radio toggle button group">
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+                                    <label class="btn btn-outline-primary " for="btnradio1">On Production</label>
                                   
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+                                    <label class="btn btn-outline-primary " for="btnradio2">On Water</label>
                                   
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+                                    <label class="btn btn-outline-primary " for="btnradio3">In Warehouse</label>
                                   </div>
                                 </div>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-md-12">
                             <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal1">add part number</button>
-                       
-
                         </div>
                         </div>
-
                         <!-- table -->
-
                         <table id="innermodel_table">
                             <thead>
                                 <tr>
                                     <th>Part Number</th>
-                                    <th>Invoice#</th>
+                                    <!-- <th>Invoice#</th> -->
                                     <th>Ordered</th>
                                     <th>Notes</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
                         </table>
-
-
                         <div class="row">
                             <div class="col-md-12">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" >Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="stockdatastore()" id="savechange">Save changes</button>
                         </div>
                           </div>
-
                         </div>
                     </div>
-                   
                   </div>
                 </div>
               </div>
             <!--  -->
-
             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -215,57 +164,45 @@
                             </div>
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary " id="inner_model" onclick="inner_model()">Save changes</button>
-          
+                                <button type="button" class="btn btn-primary " id="inner_model" data-dismiss="modal" >Save changes</button>
                               </div>
-
                         </div>
                     </form>
                     </div>
-                    
                   </div>
                 </div>
               </div>
-
             <div class="col-md-3">
                 <input type="search" class="form-control" placeholder="search here">
             </div>
         </div>
     </div>
-    
+    <div class="container-fluid ">
     <div class="table-responsive mt-4">
         <!-- <table id="example" class="table rounded" style="width: 100%;">
             <thead class="maintable">
             </thead>
         </table> -->
         <table id="example" class="display" style="width:100%">
-          <thead>
+          <thead class="maintable">
               <tr>
                 <th></th>
-                  <th>QBInvoice</th>
-                  <th>name</th>
-                  <th>QBShipdate</th>
-                  <th>QBPaymentStatus</th>
-                  <th>QBStatus</th>
-                  <th>QBDeliveryPhone</th>
-                  <th>Called</th>
-                  <th>QBTracking</th>
-
+                  <th>Stock Name</th>
+                  <th>ETA Date</th>
+                  <th>Stock Location</th>
+                  <th>Created By</th>
+                  <th>Created Date</th>
+                  <th>Notes</th>
+                  <th>Action</th>
               </tr>
           </thead>
-          
+          <tbody></tbody>
       </table>
     </div>
-
-
-    
-
-
-    <script src="./stock.js"></script>
+    </div>
+    <script src="./stock1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>

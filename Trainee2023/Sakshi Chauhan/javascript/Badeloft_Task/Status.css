@@ -1,0 +1,26 @@
+#StatusTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+#StatusTable_filter{
+    margin: 12px;
+    margin-bottom: 0px;
+}
+.toolbar {
+    float: left;
+    margin: 12px;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+}
+#StatusTable thead tr th{
+    text-align: center;
+}
+table.dataTable tbody tr td:child {
+   text-align: left;
+}
+table.dataTable  tr  {
+    text-align: center;
+ }
+

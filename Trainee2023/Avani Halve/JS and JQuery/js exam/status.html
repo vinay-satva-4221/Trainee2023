@@ -16,9 +16,10 @@
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
          crossorigin="anonymous"
       />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <link rel="stylesheet" href="dashboard.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />  
+
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
       <script>
@@ -29,17 +30,23 @@
             $("#table_id").DataTable();
          });
       </script>
+      <!-- <style>
+         #flexCheckchecked{
+            accent-color: green;
+         }
+      </style> -->
    </head>
    <body>
       <div id="navigation"></div>
-      <div class="container-fluid me-5 ">
+      <div class="container-fluid me-5">
          <div class="my-2">
             <h3 class="my-3">Status</h3>
          </div>
          <div>
-            <table id="table_id" class="table">
+            <table id="example" class="table" style="width: 100%">
                <thead class="table-dark">
                   <tr>
+                     <th></th>
                      <th>QB Invoice #</th>
                      <th>Name</th>
                      <th>QB Ship date</th>
@@ -50,124 +57,13 @@
                      <th>QB Tracking</th>
                   </tr>
                </thead>
-               <tbody>
-                  <tr>
-                     <td>150000</td>
-                     <td>Kenneth Wooded</td>
-                     <td>12/08/2021</td>
-                     <td>
-                        <button type="button" class="alert alert-primary p-1">
-                           <i class="fa fa-check">Paid</i>
-                        </button>
-                     </td>
-                     <td>Shiped</td>
-                     <td>617-235-7647</td>
-                     <td><input type="checkbox" /></td>
-                     <td>WBC-123</td>
-                  </tr>
-                  <tr>
-                    <td>150001</td>
-                    <td>James Fenske</td>
-                    <td>10/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-success p-1">
-                          <i class="fa fa-check">Paid</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>618-234-6400</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-124</td>
-                 </tr>
-                 <tr>
-                    <td>150002</td>
-                    <td>Kelly McCrony</td>
-                    <td>08/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-success p-1">
-                          <i class="fa fa-check">Paid</i>
-                       </button>
-                    </td>
-                    <td>STD</td>
-                    <td>630-367-8448</td>
-                    <td><input type="checkbox" /></td>
-                    <td></td>
-                 </tr>
-                 <tr>
-                    <td>150003</td>
-                    <td>Linda Englund</td>
-                    <td>05/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-danger p-1">
-                        <i class="fa-light fa-xmark">Unpaid</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>203-983-8569</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-125</td>
-                 </tr>
-                 <tr>
-                    <td>150003</td>
-                    <td>Linda Englund</td>
-                    <td>05/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-danger p-1">
-                          <i class="fa fa-check">Unpaid</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>203-983-8569</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-125</td>
-                 </tr>
-                 <tr>
-                    <td>150003</td>
-                    <td>Linda Englund</td>
-                    <td>05/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-danger p-1">
-                          <i class="fa fa-check">Unpaid</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>203-983-8569</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-125</td>
-                 </tr>
-                 <tr>
-                    <td>150003</td>
-                    <td>Linda Englund</td>
-                    <td>05/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-danger p-1">
-                          <i class="fa fa-check">Unpaid</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>203-983-8569</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-125</td>
-                 </tr>
-                 <tr>
-                    <td>150003</td>
-                    <td>Linda Englund</td>
-                    <td>05/08/2021</td>
-                    <td>
-                       <button type="button" class="alert alert-warning p-1">
-                        <i class="fa fa-circle-exclamation">Pending</i>
-                       </button>
-                    </td>
-                    <td>Shiped</td>
-                    <td>203-983-8569</td>
-                    <td><input type="checkbox" /></td>
-                    <td>WBC-125</td>
-                 </tr>
-               </tbody>
+               <tbody></tbody>
             </table>
          </div>
       </div>
-     
+      <script src="status.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
    </body>

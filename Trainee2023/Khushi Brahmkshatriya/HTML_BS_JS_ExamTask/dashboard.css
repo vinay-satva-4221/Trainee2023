@@ -1,14 +1,20 @@
-th {
+th{
     color: white;
 }
 thead {
     background-color: black;
     border-collapse: collapse;
     border-radius: 1em;  
+    
 }
 table{
    font-size: small;
    border-collapse: collapse;
    border-radius: 1em;
    overflow: hidden;
+   
+}
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
 }

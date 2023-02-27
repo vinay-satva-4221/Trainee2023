@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container p-0 m-6">
+                <img src="Images/img logo.jpg" alt="" srcset="" id="dasboardlogo">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <div class="tabs ms-auto pe-5" id="links">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-link ">
+                                <a href="db.html">Dashboard
+                                </a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link ">
+                                <a href="stock.html"> Stock</a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link">
+                                <a href="status.html">Status</a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link active-link ">
+                                <a href="#"> <b>Assignment</b> </a>
+                                <div class="underline"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbarProfile d-flex m-3">
+                        <div me-3>
+                            <img src="Images/userimg.jfif" alt="Profile Image" id="PrifleImage">
+                        </div>
+                        <div class="ms-2">
+                            <small id="para">Welcome</small><br>
+                            <span id="username"></span>
+                        </div>
+                    </div>
+                    <button class="btn" id="logout">
+                        <img src="Images/Log-Out.svg" alt="Exit logo" />
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container-fluid p-0">
+            <div class="bg-light px-4 ">
+                <div class="row pt-2">
+                    <div class="col-md-4">
+                        <h4 class=" fw-bolder pt-5 m-0">Assignments</h4>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end pt-5 m-0">
+                        <button type="button" class="btn " id="new" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            + New
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"> <b>New Assignment</b> </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <form class="row g-3" id="stockform">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="inputState" class="form-label">Choose Customer</label>
+                                            <select id="inputState" class="form-select">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="inputState" class="form-label">QuickBooks Invoice #</label>
+                                            <select id="inputState" class="form-select">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <h6> <b>Add Stock</b></h6>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label for="inputState" class="form-label">Stock</label>
+                                            <select id="inputState" class="form-select">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="inputState" class="form-label">Parts</label>
+                                            <select id="inputState" class="form-select">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-2 pb-0 pt-4">
+                                            <button type="button" class="btn" id="addassignment">Add</button>
+                                        </div>
+                                    </div>
+
+                                    <table class="table rounded" id="root"></table>
+
+                                </form>
+
+                            </div>
+                            <div class="modal-footer justify-content-start">
+                                <button type="submit" class="btn " id="save">Save </button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" displayTable">
+                    <table id="table_div" class="table table-display table-hover  table-sm " style="width:100%">
+
+                        <!-- <table id="table_div" class="table  .table-responsive-lg"> -->
+                        <thead class="thead-dark">
+
+                    </table>
+                </div>
+                <!-- <div class="container d-flex justify-content-end " id="navpart">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mt-2">
+                            <div class="d-flex mt-2 pageNo">
+                                <p>Items 1 to 5 of 1 total</p>
+                            </div>
+                            &nbsp;&nbsp;
+                            <li class="page-item ">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> -->
+
+            </div>
+        </div>
+    </section>
+
+    <script src="jquery/jquery.js"></script>
+    <script src="assignment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

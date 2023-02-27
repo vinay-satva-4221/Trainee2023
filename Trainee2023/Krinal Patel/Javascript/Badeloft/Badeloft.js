@@ -87,14 +87,28 @@ debugger;
       localStorage.setItem( 'LoginDetails', JSON.stringify(user));
     }
     else{
-      swal({
-        title: "Invalid or missing",
-        text: "Please enter all the details apropriately",
-        icon: "warning",
-        button: "Ok"
-    });
-      
-        // if(email=="" && password==""){
+            //   if(email=="" && password==""){
+
+            //     swal({
+            //       title: "Missing fields",
+            //       text: "Please enter all the details",
+            //       icon: "warning",
+            //       button: "Ok"
+            //   });
+              
+            // }
+            // else{
+
+              
+              swal({
+                title: "Incorrect Credentials",
+                text: "Please enter correct details",
+                icon: "warning",
+                button: "Ok"
+            });
+
+            // }
+           
         //     document.getElementById("invalid_email").innerHTML = "This Field is required*"
         //     document.getElementById("invalid_password").innerHTML = "This Field is required*"
         // }
@@ -103,9 +117,8 @@ debugger;
         //     document.getElementById("invalid_password").innerHTML = "Password is wrong*"
         // }
       
-    }
-  
-  }
+          }
+}
 
 $.validator.addMethod("Emailcheck", function (value) {
     return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);

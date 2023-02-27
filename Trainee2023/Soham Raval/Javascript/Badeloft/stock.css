@@ -1,0 +1,36 @@
+
+.dataTables_length,.DataTables_info{
+  display: none;
+}
+#example_filter,#example_info,#example_paginate{
+  display: none;
+}
+.img_round{
+  height: 70%;
+  width: 37%;
+}
+.modal-dialog{
+height:90% ;
+}
+.maintable{
+  background-color: black;
+  color: white;
+}
+.navbar a.active{
+    border-bottom: 1px solid #000000;
+  }
+  #newbuttonstock{
+    background-color: #326C96;
+  }
+  #inner_model{
+    background-color: #326C96;
+  }
+  #savechange{
+    background-color: #326C96;
+  }
+/* @media screen and (max-width: 574px) {
+  
+    .navbar_list {
+       padding-left: 0px;
+      }
+  } */
