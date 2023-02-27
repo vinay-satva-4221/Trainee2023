@@ -30,14 +30,7 @@ $(document).ready(function () {
       lengthChange: false,  
       info: false,
       columns: [
-          // {
-          //     orderable: false,
-          //     data: null,
-          //     defaultContent: '',
-              
-
-
-          // },
+       
 
           { title: 'Part Number' },
           { title: 'In Warehouse' ,orderable:false,className: "text-center"},
@@ -74,9 +67,6 @@ var dataSet = [
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
   ["BR-08-X2P","1", "0", "3", "0", "1"],
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
-  
-  
-  
   
 ];
 
