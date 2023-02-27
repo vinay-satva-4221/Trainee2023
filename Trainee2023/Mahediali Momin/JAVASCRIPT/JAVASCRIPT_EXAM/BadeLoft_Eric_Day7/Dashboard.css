@@ -1,3 +1,18 @@
+thead {
+    background-color: black;
+    border-collapse: collapse;
+    border-radius: 1em;  
+    
+}
+table{
+   font-size: small;
+   border-collapse: collapse;
+   border-radius: 1.2em;
+   overflow: hidden;
+   background-color: white;
+   
+}
+
 .nav_logo {
     margin: 10px;
     height: 20px;
@@ -16,9 +31,10 @@
     border: 1px;
 }
 
-#example_length, #example_filter, #example_paginate, #example_info {
+#example_length, #example_filter, #example_info {
     display: none;
 }
+
 
 #example1_length, #example1_filter, #example1_paginate, #example1_info {
     display: none;
@@ -39,6 +55,7 @@
 #logout {
     color: rgb(150, 147, 143);
     margin-top: 30px;
+    margin-left: 30px;
 }
 
 #img {
@@ -56,7 +73,7 @@
 }
 
 #bade_logo {
-    width: 110%;
+    width: 100%;
     margin-left: -35px;
 }
 table.dataTable thead>tr>th.sorting_asc:before{
@@ -66,8 +83,22 @@ table.dataTable thead>tr>th.sorting_asc:before{
 table.dataTable thead>tr>th.sorting_asc:after{
     margin-right: 310px;
     position: absolute;
-    padding-top: 3px;
 }
+
+/* table.dataTable thead>tr>th.sorting:after,thead>tr>th.sorting_asc:after
+{
+  position: absolute;
+
+  margin-right: 310px;
+}
+table.dataTable thead>tr>th.sorting:before,thead>tr>th.sorting_desc:before
+{
+  position: absolute;
+
+ margin-right: 310px;
+   
+} */
+
 .pagination {
     display: inline-block;
 }

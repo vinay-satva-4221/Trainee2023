@@ -1,8 +1,9 @@
 
-.dataTables_length,.DataTables_info{
+
+.dataTables_length,.dataTables_info{
   display: none;
 }
-#example_filter,#example_info,#example_paginate{
+#example_filter{
   display: none;
 }
 .img_round{
@@ -38,6 +39,12 @@
   }
   .pagination a:hover:not(.active) {background-color: #ddd;}
 
+  #example.dataTable td.dt-control:before{
+    background-color: #6590B0;
+  }
+  input:checked ~ .checkmark {
+    background-color: pink;
+  }
 /* 
 @media screen and (max-width: 574px) {
   

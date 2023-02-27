@@ -19,8 +19,6 @@ var image2 = "images/second.png";
 var image3 = "images/third.png";
 var image4 = "images/fourth.png";
 
-
-
 // var email = document.getElementById("femail").value;
 
 window.onload = (event) => {
@@ -28,7 +26,6 @@ window.onload = (event) => {
     window.location.replace("Dashboard.html");
   }
 };
-
 
 function checkEntry() {
   // i can put here the validations
@@ -79,29 +76,23 @@ function checkEntry() {
     }
     window.location.replace("Dashboard.html");
   }
-
 }
 
 function validate() {
-  emailV()
   var email = document.getElementById("femail").value;
   var password = document.getElementById("fpassword").value;
   if (email == "" && password == "") {
     document.getElementById("errorE").innerHTML = "Email is required";
     document.getElementById("errorP").innerHTML = "Password is required";
-  } else if ((email != '' && password == '')) {
+  } else if (email != "" && password == "") {
     document.getElementById("errorP").innerHTML = "Password is required";
-  } else if ((email == '' && password != '')) {
+  } else if (email == "" && password != "") {
     document.getElementById("errorE").innerHTML = "Email is required";
-  }
-  else if ((email == emailC1 && password != passwordC1)) {
+  } else if (email == emailC1 && password != passwordC1) {
     document.getElementById("errorP").innerHTML = "Password is wrong";
-  }
-  else if ((email != emailC1 && password == passwordC1)) {
+  } else if (email.toLowerCase() != emailC1 && password == passwordC1) {
     document.getElementById("errorE").innerHTML = "Email is wrong";
-  }
-
-  else if (
+  } else if (
     (email != emailC1 && password != passwordC1) ||
     (email != emailC2 && password != passwordC2) ||
     (email != emailC3 && password != passwordC3) ||
@@ -110,20 +101,23 @@ function validate() {
     document.getElementById("errorE").innerHTML = "Email id is wrong";
     document.getElementById("errorP").innerHTML = "Password is wrong";
   }
+  // emailV();
 }
-
 
 function emailV() {
   let setemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   let email = document.getElementById("femail").value;
   let msgemail = document.getElementById("errorE");
-  if (!setemail.test(email)) {
-    msgemail.innerHTML = "Please enter correct email address";
-    msgemail.style.color = "red";
-    document.getElementById("errorE").style.display = "unset";
-    return false;
-  } else {
-    document.getElementById("errorE").style.display = "none";
-    return true;
+
+  if (msgemail.innerHTML != "Email is required") {
+    if (!setemail.test(email)) {
+      msgemail.innerHTML = "Please enter correct email address";
+      msgemail.style.color = "red";
+      // document.getElementById("errorE").style.display = "unset";
+      return false;
+    } else {
+      // document.getElementById("errorE").style.display = "none";
+      return true;
+    }
   }
 }

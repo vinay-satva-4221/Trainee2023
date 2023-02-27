@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="stylesheet" href="./Status.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -15,86 +15,55 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
-    </script>
-    <style>
-        #example_filter {
-            display: none;
-        }
-
-        #example_length {
-            display: none;
-        }
-
-        thead {
-            background-color: black;
-            color: aliceblue;
-        }
-
-        .navbar a.active {
-            border-bottom: 3px solid #000000;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-        th{
-            color: #000000;
-        }
-        .sorting{
-            color: honeydew;
-        }
-       
-    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg p-0">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  active" href="stock.html">Stock</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="status.html">Status</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="assignment.html">Assignment</a>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="d-flex align-items-center justify-content-between" id="welcome"
-                style="height: 80px; width:200px;">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="./avatar-g96e80651b_1280.png" class="rounded-circle" height="40px" width="40px"
-                            alt="">
-                    </div>
-                    <div class="col-6 text-center">
-                        <p class="small mb-0">Welcome</p>
-                        <p id="active" class="mb-0"><b></b></p>
-                    </div>
-                    <div class="col-3 text-right p-0">
-                        <div class="nav-item logoutbutton">
-                            <button id="logout-btn" class="btn "> <i
-                                    class="fa-solid fa-arrow-right-from-bracket mx-3 mt-2"></i></button>
-                        </div>
-                    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid px-5">
+                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" alt=""
+                        id="bade_logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse justify-content-center align-items-center w-100"
+                    id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mx-auto ">
+                        <li class="nav-item">
+                            <a href="Dashboard.html" class="nav-item mx-3 nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Stock.html" class="nav-item mx-3 fw-bolder nav-link active">Stock</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Status.html" class="nav-item mx-3 nav-link">Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Assignment.html" class="nav-item mx-3 nav-link">Assignment</a>
+                        </li>
+                    </ul>
+                    <ul class="d-flex list-unstyled ">
+
+                        <li class="nav-item"><a href="./LoginPage.html" class="nav-item textColor nav-link">
+                                <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img"
+                                    class="rounded-circle" alt="">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <p class="text-muted" style="margin-top: 10px;"><small>Welcome</small></p>
+                            <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" onclick="logout()" id="logout"></i>
+                        </li>
+                    </ul>
                 </div>
             </div>
-    </nav>
-
+        </nav>
+    </header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 ">
@@ -116,7 +85,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
-                   
+
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -167,9 +136,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-secondary" id="parentclosebutton">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="savechanges">Save
-                                    changes</button>
+                                <button type="button" class="btn btn-secondary"  data-dismiss="modal" id="parentclosebutton">Close</button>
+                                <button type="button" class="btn btn-primary" id="savechanges">Save</button>
                             </div>
                         </div>
                     </div>
@@ -183,7 +151,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
-                    
+
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -200,7 +168,7 @@
                         <div class="col-md-12">
                             <button type="button" class="btn btn-secondary" id="nestedclosebutton">Close</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal" id="nestedsave">Save
-                                changes</button>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -218,18 +186,17 @@
 
                             <table id="example" class="display" style="width:100%">
                                 <thead>
-                                    <tr class="text-start" style="border-radius: 10px;">              
-                                            <th></th>
-                                            <th>Stock Name</th>
-                                            <th>ETA Date</th>
-                                            <th>Stock Location</th>
-                                            <th>Created By</th>
-                                            <th>Created Date</th>
-                                            <th>Notes</th>
-                                            <th>Action</th> 
+                                    <tr class="text-start" style="border-radius: 10px;">
+                                        <th></th>
+                                        <th>Stock Name</th>
+                                        <th>ETA Date</th>
+                                        <th>Stock Location</th>
+                                        <th>Created By</th>
+                                        <th>Created Date</th>
+                                        <th>Notes</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-
                             </table>
                         </div>
                     </div>
@@ -237,10 +204,11 @@
             </div>
         </section>
     </div>
-<script src="./stock.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+        <script src="./temp.js"></script>
 </body>
 
 </html>

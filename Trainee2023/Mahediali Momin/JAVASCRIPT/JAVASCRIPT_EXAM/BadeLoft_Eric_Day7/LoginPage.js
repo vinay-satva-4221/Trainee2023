@@ -78,8 +78,8 @@ function add() {
         window.location.replace("Dashboard.html");
       }
       else {
-          document.getElementById("EMAIL").innerHTML = "This  is not login user*"
-          document.getElementById("PASSWORD").innerHTML = "This is not correct password*"
+          document.getElementById("EMAIL").innerHTML = "Enter Correct email*"
+          document.getElementById("PASSWORD").innerHTML = "Enter Correct password*"
       }
     }
     localStorage.setItem("loggUser", JSON.stringify(loggUser));
