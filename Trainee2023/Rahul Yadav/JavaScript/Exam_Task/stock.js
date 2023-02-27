@@ -3,43 +3,29 @@ $(document).ready(function () {
     if (localStorage.getItem('LogedinUser') !== null) {
 
 
-        //Display name in Navbar
         var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
         $("#username").html(logedinUser[0].Name);
 
-
         function format(d) {
-            // `d` is the original data object for the row
-            return (
-                '<table class ="border" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-                '<tr>' +
-                '<td>Full name:</td>' +
-                '<td>' +
-                d.name +
-                '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<td>Extension number:</td>' +
-                '<td>' +
-                d.extn +
-                '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<td>Extra info:</td>' +
-                '<td>And any further details here (images etc)...</td>' +
-                '</tr>' +
-                '</table>'
-            );
+            let dynamicChildRow = '';
+            if (d.partiteam && d.partiteam.length > 0) {
+                dynamicChildRow += '<table class:"table">';
+                dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
+                dynamicChildRow += '<tbody>';
+                d.partiteam.forEach((partiteam, index) => {
+                    dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>';
+                });
+                dynamicChildRow += '</tbody></table>';
+            }
+            return dynamicChildRow;
         }
 
-        datasets = [
-            ['', 'C100', '12/08/2021', 'WareHouse', 'Kenneth', '12/08/2021', 'lorem hello', ''],
-            ['scajb', 'cjbsaj']
-        ]
 
         $(document).ready(function () {
+            var a = JSON.parse(localStorage.getItem("stockdata"));
+            console.log(a);
             var table = $('#table_div1').DataTable({
-                data: datasets,
+                data: a,
                 columns: [
                     {
                         className: 'dt-control',
@@ -47,13 +33,13 @@ $(document).ready(function () {
                         data: null,
                         defaultContent: '',
                     },
-                    { title: ' Stock Name' },
-                    { title: 'ETA Date' },
-                    { title: 'Stock Location' },
-                    { title: 'Created By' },
-                    { title: 'Created Date' },
-                    { title: 'Notes' },
-                    { title: 'Action' },
+                    { data: 'stockname', title: ' Stock Name' },
+                    { data: 'date', title: 'ETA Date', orderable: false, className: 'TextCenter' },
+                    { data: 'stockstatus', title: 'Stock Location', orderable: false, className: 'TextCenter' },
+                    { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
+                    { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
+                    { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
+                    { data: '<i class="bi bi-x"></i>', title: 'Action', orderable: false, className: 'TextCenter' },
                 ],
                 order: [[1, 'asc']],
             });
@@ -62,6 +48,7 @@ $(document).ready(function () {
             $('#table_div1 tbody').on('click', 'td.dt-control', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
+                console.log(row);
 
                 if (row.child.isShown()) {
                     // This row is already open - close it
@@ -75,71 +62,87 @@ $(document).ready(function () {
             });
         });
 
-
-
-        //Dashboard
-        var dataSet = [
-            ['ZK-08-X2P', '15000', '0', '0'],
-            ['BW-01-Q-M', '', '0', '1'],
-            ['BW-01-XL-G', "3", '2', '1'],
-            ['BW-01-S-M', "<button class='popoverButton' data-toggle='popover'>1</button>", '0', '0'],
-        ];
-        //PopOver
-        $("#table_div_part").DataTable({
-            data: dataSet,
-            drawCallback: function () {
-                $('.popoverButton').popover({
-                    "html": true,
-                    trigger: 'manual',
-                    placement: 'left',
-                    "content": function () {
-                        return "<div><input type='text'></div>";
-                    }
-                })
+        $("#partform").validate({
+            rules: {
+                partnumber: {
+                    required: true,
+                },
+                ordered: {
+                    required: true,
+                },
             },
-            columns: [
-                { title: 'Part Number' },
-                { title: 'InVoice#' },
-                { title: 'Ordered' },
-                { title: 'Notes' },
-                { title: '' },
-            ],
+            messages: {
+                partnumber: {
+                    required: "Enter your PartNumber",
+                },
+                ordered: {
+                    required: "Enter your Ordered",
+                },
+            },
+            submitHandler: function (partform) {
+                partform.submit();
+            },
         });
+        var form = $("#partform");
+        form.validate();
+        var partiteam = new Array;
+        document.getElementById("savepart").onclick = function () {
+            var result = form.valid();
+            if (result == true) {
+                var partno = document.getElementById("partno").value;
+                var order = document.getElementById("order").value;
+                var notes = document.getElementById("notes").value;
+                var obj = {
+                    partno: partno,
+                    order: order,
+                    notes: notes
+                }
+                partiteam.push(obj)
+                var html = "";
+                partiteam.forEach(function (element) {
+                    html += "<tr>";
+                    html += "<td>" + element.partno + "</td>";
+                    html += "<td>" + element.order + "</td>";
+                    html += "<td>" + element.notes + "</td>";
+                    html += "<td>" + '<i class="bi bi-x"></i>' + "</td>";
+                    html += "</tr>"
+                });
+                document.getElementById("root").innerHTML = html;
+                document.getElementById("partform").reset();
+                $('#Modal2').modal('hide');
+            }
+        };
 
+        document.getElementById("save").onclick = function () {
+            var stockname = document.getElementById("stockname").value;
+            var etadate = document.getElementById("date").value;
+            var stockstatus = document.querySelector('input[name="btnradio"]:checked').value;
+            var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
+            var useridname = logedinUser[0].Name;
+            var date = new Date().toLocaleDateString();
+            console.log(useridname);
+            var obj1 = {
+                stockname: stockname,
+                date: etadate,
+                stockstatus: stockstatus,
+                username: useridname,
+                createddate: date,
+                partiteam: partiteam
+            }
+            var stockdata = new Array;
+            if (localStorage.getItem("stockdata") == null) {
+                stockdata = [];
+            } else {
+                stockdata = JSON.parse(localStorage.getItem("stockdata"));
+            }
+            stockdata.push(obj1);
+            localStorage.setItem("stockdata", JSON.stringify(stockdata));
+            document.getElementById("stockform").reset();
 
+            $('#exampleModal').modal('hide');
 
+        };
 
-
-
-        // function showdata() {
-        //     var list;
-        //     if (localStorage.getItem("partlist") == null) {
-        //         list = [];
-        //     } else {
-        //         list = JSON.parse(localStorage.getItem("partlist"));
-        //     }
-        //     var html = "";
-        //     // list.forEach(function (element, index) {
-        //     //     html += "<tr>";
-        //     //     html += "<td>" + (index + 1) + "</td>";
-        //     //     html += "<td>" + element.name + "</td>";
-        //     //     html += "<td>" + element.mobile + "</td>";
-        //     //     html += "<td>" + colors + "</td>";
-        //     //     html +=
-        //     //         '<td><button onclick="deleteData( ' +
-        //     //         index +
-        //     //         ' )"  class= "btn btn-danger">Delete</button> <button onclick="updateData(' +
-        //     //         index +
-        //     //         ')" class= "btn btn-warning m-2">Edit</button></td>';
-
-        //     //     html += "</tr>";
-        //     // });
-        //     // document.getElementById("root").innerHTML = html;
-
-        // }
-
-
-        
         $(function () {
             $('input[name="birthday"]').daterangepicker({
                 singleDatePicker: true,
@@ -152,9 +155,6 @@ $(document).ready(function () {
             });
         });
 
-
-
-
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
             window.location.replace("log.html");
@@ -163,8 +163,6 @@ $(document).ready(function () {
         $('.sorting').removeClass('sorting')
 
         $('[data-toggle="popover"]').popover()
-
-
 
     } else {
         window.location.href = "log.html"

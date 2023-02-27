@@ -1,47 +1,87 @@
-.nav_logo{
+.nav_logo {
     margin: 10px;
     height: 20px;
     width: 170px;
     padding-left: 20px;
 }
-.rounded-circle
-{
-    width: 35px;
-    height: 35px;
+
+.rounded-circle {
+    width: 40px;
+    height: 40px;
 }
-.maintable{
+
+.maintable {
     background-color: black;
     color: white;
     border: 1px;
 }
-#example_length,#example_filter,#example_paginate,#example_info{
+
+#example_length, #example_filter, #example_paginate, #example_info {
     display: none;
 }
-#example1_length,#example1_filter,#example1_paginate,#example1_info{
+
+#example1_length, #example1_filter, #example1_paginate, #example1_info {
     display: none;
 }
-.pagination{
- margin-right: 17px;
+
+.pagination {
+    margin-right: 17px;
 }
-.page-link
-{
+
+.page-link {
     color: black;
 }
-#logout{
+
+.navbar a.active {
+    border-bottom: 3px solid #000000;
+}
+
+#logout {
     color: rgb(150, 147, 143);
+    margin-top: 30px;
 }
-#img{
+
+#img {
     margin-right: 10px;
+    margin-top: 13px;
 }
-#Uname{
+
+#Uname {
     margin-right: 15px;
-    margin-top: 5px;
+    margin-top: 7px;
 }
-.sorting_asc{
+
+.sorting_asc {
     background-position: 10px !important;
 }
 
+#bade_logo {
+    width: 110%;
+    margin-left: -35px;
+}
+table.dataTable thead>tr>th.sorting_asc:before{
+    margin-right: 310px;
+    position: absolute;
+}
+table.dataTable thead>tr>th.sorting_asc:after{
+    margin-right: 310px;
+    position: absolute;
+    padding-top: 3px;
+}
+.pagination {
+    display: inline-block;
+}
 
-
-
-
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+.pagination a.active {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+  }

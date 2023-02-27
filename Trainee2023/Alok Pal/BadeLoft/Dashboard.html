@@ -31,7 +31,8 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0 navItem">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Dashboard.html" aria-current="page">Dashboard </a>
+                        <a class="nav-link active" href="Dashboard.html" >Dashboard </a>
+                        <div class="underline"></div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="stock.html">Stock</a>
@@ -55,7 +56,7 @@
                         <p class="dynamicN"></p>
                     </div>
                 </div>
-                <div class="ms-5" id="logout" onclick="logout()">
+                <div class="ms-5" id="logout" onclick="logout()" style="cursor: pointer;">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </div>
 
@@ -65,46 +66,49 @@
 
 
     <section>
-        <div class="container d-flex mt-3">
-            <div class="container">
-                <p class="stock"><b>Dashboard </b></p>
-            </div>
-            <div>
-                <input type="text" placeholder="Search here">
-            </div>
-        </div>
-
-        <div class="container table-responsive ">
-            <table id="example" class="table border " style="width:100%">
-              <thead class="bg-dark"></thead>
-            </table>
-
-        </div>
-
-    </section>
-    <div class="container d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
-
-            <ul class="pagination mt-2">
-                <div class="d-flex mt-2 pageNo">
-                    <p>Items 1 to 5 of 1 total</p>
+        <div class="container-fluid">
+            <div class="container d-flex mt-3">
+                <div class="container">
+                    <p class="stock"><b>Dashboard </b></p>
                 </div>
-                <li class="page-item ">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+                <div>
+                    <input type="text" placeholder="Search here">
+                </div>
+            </div>
+
+            <div class="container table-responsive ">
+                <table id="example" class="table border " style="width:100%">
+                    <thead class="bg-dark" style=" font-size: 12px;color: white; font-weight: 400;"></thead>
+                </table>
+
+            </div>
+
+
+            <div class="container d-flex justify-content-end">
+                <nav aria-label="Page navigation example">
+
+                    <ul class="pagination mt-2">
+                        <div class="d-flex mt-2 pageNo">
+                            <p>Items 1 to 5 of 1 total</p>
+                        </div>
+                        <li class="page-item ">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
 
 
     <script src="jquery/jquery.js"></script>

@@ -15,4 +15,13 @@
 label.error{
     color: red;
 }
+h5{
+  font-family: 'Source Sans Pro','semibold';
+}
+label{
+  font-family: 'Myriad Pro','semibold';
+}
+input{
+  font-family: 'Myriad Pro','Regular';
+}
 

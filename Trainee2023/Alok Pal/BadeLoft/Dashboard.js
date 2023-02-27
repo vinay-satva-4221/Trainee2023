@@ -23,10 +23,12 @@ window.onload = (event) => {
 
 //Logout
 function logout() {
+  localStorage.removeItem('user')
   window.location.replace("Login.html");
-  localStorage.clear("user");
 }
 
+
+// Table Populating
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
   ["Eta Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],

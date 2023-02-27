@@ -30,11 +30,11 @@ function format(d) {
     //   Name : 'Keneth Woodard',
     //   QB_Ship_date : '12/08/2021',
     // }
-    [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-    [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-    [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-    [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
-    [ "150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","chk","WBC-123","-"],
+    ["150000","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","","WBC-123"],
+    ["150001","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","","WBC-123"],
+    ["150002","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","","WBC-123"],
+    ["150003","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","","WBC-123"],
+    ["150004","Keneth Woodard", "12/08/2021","Paid","Shipped", "617-235-7647","","WBC-123"],
     
   ];
   
@@ -56,27 +56,53 @@ function format(d) {
       "bFilter": true,
       
       "bAutoWidth": false,
+      columnDefs: [
+        {
+
+          targets: 6,
+          
+          render: function (data, type, full, meta){
+            return '<input type="checkbox" name="id[]" value="' 
+               + $('<div/>').text(data).html() + '">';
+        }
+        }
+     ],
       columns: [
         {
-          className: "dt-control",
-          orderable: false,
-          data: null,
-          defaultContent: "",
+          className: "dt-control", 
+          
+          title:"QB Invoice#",
+
         },
-        { title: "QB Invoice#" },
-        { title: "Name" },
+        { title: "Name"},
         { title: "QB Ship date" },
         { title: "QB Payment Status",orderable: false, },
         { title: "QB Status",orderable: false, },
         { title: "QB Delivery Phone",orderable: false, },
-        { title: "Called",orderable: false, },
-        { title: "QB Tracking",orderable: false, },
+        { title: "Called",orderable: false},
+        { title: "QB Tracking",orderable: false, }, 
     
   
       ],
+      select: {
+        style: 'multi',
+       
+    },
       order: [[1, "asc"]],
       
     });
+    $('#example tbody').on('change', 'input[type="checkbox"]', function(){
+      // If checkbox is not checked
+      if(!this.checked){
+         var el = $('#example-select-all').get(0);
+         // If "Select all" control is checked and has 'indeterminate' property
+         if(el && el.checked && ('indeterminate' in el)){
+            // Set visual state of "Select all" control 
+            // as 'indeterminate'
+            el.indeterminate = true;
+         }
+      }
+   });
   
     
     // Add event listener for opening and closing details

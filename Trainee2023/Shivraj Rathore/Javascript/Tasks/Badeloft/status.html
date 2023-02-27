@@ -17,8 +17,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
 
   </script>
 
@@ -49,14 +50,15 @@
     }
 
     .navbar-nav .nav-item .nav-link.active {
-  border-bottom: 2px solid black !important;
-}
+      border-bottom: 2px solid black !important;
+    }
 
-    #example td:nth-child(2),
-    td:nth-child(3),
+    #example td:nth-child(3),
     td:nth-child(4),
     td:nth-child(5),
-    td:nth-child(6) {
+    td:nth-child(6),
+    td:nth-child(7),
+    td:nth-child(8) {
       text-align: center;
     }
   </style>
@@ -84,7 +86,7 @@
             <a class="nav-link active" aria-current="page" href="./status.html">Status</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Assignment</a>
+            <a class="nav-link" aria-current="page" href="./assignment.html">Assignment</a>
           </li>
         </ul>
       </div>
@@ -98,8 +100,9 @@
             <p id="activeuser" class="mb-0"></p>
           </div>
           <div class="col-3 text-right">
-            <button class="btn btn-outline-secondary" id="logout">
+            <button class="btn btn-outline-secondary border-0" id="logout">
               <i class="fa fa-sign-out"></i>
+              <i class=""></i>
             </button>
           </div>
         </div>
@@ -108,69 +111,23 @@
   </nav>
 
   <section class="container-fluid p-5 bg-light">
-    <table id="example" class="display">
-        <thead>
-          <tr>
-            <th></th>
-            <th>QB Invoice#</th>
-            <th>Name</th>
-            <th>QB Ship Date</th>
-            <th>QB Payment Status</th>
-            <th>QB Status</th>
-            <th>QB Delivery Phone</th>
-            <th>Called</th>
-            <th>QB Tracking</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+    <table id="example" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th></th>
+          <th>QB Invoice#</th>
+          <th>Name</th>
+          <th>Created By</th>
+          <th>Created date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+    </table>
   </section>
 
-  
-
-  <script>
-$(document).ready(function () {
-  var data = [
-    ['QB001', 'John Doe', '2022-02-22', 'Paid', 'Delivered', '555-1234', '', '12345'],
-    ['QB002', 'Jane Smith', '2022-02-23', 'Pending', 'In Transit', '555-5678', '', '67890'],
-    ['QB003', 'Bob Johnson', '2022-02-24', 'Unpaid', 'Out for Delivery', '555-1111', '', '54321'],
-  ];
-
-  var table = $('#example').DataTable({
-    data: data,
-    columns: [
-      {
-        className: 'dt-control',
-        orderable: false,
-        data: null,
-        defaultContent: '',
-      },
-      {title: 'QB Invoice#'},
-      {title: 'Name'},
-      {title: 'QB Ship Date'},
-      {title: 'QB Payment Status', orderable: false},
-      {title: 'QB Status', orderable: false},
-      {title: 'QB Delivery Phone', orderable: false},
-      {
-        title: 'Called',
-        orderable: false,
-        render: function () {
-          return '<input type="checkbox">';
-        },
-      },
-      {title: 'QB Tracking', orderable: false},
-    ],
-    order: [[1, 'asc']],
-  });
-
-  // Add data to table
-  table.rows.add(data).draw();
-});
-
-
-  </script>
-
+ 
+<script src="./status.js"></script>
   <!-- Bootstrap JS CDN  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -178,6 +135,3 @@ $(document).ready(function () {
 </body>
 
 </html>
-
-
-

@@ -9,13 +9,13 @@ $(document).ready(function () {
         },
         password: {
           required: true,
-          minlength: 5
+          minlength: 8
         }
       },
       messages: {
         password: {
           required: "Please provide a password",
-          minlength: "Your password must be at least 5 characters long"
+          minlength: "Your password must be at least 8 characters long"
         },
         email: "Please enter a valid email address"
       },
@@ -27,22 +27,19 @@ $(document).ready(function () {
 });
 
 const data = [
-  { email: "ravalsoham17@gmail.com", password: "12345", name: "Raval",Image:"/Badeloft/Assets/3_image.jfif" },
-  { email: "soham17@gmail.com", password: "43211", name: "Soham",Image:"/Badeloft/Assets/4_image.jfif" },
-  {email:"abc2000@gmail.com",password:"65445",name:"abc",Image:"/Badeloft/Assets/5_image.jfif" },
-  {email:"xyx2112@gmail.com",password:"98899",name:"xyz",Image:"/Badeloft/Assets/6_image.jpg" },
+  { email: "ravalsoham17@gmail.com", password: "12345678", name: "Raval",Image:"/Badeloft/Assets/3_image.jfif" },
+  { email: "soham17@gmail.com", password: "43211111", name: "Soham",Image:"/Badeloft/Assets/4_image.jfif" },
+  {email:"abc2000@gmail.com",password:"65445111",name:"abc",Image:"/Badeloft/Assets/5_image.jfif" },
+  {email:"xyx2112@gmail.com",password:"98899111",name:"xyz",Image:"/Badeloft/Assets/6_image.jpg" },
 ];
 localStorage.setItem("staticdata",JSON.stringify(data));
-
 function adddata() {
   debugger
-
   if ($("#myform").valid() == true) {
     var email = document.getElementById("email").value;
     var email1=email.toLowerCase();
     var password = document.getElementById("password").value;
     var password1=password.toLowerCase();
-  
     var details;
     if (localStorage.getItem("details") == null) {
       details = [];
@@ -51,7 +48,6 @@ function adddata() {
     else {
       details = JSON.parse(localStorage.getItem("details"));
       // console.log("key",details)
-
       if ((email1 == data[0].email  && password1==data[0].password) )
        {
         details.push({
@@ -59,7 +55,6 @@ function adddata() {
           Name:data[0].name,
           image:data[0].Image
         });
-
         window.location.replace("Dashboard.html");
       }
       else if((email1 == data[1].email && password1==data[1].password ))

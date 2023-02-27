@@ -1,41 +1,3 @@
-//  Validation for log in form
-// $(document).ready(function () {
-
-
-//     // $("#login").click(function () {
-//     //     $("#login_form").valid();
-//     // });
-//     // $("#login_form").validate({
-//     //     rules: {
-//     //         email: {
-//     //             required: true,
-//     //             email: true,
-//     //         },
-//     //         password: {
-//     //             required: true
-//     //         }
-//     //     },
-//     //     messages: {
-//     //         email: {
-//     //             required: "Enter your email",
-//     //             email: "Please enter valid email with @",
-//     //         },
-//     //         password: {
-//     //             required: "Enter the Password"
-//     //         }
-//     //     },
-//     // });
-
-//     // var logged = JSON.parse(localStorage.getItem("logged"));
-//     // $("#username").html(logged[0].Name);
-
-
-//     // $('#example').DataTable();
-
-
-// });
-
-
 
 $(document).ready(function () {
     var logedinuser = JSON.parse(localStorage.getItem("LogedinUser"));
@@ -47,25 +9,21 @@ $(document).ready(function () {
                 "abc@gmail.com",
                 "Abc@12345",
                 "Abc",
-
             ],
             [
                 "rahul@gmail.com",
                 "Rah@12321",
                 "Rahul",
-
             ],
             [
                 "jay@gmail.com",
                 "Jay@12321",
                 "Jay",
-
             ],
             [
                 "eric@gmail.com",
                 "Eric@12321",
                 "Eric",
-
             ],
         ];
         $.validator.addMethod("Emailcheck", function (value) {
@@ -107,16 +65,10 @@ $(document).ready(function () {
             if (result == true) {
                 let email = $("#inputemail").val();
                 let password = $("#password").val();
-                // window.location.href = "stock.html";
-                // debugger;
-
-                var logInUser = new Array();
-                // debugger;
+                var loggedInUser = new Array();
                 for (let i = 0; i < users.length; i++) {
-                    // alert(users[i][0])
                     if (email.toLowerCase() === users[i][0].toLowerCase() && password === users[i][1]) {
-                        // alert("inside if")
-                        logInUser.push({
+                        loggedInUser.push({
                             Name: users[i][2],
                             Email: users[i][0],
                         });
@@ -125,7 +77,9 @@ $(document).ready(function () {
                     }
                 }
                 document.getElementById("form").reset();
-                localStorage.setItem("LogedinUser", JSON.stringify(logInUser));
+                localStorage.setItem("LogedinUser", JSON.stringify(loggedInUser));
+            } else {
+                swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
             }
         });
     }
