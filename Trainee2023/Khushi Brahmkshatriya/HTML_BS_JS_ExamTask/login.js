@@ -5,7 +5,7 @@ var LoginData = [
         Email: 'admin1@gmail.com',
         Password: 'admin1',
         Username: 'Admin1',
-        UserImage:'./images/loginUserImage.jpg'
+        UserImage: './images/loginUserImage.jpg'
     },
     {
         type: 'Admin',
@@ -13,7 +13,7 @@ var LoginData = [
         Email: 'admin2@gmail.com',
         Password: 'admin2',
         Username: 'Admin2',
-        UserImage:'./images/loginUserImage.jpg'
+        UserImage: './images/loginUserImage.jpg'
     },
     {
         type: 'Employee',
@@ -21,7 +21,7 @@ var LoginData = [
         Email: 'emp1@gmail.com',
         Password: 'emp1',
         Username: 'Employee1',
-        UserImage:'./images/loginUserImage.jpg'
+        UserImage: './images/loginUserImage.jpg'
     },
     {
         type: 'Employee',
@@ -29,7 +29,7 @@ var LoginData = [
         Email: 'emp2@gmail.com',
         Password: 'emp2',
         Username: 'Employee2',
-        UserImage:'./images/loginUserImage.jpg'
+        UserImage: './images/loginUserImage.jpg'
     },
 ]
 localStorage.setItem('Logindata', JSON.stringify(LoginData));
@@ -37,7 +37,7 @@ localStorage.setItem('Logindata', JSON.stringify(LoginData));
 $(document).ready(function () {
     var loggedData = localStorage.getItem('LoggedInUser');
     if (loggedData) {
-        window.location.href="./dashboard.html";
+        window.location.href = "./dashboard.html";
     }
     else {
         //window.location.replace("login.html");
@@ -104,7 +104,7 @@ $(document).ready(function () {
                 ]
                 localStorage.setItem('LoggedInUser', JSON.stringify(loggedUser));
                 //alert("Logged in");
-                window.location.href="./dashboard.html";
+                window.location.href = "./dashboard.html";
 
             }
 
