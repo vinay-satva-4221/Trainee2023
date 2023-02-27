@@ -1,12 +1,12 @@
-#example th {
+th {
     color: white;
 }
-#example thead {
+thead {
     background-color: black;
     border-collapse: collapse;
     border-radius: 1em;  
 }
-#example table{
+table{
    font-size: small;
    border-collapse: collapse;
    border-radius: 1em;
@@ -17,4 +17,16 @@
     background-color: #326C96;
     color: white;
 } */
+table.dataTable td.dt-control:before{
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    margin: 3px;
+    
+}
+table.dataTable td.dt-control{
+    text-align: start !important;
+    padding-right: 3px;
+}
+
 

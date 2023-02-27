@@ -11,7 +11,6 @@ function format(d) {
         "Stock Location" +
         '</td>' +
         '</tr>' +
-
         '<tr>' +
         '<td>1</td>' +
         '<td>' +
@@ -21,7 +20,6 @@ function format(d) {
         "Warehouse" +
         '</td>' +
         '</tr>' +
-
         '<tr>' +
         '<td>2</td>' +
         '<td>' +
@@ -31,7 +29,6 @@ function format(d) {
         "C-101" +
         '</td>' +
         '</tr>' +
-
         '<tr>' +
         '<td>3</td>' +
         '<td>' +
@@ -41,19 +38,15 @@ function format(d) {
         "E-501" +
         '</td>' +
         '</tr>' +
-
-
         '</table>'
     );
 }
-
-
 var data1=[
     {
         QBInvoice:'15000',
         name:'Kenneth Woodard',
         QBShipdate:'12/08/2021',
-        QBShipaymentstatus:'paid',
+        QBShipaymentstatus:'<span class="alert alert-primary p-0"><i class="bi bi-check"></i>Paid</span>',
         QBStatus:'shipped',
         QBDeliveryPhone:'617-235-7647',
          called:'yes',
@@ -63,25 +56,21 @@ var data1=[
         QBInvoice:'15000',
         name:'James Fenske',
         QBShipdate:'10/08/2021',
-        QBShipaymentstatus:'paid',
+        QBShipaymentstatus:'<span class="alert alert-success p-0"><i class="bi bi-check"></i>Paid</span>',
         QBStatus:'shipped',
          QBDeliveryPhone:'618-234-6400',
          called:'yes',
          QBTracking:'WBC-124',
-
-       
     },
     {
         QBInvoice:'15000',
         name:'James Fenske',
         QBShipdate:'10/08/2021',
-        QBShipaymentstatus:'paid',
+        QBShipaymentstatus:'<span class="alert alert-primary p-0"><i class="bi bi-check"></i>Paid</span>',
         QBStatus:'shipped',
          QBDeliveryPhone:'618-234-6400',
          called:'yes',
          QBTracking:'WBC-124',
-
-       
     },
 ]
 $(document).ready(function () {
@@ -99,7 +88,10 @@ $(document).ready(function () {
             { data: 'QBInvoice' },
             { data: 'name'  },
             { data: 'QBShipdate' ,"sortable": false },
-            { data: 'QBShipaymentstatus' ,"sortable": false },
+            // { data: 'QBShipaymentstatus' ,"sortable": false,render:function(){
+            //     return '<div class="alert alert-primary styl m-0 p-0" role="alert">Paid</div>';
+            // } },
+            {data:'QBShipaymentstatus',"sortable":false},
             { data: 'QBStatus' ,"sortable": false },
             { data: 'QBDeliveryPhone',"sortable": false},
             { data: 'called',render:function(){

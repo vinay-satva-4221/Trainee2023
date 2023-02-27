@@ -33,7 +33,7 @@ window.onload = (event) => {
 function checkEntry() {
   // i can put here the validations
   var email = document.getElementById("femail").value;
-var password = document.getElementById("fpassword").value;
+  var password = document.getElementById("fpassword").value;
 
   if (email.toLowerCase() == emailC1 && password == passwordC1) {
     var user = [];
@@ -83,35 +83,47 @@ var password = document.getElementById("fpassword").value;
 }
 
 function validate() {
+  emailV()
   var email = document.getElementById("femail").value;
   var password = document.getElementById("fpassword").value;
   if (email == "" && password == "") {
-    document.getElementById("errorE").innerHTML = "Email is required*";
-    document.getElementById("errorP").innerHTML = "Password is required*";
-  }else if((email != '' && password == '')){
-    document.getElementById("errorP").innerHTML = "Password is required*";
-  }else if((email == '' && password != '')){
-    document.getElementById("errorE").innerHTML = "Email is required*";
+    document.getElementById("errorE").innerHTML = "Email is required";
+    document.getElementById("errorP").innerHTML = "Password is required";
+  } else if ((email != '' && password == '')) {
+    document.getElementById("errorP").innerHTML = "Password is required";
+  } else if ((email == '' && password != '')) {
+    document.getElementById("errorE").innerHTML = "Email is required";
   }
-  else if((email == emailC1 && password != passwordC1)){
-    document.getElementById("errorP").innerHTML = "Password is wrong*";
+  else if ((email == emailC1 && password != passwordC1)) {
+    document.getElementById("errorP").innerHTML = "Password is wrong";
   }
-  else if((email != emailC1 && password == passwordC1)){
-    document.getElementById("errorE").innerHTML = "Email is wrong*";
+  else if ((email != emailC1 && password == passwordC1)) {
+    document.getElementById("errorE").innerHTML = "Email is wrong";
   }
-  
-  
-  
-  
-  
-  
+
   else if (
     (email != emailC1 && password != passwordC1) ||
     (email != emailC2 && password != passwordC2) ||
     (email != emailC3 && password != passwordC3) ||
     (email != emailC4 && password != passwordC4)
   ) {
-    document.getElementById("errorE").innerHTML = "Email id is wrong*";
-    document.getElementById("errorP").innerHTML = "Password is wrong*";
+    document.getElementById("errorE").innerHTML = "Email id is wrong";
+    document.getElementById("errorP").innerHTML = "Password is wrong";
+  }
+}
+
+
+function emailV() {
+  let setemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let email = document.getElementById("femail").value;
+  let msgemail = document.getElementById("errorE");
+  if (!setemail.test(email)) {
+    msgemail.innerHTML = "Please enter correct email address";
+    msgemail.style.color = "red";
+    document.getElementById("errorE").style.display = "unset";
+    return false;
+  } else {
+    document.getElementById("errorE").style.display = "none";
+    return true;
   }
 }

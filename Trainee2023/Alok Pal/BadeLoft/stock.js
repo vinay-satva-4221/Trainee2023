@@ -43,34 +43,65 @@ function logout() {
 //       evt.preventDefault();
 //   }
 // });
+// test
+var r = JSON.parse(localStorage.getItem("newStock"));
+console.log(r);
 
+// console.log(r[0].Part[0].PartN)
+// var v = r[0].Part[0].PartN;
+// console.log(v);
 // table
+// function format(d) {
+//   // `d` is the original data object for the row
+//   return (
+//     '<table cellpadding="5" class="table text-center border " cellspacing="0" border="0" style="padding-left:50px;width:95%; margin-left:4%">' +
+//     "<tr style='background-color:#ebebeb'>" +
+//     '<th style="color:black"><b> # </b></th>' +
+//     '<th style="color:black"><b> Part Number </b></th>' +
+//     '<th style="color:black"><b> Ordered </b></th>' +
+//     '<th style="color:black"><b> Assigned </b></th>' +
+//     "</tr>" +
+//     "</tr>" +
+//     "<td>" +
+//     1 +
+//     "</td>" +
+//     "<td>" +
+//     v +
+//     "</td>" +
+//     "<td>" +
+//     d.name +
+//     "</td>" +
+//     "<td>" +
+//     d.name +
+//     "</td>" +
+//     "</tr>" +
+//     "</table>"
+//   );
+// }
 function format(d) {
-  // `d` is the original data object for the row
-  return (
-    '<table cellpadding="5" class="table text-center border " cellspacing="0" border="0" style="padding-left:50px;width:95%; margin-left:4%">' +
-    "<tr style='background-color:#ebebeb'>" +
-    '<th style="color:black"><b> # </b></th>' +
-    '<th style="color:black"><b> Part Number </b></th>' +
-    '<th style="color:black"><b> Ordered </b></th>' +
-    '<th style="color:black"><b> Assigned </b></th>' +
-    "</tr>" +
-    "</tr>" +
-    "<td>" +
-    1 +
-    "</td>" +
-    "<td>" +
-    v +
-    "</td>" +
-    "<td>" +
-    d.name +
-    "</td>" +
-    "<td>" +
-    d.name +
-    "</td>" +
-    "</tr>" +
-    "</table>"
-  );
+  let dynamicChildRow = "";
+  if (d.Part && d.Part.length > 0) {
+    dynamicChildRow +=
+      '<table cellpadding="5" class="table  border " cellspacing="0" border="0" style="padding-left:50px;width:95%; margin-left:4%">';
+    dynamicChildRow +=
+      '<thead class ="table text-center"><tr style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th></tr></thead>';
+    dynamicChildRow += "<tbody  class ='table '  >";
+    d.Part.forEach((e, index) => {
+      let indx = (index + 1);
+      dynamicChildRow +=
+        "<tr><td>" +
+        indx +
+        "</td><td>" +
+        e.PartN +
+        "</td><td>" +
+        e.Order +
+        "</td><td>" +
+        e.Comments +
+        "</td></tr>";
+    });
+    dynamicChildRow += "</tbody></table>";
+  }
+  return dynamicChildRow;
 }
 
 // var dataSet = [
@@ -80,28 +111,52 @@ function format(d) {
 // ];
 
 $(document).ready(function () {
-  var datin = JSON.parse(localStorage.getItem("newStock"))
-  var udata = JSON.parse(localStorage.getItem("user"))
-
+  var datin = JSON.parse(localStorage.getItem("newStock"));
+  console.log(datin);
   var table = $("#example").DataTable({
     data: datin,
     columns: [
       {
-        className: "dt-control",
+        // pagingType: 'full_numbers',
         orderable: false,
-        data: null,
-        defaultContent: "",
+        className: "dt-control",
+        paging: true,
       },
-      { data: 'stock', title: "Stock Name"},
-      { data: 'date' ,title: "ETA Date"},
-      { data: 'stock_S' ,title: "Stock Location"},
-      { data: 'Admin' ,title: "Created By"},
-      { data: 'date' ,title: "Created Date"},
-      { data: 'date' ,title: "Notes"},
-      { data: 'date' ,title: "Action"},
 
 
-     
+      { data: "stock", title: "Stock Name" },
+      {
+        data: "date",
+        title: "ETA Date",
+        orderable: false,
+        class: "text-center",
+      },
+      {
+        data: "stock_S",
+        title: "Stock Location",
+        orderable: false,
+        class: "text-center",
+      },
+      {
+        data: "user[0].Admin",
+        title: "Created By",
+        orderable: false,
+        class: "text-center",
+      },
+      {
+        data: "date",
+        title: "Created Date",
+        orderable: false,
+        class: "text-center",
+      },
+      {
+        data: "Part[0].Comments",
+        title: "Notes",
+        orderable: false,
+        class: "text-center",
+      },
+      { data: "date", title: "Action", orderable: false, class: "text-center" },
+
       // { title: "In Warehouse" },
       // { title: "Available" },
       // { title: "C100" },
@@ -144,6 +199,10 @@ function getM() {
 
 // add
 function getData() {
+  //login user
+  var user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+
   // parts
   var stockN = document.getElementById("stock").value;
   var dateM = document.getElementById("date").value;
@@ -168,7 +227,7 @@ function getData() {
   // if (parts.length === 0) {
   //   console.log(" empty");
   // }
-  if (stockN == "" && parts.length === 0) {
+  if (stockN == "" && parts.length == 0) {
     Swal.fire({
       title: "Error!",
       text: "Add Stock Name",
@@ -183,6 +242,7 @@ function getData() {
         date: dateM,
         stock_S: r1V,
         Part: parts,
+        user: user,
       });
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
@@ -191,25 +251,19 @@ function getData() {
         date: dateM,
         stock_S: r1V,
         Part: parts,
+        user: user,
       });
     }
 
     localStorage.setItem("newStock", JSON.stringify(newStock));
+    // $("#myMod").modal("toggle");
   }
-  // $("#myMod").modal("toggle");
   // resetSVal();
 }
 
 // loading the documnet to show data in table
 document.onload = showMt2();
 
-
-
-//     html += "</tr>";
-
-//     document.getElementById("root").innerHTML = html;
-//   });
-// }
 
 // show data
 function showMt2() {
@@ -231,23 +285,24 @@ function showMt2() {
 
     document.getElementById("root").innerHTML = html;
   });
+  resetSVal();
 }
 
 //reset
 function resetSVal() {
-  document.getElementById("stock").value = "";
+  // document.getElementById("stock").value = "";
   document.getElementById("pNum").value = "";
   document.getElementById("order").value = "";
   document.getElementById("floatingTextarea").value = "";
 }
 
-
-
-
 // test
-var r = (JSON.parse(localStorage.getItem("newStock")))
-console.log(r)
+var r = JSON.parse(localStorage.getItem("newStock"));
+console.log(r);
 
-// console.log(r[0].Part[0].PartN)
-var v = (r[0].Part[0].PartN)
-console.log(v)
+console.log(r[0].Part[0].PartN);
+var v = r[0].Part[0].PartN;
+console.log(v);
+
+var user = JSON.parse(localStorage.getItem("user"));
+console.log(user);

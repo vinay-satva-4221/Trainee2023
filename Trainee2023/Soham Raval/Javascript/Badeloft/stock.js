@@ -119,15 +119,9 @@
 //     }
 // });
 // });
-
-
-
 let a=JSON.parse(localStorage.getItem("details"));
 console.log("a",a); 
-
 $("#Uname").html(a[0].Name);
-
-
 function logout() {
     window.location="Badeloft.html"
     localStorage.clear();
@@ -158,17 +152,9 @@ $(document).ready(function(){
         $("table tbody").append(addedtable);
     });
 });
-
 function stockdatastore() {
     debugger
-    //   var stockname = document.getElementById("stockname").value;
-    //   var ETA_DATE = document.getElementById("date").value;
-    //   var stock_status=document.getElementById("btnradio").value;
-    //   var partnumber=document.getElementById("partnumber").value;
-    //   var order=document.getElementById("order").value;
-    //   var notes=document.getElementById("notes").value;
       console.log(stock_status);
-
       var stockname=$('#stockname').val();
       var eta_date=$('#date').val();
       var stock_status=$('input[name=btnradio]').val();
@@ -179,30 +165,44 @@ function stockdatastore() {
     //   var JSONObj = { "stockname ":stockname, "eta_date":eta_date, "stock_status":stock_status};
 
     //   var modelobj={"partnumber":partnumber,"order":order,"notes":notes}
+    let part = [
+        {
+          "partnumber": partnumber,
+          "order": order,
+          "notes": notes,
+        },
     
+      ]
+      const Main = [
 
-      var stockdetails;
-      if (localStorage.getItem("stockdetails") == null) {
-        stockdetails = [];
-        debugger
-      }
-      else {
+        {"stockname ":stockname, "eta_date":eta_date,"stock_status":stock_status,part:part},
+        //  part=[
+        //     {"partnumber":partnumber,"order":order,"notes":notes}
+        // ]
+    ];
+    localStorage.setItem("stockdetails", JSON.stringify(Main));
+    //   localStorage.setItem('myPreferences', { JSONObj: [], modelobj: [] })
 
-        
-        stockdetails = JSON.parse(localStorage.getItem("stockdetails"));
-        // stockdetails.push({
-        //     stockname: stockname,
-        //     eta_date:eta_date,
-        //     stock_status:stock_status,
-        //     partnumber:partnumber,
-        //     order:order,
-        //     notes:notes
-        //   });
-      }
-      localStorage.setItem("stockdetails", JSON.stringify(stockdetails));
-      // localStorage.setItem("validdetails", JSON.stringify(details));
-  }
-  
+    //   var stockdetails;
+//       if (localStorage.getItem("stockdetails") == null) {
+//         stockdetails = [];
+//         debugger
+//       }
+//       else {
+
+//         stockdetails = JSON.parse(localStorage.getItem("stockdetails"));
+//         // stockdetails.push({
+//         //     stockname: stockname,
+//         //     eta_date:eta_date,
+//         //     stock_status:stock_status,
+//         //     partnumber:partnumber,
+//         //     order:order,
+//         //     notes:notes
+//         //   });
+//       }
+//       localStorage.setItem("stockdetails", JSON.stringify(stockdetails));
+//   }
+}
 $(document).ready(function () {
     debugger
     let stockdetailsstore=JSON.parse(localStorage.getItem("stockdetails"));
@@ -212,7 +212,6 @@ $(document).ready(function () {
     
         }
     ]
-
     var table = $('#example').DataTable({
         data:data1,
         columns: [

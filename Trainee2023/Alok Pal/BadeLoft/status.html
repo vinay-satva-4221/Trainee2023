@@ -11,8 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Source+Sans+Pro:wght@300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="status.css">
 </head>
 
 <body>
@@ -29,7 +31,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0 navItem">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Dashboard.html" aria-current="page">Dashboard </a>
+                        <a class="nav-link active" href="Dashboard.html">Dashboard </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="stock.html">Stock</a>
@@ -53,7 +55,7 @@
                         <p class="dynamicN"></p>
                     </div>
                 </div>
-                <div class="ms-5" id="logout" onclick="logout()">
+                <div class="ms-5" id="logout" onclick="logout()" style="cursor: pointer;">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </div>
 
@@ -61,58 +63,56 @@
         </div>
     </nav>
 
-
-    <section>
+    <section class="container" style="background-color: rgb(240, 240, 240);">
         <div class="container d-flex mt-3">
             <div class="container">
-                <p class="stock"><b > Stock </b></p>
+                <p class="stock"><b> Status</b></p>
             </div>
-            <div>
+            <!-- <div>
                 <input type="text" placeholder="Search here">
-            </div>
+            </div> -->
         </div>
 
         <div class="container table-responsive ">
-            <table id="example" class="table border " style="width:100%">
-                <thead class="bg-dark" >
-               
-            </thead>
+
+            <table id="tab" class="table border text-start">
+
             </table>
-           
+
         </div>
 
-    </section>
-    <div class="container d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
-           
-            <ul class="pagination mt-2">
-                <div class="d-flex mt-2 pageNo" >
-                    <p>Items 1 to 5 of 1 total</p>
-                </div>
-              <li class="page-item ">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-    </div>
 
     
+    <div class="container d-flex justify-content-end">
+        <nav aria-label="Page navigation example">
+
+            <ul class="pagination mt-2">
+                <div class="d-flex mt-2 pageNo">
+                    <p>Items 1 to 5 of 1 total</p>
+                </div>
+                <li class="page-item ">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
 
     <script src="jquery/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="Dashboard.js"></script>
+    <script src="status.js"></script>
 </body>
 
 </html>
