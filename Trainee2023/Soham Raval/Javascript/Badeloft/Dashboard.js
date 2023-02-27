@@ -4,7 +4,6 @@ window.onload = () => {
       window.location.replace("Badeloft.html");
     }
   }
-
 var data1 = [
     ["Stock Location", "", "", "On water", "On water", "In Production"],
     ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
@@ -24,7 +23,6 @@ $(document).ready(function () {
             { title: 'C101',"sortable": false },
             { title: 'C102',"sortable": false },
         ],
-
         columnDefs: [
             {
                 targets: [1,2,3,4,5],
@@ -34,12 +32,13 @@ $(document).ready(function () {
                 "width": "10%" , "targets": 0
             }
           ]
-        
     });
-    var oneSelectedCell = table.cell(2,3);
-    console.log(oneSelectedCell.data());
+    $('#CustomSearchBox').keyup(function() {
+        table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
+    });
+    // var oneSelectedCell = table.cell(2,3);
+    // console.log(oneSelectedCell.data());
 });
-
 let a=JSON.parse(localStorage.getItem("details"));
 console.log("a",a); 
 $("#Uname").html(a[0].Name);
