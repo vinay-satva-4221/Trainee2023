@@ -8,18 +8,21 @@
     <title>Document</title>
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <!-- font awesome cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <!-- Myriad Pro Font -->
-  <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
-  <!-- Jquery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Myriad Pro Font -->
+    <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-  <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+
+
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+
 
     </script>
 
@@ -67,16 +70,25 @@
         }
 
         #table2 {
-  border-collapse: collapse;
-}
+            border-collapse: collapse;
+        }
 
-#table2 th,
-#table2 td {
-  border: 1px solid black;
-  padding: 8px;
-}
+        #table2 th,
+        #table2 td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        #main {
+            background-color: #F8F8F8;
+        }
+
+        tbody {
+            background-color: white;
+        }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -125,8 +137,9 @@
             data-target="#myModal"><i class="fas fa-plus"></i> New</button>
 
         <!-- HTML code for the modal -->
-        <div class="modal  fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-xl" role="document">
+        <div class="modal  fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            data-bs-backdrop="static">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between align-items-center">
                         <div class="text-start">
@@ -167,26 +180,26 @@
                                 <div class="col-md-12">
                                     <div class="btn-group" role="group" aria-label="..." id="onButtons">
                                         <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                            autocomplete="off" checked>
+                                            autocomplete="off" checked value="On Water">
                                         <label class="btn btn-outline-primary" for="btnradio1">On Water</label>
 
                                         <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                            autocomplete="off">
+                                            autocomplete="off" value="On Production">
                                         <label class="btn btn-outline-primary" for="btnradio2">On Production</label>
 
                                         <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                            autocomplete="off">
+                                            autocomplete="off" value="In Warehouse">
                                         <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="color:gray;">
                                     <button id="AddPart" type="button" class="btn text-start"><i
-                                            class="fa fa-plus-circle"></i>Add Part Number</button>
+                                            class="fa fa-plus-circle"></i>&emsp;Add Part Number</button>
                                 </div>
                             </div>
-                            <table class="display" id="table2">
+                            <table class="display" id="table2" style="width: 100%;">
                                 <thead>
                                     <th>Part Number</th>
                                     <th>Invoice#</th>
@@ -199,22 +212,27 @@
                             </table>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary"> Save changes</button>
+                    <div class="modal-footer d-flex justify-content-start">
+                        <button type="button" id="save_changes" class="btn btn-md" style="background: #366491; color:white;" >Save</button>
+                        <button type="button" class="close btn btn-md btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="save_changes">Save changes</button>
+                    </div> -->
                 </div>
             </div>
         </div>
 
 
         <!-- ----------------------------Second Modal Popup--------------------------------------- -->
-        <div class="modal fade" id="AddPartModal" tabindex="-1" role="dialog" aria-labelledby="AddPartModalLabel">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="AddPartModal" tabindex="-1" role="dialog" aria-labelledby="AddPartModalLabel"
+            data-bs-backdrop="static">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header d-flex justify-content-between align-items-center">
-                        <div class="text-start">
-                            <h3 class="m-0">Add New Part Number</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-start fw-bold">
+                            <div class="m-0">Add New Part Number</div>
                         </div>
                         <div class="text-end">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -235,33 +253,32 @@
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id="save_part" class="btn btn-primary">Save Part Number</button>
+                    <div class="modal-footer d-flex justify-content-start">
+                        <button type="button" id="save_part" class="btn btn-SM" style="background: #366491; color:white;" >Save</button>
+                        <button type="button" class="close btn btn-SM btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary d-flex" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="save_part" class="btn btn-primary">Save Part Number</button>
+                    </div> -->
                 </div>
             </div>
         </div>
-
-
     </nav>
 
     <section class="container-fluid p-5 bg-light">
         <table id="example" class="display" style="width:100%">
-            <thead class="text-center">
+            <thead>
                 <tr>
-                    <th class="text-start" style="border-top-left-radius: 10px;">Stock Name</th>
+                    <th></th>
+                    <th>Stock Name</th>
                     <th>ETA Date</th>
                     <th>Stock Location</th>
                     <th>Created By</th>
                     <th>Created Date</th>
-                    <th>Notes</th>
                     <th>Action</th>
-                    <th style="border-top-right-radius: 10px;">C102</th>
                 </tr>
             </thead>
-            <tbody style="border: bottom left radius 5px ;">
-            </tbody>
         </table>
     </section>
 

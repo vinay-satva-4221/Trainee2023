@@ -3,9 +3,10 @@ $(document).ready(function () {
     var loggedData = localStorage.getItem('LoggedInUser');
     var myarray = JSON.parse(loggedData);
     var displayName = myarray.find(
-        x => x.UserName);
+        x => x.UserName && x.UserImage);
     $('#diplayName').text(displayName.UserName);
-
+    $('#loginuserImage').attr("src",displayName.UserImage);
+   
     $("#deleteLoggedUser").click(function () {
         
         window.location.replace("./login.html");
