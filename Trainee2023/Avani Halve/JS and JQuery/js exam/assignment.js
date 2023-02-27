@@ -2,6 +2,11 @@ var loginUser = JSON.parse(localStorage.getItem("loginUser"));
 var username = loginUser[0].name;
 document.getElementById("user").innerHTML = username;
 
+function logout() {
+  localStorage.removeItem("loginUser");
+  location.replace("login.html");
+}
+
 var data = {
    "Kenneth Wooded": ["15001"],
    "James Fenske": ["15002"],
@@ -10,7 +15,7 @@ var data = {
    "Alex John": ["15005"],
 };
 
-// Populate the category drop down
+
 var categorySelect = document.getElementById("category");
 for (var category in data) {
    var option = document.createElement("option");
@@ -19,7 +24,7 @@ for (var category in data) {
    categorySelect.add(option);
 }
 
-// Populate the subcategory drop down based on category selection
+
 var subcategorySelect = document.getElementById("subcategory");
 categorySelect.addEventListener("change", function () {
    subcategorySelect.innerHTML = "";
@@ -45,7 +50,7 @@ categorySelect.addEventListener("change", function () {
       option.textContent = stockName;
       select.appendChild(option);
 }
-// multiselect box
+
 
     // $(document).ready(function() {
     //     $('.js-example-basic-multiple').select2();
@@ -56,18 +61,27 @@ var invoice = document.getElementById("subcategory").value;
 var stock = document.getElementById("stock").value;
 
 function format(d) {
-
-  let childRowHTML = '';
-  if (d.assignementDetails && d.assignementDetails.length > 0) {
-    childRowHTML += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-    childRowHTML += '<thead><tr><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
-    childRowHTML += '<tbody>';
-    d.assignementDetails.forEach((assignementDetails) => {
-      childRowHTML += '<tr><td>' + assignementDetails.stock +'</td></tr>';
-    });
-    childRowHTML += '</tbody></table>';
-  }
-  return childRowHTML;
+ 
+  return (
+    '<table class="table">' +
+    '<thead>' +
+    '<tr>' +
+    '<th >#</th>' +
+    '<th>Stock</th>' +
+    '<th>Parts</th>' +
+    '<th >Action</th>' +
+    '</tr>' +
+    '</thead>' +
+    '<tbody class="table-group-divider">' +
+    '<tr>' +
+    '<td></td>' +
+    '<td>'+ d.stock +'</td>' +
+    '<td>'+ d.invoice +'</td>' +
+    '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
+    '</tr>' +
+    '</tbody>' +
+    '</table>'
+);
 }
 
 var assignementDetails = JSON.parse(localStorage.getItem('assignmentDetail'));
@@ -85,9 +99,26 @@ var table = $("#example").DataTable({
     { data: "subcategory" },
     { data: "createdBy" },
     { data: "createdDate" },
-    { data: "action" }
+    { data: "null",
+    render: function (data, type, row) {
+      return '<button type="button" class="fa fa-pencil" style="border: none;"></button>' +
+          '<button type="button" class="fa fa-trash" style="border: none;"></button>'; }
+  }
   ],
   order: [[1, "asc"]],
+});
+
+$('#example tbody').on('click', '.fa-trash', function () {
+  var row = table.row($(this).parents('tr'));
+  var data = row.data();
+  var index = assignementDetails.findIndex(function(item) {
+      return item.stockName === data.stockName;
+  });
+  if (index !== -1) {
+    assignementDetails.splice(index, 1);
+      localStorage.setItem('assignmentDetail', JSON.stringify(assignementDetails));
+  }
+  row.remove().draw();
 });
 
 
@@ -96,19 +127,16 @@ $("#example tbody").on("click", "td.dt-control", function () {
   var row = table.row(tr);
 
   if (row.child.isShown()) {
-   
     row.child.hide();
     tr.removeClass("shown");
   } else {
-    
     row.child(format(row.data())).show();
     tr.addClass("shown");
   }
 });
 
-
 function addStock() {
-  debugger
+  let currentDate = new Date().toLocaleString();
   let category = document.getElementById("category").value;
   let subcategory = document.getElementById("subcategory").value;
   let stock = document.getElementById("stock").value;
@@ -118,9 +146,8 @@ function addStock() {
     subcategory: subcategory,
     stock: stock,
     createdBy: username,
-    createdDate: '12/08/2022',
+    createdDate: currentDate,
   };
-
   
   var assignementDetailsArray = JSON.parse(localStorage.getItem('assignmentDetail'));
   if(!assignementDetailsArray){
@@ -134,5 +161,4 @@ function addStock() {
   document.getElementById("category").value = "";
   document.getElementById("subcategory").value = "";
   document.getElementById("stock").value = "";
-
 }
