@@ -9,7 +9,7 @@ $(document).ready(function () {
         function format(d) {
             let dynamicChildRow = '';
             if (d.partiteam && d.partiteam.length > 0) {
-                dynamicChildRow += '<table class:"table">';
+                dynamicChildRow += '<table class:"table table-display childtable bg-light  table-sm border border-dark rounded" style="width:100%">';
                 dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
                 dynamicChildRow += '<tbody>';
                 d.partiteam.forEach((partiteam, index) => {
@@ -39,9 +39,14 @@ $(document).ready(function () {
                     { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
                     { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
                     { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
-                    { data: '<i class="bi bi-x"></i>', title: 'Action', orderable: false, className: 'TextCenter' },
+                    // { data: '', title: 'Action', orderable: false, className: 'TextCenter' },
                 ],
                 order: [[1, 'asc']],
+            });
+
+            var table = $("#table_div1").DataTable();
+            $("#datatablesearch").on("keyup", function () {
+                table.search(this.value).draw();
             });
 
             // Add event listener for opening and closing details
@@ -104,16 +109,16 @@ $(document).ready(function () {
                     html += "<td>" + element.partno + "</td>";
                     html += "<td>" + element.order + "</td>";
                     html += "<td>" + element.notes + "</td>";
-                    html += "<td>" + '<i class="bi bi-x"></i>' + "</td>";
+                    // html += "<td>" + '<i class="bi bi-x"></i>' + "</td>";
                     html += "</tr>"
                 });
                 document.getElementById("root").innerHTML = html;
                 document.getElementById("partform").reset();
-                $('#Modal2').modal('hide');
+                $('#partModal').modal('hide');
             }
         };
 
-        document.getElementById("save").onclick = function () {
+        document.getElementById("savestock").onclick = function () {
             var stockname = document.getElementById("stockname").value;
             var etadate = document.getElementById("date").value;
             var stockstatus = document.querySelector('input[name="btnradio"]:checked').value;
@@ -139,12 +144,12 @@ $(document).ready(function () {
             localStorage.setItem("stockdata", JSON.stringify(stockdata));
             document.getElementById("stockform").reset();
 
-            $('#exampleModal').modal('hide');
+            $('#stockModal').modal('hide');
 
         };
 
         $(function () {
-            $('input[name="birthday"]').daterangepicker({
+            $('input[name="etadate"]').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
                 minYear: 1901,
