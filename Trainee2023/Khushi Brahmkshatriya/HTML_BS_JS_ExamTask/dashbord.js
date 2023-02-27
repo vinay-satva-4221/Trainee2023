@@ -1,46 +1,53 @@
 var dataSet = [
-    ["Stock Location", "", "", "On Water", "On Water", "In production"],
-    ['Eta Date','','','10/08/2021','10/08/2021','10/08/2021'],
-    ['BW-01-S-M','1','0','3','0','0'],
-    ['BW-03-XL-G','1','1','2','2','1'],
-    ['BW-01-Q-M','','0','3','0','1']
-  ];
-  
-$(document).ready(function(){
-    $("#AddNavbar").load("./navbar.html");
+  ["<div class='sorting_disabled'>Stock Location</div>", "<div class='sorting_disabled'></div>", "<div class='sorting_disabled'></div>", "<div class='sorting_disabled'>On Water</div>", "<div class='sorting_disabled'>On Water</div>", "<div class='sorting_disabled'>In production</div>"],
+  ["<div class=sorting_disabled'>Eta Date</div>", "<div class='sorting_disabled'></div>", "<div class='sorting_disabled'></div>", "<div class='sorting_disabled'>10/08/2021</div>", "<div class='sorting_disabled'>10/08/2021</div>", "<div class='sorting_disabled'>10/08/2021</div>"],
+  ['BW-01-S-M', '1', '0', "<div class='AddColor'>3 </div>", '0', '0'],
+  ['BW-03-XL-G', '1', '1', "<div class='AddColor'>2</div>", '2', '1'],
+  ['BW-01-Q-M', '', '0', "<div class='AddColor'>3 </div>", '0', '1'],
 
-    var loggedData = localStorage.getItem('LoggedInUser');
-    if (loggedData) {
-        //window.location.replace("dashboard.html");
-    }
-    else{
-        window.location.replace("./login.html");
-    }
-    $("#example").DataTable({
-        data: dataSet,
-        "order": [],
-        "dom": 'rtip',
-       
-        columnDefs: [
-            { orderable: true, targets: 0 },
-            { orderable: false, targets: '_all' }
-        ],
-       
-        columns: [
-          { title: "Part Number"},
-          { title: "In Warehouse" },
-          { title: "Available" },
-          { title: "C100" },
-          { title: "C101" },
-          { title: "C102" },
-        ],
-        rowCallback: function(row, data, index){
-          if (data[3] < 10) {
-            $(row).find('td:eq(3)').css('color', 'blue');
-          }
-          
-        }
-        
-      });
-      $('#example').removeClass('display');
+];
+
+$(document).ready(function () {
+  $("#AddNavbar").load("./navbar.html");
+
+  var loggedData = localStorage.getItem('LoggedInUser');
+  if (loggedData) {
+    //window.location.replace("dashboard.html");
+  }
+  else {
+    window.location.replace("./login.html");
+  }
+  var table = $("#example").DataTable({
+    data: dataSet,
+    "order": [],
+    "dom": 'rtip',
+    language: {
+      paginate: {
+        next: '&#62',
+        previous: '&#60'
+      }
+    },
+
+    columnDefs: [
+      { orderable: true, targets: 0 },
+      { orderable: false, targets: '_all' },
+
+    ],
+    aocolumnDefs: [{
+      bSortable: false,
+      aTargets: ["sorting_disabled"]
+    }],
+    columns: [
+      { title: "Part Number" },
+      { title: "In Warehouse" },
+      { title: "Available" },
+      { title: "C100" },
+      { title: "C101" },
+      { title: "C102" },
+    ],
+  });
+  $('#myCustomSearchBox').keyup(function () {
+    table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
+  })
+
 })

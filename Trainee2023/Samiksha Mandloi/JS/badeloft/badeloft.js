@@ -37,9 +37,9 @@ $("#basic_form").validate({
 
 const arryObj1 = [];
 const obj1 = {
-    email: "Samiksha142@gmail.com",
-    password: "140301",
-    name: "samiksha"
+    username: "Cust1@gmail.com",
+    password: "111111",
+    name: "Kenneth Wooded"
     
 };
 arryObj1.push(obj1);
@@ -47,9 +47,9 @@ localStorage.setItem('mail1', JSON.stringify(arryObj1));
 
 const arryObj2 = [];
 const obj2 = {
-    email: "Shana12@gmail.com",
-    password: "123456",
-    name: "Shana"
+    username: "cust2@gmail.com",
+    password: "222222",
+    name: "James Fenske"
 
 };
 arryObj2.push(obj2);
@@ -57,19 +57,18 @@ localStorage.setItem('mail2', JSON.stringify(arryObj2));
 
 const arryObj3 = [];
 const obj3 = {
-    email: "Avni1@gmail.com",
-    password: "654321",
-    name: "Avni"
-
+    username: "cust3@gmail.com",
+   password: "333333",
+   name: "Kelly McCrony"
 };
 arryObj3.push(obj3);
 localStorage.setItem('mail3', JSON.stringify(arryObj3));
 
 const arryObj4 = [];
 const obj4 = {
-    email: "Swarali24@gmail.com",
-    password: "098765",
-    name: "Swarali"
+    username: "cust3@gmail.com",
+    password: "444444",
+    name: "Jack Mark"
 
 };
 arryObj4.push(obj4);
@@ -77,18 +76,17 @@ localStorage.setItem('mail4', JSON.stringify(arryObj4));
 
 const arryObj5 = [];
 const obj5 = {
-    email: "Sakshi74@gmail.com",
-    password: "876543",
-    name: "Sakshi"
-
+    username: "cust5@gmail.com",
+    password: "555555",
+    name: "Alex John"
 };
 arryObj5.push(obj5);
 localStorage.setItem('mail5', JSON.stringify(arryObj5));
 
 function match() {
     debugger;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+   var password = document.getElementById("password").value;
     var name;
 
 
@@ -98,7 +96,7 @@ function match() {
       let key = localStorage.key(i);
       if (key.startsWith("mail")) {
         let storedData = JSON.parse(localStorage.getItem(key));
-        let storedEmail = storedData[0].email;
+        let storedEmail = storedData[0].username;
         let storedPassword = storedData[0].password;
         var storedname = storedData[0].name;
   
