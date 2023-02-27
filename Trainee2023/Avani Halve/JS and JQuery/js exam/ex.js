@@ -19,7 +19,7 @@ function format(d) {
   let childRowHTML = '';
   if (d.itemDetails && d.itemDetails.length > 0) {
     childRowHTML += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-    childRowHTML += '<thead><tr><th>#</th><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
+    childRowHTML += '<thead><tr><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
     childRowHTML += '<tbody>';
     d.itemDetails.forEach((itemDetail) => {
       childRowHTML += '<tr><td>' + itemDetail.partno + '</td><td>' + itemDetail.order + '</td><td>' + itemDetail.notes + '</td></tr>';
@@ -89,7 +89,6 @@ function addStock() {
     Action:  "",
     itemDetails: stockItemDetails
   };
-
   
   var stockDetailsArray = JSON.parse(localStorage.getItem('stockDetail'));
   if(!stockDetailsArray){
