@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#AddNavbar").load("./navbar.html");
     var loggedData = localStorage.getItem('LoggedInUser');
     if (loggedData) {
-        createStackTable();
+        createStockTable();
         //window.location.replace("dashboard.html");
     }
     else {
@@ -28,46 +28,25 @@ $(document).ready(function () {
 
 
     let PartData = [];
-
-    function createStackTable() {
+    function createStockTable() {
         function format(d) {
-
+            int_rownumber = 1;
             let dynamicChildRow = '';
             if (d.Parts && d.Parts.length > 0) {
-              dynamicChildRow += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-              dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
+              dynamicChildRow += '<table class="table table-responsive p-5" id="partTable">';
+              dynamicChildRow += '<thead class=" fw-normal"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Notes</th><th>Action</th></tr></thead>';
               dynamicChildRow += '<tbody>';
               d.Parts.forEach((partdetail) => {
-                dynamicChildRow += '<tr><td>' + partdetail.index + '</td><td>' + partdetail.partnumber + '</td><td>' + partdetail.ordred + '</td><td>' + partdetail.notes + '</td></tr>';
+                dynamicChildRow += '<tr><td>' + int_rownumber+ '</td><td>' + partdetail.partnumber + '</td><td>' + partdetail.ordred + '</td><td>' + partdetail.ordred + '</td>'+
+                '<td>' + partdetail.notes + '</td>'+
+                '<td>'+'<button type="button" class="btn-close" aria-label="Close"></button>'+'</td>'
+                '</tr>';
               });
+             
               dynamicChildRow += '</tbody></table>';
             }
             return dynamicChildRow;
           }
-        // function format(d) {
-        //     // `d` is the original data object for the row
-        //     return (
-        //         '<table class="table border"style="padding-left:50px;">' +
-        //         "<thead>" +
-        //         "<th>#</th>"+
-        //         "<th>Part Number</th>"+
-        //         "<th>Ordered</th>"+
-        //         "<th>Assigned</th>"+
-        //         "<th>Notes</th>"+
-        //         "</thead>"+
-        //         "<tdbody>"+
-        //         "<tr>"+
-        //         "<td>"+d.Parts.partnumber +"</td>"+
-        //         "<td>"+d.Parts.ordred +"</td>"+
-        //         "<td>"+d.Parts.partnumber +"</td>"+
-        //         "<td>"+d.Parts.notes +"</td>"+
-        //         "</tr>"+
-        //         "</tbody>"+
-        //         "</table>"
-
-        //     );
-        // }
-
         let localData = localStorage.getItem('NewPartNumber');
         let localArray = JSON.parse(localData);
         console.log(localArray);
@@ -80,8 +59,18 @@ $(document).ready(function () {
             "dom": 'rtip',
             columnDefs: [{
                 "defaultContent": "-",
-                "targets": "_all"
-              }],
+                "targets": "_all",
+                
+              },
+
+              { "orderable": false, "targets": [3, 4, 5] },
+              { "orderable": true, "targets": [0, 1, 2] }],
+              language: {
+                paginate: {
+                  next: '&#62',
+                  previous: '&#60' 
+                }
+              },
             data: localArray,
             bInfo: true,
             columns:
@@ -91,18 +80,22 @@ $(document).ready(function () {
                     { data: "StockName", title: "Stock Name" ,className: "dt-control", 
                     orderable: false},
                     { data: "ETADate", title: "ETA Date" },
-                    { data: "StockLocation", title: "Stock Location" },
+                    { data: "StockStatus", title: "Stock Location" },
                     { data: "CreatedBy", title: "Created By" },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),
                         keyInput: false, title: "Created Date"
                     },
-                    { data: "Action", title: "Action" },
-
+                    { data: "null", title: "Action",  className: "dt-center editor-edit",
+                    defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+                   },
                 ],
 
-
+               
         });
+        $('#myCustomSearchBox').keyup(function(){  
+            table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
+       })
         $("#example tbody").on("click", "td.dt-control", function () {
             var tr = $(this).closest("tr");
             var row = table.row(tr);
@@ -117,6 +110,14 @@ $(document).ready(function () {
                 tr.addClass("shown");
             }
         });
+        $('#example').on('click', 'td.editor-edit', function (e) {
+            e.preventDefault();
+     
+            $('#stockModal').modal('show');
+            console.log((table.row(this).data()));
+            $('#TE')
+        } );
+
 
     }
 
@@ -130,7 +131,7 @@ $(document).ready(function () {
             swal("Error!", "Please enter all the details", "error");
         }
         else {
-            $("#exampleModal2").hide();
+            $("#PartModal").hide();
             var invoice = Math.floor(100000 + Math.random() * 900000);
             PartData.push({
                 partnumber: $('#partnumber').val(),
@@ -205,10 +206,13 @@ $(document).ready(function () {
             }
         }
         else {
-            $("#exampleModal").hide();
+          
             addDataToLocal();
             
         }
+    })
+    $('#etaDate').click(function(){
+        
     })
     function addDataToLocal() {
 
@@ -217,7 +221,7 @@ $(document).ready(function () {
             x => x.UserName);
 
         let localData = localStorage.getItem('NewPartNumber');
-
+        console.log($("input[name='btnradio']:checked").val());
         if (localData) {
             let localArray = JSON.parse(localData);
             let myId = localArray.length - 1;
@@ -227,7 +231,7 @@ $(document).ready(function () {
                 CreatedBy: createdBy.UserName,
                 StockName: $('#stockName').val(),
                 ETADate: $('#etaDate').val(),
-                StockStatus: $("input[name='btnradio']:checked").val(),
+                StockStatus: ($("input[name='btnradio']:checked").val()),
                 Parts: PartData,
             };
 
@@ -242,13 +246,13 @@ $(document).ready(function () {
                 CreatedBy: createdBy.UserName,
                 StockName: $('#stockName').val(),
                 ETADate: $('#etaDate').val(),
-                StockStatus: $('#StockStatus').val(),
+                StockStatus:($("input[name='btnradio']:checked").val()),
                 Parts: PartData,
             };
             arryObj.push(obj);
             maxId = localStorage.setItem('NewPartNumber', JSON.stringify(arryObj));
         }
-        createStackTable();
+       
     }
 
 })
