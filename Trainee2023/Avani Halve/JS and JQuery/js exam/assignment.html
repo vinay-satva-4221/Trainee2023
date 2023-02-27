@@ -39,56 +39,53 @@
 
     </head>
 <body>
-    <div class="container-fluid ">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="container">
-                <img src="02.png" alt="" srcset="" id="badeloftlogo">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <div class="tabs ms-auto pe-5" id="navlinks">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-link active-link">
-                                <a href="./dashboard.html" style="text-decoration: none;">Dashboard
-                                </a>
-                                <div class="underline"></div>
-                            </li>
-                            <li class="nav-link">
-                                <a href="./stock.html" style="text-decoration: none;">Stock</a>
-                                <div class="underline"></div>
-                            </li>
-                            <li class="nav-link">
-                                <a href="./status.html" style="text-decoration: none;">Status</a>
-                                <div class="underline"></div>
-                            </li>
-                            <li class="nav-link">
-                                <a href="assignment.html" style="text-decoration: none;">Assignment</a>
-                                <div class="underline"></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="navbarProfile d-flex m-3">
-                        <div me-3>
-                          
-                        </div>
-                        <div class="ms-2">
-                            <!-- <small id="para">Welcome</small><br>
-                            <span id="username">Abc</span> -->
-                            <span><img src="person1.jfif" class="rounded-circle" height="25"></span>
-                            <span id="user"></span>
-                            <button type="button" class="btn btn-light" onclick="logout()">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
+        <nav class="navbar navbar-expand-lg" >
+            <div class="container-fluid">
+               <img src="02.png" alt="" srcset="" id="badeloftlogo" height="20" />
+               <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+               >
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+                  <div class="tabs " id="navlinks">
+                     <ul class="navbar-nav" >
+                        <li class="nav-link active-link ">
+                           <a href="./dashboard.html" style="text-decoration: none;">Dashboard </a>
+                           <div class="underline"></div>
+                        </li>
+                        <li class="nav-link">
+                           <a href="./stock.html" style="text-decoration: none;">Stock</a>
+                           <div class="underline"></div>
+                        </li>
+                        <li class="nav-link">
+                           <a href="status.html" style="text-decoration: none;">Status</a>
+                           <div class="underline"></div>
+                        </li>
+                        <li class="nav-link">
+                           <a href="assignment.html" style="text-decoration: none;">Assignment</a>
+                           <div class="underline"></div>
+                        </li>
+                     </ul>
+                  </div>
                 </div>
-            </div>
-        </nav>
-    </div>
-
+                  <div style="float: right;" class="mt-2">
+                     <span><img src="person1.jfif" class="rounded-circle" height="25"></span>
+                     <span>Welcome</span><br>
+                     <span id="user"></span>
+                     <button type="button" class="btn btn-light" onclick="logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                     </button>
+                 </div> 
+             </div>
+         </nav>
     <!-- Navbar END -->
         <div class="container">
             <h3 class="">Assignment</h3>
