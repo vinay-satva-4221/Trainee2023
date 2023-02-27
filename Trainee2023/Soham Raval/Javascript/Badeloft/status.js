@@ -108,6 +108,9 @@ $(document).ready(function () {
       
         order: [[1, 'asc']],
     })
+    $('#CustomSearchBox').keyup(function() {
+        table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
+    });
 
     $('#example tbody').on('click', 'td.dt-control', function () {
         var tr = $(this).closest('tr');
