@@ -28,15 +28,18 @@ var DashboardData = [
 
 
 $('#example').DataTable({
-"data": DashboardData,
-"paging": true,
-"dom": '<"toolbar">frtip',
-"bFilter": true,
-"bInfo": true,
-
-"fnInitComplete": function () {
-$('div.toolbar').html('<h2>Dashboard</h2>');
-}
+  "data": DashboardData,
+  "paging": true,
+  "dom": '<"toolbar">frtip',
+  "bFilter": true,
+  "bInfo": true,
+  "columnDefs": [
+    { "orderable": true, "targets": 0 },
+    { "orderable": false, "targets": "_all" }
+  ],
+  "fnInitComplete": function () {
+    $('div.toolbar').html('<h2>Dashboard</h2>');
+  }
 });
 
 var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));

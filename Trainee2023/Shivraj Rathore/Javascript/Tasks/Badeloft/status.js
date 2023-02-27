@@ -8,9 +8,10 @@ $(document).ready(function () {
   var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
   $("#activeuser").html(activeuser.username);
 
+
   function format(d) {
 return (
-'<table class="text-center d-flex justify-content-center"> ' +
+'<table class="text-center"  style="width:100%;"> ' +
 '<tr>' +
 '<th>#</th>' +
 '<th>Part Number</th>' +

@@ -67,12 +67,13 @@ $(document).ready(function () {
   $("#login").click(function () {
     if ($("#myform").valid() == true) {
       // Check email and password with input and alert if matches
-      const inputEmail = document.getElementById('validationCustom01').value;;
+      const inputEmail = document.getElementById('validationCustom01').value;
+      const lowerCaseEmail = inputEmail.toLowerCase();
       const inputPassword = document.getElementById('validationCustom02').value;
 
       const storedUsers = JSON.parse(localStorage.getItem("userData"));
 
-      const user = storedUsers.find(u => u.email === inputEmail && u.password === inputPassword);
+      const user = storedUsers.find(u => u.email === lowerCaseEmail && u.password === inputPassword);
 
       if (user) {
 
