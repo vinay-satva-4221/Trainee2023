@@ -72,6 +72,9 @@ ul li {
  .navbarProfile{
     float: right;
  }
+ .navbar-nav{
+    margin-left: 175px;
+ }
 
 
 
