@@ -1,10 +1,11 @@
 //global variables
 var partDetails = []; 
 var stockDetails = []; 
+var index = 0;
 var tableData; 
 
 window.onload = (event) => {
-  debugger;
+  //debugger;
   if (localStorage.getItem("LoginDetails") == null) {
     window.location.replace("Badeloft.html");
   } else {
@@ -23,12 +24,28 @@ function logout() {
 // Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
-  debugger;
-  // `d` is the original data object for the row
-  // var p = partDetails;
-  // console.log(p)
-  let p = JSON.parse(localStorage.getItem("Part"));
+  //debugger;
+  console.log(partDetails);
+  console.log(d)
+  var tr= $(this).parents('tr');
+  var row = tableData.row(tr);
 
+  row.child(
+  //   {
+  //   index: index,
+  //   partno: partno,
+  //   ordered: ordered,
+  //   notes: notes
+  // }
+  partDetails
+  )
+
+  // `d` is the original data object for the row
+  var p = partDetails;
+  // console.log(p)
+  // var p = JSON.parse(localStorage.getItem("stockList"));
+  var q= d.stockpart;
+  console.log("parts",q)
   let childrow = "";
   // if (d.p.length > 0) {
   // console.log(partDetails)
@@ -36,11 +53,11 @@ function format(d) {
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded">';
   childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
-  p.forEach((e, index) => {
 
-    let ind = (index + 1);
+  q.forEach((e) => {
+    // let ind = (index + 1);
 
-    childrow += '<tr><td>' + ind + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td></tr>';
+    childrow += '<tr><td>' + e.index + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td></tr>';
   });
   childrow += '</tbody></table>';
   // }
@@ -53,53 +70,78 @@ $(document).ready(function () {
     $("#innermodal").modal("show");
   });
 
-
+  var add = $("#addstock").val();
+  
+   stockDetails = JSON.parse(localStorage.getItem("stockList"));
+console.log(stockDetails)
   tableData = $('#stock').DataTable({
-    data: stockDetails,
+    data: stockDetails ,
     lengthChange: false,
+    dom: '<"toolbar">frtip',
+    bFilter:true,
+    bInfo:false,
+    fnInitComplete: function () {
+      $('div.toolbar').html('<b><h3>&nbsp;Stock</h3></b>');
+      $("div.toolbar").prepend(add);
+        },    
     info: false,
     paging: false,
-    columns: [{
+   
+    columns: [
+      {
+    
+        data: null,
         className: 'dt-control',
         orderable: false,
-        data: null,
         defaultContent: '',
 
       },
       {
+        data:"sname",
         title: 'Stock Name',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"etadate",
         title: 'ETA Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"stkstatus",
         title: 'Stock Location',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"createdby",
         title: 'Created By',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"cdate",
         title: 'Created Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"notes",
         title: 'Notes',
         orderable: false,
         className: "text-center"
       },
       {
+        data:null,
         title: 'Action',
         orderable: false,
-        className: "text-center"
+        defaultContent: '<div class="action-buttons">' +
+                    '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
+                    '<span class="remove"><i class="fa fa-trash"></i></span> ' +
+                    '<span class="cancel"></span>' +
+                    '</div>',
+        className: 'row-edit dt-center',
       }
     ],
     order: [
@@ -116,7 +158,7 @@ $(document).ready(function () {
       // This row is already open - close it
       row.child.hide();
       tr.removeClass('shown');
-    } else {
+    } else {console.log(partDetails)
       // Open this row
       row.child(format(row.data())).show();
       tr.addClass('shown');
@@ -133,15 +175,22 @@ function addpartData() {
   if (partDetails == null) {
 
     partDetails = [];
-
   }
+  // var sd = JSON.parse(localStorage.getItem('stockDetails'));
+
+  if(stockDetails==null) {
+    stockDetails = [];
+    index = 0;
+  }
+  index = stockDetails.length;
+  index++;
   partDetails.push({
+    index: index,
     partno: partno,
     ordered: ordered,
     notes: notes,
   });
-
-  localStorage.setItem("Part", JSON.stringify(partDetails));
+  // localStorage.setItem("Part", JSON.stringify(partDetails));
 
   var html = "";
 
@@ -165,7 +214,7 @@ function addpartData() {
 }
 
 function addstockdata() {
-  debugger;
+  //debugger;
 
   console.log("Partdetails in stock function:", partDetails);
 
@@ -209,16 +258,38 @@ function addstockdata() {
 
   }
   stockDetails.push({
+   
+    index: index,
     sname: sname,
     etadate: etadate,
     stkstatus: stkstatus,
     createdby: createdby,
     cdate: cdate,
-    part: partDetails
-
+    notes: notes,
+    stockpart: partDetails,
   });
 
-  tableData.row.add(['', sname, etadate, stkstatus, createdby, cdate, notes, '']).draw();
+  index++;
+
+  console.log('', sname, etadate, stkstatus, createdby, cdate, notes, '')  ;
+  tableData.row.add({"":"","sname": sname, "etadate": etadate, "stkstatus": stkstatus, "createdby": createdby, "cdate":cdate, "notes": notes}).draw(); 
+  
+  // tableData.row(':eq(0)').child(
+    //   {
+    //   index: index,
+    //   partno: partno,
+    //   ordered: ordered,
+    //   notes: notes
+    // }
+    // partDetails
+    // )
+
+
+
+  // tableData.row.add(['', sname, etadate, stkstatus, createdby, cdate, notes, notes]).draw();
+  // tableData.row.add(['', 'sname', 'etadate', 'stkstatus', 'createdby', 'cdate', '23']).draw();
+
+
 
   // var stockList = [
   //   {
@@ -236,7 +307,6 @@ function addstockdata() {
   //   }
   // ]
 
-  localStorage.setItem("stockList", JSON.stringify(stockDetails));
 
   document.getElementById("sname").value = "";
   document.getElementById("etadate").value = "";
@@ -244,4 +314,6 @@ function addstockdata() {
   document.getElementById("partno").value = "";
   document.getElementById("ordered").value = "";
   document.getElementById("notes").value = "";
+  localStorage.setItem("stockList", JSON.stringify(stockDetails));
+
 }

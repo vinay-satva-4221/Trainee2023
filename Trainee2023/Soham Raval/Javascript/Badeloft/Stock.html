@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
-    <script src="/ https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -41,7 +40,7 @@
               <a class="nav-link nav-item  mx-3 fw-bolder" href="status.html">Status</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-item  mx-3 fw-bolder" href="#">Assignment</a>
+              <a class="nav-link nav-item  mx-3 fw-bolder" href="Assignment.html">Assignment</a>
             </li>
           </ul>
         </div>
@@ -71,12 +70,12 @@
                 <h4><strong>Stock</strong></h4>
             </div>
             <div class="col-md-1">
-                <button type="button" id="newbuttonstock" class="btn text-light " data-toggle="modal" data-target="#exampleModal">
+                <button type="button" id="newbuttonstock" class="btn text-light " data-toggle="modal" data-target="#Modal">
                     +New
                   </button>
             </div>
             <!--  -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog  modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -114,7 +113,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal1">add part number</button>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#popupModal">add part number</button>
                         </div>
                         </div>
                         <!-- table -->
@@ -141,7 +140,7 @@
                 </div>
               </div>
             <!--  -->
-            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="popupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -173,7 +172,7 @@
                 </div>
               </div>
             <div class="col-md-3">
-                <input type="search" class="form-control" placeholder="search here">
+                <input type="search" class="form-control" id="CustomSearchBox" placeholder="search here">
             </div>
         </div>
     </div>
@@ -185,24 +184,20 @@
         </table> -->
         <table id="example" class="display" style="width:100%">
           <thead class="maintable">
-              <tr>
-                <th></th>
-                  <th>Stock Name</th>
-                  <th>ETA Date</th>
-                  <th>Stock Location</th>
-                  <th>Created By</th>
-                  <th>Created Date</th>
-                  <th>Notes</th>
-                  <th>Action</th>
-              </tr>
+             
           </thead>
           <tbody></tbody>
       </table>
     </div>
     </div>
     <script src="./stock1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+

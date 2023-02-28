@@ -18,8 +18,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg ">
-            <div class="container p-0 m-6">
-                <img src="Images/img logo.jpg" alt="" srcset="" id="dasboardlogo">
+            <div class="container-fluid ps-0 pe-4">
+                <a class="navbar-brand ms-5 ps-1" href=""> <img src="Images/img logo.jpg" alt="" srcset=""
+                        id="dasboardlogo"></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -29,16 +31,16 @@
                     <div class="tabs ms-auto pe-5" id="links">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link ">
-                                <a href="db.html">Dashboard
+                                <a href="db.html"> Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
-                            <li class="nav-link  ">
+                            <li class="nav-link ">
                                 <a href="stock.html">Stock</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link active-link">
-                                <a href="#"> <b> Status</b></a>
+                                <a href="#"> <b>Status </b> </a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
@@ -65,20 +67,21 @@
     </header>
     <section>
         <div class="container-fluid p-0">
-            <div class="bg-light px-4 ">
-                <div class="row pt-2">
-                    <div class="col-md-4">
-                        <h4 class=" fw-bolder pt-5 m-0">Status</h4>
-                    </div>
-                    <div class="col-md-8 d-flex justify-content-end pt-5 m-0">
+            <div class="row ">
+                <div class="col-lg-3 ps-3 pt-3">
+                    <b><span id="tabletitle" class="ms-5">Status</span></b>
+                </div>
+                <div class="col-lg-3 offset-lg-6 pt-4 pe-5">
+                    <div class="form-group has-search">
+                        <input type="text" class="form-control" placeholder="Search here" id="datatablesearch">
                     </div>
                 </div>
 
-                <div class=" displayTable">
-                    <table id="table_div1" class="table table-display table-hover  table-sm " style="width:100%">
+                <div class=" displayTable table-responsive pt-4 px-5">
+                    <table id="table_div1" class="table table-display table-sm border border-dark rounded"
+                        style=" width: 100%;">
 
-                        <!-- <table id="table_div" class="table  .table-responsive-lg"> -->
-                        <thead class="thead-dark"></thead>
+                        <thead class="thead-dark rounded"></thead>
 
                     </table>
                 </div>
