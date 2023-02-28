@@ -1,80 +1,127 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: lightgray;
+}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: lightgray;
-        }
+h3 {
+    float: left;
+}
 
-        h3 {
-            float: left;
-        }
-
-        /* .even{
+/* .even{
             display: none;
         } */
 
-        table {
-            border-collapse: separate;
-            border: solid black 1px;
-            border-radius: 25px;
-        }
+table {
+    /* border-collapse: separate; */
+    border: solid black 1px;
+    border-radius: 25px;
+}
 
-        .form-input {
+.form-input {
 
-            height: auto;
-            text-indent: 33px;
-            border-radius: 10px;
-            float: right;
-        }
+    height: auto;
+    text-indent: 33px;
+    border-radius: 10px;
+    float: right;
+}
 
-        #dashboadr-table_length {
-            margin: 10px;
-        }
+#dashboadr-table_length {
+    margin: 15px;
+}
 
-        .dataTables_filter {
-            margin: 10px;
-        }
+.dataTables_filter {
+    margin: 10px;
+}
 
-        .usimg {
-            height: 40px;
-            display: none;
-            /* float: right; */
-        }
+.usimg {
+    height: 40px;
+    display: none;
+    /* float: right; */
+}
 
-        .table {
-            border-radius: 25px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
+.table {
+    border-radius: 25px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
-        .has-search {
-            display: none;
-        }
+.has-search {
+    display: none;
+}
 
-        .dashboadr-table_filter {
-            margin-bottom: 2%;
-        }
-        .sorting_asc{
+.dashboadr-table_filter {
+    margin: 20px;
+
+}
+
+.dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+    width: 300px;
+    margin-top: 9px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{ color: white;
+    /* color: inherit !important; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(230, 230, 230, 0.1);
+   background: black;
+}
+/* .sorting_asc{
             margin-right: 300px;
-        }
+        } */
 
-        .tabs {
-            margin-left: 10%;
-        }
-        .reorder{
-          margin-right: 300px;
-          width: 76px;
-        }
+.tabs {
+    margin-left: 10%;
+}
 
-        /* img {
+.reorder {
+    border-top-left-radius: 15px;
+
+}
+
+table.dataTable thead>tr>th.sorting:before,
+table.dataTable thead>tr>th.sorting:after,
+table.dataTable thead>tr>th.sorting_asc:before,
+table.dataTable thead>tr>th.sorting_asc:after,
+table.dataTable thead>tr>th.sorting_desc:before,
+table.dataTable thead>tr>th.sorting_desc:after,
+table.dataTable thead>tr>th.sorting_asc_disabled:before,
+table.dataTable thead>tr>th.sorting_asc_disabled:after,
+table.dataTable thead>tr>th.sorting_desc_disabled:before,
+table.dataTable thead>tr>th.sorting_desc_disabled:after,
+table.dataTable thead>tr>td.sorting:before,
+table.dataTable thead>tr>td.sorting:after,
+table.dataTable thead>tr>td.sorting_asc:before,
+table.dataTable thead>tr>td.sorting_asc:after,
+table.dataTable thead>tr>td.sorting_desc:before,
+table.dataTable thead>tr>td.sorting_desc:after,
+table.dataTable thead>tr>td.sorting_asc_disabled:before,
+table.dataTable thead>tr>td.sorting_asc_disabled:after,
+table.dataTable thead>tr>td.sorting_desc_disabled:before,
+table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    position: absolute;
+    display: block;
+    opacity: 0.125;
+    right: 160px !important;
+    line-height: 9px;
+    font-size: 0.8em;
+}
+
+/* img {
     height: 50px;
     margin-left: 60%;
 } */
 
-        /* .form-input:focus{
+/* .form-input:focus{
 
 box-shadow: none;
 border:none;
 } */
-        /* .container-fluid{
+/* .container-fluid{
     background-color: grey;
 } *
