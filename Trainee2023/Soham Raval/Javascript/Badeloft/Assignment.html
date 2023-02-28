@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="/Badeloft/Dashboard.css">
+  <link rel="stylesheet" href="/Badeloft/Assignment.css">
   <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -26,7 +25,7 @@
       <div class="collapse navbar-collapse justify-content-center navbar_list" id="collapsibleNavbar">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link nav-item  mx-3 fw-bolder active" href="Dashboard.html">Dashboard</a>
+            <a class="nav-link nav-item  mx-3 fw-bolder " href="Dashboard.html">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-item  mx-3 fw-bolder" href="stock.html">Stock</a>
@@ -35,7 +34,7 @@
             <a class="nav-link nav-item  mx-3 fw-bolder" href="status.html">Status</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-item  mx-3 fw-bolder" href="Assignment.html">Assignment</a>
+            <a class="nav-link nav-item  mx-3 fw-bolder active" href="Assignment.html">Assignment</a>
           </li>
         </ul>
       </div>
@@ -59,14 +58,72 @@
     </div>
     </div>
   </nav>
-<div class="deshboard" style="background-color: #ebedf0;">
+  <div class="deshboard" style="background-color: #ebedf0;">
   <div class="container-fluid pt-2">
     <div class="row">
-      <div class="col-md-9">
-        <h4><strong>Stock</strong></h4>
+      <div class="col-md-8">
+        <h4><strong>Assignments</strong></h4>
       </div>
+      <div class="col-md-1">
+        <button type="button" id="newbuttonassignment" class="btn text-light " data-bs-toggle="modal" data-bs-target="#exampleModal">
+            +New
+          </button>
+    </div>
+    <!-- model start -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Assignment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">Choose Customer</label>
+                    <input type="text" class="form-control" id="stockname" class="validate">
+                </div>
+                <div class="col-md-6">
+                    <label for="">QuicBooks Invoice#</label>
+                    <input type="text" id="date" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="">Stock</label>
+                    <input type="text" class="form-control" id="stockname" class="validate">
+                </div>
+                <div class="col-md-4">
+                    <label for="">Parts</label>
+                    <input type="text" id="date" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <label for=""></label>
+                    <button type="button" id="newbuttonassignment" class="btn text-light " >
+                        +Add
+                      </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-2"> 
+                    <button type="button"  class="btn text-dark bg-none border" >Save</button>
+                </div>
+                <div class="col-md-2"> 
+                    <button type="button"  class="btn text-dark bg-none border" >Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- model end -->
       <div class="col-md-3">
-        <input type="search" class="form-control" id="CustomSearchBox" placeholder="search here">
+        <input type="search" class="form-control" id="CustomSearchBox1" placeholder="search here">
       </div>
     </div>
   </div>
@@ -80,11 +137,11 @@
     </div>
   </div>
 </div>
-  <script src="./Dashboard.js"></script>
+  <script src="./Assignment.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-  <!-- <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
   <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

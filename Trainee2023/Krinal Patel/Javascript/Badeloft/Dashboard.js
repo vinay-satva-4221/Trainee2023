@@ -21,7 +21,7 @@ window.onload = (event) => {debugger;
     localStorage.clear();
   }
   
-  
+
 // Data table Dashboard
 
 $(document).ready(function () {
@@ -30,19 +30,12 @@ $(document).ready(function () {
       lengthChange: false,  
       info: false,
       columns: [
-          // {
-          //     orderable: false,
-          //     data: null,
-          //     defaultContent: '',
-              
-
-
-          // },
+       
 
           { title: 'Part Number' },
-          { title: 'In Warehouse' ,orderable:false,className: "text-center"},
+          { title: 'In Warehouse' ,orderable:false,className: "text-center" },
           { title: 'Available' ,orderable:false ,className: "text-center"},
-          { title: 'C100',orderable:false,className: "text-center" },
+          { title: 'C100',orderable:false,className: "text-center"},
           { title: 'C101' ,orderable:false,className: "text-center"},
           { title: 'C102',orderable:false,className: "text-center" },
 
@@ -74,9 +67,6 @@ var dataSet = [
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
   ["BR-08-X2P","1", "0", "3", "0", "1"],
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
-  
-  
-  
   
 ];
 

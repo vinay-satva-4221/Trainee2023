@@ -1,8 +1,11 @@
 
-.dataTables_length,.DataTables_info{
+/* #example_filter,#example_info,#example_paginate{
+  display: none;
+} */
+.dataTables_length,.dataTables_info{
   display: none;
 }
-#example_filter,#example_info,#example_paginate{
+#example_filter{
   display: none;
 }
 .img_round{

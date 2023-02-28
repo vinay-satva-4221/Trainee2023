@@ -8,8 +8,8 @@ $(document).ready(function () {
         function format(d) {
             // `d` is the original data object for the row
             return (
-                '<table class="table">' +
-                '<thead>' +
+                '<table class="table table-display table-sm border border-dark rounded bg-light">' +
+                '<thead class="bg-light childtable rounded">' +
                 '<tr>' +
                 '<th >#</th>' +
                 ' <th>Part Number</th>' +
@@ -73,6 +73,12 @@ $(document).ready(function () {
                 order: [[1, 'asc']],
             });
 
+            var table = $("#table_div1").DataTable();
+
+            $("#datatablesearch").on("keyup", function () {
+                table.search(this.value).draw();
+            });
+
             // Add event listener for opening and closing details
             $('#table_div1 tbody').on('click', 'td.dt-control', function () {
                 var tr = $(this).closest('tr');
@@ -89,6 +95,10 @@ $(document).ready(function () {
                 }
             });
         });
+
+
+
+
 
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");

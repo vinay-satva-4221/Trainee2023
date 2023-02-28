@@ -36,48 +36,12 @@ function logout() {
   window.location.replace("Login.html");
 }
 
-// second modal number validation
-// document.getElementById("pNum").addEventListener("keypress", function (evt) {
-//   if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
-//   {
-//       evt.preventDefault();
-//   }
-// });
+
 // test
 var r = JSON.parse(localStorage.getItem("newStock"));
 console.log(r);
 
-// console.log(r[0].Part[0].PartN)
-// var v = r[0].Part[0].PartN;
-// console.log(v);
-// table
-// function format(d) {
-//   // `d` is the original data object for the row
-//   return (
-//     '<table cellpadding="5" class="table text-center border " cellspacing="0" border="0" style="padding-left:50px;width:95%; margin-left:4%">' +
-//     "<tr style='background-color:#ebebeb'>" +
-//     '<th style="color:black"><b> # </b></th>' +
-//     '<th style="color:black"><b> Part Number </b></th>' +
-//     '<th style="color:black"><b> Ordered </b></th>' +
-//     '<th style="color:black"><b> Assigned </b></th>' +
-//     "</tr>" +
-//     "</tr>" +
-//     "<td>" +
-//     1 +
-//     "</td>" +
-//     "<td>" +
-//     v +
-//     "</td>" +
-//     "<td>" +
-//     d.name +
-//     "</td>" +
-//     "<td>" +
-//     d.name +
-//     "</td>" +
-//     "</tr>" +
-//     "</table>"
-//   );
-// }
+
 function format(d) {
   let dynamicChildRow = "";
   if (d.Part && d.Part.length > 0) {
@@ -104,16 +68,12 @@ function format(d) {
   return dynamicChildRow;
 }
 
-// var dataSet = [
-//   ["Stock Location", "-", "-", "On Water", "On Water", "In production", ""],
-//   ["Eta Date", "-", "-", "10/08/2021", "10/08/2021", "10/08/2021", ""],
-//   ["BW-01-S-M", "1", "0", "3", "0", "0", ""],
-// ];
-
+// global variable
+var table;
 $(document).ready(function () {
   var datin = JSON.parse(localStorage.getItem("newStock"));
   console.log(datin);
-  var table = $("#example").DataTable({
+   table = $("#example").DataTable({
     data: datin,
     columns: [
       {
@@ -145,6 +105,8 @@ $(document).ready(function () {
       },
       {
         data: "date",
+        // data: DataTable.render.date('MM/DD/YYYY'),
+        // keyInput: false,
         title: "Created Date",
         orderable: false,
         class: "text-center",
@@ -157,11 +119,6 @@ $(document).ready(function () {
       },
       { data: "date", title: "Action", orderable: false, class: "text-center" },
 
-      // { title: "In Warehouse" },
-      // { title: "Available" },
-      // { title: "C100" },
-      // { title: "C101" },
-      // { title: "C102" },
     ],
     order: [[1, "asc"]],
   });
@@ -198,7 +155,7 @@ function getM() {
 }
 
 // add
-function getData() {
+function addData() {
   //login user
   var user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
@@ -237,28 +194,31 @@ function getData() {
   } else {
     if (localStorage.getItem("newStock") == null) {
       newStock = [];
-      newStock.push({
+      var newObj = {
         stock: stockN,
         date: dateM,
         stock_S: r1V,
         Part: parts,
         user: user,
-      });
+      }
+      newStock.push(newObj);
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      newStock.push({
+      var newObj = {
         stock: stockN,
         date: dateM,
         stock_S: r1V,
         Part: parts,
         user: user,
-      });
+      }
+      newStock.push(newObj);
     }
-
+    
+    table.row.add(newObj).draw();
     localStorage.setItem("newStock", JSON.stringify(newStock));
-    // $("#myMod").modal("toggle");
   }
-  // resetSVal();
+  $('#exampleModal').modal('hide');
+  resetSVal();
 }
 
 // loading the documnet to show data in table
@@ -296,13 +256,4 @@ function resetSVal() {
   document.getElementById("floatingTextarea").value = "";
 }
 
-// test
-var r = JSON.parse(localStorage.getItem("newStock"));
-console.log(r);
 
-console.log(r[0].Part[0].PartN);
-var v = r[0].Part[0].PartN;
-console.log(v);
-
-var user = JSON.parse(localStorage.getItem("user"));
-console.log(user);
