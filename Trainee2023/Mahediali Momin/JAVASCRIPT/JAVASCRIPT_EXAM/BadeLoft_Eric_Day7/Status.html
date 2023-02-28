@@ -5,23 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="./Dashboard.css">
+    <title>Status</title>
+    <link rel="stylesheet" href="./Status.css">
     <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css" rel="stylesheet" /> -->
+
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+
 </head>
 
 <body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" alt=""
-                        id="bade_logo"></a>
+                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" alt="" id="bade_logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -31,23 +34,23 @@
                     id="navbarTogglerDemo02">
                     <ul class="navbar-nav mx-auto ">
                         <li class="nav-item">
-                            <a href="Dashboard.html" class="nav-item nav-link fw-bold  mx-3 active">Dashboard</a>
+                            <a href="Dashboard.html" class="nav-item mx-3 nav-link ">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Stock.html" class="nav-item nav-link mx-3">Stock</a>
+                            <a href="stock1.html" class="nav-item mx-3 nav-link">Stock</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Status.html" class="nav-item nav-link mx-3">Status</a>
+                            <a href="Status.html" class="nav-item mx-3 fw-bolder nav-link active">Status</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Assignment.html" class="nav-item nav-link mx-3">Assignment</a>
+                            <a href="Assignment.html" class="nav-item mx-3 nav-link">Assignment</a>
                         </li>
                     </ul>
                     <ul class="d-flex list-unstyled ">
-
+                        
                         <li class="nav-item"><a href="./LoginPage.html" class="nav-item textColor nav-link">
-                                <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img"
-                                    class="rounded-circle" alt="">
+                            <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img" class="rounded-circle"
+                            alt="">
                             </a>
                         </li>
                         <li class="nav-item">
@@ -55,48 +58,59 @@
                             <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
                         </li>
                         <li>
-                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" onclick="logout()" id="logout"></i>
+                            <i
+                            class="fa-solid fa-arrow-right-from-bracket" onclick="logout()" id="logout"></i>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid bg-light">
+        <div class="row mb-2">
             <div class="col-md-9 mt-3">
-                <h4><strong>Dashboard</strong></h4>
+                <h4><strong>Status</strong></h4>
             </div>
-            <div class="col-md-3 mt-3">
-                <input type="search" class="form-control" placeholder="search here">
+            <div class="col-md-3 mt-3 mb-3">
+                <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
             </div>
         </div>
-        <div class="table-responsive mt-4">
-            <table id="example" class="table rounded" style="width: 100%;">
+        <div class="table-responsive">
+            <table id="Statustable" class="table" style="width:100%;">
                 <thead class="maintable">
+                    <tr>
+                        <th></th>
+                        <th>QB Invoice #</th>
+                        <th>Name</th>
+                        <th>QB Ship date</th>
+                        <th>QB Payment Status</th>
+                        <th>QB Status</th>
+                        <th>QB Delivery Phone</th>
+                        <th>Called</th>
+                        <th>QB Tracking</th>
+                    </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
             </table>
         </div>
     </div>
-
-    <div class="pagination justify-content-end mt-3">
+    <!-- <div class="pagination justify-content-end mt-3 mb-3">
         <a href="#">&laquo;</a>
         <a href="#" class="active">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
         <a href="#">&raquo;</a>
-    </div>
+    </div> -->
 
 
-    <script src="./Dashboard.js"></script>
+    <script src="./Status.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
 
 </body>
 

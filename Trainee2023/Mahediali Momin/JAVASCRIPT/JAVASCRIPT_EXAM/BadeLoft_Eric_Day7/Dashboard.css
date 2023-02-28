@@ -1,3 +1,19 @@
+thead {
+    background-color: black;
+    border-collapse: collapse;
+    border-radius: 1em;  
+    
+}
+table{
+   font-size: small;
+   border-collapse: collapse;
+   border-radius: 1.2em;
+   overflow: hidden;
+   background-color: white;
+   border: 1px solid black;
+   
+}
+
 .nav_logo {
     margin: 10px;
     height: 20px;
@@ -16,9 +32,10 @@
     border: 1px;
 }
 
-#example_length, #example_filter, #example_paginate, #example_info {
+     #dashboardtable_info {
     display: none;
 }
+
 
 #example1_length, #example1_filter, #example1_paginate, #example1_info {
     display: none;
@@ -34,11 +51,13 @@
 
 .navbar a.active {
     border-bottom: 3px solid #000000;
+ 
 }
 
 #logout {
     color: rgb(150, 147, 143);
     margin-top: 30px;
+    margin-left: 30px;
 }
 
 #img {
@@ -56,18 +75,39 @@
 }
 
 #bade_logo {
-    width: 110%;
+    width: 100%;
     margin-left: -35px;
 }
-table.dataTable thead>tr>th.sorting_asc:before{
-    margin-right: 310px;
-    position: absolute;
+
+#dashboardtable th.sorting_asc.sorting_asc::before{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_asc.sorting_asc::after{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc.sorting_desc::after{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc.sorting_desc::before{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_asc::before{
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc::after{
+    margin-right: 70%;
+  }
+  
+.pagination .page-item.active .page-link {
+    background-color: black;
+    border: black;
+    color: white;
 }
-table.dataTable thead>tr>th.sorting_asc:after{
-    margin-right: 310px;
-    position: absolute;
-    padding-top: 3px;
-}
+
 .pagination {
     display: inline-block;
 }

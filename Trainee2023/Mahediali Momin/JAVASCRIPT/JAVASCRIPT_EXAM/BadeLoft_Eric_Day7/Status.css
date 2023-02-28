@@ -1,4 +1,19 @@
-#example_length, #example_filter, #example_paginate, #example_info {
+thead {
+    background-color: black;
+    border-collapse: collapse;
+    border-radius: 1em;  
+    
+}
+table{
+   font-size: small;
+   border-collapse: collapse;
+   border-radius: 1.2em;
+   overflow: hidden;
+   background-color: white;
+   border: 1px solid black;
+   
+}
+#Statustable_length, #Statustable_filter, #Statustable_info {
     display: none;
 }
 
@@ -34,6 +49,7 @@
 #logout {
     color: rgb(150, 147, 143);
     margin-top: 30px;
+    margin-left: 30px;
 }
 
 #Uname {
@@ -52,7 +68,7 @@
 }
 
 #bade_logo {
-    width: 110%;
+    width: 100%;
     margin-left: -35px;
 }
 
@@ -81,7 +97,11 @@
 .pagination {
     display: inline-block;
 }
-
+.pagination .page-item.active .page-link {
+    background-color: black;
+    border: black;
+    color: white;
+}
 .pagination a {
     color: black;
     float: left;
@@ -95,3 +115,44 @@
     color: white;
     border: 1px solid black;
   }
+  
+  #Statustable.dataTable td.dt-control:before {
+    background-color: white;
+    color: #1188FF;
+    border-color: #1188FF;
+  }
+  #Statustable th.sorting.sorting_asc::before{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_asc::after{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_desc::after{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_desc::before{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting::before{
+    margin-right: 15%;
+  }
+  #Statustable th.sorting::after{
+    margin-right: 15%;
+  }
+/* 
+  table.dataTable td.dt-control {
+    text-align: start !important;
+    color: rgb(95, 159, 248);
+    padding-right: 3px;
+  } */
+  
+  input[type=checkbox]:checked {
+    accent-color: green;
+  }
+
+
+  

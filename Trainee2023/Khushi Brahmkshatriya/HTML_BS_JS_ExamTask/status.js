@@ -40,11 +40,11 @@ var dataSet = [
   //   Name : 'Keneth Woodard',
   //   QB_Ship_date : '12/08/2021',
   // }
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-123"],
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox>", "WBC-123"],
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-123"],
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox>", "WBC-123"],
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-123"],
+  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+  ["150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
+  ["150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
+  ["150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
+  ["150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
 
 ];
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
     window.location.replace("./login.html");
   }
 
-  var table = $("#example").DataTable({
+  var table = $("#statusTable").DataTable({
     data: dataSet,
 
     "bLengthChange": false,
@@ -67,9 +67,10 @@ $(document).ready(function () {
     "dom": 'rtip',
     "bAutoWidth": false,
     language: {
+      "info": "Items _START_ to _END_ of _TOTAL_ total",
       paginate: {
         next: '&#62',
-        previous: '&#60' 
+        previous: '&#60'
       }
     },
     columns: [
@@ -84,7 +85,7 @@ $(document).ready(function () {
       { title: "QB Payment Status", orderable: false, },
       { title: "QB Status", orderable: false, },
       { title: "QB Delivery Phone", orderable: false, },
-      { title: "Called", orderable: false },
+      { title: "Called", orderable: false,className:'text-center' },
       { title: "QB Tracking", orderable: false, },
 
 
@@ -93,12 +94,12 @@ $(document).ready(function () {
     order: [[1, "asc"]],
 
   });
-  $('#myCustomSearchBox').keyup(function () {
+  $('#txtSearch').keyup(function () {
     table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
   })
 
   // Add event listener for opening and closing details
-  $("#example tbody").on("click", "td.dt-control", function () {
+  $("#statusTable tbody").on("click", "td.dt-control", function () {
     var tr = $(this).closest("tr");
     var row = table.row(tr);
 

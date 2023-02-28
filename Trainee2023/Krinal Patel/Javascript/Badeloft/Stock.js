@@ -1,10 +1,11 @@
 //global variables
 var partDetails = []; 
 var stockDetails = []; 
+var index = 0;
 var tableData; 
 
 window.onload = (event) => {
-  debugger;
+  //debugger;
   if (localStorage.getItem("LoginDetails") == null) {
     window.location.replace("Badeloft.html");
   } else {
@@ -20,15 +21,33 @@ function logout() {
   localStorage.clear();
 }
 
+
+
 // Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
-  debugger;
-  // `d` is the original data object for the row
-  // var p = partDetails;
-  // console.log(p)
-  let p = JSON.parse(localStorage.getItem("Part"));
+  //debugger;
+  console.log(partDetails);
+  console.log(d)
+  var tr= $(this).parents('tr');
+  var row = tableData.row(tr);
 
+  row.child(
+  //   {
+  //   index: index,
+  //   partno: partno,
+  //   ordered: ordered,
+  //   notes: notes
+  // }
+  partDetails
+  )
+
+  // `d` is the original data object for the row
+  var p = partDetails;
+  // console.log(p)
+  // var p = JSON.parse(localStorage.getItem("stockList"));
+  var q= d.stockpart;
+  console.log("parts",q)
   let childrow = "";
   // if (d.p.length > 0) {
   // console.log(partDetails)
@@ -36,11 +55,11 @@ function format(d) {
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded">';
   childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
-  p.forEach((e, index) => {
 
-    let ind = (index + 1);
+  q.forEach((e) => {
+    // let ind = (index + 1);
 
-    childrow += '<tr><td>' + ind + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td></tr>';
+    childrow += '<tr><td>' + e.index + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td></tr>';
   });
   childrow += '</tbody></table>';
   // }
@@ -53,58 +72,115 @@ $(document).ready(function () {
     $("#innermodal").modal("show");
   });
 
+  // var modal = document.getElementById("FirstModal");
+  // var table = $('#stock').DataTable({
+  //   "dom": '<"toolbar">frtip',
+  //   bFilter: true,
+  //   bInfo: true,
+  //   responsive: true, // enable child rows
+  //   fnInitComplete: function() {
+  //     $('div.toolbar').html('<h2>Stock</h2>');
+  //     $('#stock_filter').prepend(modal);
+  //   },
+
+
+
+  var modal = document.getElementById("addstock");
+  console.log(modal)
+   stockDetails = JSON.parse(localStorage.getItem("stockList"));
+console.log(stockDetails)
 
   tableData = $('#stock').DataTable({
-    data: stockDetails,
+    orderable:false,
+    data: stockDetails ,
     lengthChange: false,
-    info: false,
-    paging: false,
-    columns: [{
+    bFilter:true,
+    bInfo:false,
+    
+    dom: '<"toolbar">frtip',
+    fnInitComplete: function () {
+      $('div.toolbar').html('<b><h3>&nbsp;Stock</h3></b>');
+      $('#stock_filter').prepend(modal);
+        },  
+    
+        language: {
+          info: "Items _START_ to _END_ of _TOTAL_ total",
+          paginate:{
+            previous:"<",
+            next:">",
+          },
+          search: "",
+
+          searchPlaceholder: "Search here..."
+        },  
+    info: true,
+    paging: true,
+   ordering:false,
+    columns: [
+      {
+    
+        data: null,
         className: 'dt-control',
         orderable: false,
-        data: null,
         defaultContent: '',
 
       },
       {
+        data:"sname",
         title: 'Stock Name',
         orderable: false,
-        className: "text-center"
+          render:function(data,type,row){
+          if(type=='display'){
+              return '<span style="color: #1188FF;">' + data + '</span>';
+          }
+          else {
+              return data;
+          }
+      }
       },
       {
+        data:"etadate",
         title: 'ETA Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"stkstatus",
         title: 'Stock Location',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"createdby",
         title: 'Created By',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"cdate",
         title: 'Created Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data:"notes",
         title: 'Notes',
         orderable: false,
         className: "text-center"
       },
       {
+        data:null,
         title: 'Action',
         orderable: false,
-        className: "text-center"
+        defaultContent: '<div class="action-buttons">' +
+                    '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
+                    '<span class="remove"><i class="fa fa-trash"></i></span> ' +
+                    '<span class="cancel"></span>' +
+                    '</div>',
+        className: 'row-edit dt-center',
       }
-    ],
-    order: [
-      [1, 'asc']
-    ],
+    ]
+  
   });
 
   // Add event listener for opening and closing details
@@ -116,7 +192,7 @@ $(document).ready(function () {
       // This row is already open - close it
       row.child.hide();
       tr.removeClass('shown');
-    } else {
+    } else {console.log(partDetails)
       // Open this row
       row.child(format(row.data())).show();
       tr.addClass('shown');
@@ -131,17 +207,24 @@ function addpartData() {
   var notes = document.getElementById("notes").value
 
   if (partDetails == null) {
-
     partDetails = [];
-
   }
+  // var sd = JSON.parse(localStorage.getItem('stockDetails'));
+
+  if(stockDetails==null) {
+    stockDetails = [];
+    index = 0;
+  }
+  index = stockDetails.length;
+  index++;
+
   partDetails.push({
+    index: index,
     partno: partno,
     ordered: ordered,
     notes: notes,
   });
-
-  localStorage.setItem("Part", JSON.stringify(partDetails));
+  // localStorage.setItem("Part", JSON.stringify(partDetails));
 
   var html = "";
 
@@ -165,7 +248,7 @@ function addpartData() {
 }
 
 function addstockdata() {
-  debugger;
+  //debugger;
 
   console.log("Partdetails in stock function:", partDetails);
 
@@ -209,16 +292,38 @@ function addstockdata() {
 
   }
   stockDetails.push({
+   
+    index: index,
     sname: sname,
     etadate: etadate,
     stkstatus: stkstatus,
     createdby: createdby,
     cdate: cdate,
-    part: partDetails
-
+    notes: notes,
+    stockpart: partDetails,
   });
 
-  tableData.row.add(['', sname, etadate, stkstatus, createdby, cdate, notes, '']).draw();
+  index++;
+
+  console.log('', sname, etadate, stkstatus, createdby, cdate, notes, '')  ;
+  tableData.row.add({"":"","sname": sname, "etadate": etadate, "stkstatus": stkstatus, "createdby": createdby, "cdate":cdate, "notes": notes}).draw(); 
+  
+  // tableData.row(':eq(0)').child(
+    //   {
+    //   index: index,
+    //   partno: partno,
+    //   ordered: ordered,
+    //   notes: notes
+    // }
+    // partDetails
+    // )
+
+
+
+  // tableData.row.add(['', sname, etadate, stkstatus, createdby, cdate, notes, notes]).draw();
+  // tableData.row.add(['', 'sname', 'etadate', 'stkstatus', 'createdby', 'cdate', '23']).draw();
+
+
 
   // var stockList = [
   //   {
@@ -236,7 +341,6 @@ function addstockdata() {
   //   }
   // ]
 
-  localStorage.setItem("stockList", JSON.stringify(stockDetails));
 
   document.getElementById("sname").value = "";
   document.getElementById("etadate").value = "";
@@ -244,4 +348,6 @@ function addstockdata() {
   document.getElementById("partno").value = "";
   document.getElementById("ordered").value = "";
   document.getElementById("notes").value = "";
+  localStorage.setItem("stockList", JSON.stringify(stockDetails));
+
 }
