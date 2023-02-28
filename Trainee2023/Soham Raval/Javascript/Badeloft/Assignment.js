@@ -5,7 +5,7 @@ $("#Uname").html(a[0].Name);
 window.onload = () => {
     if (localStorage.getItem("details") == null) {
         
-      window.location.replace("Badeloft.html");
+      window.location.replace("Login.html");
     }
   }
 
