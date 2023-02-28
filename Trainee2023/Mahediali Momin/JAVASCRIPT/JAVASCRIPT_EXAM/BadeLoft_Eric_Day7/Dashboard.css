@@ -10,6 +10,7 @@ table{
    border-radius: 1.2em;
    overflow: hidden;
    background-color: white;
+   border: 1px solid black;
    
 }
 
@@ -31,7 +32,7 @@ table{
     border: 1px;
 }
 
-#example_length, #example_filter, #example_info {
+     #dashboardtable_info {
     display: none;
 }
 
@@ -50,6 +51,7 @@ table{
 
 .navbar a.active {
     border-bottom: 3px solid #000000;
+ 
 }
 
 #logout {
@@ -76,28 +78,35 @@ table{
     width: 100%;
     margin-left: -35px;
 }
-table.dataTable thead>tr>th.sorting_asc:before{
-    margin-right: 310px;
-    position: absolute;
-}
-table.dataTable thead>tr>th.sorting_asc:after{
-    margin-right: 310px;
-    position: absolute;
-}
 
-/* table.dataTable thead>tr>th.sorting:after,thead>tr>th.sorting_asc:after
-{
-  position: absolute;
-
-  margin-right: 310px;
-}
-table.dataTable thead>tr>th.sorting:before,thead>tr>th.sorting_desc:before
-{
-  position: absolute;
-
- margin-right: 310px;
+#dashboardtable th.sorting_asc.sorting_asc::before{
    
-} */
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_asc.sorting_asc::after{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc.sorting_desc::after{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc.sorting_desc::before{
+   
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_asc::before{
+    margin-right: 70%;
+  }
+  #dashboardtable th.sorting_desc::after{
+    margin-right: 70%;
+  }
+  
+.pagination .page-item.active .page-link {
+    background-color: black;
+    border: black;
+    color: white;
+}
 
 .pagination {
     display: inline-block;

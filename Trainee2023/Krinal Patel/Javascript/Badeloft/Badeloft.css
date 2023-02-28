@@ -67,7 +67,9 @@ li {
 }
 
 .navbar a.active {
+  padding-bottom: 30px;
   border-bottom: 3px solid #000000;
+  
 
 }
 
@@ -134,4 +136,63 @@ table{
 }
 .toolbar {
   float: left;
+}
+/* .page-item.active .page-link{
+  background-color: #000000;
+  border-color: #000000;
+}
+.page-item .page-link{
+  background-color: #000000;
+  border-color: #000000;
+  color: white;
+} */
+
+.page-item.active .page-link {
+  background-color: black !important;
+  border-color: black !important;
+  color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+.page-link{
+  color: #000000;
+}
+
+
+
+
+/* pagination and info css */
+.pagination{
+  float: right !important;
+  margin-right: -265px !important;
+}
+
+.dataTables_info{
+  float: right !important;
+  margin-right: 80px !important;
+  padding-right: 37px !important;
+  margin-top: -3px !important;
+}
+  
+/* space between table and stock label */
+.dataTables_filter{
+  margin-bottom: 28px !important;
+}
+
+/* checkboxes css */
+
+input[type=checkbox]:checked {
+  accent-color: green;
 }
