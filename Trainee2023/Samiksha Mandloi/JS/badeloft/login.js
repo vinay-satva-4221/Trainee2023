@@ -8,7 +8,9 @@ $(document).ready(function(){
     }
      
 
-
+    $("#login").click(function () {
+        var isFormValid =  $("#basic_form").valid();
+    });
 $("#basic_form").validate({
     rules: {
         email: {
@@ -33,6 +35,7 @@ $("#basic_form").validate({
         }
     }
 });
+   
 });
 
 const arryObj1 = [];
@@ -83,7 +86,7 @@ const obj5 = {
 arryObj5.push(obj5);
 localStorage.setItem('mail5', JSON.stringify(arryObj5));
 
-function match() {
+function loginPage() {
     debugger;
     var email = document.getElementById("email").value;
    var password = document.getElementById("password").value;
