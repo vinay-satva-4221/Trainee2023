@@ -26,15 +26,47 @@ window.onload = (event) => {debugger;
 
 $(document).ready(function () {
   var table = $('#Dashboard').DataTable({
+
+      orderable:true,
       data:dataSet,
       lengthChange: false,  
-      info: false,
+      binfo: true,
+      bFilter:true,
+      // scrollY:     300,
+      // scroller:    true,
+    //   fixedHeader:true,
+    //   fixedHeader: {
+    //     footer: true,
+    //     header:true,
+    // },
+    columnDefs: [
+      { targets: 0, type: StockLocation },
+      { orderable: true, targets: 0 },
+      { orderable: false, targets: "_all" },
+      // { targets: [1, 2], className: "text-right" },
+    ],
+      dom: '<"toolbar">frtip',
+      fnInitComplete: function () {
+        $('div.toolbar').html('<b><h3>&nbsp;Stock</h3></b>');},
+
+        language: {
+          info: "Items _START_ to _END_ of _TOTAL_ total",
+          paginate:{
+            previous:"<",
+            next:">",
+          },
+          search: "",
+
+          searchPlaceholder: "Search here..."
+
+        },
+        // pagingType: "full_numbers",
+        // dataTables_paginate paging_simple_numbers
       columns: [
        
-
-          { title: 'Part Number' },
-          { title: 'In Warehouse' ,orderable:false,className: "text-center" },
-          { title: 'Available' ,orderable:false ,className: "text-center"},
+          { title: 'Part Number', width: '12%'},
+          { title: 'In Warehouse' ,orderable:false,className: "dt-right	", width: '35%' },
+          { title: 'Available' ,orderable:false ,className:"text-center"},
           { title: 'C100',orderable:false,className: "text-center"},
           { title: 'C101' ,orderable:false,className: "text-center"},
           { title: 'C102',orderable:false,className: "text-center" },
@@ -66,69 +98,23 @@ var dataSet = [
   ["BW-01-Q-M","", "0", "3", "0", "1"],
   ["BW-03-XL-G","1", "1", "2", "2", "1"],
   ["BR-08-X2P","1", "0", "3", "0", "1"],
-  ["BW-03-XL-G","1", "1", "2", "2", "1"],
+  ["BK-03-XL-G","1", "1", "2", "2", "1"],
+  ["BA-03-XL-G","1", "1", "2", "2", "1"],
+  ["BB-03-XL-G","1", "1", "2", "2", "1"],
+  ["BC-03-XL-G","1", "1", "2", "2", "1"],
+  ["BD-03-XL-G","1", "1", "2", "2", "1"],
+  ["BE-03-XL-G","1", "1", "2", "2", "1"],
+  ["BF-03-XL-G","1", "1", "2", "2", "1"],
+  ["BF-03-XL-G","1", "1", "2", "2", "1"],
+  ["BZ-03-XL-G","1", "1", "2", "2", "1"],
+  ["BK-03-XL-G","1", "1", "2", "2", "1"],
+  ["BL-03-XL-G","1", "1", "2", "2", "1"],
+  ["BM-03-XL-G","1", "1", "2", "2", "1"],
+
   
 ];
 
-      const button = document.querySelector('#button');
-      const tooltip = document.querySelector('#tooltip');
-
-      const popperInstance = Popper.createPopper(button, tooltip, {
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ],
-      });
-
-      function show() {
-        // Make the tooltip visible
-        tooltip.setAttribute('data-show', '');
-
-        // Enable the event listeners
-        popperInstance.setOptions((options) => ({
-          ...options,
-          modifiers: [
-            ...options.modifiers,
-            { name: 'eventListeners', enabled: true },
-          ],
-        }));
-
-        // Update its position
-        popperInstance.update();
-      }
-
-      function hide() {
-        // Hide the tooltip
-        tooltip.removeAttribute('data-show');
-
-        // Disable the event listeners
-        popperInstance.setOptions((options) => ({
-          ...options,
-          modifiers: [
-            ...options.modifiers,
-            { name: 'eventListeners', enabled: false },
-          ],
-        }));
-      }
-
-      const showEvents = ['mouseenter', 'focus'];
-      const hideEvents = ['mouseleave', 'blur'];
-
-      showEvents.forEach((event) => {
-        button.addEventListener(event, show);
-      });
-
-      hideEvents.forEach((event) => {
-        button.addEventListener(event, hide);
-      });
-
-
-
-
-
-      $('#mytext').popover();
-$('#name').popover();
+var StockLocation = $.fn.dataTable.absoluteOrder( 
+  [{ value: 'Stock Location', position: 'top' },
+  { value: 'ETA Date', position: 'top' } ]);
+   
