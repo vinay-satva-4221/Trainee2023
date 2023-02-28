@@ -1,31 +1,3 @@
-$(document).ready(function () {
-  $('#myfrm').validate({
-    errorClass: 'error',
-    rules: {
-      email: {
-        required: true,
-      },
-      password: {
-        required: true,
-        minlength: 5
-      }
-    },
-    messages: {
-      email: {
-        required: "Please enter your email",
-      },
-      password: {
-        required: "Please enter your password",
-        minlength: "minimum 5 alphabet required"
-      }
-    },
-    // submitHandler: function (form) {
-    //     form.submit();
-    // }
-  });
-});
-
-
 const data = [
 
   { email: "admin@gmail.com", password: "admin1", name: "Mahediali", },
@@ -35,54 +7,50 @@ const data = [
 
 localStorage.setItem("details", JSON.stringify(data));
 
-function add() {
-  debugger;
-  if ($("#myfrm").valid() == true) {
+function LoginPage() {
+  var validator = $("#loginform").validate({
+    rules: {
+      email: {
+        required: true,
+        email: true,
+      },
+      password: {
+        required: true,
+        minlength: 6,
+      },
+    },
+    messages: {
+      email: {
+        required: "Please enter your email address.",
+        email: "Please enter a valid email address.",
+      },
+      password: {
+        required: "Please enter your password.",
+        minlength: "minimum 6 alphabet required",
+      },
+    },
+  });
 
-    var email = document.getElementById("email").value;
-    var checkEmail = email.toLowerCase();
-    var password = document.getElementById("password").value;
-    var checkPass = password.toLowerCase();
+  if (validator.form()) {
+    var email = $("#email").val().toLowerCase();
+    var password = $("#password").val().toLowerCase();
+    var loggUser = [];
+    var userDetails = {};
 
-
-    var loggUser;
-    if (localStorage.getItem("loggUser") == null) {
-      loggUser = [];
-    }
-    else {
-      loggUser = JSON.parse(localStorage.getItem("loggUser"));
-      if ((checkEmail == data[0].email && checkPass == data[0].password)) {
-        loggUser.push({
-          email: checkEmail,
-          name: data[0].name,
-        });
-        window.location.replace("Dashboard.html");
-      }
-      else if ((checkEmail == data[1].email && checkPass == data[1].password)) {
-        loggUser.push({
-          email: checkEmail,
-          name: data[1].name,
-        });
+    for (var i = 0; i < data.length; i++) {
+      if (email === data[i].email && password === data[i].password) {
+        userDetails.email = email;
+        userDetails.name = data[i].name;
+        loggUser.push(userDetails);
         localStorage.setItem("loggUser", JSON.stringify(loggUser));
-
         window.location.replace("Dashboard.html");
-      }
-
-      else if ((checkEmail == data[2].email && checkPass == data[2].password)) {
-        loggUser.push({
-          email: checkEmail,
-          name: data[2].name,
-        });
-        localStorage.setItem("loggUser", JSON.stringify(loggUser));
-
-        window.location.replace("Dashboard.html");
-      }
-      else {
-          document.getElementById("EMAIL").innerHTML = "Enter Correct email*"
-          document.getElementById("PASSWORD").innerHTML = "Enter Correct password*"
+        break;
       }
     }
-    localStorage.setItem("loggUser", JSON.stringify(loggUser));
-
+    if (loggUser.length === 0) {
+      // $("#EMAIL").html("Enter Correct email*");
+      // $("#PASSWORD").html("Enter Correct password*");
+      swal("Error", "Enter Correct email and password", "error");
+    }
   }
 }

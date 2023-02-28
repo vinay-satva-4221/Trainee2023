@@ -10,9 +10,10 @@ table{
    border-radius: 1.2em;
    overflow: hidden;
    background-color: white;
+   border: 1px solid black;
    
 }
-#example_length, #example_filter, #example_info {
+#Statustable_length, #Statustable_filter, #Statustable_info {
     display: none;
 }
 
@@ -96,7 +97,11 @@ table{
 .pagination {
     display: inline-block;
 }
-
+.pagination .page-item.active .page-link {
+    background-color: black;
+    border: black;
+    color: white;
+}
 .pagination a {
     color: black;
     float: left;
@@ -110,10 +115,43 @@ table{
     color: white;
     border: 1px solid black;
   }
-  #example.dataTable td.dt-control:before {
+  
+  #Statustable.dataTable td.dt-control:before {
     background-color: white;
     color: #1188FF;
     border-color: #1188FF;
+  }
+  #Statustable th.sorting.sorting_asc::before{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_asc::after{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_desc::after{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting.sorting_desc::before{
+   
+    margin-right: 15%;
+  }
+  #Statustable th.sorting::before{
+    margin-right: 15%;
+  }
+  #Statustable th.sorting::after{
+    margin-right: 15%;
+  }
+/* 
+  table.dataTable td.dt-control {
+    text-align: start !important;
+    color: rgb(95, 159, 248);
+    padding-right: 3px;
+  } */
+  
+  input[type=checkbox]:checked {
+    accent-color: green;
   }
 
 
