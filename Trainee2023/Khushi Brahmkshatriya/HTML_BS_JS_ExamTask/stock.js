@@ -48,7 +48,7 @@ $(document).ready(function () {
             }
             return dynamicChildRow;
         }
-        let localData = localStorage.getItem('NewPartNumber');
+        let localData = localStorage.getItem('stockandparts');
         let localArray = JSON.parse(localData);
         console.log(localArray);
         //var dataSet = localArray.push(...loggedData)
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
 
         });
-        $('#myCustomSearchBox').keyup(function () {
+        $('#txtSearch').keyup(function () {
             table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
         })
         $("#stocktable tbody").on("click", "td.dt-control", function () {
@@ -277,7 +277,7 @@ $(document).ready(function () {
         var createdBy = loginData.find(
             x => x.UserName);
 
-        let localData = localStorage.getItem('NewPartNumber');
+        let localData = localStorage.getItem('stockandparts');
         console.log($("input[name='btnradio']:checked").val());
         if (localData) {
             let localArray = JSON.parse(localData);
@@ -293,7 +293,7 @@ $(document).ready(function () {
             };
 
             localArray.push(obj);
-            localStorage.setItem('NewPartNumber', JSON.stringify(localArray));
+            localStorage.setItem('stockandparts', JSON.stringify(localArray));
             // loadDataFromLocal();
             table.row.add(obj).draw();
         }
@@ -308,7 +308,7 @@ $(document).ready(function () {
                 Parts: PartData,
             };
             arryObj.push(obj);
-            maxId = localStorage.setItem('NewPartNumber', JSON.stringify(arryObj));
+            maxId = localStorage.setItem('stockandparts', JSON.stringify(arryObj));
             table.row.add(obj).draw();
         }
     }
