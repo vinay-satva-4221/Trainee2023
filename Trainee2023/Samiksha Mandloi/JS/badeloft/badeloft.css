@@ -23,13 +23,13 @@ ul li .underline {
 }
 
 ul li.active-link .underline {
-    width: 100%;
+    width: 70%;
     background-color: rgb(22, 18, 18);
 }
 
 ul li:hover .underline {
     background-color: rgb(17, 10, 10);
-    width: 100%;
+    width: 60%;
 }
 
 ul li:active a {
@@ -75,6 +75,22 @@ ul li {
  .navbar-nav{
     margin-left: 175px;
  }
+ /* .has-search {
+    display: none;
+} */
+
+.dashboadr-table_filter {
+    margin-bottom: 2%;
+}
+
+/* .sorting_asc{
+            margin-right: 300px;
+        } */
+
+.tabs {
+    margin-left: 10%;
+}
+
 
 
 
