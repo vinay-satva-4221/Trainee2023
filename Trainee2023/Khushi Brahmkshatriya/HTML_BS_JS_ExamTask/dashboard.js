@@ -17,11 +17,12 @@ $(document).ready(function () {
   else {
     window.location.replace("./login.html");
   }
-  var table = $("#example").DataTable({
+  var table = $("#dashboardTable").DataTable({
     data: dataSet,
     "order": [],
     "dom": 'rtip',
     language: {
+      "info": "Items _START_ to _END_ of _TOTAL_ total",
       paginate: {
         next: '&#62',
         previous: '&#60'
@@ -39,11 +40,11 @@ $(document).ready(function () {
     }],
     columns: [
       { title: "Part Number" },
-      { title: "In Warehouse" },
-      { title: "Available" },
-      { title: "C100" },
-      { title: "C101" },
-      { title: "C102" },
+      { title: "In Warehouse",className:'text-center' },
+      { title: "Available",className:'text-center' },
+      { title: "C100",className:'text-center' },
+      { title: "C101",className:'text-center' },
+      { title: "C102",className:'text-center' },
     ],
   });
   $('#myCustomSearchBox').keyup(function () {
