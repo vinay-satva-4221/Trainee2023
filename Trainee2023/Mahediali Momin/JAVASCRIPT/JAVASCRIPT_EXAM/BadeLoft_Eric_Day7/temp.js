@@ -1,3 +1,10 @@
+window.onload = () => {
+    if (localStorage.getItem("loggUser") == null) {
+        
+      window.location.replace("LoginPage.html");
+    }
+  }
+
 $(document).ready(function () {
 
     $("#addbutton").click(function () {
@@ -17,12 +24,12 @@ $(document).ready(function () {
         $('#stock-table tbody').empty();
     });
 
-    const logoutButton = document.getElementById('logout-btn');
-    logoutButton.addEventListener('click', function (event) {
-        event.preventDefault();
-        localStorage.removeItem('loggedInUser');
-        window.location.href = 'BadeloftLoginPage.html';
-    });
+    // const logoutButton = document.getElementById('logout-btn');
+    // logoutButton.addEventListener('click', function (event) {
+    //     event.preventDefault();
+    //     localStorage.removeItem('loggedInUser');
+    //     window.location.href = 'BadeloftLoginPage.html';
+    // });
 
 
 
@@ -44,7 +51,7 @@ $(document).ready(function () {
         ],
         order: [[1, 'asc']],
     });
-    var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+    var activeuser = JSON.parse(localStorage.getItem("loggUser"));
 
     $("#active").html(activeuser.name);
 
@@ -92,7 +99,7 @@ $(document).ready(function () {
         var stocklocation = $('input[name="btnradio"]:checked').next('label').text();
         var notes = $('#notes').val();
 
-        var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
+        var activeuser = JSON.parse(localStorage.getItem("loggUser"));
         var username = activeuser;
         var currentDate = new Date();
 
@@ -174,4 +181,11 @@ $(document).ready(function () {
 
         return table;
     }
+    var user = JSON.parse(localStorage.getItem("loggUser"));
+    console.log("user",user);
+    $("#Uname").html(user[0].name);
 });
+function logout() {
+    window.location.replace("LoginPage.html");
+    localStorage.clear();
+}

@@ -1,16 +1,11 @@
-/* .navbar_list{
-    padding-left: 300px;
-} */
-.dataTables_length,.DataTables_info{
+
+.dataTables_length,.dataTables_info{
   display: none;
 }
-#example_filter,#example_info,#example_paginate{
+#example_filter{
   display: none;
 }
-/* .img_round{
-  height: 70%;
-  width: 37%;
-} */
+
 .logout{
   color: rgb(150, 147, 143);;
 }
@@ -43,8 +38,8 @@
 
   }
   .pagination a:hover:not(.active) {background-color: #ddd;}
-@media screen and (max-width: 574px) {
+/* @media screen and (max-width: 574px) {
     .navbar_list {
        padding-left: 0px;
       }
-  }
+  } */

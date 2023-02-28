@@ -1,93 +1,103 @@
 .parent {
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    width: 50%;
-  }
-  
-  .image1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width:700px;
-    height:700px;
-
-  }
-  
-  .image2 {
-    position: absolute;
-    top: 280px;
-    left: 150px;
-  }
-  .head_login{
-    top: 500px;
-  }
- .parentright{
-    /* position: fixed; */
-    margin-top: 8%;
-    margin-left: 60%;
-
- }
- #login_form{
-    margin: 10%;
- }
- .container{
-    position: fixed;
- }
- .lg1{
-    background-color: #326C96;
- }
-
- @media only screen and (max-width: 1200px) {
-   .parent {
-     display: none;
-   }
-   .parentright{
-      margin-left: 0;
-   }
- }
- 
- @media only screen and (max-width: 700px) {
-  
-  .parentright{
-     margin-right: 15%;
-  }
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 50%;
 }
-li{
- size: 19px;
- margin: 10px;
+
+.image1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 700px;
 
 }
-.navbar a.active{
+
+.image2 {
+  position: absolute;
+  top: 280px;
+  left: 150px;
+}
+
+.head_login {
+  top: 500px;
+}
+
+.parentright {
+  /* position: fixed; */
+  margin-top: 1%;
+  margin-left: 57%;
+
+}
+
+#login_form {
+  margin: 10%;
+}
+
+.container {
+  position: fixed;
+}
+
+.lg1 {
+  background-color: #326C96;
+}
+
+@media only screen and (max-width: 1200px) {
+  .parent {
+    display: none;
+  }
+
+  .parentright {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .parentright {
+    margin-right: 15%;
+  }
+}
+
+li {
+  size: 19px;
+  margin: 10px;
+
+}
+
+.navbar a.active {
   border-bottom: 3px solid #000000;
-  
+
 }
-.hr{
+
+.hr {
   border-bottom: 2px solid #175480;
   width: 6%;
   margin-left: 2%;
 
 }
 
-.msgerror{
+.msgerror {
   color: red;
 }
 
-.status{
-    width: 80px;
-    height: 30px;
-    padding: 0;
-    margin: 0;
+.status {
+  width: 80px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
 
 }
 
 .modal:nth-of-type(even) {
   z-index: 1052 !important;
 }
+
 .modal-backdrop.show:nth-of-type(even) {
   z-index: 1051 !important;
 }
-  
+
 /* plus button in table expand */
 table.dataTable td.dt-control:before {
   height: 1em;
@@ -100,15 +110,28 @@ table.dataTable td.dt-control:before {
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
-  font-family: "Courier New",Courier,monospace;
+  font-family: "Courier New", Courier, monospace;
   line-height: 1em;
   content: "+";
   background-color: white;
 }
+
 table.dataTable tr.dt-hasChild td.dt-control:before {
   content: "-";
   background-color: white;
   border: 0.15em solid #326C96;
   color: #326C96;
 
+}
+/* 
+.round{
+  border-radius: 15px 50px 30px 5px;
+} */
+table{
+  border-collapse: collapse;
+  border-radius: 10px; 
+  overflow: hidden;
+}
+.toolbar {
+  float: left;
 }
