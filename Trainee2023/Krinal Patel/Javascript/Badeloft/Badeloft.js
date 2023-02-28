@@ -33,7 +33,7 @@ function validatecheck() {
 
 
   debugger;
-  if (email == emailC1 && password == passwordC1) {
+  if (email.toLowerCase() == emailC1 && password == passwordC1) {
     console.log("Log in");
 
     var userObj = {
@@ -48,7 +48,7 @@ function validatecheck() {
 
     window.location.replace("Dashboard.html")
 
-  } else if (email == emailC2 && password == passwordC2) {
+  } else if (email.toLowerCase() == emailC2 && password == passwordC2) {
     window.location.replace("Dashboard.html")
     var userObj = {
       email: email,
@@ -59,7 +59,7 @@ function validatecheck() {
     user.push(userObj);
 
     localStorage.setItem('LoginDetails', JSON.stringify(user));
-  } else if (email == emailC3 && password == passwordC3) {
+  } else if (email.toLowerCase() == emailC3 && password == passwordC3) {
     window.location.replace("Dashboard.html")
     var userObj = {
       email: email,
@@ -71,7 +71,7 @@ function validatecheck() {
     user.push(userObj);
 
     localStorage.setItem('LoginDetails', JSON.stringify(user));
-  } else if (email == emailC4 && password == passwordC4) {
+  } else if (email.toLowerCase() == emailC4 && password == passwordC4) {
     window.location.replace("Dashboard.html")
     var userObj = {
       email: email,
