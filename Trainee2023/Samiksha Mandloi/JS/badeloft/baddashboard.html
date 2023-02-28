@@ -6,115 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: lightgray;
-        }
-
-        h3 {
-            float: left;
-        }
-
-        /* .even{
-            display: none;
-        } */
-
-        table {
-            border-collapse: separate;
-            border: solid black 1px;
-            border-radius: 25px;
-        }
-
-        .form-input {
-
-            height: auto;
-            text-indent: 33px;
-            border-radius: 10px;
-            float: right;
-        }
-
-        #dashboadr-table_length {
-            margin: 10px;
-        }
-
-        .dataTables_filter {
-            margin: 10px;
-        }
-
-        .usimg {
-            height: 40px;
-            display: none;
-            /* float: right; */
-        }
-
-        .table {
-            border-radius: 25px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        .has-search {
-            display: none;
-        }
-
-        .dashboadr-table_filter {
-            margin-bottom: 2%;
-        }
-        .sorting_asc{
-            margin-right: 300px;
-        }
-
-        .tabs {
-            margin-left: 10%;
-        }
-        .reorder{
-          margin-right: 300px;
-          width: 76px;
-        }
-
-        /* img {
-    height: 50px;
-    margin-left: 60%;
-} */
-
-        /* .form-input:focus{
-
-box-shadow: none;
-border:none;
-} */
-        /* .container-fluid{
-    background-color: grey;
-} */
-    </style>
-
+    
     <head>
-
+        <link rel="stylesheet" type="text/css" href="./dashboard.css">
+        <!-- Bootstrap Links -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
             integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
             crossorigin="anonymous"></script>
+            <!-- fontAwesome linnks -->
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
             rel="stylesheet">
-
-
-
-
+         <!-- Datatable Links -->
         <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
-        <link href="./badeloft.css" rel="stylesheet" />
+        <link href="./badeloft.css" rel="stylesheet" type="text/css" />
+       
 
     </head>
 
@@ -146,20 +60,20 @@ border:none;
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">Assignment</a>
+                                <a href="Assignment.html">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
                     </div>
-                    <div class="navbarProfile d-flex m-3">
-                        <div me-3>
+                    <div class="navbarProfile d-flex " style="margin-left: 130px;">
+                        <div >
                             <img src="images/userimg1.jpg" alt="Profile Image" id="userimg1" style="height: 40px;">
                         </div>
-                        <div class="ms-2">
+                        <div>
                             <!-- <small id="para">Welcome</small><br>
                             <span id="username">Abc</span> -->
                             <span id="user"></span>
-                            <button type="button" class="btn btn-light" onclick="logout()">
+                            <button type="button" class="btn btn-light" onclick="logout()" style="margin-left: 15px;">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -175,22 +89,11 @@ border:none;
 
     <div class="container-fluid bg-light">
 
-        <!-- <div class=""> -->
-        <!-- <h3 class="">Stock</h3> -->
-        <!-- <div class="main">
-                <div class="form-group has-search ">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search" />
-                </div>
-            </div> -->
-
-
-        <!-- </form> -->
-        <!-- </div> -->
-
+        
+       
         <div class="table-responsive w-100">
             <table class="table table-striped " style="width:100%; " id="dashboadr-table">
-                <thead class=" table text-light bg-dark" style="border-radius: 50%;">
+                <thead class=" table text-light bg-dark">
                     <tr>
                         <th scope="col" class="reorder" >PartNumber</th>
                         <th scope="col">InWarehouse</th>
@@ -198,7 +101,7 @@ border:none;
                         <th scope="col">C100</th>
                         <th scope="col">C101</th>
 
-                        <th scope="col">C102</th>
+                        <th scope="col" style=" border-top-right-radius: 15px;">C102</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider bg-light">
@@ -287,7 +190,13 @@ border:none;
         </div>
     </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- datatables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
@@ -298,7 +207,7 @@ border:none;
     <script>
         var loginUser = JSON.parse(localStorage.getItem('loginuser'));
         var username = loginUser.name;
-        document.getElementById("user").innerHTML = username;
+        document.getElementById("user").innerHTML ="<b>"+ username+ "</b>";
         var StockLocation = $.fn.dataTable.absoluteOrder(
                 [{ value: 'Stock Location', position: 'top' },
                 { value: 'ETA Date', position: 'top' }]);
@@ -309,6 +218,7 @@ border:none;
         }
 
         $(document).ready(function () {
+            $('[data-bs-toggle="popover"]').popover();
 
             $('#dashboadr-table').DataTable({
                 columnDefs: [
