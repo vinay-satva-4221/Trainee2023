@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+           
+
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script> 
+        <!-- fontawesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
+            rel="stylesheet">
+        <link href="./stock.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+    </head>
+<body>
+    <div class="container-fluid ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <div class="container">
+                <img src="02.png" alt="" srcset="" id="badeloftlogo">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <div class="tabs ms-auto pe-5" id="navlinks">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-link active-link">
+                                <a href="./dashboard.html" style="text-decoration: none;">Dashboard
+                                </a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link">
+                                <a href="./stock.html" style="text-decoration: none;">Stock</a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link">
+                                <a href="./status.html" style="text-decoration: none;">Status</a>
+                                <div class="underline"></div>
+                            </li>
+                            <li class="nav-link">
+                                <a href="assignment.html" style="text-decoration: none;">Assignment</a>
+                                <div class="underline"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbarProfile d-flex m-3">
+                        <div me-3>
+                          
+                        </div>
+                        <div class="ms-2">
+                            <!-- <small id="para">Welcome</small><br>
+                            <span id="username">Abc</span> -->
+                            <span><img src="person1.jfif" class="rounded-circle" height="25"></span>
+                            <span id="user"></span>
+                            <button type="button" class="btn btn-light" onclick="logout()">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h3 class="">Assignment</h3>
+        <a data-toggle="modal" href="#myModal" class="btn btn-light mt-2"
+        style="background-color:#326C96 ; color:white;margin-left: 600px;">+ New</a>
+        </button>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Stock</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <form>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                           
+                                            <label for="category">Choose Customer</label>
+                                            <select name="category" class="form-select" id="category">
+                                                <option value="">Choose Customer</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="subcategory">QuickBooks Invoice #</label>
+                                            <select name="subcategory"  class="form-select" id="subcategory">
+                                                <option value="">Select Invoice</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   <div class="mt-4"><strong>Add Stock</strong></div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label for="">Stock</label>
+                                            <select  class="form-select" id="stock">
+                                                <option value="">Select Invoice</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Multiple Select2</label>
+                                            <select id="multiple" class="js-states form-control" multiple>
+                                                <option>Java</option>
+                                                <option>Javascript</option>
+                                                <option>PHP</option>
+                                                <option>Visual Basic</option>
+                                            </select>  
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn mt-4"  style="background-color:#326C96 ; color:white;" id="btnadd">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-5">
+                    <button type="button" class="btn btn-outline-dark" onclick="addStock()">Save</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>     
+        </div>
+    </div> 
+<div class="table-responsive">
+    <table id="example" class="display" style="width:100%">
+        <thead class="table-dark">
+            <tr>
+                <th></th>
+                <th>QB Invoice #</th>
+                <th>Name</th>
+                <th>Created By</th>
+                <th>Created Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+
+
+
+    <div class="jumbotron">
+        <div class="container bg-danger">
+          <div class="col-md-6">
+            <label>Multiple Select2</label>
+            <select id="multiple" class="js-states form-control" multiple>
+              <option>Java</option>
+              <option>Javascript</option>
+              <option>PHP</option>
+              <option>Visual Basic</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+       <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="./assignment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#multiple").select2({
+            allowClear: true
+        });
+      </script>
+</body>
+
+</html>
