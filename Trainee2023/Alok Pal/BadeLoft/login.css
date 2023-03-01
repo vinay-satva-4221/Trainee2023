@@ -21,15 +21,16 @@ body {
     margin-left: -4.5%;
 }
 
-.logo1 {
+.badeloftlogo1 {
     margin-left: -1%;
-    width: 43%;
+    width: 44%;
 }
 
 .head {
     font-size: 14px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: bold;
+    opacity: 90%;
 }
 
 .formS {
@@ -63,16 +64,16 @@ body {
     color: rgb(39, 38, 38);
 }
 
-.btnLog{
-   width: 100%; 
-   height: 35px;
-   background-color: #326C96; 
-   color: white;
-   border: 1px solid white;
-   border-radius: 5px;
-   font-size: 12px;
-   font-weight: 400;
-   font-family: 'Noto Sans', sans-serif;
+.btnLog {
+    width: 100%;
+    height: 35px;
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .line {
@@ -82,15 +83,9 @@ body {
     opacity: 1;
     margin-top: 0%;
 }
-hr:not([size]) {
-    height: 2px;
-    background-color: #030568;
-}
-/* hr{
-    width: 30px;
-    size: 5;
-} */
-.star{
+
+
+.star {
     color: red;
 }
 
@@ -121,10 +116,3 @@ hr:not([size]) {
         margin-top: 23%;
     }
 }
-
-
-
-/* new */
-
-
-
