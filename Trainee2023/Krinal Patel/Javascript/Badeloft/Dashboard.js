@@ -32,13 +32,7 @@ $(document).ready(function () {
       lengthChange: false,  
       binfo: true,
       bFilter:true,
-      // scrollY:     300,
-      // scroller:    true,
-    //   fixedHeader:true,
-    //   fixedHeader: {
-    //     footer: true,
-    //     header:true,
-    // },
+ 
     columnDefs: [
       { targets: 0, type: StockLocation },
       { orderable: true, targets: 0 },
@@ -55,8 +49,8 @@ $(document).ready(function () {
             previous:"<",
             next:">",
           },
-          search: "",
 
+          search: "_INPUT_",
           searchPlaceholder: "Search here..."
 
         },

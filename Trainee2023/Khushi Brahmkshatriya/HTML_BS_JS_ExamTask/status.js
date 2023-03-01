@@ -94,7 +94,7 @@ $(document).ready(function () {
     order: [[1, "asc"]],
 
   });
-  $('#myCustomSearchBox').keyup(function () {
+  $('#txtSearch').keyup(function () {
     table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
   })
 

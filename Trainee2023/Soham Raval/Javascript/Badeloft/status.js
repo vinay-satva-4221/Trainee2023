@@ -1,7 +1,7 @@
 function format(d) {
     // `d` is the original data object for the row
     return (
-        '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+        '<table cellpadding="2" cellspacing="0" border="0" style="padding-left:50px;" class="w-100">' +
         '<tr>' +
         '<td>#</td>' +
         '<td>' +
@@ -9,6 +9,11 @@ function format(d) {
         '</td>' +
         '<td>' +
         "Stock Location" +
+        '</td>' +
+       
+      
+        '<td>' +
+        "Action" +
         '</td>' +
         '</tr>' +
         '<tr>' +
@@ -19,6 +24,9 @@ function format(d) {
         '<td>' +
         "Warehouse" +
         '</td>' +
+        '<td>' +
+        '<i class="fa fa-times"></i>' +
+        '</td>' +
         '</tr>' +
         '<tr>' +
         '<td>2</td>' +
@@ -28,6 +36,9 @@ function format(d) {
         '<td>' +
         "C-101" +
         '</td>' +
+        '<td>' +
+        '<i class="fa fa-times"></i>' +
+        '</td>' +
         '</tr>' +
         '<tr>' +
         '<td>3</td>' +
@@ -36,6 +47,9 @@ function format(d) {
         '</td>' +
         '<td>' +
         "E-501" +
+        '</td>' +
+        '<td>' +
+        '<i class="fa fa-times"></i>' +
         '</td>' +
         '</tr>' +
         '</table>'
@@ -53,7 +67,7 @@ var data1=[
          QBTracking:'WBC-123',
     },
     {
-        QBInvoice:'15000',
+        QBInvoice:'15001',
         name:'James Fenske',
         QBShipdate:'10/08/2021',
         QBShipaymentstatus:'<span class="alert alert-success p-0"><i class="bi bi-check"></i>Paid</span>',
@@ -63,7 +77,7 @@ var data1=[
          QBTracking:'WBC-124',
     },
     {
-        QBInvoice:'15000',
+        QBInvoice:'15002',
         name:'James Fenske',
         QBShipdate:'10/08/2021',
         QBShipaymentstatus:'<span class="alert alert-primary p-0"><i class="bi bi-check"></i>Paid</span>',
@@ -74,8 +88,10 @@ var data1=[
     },
 ]
 $(document).ready(function () {
-    var table = $('#example').DataTable({
+    var table = $('#status_table').DataTable({
         data:data1,
+        fnInitComplete: function () {
+            $('#status_table_length').html('<b><h3>&nbsp;Status</h3></b>');},
         columns: [
             {
                 className: 'dt-control',
@@ -85,9 +101,16 @@ $(document).ready(function () {
                 defaultContent: '',
             },
            
-            { data: 'QBInvoice' },
+            { data: 'QBInvoice',render:function(data,type,row){
+                if(type=='display'){
+                    return '<span style="color: blue;">' + data + '</span>';
+                }
+                else {
+                    return data;
+                }
+            }  },
             { data: 'name'  },
-            { data: 'QBShipdate' ,"sortable": false },
+            { data: 'QBShipdate' },
             // { data: 'QBShipaymentstatus' ,"sortable": false,render:function(){
             //     return '<div class="alert alert-primary styl m-0 p-0" role="alert">Paid</div>';
             // } },
@@ -105,6 +128,14 @@ $(document).ready(function () {
                 className: 'text-center'
             }
           ],
+          language:{
+            search: "_INPUT_",
+            searchPlaceholder: 'Search here',
+            paginate:{
+                previous:"<",
+                next:">"
+            },
+          },
       
         order: [[1, 'asc']],
     })
@@ -112,7 +143,7 @@ $(document).ready(function () {
         table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
     });
 
-    $('#example tbody').on('click', 'td.dt-control', function () {
+    $('#status_table tbody').on('click', 'td.dt-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
  
@@ -133,6 +164,6 @@ console.log("a",a);
 
 $("#Uname").html(a[0].Name);
 function logout() {
-    window.location="Badeloft.html"
+    window.location="Login.html"
     localStorage.clear();
 }

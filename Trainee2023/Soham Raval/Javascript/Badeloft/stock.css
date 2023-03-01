@@ -1,13 +1,19 @@
 
-/* #example_filter,#example_info,#example_paginate{
+#example_filter,#example_info,#example_paginate{
   display: none;
-} */
+}
 .dataTables_length,.dataTables_info{
   display: none;
 }
 #example_filter{
   display: none;
+} 
+/* .dataTables_length,.dataTables_info{
+  display: none;
 }
+#example_filter{
+  display: none;
+} */
 .img_round{
   height: 70%;
   width: 37%;
@@ -31,6 +37,13 @@ height:90% ;
   #savechange{
     background-color: #326C96;
   }
+  /* table{
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: white;
+  } */
 /* @media screen and (max-width: 574px) {
   
     .navbar_list {

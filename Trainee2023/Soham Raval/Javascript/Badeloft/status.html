@@ -16,7 +16,17 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <script src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script>
-</head>
+    <!-- <link rel="stylesheet" href="/Badeloft/status.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <script src="/bootstrap-5.3.0-alpha1-dist/Jquery/jquery-3.6.3.js"></script> -->
+</head> 
+
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
       <div class="container-fluid ">
@@ -64,18 +74,12 @@
     <div class="deshboard" style="background-color: #ebedf0;">
       <div class="container-fluid pt-2">
         <div class="row">
-          <div class="col-md-9">
-            <h4><strong>Status</strong></h4>
-          </div>
-          <div class="col-md-3">
-            <input type="search" class="form-control" id="CustomSearchBox" placeholder="search here">
-          </div>
         </div>
       </div>
       <div class="container-fluid ">
     <div class="table-responsive mt-4">
-        <table id="example" class="display" style="width:100%">
-          <thead class="maintable ">
+        <table id="status_table" class="display" style="width:100%" >
+          <thead class=" ">
             
               <tr>
                 <th></th>
@@ -87,17 +91,25 @@
                   <th>QBDeliveryPhone</th>
                   <th>Called</th>
                   <th>QBTracking</th>
-
               </tr>
           </thead>
       </table>
- 
     </div>
     </div>
     <script src="./status.js"></script>
-    <!-- <script src="/ https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script src="/ https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+
+<!--     
+    <script src="./status.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script> -->
 </body>
 </html>

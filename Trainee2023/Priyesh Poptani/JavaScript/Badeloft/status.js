@@ -23,11 +23,6 @@ function format(d) {
 
         '<th>Stock Location</th>' +
 
-        '<th></th>' +
-        '<th></th>' +
-        '<th></th>' +
-        '<th></th>' +
-        '<th></th>' +
         '<th>Action</th>' +
         '</tr>' +
 
@@ -64,18 +59,30 @@ function format(d) {
 }
 
 $(document).ready(function () {
-    var table = $('#example').DataTable({
+    var table = $('#statustable').DataTable({
         "dom": '<"toolbar">frtip',
         bFilter: true, bInfo: true,
         fnInitComplete: function(){
            $('div.toolbar').html(' <h4>Status</h4>');
+           
          },
 
         data:datalist,
+        language: {
+
+            info: "items _PAGE_ to _PAGES_ of _PAGES_ total ",
+            paginate:{
+                next:'&#62',
+                previous:'&#60'
+            },
+            searchPlaceholder: " Search here...",
+            search: '<i class="fa fa-search"></i> ',
+            
+        },
         columns: [
             {
                 
-                className: 'dt-control',
+                className: 'dt-control toHide',
 
                 orderable: false,
                 data: null,
@@ -83,19 +90,14 @@ $(document).ready(function () {
                 
             },
 
-           {title: 'QB Invoive#'},
-           {title: 'Name'},
-           {title: 'QB Ship date'},
-        //    {title: 'QB Payment status',orderable:false },
-           {title: 'QB Payment status' ,orderable:false ,render:function(){
-            return '<div class="alert alert-primary styl m-0 p-0" role="alert">Paid</div>';
-        } },
-        //    render: function (){'<div class="alert alert-primary" role="alert"> 1</div>'}},
-           {title: 'QB Status',orderable:false},
-           {title: 'QB Delivery Phone',orderable:false},
-           {title: 'QB Called',orderable:false,render: function (){
-            return '<input type="checkbox">' }},
-           {title: 'QB Tracking',orderable:false},
+           {title: 'QB Invoive#',className: "colSpan"},
+           { title: "Name" },
+      { title: "QB Ship date" },
+      { title: "QB Payment Status", orderable: false, },
+      { title: "QB Status", orderable: false, },
+      { title: "QB Delivery Phone", orderable: false, },
+      { title: "Called", orderable: false,className:'text-center' },
+      { title: "QB Tracking", orderable: false, },
 
         ],
         select:{
@@ -105,12 +107,15 @@ $(document).ready(function () {
         order: [[1, 'asc']],
 
 
-           
+        
 
     });
 
+    $('th.toHide').hide();
+    $('th.colSpan').attr("colspan", 2);
+
     // Add event listener for opening and closing details
-    $('#example tbody').on('click', 'td.dt-control', function () {
+    $('#statustable tbody').on('click', 'td.dt-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
 
@@ -128,32 +133,36 @@ $(document).ready(function () {
 
 
 });
-var datalist=[
-    ["","150000","Priyesh Poptani","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
-    ["","150001","Romil Shah","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
-    ["","150002","Hardik Rajput","12/08/2021","Paid","STD","321-258-2365","",""],
-    ["","150003","Jems Patel","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
+var datalist = [
+    // {
+    //   QB  : "150000",
+    //   Name : 'Keneth Woodard',
+    //   QB_Ship_date : '12/08/2021',
+    // }
+    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
 
-    ["","150004","Priyesh Poptani","12/08/2021","Paid","Shipped","321-258-2365","",""],
-    ["","150005","Romil Shahi","12/08/2021","Paid","STD","321-258-2365","","WBC-123"],
-    ["","150006","Hardik Rajput","12/08/2021","Paid","STD","321-258-2365","","WBC-123"],
-    ["","150007","Priyesh Poptani","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
+    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+    ["","150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
+    ["","150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
+    ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
+    ["","150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
+    ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+  
+  
+  ];
 
-    ["","150008","Priyesh Poptani","12/08/2021","Paid","STD","321-258-2365","","WBC-123"],
-    ["","150009","Romil Shah","12/08/2021","Paid","Shipped","321-258-2365","",""],
-    ["","1500010","Priyesh Poptani","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
-    ["","1500011","Hardik Rajput","12/08/2021","Paid","STD","321-258-2365","","WBC-123"],
-
-    ["","150007","Jems Patel","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"],
-    ["","150008","Hardik Rajput","12/08/2021","Paid","STD","321-258-2365","","WBC-123"],
-    ["","150006","Hardik Rajput","12/08/2021","Paid","Shipped","321-258-2365","",""],
-    ["","150001","Priyesh Poptani","12/08/2021","Paid","Shipped","321-258-2365","","WBC-123"]
-];
-
-$('#example tbody').on('change', 'input[type="checkbox"]', function(){
+$('#statustable tbody').on('change', 'input[type="checkbox"]', function(){
     // If checkbox is not checked
     if(!this.checked){
-       var el = $('#example-select-all').get(0);
+       var el = $('#statustable-select-all').get(0);
        // If "Select all" control is checked and has 'indeterminate' property
        if(el && el.checked && ('indeterminate' in el)){
           // Set visual state of "Select all" control
@@ -162,7 +171,8 @@ $('#example tbody').on('change', 'input[type="checkbox"]', function(){
        }
     }
  });
- table.$('input[type="checkbox"]').each(function(){
+//  table.$('input[type="checkbox"]').each(function(){
+$('input[type="checkbox"]').each(function(){
     // If checkbox doesn't exist in DOM
     if(!$.contains(document, this)){
        // If checkbox is checked

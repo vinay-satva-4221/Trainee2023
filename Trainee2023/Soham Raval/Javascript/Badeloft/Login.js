@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $(function () {
-    $("form[name='registration']").validate({
+    $("form[name='loginform']").validate({
       errorClass: 'msg',
       rules: {
         email: {
@@ -33,9 +33,9 @@ const data = [
   {email:"xyx2112@gmail.com",password:"98899111",name:"xyz",Image:"/Badeloft/Assets/6_image.jpg" },
 ];
 localStorage.setItem("staticdata",JSON.stringify(data));
-function adddata() {
+function loginpage() {
   debugger
-  if ($("#myform").valid() == true) {
+  if ($("#login_form").valid() == true) {
     var email = document.getElementById("email").value;
     var email1=email.toLowerCase();
     var password = document.getElementById("password").value;
@@ -92,7 +92,7 @@ function adddata() {
         localStorage.setItem("details",JSON.stringify(details));
         // console.log("person3",email);
 
-        window.location.replace("Dashboard.html");
+        window.location.replace("Login.html");
       }
 
       else {
