@@ -21,6 +21,8 @@ function logout() {
   localStorage.clear();
 }
 
+
+
 // Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
@@ -70,23 +72,50 @@ $(document).ready(function () {
     $("#innermodal").modal("show");
   });
 
-  var add = $("#addstock").val();
-  
+  // var modal = document.getElementById("FirstModal");
+  // var table = $('#stock').DataTable({
+  //   "dom": '<"toolbar">frtip',
+  //   bFilter: true,
+  //   bInfo: true,
+  //   responsive: true, // enable child rows
+  //   fnInitComplete: function() {
+  //     $('div.toolbar').html('<h2>Stock</h2>');
+  //     $('#stock_filter').prepend(modal);
+  //   },
+
+
+
+  var modal = document.getElementById("addstock");
+  console.log(modal)
    stockDetails = JSON.parse(localStorage.getItem("stockList"));
 console.log(stockDetails)
+
   tableData = $('#stock').DataTable({
+    orderable:false,
     data: stockDetails ,
     lengthChange: false,
-    dom: '<"toolbar">frtip',
     bFilter:true,
     bInfo:false,
+    
+    dom: '<"toolbar">frtip',
     fnInitComplete: function () {
       $('div.toolbar').html('<b><h3>&nbsp;Stock</h3></b>');
-      $("div.toolbar").prepend(add);
-        },    
-    info: false,
-    paging: false,
-   
+      $('#stock_filter').prepend(modal);
+        },  
+    
+        language: {
+          info: "Items _START_ to _END_ of _TOTAL_ total",
+          paginate:{
+            previous:"<",
+            next:">",
+          },
+          search: "",
+
+          searchPlaceholder: "Search here..."
+        },  
+    info: true,
+    paging: true,
+   ordering:false,
     columns: [
       {
     
@@ -100,7 +129,14 @@ console.log(stockDetails)
         data:"sname",
         title: 'Stock Name',
         orderable: false,
-        className: "text-center"
+          render:function(data,type,row){
+          if(type=='display'){
+              return '<span style="color: #1188FF;">' + data + '</span>';
+          }
+          else {
+              return data;
+          }
+      }
       },
       {
         data:"etadate",
@@ -137,16 +173,13 @@ console.log(stockDetails)
         title: 'Action',
         orderable: false,
         defaultContent: '<div class="action-buttons">' +
-                    '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
-                    '<span class="remove"><i class="fa fa-trash"></i></span> ' +
-                    '<span class="cancel"></span>' +
+                    '<span class="edit"><i class="fas fa-pen"></i></span> ' +
+                    '<span class="history">&nbsp;&nbsp;<i class="fas fa-history"></i></span> ' +
                     '</div>',
         className: 'row-edit dt-center',
       }
-    ],
-    order: [
-      [1, 'asc']
-    ],
+    ]
+  
   });
 
   // Add event listener for opening and closing details
@@ -173,7 +206,6 @@ function addpartData() {
   var notes = document.getElementById("notes").value
 
   if (partDetails == null) {
-
     partDetails = [];
   }
   // var sd = JSON.parse(localStorage.getItem('stockDetails'));
@@ -184,6 +216,7 @@ function addpartData() {
   }
   index = stockDetails.length;
   index++;
+
   partDetails.push({
     index: index,
     partno: partno,
@@ -317,3 +350,81 @@ function addstockdata() {
   localStorage.setItem("stockList", JSON.stringify(stockDetails));
 
 }
+
+
+
+
+$.validator.addMethod("namecheck", function (value) {
+  return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value);
+});
+$.validator.addMethod("password", function (value) {
+  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
+});
+// $("#checkConfirmPass").css("color", "red");
+
+
+
+$("#AddStockForm").validate({
+
+
+  errorClass: 'msgerror',
+  rules: {
+    sname: {
+      required: true,
+      namecheck: true,
+    },
+    etadate: {
+      required: true,
+    },
+    partno:{
+      required:true,
+    }
+  },
+  messages: {
+    sname: {
+      required: "Enter Stock name",
+      namecheck: "Enter valid Stock name",
+    },
+    partno:{
+      required: "Enter Part number"
+    },
+    etadate: {
+      required: "Enter ETA date"
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+});
+
+$("#AddPartForm").validate({
+  
+  errorClass: 'msgerror',
+  rules: {
+    
+    partno:{
+      required:true,
+    },
+    ordered:{
+      required:true,
+    },
+    notes:{
+      required:true,
+    }
+  },
+  messages: {
+    
+    partno:{
+      required: "Enter Part number",
+    },
+    ordered:{
+      required: "Enter number of ordered parts",
+    },
+    notes:{
+      required:"Enter notes",
+    }
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+})

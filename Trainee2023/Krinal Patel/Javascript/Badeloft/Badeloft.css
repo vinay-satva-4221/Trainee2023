@@ -67,7 +67,9 @@ li {
 }
 
 .navbar a.active {
+  padding-bottom: 30px;
   border-bottom: 3px solid #000000;
+  
 
 }
 
@@ -129,9 +131,81 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
 } */
 table{
   border-collapse: collapse;
-  border-radius: 10px; 
+  border-radius: 10px !important; 
   overflow: hidden;
+  table-layout: relative; 
+  width: 100% !important;
+  
 }
 .toolbar {
   float: left;
+}
+/* .page-item.active .page-link{
+  background-color: #000000;
+  border-color: #000000;
+}
+.page-item .page-link{
+  background-color: #000000;
+  border-color: #000000;
+  color: white;
+} */
+
+.page-item.active .page-link {
+  background-color: black !important;
+  border-color: black !important;
+  color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+.page-link{
+  color: #000000;
+}
+
+
+
+
+/* pagination and info css */
+.pagination{
+  float: right !important;
+  margin-right: -270px !important;
+  margin-top: 20px !important;
+  
+}
+
+.dataTables_info{
+  float: right !important;
+  margin-right: 80px !important;
+  padding-right: 37px !important;
+  margin-top: 17px !important;
+  color: #3F4D65;
+  font-size: 14px;
+  font-family: system-ui;
+}
+
+  
+/* space between table and stock label */ 
+.dataTables_filter{
+  margin-bottom: 28px !important;
+}
+
+/* checkboxes css */
+
+input[type=checkbox]:checked {
+  accent-color: green;
+}
+
+.edit,.history{
+  color:#878585;
 }

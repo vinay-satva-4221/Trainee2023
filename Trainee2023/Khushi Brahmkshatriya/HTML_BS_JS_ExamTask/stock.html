@@ -65,10 +65,10 @@
 
                                 </div>
                                 <div class="col-md-12 mt-2">
-                                    <lable for="partNum" class="form-label text-secondary fw-light"
+                                    <button type="button" for="partNum" class=" bg-white border-0  text-secondary fw-light text-start"
                                         data-bs-toggle="modal" data-bs-target="#PartModal" id="partnum">
                                         <i class="bi bi-plus-circle"></i> Add Part Number
-                                    </lable>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -81,7 +81,7 @@
                     <div class="modal-footer justify-content-start">
 
                         <button type="button" class="btn buttonColor text-white" data-bs-dismiss="modal" id="saveStock">Save</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="modal-footer justify-content-start">
                         <button type="button" data-bs-dismiss="modal" class="btn buttonColor text-white" id="AddNewSNum">Save</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
 
                     </div>
                 </div>
@@ -137,7 +137,7 @@
 
                         <div id="example_filter" class="dataTables_filter  px-3">
                             <input class="form-control" type="search" placeholder="&#xF002; Search Here" aria-label="Search"
-                            id="myCustomSearchBox" style="font-family:Arial, FontAwesome" >
+                            id="txtSearch" style="font-family:Arial, FontAwesome" >
                         </div>
                     </div>
                 </div>

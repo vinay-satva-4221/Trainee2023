@@ -34,7 +34,7 @@
                             <a href="Dashboard.html" class="nav-item nav-link fw-bold  mx-3 active">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Stock.html" class="nav-item nav-link mx-3">Stock</a>
+                            <a href="stock1.html" class="nav-item nav-link mx-3">Stock</a>
                         </li>
                         <li class="nav-item">
                             <a href="Status.html" class="nav-item nav-link mx-3">Status</a>
@@ -43,7 +43,7 @@
                             <a href="Assignment.html" class="nav-item nav-link mx-3">Assignment</a>
                         </li>
                     </ul>
-                    <ul class="d-flex list-unstyled ">
+                    <ul class="d-flex list-unstyled">
 
                         <li class="nav-item"><a href="./LoginPage.html" class="nav-item textColor nav-link">
                                 <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img"
@@ -55,7 +55,7 @@
                             <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
                         </li>
                         <li>
-                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" onclick="logout()" id="logout"></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket" onclick="logout()" id="logout"></i>
                         </li>
                     </ul>
                 </div>
@@ -64,15 +64,15 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9 mt-4">
+            <!-- <div class="col-md-9 mt-4">
                 <h5><strong>Dashboard</strong></h5>
-            </div>
-            <div class="col-md-3 mt-3">
+            </div> -->
+            <!-- <div class="col-md-3 mt-3">
                 <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
-            </div>
+            </div> -->
         </div>
         <div class="table-responsive mt-2">
-            <table id="example" class="table rounded" style="width: 100%;">
+            <table id="dashboardtable" class="table rounded" style="width: 100%;">
                 <thead class="maintable">
                 </thead>
                 <tbody>
@@ -93,11 +93,13 @@
 
 
     <script src="./Dashboard.js"></script>
+   
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
 
 </body>
 
