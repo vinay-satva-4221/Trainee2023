@@ -14,11 +14,12 @@
       #loginbtn{
         background-color: #326c96;
       }
-      .style1{
-        width: 50px;
-        height: 5px;
-        color: #326c96;
-      }
+      .style1 {
+        width: 5%;
+        border: 1px solid#326C96;
+        background-color: #326C96;
+        opacity: 1;
+    }
       .msg{
         color: red;
       }
