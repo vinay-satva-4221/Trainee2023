@@ -1,6 +1,14 @@
 #table_id_length{
     display: none;
 }
+
+.table {
+    width: 100%;
+    border:solid grey 1px;
+   
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 .container-fluid {
     width: 100%;
    
@@ -8,42 +16,28 @@
     margin-left: auto;
 }
 
-ul li a {
-    color: #110d0d;
-    text-decoration: none;
-    display: inline-block;
-    padding: 5px;
-    transition: color 0.5s;
-}
-
-ul li .underline {
+.navbar-nav .nav-link {
+    position: relative;
+ }
+ 
+ .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
     height: 2px;
-    background-color: transparent;
-    width: 0%;
-    transition: width 0.2s, background-color 0.5s;
-    margin: 0 auto;
-}
-
-ul li.active-link .underline {
-    width: 100%;
-    background-color: rgb(22, 18, 18);
-}
-
-ul li:active a {
-    transition: none;
-    color: rgba(255, 254, 254, 0.76);
-}
-
-ul li:active .underline {
-    transition: none;
-    background-color: rgba(247, 241, 241, 0.76);
-}
-
-ul li {
-    display: inline-block;
-    font-size: 16px;
-}
-
+    bottom: -22px;
+    left: 32px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    /* transition: all 0.3s ease-in-out 0s; */
+ }
+ 
+ .navbar-nav .nav-link.active::before
+ {
+    visibility: visible;
+    transform: scaleX(1);
+ }
 h3 {
     float: left;
 }
@@ -70,8 +64,48 @@ h3 {
     background-color: #F7F8FA;
 }
 body {
-    font-family: Myriad Pro;
     background-color: #F7F8FA;
  }
  
+  /* search box */
+  .has-search .form-control {
+    padding-left: 2.375rem;
+    padding-block-end: inherit;
+ }
+ 
+ .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+ }
+ 
+ .main {
+    width: 30%;
+   float: right;
+   margin-top: 10px;
+ }
+ 
+ .heading{
+    font-weight: 600;
+    font-size: 154%;
+ }
 
+ .dataTables_info{
+    margin-left: 77%;
+  }
+
+  .sorting_1{
+    color: #1188FF;
+  }
+
+  #example.dataTable td.dt-control:before {
+    background-color: white;
+    color: grey;
+    border-color: grey;
+  }
