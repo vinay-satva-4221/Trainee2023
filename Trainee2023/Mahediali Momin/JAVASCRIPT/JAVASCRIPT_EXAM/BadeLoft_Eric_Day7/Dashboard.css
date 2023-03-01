@@ -128,8 +128,6 @@ a:link {
     transform: scaleX(1);
 }
 
-
-
 #logout {
     color: rgb(150, 147, 143);
     margin-top: 30px;
@@ -208,10 +206,41 @@ a:link {
     border: 1px solid black;
 }
 
-#dashboardtable_paginate {
+/* #dashboardtable_paginate {
     border: 1px solid rgb(172, 172, 172);
     padding: 0px;
     margin-top: 10px;
     background-color: white;
     color: #000;
-}
+} */
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+  
+  }
+  li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+  }
+  li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+  }
+  /* span a.paginate_button.current{
+    background-color: black !important;
+    color: white !important;
+  }
+   span a.paginate_button{
+    color: red !important;
+  } */
+  /* paginate_button  */
+  li.paginate_button.page-item{
+    padding: 0px !important;
+    margin: 0px !important;
+  }
