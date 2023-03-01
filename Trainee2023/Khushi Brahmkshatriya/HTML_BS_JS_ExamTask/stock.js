@@ -92,7 +92,7 @@ $(document).ready(function () {
                     },
                     {
                         data: "null", title: "Action", className: "dt-center editor-edit",
-                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
                     },
                 ],
 
@@ -115,11 +115,59 @@ $(document).ready(function () {
                 tr.addClass("shown");
             }
         });
-        $('#stocktable').on('click', 'td.editor-edit', function (e) {
-            e.preventDefault();
+        $('#stocktable tbody').on('click', 'td.editor-edit', function () {
+           
 
-            $('#stockModal').modal('show');
+            //$('#stockModal').modal('show');
             console.log((table.row(this).data()));
+            var data = table.row($(this).parents('tr')).data();
+            var index = table.row($(this).parents('tr')).index();
+            
+            // Populate AddStockModal with data
+            $("#StockName").val(data.stockName);
+            $("#etaDate").val(data.etaDate);
+            ($("input[name='btnradio']:checked").val(data.selectedValue ))
+            $('input[name="btnradio"][value="' + data.selectedValue + '"]').prop('checked', true);
+            // Populate part table with data
+        
+        
+            if (data.partData && data.partData.length > 0) {
+              data.partData.forEach(function(partData) {
+                $("#table2body").append("<tr><td>" + partData.part_num + "</td><td>" 
+                + partData.invoice_num + "</td><td>" + partData.ordered + "</td><td>" 
+                + partData.notes  + "</td><td><button type='button' class='btn btn-sm btn-danger delete-row'>Delete</button></td></tr>");
+              });
+            }
+        
+            partdata=data.partData;
+            // Show AddStockModal
+            $('#AddStockModal').modal('show');
+        
+            // Handle click on Save Changes button
+            $("#save_changes").unbind('click').click(function () {
+              // Get form data
+              var stockName = $("#StockName").val();
+              var etaDate = $("#ETAdate").val();
+              var selectedValue = $('input[name="btnradio"]:checked').val();
+              var createdby = "Kenneth";
+              var createddate = "08/25/2000";
+              var action = "";
+              // Update object at the specified index in the array
+              var StockDataObject = {
+                stockName: stockName,
+                etaDate: etaDate,
+                selectedValue: selectedValue,
+                partData: partdata,
+                createdby: createdby,
+                createddate: createddate,
+                action: action
+              };
+              var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
+              StockData[index] = StockDataObject;
+              localStorage.setItem("StockData", JSON.stringify(StockData));
+              $('#AddStockModal').modal('hide');
+              location.reload(true);
+            });
             
         });
 
