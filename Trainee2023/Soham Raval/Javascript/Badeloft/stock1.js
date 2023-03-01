@@ -11,11 +11,13 @@ function logout() {
     localStorage.clear();
 }
 $(document).ready(function () {
+    
+    debugger;
     $("#inner_model").click(function () {
         var partnumber = $("#partnumber").val();
         var order = $("#order").val();
         var notes = $("#notes").val();
-        console.log("note",notes)
+        console.log("note", notes)
         if (partDetails == null) {
             partDetails = [];
         }
@@ -24,18 +26,28 @@ $(document).ready(function () {
             order: order,
             notes: notes,
         });
-        var addedtable = "<tr><td>" + partnumber + "</td><td>" + order + "</td><td>" + notes + "</td></tr>";
+        var addedtable = "<tr><td>" + partnumber + "</td><td>" + order + "</td><td>" + notes + "</td><td>" + '<i class="fa fa-times"></i>' + "</td></tr>";
         $("#innermodel_table tbody").append(addedtable);
     });
+   
     var nameget = a[0].Name;
     console.log(nameget)
-    let b = JSON.parse(localStorage.getItem("stockList"));
-    console.log("b", b);
+    stockDetails = JSON.parse(localStorage.getItem("stockList"));
+
+    console.log("b", stockDetails);
+    // var Action=<i class="fa-solid fa-pen"></i>;
+    var button = document.getElementById("newitemadded");
+
     tableData = $('#example').DataTable({
-        data: b,    
-        lengthChange: false,
-        info: false,
-        paging: false,
+        data: stockDetails,
+        fnInitComplete: function () {
+            $('#example_length').html('<b><h3>&nbsp;Stock</h3></b>');
+            $('#example_filter').prepend(button);
+        },
+        // bInfo: true, 
+        paging: true,
+        binfo: true,
+        // lengthChange: false,
         columns: [
             {
                 className: 'dt-control',
@@ -48,9 +60,34 @@ $(document).ready(function () {
             { data: "stock_status", title: 'Stock Location', orderable: false, className: "text-center" },
             { data: "nameget", title: 'Created By', orderable: false, className: "text-center" },
             { data: "getdate", title: 'Created Date', orderable: false, className: "text-center" },
-            { data: "notes", title: 'Notes', orderable: false, className: "text-center" }
+            { data: "notes", title: 'Notes', orderable: false, className: "text-center" },
+            {
+                // data:"Action",title:'Action',orderable:false,className:"text-center"
+            id:"editModal",
+            orderable: false,
+            data: null,
+            defaultContent: '<i class="edit fa-solid fa-pen"></i>',
+            title:"Action"
+        }
         ],
+        columnDefs: [
+            {
+                "defaultContent": "-",
+            "targets": "_all"
+            },
+          ],
         order: [[1, 'asc']],
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: 'Search here',
+            info: "items _START_ to _END_ of _TOTAL_ items",
+            paginate: {
+
+                previous: "<",
+                next: ">",
+            },
+
+        },
     })
     $('#SearchBox').keyup(function () {
         table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
@@ -66,22 +103,25 @@ $(document).ready(function () {
             tr.addClass('shown');
         }
     });
+    $("#close_part").click (function () {
+        $(this).closest('tr').remove();
+    });
 });
 
 function stockdatastore() {
-    
+debugger
     console.log(partDetails)
     var stockname = $('#stockname').val();
     var eta_date = $('#date').val();
     var stock_status = $('input[name="btnradio"]:checked').next('label').text();
     var nameget = a[0].Name;
-   
 
-  //Getting current date
-  var getdate = new Date(Date.now()).toLocaleString().split(',')[0];
-  console.log(getdate)
-  var notes = $("#notes").val();
-  let stockList = JSON.parse(localStorage.getItem("stockList")) || [];
+
+    //Getting current date
+    var getdate = new Date(Date.now()).toLocaleString().split(',')[0];
+    console.log(getdate)
+    var notes = $("#notes").val();
+    let stockList = JSON.parse(localStorage.getItem("stockList")) || [];
     if (stockDetails == null) {
         stockDetails = [];
     }
@@ -89,74 +129,46 @@ function stockdatastore() {
         stockname: stockname,
         eta_date: eta_date,
         stock_status: stock_status,
-        nameget:nameget,
-        getdate:getdate,
+        nameget: nameget,
+        getdate: getdate,
         // notes:notes,
         // createdby: createdby,  
         // cdate: cdate,    
         partDetails: partDetails,
-        notes: notes 
+        notes: notes
 
     });
-    tableData.row.add(['', stockname, eta_date, stock_status, nameget,getdate,notes]).draw();
     console.log(partDetails)
     var stock = {
         
         "stockname": stockname,
         "eta_date": eta_date,
         "stock_status": stock_status,
-        "nameget":nameget,
-        "getdate":getdate,
+        "nameget": nameget,
+        "getdate": getdate,
         "partlist": partDetails,
-        "notes": notes 
+        "notes": notes
     };
     stockList.push(stock);
     console.log("StockList", stockList)
+    tableData.row.add(['', stockname, eta_date, stock_status, nameget, getdate, notes]).draw();
     localStorage.setItem("stockList", JSON.stringify(stockList));
-    console.log("part",partDetails)
-
+    console.log("part", partDetails)
+    location.reload(true)
 }
-
-// function format(partlist) {
-//     console.log(partDetails)
-
-//     var table = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-//         '<tr>' +
-//         '<td>#</td>' +
-//         '<td>' +
-//         "Part Number" +
-//         '</td>' +
-//         '<td>' +
-//         "ordered" +
-//         '</td>' +
-//         '<td>' +
-//         "Assigned" +
-//         '</td>' +
-//         '</tr>';
-//     for (var i = 0; i < partlist.length; i++) {
-//         table += '<tr>' +
-//             '<td>' + (i + 1) + '</td>' +
-//             '<td>' + partlist[i].partnumber + '</td>' +
-//             '<td>' + partlist[i].order + '</td>' +
-//             '<td></td>' +
-//             '</tr>';
-//     }
-//     table += '</table>';
-//     return table;
-// }
 function format(d) {
-  let HTML = '';
-  if (d.partlist && d.partlist.length > 0) {
-    HTML += '<table class="text-center" style="width:100%;">';
-    HTML += '<thead><tr><th class="text-center">#</th><th class="text-center">Part No</th><th class="text-center">Order No</th><th class="text-center">Notes</th><th class="text-center">Action</th></tr></thead>';
-    HTML += '<tbody>';
-    d.partlist.forEach((partlist, index) => {
-      const rowadd = index + 1;
-      HTML += '<tr><td>' + rowadd + '</td><td>' + partlist.partnumber + '</td><td>' + partlist.order+ '</td><td>' + partlist.notes + '</td><td><button onclick="removeItem(' + index + ')"><i class="fa fa-close"></i></button></td></tr>';
-    });
-    HTML += '</tbody>';
-    HTML += '</table>';
-  }
-  return HTML;
+    let HTML = '';
+    if (d.partlist && d.partlist.length > 0) {
+        HTML += '<table class="text-center" style="width:100%;">';
+        HTML += '<thead><tr><th class="text-center">#</th><th class="text-center">Part No</th><th class="text-center">Order No</th><th class="text-center">Notes</th><th class="text-center">Action</th></tr></thead>';
+        HTML += '<tbody>';
+        d.partlist.forEach((partlist, index) => {
+            const rowadd = index + 1;
+            HTML += '<tr><td>' + rowadd + '</td><td>' + partlist.partnumber + '</td><td>' + partlist.order + '</td><td>' + partlist.notes + '</td><td><button onclick="removeItem(' + index + ')"><i class="fa fa-close"></i></button></td></tr>';
+        });
+        HTML += '</tbody>';
+        HTML += '</table>';
+    }
+    return HTML;
 }
 

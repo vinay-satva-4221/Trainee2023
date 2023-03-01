@@ -45,19 +45,19 @@
                <div class="tabs mx-auto" id="navlinks">
                   <ul class="navbar-nav">
                      <li class="nav-link">
-                        <a href="./dashboard.html" style="text-decoration: none">Dashboard</a>
+                        <a href="./dashboard.html" class="nav-item nav-link mx-3" style="text-decoration: none">Dashboard</a>
                         <div class="underline"></div>
                      </li>
                      <li class="nav-link">
-                        <a href="./stock.html" style="text-decoration: none">Stock</a>
+                        <a href="./stock.html" class="nav-item nav-link mx-3"  style="text-decoration: none">Stock</a>
                         <div class="underline"></div>
                      </li>
-                     <li class="nav-link active-link">
-                        <a href="./status.html" style="text-decoration: none">Status</a>
+                     <li class="nav-link ">
+                        <a href="./status.html" class="nav-item nav-link fw-bold  mx-3 active" style="text-decoration: none">Status</a>
                         <div class="underline"></div>
                      </li>
                      <li class="nav-link">
-                        <a href="./assignment.html" style="text-decoration: none">Assignment</a>
+                        <a href="./assignment.html" class="nav-item nav-link mx-3" style="text-decoration: none">Assignment</a>
                         <div class="underline"></div>
                      </li>
                   </ul>
@@ -81,26 +81,31 @@
             </div>
          </div>
       </nav>
-      <div class="container-fluid">
-         <div>
-            <table id="statusTable" class="table" style="width: 100%">
-               <thead class="table-dark">
-                  <tr>
-                     <th></th>
-                     <th>QB Invoice #</th>
-                     <th>Name</th>
-                     <th>QB Ship date</th>
-                     <th>QB Payment Status</th>
-                     <th>QB Status</th>
-                     <th>QB Delivery Phone</th>
-                     <th>Called</th>
-                     <th>QB Tracking</th>
-                  </tr>
-               </thead>
-               <tbody></tbody>
-            </table>
+      <section class="container-fluid me-5">
+         <span class="heading">Status</span>
+         <div class="main">
+            <div class="form-group has-search">
+               <span class="fa fa-search form-control-feedback"></span>
+               <input type="text" id="search" class="form-control" placeholder="Search" />
+            </div>
          </div>
-      </div>
+         <table id="example" class="table" style="width:100%; border: 1px solid grey;">
+           <thead class="table-dark">
+             <tr>
+               <th></th>
+               <th>QB Invoice#</th>
+               <th>Name</th>
+               <th>Created By</th>
+               <th>Created date</th>
+               <th>Action</th>
+               <th>Action</th>
+               <th>Action</th>
+               <th>Action</th>
+             </tr>
+           </thead>
+         </table>
+       </section>
+
       <script src="./js/status.js"></script>
       <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
       <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>

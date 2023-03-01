@@ -1,6 +1,6 @@
 var loginUser = JSON.parse(localStorage.getItem('loginuser'));
 var username = loginUser.name;
-document.getElementById("user").innerHTML = username;
+document.getElementById("user").innerHTML ="Welcome"+ "<br>"+"<b>"+ username+ "</b>";
 
 
 function logout() {
@@ -106,10 +106,9 @@ var table = $("#example").DataTable({
         {
             data: null,
             render: function (data, type, row) {
-                // Return HTML for two buttons
-                return '<button class="btn btn-primary btn-sm">Edit<i class="fa-sharp fa-solid fa-pen"></i></button>' +
-                    '<button class="btn btn-danger btn-sm">Delete</button>';
-            }
+                return '<button type="button" class="fa fa-pencil" onclick="editRow()" style="border: none;"></button>' +
+                  '<button type="button" class="fa fa-trash" style="border: none;"></button>';
+              }
         }
     ],
     order: [[1, "asc"]],

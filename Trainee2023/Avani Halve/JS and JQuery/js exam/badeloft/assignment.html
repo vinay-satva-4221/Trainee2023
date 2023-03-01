@@ -13,25 +13,18 @@
         
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-          <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>  -->
+    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
             integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-            crossorigin="anonymous"></script> 
         <!-- fontawesome -->
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <!-- Select2 cdn -->
-        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
-            rel="stylesheet">
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"> -->
         <link href="./css/assignment.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
@@ -59,19 +52,19 @@
                   <div class="tabs mx-auto" id="navlinks">
                      <ul class="navbar-nav">
                         <li class="nav-link">
-                           <a href="./dashboard.html" style="text-decoration: none">Dashboard</a>
+                           <a href="./dashboard.html" class="nav-item nav-link mx-3" style="text-decoration: none">Dashboard</a>
                            <div class="underline"></div>
                         </li>
                         <li class="nav-link">
-                           <a href="./stock.html" style="text-decoration: none">Stock</a>
+                           <a href="./stock.html" class="nav-item nav-link mx-3" style="text-decoration: none">Stock</a>
                            <div class="underline"></div>
                         </li>
                         <li class="nav-link">
-                           <a href="status.html" style="text-decoration: none">Status</a>
+                           <a href="status.html" class="nav-item nav-link mx-3" style="text-decoration: none">Status</a>
                            <div class="underline"></div>
                         </li>
-                        <li class="nav-link active-link">
-                           <a href="assignment.html" style="text-decoration: none">Assignment</a>
+                        <li class="nav-link">
+                           <a href="assignment.html" class="nav-item nav-link fw-bold  mx-3 active" style="text-decoration: none">Assignment</a>
                            <div class="underline"></div>
                         </li>
                      </ul>
@@ -97,11 +90,21 @@
          </nav>
     <!-- Navbar END -->
         <div class="container-fluid me-5">
-            <div class="modal" id="myModal">
+            <span class="heading">Assignment</span>
+            <a data-toggle="modal" href="#addAssignment" class="btn btn-light mt-2" style="background-color: #326c96; color: white; margin-left: 54%"
+               >+ New</a
+            >
+            <div class="main">
+               <div class="form-group has-search">
+                  <span class="fa fa-search form-control-feedback"></span>
+                  <input type="text" id="search" class="form-control" placeholder="Search" />
+               </div>
+            </div>
+            <div class="modal" id="addAssignment">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Add New Stock</h4>
+                            <h4 class="modal-title">New Assignment</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
@@ -132,7 +135,7 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <label>Parts</label>
-                                                <select class="js-example-basic-multiple" multiple>
+                                                <select name="parts[]" class="js-multiple" multiple="multiple" id="parts">
                                                     <option value="BW-01-5-M">BW-01-5-M</option>
                                                     <option value="AT-01-BLK">AT-01-BLK</option>
                                                     <option value="BW-03-XL-G">BW-03-XL-G</option>
@@ -142,7 +145,7 @@
                                                 </select>    
                                             </div>
                                             <div class="col-md-2">
-                                                <button class="btn mt-4"  style="background-color:#326C96 ; color:white;" id="btnadd" onclick="addStock()">Add</button>
+                                                <button class="btn mt-4" style="background-color:#326C96 ; color:white;" id="btnadd" onclick="addStock()">Add</button>
                                             </div>
                                         </div>
                                     </div>
@@ -156,11 +159,8 @@
                     </div>     
                 </div>
             </div>
-    <h2 class="mx-5">Assignment</h2>
-    <div class="table-responsive">
-        <button id="myButton" class="btn text-white" style="background-color: #326C96; margin-left: 74%;" data-toggle="modal"
-        data-target="#myModal"><i class="fa fa-plus"></i> New</button>
-        <table id="example" class="display" style="width:100%">
+ 
+        <table id="example"  class="table">
             <thead class="table-dark">
                 <tr>
                     <th></th>
@@ -173,32 +173,31 @@
             </thead>
             <tbody></tbody>
         </table>
-    </div>
 </div>  
 
     <!-- Select2 -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>  
+            crossorigin="anonymous"></script> --> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script> -->
     <script src="./js/assignment.js"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />q
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
+            $('.js-multiple').select2();
         });
     </script>
 </body>
 </html>
+
+
+<!-- comment sl -->

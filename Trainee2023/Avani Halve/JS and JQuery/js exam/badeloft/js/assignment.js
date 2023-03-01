@@ -53,9 +53,9 @@ categorySelect.addEventListener("change", function () {
 var customer = document.getElementById("category").value;
 var invoice = document.getElementById("invoice").value;
 var stock = document.getElementById("stock").value;
+var parts = document.getElementById("parts").value;
 
 function format(d) {
- 
   return (
     '<table class="table">' +
     '<thead>' +
@@ -70,7 +70,7 @@ function format(d) {
     '<tr>' +
     '<td></td>' +
     '<td>'+ d.stock +'</td>' +
-    '<td>'+ d.invoice +'</td>' +
+    '<td>'+ d.parts +'</td>' +
     '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
     '</tr>' +
     '</tbody>' +
@@ -82,6 +82,18 @@ var assignementDetails = JSON.parse(localStorage.getItem('assignmentDetail'));
 
 var table = $("#example").DataTable({
   data: assignementDetails,
+  bFilter: false,
+  bInfo: true,
+  "bLengthChange": false,
+  language: {
+    "info": "items _START_ to _END_ of _TOTAL_ entries",
+    search: "_INPUT_",
+    searchPlaceholder: "Search here...",
+    paginate: {
+       previous: "<",
+       next: ">",
+    },
+  },
   columns: [
     {
       className: "dt-control",
@@ -129,17 +141,26 @@ $("#example tbody").on("click", "td.dt-control", function () {
   }
 });
 
+$("#search").on("keyup", function() {
+  var value = $(this).val().toLowerCase();
+  $("#example tbody tr").filter(function() {
+     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
+
 function addStock() {
   debugger
   let currentDate = new Date().toLocaleString();
   let category = document.getElementById("category").value;
   let invoice = document.getElementById("invoice").value;
   let stock = document.getElementById("stock").value;
+  let parts = document.getElementById("parts").value;
 
   let assignementDetails = {
     category: category,
     invoice: invoice,
     stock: stock,
+    parts: parts,
     createdBy: username,
     createdDate: currentDate,
   };
