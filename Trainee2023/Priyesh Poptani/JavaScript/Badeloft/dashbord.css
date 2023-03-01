@@ -2,25 +2,20 @@
 div.dataTables_wrapper div.dataTables_length label {
    display: none;
 }
-.paginate_button{
-  margin: 0;
-  padding: 0;
-} 
+
 
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
    
     white-space: nowrap;
     justify-content: end;
- 
+ padding: 0%;
 }
 #logo{
     width: auto; 
     max-height: 25px; 
 }
-.navbar{
-    padding: 0px;
-}
+
 .toolbar {
     float: left;
 }
@@ -34,9 +29,17 @@ table.dataTable th {
     color: white;
     border-right: none;
     
+   
+    
 }
 table.dataTable{
   background-color: white;
+ 
+}
+table{
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .spacer{
   background-color:white;
@@ -72,50 +75,7 @@ table.dataTable thead>tr>th.sorting:before,thead>tr>th.sorting_desc:before
 }
 
 
-  ul {
-    display: flex;
-   
-    list-style-type: none;
-  }
-  ul:hover li:not(:hover) a {
-    opacity: 0.5;
-  }
-  ul li {
-    position: relative;
   
-    cursor: pointer;
-  }
-  ul li::after {
-    position: absolute;
-    content: "";
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #070707;
-    transform: scaleX(0);
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  ul li:hover::after, ul li.active::after {
-    transform: scaleX(1);
-  }
-  ul li a {
-    position: relative;
-    display: flex;
-    color: white;
-    font-family: Lato, sans-serif;
-    text-decoration: none;
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-
-
-  .wider {
-    display: block;
-    margin: 20px 0;
-    padding: 15px 8px;
-    line-height: 23px;
-    width: 100%;
-}   
 
 div.toolbar{
   margin-top: 15px;
@@ -126,4 +86,35 @@ div.dataTables_wrapper div.dataTables_filter label {
   text-align: left;
   margin-top: 15px;
 }
+.page-item.active .page-link {
+  
+  color: #fff;
+  background-color: black;
+  border-color:black;
+}
 
+.page-link {
+ 
+  color: black;
+
+}
+
+table.dataTable tbody tr :nth-child(4) {
+  color:#3399FF;
+}
+
+
+
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: 0%;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination
+{
+ 
+  margin-top: -25px !important;
+}
+.dataTables_info{
+  position: relative;
+  left: 73%;
+  
+}

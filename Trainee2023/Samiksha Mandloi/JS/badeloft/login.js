@@ -30,8 +30,7 @@ $("#basic_form").validate({
         },
         password: {
             required: " Enter your password",
-            minlength: "please enter 6 digits",
-            maxlength: "only 6 digits are allowed"
+            
         }
     }
 });
@@ -123,7 +122,7 @@ function loginPage() {
     localStorage.setItem('loginuser',JSON.stringify(userData));
     
     } else {
-        alert("Invalid email or password");
+        // alert("Invalid email or password");
     }
   }
   

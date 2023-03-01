@@ -117,13 +117,14 @@ $(document).ready(function () {
         data: data1,
         //ajax: '../ajax/data/objects.txt',
         columns: [
-            {
-                className: 'dt-control',
-                orderable: false,
-                data: null,
-                defaultContent: '',
-            },
-            { data: 'QBInvoice', "sortable": true },
+            // {
+            //     className: 'dt-control',
+            //     orderable: false,
+            //     data: null,
+            //     defaultContent: '',
+            // },
+            { data: 'QBInvoice', "sortable": true, className: 'dt-control text-start',
+            orderable: false },
             { data: 'Name', "sortable": true },
             { data: 'QBShipdate', "sortable": true },
             {
@@ -142,7 +143,8 @@ $(document).ready(function () {
             {
                 // targets: [1,2,3,4,5,6,7,8],
                 // className: 'text-left', 
-            }
+            },
+
           ],
           language: {
             search: "_INPUT_",
@@ -151,7 +153,9 @@ $(document).ready(function () {
                 previous: "<",
                 next: ">"
             },
+            
         },
+        
         'order': [[1, 'asc']]
     });
     $('#myCustomSearchBox').keyup(function() {

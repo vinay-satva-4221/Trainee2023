@@ -9,23 +9,6 @@ $(document).ready(function () {
     else {
         window.location.replace("./login.html");
     }
-    // $('.callPopover').click(function () {
-    //     $(this).popover({
-    //             html: true,
-    //             html: true,
-    //         placement: 'right',
-    //         sanitize: false,
-    //         content() {
-    //                 var $buttons = $('#PopoverContent').html();
-    //                 return $buttons;
-    //             }
-    //      }).popover('toggle');
-    //      $('.click_me').off('click').on('click', function() {
-    //          alert('it works!');
-    //      });
-    // });
-
-
     var table;
 
     let PartData = [];
@@ -37,8 +20,8 @@ $(document).ready(function () {
                 dynamicChildRow += '<table class="table table-responsive p-5" id="partTable">';
                 dynamicChildRow += '<thead class=" fw-normal"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Notes</th><th>Action</th></tr></thead>';
                 dynamicChildRow += '<tbody>';
-                d.Parts.forEach((partdetail) => {
-                    dynamicChildRow += '<tr><td>' + int_rownumber + '</td><td>' + partdetail.partnumber + '</td><td>' + partdetail.ordred + '</td><td>' + partdetail.ordred + '</td>' +
+                d.Parts.forEach((partdetail, index) => {
+                    dynamicChildRow += '<tr><td>' + index + '</td><td>' + partdetail.partnumber + '</td><td>' + partdetail.ordred + '</td><td>' + partdetail.ordred + '</td>' +
                         '<td>' + partdetail.notes + '</td>' +
                         '<td>' + '<button type="button" class="btn-close" aria-label="Close"></button>' + '</td>'
                     '</tr>';
@@ -54,7 +37,7 @@ $(document).ready(function () {
         //var dataSet = localArray.push(...loggedData)
         console.log(localArray)
 
-         table = $("#stocktable").DataTable({
+        table = $("#stocktable").DataTable({
 
             "order": [],
             "dom": 'rtip',
@@ -78,24 +61,22 @@ $(document).ready(function () {
             columns:
 
                 [
-
                     {
                         data: "StockName", title: "Stock Name", className: "dt-control",
                         orderable: false
                     },
-                    { data: "ETADate", title: "ETA Date" ,orderable:false },
-                    { data: "StockStatus", title: "Stock Location",orderable:false },
-                    { data: "CreatedBy", title: "Created By",orderable:false },
+                    { data: "ETADate", title: "ETA Date", orderable: false },
+                    { data: "StockStatus", title: "Stock Location", orderable: false },
+                    { data: "CreatedBy", title: "Created By", orderable: false },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),
-                        keyInput: false, title: "Created Date",orderable:false
+                        keyInput: false, title: "Created Date", orderable: false
                     },
                     {
                         data: "null", title: "Action", className: "dt-center editor-edit",
-                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
                     },
                 ],
-
 
         });
         $('#txtSearch').keyup(function () {
@@ -115,12 +96,63 @@ $(document).ready(function () {
                 tr.addClass("shown");
             }
         });
-        $('#stocktable').on('click', 'td.editor-edit', function (e) {
-            e.preventDefault();
+        $('#stocktable tbody').on('click', 'td.editor-edit', function () {
 
-            $('#stockModal').modal('show');
+           
             console.log((table.row(this).data()));
-            
+            var data = table.row($(this).parents('tr')).data();
+            var index = table.row($(this).parents('tr')).index();
+
+            // Populate AddStockModal with data
+            $("#stockName").val(data.StockName);
+            $("#etaDate").val(data.ETADate);
+
+            $('input[name="btnradio"][value="' + data.StockStatus + '"]').prop('checked', true);
+
+
+            if (data.Parts && data.Parts.length > 0) {
+
+
+                let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
+                data.Parts.forEach(function (PartData) {
+                    dynamicTR += ("<tr>" + "<td>" + PartData.partnumber + "</td>" + "<td>" + PartData.invoice + "</td>" + "<td>" + PartData.ordred + "</td>" + "<td>" + PartData.notes + "</td>" +
+                        "<td class='text-end'><button type='button' class='btn-close' aria-label='Close'></button></td></tr>");
+                });
+                dynamicTR += "</tbody>";
+                console.log(dynamicTR)
+                $('#partTable').html(dynamicTR);
+
+            }
+
+            Parts = data.Parts;
+            // Show AddStockModal
+            $('#stockModal').modal('show');
+
+            // Handle click on Save Changes button
+            $("#saveStock").unbind('click').click(function () {
+                // Get form data
+                var StockName = $("#stockName").val();
+                var ETADate = $("#etaDate").val();
+                var StockStatus = $('input[name="btnradio"]:checked').val();
+                var CreatedBy = "02/22/2001";
+                //   var createddate = "08/25/2000";
+                //   var action = "";
+
+                var StockDataObject = {
+                    CreatedBy: CreatedBy,
+                    StockName: StockName,
+                    ETADate: ETADate,
+                    StockStatus: StockStatus,
+                    Parts: PartData,
+
+                };
+                var StockData = JSON.parse(localStorage.getItem("stockandparts")) || [];
+                StockData[index] = StockDataObject;
+                localStorage.setItem("stockandparts", JSON.stringify(StockData));
+                $('#saveStock').modal('hide');
+                location.reload(true);
+            });
+
         });
 
 
@@ -149,8 +181,8 @@ $(document).ready(function () {
 
             let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
             for (let i = 0; i < PartData.length; i++) {
-                dynamicTR += "<tr>" + "<td>" + PartData[i].partnumber + "</td>" + "<td>" + PartData[i].invoice + "</td>" + "<td>" + PartData[i].ordred + "</td>" + "<td>" + PartData[i].notes + "</td>"+
-                "<td class='text-end'><button type='button' class='btn-close' aria-label='Close'></button></td></tr>"
+                dynamicTR += "<tr>" + "<td>" + PartData[i].partnumber + "</td>" + "<td>" + PartData[i].invoice + "</td>" + "<td>" + PartData[i].ordred + "</td>" + "<td>" + PartData[i].notes + "</td>" +
+                    "<td class='text-end'><button type='button' class='btn-close' aria-label='Close'></button></td></tr>"
             }
             dynamicTR += "</tbody>";
             console.log(dynamicTR)
@@ -237,7 +269,7 @@ $(document).ready(function () {
 
 
         //datevalidation
-        $("#etaDate").on("keydown blur",function (e) {
+        $("#etaDate").on("keydown blur", function (e) {
             IsNumeric(this, e.keyCode);
         });
 
@@ -312,5 +344,5 @@ $(document).ready(function () {
             table.row.add(obj).draw();
         }
     }
-  
+
 })

@@ -53,6 +53,16 @@ table {
     margin: 20px;
 
 }
+#dashboadr-table_info{
+    position: relative;
+   left: 1020px;
+}
+.page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: rgb(0 0 0 / 30%);
+    border-color: rgb(0 0 0 / 10%);
+}
 
 .dataTables_filter input {
     border: 1px solid #aaa;
@@ -65,11 +75,11 @@ table {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{ color: white;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{ color: white !important;
     /* color: inherit !important; */
     border: 1px solid rgba(0, 0, 0, 0.3);
-    background-color: rgba(230, 230, 230, 0.1);
-   background: black;
+    background-color:black !important;
+   background:white;
 }
 /* .sorting_asc{
             margin-right: 300px;
