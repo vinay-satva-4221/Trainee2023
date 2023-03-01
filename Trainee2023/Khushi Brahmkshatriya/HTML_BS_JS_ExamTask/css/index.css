@@ -48,6 +48,12 @@ a {
   height: 50px;
   border-radius: 50%
 }
+
+
+button.btn.btn-outline-secondary.cancelbtn:hover{
+  background-color: white !important;
+  color: gray!important;
+}
 /* datatable css */
 div.table-responsive .datatableStyle th {
   color: white;
@@ -69,25 +75,25 @@ div.table-responsive table{
 
 #dashboardTable th.sorting.sorting_asc::before{
    
-  margin-right: 40%;
+  margin-right: 52%;
 }
 #dashboardTable th.sorting.sorting_asc::after{
  
-  margin-right: 40%;
+  margin-right: 52%;
 }
 #dashboardTable th.sorting.sorting_desc::after{
  
-  margin-right: 40%;
+  margin-right: 52%;  
 }
 #dashboardTable th.sorting.sorting_desc::before{
  
-  margin-right: 40%;
+  margin-right: 52%;
 }
 #dashboardTable th.sorting::before{
-  margin-right: 40%;
+  margin-right: 52%;
 }
 #dashboardTable th.sorting::after{
-  margin-right: 40%;
+  margin-right: 52%;
 }
 
 
@@ -211,6 +217,7 @@ a.editor-create {
     text-decoration: none;
     border: none;
 }
+
 /* th {
   color: white;
 }
@@ -229,3 +236,33 @@ table {
   overflow: hidden;
 } */
 
+/* .navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 35%;
+  height: 2px;
+  bottom: -12px;
+  left: 22px;
+  right: 22px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s; 
+  font-weight: bolder;
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+} */
+
+.popover-body{
+  padding: 0%;
+  margin: 3% 0% 0% 0%;
+ 
+}

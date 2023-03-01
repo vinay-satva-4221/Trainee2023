@@ -1,7 +1,7 @@
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
-  ["Eta Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-  ['BW-01-S-M', '1', '0', "<div class='AddColor'>3 </div>", '0', '0'],
+  ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
+  ['BW-01-S-M', '1', '0', "<button class='AddColor border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
   ['BW-03-XL-G', '1', '1', "<div class='AddColor'>2</div>", '2', '1'],
   ['BW-01-Q-M', '', '0', "<div class='AddColor'>3 </div>", '0', '1'],
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
   }
   var StockLocation = $.fn.dataTable.absoluteOrder(
     [{ value: 'Stock Location', position: 'top' },
-    { value: 'Eta Date', position: 'top' }]);
+    { value: 'ETA Date', position: 'top' }]);
     
   var table = $("#dashboardTable").DataTable({
     data: dataSet,
@@ -54,5 +54,14 @@ $(document).ready(function () {
     table.search($(this).val()).draw(); 
       // this  is for customized searchbox with datatable search feature.
   })
-  
+  //$('[data-bs-toggle="popover"]').popover();  
+  $('[data-bs-toggle="popover"]').popover({
+   
+    container: 'body',
+    placement: 'right',
+    html: true, 
+    content: function() {
+          return $('#popover-form').html();
+    }
+});
 })
