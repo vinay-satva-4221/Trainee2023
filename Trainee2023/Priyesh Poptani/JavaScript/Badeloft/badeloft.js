@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $('#submitform').click(function () {
-    $('#form1').valid() == true
+    $('#loginform').valid() == true
   })
 
   $.validator.addMethod('validpassword',
@@ -9,24 +9,31 @@ $(document).ready(function () {
       //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
     },
   );
+  $.validator.addMethod('validemail',
+  function (value) {
+    return  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value)
+    //Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:
+  },
+);
 
-  $("#form1").validate({
+  $("#loginform").validate({
     rules: {
-      emailname: {
+      Email: {
         required: true,
-        email: true
+        validemail: true
       },
-      passwordname: {
+      pass: {
         required: true,
         validpassword: true
       },
     },
     messages: {
-      emailname: {
-        required: "Enter Your Email",
+      Email: {
+        required: "Enter your email",
+        validemail:"Enter valid email"
       },
-      passwordname: {
-        required: "Enter Password",
+      pass: {
+        required: "Enter your password",
         validpassword: "Minimum 8 characters, at least one uppercase letter, one lowercase letter and one number"
       },
     },
@@ -50,7 +57,7 @@ $(document).ready(function () {
 
 
 const data = [
-  { email: "admin1@gmail.com", password: "Admin123", name: "Jems" },
+  { email: "admin1@gmail.com" , password: "Admin123", name: "Jems" },
   { email: "admin2@gmail.com", password: "Admin234", name: "Priyesh", },
   { email: "admin3@gmail.com", password: "Admin345", name: "Hardik", },
   { email: "admin4@gmail.com", password: "Admin456", name: "Ashish", }
@@ -61,7 +68,7 @@ const data = [
 function OnClickLogin(e) {
   e.preventDefault()
   var email=document.getElementById("Email").value;
-  var email1=email;
+  var email1=email.toLowerCase();
   var password=document.getElementById("pass").value;
   var password1=password;
 
@@ -72,7 +79,7 @@ function OnClickLogin(e) {
     window.location.replace("dashbord.html");
   }
   else{
-    alert("Not valid user");
+    // alert("Not valid user");
   }
 }
 

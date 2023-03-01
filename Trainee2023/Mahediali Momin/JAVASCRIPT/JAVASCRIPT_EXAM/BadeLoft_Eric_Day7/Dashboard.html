@@ -7,20 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="./Dashboard.css">
-    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
 </head>
 
 <body class="bg-light">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white mt-0 ">
             <div class="container-fluid px-5">
-                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" alt=""
+                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" class="mt-0" alt=""
                         id="bade_logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -47,15 +48,15 @@
 
                         <li class="nav-item"><a href="./LoginPage.html" class="nav-item textColor nav-link">
                                 <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img"
-                                    class="rounded-circle" alt="">
+                                    class="rounded-circle mt-1" alt="">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <p class="text-muted" style="margin-top: 10px;"><small>Welcome</small></p>
+                            <p class="text-muted mt-0" style="margin-top: 10px;"><small>Welcome</small></p>
                             <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
                         </li>
                         <li>
-                            <i class="fa-solid fa-arrow-right-from-bracket" onclick="logout()" id="logout"></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket mt-3" onclick="logout()" id="logout"></i>
                         </li>
                     </ul>
                 </div>
@@ -82,25 +83,18 @@
         </div>
     </div>
 
-    <!-- <div class="pagination justify-content-end mt-3">
-        <a href="#">&laquo;</a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">&raquo;</a>
-    </div> -->
-
-
     <script src="./Dashboard.js"></script>
-   
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script> -->
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <!-- <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script> -->
     <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
 
 </body>
 
 </html>
+
