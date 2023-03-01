@@ -6,23 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./Status.css">
+    <link rel="stylesheet" href="./stock1.css">
     <!-- <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
 </head>
 
-<body>
+<body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid px-5">
@@ -70,21 +71,21 @@
     </header>
     <div class="container-fluid bg-light">
         <div class="row">
-            <div class="col-md-8 mt-3">
+            <!-- <div class="col-md-8 mt-3">
                 <h4><strong>Stock</strong></h4>
-            </div>
+            </div> -->
             <div class="col-md-1 mt-3">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     + New
                 </button>
             </div>
-            <div class="col-md-3 mt-3 mb-3">
+            <!-- <div class="col-md-3 mt-3 mb-3">
                 <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
-            </div>
+            </div> -->
         </div>
         <div class="table-responsive">
-            <table id="example" class="table" style="width:100%;">
+            <table id="StockTable" class="table rounded" style="width:100%; background-color: white;">
                 <thead style="color: white;"></thead>
 
             </table>
@@ -107,7 +108,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="text-muted"><strong>ETA Date</strong></label>
-                                <input type="date" class="form-control" id="eta_date">
+                                <!-- <input type="date" class="form-control" id="eta_date"> -->
+                                <input type="text" name="birthday" class="form-control" value="10/24/1984" />
                             </div>
                             <div class="col-md-4 mt-2">
                                 <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
@@ -129,11 +131,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-outline-light bg-white text-dark"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal1" id="inner_modal"><img
+                                    <!-- <button type="button" class=" mt-2"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
                                             src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
-                                            style="padding-left: 10px;" alt=""><span class="text-muted">Add
-                                            Part Number</span></button>
+                                            style="padding-left: 10px;" alt=""><span class="text-muted addPartBtn">Add
+                                            Part Number</span></button> -->
+                                            <button type="button" class=" addPartBtn mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
+                                                src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg"
+                                                style="margin-left:-11px;" alt=""><span class="text-muted ">Add
+                                                    Part Number</span></button>
                                 </div>
                             </div>
                             <table id="inner_table" class="table mt-2" style="width:100%" ;>
@@ -152,9 +158,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn" data-bs-dismiss="modal" id="save_outer">Save</button>
                     <button type="button" class="btn btn-secondary">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save_outer">Save</button>
                 </div>
             </div>
         </div>
@@ -183,26 +189,33 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn" data-bs-dismiss="modal" id="save_inner">Save</button>
                     <button type="button" class="btn btn-secondary">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save_inner">Save</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+       
+    </script>
+
 
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script> -->
+        crossorigin="anonymous"></script>
     <script src="./stock1.js"></script>
 
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 </body>
 
 </html>
