@@ -6,84 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: lightgray;
-        }
-
-        h3 {
-            float: left;
-        }
-
-
-
-        .form-input {
-
-            height: auto;
-            text-indent: 33px;
-            border-radius: 10px;
-            float: right;
-        }
-
-        .usimg {
-            height: 40px;
-            display: none;
-            /* float: right; */
-        }
-
-        /* img {
-    height: 50px;
-    margin-left: 60%;
-} */
-
-        /* .form-input:focus{
-
-box-shadow: none;
-border:none;
-} */
-        /* .container-fluid{
-    background-color: grey;
-} */
-    </style>
-
+    
     <head>
-
+        <link rel="stylesheet" type="text/css" href="./dashboard.css">
+        <!-- Bootstrap Links -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
             integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
             crossorigin="anonymous"></script>
+            <!-- fontAwesome linnks -->
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
             rel="stylesheet">
-
-        <!-- datatables -->
-
-
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
-
+         <!-- Datatable Links -->
         <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
 
-        <link href="./badeloft.css" rel="stylesheet" />
+        <link href="./badeloft.css" rel="stylesheet" type="text/css" />
+       
 
     </head>
 
 <body>
     <div class="container-fluid">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
                 <img src="images/02.png" alt="" srcset="" id="badeloftlogo">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -91,7 +44,7 @@ border:none;
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <div class="tabs ms-auto pe-5" id="navlinks">
+                    <div class="tabs  pe-5" id="navlinks">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link active-link">
                                 <a href="./baddashboard.html">Dashboard
@@ -107,22 +60,22 @@ border:none;
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">Assignment</a>
+                                <a href="Assignment.html">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
                     </div>
-                    <div class="navbarProfile d-flex m-3">
-                        <div me-3>
+                    <div class="navbarProfile d-flex " style="margin-left: 130px;">
+                        <div >
                             <img src="images/userimg1.jpg" alt="Profile Image" id="userimg1" style="height: 40px;">
                         </div>
-                        <div class="ms-2">
+                        <div>
                             <!-- <small id="para">Welcome</small><br>
                             <span id="username">Abc</span> -->
                             <span id="user"></span>
-                            <button type="button" class="btn btn-light" onclick="logout()">
+                            <button type="button" class="btn btn-light" onclick="logout()" style="margin-left: 15px;">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                | Logout</button>
+                            </button>
                         </div>
                     </div>
 
@@ -134,33 +87,21 @@ border:none;
 
     <!-- Navbar END -->
 
-    <div class="container">
+    <div class="container-fluid bg-light">
 
-        <div class="">
-            <h3 class="">Stock</h3>
-            <div class="main">
-                <div class="form-group has-search ">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" class="form-control" placeholder="Search" />
-                </div>
-            </div>
-
-            </button>
-
-            <!-- </form> -->
-        </div>
-        <br><br>
-        <div class="table-responsive">
-            <table class="table table-responsive display" id="table_id">
+        
+       
+        <div class="table-responsive w-100">
+            <table class="table table-striped " style="width:100%; " id="dashboadr-table">
                 <thead class=" table text-light bg-dark">
                     <tr>
-                        <th scope="col">PartNumber</th>
+                        <th scope="col" class="reorder" >PartNumber</th>
                         <th scope="col">InWarehouse</th>
                         <th scope="col">Available</th>
                         <th scope="col">C100</th>
                         <th scope="col">C101</th>
 
-                        <th scope="col">C102</th>
+                        <th scope="col" style=" border-top-right-radius: 15px;">C102</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider bg-light">
@@ -181,25 +122,16 @@ border:none;
                         <td>10/08/21</td>
                         <td>10/08/21</td>
                     </tr>
+
                     <tr>
-                        <td>BW-521</td>
-                        <td></td>
-                        <td></td>
-                        <td>10/08/21</td>
-                        <td>10/08/21</td>
-                        <td>10/08/21</td>
-                    </tr>
-                    <tr>
-                        <td>BW-03-XL-G</td>
+                        <td>BW-03-S-M</td>
                         <td>1</td>
                         <td>0</td>
-                        <td><button type="button" class="btn btn-link"
-                            data-bs-toggle="popover" data-bs-placement="right"
-                            data-bs-custom-class="custom-popover"
-                            data-bs-title="Assigned to"
-                            data-bs-content="This popover is themed via CSS variables.">
-                      3
-                    </button></td>
+                        <td><button type="button" class="btn btn-link" data-bs-toggle="popover"
+                                data-bs-placement="right" data-bs-custom-class="custom-popover"
+                                data-bs-title="Assigned to" data-bs-content="This popover is themed via CSS variables.">
+                                3
+                            </button></td>
                         <td>0</td>
                         <td>0</td>
                     </tr>
@@ -220,30 +152,102 @@ border:none;
                         <td>1</td>
                     </tr>
                     <tr>
-                        <td>BW-01-Q-M</td>
+                        <td>ZK-08-XLP</td>
                         <td>1</td>
-                        <td>1</td>
-                        <td><button type="button" class="btn btn-link">2</button></td>
+                        <td>0</td>
+                        <td><button type="button" class="btn btn-link">3</button></td>
                         <td>0</td>
                         <td>1</td>
                     </tr>
+                    <tr>
+                        <td>AP-03-XL-G</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><button type="button" class="btn btn-link">2</button></td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>WB-05-X2P</td>
+                        <td></td>
+                        <td>0</td>
+                        <td><button type="button" class="btn btn-link">3</button></td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>ZK-08-X2P</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><button type="button" class="btn btn-link">2</button></td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+
 
                 </tbody>
             </table>
         </div>
     </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- datatables -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
     <script>
         var loginUser = JSON.parse(localStorage.getItem('loginuser'));
         var username = loginUser.name;
-        document.getElementById("user").innerHTML = username;
-
+        document.getElementById("user").innerHTML ="<b>"+ username+ "</b>";
+        var StockLocation = $.fn.dataTable.absoluteOrder(
+                [{ value: 'Stock Location', position: 'top' },
+                { value: 'ETA Date', position: 'top' }]);
 
         function logout() {
             localStorage.removeItem("loginuser");
             location.replace("badeloft.html");
         }
+
+        $(document).ready(function () {
+            $('[data-bs-toggle="popover"]').popover();
+
+            $('#dashboadr-table').DataTable({
+                columnDefs: [
+                    { targets: 0, type: StockLocation },
+                    { orderable: true, targets: 0 },
+                    { orderable: false, targets: "_all" }
+                ],
+
+
+                // "ordering": false,
+                // rowReorder: true,
+                // columnDefs: [
+                //     { orderable: true, className: 'reorder', targets: 0 },
+                //     { orderable: false, targets: '_all' }
+                // ],
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: 'Search here...'
+                },
+
+                "fnInitComplete": function () {
+                    $('div.dataTables_length').html('<h2>Dashboard</h2>');
+                },
+
+
+
+            });
+          
+        });
     </script>
 </body>
 

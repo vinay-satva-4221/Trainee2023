@@ -1,11 +1,43 @@
-.fa-sign-out{
-    color: black;
-}
-#myTable thead tr th{
+
+#stock thead tr th{
     background-color:  #000;
     color: #fff;
+    font-family: 'Myriad Pro','Regular';
 }
-.Dashboard-logo{
+#ModalTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+    font-family: 'Myriad Pro','Regular';
+}
+.Badeloft-logoo{
     height: 25px;
     width: 130px;
 }
+.rounded-circle{
+    height:50px;
+    width: 50px;
+}
+#stock_filter{
+    margin: 15px;
+}
+.toolbar {
+    float: left;
+    margin: 15px;
+}
+#FirstModal, #save{
+    background-color: #326C96;
+    color: #F7F8FA;
+}
+.form-label{
+    color: #8F8A8C;
+}
+#cancle{
+    border: 1px solid black;
+}
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+}
+    

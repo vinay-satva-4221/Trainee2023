@@ -36,6 +36,33 @@ $(document).ready(function () {
         option.text = user.name;
         document.getElementById("select1").add(option);
       });
+      
+      
+      
+      var stockdata=JSON.parse(localStorage.getItem('stockData'));
+
+      stockdata.forEach(user => {
+        const option = document.createElement("option");
+        option.value = user.name;
+        option.text = user.name;
+        document.getElementById("select2").add(option);
+      });
+    //   debugger
+
+        
+    //     stockdata.forEach(user => {
+    //         if (Array.isArray(user.nestedData)) {
+    //         user.nestedData.forEach(nestedDataItem => {
+    //             if (nestedDataItem.partnumber) {
+    //             const option = document.createElement("option");
+    //             option.value = nestedDataItem.partnumber;
+    //             option.text = nestedDataItem.partnumber;
+    //             document.getElementById("select3").add(option);
+    //             }
+    //         });
+    //         }
+    //     });
+
 
 
 

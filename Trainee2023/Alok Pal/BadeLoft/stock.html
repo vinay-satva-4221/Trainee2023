@@ -35,7 +35,7 @@
                         <a class="nav-link active" href="Dashboard.html" aria-current="page">Dashboard </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stock.html" >Stock</a>
+                        <a class="nav-link" href="stock.html">Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="status.html">Status</a>
@@ -56,7 +56,7 @@
                         <p class="dynamicN"></p>
                     </div>
                 </div>
-                <div class="ms-5" id="logout" onclick="logout()">
+                <div class="ms-5" id="logout" onclick="logout()" style="cursor: pointer;">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </div>
 
@@ -65,7 +65,7 @@
     </nav>
 
 
-    <section>
+    <section style="background-color: rgb(240, 240, 240);">
         <div class="container d-flex mt-3">
             <div class="container butS">
                 <p class="stock"><b> Stock </b></p>
@@ -92,7 +92,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Stock Name</label>
-                                        <input type="text" class="form-control" id="stock"   maxlength="15">
+                                        <input type="text" class="form-control" id="stock" maxlength="15">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="">ETA Date</label>
@@ -147,22 +147,24 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="myMod"  onclick="getData()">Save changes</button>
+                                <button type="button" class="btn btn-primary " id="myMod"
+                                    onclick="addData()">Save</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <input type="text" placeholder="Search here">
-            </div>
+            </div> -->
         </div>
 
         <!-- Button trigger modal -->
 
         <!-- Modal 2-->
-        <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content stModat2">
                     <div class="modal-header">
@@ -170,12 +172,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form >
+                        <form>
                             <div class="row">
-                                <input type="text" class="form-control" id="pNum" placeholder="Part Number" maxlength="15">
+                                <input type="text" class="form-control" id="pNum" placeholder="Part Number"
+                                    maxlength="15">
                             </div>
                             <div class="row mt-2">
-                                <input type="number" class="form-control" id="order" class="numV" placeholder="Ordered" >
+                                <input type="number" class="form-control" id="order" class="numV" placeholder="Ordered">
                             </div>
                             <div class="row mt-2 form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here"
@@ -186,25 +189,27 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                         <!-- check for valid direct data toggle -->
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="getM() ,showMt2()">Save </button>
+                        <!-- check for valid direct data toggle -->
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            onclick="getM() ,showMt2()">Save </button>
                     </div>
                 </div>
             </div>
         </div>
 
-    </section>
-    <div class="container table-responsive mt-3">
-        <table id="example" class="table border" style="width:100%">
-            <thead class="bg-dark"></thead>
-        </table>
-        <!-- <div class="container table-responsive ">
+
+        <div class="container table-responsive mt-3">
+            <table id="example" class="table border" style="width:100%">
+                <thead class="bg-dark"></thead>
+            </table>
+            <!-- <div class="container table-responsive ">
             <table id="example" class="table border " style="width:100%">
                 <thead class="bg-dark"></thead>
             </table>
 
         </div> -->
-    </div>
+        </div>
+    </section>
 
 
     <script src="jquery/jquery.js"></script>

@@ -1,0 +1,41 @@
+#image {
+    position: relative;
+ }
+ #overimg {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    top: 340px;
+    left: 345px;
+    width: 280px;
+    height: 80px;
+ }
+
+ label.error{
+   color: red;
+ }
+
+ #btn{
+   background-color:#326C96 ; 
+   height: 45px; 
+   color: white;
+ }
+
+ #hr{
+   height: 2px; 
+   width: 50px; 
+   background-color:#082d47;
+ }
+ /* body {
+  font-family: Myriad Pro;
+} */
+#welcomeContent{
+  font-family: Source Sans Pro ;
+}
+#emailLabel{
+  font-family: Myriad Pro;
+}
+#passwordLabel{
+  font-family: Myriad Pro;
+}

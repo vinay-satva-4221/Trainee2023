@@ -3,8 +3,8 @@ var username = loginUser.name;
 document.getElementById("user").innerHTML = username;
 
 
-var stockname = document.getElementById("stock_name").value;
-var eta = document.getElementById("eta_date").value;
+var stockname = document.getElementById("location").value;
+var eta = document.getElementById("etadate").value;
 var partno = document.getElementById("npart_no").value;
 var order = document.getElementById("nporder_no").value;
 var notes = document.getElementById("nnotes_no").value;
@@ -15,7 +15,7 @@ function logout() {
 }
 
 function format(d) {
-  
+
   let childRowHTML = '';
   if (d.itemDetails && d.itemDetails.length > 0) {
     childRowHTML += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
@@ -28,7 +28,7 @@ function format(d) {
   }
   return childRowHTML;
 }
-// get data from localStorage
+
 var stockDetails = JSON.parse(localStorage.getItem('stockDetail'));
 
 var table = $("#example").DataTable({
@@ -46,12 +46,14 @@ var table = $("#example").DataTable({
     { data: "createdBy" },
     { data: "createdDate" },
     { data: "notes" },
-    { data: null,
+    {
+      data: null,
       render: function (data, type, row) {
-          // Return HTML for two buttons
-          return '<button class="btn btn-primary btn-sm">Edit<i class="fa-sharp fa-solid fa-pen"></i></button>' +
-              '<button class="btn btn-danger btn-sm">Delete</button>'; }
+        // Return HTML for two buttons
+        return '<button class="btn btn-primary btn-sm">Edit<i class="fa-sharp fa-solid fa-pen"></i></button>' +
+          '<button class="btn btn-danger btn-sm">Delete</button>';
       }
+    }
   ],
   order: [[1, "asc"]],
 });
@@ -72,11 +74,11 @@ $("#example tbody").on("click", "td.dt-control", function () {
   }
 });
 
-// Function to add stock to localStorage and DataTable
+
 function addStock() {
   debugger
   let stockName = document.getElementById("stock_name").value;
-  let eta = document.getElementById("eta_date").value;
+  let eta = document.getElementById("etadate").value;
   let status = document.querySelector('input[name="stock_status"]:checked').value;
 
   let stockDetails = {
@@ -86,22 +88,22 @@ function addStock() {
     createdBy: username,
     createdDate: eta,
     notes: "Hello EveryOne",
-    Action:  "",
+    Action: "",
     itemDetails: stockItemDetails
   };
 
-  
+
   var stockDetailsArray = JSON.parse(localStorage.getItem('stockDetail'));
-  if(!stockDetailsArray){
-     stockDetailsArray = [];
+  if (!stockDetailsArray) {
+    stockDetailsArray = [];
   }
   stockDetailsArray.push(stockDetails);
   localStorage.setItem('stockDetail', JSON.stringify(stockDetailsArray));
 
-  // Add new row to DataTable
-  table.row.add(stockDetails).draw(); 
+
+  table.row.add(stockDetails).draw();
   document.getElementById("stock_name").value = "";
-  document.getElementById("eta_date").value = "";
+  document.getElementById("etadate").value = "";
   stockItemDetails = [];
 }
 var stockItemDetails = [];
@@ -111,7 +113,7 @@ function addItemDetails() {
   let partNo = document.getElementById("npart_no").value;
   let order = document.getElementById("nporder_no").value;
   let notes = document.getElementById("nnotes_no").value;
-  let invoice  = 15001;
+  let invoice = 15001;
 
   let stockDetail11 = {
     partno: partNo,
@@ -123,14 +125,14 @@ function addItemDetails() {
 
   let dtr = "<tr>";
   dtr = dtr + "<td class='txtpartno' data-id= " + stockDetail11.partno + " >" + stockDetail11.partno + "</td>";
-  dtr = dtr + "<td class='txtinvoice' >" + (invoice++) +  "</td>";
-  dtr = dtr + "<td class='txtorder' >" + stockDetail11.order +  "</td>";
-  dtr = dtr + "<td class='txtnotes' >" + stockDetail11.notes +  "</td>";
+  dtr = dtr + "<td class='txtinvoice' >" + (invoice++) + "</td>";
+  dtr = dtr + "<td class='txtorder' >" + stockDetail11.order + "</td>";
+  dtr = dtr + "<td class='txtnotes' >" + stockDetail11.notes + "</td>";
   dtr = dtr + "<td class='tdAction'><button type='button' class'=btn btn-sm btn-dark btn-delete'>&#x2715;</button></td>";
   dtr = dtr + "</tr>";
   $("#parttable tbody").append(dtr);
   // invoice++;
 }
 $("#parttable tbody").on("click", ".btn-delete", function () {
-  $(this).closest("tr").remove(); 
+  $(this).closest("tr").remove();
 });

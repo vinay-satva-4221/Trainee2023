@@ -51,3 +51,109 @@ $(document).ready(function(){
 
     });
 });
+
+
+$(document).ready(function () {
+
+
+  var modal = document.getElementById("addassignment");
+
+
+  tableData = $('#assignment').DataTable({
+    orderable:false,
+    
+    lengthChange: false,
+    bFilter:true,
+    bInfo:false,
+    
+    dom: '<"toolbar">frtip',
+    fnInitComplete: function () {
+      $('div.toolbar').html('<b><h3>&nbsp;Assignments</h3></b>');
+      $('#assignment_filter').prepend(modal);
+        },  
+    
+        language: {
+          info: "Items _START_ to _END_ of _TOTAL_ total",
+          paginate:{
+            previous:"<",
+            next:">",
+          },
+          search: "",
+
+          searchPlaceholder: "Search here..."
+        },  
+    info: true,
+    paging: true,
+   ordering:false,
+    columns: [
+      {
+        
+        data: null,
+        className: 'dt-control',
+        orderable: false,
+        defaultContent: '',
+
+      },
+      {
+        data:"index",
+        title: 'QB Invoice #',
+        orderable: false,
+        render:function(data,type,row){
+          if(type=='display'){
+              return '<span style="color: #1188FF;">' + data + '</span>';
+          }
+          else {
+              return data;
+          }
+      }
+      },
+      {
+        data:"sname",
+        title: 'Name',
+        orderable: false,
+        className: "text-center"
+      },
+      {
+        data:"createdby",
+        title: 'Created By',
+        orderable: false,
+        className: "text-center"
+      },
+      {
+        data:"cdate",
+        title: 'Created Date',
+        orderable: false,
+        className: "text-center"
+      },
+
+      {
+        data:null,
+        title: 'Action',
+        orderable: false,
+        defaultContent: '<div class="action-buttons">' +
+                    '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
+                    '<span class="remove"><i class="fa fa-trash"></i></span> ' +
+                    '<span class="cancel"></span>' +
+                    '</div>',
+        className: 'row-edit dt-center',
+      }
+    ]
+  
+  });
+
+  // Add event listener for opening and closing details
+  $('#stock tbody').on('click', 'td.dt-control', function () {
+    var tr = $(this).closest('tr');
+    var row = tableData.row(tr);
+
+    if (row.child.isShown()) {
+      // This row is already open - close it
+      row.child.hide();
+      tr.removeClass('shown');
+    } else {console.log(partDetails)
+      // Open this row
+      row.child(format(row.data())).show();
+      tr.addClass('shown');
+    }
+  });
+});

@@ -1,0 +1,55 @@
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+      }
+      #image_login{
+        position: relative;
+      }
+      form{
+        width: 30rem;
+      }
+      #loginbtn{
+        background-color: #326c96;
+      }
+      .style1{
+        width: 50px;
+        height: 5px;
+        color: #326c96;
+      }
+      .msg{
+        color: red;
+      }
+      /* .pagination a.active{
+        background-color: black;
+        color: white;
+      }
+   .pagination .page-item.active .page-link{
+    background-color: black;
+    border-color: black;
+   } */
+   /* .dataTables_paginate .paginate_button.current {
+    background-color: black;
+    color: white;
+} */
+/* .active>.page_link,
+.page-link.active{
+  background-color: black;
+  border: none;
+} */
+
+
+    @media screen and (max-width: 767px) {
+        #image_login {
+          display: none;
+        }
+        .centered {
+            display: none;
+          }
+      }
+
+
+  
+      

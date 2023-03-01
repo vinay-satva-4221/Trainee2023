@@ -60,7 +60,7 @@
               
             </ul>
             <div>
-                <i class="fa fa-sign-out" aria-hidden="true" onclick="logout()"></i>
+                <img src="images/Log-Out.jpg" alt="" onclick="logout()">
             </div>
         </nav>
           
@@ -69,18 +69,14 @@
         <div class="table-responsive bg-light">
 
             <div class="m-5">
-                <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand"> <b><h3>Assignments</h3></b></a>
-                    <form class="form-outline">
+              
         
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                            + NEW 
-                          </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="addassignment" data-bs-target="#myModal" style="background-color: #326C96; border: none; font-size: 18px; margin-right: 1%; font-family: 'Segoe UI'; font-weight:600;">
+                            <img src="images/Plus.png" style="height: 18px;"> New  
+                           </button>
                         <!-- <input type="search" class="form-control" id="datatable-search-input" placeholder="Search here"> -->
         
-                    </form> 
         
-                 </nav> 
 
             <table class="table border rounded" id="assignment">
                 <thead class="table table-dark rounded">
@@ -90,6 +86,7 @@
             </table>
             </div>
         </div> 
+        
             <div class="modal" id="myModal" >
                 <div class="modal-dialog">
                     <div class="modal-content">

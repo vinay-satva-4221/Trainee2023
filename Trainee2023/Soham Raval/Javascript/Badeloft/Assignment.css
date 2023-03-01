@@ -1,0 +1,12 @@
+#newbuttonassignment{
+    background-color: #326C96;
+  }
+  .navbar a.active{
+    border-bottom: 1px solid #000000;
+  }
+  .dataTables_length,.dataTables_info{
+    display: none;
+  }
+  #example_filter{
+    display: none;
+  }
