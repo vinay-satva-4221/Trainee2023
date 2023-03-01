@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container p-0 m-6">
-                <img src="Images/img logo.jpg" alt="" srcset="" id="dasboardlogo">
+                <img src="Images/img logo2.jpg" alt="" srcset="" id="dasboardlogo">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -68,20 +68,22 @@
     </header>
     <section>
         <div class="container-fluid p-0">
-            <div class="bg-light px-4 ">
-                <div class="row pt-2">
-                    <div class="col-md-4">
-                        <h4 class=" fw-bolder pt-5 m-0">Assignments</h4>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-end pt-5 m-0">
-                        <button type="button" class="btn " id="new" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            + New
-                        </button>
+            <div class="row backgroundcolor">
+                <div class="col-lg-3 p-3">
+                    <b><span id="stock" class="m-lg-5"> Assignment</span></b>
+                </div>
+                <div class="col-lg-2 offset-lg-4 p-3">
+                    <button type="button" class="btn" id="addStock" data-bs-toggle="modal"
+                        data-bs-target="#assignmentModal"><b>+New</b></button>
+                </div>
+                <div class="col-lg-3 p-3">
+                    <div class="form-group has-search me-5 pe-1">
+                        <input type="text" class="form-control" placeholder="Search" id="datatablesearch" />
                     </div>
                 </div>
+            </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="assignmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
@@ -144,37 +146,15 @@
                     </div>
                 </div>
 
-                <div class=" displayTable">
-                    <table id="table_div" class="table table-display table-hover  table-sm " style="width:100%">
+                <div class="row backgroundcolor">
+                    <div class=" displayTable table-responsive pt-4 px-5">
+                        <table id="table_div" class="table table-display table-hover  table-sm " style="width:100%">
 
-                        <!-- <table id="table_div" class="table  .table-responsive-lg"> -->
-                        <thead class="thead-dark">
+                            <thead class="thead-dark">
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
-                <!-- <div class="container d-flex justify-content-end " id="navpart">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination mt-2">
-                            <div class="d-flex mt-2 pageNo">
-                                <p>Items 1 to 5 of 1 total</p>
-                            </div>
-                            &nbsp;&nbsp;
-                            <li class="page-item ">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div> -->
 
             </div>
         </div>
@@ -186,6 +166,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

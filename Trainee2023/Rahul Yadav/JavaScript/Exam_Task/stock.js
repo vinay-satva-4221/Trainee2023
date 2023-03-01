@@ -9,11 +9,11 @@ $(document).ready(function () {
         function format(d) {
             let dynamicChildRow = '';
             if (d.partiteam && d.partiteam.length > 0) {
-                dynamicChildRow += '<table class:"table table-display childtable bg-light  table-sm border border-dark rounded" style="width:100%">';
+                dynamicChildRow += '<table class:"table table-display childtable bg-light  table-sm " style="width:100%">';
                 dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
                 dynamicChildRow += '<tbody>';
                 d.partiteam.forEach((partiteam, index) => {
-                    dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>';
+                    dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td>td' + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td></tr>" ;
                 });
                 dynamicChildRow += '</tbody></table>';
             }
@@ -26,20 +26,33 @@ $(document).ready(function () {
             console.log(a);
             var table = $('#table_div1').DataTable({
                 data: a,
-                columns: [
+                language: {
+
+                    paginate: {
+                        next: '&#62',
+                        previous: '&#60'
+                    }
+                },
+                columnDefs: [
+
+
+                    { orderable: true, className: "reorder", targets: 0 },
+                    { orderable: false, targets: "_all" },
                     {
-                        className: 'dt-control',
-                        orderable: false,
-                        data: null,
-                        defaultContent: '',
+                        className: "dt-left",
+                        targets: [0],
                     },
-                    { data: 'stockname', title: ' Stock Name' },
+                    { width: "15%", targets: [0] },
+                    { width: "25%", targets: [5] },
+                ],
+                columns: [
+                    { data: 'stockname', title: ' Stock Name', className: 'dt-left dt-control', orderable: false, },
                     { data: 'date', title: 'ETA Date', orderable: false, className: 'TextCenter' },
                     { data: 'stockstatus', title: 'Stock Location', orderable: false, className: 'TextCenter' },
                     { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
                     { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
                     { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
-                    // { data: '', title: 'Action', orderable: false, className: 'TextCenter' },
+                    { data: null, title: 'Action', orderable: false, className: 'editmodel', defaultContent: '<i class="bi bi-pencil-fill"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history" style="font-size: 1rem; color: gray;"></i>' },
                 ],
                 order: [[1, 'asc']],
             });
@@ -65,7 +78,30 @@ $(document).ready(function () {
                     tr.addClass('shown');
                 }
             });
+
+
+            $('#table_div1 tbody').on('click', 'td.editmodel', function () {
+                let tablerowdata = table.row(this).data();
+                console.log('row data', tablerowdata);
+
+                $('#stockname').val(tablerowdata.stockname);
+                $('#etadate').val(tablerowdata.date);
+                // $('#stockstatus').val(tablerowdata.stockstatus);
+                // editpartsdetail=tablerowdata.partiteam;
+                debugger
+                if (tablerowdata.partiteam && tablerowdata.partiteam.length > 0) {
+                    tablerowdata.partiteam.forEach(function (partiteam, index) {
+                        $('#root').append('<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>');
+                    })
+                }
+                partiteam = tablerowdata.partiteam;
+
+                $('#stockModal').modal('show');
+            });
+
         });
+
+
 
         $("#partform").validate({
             rules: {
@@ -110,6 +146,7 @@ $(document).ready(function () {
                     html += "<td>" + element.order + "</td>";
                     html += "<td>" + element.notes + "</td>";
                     // html += "<td>" + '<i class="bi bi-x"></i>' + "</td>";
+                    html += "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
                     html += "</tr>"
                 });
                 document.getElementById("root").innerHTML = html;
@@ -118,33 +155,67 @@ $(document).ready(function () {
             }
         };
 
-        document.getElementById("savestock").onclick = function () {
-            var stockname = document.getElementById("stockname").value;
-            var etadate = document.getElementById("date").value;
-            var stockstatus = document.querySelector('input[name="btnradio"]:checked').value;
-            var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
-            var useridname = logedinUser[0].Name;
-            var date = new Date().toLocaleDateString();
-            console.log(useridname);
-            var obj1 = {
-                stockname: stockname,
-                date: etadate,
-                stockstatus: stockstatus,
-                username: useridname,
-                createddate: date,
-                partiteam: partiteam
-            }
-            var stockdata = new Array;
-            if (localStorage.getItem("stockdata") == null) {
-                stockdata = [];
-            } else {
-                stockdata = JSON.parse(localStorage.getItem("stockdata"));
-            }
-            stockdata.push(obj1);
-            localStorage.setItem("stockdata", JSON.stringify(stockdata));
-            document.getElementById("stockform").reset();
+        $("#root").on("click", ".btn-delete", function () {
+            $(this).closest("tr").remove();
+        });
 
-            $('#stockModal').modal('hide');
+
+        // document.getElementById("delete").onclick=function(){
+        //     $(this).closest("tr").remove();
+        // };
+
+        // $("#stockform").validate({
+        //     rules: {
+        //         stockname: {
+        //             required: true,
+        //         },
+        //         etadate: {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         stockname: {
+        //             required: "Enter the stockname",
+        //         },
+        //         etadate: {
+        //             required: "Enter the etadate",
+        //         },
+        //     },
+        //     submitHandler: function (stockform) {
+        //         stockform.submit();
+        //     },
+        // });
+        // var form = $("#stockform");
+        // form.validate();
+        document.getElementById("savestock").onclick = function () {
+            var result = form.valid();
+            if (result == true) {
+                var stockname = document.getElementById("stockname").value;
+                var etadate = document.getElementById("date").value;
+                var stockstatus = document.querySelector('input[name="btnradio"]:checked').value;
+                var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
+                var useridname = logedinUser[0].Name;
+                var date = new Date().toLocaleDateString();
+                console.log(useridname);
+                var obj1 = {
+                    stockname: stockname,
+                    date: etadate,
+                    stockstatus: stockstatus,
+                    username: useridname,
+                    createddate: date,
+                    partiteam: partiteam
+                }
+                var stockdata = new Array;
+                if (localStorage.getItem("stockdata") == null) {
+                    stockdata = [];
+                } else {
+                    stockdata = JSON.parse(localStorage.getItem("stockdata"));
+                }
+                stockdata.push(obj1);
+                localStorage.setItem("stockdata", JSON.stringify(stockdata));
+                document.getElementById("stockform").reset();
+                $('#stockModal').modal('hide');
+            }
 
         };
 
@@ -153,7 +224,7 @@ $(document).ready(function () {
                 singleDatePicker: true,
                 showDropdowns: true,
                 minYear: 1901,
-                maxYear: parseInt(moment().format('YYYY'), 10)
+                maxYear: 3030
             }, function (start, end, label) {
                 var years = moment().diff(start, 'years');
 
