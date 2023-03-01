@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
 
+  $(document).css("font-family", "Myriad Pro, sans-serif");
+
   const hello = JSON.parse(localStorage.getItem("loggedInUser"));
         if (hello == null) {
             location.replace("./login.html");
@@ -23,24 +25,41 @@ var DashboardData = [
 ['WB-05-M-G', '', '', '', '', ''],
 ];
 
-// Add button to left of search bar
+
+var StockLocation = $.fn.dataTable.absoluteOrder( 
+  [{ value: 'Stock Location', position: 'top' },
+  { value: 'ETA Date', position: 'top' } ]);
 
 
-
-$('#example').DataTable({
-  "data": DashboardData,
-  "paging": true,
-  "dom": '<"toolbar">frtip',
-  "bFilter": true,
-  "bInfo": true,
-  "columnDefs": [
-    { "orderable": true, "targets": 0 },
-    { "orderable": false, "targets": "_all" }
+var table = $('#dashboard_table').DataTable({
+  language: {
+    search: "_INPUT_",
+        searchPlaceholder: 'Search...',
+        paginate: {
+          next: '&#62',
+          previous: '&#60' 
+        },
+        "info": "Items _START_ to _END_ of _TOTAL_ total"
+  },
+  data: DashboardData,
+  paging: true,
+  dom: '<"toolbar">frtip',
+  bFilter: true,
+  bInfo: true,
+  columnDefs: [
+    {
+      width : "30%",
+      targets:[0]
+    },
+    { targets: 0, type: StockLocation },
+    { orderable: true, targets: 0 },
+    { orderable: false, targets: "_all" }
   ],
-  "fnInitComplete": function () {
-    $('div.toolbar').html('<h2>Dashboard</h2>');
-  }
-});
+  fnInitComplete: function () {
+    $("div.toolbar").html("<h2>Dashboard</h2>");
+  },
+ 
+})
 
 var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 $("#activeuser").html(activeuser.username);

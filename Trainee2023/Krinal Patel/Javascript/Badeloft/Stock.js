@@ -173,9 +173,8 @@ console.log(stockDetails)
         title: 'Action',
         orderable: false,
         defaultContent: '<div class="action-buttons">' +
-                    '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
-                    '<span class="remove"><i class="fa fa-trash"></i></span> ' +
-                    '<span class="cancel"></span>' +
+                    '<span class="edit"><i class="fas fa-pen"></i></span> ' +
+                    '<span class="history">&nbsp;&nbsp;<i class="fas fa-history"></i></span> ' +
                     '</div>',
         className: 'row-edit dt-center',
       }
@@ -351,3 +350,81 @@ function addstockdata() {
   localStorage.setItem("stockList", JSON.stringify(stockDetails));
 
 }
+
+
+
+
+$.validator.addMethod("namecheck", function (value) {
+  return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value);
+});
+$.validator.addMethod("password", function (value) {
+  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
+});
+// $("#checkConfirmPass").css("color", "red");
+
+
+
+$("#AddStockForm").validate({
+
+
+  errorClass: 'msgerror',
+  rules: {
+    sname: {
+      required: true,
+      namecheck: true,
+    },
+    etadate: {
+      required: true,
+    },
+    partno:{
+      required:true,
+    }
+  },
+  messages: {
+    sname: {
+      required: "Enter Stock name",
+      namecheck: "Enter valid Stock name",
+    },
+    partno:{
+      required: "Enter Part number"
+    },
+    etadate: {
+      required: "Enter ETA date"
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+});
+
+$("#AddPartForm").validate({
+  
+  errorClass: 'msgerror',
+  rules: {
+    
+    partno:{
+      required:true,
+    },
+    ordered:{
+      required:true,
+    },
+    notes:{
+      required:true,
+    }
+  },
+  messages: {
+    
+    partno:{
+      required: "Enter Part number",
+    },
+    ordered:{
+      required: "Enter number of ordered parts",
+    },
+    notes:{
+      required:"Enter notes",
+    }
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+})

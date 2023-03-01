@@ -62,18 +62,12 @@
 <div class="deshboard" style="background-color: #ebedf0;">
   <div class="container-fluid pt-2">
     <div class="row">
-      <div class="col-md-9">
-        <h4><strong>Stock</strong></h4>
-      </div>
-      <div class="col-md-3">
-        <input type="search" class="form-control" id="CustomSearchBox" placeholder="search here">
-      </div>
     </div>
   </div>
   <div class="container-fluid ">
     <div class="table-responsive mt-4">
-      <table id="example" class="table rounded" style="width: 100%;">
-        <thead class="maintable">
+      <table id="dashboard_table" class="table rounded" style="width: 100%;">
+        <thead class="">
         </thead>
         <tbody class="bg-light"></tbody>
       </table>
@@ -81,10 +75,13 @@
   </div>
 </div>
   <script src="./Dashboard.js"></script>
+  
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-  <!-- <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
   <script src="/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+
 </body>
 </html>
