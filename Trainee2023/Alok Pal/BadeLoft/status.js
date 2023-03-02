@@ -44,13 +44,13 @@ function logout() {
 function format(d) {
   // `d` is the original data object for the row
   return (
-    '<table class="table">' +
+    '<table class="table table-border border" >' +
     "<thead>" +
-    "<tr>" +
-    "<th >#</th>" +
-    " <th>Part Number</th>" +
-    '<th scope="col">Stock Location</th>' +
-    '<th scope="col">Action</th>' +
+    "<tr >" +
+    "<th style='color: black' >#</th>" +
+    " <th style='color: black'>Part Number</th>" +
+    '<th scope="col" style="color: black">Stock Location</th>' +
+    '<th scope="col"style="color: black">Action</th>' +
     "</tr>" +
     "</thead>" +
     '<tbody class="table-group-divider">' +

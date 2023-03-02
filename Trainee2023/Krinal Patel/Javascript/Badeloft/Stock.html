@@ -76,19 +76,8 @@
         <div class="table-responsive bg-light ">
 
             <div class="m-5">
-<!--        
-                <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand"> <b><h3>Stock</h3></b></a>
-                    <form class="form-outline">
-        
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="addstock" data-bs-target="#myModal">
-                            + NEW  -->
-                          <!-- </button> -->
-                        <!-- <input type="search" class="form-control" id="datatable-search-input" placeholder="Search here"> -->
-<!--         
-                    </form> 
-        
-                 </nav>  -->
+      
+    
             
                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" id="addstock" data-bs-target="#myModal" style="background-color: #326C96; border: none; font-size: 18px; margin-right: 1%; font-family: 'Segoe UI'; font-weight:600;">
                    <img src="images/Plus.png" style="height: 18px;"> New  
@@ -109,7 +98,7 @@
         
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Add New Stock</h4>
+                            <h4 id="addstocktitle" class="modal-title">Add New Stock</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                        
@@ -156,11 +145,13 @@
 
                                             <table class="table" id="stockadd">
                                                 <thead class="table-dark">
+                                                    <tr>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Part Number</td>
                                                     <td>Invoice #</td>
                                                     <td>Ordered</td>
                                                     <td>Notes</td>
                                                     <td>Action</td>
+                                                </tr>
                                                 </thead>
                                                 <tbody id="tdata">
 
@@ -175,7 +166,8 @@
                                 </div> 
                                                         
                                 <div class="modal-footer float-left">
-                                    <button type="button" class="btn" style="background-color: #326C96; color: white;"  onclick="addstockdata()" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn" id="addstockbtn" style="background-color: #326C96; color: white;"  onclick="addstockdata()" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn" id="editstockbtn" style="background-color: #326C96; color: white;"  onclick="updatestockdata()" data-bs-dismiss="modal">Update</button>
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                                 </div>
         
