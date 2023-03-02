@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="">ETA Date</label>
-                                        <input type="text" name="ETA" class="form-control" id="date"  />
+                                        <input type="text" name="ETA" class="form-control" id="date" placeholder="dd/mm/yyyy"/>
                                         <!-- <input type="date"  class="form-control" id="date" /> -->
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                                     <label for="">Stock Status</label>
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                         <input type="radio" class="btn-check" name="btnradio" value="On Production" id="btnradio1"
-                                            autocomplete="off">
+                                            autocomplete="off" checked>
                                         <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
 
                                         <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="On Water"
@@ -145,16 +145,7 @@
                                 <div class="row">
                                     <div class="container table-responsive  mt-3">
                                         <table id="partTable" class="table text-center border ">
-                                            <!-- <thead class="bg-dark rounded ">
-                                                <th class="th_color text-start">Part Number</th>
-                                                <th class="th_color text-start">Invoice#</th>
-                                                <th class="th_color text-start">Ordered</th>
-                                                <th class="th_color text-start">Notes</th>
-                                                <th class="th_color text-center"></th>
-
-                                            </thead>
-                                            <tbody id="root">
-                                            </tbody> -->
+                                          
                                         </table>
                                     </div>
                                 </div>
@@ -163,7 +154,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-start ">
-                                <button type="button" class="btn  " id="myMod" onclick="addData()">Save</button>
+                                <button type="button" class="btn  " id="modalstock" onclick="addData()">Save</button>
                                 <button type="button" class="btn btn-secondary" onclick="resetSVal() " data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
