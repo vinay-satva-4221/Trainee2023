@@ -81,6 +81,7 @@ a {
 }
 
 
+
 /* pagination title shift */
 .dataTables_info {
     margin-left: 66%;
@@ -166,7 +167,23 @@ table.dataTable thead>tr>td.sorting_desc_disabled:after {
 
 
 
+.popover {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(782px, 172px);
+    width: 16%;
+    /* height: 43%; */
+}
 
 
+.userCol{
+    color: red;
+}
 
-
+.cross{
+    margin-left: 74%;
+    /* padding-top: -10%; */
+    /* position: reltive; */
+    position: absolute;
+}

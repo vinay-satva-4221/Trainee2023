@@ -48,7 +48,9 @@ a {
   height: 50px;
   border-radius: 50%
 }
-
+#welcomefont{
+  font-size: 12px;
+}
 
 button.btn.btn-outline-secondary.cancelbtn:hover{
   background-color: white !important;
@@ -62,14 +64,14 @@ div.table-responsive .datatableStyle th {
 div.table-responsive .datatableStyle thead {
   background-color: black;
   border-collapse: collapse;
-  border-radius: 1em;
+  border-radius: 5px;
 
 }
 
 div.table-responsive table{
   font-size: small;
   border-collapse: collapse;
-  border-radius: 1em;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -146,21 +148,21 @@ input[type=checkbox]:checked {
   accent-color: green;
 }
 
-table #statusChildData {
-  font-size: small;
-  border-collapse: collapse;
-  border-radius: 1em;
-  overflow: hidden;
-
-}
-
-#statusChildData thead {
-  background-color: rgb(228, 232, 235);
-  border-collapse: collapse;
-}
-
-table #statusChildData thead th {
+div.table-responsive #statusChildData th {
   color: gray;
+}
+
+div.table-responsive #statusChildData thead {
+  background-color: rgb(220, 223, 232);
+  border-collapse: collapse;
+  border-radius: 5px;
+  
+}
+
+div.table-responsive table #statusChildData{
+  font-size: small;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 
@@ -188,7 +190,7 @@ table #statusChildData thead th {
 
 /* stock css */
 
-table #partTable{
+/* table #partTable{
       font-size: small;
       border-collapse: collapse;
       border-radius: 1em;
@@ -202,7 +204,25 @@ table #partTable thead{
 
 table #partTable thead th{
   color: gray;
+} */
+
+div.table-responsive #childpartTable th {
+  color: gray;
 }
+
+div.table-responsive #childpartTable thead {
+  background-color: rgb(220, 223, 232);
+  border-collapse: collapse;
+  border-radius: 5px;
+  
+}
+
+div.table-responsive table #childpartTable{
+  font-size: small;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
   color: #fff;

@@ -95,11 +95,33 @@ li.paginate_button.page-item:hover {
 }
 
 
-.navbar-nav .nav-item .nav-link.active {
+/* .navbar-nav .nav-item .nav-link.active {
   border-bottom: 2px solid black !important;
   padding-bottom: 20px;
-}
+} */
 
 .nav1 {
   height: 52px;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 33%;
+  height: 2px;
+  bottom: -15px;
+  left: 29px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(1);
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
 }
