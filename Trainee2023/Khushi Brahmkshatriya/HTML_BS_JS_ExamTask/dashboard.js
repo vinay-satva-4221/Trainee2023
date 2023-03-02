@@ -63,7 +63,7 @@ $(document).ready(function () {
     content: function () {
       return $('#popover-form').html();
     }
-  });
+});
 })
 
 
