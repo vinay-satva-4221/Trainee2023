@@ -106,6 +106,6 @@ body {
 
   #example.dataTable td.dt-control:before {
     background-color: white;
-    color: grey;
-    border-color: grey;
+    color: #326C96;
+    border-color: #326C96;
   }
