@@ -56,7 +56,7 @@ $(document).ready(function () {
   })
   //$('[data-bs-toggle="popover"]').popover();  
   $('[data-bs-toggle="popover"]').popover({
-   
+
     container: 'body',
     placement: 'right',
     html: true, 
@@ -64,4 +64,6 @@ $(document).ready(function () {
           return $('#popover-form').html();
     }
 });
+
+
 })
