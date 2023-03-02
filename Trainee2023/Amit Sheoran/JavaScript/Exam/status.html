@@ -11,10 +11,11 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+
     </script>
     <style>
         thead {
@@ -22,20 +23,66 @@
             color: aliceblue;
         }
 
-        .navbar a.active {
-            border-bottom: 3px solid #000000;
+        .navbar-nav .nav-link {
+            position: relative;
         }
+
+        .navbar-nav .nav-link::before {
+            content: "";
+            position: absolute;
+            width: 33%;
+            height: 2px;
+            bottom: -23px;
+            left: 20px;
+            background-color: #000;
+            visibility: hidden;
+            transform: scaleX(0);
+          
+        }
+
+        .navbar-nav .nav-link.active::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
 
         body {
             overflow-x: hidden;
         }
-        
+
+        #example.dataTable td.dt-control:before {
+            background-color: white;
+            color: #1188FF;
+            border-color: #1188FF;
+        }
+
+        .sorting_1 {
+            color: #1188FF;
+        }
+
+        table {
+            font-size: small;
+            border-collapse: collapse;
+            border-radius: 0.2em;
+            overflow: hidden;
+            background-color: white;
+            border-bottom: none;
+            border: 1px solid #bbb8b8;
+        }
+
+        input[type=checkbox]:checked {
+            accent-color: green;
+        }
+
+        .sorting {
+            width: 100px;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg p-0">
-        <div class="container-fluid ">
+        <div class="container ">
             <div class="navbar-brand">
                 <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
             </div>
@@ -69,7 +116,7 @@
                     </div>
                     <div class="col-6 text-center">
                         <p class="small mb-0">Welcome</p>
-                        <p id="active" class="mb-0"><b></b></p>
+                        <p id="activeusername" class="fw-bolder mb-0"></p>
                     </div>
                     <div class="col-3 text-right p-0">
                         <div class="nav-item logoutbutton">
@@ -80,53 +127,40 @@
                 </div>
             </div>
     </nav>
+    <div style="background-color: #e0e3ec;">
+        <div class="container p-0">
+            <section id="dataTable" class="dataTable">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container-fluid">
 
-    <!-- <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th></th>
-                <th>QB Invoice#</th>
-                <th>Name</th>
-                <th>QB Ship date</th>
-                <th>QB Payment Status</th>
-                <th>QB Status</th>
-                <th>QB Delivery Phone</th>
-                <th>Called</th>
-                <th>QB Tracking </th>
-            </tr>
-        </thead>
-    </table> -->
-    <div class="container-fluid p-0" style="background-color: #e0e3ec;">
-        <section id="dataTable" class="dataTable">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="container-fluid">
+                            <br />
+                            <div id="table_box_bootstrap " class="table-responsive">
 
-                        <br />
-                        <div id="table_box_bootstrap " class="table-responsive">
+                                <table id="example" class="display" style="width:100%">
+                                    <thead>
+                                        <tr class="text-start" style="border-radius: 10px;">
+                                            <th></th>
+                                            <th>QB Invoice#</th>
+                                            <th>Name</th>
+                                            <th>QB Ship date</th>
+                                            <th>QB Payment Status</th>
+                                            <th>QB Status</th>
+                                            <th>QB Delivery Phone</th>
+                                            <th>Called</th>
+                                            <th>QB Tracking </th>
+                                        </tr>
+                                    </thead>
 
-                            <table id="example" class="display" style="width:100%">
-                                <thead>
-                                    <tr class="text-start" style="border-radius: 10px;">
-                                        <th></th>
-                                        <th>QB Invoice#</th>
-                                        <th>Name</th>
-                                        <th>QB Ship date</th>
-                                        <th>QB Payment Status</th>
-                                        <th>QB Status</th>
-                                        <th>QB Delivery Phone</th>
-                                        <th>Called</th>
-                                        <th>QB Tracking </th>
-                                    </tr>
-                                </thead>
-
-                            </table>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
+
 
     <script>
         $(document).ready(function () {
@@ -139,8 +173,8 @@
             });
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-            $("#active").html(activeuser.name);
-            $('[data-toggle="popover"]').popover();
+            $("#activeusername").html(activeuser.name);
+            // $('[data-toggle="popover"]').popover();
 
 
 
@@ -175,7 +209,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -185,7 +219,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -195,7 +229,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -205,7 +239,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(245, 227, 227); border-color:rgb(245, 227, 227); color:red"><i class="fa-solid fa-xmark"></i>Unpaid</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -215,7 +249,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -225,7 +259,7 @@
                     name: '15000',
                     position: 'Kenneth Woodard',
                     office: '12/08/2021',
-                    salary: '',
+                    salary: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:rgb(233, 185, 54);"><i class="fa fa-circle-exclamation"></i>Pending Approval</span>',
                     status: 'shipped',
                     deliveryphone: '123-123-1234',
                     called: '',
@@ -253,18 +287,30 @@
                     {
                         data: 'salary',
                         render: function (data, type, row, meta) {
-                            return data + ' <button type="button" class="alert alert-primary p-1"><i class="fa fa-check">Paid</i></button>';
+                            return data;
                         }
                     },
                     { data: 'status' },
                     { data: 'deliveryphone' },
                     {
                         data: 'called', render: function (data, row, meta) {
-                            return '<input type="checkbox">';
+                            return '<input type="checkbox" style="background-color:white; color:green;">';
                         }
                     },
                     { data: 'tracking' },
                 ],
+                language: {
+
+                    paginate: {
+                        next: "&#62",
+                        previous: "&#60",
+                    },
+                    info: "Items_START_to_END_of_TOTAL_items",
+
+                    search: "_INPUT_",
+                    searchPlaceholder: ' Search...'
+
+                },
                 order: [[1, 'asc']],
             });
 

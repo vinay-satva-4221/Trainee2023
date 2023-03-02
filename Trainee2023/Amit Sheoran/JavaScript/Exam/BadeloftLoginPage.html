@@ -1,12 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Badeloft</title>
-    
+
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,10 +16,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
     <!-- Myriad Pro Font -->
-    <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
+    <!-- <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" /> -->
 
     <!-- Jquery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  
+
+    
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +55,7 @@
                             <hr style="height: 2px; width: 50px; background-color: skyblue">
                         </div>
 
-                        <form class="mt-4" id="myform">
+                        <form class="mt-4" id="LoginForm">
 
                             <div class="form-group">
                                 <label for="validationCustom01" class="fw-medium text-secondary">
@@ -61,12 +69,11 @@
                                     Password
                                 </label>
 
-                                <input type="password" class="form-control" id="password" name="password"
-                                    required />
+                                <input type="password" class="form-control" id="password" name="password" required />
                             </div>
 
-                            <div  class="form-group mt-4">
-                                <button class="btn btn-primary" id="submit"
+                            <div class="form-group mt-4">
+                                <button class="btn btn-primary" id="loginbutton" type="button"
                                     style="width: 100%; height: 40px; background-color:#326C96;">
                                     Login
                                 </button>
@@ -78,18 +85,16 @@
         </div>
     </div>
 
-  
 
-    <script src="./Badeloft.js"></script>
+
+    <script src="./BadeloftLoginPage.js"></script>
+    
 
     <!-- Jquery validators -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/additional-methods.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- Bootstrap JS CDN  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
 
 
 </body>
