@@ -5,16 +5,22 @@ if (localStorage.getItem('LogedinUser') !== null) {
     function format(d) {
         let dynamicChildRow = '';
         if (d.partiteam && d.partiteam.length > 0) {
-            dynamicChildRow += '<table class:"table table-display childtable bg-light  table-sm " style="width:100%">';
-            dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
+            dynamicChildRow += '<table class:"table rounded p-0 m-0 w-100 h-100" id="childpartTable " style="width:100%">';
+            dynamicChildRow += '<thead class=" fw-normal"><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th><th>Action</th></tr></thead>';
             dynamicChildRow += '<tbody>';
             d.partiteam.forEach((partiteam, index) => {
-                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>';
+                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td><td>' + '<button type="button" class="btn-close" aria-label="Close"></button>' + '</td></tr>';
             });
             dynamicChildRow += '</tbody></table>';
         }
         return dynamicChildRow;
     }
+
+
+    $("#childpartTable").on("click", ".btn-close", function () {
+        $(this).closest("tr").remove();
+        partiteam.splice(this, 1)
+    });
 
     var isEdit = false;
     $(document).ready(function () {
@@ -162,7 +168,9 @@ if (localStorage.getItem('LogedinUser') !== null) {
 
         $("#root").on("click", ".btn-delete", function () {
             $(this).closest("tr").remove();
+            partiteam.splice(this, 1)
         });
+
 
 
         $("#stockform").validate({
@@ -191,7 +199,7 @@ if (localStorage.getItem('LogedinUser') !== null) {
         var stockdata = new Array;
         document.getElementById("savestock").onclick = function () {
             if (!isEdit) {
-                var result =stockform.valid();
+                var result = stockform.valid();
                 if (result == true) {
                     var stockname = document.getElementById("stockname").value;
                     var etadate = document.getElementById("date").value;
