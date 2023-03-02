@@ -334,10 +334,13 @@ tbody {
   color: black;
 }
 
-.rightalign{
+.rightalign {
   text-align: right !important;
 }
 
+.fontcolor {
+  color: gray;
+}
 
 .alert {
   padding: 3px;
@@ -432,4 +435,13 @@ table.dataTable td.dt-control:before {
 
 .actiontd {
   text-align: right;
+}
+
+.btn-check:active + .btn-outline-primary,
+.btn-check:checked + .btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+  color: #fff;
+  background-color: #0a738d;
 }

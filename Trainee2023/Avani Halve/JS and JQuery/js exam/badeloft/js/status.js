@@ -48,10 +48,10 @@ $(document).ready(function () {
          qb_invoice: "150000",
          name: "Kenneth Woodward",
          qb_shipdate: "09/08/2001",
-         qb_pay_status: '<button class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         qb_pay_status: '<button class="btn-sm alert alert-primary p-1" id="changeAlert" style=""><i class="fa fa-check"></i>&nbsp;Paid</button>',
          status: "Shipped",
          qb_delievery_phone: "asasxc",
-         called: '<input type="checkbox"></input>',
+         called: '<input type="checkbox" style="text-align: center;"></input>',
          qb_tracking: "WBC-123",
       },
       {
@@ -229,6 +229,23 @@ $(document).ready(function () {
       }
    });
 
+   //click anywhere in the row
+   var table = $('#example').DataTable();
+
+   $('#example tbody').on('click', 'tr', function() {
+     var data = table.row(this).data();
+     if (table.row(this).child.isShown()) {
+       table.row(this).child.hide();
+       var alertElement = $('#changeAlert');
+       alertElement.removeClass('alert-success');
+       alertElement.addClass('alert-primary');
+     } else {
+       table.row(this).child(format()).show();
+       var alertElement = $('#changeAlert');
+       alertElement.removeClass('alert-primary');
+       alertElement.addClass('alert-success');
+     }
+   });
 });
 
 // Add event listener for opening and closing details

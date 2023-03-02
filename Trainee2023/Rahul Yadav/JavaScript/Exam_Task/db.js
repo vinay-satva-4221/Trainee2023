@@ -29,6 +29,7 @@ $(document).ready(function () {
         $("#table_div").DataTable({
             data: dataSet,
             language: {
+                info: "Items _START_ to _END_ of _TOTAL_ total",
 
                 paginate: {
                     next: '&#62',
