@@ -19,25 +19,82 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     </script>
     <style>
+        .navbar-nav .nav-link {
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: "";
+            position: absolute;
+            width: 33%;
+            height: 2px;
+            bottom: -23px;
+            left: 32px;
+            background-color: #000;
+            visibility: hidden;
+            transform: scaleX(0);
+
+        }
+
+        .navbar-nav .nav-link.active::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
         body {
             overflow-x: hidden;
         }
 
+        .dataTables_info {
+            margin-left: 757px;
+        }
+
+        .dataTables_filter {
+            background-image: -webkit-image-set();
+        }
+
+        #dashboardDataTable_paginate {
+            border: 1px solid #727272;
+            padding: 0px;
+            margin-top: 5px;
+        }
+
         thead {
-            border-radius: 10px;
+
             background-color: black;
             color: aliceblue;
         }
 
-        .navbar a.active {
-            border-bottom: 3px solid #000000;
+
+
+
+
+        table {
+            font-size: small;
+            border-collapse: collapse;
+            border-radius: 0.2em;
+            overflow: hidden;
+            background-color: white;
+            border-bottom: none;
+            border: 1px solid #bbb8b8;
+
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+
+
+        .sorting {
+            width: 95px;
         }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg p-0">
-        <div class="container-fluid">
+        <div class="container p-0">
             <div class="navbar-brand">
                 <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
             </div>
@@ -71,7 +128,7 @@
                     </div>
                     <div class="col-6 text-center">
                         <p class="small mb-0">Welcome</p>
-                        <p id="active" class="mb-0"><b></b></p>
+                        <p id="activeusername" class=" fw-bolder mb-0"></p>
                     </div>
                     <div class="col-3 text-right p-0">
                         <div class="nav-item logoutbutton">
@@ -83,62 +140,148 @@
             </div>
     </nav>
 
-    <div class=" container-fluid  p-0 " style="background-color: #e0e3ec;">
-        <section id="dataTable" class="dataTable">
-            <div class="row">
+    <div style="background-color: #e0e3ec;">
+        <div class=" container  p-0 ">
+            <section id="dataTable" class="dataTable">
+                <div class="row">
                     <div class="container-fluid">
                         <br />
-                        <div id="table_box_bootstrap " class="table-responsive">
-                            <table id="example" class="display" style="width:100%">
+                        <div id="table_box_bootstrap " class=" table-responsive">
+                            <table id="dashboardDataTable" class="display" style="width:100%">
                                 <thead>
                                     <tr class="text-start" style="border-radius: 10px;">
                                         <th>Part Number</th>
-                                        <th>In warehouse</th>
-                                        <th>Available</th>
-                                        <th>C100</th>
-                                        <th>C101</th>
-                                        <th>C102</th>
+                                        <th class="text-center">In Warehouse</th>
+                                        <th class="text-center">Available</th>
+                                        <th class="text-center">C100</th>
+                                        <th class="text-center">C101</th>
+                                        <th class="text-center">C102</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+            </section>
+            <div id="Popover" class="d-none p-0">
+                <div class="row p-0 m-0">
+                    <div class="col-md-8">
+                        <i class="fa-regular fa-x cross"></i>
+                        <p class="text-start text-dark "><b> Assigned to </b></i></p>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-success"> Ordered:3</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-danger">Assigned:2</p>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Manuel
+                            Pimentel</p>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Dave Pimentel
+                        </p>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </div>
     <script>
+
         $(document).ready(function () {
 
             var data = [
-                { name: 'Stock Location', age: 30, city: ' <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>', day: 'AMit' },
-                { name: 'ETA Date', age: 25, city: 'Los Angeles', day: 'AMit' },
-                { name: 'BW-01-S-M', age: 40, city: 'Chicago', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-01-QM-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
-                { name: 'BW-03-XL-G', age: 35, city: 'San Francisco', day: 'AMit' },
+                { partnumber: 'Stock Location', inwarehouse: '', available: ' ', C100: 'On Water', c101: 'On Water', C102: 'In Production' },
+                { partnumber: 'ETA Date', inwarehouse: '', available: '', C100: '10/08/2021', c101: '10/08/2021', C102: '10/08/2021' },
+                { partnumber: 'BW-01-S-a', inwarehouse: 1, available: 0, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-b', inwarehouse: 1, available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-01-QM-c', inwarehouse: '', available: 0, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-d', inwarehouse: 1, available: 0, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-e', inwarehouse: 1, available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-f', inwarehouse: 1, available: 0, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
+                { partnumber: 'BW-03-XL-G', inwarehouse: '', available: 1, C100: 1, c101: 0, C102: 1 },
             ];
             var tableRows = '';
             data.forEach(function (item) {
-                tableRows += '<tr"><td>' + item.name + '</td><td data-bs-toggle="popover" data-bs-content="Age: ' + item.age + '">' + item.age + '</td><td>' + item.city + '</td> <td>' + item.day + '</td> <td>' + item.city + '</td><td>' + item.city + '</td></tr>';
+                tableRows += '<tr"><td >' + item.partnumber + '</td><td class="text-center" data-bs-toggle="popover" data-bs-content="inwarehouse: ' + item.inwarehouse + '">' + item.inwarehouse + '</td><td class="text-center">' + item.available + '</td> <td class="text-center">' + item.C100 + '</td> <td class="text-center">' + item.c101 + '</td><td class="text-center">' + item.C102 + '</td></tr>';
             });
             $('tbody').html(tableRows);
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
             $("#activeuser").html(activeuser.username);
 
-            $('#example').DataTable({
+            var StockLocation = $.fn.dataTable.absoluteOrder(
+                [{ value: 'Stock Location', position: 'top' },
+                { value: 'ETA Date', position: 'top' }]);
+
+            $('#dashboardDataTable').DataTable({
+
+
+                // pagingType: 'full',
                 "fnInitComplete": function () {
-                    $('#example_length').html('<h2>Dashboard</h2>');
+                    $('#dashboardDataTable_length').html('<h2>Dashboard</h2>');
                 },
+
+                fixedHeader: {
+                    header: true,
+                    headerOffset: 0,
+                },
+
+
+
+
                 "paging": true,
                 "order": [[0, "asc"]],
                 "columnDefs": [
                     { "targets": 0, "orderable": true },
-                    { "targets": [1, 2, 3, 4, 5], "orderable": false }
+                    { "targets": [1, 2, 3, 4, 5], "orderable": false },
+                    { targets: 0, type: StockLocation },
+                    {
+                        targets: 3, // Index of the C100 column
+                        render: function (data, type, row, meta) {
+                            // Only add popover to cells in rows 3 to 8
+                            if (meta.row >= 2 && meta.row <= 15 && meta.col == 3) {
+                                // Add a title attribute to the cell containing the cell's text
+                                var popoverContent = '<div id=>This is the popover content</div>';
+                                return '<a href="#" data-bs-toggle="popover" title="Assigned to:" data-bs-content="' + popoverContent + '">' + data + '</a>';
+                            } else {
+                                return data;
+                            }
+                        }
+                    }
+
                 ],
+
+                language: {
+
+                    paginate: {
+                        next: "&#62",
+                        previous: "&#60",
+                    },
+                    info: "Items_START_to_END_of_TOTAL_items",
+
+                    search: "_INPUT_",
+                    searchPlaceholder: ' Search...'
+
+                },
+
+
+                // language: {
+                //     // "lengthMenu": "Display _MENU_ records per page",
+                //     // "zeroRecords": "Nothing found - sorry",
+                //     "info": "Items page _PAGE_ of _PAGES_",
+                //     // "infoEmpty": "No records available",
+                //     // "infoFiltered": "(filtered from _MAX_ total records)"
+                // },
                 "createdRow": function (row, data, dataIndex) {
                     $('td:eq(1)', row).popover({
                         placement: 'top'
@@ -154,12 +297,16 @@
             });
             var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-            $("#active").html(activeuser.name);
-            $('[data-toggle="popover"]').popover();
+            $("#activeusername").html(activeuser.name);
+            $('[data-bs-toggle="popover"]').popover({
+                trigger: 'hover'
+            });
         });
     </script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

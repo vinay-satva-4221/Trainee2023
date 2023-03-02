@@ -66,12 +66,7 @@ li {
 
 }
 
-.navbar a.active {
-  padding-bottom: 30px;
-  border-bottom: 3px solid #000000;
-  
 
-}
 
 .hr {
   border-bottom: 2px solid #175480;
@@ -140,15 +135,6 @@ table{
 .toolbar {
   float: left;
 }
-/* .page-item.active .page-link{
-  background-color: #000000;
-  border-color: #000000;
-}
-.page-item .page-link{
-  background-color: #000000;
-  border-color: #000000;
-  color: white;
-} */
 
 .page-item.active .page-link {
   background-color: black !important;
@@ -208,4 +194,42 @@ input[type=checkbox]:checked {
 
 .edit,.history{
   color:#878585;
+}
+
+
+
+
+.msgerror{
+  
+  margin-top: 7px;
+  margin-left: 3px;
+}
+
+
+/* Navbar Active line start */
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 33%;
+  height: 2px;
+  bottom: -23px;
+  left: 29px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  /* / transition: all 0.3s ease-in-out 0s; / */
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.modal-footer{
+  justify-content: flex-start;
 }

@@ -124,7 +124,7 @@ $(document).ready(function () {
         class: "text-center",
       },
       {
-        data: "stock_S",
+        data: "stockStatus",
         title: "Stock Location",
         orderable: false,
         class: "text-center",
@@ -206,7 +206,7 @@ var user = JSON.parse(localStorage.getItem("user"));
 console.log(user);
 
 var newStock = [];
-var rv1;
+var Stockstatus;
 
 function addData() {
   //login user
@@ -215,16 +215,8 @@ function addData() {
   var stockN = document.getElementById("stock").value;
   var dateM = document.getElementById("date").value;
 
-  // radio btn val
-  // if (r1 == true) {
-  //   r1V = "On Production";
-  // } else if (r2 == true) {
-  //   r1V = "On Water";
-  // } else if (r3 == true) {
-  //   r1V = "In Warehouse";
-  // }
-
-  r1V = display();
+ 
+  Stockstatus = radioBtnValue();
 
   console.log(parts.length);
   if (stockN != null && parts.length > 0) {
@@ -233,7 +225,7 @@ function addData() {
       var newObj = {
         stock: stockN,
         date: dateM,
-        stock_S: r1V,
+        stockStatus: Stockstatus,
         CreatedDate: today,
         Part: parts,
         user: user,
@@ -244,7 +236,7 @@ function addData() {
       var newObj = {
         stock: stockN,
         date: dateM,
-        stock_S: r1V,
+        stockStatus: Stockstatus,
         CreatedDate: today,
         Part: parts,
         user: user,
@@ -273,6 +265,7 @@ function addData() {
   }
 
   parts = [];
+  
 }
 
 // loading the documnet to show data in table
@@ -361,17 +354,17 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
       document.getElementById("date").value);
 
     if (r1 == true) {
-      r1V = "On Production";
+      Stockstatus = "On Production";
     } else if (r2 == true) {
-      r1V = "On Water";
+      Stockstatus = "On Water";
     } else if (r3 == true) {
-      r1V = "In Warehouse";
+      Stockstatus = "In Warehouse";
     }
 
     var newObj = {
       stock: ustock,
       date: udate,
-      stock_S: r1V,
+      stockStatus: Stockstatus,
       CreatedDate: today,
       Part: parts,
       user: user,
@@ -383,14 +376,14 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
   };
 });
 
-function display() {
-  var r;
+function radioBtnValue() {
+  var btnChecked;
   if (document.getElementById("btnradio1").checked) {
-    r = document.getElementById("btnradio1").value;
+    btnChecked = document.getElementById("btnradio1").value;
   } else if (document.getElementById("btnradio2").checked) {
-    r = document.getElementById("btnradio2").value;
+    btnChecked = document.getElementById("btnradio2").value;
   } else if (document.getElementById("btnradio3").checked) {
-    r = document.getElementById("btnradio3").value;
+    btnChecked = document.getElementById("btnradio3").value;
   }
-  return r;
+  return btnChecked;
 }
