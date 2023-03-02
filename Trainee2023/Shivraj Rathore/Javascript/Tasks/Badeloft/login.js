@@ -44,20 +44,22 @@ $(document).ready(function () {
 
   $("#myform").validate({
     rules: {
-      email: {
+      email: {required:true,
         validemail: true,
       },
       password: {
+        required:true,
         validpass: true,
         minlength: 6,
         maxlength: 10
       }
     },
     messages: {
-      email: {
+      email: {required: "Please enter email",
         validemail: "Enter Valid Email",
       },
       password: {
+        required: "Please enter Password",
         validpass: "Enter Valid Password",
         minlength: "Minimum Length 6",
         maxlength: "Maximum Length 10"

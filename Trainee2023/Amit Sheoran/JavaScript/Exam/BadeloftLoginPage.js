@@ -11,32 +11,42 @@ $(document).ready(function () {
   $.validator.addMethod('validname', function (value) {
     return /^[a-zA-Z]+$/.test(value)
   });
+  $.validator.addMethod("customEmail", function (value, element) {
+    // Ensure that the email includes the ".com" domain
+    return this.optional(element) || /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(value);
+  });
 
 
-  $('#myform').validate({
+  $('#LoginForm').validate({
     rules: {
       email: {
         required: true,
+        email: true,
+        customEmail: true,
 
       },
       password: {
         required: true,
+        minlength:4,
       }
     },
     messages: {
       email: {
         required: "Please enter your email",
+        email: "Please enter a valid email address",
+        customEmail: "Please enter a valid email address",
 
       },
       password: {
         required: "Please enter your Password",
+        minlength:"minimum 4 characters required"
 
       },
 
     }
   });
 
-  const data = [
+  const logindata = [
     { email: "amit@gmail.com", password: "amit", name: "Amit", image: "https://picsum.photos/200" },
     { email: "sumit@gmail.com", password: "sumit", name: "Sumit", image: "https://picsum.photos/200" },
     { email: "sohambhai@gmail.com", password: "sohambhai", name: "Soham Bhai", image: "https://picsum.photos/200" },
@@ -45,11 +55,11 @@ $(document).ready(function () {
   ];
 
   // Save data to local storage
-  localStorage.setItem('users', JSON.stringify(data));
+  localStorage.setItem('users', JSON.stringify(logindata));
 
-  $("#submit").on("click", function () {
+  $("#loginbutton").on("click", function () {
 
-    if ($("#myform").valid()) {
+    if ($("#LoginForm").valid()) {
 
       var mail = $("#email").val();
       var pass = $("#password").val();
@@ -68,7 +78,13 @@ $(document).ready(function () {
         }
       }
 
-      alert("No match found.");
+   
+          swal({
+            title: "Error!",
+            text: "Invalid email or password",
+            icon: "error",
+            button: "OK",
+          });
     }
   });
 });

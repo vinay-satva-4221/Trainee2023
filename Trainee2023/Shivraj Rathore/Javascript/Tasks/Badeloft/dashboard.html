@@ -9,33 +9,36 @@
 
   <link rel="stylesheet" href="./dashboard.css">
 
-  <!-- Bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
-  <!-- font awesome cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Open Sans -->
-  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 
-  <!-- Jquery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
-<!-- Datatable CDN -->
-  <link rel="stylesheet" type="text/css"
-    href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <script type="text/javascript"
-    src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Open Sans -->
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 
-</head>
+    <!-- Datatable CDN -->
+    <link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+
+
+    <link rel="stylesheet" href="./dashboard.css">
+
+  </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid nav1">
       <div class="navbar-brand ms-2">
@@ -58,12 +61,11 @@
               <a class="nav-link fw-bolder" aria-current="page" href="./status.html">Status</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fw-bolder"  aria-current="page" href="./assignment.html">Assignment</a>
+              <a class="nav-link fw-bolder" aria-current="page" href="./assignment.html">Assignment</a>
             </li>
           </ul>
         </div>
       </div>
-
       <div class="d-flex align-items-center justify-content-between" id="welcome" style="height: 80px; width:200px;">
         <div class="row">
           <div class="col-3">
@@ -82,9 +84,8 @@
       </div>
     </div>
   </nav>
-
   <section class="container-fluid p-4 bg-light">
-    <table id="dashboard_table"  class="table w-100 border row-border">
+    <table id="dashboard_table" class="table w-100 border row-border">
       <thead class="text-center">
         <tr>
           <th class="text-start" style="border-top-left-radius: 10px;">Part Number</th>
@@ -99,20 +100,56 @@
       </tbody>
     </table>
   </section>
+  <div id="popover-form" class="d-none p-0">
+    <div class="row p-0 m-0">
+      <div class="col-md-8">
+        <p class="text-start text-dark fw-bold">Assigned to</p>
+        <button type="button">hi</button>
+    
+
+      </div>
+    
+      
+      <div class="col-md-6">
+        <p class="text-success">Ordered:3</p>
+      </div>
+      <div class="col-md-6">
+        <p class="text-danger">Assigned:2</p>
+       
+      </div>
+      <div class="col-md-12">
+        <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Manuel Pimentel</p>
+
+      </div>
+      <div class="col-md-12">
+        <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Dave Pimentel</p>
+      </div>
+    </div>
+  </div>
 
   
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"></script>
+
+ <!-- Bootstrap JS CDN  -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+ crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+      src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+  
+ 
+
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+
+
   <script src="./dashboard.js"></script>
-
-  <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
-    integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-  <!-- Bootstrap JS CDN  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -23,11 +23,28 @@
      border-bottom-left-radius: 10px;
  }
 
- .navbar-nav .nav-item .nav-link.active {
-     border-bottom: 2px solid black !important;
-     padding-bottom: 20px;
- }
-
+ .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -15px;
+    left: 19px !important;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+  }
+  
+  .navbar-nav .nav-link.active::before
+  {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
  #Statusdata td:nth-child(3),
  td:nth-child(4),
  td:nth-child(5),
@@ -88,8 +105,8 @@ table.dataTable td.dt-control:before {
     width: 1em;
     margin-top: -9px;
     display: inline-block;
-    color: blue !important;
-    border: 0.1em solid blue !important;
+    color: #326C96 !important;
+    border: 0.1em solid #326C96 !important;
     border-radius: 1em;
     box-shadow: 0 0 0.2em #444;
     box-sizing: content-box;

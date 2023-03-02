@@ -28,7 +28,9 @@ $(document).ready(function () {
             { title: 'Part Number' },
             { title: 'In Warehouse',"sortable": false },
             { title: 'Available',"sortable": false },
-            { title: 'C100',"sortable": false },
+            { title: 'C100',
+            title: 'C100',
+            "sortable": false },
             { title: 'C101',"sortable": false },
             { title: 'C102',"sortable": false },
         ],
@@ -41,27 +43,58 @@ $(document).ready(function () {
                 "width": "10%" , "targets": 0
             },
             { targets: 0, type: StockLocation },
+            
 
           ],
+       
 
-          language:{
-            search: "_INPUT_",
+          // language:{
+          //   search: "_INPUT_",
+          //   searchPlaceholder: 'Search here',
+          //   paginate:{
+          //       previous:"<",
+          //       next:">",
+          //       first: 'First',
+           
+          //         },
+          // },
+          language: {
+              search: "_INPUT_",
             searchPlaceholder: 'Search here',
-            paginate:{
+            info: "items _START_ to _END_ of _TOTAL_ items",
+                paginate:{
+          
                 previous:"<",
-                next:">"
+                next:">",
             },
-          },
+         
+        },
+      //   createdRow: function(row, data, dataIndex) {
+      //     // Loop through each cell in the row
+      //     $(row).children('td').each(function() {
+      //         // Enable popover for this cell
+      //         var pop = $(this);
+      //         pop.popover({
+      //             title: 'Popover Title',
+      //             content: 'Popover Content',
+      //             placement: 'top',
+      //             trigger: 'hover',
+      //         });
+      //     });
+      // }
+   
+      
+
+      
     });
-    // $('#CustomSearchBox').keyup(function() {
-    //     table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
-    // });
-    // var oneSelectedCell = table.cell(2,3);
-    // console.log(oneSelectedCell.data());
+
 });
+// $('[data-toggle="popover"]').popover();
+
 let a=JSON.parse(localStorage.getItem("details"));
 console.log("a",a); 
 $("#Uname").html(a[0].Name);
+console.log(a[0].Name);
 function logout() {
     window.location="Login.html"
     localStorage.clear();

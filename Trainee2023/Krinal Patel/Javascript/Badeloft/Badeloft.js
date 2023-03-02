@@ -84,35 +84,15 @@ function validatecheck() {
 
     localStorage.setItem('LoginDetails', JSON.stringify(user));
   } else {
-    //   if(email=="" && password==""){
+  
 
-    //     swal({
-    //       title: "Missing fields",
-    //       text: "Please enter all the details",
-    //       icon: "warning",
-    //       button: "Ok"
-    //   });
+    // swal({
+    //   title: "Incorrect Credentials",
+    //   text: "Please enter correct details",
+    //   icon: "warning",
+    //   button: "Ok"
+    // });
 
-    // }
-    // else{
-
-
-    swal({
-      title: "Incorrect Credentials",
-      text: "Please enter correct details",
-      icon: "warning",
-      button: "Ok"
-    });
-
-    // }
-
-    //     document.getElementById("invalid_email").innerHTML = "This Field is required*"
-    //     document.getElementById("invalid_password").innerHTML = "This Field is required*"
-    // }
-    // else if(email != emailC1 && password!= passwordC1 || email != emailC2 && password!= passwordC2||email != emailC3 && password!= passwordC3 || email != emailC4 && password!= passwordC4){
-    //     document.getElementById("invalid_email").innerHTML = "Email id is wrong*"
-    //     document.getElementById("invalid_password").innerHTML = "Password is wrong*"
-    // }
 
   }
 }
@@ -149,7 +129,7 @@ $("form[name='login_form']").validate({
     },
     password: {
       required: "Enter your Password",
-      password: "Enter valid Password",
+      password: "Please enter one Special character, one Uppercase, one Lowercase, one numeric and minimum 8 characters",
     },
   },
   submitHandler: function (form) {

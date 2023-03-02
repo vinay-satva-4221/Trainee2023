@@ -175,8 +175,12 @@ table.dataTable tr.dt-hasChild td.dt-control::before {
     color: blue;
 }
 
-
+thead{
+    background-color: #F5F6FA;
+    color: black;
+}
 /* checkbox */
 input[type=checkbox]:checked {
     accent-color: green;
 }
+

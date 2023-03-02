@@ -9,6 +9,7 @@ $(document).ready(function () {
   $("#activeuser").html(activeuser.username);
 
 
+
   function format(d) {
     return (
       '<table class="text-center"  style="width:100%;"> ' +
@@ -45,7 +46,7 @@ $(document).ready(function () {
       qb_invoice: "150000",
       name: "Kenneth Woodward",
       qb_shipdate: "09/08/2001",
-      qb_pay_status: '<button class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "asasxc",
       called: '<input type="checkbox"></input>',
@@ -145,7 +146,7 @@ $(document).ready(function () {
       qb_invoice: "150010",
       name: "Frances Badger",
       qb_shipdate: "10/08/2001",
-      qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "508-206-0722",
       called: '<input type="checkbox"></input>',
@@ -165,7 +166,7 @@ $(document).ready(function () {
       qb_invoice: "150012",
       name: "Samantha Southard",
       qb_shipdate: "12/08/2001",
-      qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "707-271-9412",
       called: '<input type="checkbox"></input>',
@@ -188,17 +189,17 @@ $(document).ready(function () {
           paginate: {
             next: '&#62',
             previous: '&#60' 
-          }
+          },
+          "info": "Items _START_ to _END_ of _TOTAL_ total" 
     },
     columns: [
-      { data: 'qb_invoice', orderable: true, className: 'dt-control text-start ',
-      orderable: false, },
-      { data: 'name', orderable: false,className: 'text-start' },
-      { data: 'qb_shipdate', orderable: false ,className: 'text-start'},
+      { data: 'qb_invoice', orderable: true, className: 'dt-control text-start ' },
+      { data: 'name', orderable: true,className: 'text-start' },
+      { data: 'qb_shipdate', orderable: true ,className: 'text-start'},
       { data: 'qb_pay_status', orderable: false ,className: 'text-start'},
       { data: 'status', orderable: false ,className: 'text-start'},
       { data: 'qb_delievery_phone', orderable: false ,className: 'text-start'},
-      { data: 'called', orderable: false ,className: 'text-start'},
+      { data: 'called', orderable: false ,className: 'text-center'},
       { data: 'qb_tracking', orderable: false ,className: 'text-start'},
     ],
     order: [[1, 'asc']],
