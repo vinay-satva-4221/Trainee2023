@@ -1,36 +1,36 @@
 function format(d) {
   // `d` is the original data object for the row
   return (
-      '<table class="table table-responsive" id="statusChildData">' +
-      '<thead>' +
-      '<tr>' +
-      '<th >#</th>' +
-      '<th>Part Number</th>' +
-      '<th scope="col">Stock Location</th>' +
-      '<th scope="col">Action</th>' +
-      '</tr>' +
-      '</thead>' +
-      '<tbody>' +
-      '<tr>' +
-      '<td >1</td>' +
-      '<td>WB-01-S-M</td>' +
-      '<td>warehouse</td>' +
-      '<td><i class="bi bi-x"></i></td>' +
-      '</tr>' +
-      '<tr>' +
-      '<td scope="row">2</td>' +
-      '<td>Jacob</td>' +
-      '<td>Thornton</td>' +
-      '<td><i class="bi bi-x"></i></td>' +
-      '</tr>' +
-      '<tr>' +
-      '<td scope="row">3</td>' +
-      '<td >Larry the Bird</td>' +
-      '<td>Thornton</td>' +
-      '<td><i class="bi bi-x"></i></td>' +
-      '</tr>' +
-      '</tbody>' +
-      '</table>'
+    '<div class="px-3"><div class="table-responsive border rounded"><table class="table rounded p-0 m-0 w-100 h-100" id="statusChildData">' +
+    '<thead>' +
+    '<tr>' +
+    '<th >#</th>' +
+    '<th>Part Number</th>' +
+    '<th scope="col">Stock Location</th>' +
+    '<th scope="col">Action</th>' +
+    '</tr>' +
+    '</thead>' +
+    '<tbody>' +
+    '<tr>' +
+    '<td >1</td>' +
+    '<td>WB-01-S-M</td>' +
+    '<td>warehouse</td>' +
+    '<td><button type="button" class="btn-close" aria-label="Close"></button></td>' +
+    '</tr>' +
+    '<tr>' +
+    '<td scope="row">2</td>' +
+    '<td>Jacob</td>' +
+    '<td>Thornton</td>' +
+    '<td><button type="button" class="btn-close" aria-label="Close"></button></td>' +
+    '</tr>' +
+    '<tr>' +
+    '<td scope="row">3</td>' +
+    '<td >Larry the Bird</td>' +
+    '<td>Thornton</td>' +
+    '<td><button type="button" class="btn-close" aria-label="Close"></button></td>' +
+    '</tr>' +
+    '</tbody>' +
+    '</table>' + '</div>' + '</div>'
   );
 }
 
@@ -40,11 +40,11 @@ var dataSet = [
   //   Name : 'Keneth Woodard',
   //   QB_Ship_date : '12/08/2021',
   // }
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
-  ["150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
-  ["150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
-  ["150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
-  ["150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+  ["150001", "James Fenske", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
+  ["150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
+  ["150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'></i>Unpaid</button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
+  ["150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'></i>Pendding Approval</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
 
 ];
 
@@ -73,6 +73,8 @@ $(document).ready(function () {
         previous: '&#60'
       }
     },
+    
+
     columns: [
       {
         className: "dt-control",
@@ -80,17 +82,17 @@ $(document).ready(function () {
         title: "QB Invoice#",
 
       },
-      { title: "Name" },
-      { title: "QB Ship date" },
+      { title: "Name", },
+      { title: "QB Ship date", },
       { title: "QB Payment Status", orderable: false, },
       { title: "QB Status", orderable: false, },
       { title: "QB Delivery Phone", orderable: false, },
-      { title: "Called", orderable: false,className:'text-center' },
+      { title: "Called", orderable: false, className: 'text-center' },
       { title: "QB Tracking", orderable: false, },
 
 
     ],
-    
+
     order: [[1, "asc"]],
 
   });
@@ -99,7 +101,7 @@ $(document).ready(function () {
   })
 
   // Add event listener for opening and closing details
-  $("#statusTable tbody").on("click", "td.dt-control", function () {
+  $("#statusTable tbody").on("click", "td", function () {
     var tr = $(this).closest("tr");
     var row = table.row(tr);
 

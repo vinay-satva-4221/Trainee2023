@@ -54,3 +54,9 @@ function LoginPage() {
     }
   }
 }
+
+const loggUser = JSON.parse(localStorage.getItem("loggUser"));
+  if (loggUser) {
+    // Redirect to dashboard.html if a user is logged in
+    location.replace("Dashboard.html");
+  }

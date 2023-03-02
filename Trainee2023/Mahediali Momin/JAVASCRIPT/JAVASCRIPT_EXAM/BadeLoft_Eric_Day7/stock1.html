@@ -76,7 +76,7 @@
             </div> -->
             <div class="col-md-1 mt-3">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal" data-bs-target="#outerModal">
                     + New
                 </button>
             </div>
@@ -92,7 +92,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" role="dialog" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" role="dialog" id="outerModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -109,7 +109,7 @@
                             <div class="col-md-6">
                                 <label for="" class="text-muted"><strong>ETA Date</strong></label>
                                 <!-- <input type="date" class="form-control" id="eta_date"> -->
-                                <input type="text" name="birthday" class="form-control" value="10/24/1984" />
+                                <input type="text" name="date" class="form-control" id="eta_date" value="10/24/1984" />
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
@@ -136,9 +136,9 @@
                                             src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
                                             style="padding-left: 10px;" alt=""><span class="text-muted addPartBtn">Add
                                             Part Number</span></button> -->
-                                            <button type="button" class=" addPartBtn mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
+                                            <button type="button" class=" addPartBtn mt-2" id="AddPart" data-bs-toggle="modal" data-bs-target="#innerModal"><img
                                                 src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg"
-                                                style="margin-left:-11px;" alt=""><span class="text-muted ">Add
+                                                style="margin-left:-11px;" alt=""><span class="text-muted">Add
                                                     Part Number</span></button>
                                 </div>
                             </div>
@@ -149,6 +149,7 @@
                                         <th>Invoice #</th>
                                         <th>Ordered</th>
                                         <th>Notes</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -169,7 +170,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
+    <div class="modal fade" id="innerModal" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -213,7 +214,7 @@
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script> -->
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
