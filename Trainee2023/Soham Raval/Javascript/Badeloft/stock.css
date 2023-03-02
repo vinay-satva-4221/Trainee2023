@@ -1,10 +1,21 @@
 
-.dataTables_length,.DataTables_info{
+/* #example_filter,#example_info,#example_paginate{
   display: none;
 }
-#example_filter,#example_info,#example_paginate{
+.dataTables_length,.dataTables_info{
   display: none;
 }
+#example_filter{
+  display: none;
+}  */
+/* .dataTables_length,.dataTables_info{
+  display: none;
+}
+#example_filter{
+  display: none;
+} */
+
+
 .img_round{
   height: 70%;
   width: 37%;
@@ -16,9 +27,9 @@ height:90% ;
   background-color: black;
   color: white;
 }
-.navbar a.active{
+/* .navbar a.active{
     border-bottom: 1px solid #000000;
-  }
+  } */
   #newbuttonstock{
     background-color: #326C96;
   }
@@ -28,6 +39,52 @@ height:90% ;
   #savechange{
     background-color: #326C96;
   }
+  .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 29px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+     /* transition: all 0.3s ease-in-out 0s; */
+  }
+  
+  .navbar-nav .nav-link.active::before
+  {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  #newitemadded{
+    margin-right: 4px;
+    background-color: #3F759C;
+    border: none;
+  }
+  #example.dataTable td.dt-control:before {
+    background-color: white;
+    color: #3F759C;
+    border-color: #3F759C;
+  }
+  .btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active {
+    background-color:#3F759C !important;
+    color: white !important;
+  }
+
+
+
+  /* table{
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: white;
+  } */
 /* @media screen and (max-width: 574px) {
   
     .navbar_list {

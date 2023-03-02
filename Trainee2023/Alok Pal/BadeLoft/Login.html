@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Source+Sans+Pro:wght@300&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -24,13 +24,13 @@
             <div class=" mt-5">
                 <form class="form">
                     <div>
-                        <img class="logo1" src="images/logo2.jpg" alt="">
+                        <img class="badeloftlogo1" src="images/logo2.jpg" alt="">
                     </div>
                     <div class="row mt-2">
                         <p class="head">Welcome, Let's Get Started!</p>
                     </div>
-                    <div class="line">
-                        <hr >
+                    <div>
+                        <hr class="fw-bolder line">
                     </div>
 
                     <!-- Email input -->
@@ -54,8 +54,9 @@
                     <!-- Submit button -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="button" class="  btnLog" onclick="return checkEntry(),  validate();"> Log
-                                    in </button>
+                            <button type="button" class="  btnLog" onclick="return checkEntry(),  validate(),emailV()">
+                                Log
+                                in </button>
                         </div>
                     </div>
                 </form>

@@ -5,91 +5,56 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Status</title>
+  <link rel="stylesheet" href="./status.css">
   <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
   <!-- font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <!-- Myriad Pro Font -->
-  <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet" />
+<!-- Open Sans -->
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
   <!-- Jquery CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- Datatable CDN -->
+  <link rel="stylesheet" type="text/css"
+  href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-  <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js">
+<script type="text/javascript"
+  src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
-  </script>
-
-  <style>
-    #example thead tr th {
-      background-color: black;
-      color: white;
-    }
-
-    .datatable-pagination {
-      margin-top: 20px;
-    }
-
-    #example_filter {
-      margin-bottom: 25px;
-    }
-
-    .toolbar {
-      float: left;
-    }
-
-    #example tr:last-of-type td:last-child {
-      border-bottom-right-radius: 10px;
-    }
-
-    #example tr:last-of-type td:first-child {
-      border-bottom-left-radius: 10px;
-    }
-
-    .navbar-nav .nav-item .nav-link.active {
-      border-bottom: 2px solid black !important;
-    }
-
-    #example td:nth-child(3),
-    td:nth-child(4),
-    td:nth-child(5),
-    td:nth-child(6),
-    td:nth-child(7),
-    td:nth-child(8) {
-      text-align: center;
-    }
-  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <div class="navbar-brand">
+    <div class="container-fluid navdiv">
+      <div class="navbar-brand ms-2">
         <img src="./Images/02.png" style="height: 28px; width: 215px;" alt="">
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="./dashboard.html">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./stock.html">Stock</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./status.html">Status</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="./assignment.html">Assignment</a>
-          </li>
-        </ul>
+      <div class="ms-5 ps-5">
+        <div class="collapse navbar-collapse justify-content-around ms-5 ps-5" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link fw-bolder" aria-current="page" href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bolder" href="./stock.html">Stock</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fw-bolder" aria-current="page" href="./status.html">Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bolder" aria-current="page" href="./assignment.html">Assignment</a>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <div class="d-flex align-items-center justify-content-between" id="welcome" style="height: 80px; width:200px;">
         <div class="row">
           <div class="col-3">
@@ -99,10 +64,9 @@
             <p class="small mb-0">Welcome</p>
             <p id="activeuser" class="mb-0"></p>
           </div>
-          <div class="col-3 text-right">
+          <div class="col-3 p-0">
             <button class="btn btn-outline-secondary border-0" id="logout">
               <i class="fa fa-sign-out"></i>
-              <i class=""></i>
             </button>
           </div>
         </div>
@@ -110,24 +74,25 @@
     </div>
   </nav>
 
-  <section class="container-fluid p-5 bg-light">
-    <table id="example" class="display" style="width:100%">
+  <section class="container-fluid p-4 bg-light">
+    <table id="Statusdata" class="row-border" style="width:100% ;">
       <thead>
         <tr>
-          <th></th>
-          <th>QB Invoice#</th>
-          <th>Name</th>
-          <th>Created By</th>
-          <th>Created date</th>
-          <th>Action</th>
+          <th class="text-start">QB Invoice#</th>
+          <th class="text-start">Name</th>
+          <th class="text-start">QB Ship Date</th>
+          <th class="text-start">QB Payment Status</th>
+          <th class="text-start">QB Status</th>
+          <th class="text-start">QB Delievery Phone</th>
+          <th class="text-start">Called</th>
+          <th class="text-start">QB Tracking</th>
         </tr>
       </thead>
-
     </table>
   </section>
 
- 
-<script src="./status.js"></script>
+
+  <script src="./status.js"></script>
   <!-- Bootstrap JS CDN  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

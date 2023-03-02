@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+    <link rel="stylesheet" href="./Status.css">
+
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid px-5">
+                <a class="navbar-brand" href="#"> <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/02.png" alt=""
+                        id="bade_logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse justify-content-center align-items-center w-100"
+                    id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mx-auto ">
+                        <li class="nav-item">
+                            <a href="Dashboard.html" class="nav-item mx-3 nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Stock.html" class="nav-item mx-3 fw-bolder nav-link active">Stock</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Status.html" class="nav-item mx-3 nav-link">Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Assignment.html" class="nav-item mx-3 nav-link">Assignment</a>
+                        </li>
+                    </ul>
+                    <ul class="d-flex list-unstyled ">
+
+                        <li class="nav-item"><a href="./LoginPage.html" class="nav-item textColor nav-link">
+                                <img src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/images.jfif" id="img"
+                                    class="rounded-circle" alt="">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <p class="text-muted" style="margin-top: 10px;"><small>Welcome</small></p>
+                            <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" onclick="logout()" id="logout"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-md-8 mt-3">
+                <h4><strong>Stock</strong></h4>
+            </div>
+            <div class="col-md-1 mt-3">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn new_btn" data-toggle="modal" data-target="#exampleModal"
+                    id="outer_modal" style="background-color: #326C96; color: white;">
+                    + New
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><strong>Add New Stock</strong></h5>
+                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_outer">
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="" class="text-muted"><strong>Stock Name</strong></label>
+                                            <input type="text" class="form-control" id="stock_name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="" class="text-muted"><strong>ETA Date</strong></label>
+                                            <input type="date" class="form-control" id="eta_date">
+                                        </div>
+                                        <div class="col-md-4 mt-2">
+                                            <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
+                                            <div class="row">
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                                        autocomplete="off" checked>
+                                                    <label class="btn btn-outline-primary"
+                                                        for="btnradio1">OnProduction</label>
+
+                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                                        autocomplete="off">
+                                                    <label class="btn btn-outline-primary"
+                                                        for="btnradio2">OnWater</label>
+
+                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                                        autocomplete="off">
+                                                    <label class="btn btn-outline-primary"
+                                                        for="btnradio3">InWarehouse</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-outline-light bg-white text-dark"
+                                                    data-toggle="modal" data-target="#exampleModal1"
+                                                    id="inner_modal"><img
+                                                        src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
+                                                        style="padding-left: 10px;" alt=""><span class="text-muted">Add
+                                                        Part Number</span></button>
+                                            </div>
+                                        </div>
+                                        <table id="innermodal" class="table mt-2" style="width:100%" ;>
+                                            <thead style="background-color: black; color: white;">
+                                                <tr>
+                                                    <th>Part Number</th>
+                                                    <th>Invoice #</th>
+                                                    <th>Ordered</th>
+                                                    <th>Notes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer justify-content-start">
+                                <button type="button" class="btn btn" id="save_outer" data-dismiss="modal">Save</button>
+                                <button type="button" class="btn btn-light border" id="close_outer">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
+                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_inner" >
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" id="part_num" placeholder="Part Number">
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <input type="text" class="form-control" id="ordered" placeholder="Ordered">
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <textarea name="" class="form-control" rows="3" id="note"
+                                            placeholder="Notes"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer justify-content-start">
+                                <button type="button" class="btn btn" data-dismiss="modal" id="save_inner"
+                                    data-dismiss="modal">Save</button>
+                                <button type="button" class="btn btn-light border"
+                                    id="close_inner"><strong>Cancel</strong></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3 mt-3 mb-3">
+                <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="example" class="table" style="width:100%">
+                <thead class="maintable">
+                    <tr>
+                        <th>Stock Name</th>
+                        <th>ETA Date</th>
+                        <th>Stock Location</th>
+                        <th>Created By</th>
+                        <th>Created Date</th>
+                        <th>Notes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <script src="./Stock.js"></script>
+
+</body>
+
+</html>

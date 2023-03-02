@@ -14,15 +14,16 @@
         href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg ">
-            <div class="container p-0 m-6">
-                <img src="Images/img logo.jpg" alt="" srcset="" id="dasboardlogo">
+            <div class="container-fluid ps-0 pe-4">
+                <a class="navbar-brand ms-5 ps-1" href=""> <img src="Images/img logo2.jpg" alt="" srcset=""
+                        id="dasboardlogo"></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -32,12 +33,12 @@
                     <div class="tabs ms-auto pe-5" id="links">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link ">
-                                <a href="db.html">Dashboard
+                                <a href="db.html"> Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
-                            <li class="nav-link active-link ">
-                                <a href=""> <b> Stock</b></a>
+                            <li class="nav-link  active-link">
+                                <a href="javascript:void(0)"> <b>Stock</b> </a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
@@ -68,135 +69,131 @@
     </header>
     <section>
         <div class="container-fluid p-0">
-            <div class="bg-light px-4 ">
-                <div class="row pt-2">
-                    <div class="col-md-4">
-                        <h4 class=" fw-bolder pt-5 m-0">Stock</h4>
-                    </div>
-                    <div class="col-md-6 d-flex justify-content-end pt-5 m-0">
-                        <button type="button" class="btn " id="new" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            + New
-                        </button>
+            <div class="row backgroundcolor">
+                <div class="col-lg-3 p-3">
+                    <b><span id="stock" class="m-lg-5"> Stock</span></b>
+                </div>
+                <div class="col-lg-2 offset-lg-4 p-3">
+                    <button type="button" class="btn" id="addStock" data-bs-toggle="modal"
+                        data-bs-target="#stockModal">+ New</button>
+                </div>
+                <div class="col-lg-3 p-3">
+                    <div class="form-group has-search me-5 pe-1">
+                        <input type="text" class="form-control" placeholder="Search" id="datatablesearch" />
                     </div>
                 </div>
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"> <b>Add New Stock</b> </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body p-4">
-                                <form class="row g-3" id="stockform">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Stock Name</label>
-                                        <input type="text" class="form-control" id="stockname" placeholder="Stock Name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">ETA Date</label>
-                                        <input type="text" class="form-control" name="birthday" value="10/24/1984"
-                                            id="date" />
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Stock Status</label> <br>
-                                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
-                                            id="stockstatus">
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                autocomplete="off" value="On Production" checked>
-                                            <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                autocomplete="off" value="On Water">
-                                            <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
-
-                                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                autocomplete="off" value="In Warehouse">
-                                            <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                            data-bs-target="#Modal2"> <img src="Images/Plus.svg" alt="" srcset="">
-                                            <label for="">Add Part Number</label>
-                                        </button>
-                                    </div>
-
-                                    <table class="table rounded">
-                                        <thead>
-                                            <tr>
-                                                <th>Part name</th>
-                                                <th>Ordered</th>
-                                                <th>Notes</th>
-                                                <th>&nbsp;</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="root">
-
-                                        </tbody>
-                                    </table>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer justify-content-start">
-                                <button type="button" class="btn " id="save">Save </button>
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                            </div>
+            </div>
+            <div class="modal fade" id="stockModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> <b>Add New Stock</b> </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-                </div>
+                        <div class="modal-body p-4">
+                            <form class="row g-3" id="stockform">
+                                <div class="col-md-6">
+                                    <label class="form-label">Stock Name</label>
+                                    <input type="text" class="form-control" id="stockname" name="stockname" placeholder="Stock Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">ETA Date</label>
+                                    <input type="text" class="form-control" name="etadate" value="10/24/1984"
+                                        id="date" />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Stock Status</label> <br>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
+                                        id="stockstatus">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                            autocomplete="off" value="On Production" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
 
-                <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form class="row g-2 p-2" id="partform">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" name="partnumber" id="partno"
-                                        placeholder="Part Number">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                            autocomplete="off" value="On Water">
+                                        <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                            autocomplete="off" value="In Warehouse">
+                                        <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="number" class="form-control" name="ordered" id="order"
-                                        placeholder="Ordered" min="0">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn " data-bs-toggle="modal"
+                                        data-bs-target="#partModal"> <img src="Images/Plus.svg" alt="" srcset="">
+                                        <label for="">Add Part Number</label>
+                                    </button>
                                 </div>
-                                <div class="mb-3">
-                                    <textarea class="form-control" id="notes" name="notes" rows="3"
-                                        placeholder="Notes"></textarea>
-                                </div>
+
+                                <table class="table  table-display  table-sm  ">
+                                    <thead>
+                                        <tr>
+                                            <th>Part name</th>
+                                            <th>Ordered</th>
+                                            <th>Assigned</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="root">
+                                    </tbody>
+                                </table>
                             </form>
-
-                            <div class="modal-footer justify-content-start">
-                                <button type="button" class="btn btn-primary" id="savepart">Save</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-start">
+                            <button type="button" class="btn " id="savestock">Save </button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class=" displayTable">
-                    <table id="table_div1" class="table table-display table-hover  table-sm " style="width:100%">
-                        <thead class="thead-dark">
+            <div class="modal fade" id="partModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Part Number</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="row g-2 p-2" id="partform">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="partnumber" id="partno"
+                                    placeholder="Part Number">
+                            </div>
+                            <div class="mb-3">
+                                <input type="number" class="form-control" name="ordered" id="order"
+                                    placeholder="Ordered" min="0">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="notes" name="notes" rows="3"
+                                    placeholder="Notes"></textarea>
+                            </div>
+                        </form>
+
+                        <div class="modal-footer justify-content-start">
+                            <button type="button" class="btn btn-primary" id="savepart">Save</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row backgroundcolor">
+                <div class=" displayTable table-responsive px-5">
+                    <table id="table_div1" class="table table-display  table-sm " style="width:100%">
+                        <thead class="thead-dark rounded">
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
     <script src="jquery/jquery.js"></script>
     <script src="stock.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

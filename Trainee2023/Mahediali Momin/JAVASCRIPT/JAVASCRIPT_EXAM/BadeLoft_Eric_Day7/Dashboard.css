@@ -1,0 +1,246 @@
+thead {
+    background-color: black;
+    border-collapse: collapse;
+    border-radius: 1em;
+
+}
+
+table {
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 1.2em;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid black;
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.nav_logo {
+    margin: 10px;
+    height: 20px;
+    width: 170px;
+    padding-left: 20px;
+}
+
+.rounded-circle {
+    width: 40px;
+    height: 40px;
+}
+
+.maintable {
+    background-color: black;
+    color: white;
+    border: 1px;
+}
+
+#dashboardtable_info {
+   align-items: end;
+   text-align: end;
+   margin-left: 1020px;
+   margin-top: 10px;
+}
+
+#dashboardtable_length {
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+/* #dashboardtable_filter{
+    margin-bottom: -20px;
+    margin-top: -10px;
+
+} */
+
+#dashboardtable_filter input[type=search] {
+    width: 300px;
+    height: 35px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+/* #dashboardtable_filter input[type=search]::before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #aaa;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+#dashboardtable_filter input[type=search] {
+    width: 300px;
+    padding-left: 26px;
+    position: relative;
+}
+
+#dashboardtable_filter input[type=search]::before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #aaa;
+    display: inline-block;
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+} */
+
+
+/* #example1_length, #example1_filter, #example1_paginate {
+    display: none;
+} */
+
+.pagination {
+    margin-right: 17px;
+}
+
+.page-link {
+    color: black;
+}
+
+/* .navbar a.active {
+    border-bottom: 3px solid #000000;
+
+} */
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 29px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    /* transition: all 0.3s ease-in-out 0s; */
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+#logout {
+    color: rgb(150, 147, 143);
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+#img {
+    margin-right: 10px;
+    margin-top: 13px;
+}
+
+#Uname {
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+.sorting_asc {
+    background-position: 10px !important;
+}
+
+#bade_logo {
+    width: 100%;
+    margin-left: -35px;
+}
+
+#dashboardtable th.sorting_asc.sorting_asc::before {
+
+    margin-right: 70%;
+}
+
+#dashboardtable th.sorting_asc.sorting_asc::after {
+
+    margin-right: 70%;
+}
+
+#dashboardtable th.sorting_desc.sorting_desc::after {
+
+    margin-right: 70%;
+}
+
+#dashboardtable th.sorting_desc.sorting_desc::before {
+
+    margin-right: 70%;
+}
+
+#dashboardtable th.sorting_asc::before {
+    margin-right: 70%;
+}
+
+#dashboardtable th.sorting_desc::after {
+    margin-right: 70%;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: black;
+    border: black;
+    color: white;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+/* #dashboardtable_paginate {
+    border: 1px solid rgb(172, 172, 172);
+    padding: 0px;
+    margin-top: 10px;
+    background-color: white;
+    color: #000;
+} */
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+  
+  }
+  li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+  }
+  li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+  }
+  /* span a.paginate_button.current{
+    background-color: black !important;
+    color: white !important;
+  }
+   span a.paginate_button{
+    color: red !important;
+  } */
+  /* paginate_button  */
+  li.paginate_button.page-item{
+    padding: 0px !important;
+    margin: 0px !important;
+  }

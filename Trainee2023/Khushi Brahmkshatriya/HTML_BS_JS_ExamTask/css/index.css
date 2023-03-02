@@ -1,0 +1,268 @@
+/* login css */
+#loginbackground {
+  right: 58%;
+}
+
+.buttonColor {
+  background-color: #326C96
+}
+
+.buttonColor:hover,
+.buttonColor:focus,
+.buttonColor:active,
+.buttonColor.active {
+
+  background-color: #326C96
+}
+
+label.error {
+  color: red;
+}
+
+.textColor {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+a {
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 2px solid black;
+  height: 65px;
+  color: black;
+  font-weight: bold;
+}
+
+.LineUnderWelcome {
+  width: 10%;
+  border: 1px solid#326C96;
+  background-color: #326C96;
+  opacity: 1;
+}
+
+#loginuserImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%
+}
+
+
+button.btn.btn-outline-secondary.cancelbtn:hover{
+  background-color: white !important;
+  color: gray!important;
+}
+/* datatable css */
+div.table-responsive .datatableStyle th {
+  color: white;
+}
+
+div.table-responsive .datatableStyle thead {
+  background-color: black;
+  border-collapse: collapse;
+  border-radius: 1em;
+
+}
+
+div.table-responsive table{
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+#dashboardTable th.sorting.sorting_asc::before{
+   
+  margin-right: 52%;
+}
+#dashboardTable th.sorting.sorting_asc::after{
+ 
+  margin-right: 52%;
+}
+#dashboardTable th.sorting.sorting_desc::after{
+ 
+  margin-right: 52%;  
+}
+#dashboardTable th.sorting.sorting_desc::before{
+ 
+  margin-right: 52%;
+}
+#dashboardTable th.sorting::before{
+  margin-right: 52%;
+}
+#dashboardTable th.sorting::after{
+  margin-right: 52%;
+}
+
+
+/*datatable pagination css */
+.page-item.active .page-link {
+  background-color: black !important;
+  border-color: black !important;
+  color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+
+.dataTables_info {
+  margin-left: 75%;
+}
+.AddColor {
+  color: rgb(95, 159, 248);
+}
+
+/* status css */
+
+table.dataTable td.dt-control:before {
+  background-color: white !important;
+  color: #326C96 !important;
+  border: 0.15em solid #326C96 !important;
+  margin: 3px;
+}
+
+table.dataTable td.dt-control {
+  text-align: start !important;
+  color: rgb(95, 159, 248);
+  padding-right: 3px;
+}
+
+
+
+input[type=checkbox]:checked {
+  accent-color: green;
+}
+
+table #statusChildData {
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+
+}
+
+#statusChildData thead {
+  background-color: rgb(228, 232, 235);
+  border-collapse: collapse;
+}
+
+table #statusChildData thead th {
+  color: gray;
+}
+
+
+#statusTable th.sorting.sorting_asc::before{
+   
+  margin-right: 30%;
+}
+#statusTable th.sorting.sorting_asc::after{
+  margin-right: 30%;
+}
+#statusTable th.sorting.sorting_desc::after{
+ 
+  margin-right: 30%;
+}
+#statusTable th.sorting.sorting_desc::before{
+ 
+  margin-right: 40%;
+}
+#statusTable th.sorting::before{
+  margin-right: 30%;
+}
+#statusTable th.sorting::after{
+  margin-right: 30%;
+}
+
+/* stock css */
+
+table #partTable{
+      font-size: small;
+      border-collapse: collapse;
+      border-radius: 1em;
+      overflow: hidden;
+   }
+
+table #partTable thead{
+  background-color: rgb(228, 232, 235);
+  border-collapse: collapse;
+}
+
+table #partTable thead th{
+  color: gray;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+  color: #fff;
+  background-color: #326C96 !important;
+  border-color: #326C96 !important; 
+}
+a.editor-create {
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+#partnumber .btn:hover{
+    text-decoration: none;
+    border: none;
+}
+
+/* th {
+  color: white;
+}
+
+thead {
+  background-color: black;
+  border-collapse: collapse;
+  border-radius: 1em;
+
+}
+
+table {
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+} */
+
+/* .navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 35%;
+  height: 2px;
+  bottom: -12px;
+  left: 22px;
+  right: 22px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s; 
+  font-weight: bolder;
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+} */
+
+.popover-body{
+  padding: 0%;
+  margin: 3% 0% 0% 0%;
+ 
+}

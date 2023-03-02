@@ -1,93 +1,100 @@
 .parent {
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    width: 50%;
-  }
-  
-  .image1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width:700px;
-    height:700px;
-
-  }
-  
-  .image2 {
-    position: absolute;
-    top: 280px;
-    left: 150px;
-  }
-  .head_login{
-    top: 500px;
-  }
- .parentright{
-    /* position: fixed; */
-    margin-top: 8%;
-    margin-left: 60%;
-
- }
- #login_form{
-    margin: 10%;
- }
- .container{
-    position: fixed;
- }
- .lg1{
-    background-color: #326C96;
- }
-
- @media only screen and (max-width: 1200px) {
-   .parent {
-     display: none;
-   }
-   .parentright{
-      margin-left: 0;
-   }
- }
- 
- @media only screen and (max-width: 700px) {
-  
-  .parentright{
-     margin-right: 15%;
-  }
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 50%;
 }
-li{
- size: 19px;
- margin: 10px;
+
+.image1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 700px;
 
 }
-.navbar a.active{
-  border-bottom: 3px solid #000000;
-  
+
+.image2 {
+  position: absolute;
+  top: 280px;
+  left: 150px;
 }
-.hr{
+
+.head_login {
+  top: 500px;
+}
+
+.parentright {
+  /* position: fixed; */
+  margin-top: 1%;
+  margin-left: 57%;
+
+}
+
+#login_form {
+  margin: 10%;
+}
+
+.container {
+  position: fixed;
+}
+
+.lg1 {
+  background-color: #326C96;
+}
+
+@media only screen and (max-width: 1200px) {
+  .parent {
+    display: none;
+  }
+
+  .parentright {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .parentright {
+    margin-right: 15%;
+  }
+}
+
+li {
+  size: 19px;
+  margin: 10px;
+
+}
+
+
+
+.hr {
   border-bottom: 2px solid #175480;
   width: 6%;
   margin-left: 2%;
 
 }
 
-.msgerror{
+.msgerror {
   color: red;
 }
 
-.status{
-    width: 80px;
-    height: 30px;
-    padding: 0;
-    margin: 0;
+.status {
+  width: 80px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
 
 }
 
 .modal:nth-of-type(even) {
   z-index: 1052 !important;
 }
+
 .modal-backdrop.show:nth-of-type(even) {
   z-index: 1051 !important;
 }
-  
+
 /* plus button in table expand */
 table.dataTable td.dt-control:before {
   height: 1em;
@@ -100,15 +107,129 @@ table.dataTable td.dt-control:before {
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
-  font-family: "Courier New",Courier,monospace;
+  font-family: "Courier New", Courier, monospace;
   line-height: 1em;
   content: "+";
   background-color: white;
 }
+
 table.dataTable tr.dt-hasChild td.dt-control:before {
   content: "-";
   background-color: white;
   border: 0.15em solid #326C96;
   color: #326C96;
 
+}
+/* 
+.round{
+  border-radius: 15px 50px 30px 5px;
+} */
+table{
+  border-collapse: collapse;
+  border-radius: 10px !important; 
+  overflow: hidden;
+  table-layout: relative; 
+  width: 100% !important;
+  
+}
+.toolbar {
+  float: left;
+}
+
+.page-item.active .page-link {
+  background-color: black !important;
+  border-color: black !important;
+  color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+.page-link{
+  color: #000000;
+}
+
+
+
+
+/* pagination and info css */
+.pagination{
+  float: right !important;
+  margin-right: -270px !important;
+  margin-top: 20px !important;
+  
+}
+
+.dataTables_info{
+  float: right !important;
+  margin-right: 80px !important;
+  padding-right: 37px !important;
+  margin-top: 17px !important;
+  color: #3F4D65;
+  font-size: 14px;
+  font-family: system-ui;
+}
+
+  
+/* space between table and stock label */ 
+.dataTables_filter{
+  margin-bottom: 28px !important;
+}
+
+/* checkboxes css */
+
+input[type=checkbox]:checked {
+  accent-color: green;
+}
+
+.edit,.history{
+  color:#878585;
+}
+
+
+
+
+.msgerror{
+  
+  margin-top: 7px;
+  margin-left: 3px;
+}
+
+
+/* Navbar Active line start */
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 33%;
+  height: 2px;
+  bottom: -23px;
+  left: 29px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  /* / transition: all 0.3s ease-in-out 0s; / */
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.modal-footer{
+  justify-content: flex-start;
 }

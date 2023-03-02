@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/Badeloft/stock.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+</head>
+   
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#"> <img src="./Assets/02.png" style="height:20px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center navbar_list" id="collapsibleNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-item  mx-3 fw-bolder " href="Dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item  mx-3 fw-bolder active" href="stock.html">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item  mx-3 fw-bolder" href="status.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-item  mx-3 fw-bolder" href="Assignment.html">Assignment</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center justify-content-between" style="height: 80px; width:200px;">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="./Assets/1.jpeg" class="rounded-circle" height="40px" width="40px" alt="">
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="small mb-0">Welcome</p>
+                        <b>
+                            <p id="Uname" class="mb-0">
+                        </b></p>
+                    </div>
+                    <div class="col-3 text-right p-0">
+                        <div class="nav-item ">
+                            <button id="logout-btn" class="btn "> <i class="fa-solid fa-arrow-right-from-bracket   mt-2"
+                                    onclick="logout()"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-md-8 mt-3">
+                <h4><strong>Stock</strong></h4>
+            </div>
+            <div class="col-md-1 mt-3">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    + New
+                </button>
+            </div>
+            <div class="col-md-3 mt-3 mb-3">
+                <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="example" class="table" style="width:100%">
+                <thead class="maintable">
+                    <tr>
+                        <th>Stock Name</th>
+                        <th>ETA Date</th>
+                        <th>Stock Location</th>
+                        <th>Created By</th>
+                        <th>Created Date</th>
+                        <th>Notes</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="" class="text-muted"><strong>Stock Name</strong></label>
+                                <input type="text" class="form-control" id="stock_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" class="text-muted"><strong>ETA Date</strong></label>
+                                <input type="date" class="form-control" id="eta_date">
+                            </div>
+                            <div class="col-md-4 mt-2">
+                                <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
+                                <div class="row">
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                                            autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio1">OnProduction</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio2">OnWater</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                            autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio3">InWarehouse</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-outline-light bg-white text-dark"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal1" id="inner_modal"><img
+                                            src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
+                                            style="padding-left: 10px;" alt=""><span class="text-muted">Add
+                                            Part Number</span></button>
+                                </div>
+                            </div>
+                            <table id="inner_table" class="table mt-2" style="width:100%" ;>
+                                <thead style="background-color: black; color: white;">
+                                    <tr>
+                                        <th>Part Number</th>
+                                        <th>Invoice #</th>
+                                        <th>Ordered</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save_outer">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="part_num" placeholder="Part Number">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <input type="text" class="form-control" id="ordered" placeholder="Ordered">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <textarea name="" class="form-control" rows="3" id="note" placeholder="Notes"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="save_inner">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  -->
+    <!-- Button trigger modal -->
+
+  
+  
+
+
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script src="./stock.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+</body>
+
+</html>
+    
+   

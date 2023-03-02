@@ -8,38 +8,39 @@ $(document).ready(function () {
   var activeuser = JSON.parse(localStorage.getItem("loggedInUser"));
   $("#activeuser").html(activeuser.username);
 
-  function format(d) {
-return (
-'<table class="text-center d-flex justify-content-center"> ' +
-'<tr>' +
-'<th>#</th>' +
-'<th>Part Number</th>' +
-'<th>Stock Location</th>' +
-'<th>Action</th>' +
-'</tr>' +
-'<tr>' +
-'<td>1</td>' +
-'<td>BW-01-S-M</td>' +
-'<td>Warehouse</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'<tr>' +
-'<td>2</td>' +
-'<td>AP-03-XL-G</td>' +
-'<td>C-101</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'<tr>' +
-'<td>3</td>' +
-'<td>BW-03-XL-G</td>' +
-'<td>E-501</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'</table>'
-);
-}
 
-  var data = [
+  function format(d) {
+    return (
+      '<table class="text-center"  style="width:100%;"> ' +
+      '<tr>' +
+      '<th>#</th>' +
+      '<th>Part Number</th>' +
+      '<th>Stock Location</th>' +
+      '<th>Action</th>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>1</td>' +
+      '<td>BW-01-S-M</td>' +
+      '<td>Warehouse</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>2</td>' +
+      '<td>AP-03-XL-G</td>' +
+      '<td>C-101</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>3</td>' +
+      '<td>BW-03-XL-G</td>' +
+      '<td>E-501</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '</table>'
+    );
+  }
+
+  var Statusdata = [
     {
       qb_invoice: "150000",
       name: "Kenneth Woodward",
@@ -172,7 +173,7 @@ return (
     }
   ]
 
-  var table = $('#example').DataTable({
+  var table = $('#Statusdata').DataTable({
     "paging": true,
     "dom": '<"toolbar">frtip',
     bFilter: true,
@@ -180,28 +181,32 @@ return (
     fnInitComplete: function () {
       $('div.toolbar').html('<h2>Status</h2>');
     },
-    data: data,
+    data: Statusdata,
+    language: {
+      search: "_INPUT_",
+          searchPlaceholder: 'Search...',
+          paginate: {
+            next: '&#62',
+            previous: '&#60' 
+          }
+    },
     columns: [
-      {
-        className: 'dt-control',
-        orderable: false,
-        data: null,
-        defaultContent: '',
-      },
-      { data: 'qb_invoice' },
-      { data: 'name' },
-      { data: 'qb_shipdate' },
-      { data: 'qb_pay_status' },
-      { data: 'status',},
-      { data: 'qb_delievery_phone' },
-      { data: 'called' },
-      { data: 'qb_tracking' },
+      { data: 'qb_invoice', orderable: true, className: 'dt-control text-start ',
+      orderable: false, },
+      { data: 'name', orderable: false,className: 'text-start' },
+      { data: 'qb_shipdate', orderable: false ,className: 'text-start'},
+      { data: 'qb_pay_status', orderable: false ,className: 'text-start'},
+      { data: 'status', orderable: false ,className: 'text-start'},
+      { data: 'qb_delievery_phone', orderable: false ,className: 'text-start'},
+      { data: 'called', orderable: false ,className: 'text-start'},
+      { data: 'qb_tracking', orderable: false ,className: 'text-start'},
     ],
     order: [[1, 'asc']],
   });
 
+
   // Add event listener for opening and closing details
-  $('#example tbody').on('click', 'td.dt-control', function () {
+  $('#Statusdata tbody').on('click', 'td.dt-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row(tr);
 

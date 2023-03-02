@@ -1,10 +1,11 @@
 //global variables
-var partDetails = []; 
-var stockDetails = []; 
-var tableData; 
+var partDetails = [];
+var stockDetails = [];
+var index = 1;
+var tableData;
 
 window.onload = (event) => {
-  debugger;
+  //debugger;
   if (localStorage.getItem("LoginDetails") == null) {
     window.location.replace("Badeloft.html");
   } else {
@@ -20,30 +21,47 @@ function logout() {
   localStorage.clear();
 }
 
+
+
 // Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
-  debugger;
-  // `d` is the original data object for the row
-  // var p = partDetails;
-  // console.log(p)
-  let p = JSON.parse(localStorage.getItem("Part"));
+  //debugger;
+  console.log(partDetails);
+  console.log(d)
+  var tr = $(this).parents('tr');
+  var row = tableData.row(tr);
 
+  row.child(
+   
+    partDetails
+  )
+
+  var p = partDetails;
+  console.log(p)
+
+  if (d.stockpart == null) {
+    d.stockpart = partDetails;
+  }
+  var q = d.stockpart;
+
+  console.log("parts", q)
   let childrow = "";
-  // if (d.p.length > 0) {
-  // console.log(partDetails)
-  // if(d.p && d.p.length>0){
-  childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded">';
+
+
+  // var currentIndex = $(this).closest('tr').index();
+
+
+
+  childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded" id="childtablepart">';
   childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
-  p.forEach((e, index) => {
 
-    let ind = (index + 1);
+  q.forEach((e) => {
 
-    childrow += '<tr><td>' + ind + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td></tr>';
+    childrow += '<tr><td>' + e.index + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td><td>' + e.index + '</td><td>' + '<i class="fa-solid fa-xmark deletechild"></i>' + '</td</tr>';
   });
   childrow += '</tbody></table>';
-  // }
   return childrow;
 }
 
@@ -53,105 +71,215 @@ $(document).ready(function () {
     $("#innermodal").modal("show");
   });
 
+  
+  $("#cancelpart").click(function () {
+    document.getElementById("AddPartForm").reset();
+  });
+
+
+
+  var modal = document.getElementById("addstock");
+  stockDetails = JSON.parse(localStorage.getItem("stockList"));
 
   tableData = $('#stock').DataTable({
+
+    orderable: false,
     data: stockDetails,
     lengthChange: false,
-    info: false,
-    paging: false,
+    bFilter: true,
+    bInfo: false,
+    info: true,
+    paging: true,
+    ordering: false,
+
+    dom: '<"toolbar">frtip',
+    fnInitComplete: function () {
+      $('div.toolbar').html('<b><h3>&nbsp;Stock</h3></b>');
+      $('#stock_filter').prepend(modal);
+    },
+    language: {
+      info: "Items _START_ to _END_ of _TOTAL_ total",
+      paginate: {
+        previous: "<",
+        next: ">",
+      },
+      search: "",
+      searchPlaceholder: "Search here..."
+    },
+
+
     columns: [{
+        data: null,
         className: 'dt-control',
         orderable: false,
-        data: null,
         defaultContent: '',
 
       },
       {
+        data: "sname",
         title: 'Stock Name',
         orderable: false,
-        className: "text-center"
+        render: function (data, type, row) {
+          if (type == 'display') {
+            return '<span style="color: #1188FF;">' + data + '</span>';
+          } else {
+            return data;
+          }
+        }
       },
       {
+        data: "etadate",
         title: 'ETA Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data: "stkstatus",
         title: 'Stock Location',
         orderable: false,
         className: "text-center"
       },
       {
+        data: "createdby",
         title: 'Created By',
         orderable: false,
         className: "text-center"
       },
       {
+        data: "cdate",
         title: 'Created Date',
         orderable: false,
         className: "text-center"
       },
       {
+        data: "notes",
         title: 'Notes',
         orderable: false,
         className: "text-center"
       },
       {
+        data: null,
         title: 'Action',
         orderable: false,
-        className: "text-center"
+        defaultContent: '<div class="action-buttons">' +
+          '<span id="editstock" class="edit edit-stock" data-id="' + index + '"><i class="fas fa-pen"></i></span> ' +
+          '<span class="history">&nbsp;&nbsp;<i class="fas fa-history"></i></span> ' +
+          '</div>',
+        className: 'row-edit dt-center',
       }
-    ],
-    order: [
-      [1, 'asc']
-    ],
+    ]
+
   });
 
-  // Add event listener for opening and closing details
-  $('#stock tbody').on('click', 'td.dt-control', function () {
-    var tr = $(this).closest('tr');
-    var row = tableData.row(tr);
+//opening modal while clicking on the edit button
+$(".edit-stock").on('click', function () {
+  var i = $(this).closest('tr').index();
+  $("#myModal").modal("show");
+  console.log(stockDetails[i])
+  console.log(stockDetails[i].stockpart[0].partno)
 
-    if (row.child.isShown()) {
-      // This row is already open - close it
-      row.child.hide();
-      tr.removeClass('shown');
-    } else {
-      // Open this row
-      row.child(format(row.data())).show();
-      tr.addClass('shown');
-    }
+  document.getElementById("sname").value = stockDetails[i].sname;
+  document.getElementById("etadate").value = stockDetails[i].etadate;
+
+
+  var html = "";
+
+  stockDetails[i].stockpart.forEach(function (element, index) {
+    let ind = index + 1;
+    html += "<tr>";
+    html += "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + element.partno + "</td>";
+    html += "<td>" + ind + "</td>"; //Date.now() 
+    html += "<td>" + element.ordered + "</td>";
+    html += "<td>" + element.notes + "</td>";
+    html += "<td>" + '<i class="fa-solid fa-xmark delete"></i>' + "</td>";
+
+    html += "</tr>";
+
+
+    document.getElementById("tdata").innerHTML = html;
+
   });
 });
 
-function addpartData() {
 
+});
+
+
+
+
+
+
+
+
+
+
+// Add event listener for opening and closing details
+$('#stock tbody').on('click', 'td.dt-control', function () {
+  var tr = $(this).closest('tr');
+  var row = tableData.row(tr);
+
+  if (row.child.isShown()) {
+    // This row is already open - close it
+    row.child.hide();
+    tr.removeClass('shown');
+  } else {
+    console.log(partDetails)
+    // Open this row
+    row.child(format(row.data())).show();
+    tr.addClass('shown');
+  }
+});
+
+
+$("#tdata").on('click', '.delete', function () {
+  $(this).closest('tr').remove();
+});
+$("#childtablepart").on('click', '.deletechild', function () {
+  $(this).closest('tr').remove();
+});
+
+
+
+// $("#editstock").on('click','.edit',function(){
+//   var i = $(this).closest('tr').findIndex();
+//   console.log('closest index',i)
+// });
+
+
+function addpartData() {
   var partno = document.getElementById("partno").value
   var ordered = document.getElementById("ordered").value
   var notes = document.getElementById("notes").value
 
   if (partDetails == null) {
-
     partDetails = [];
-
   }
+
+  if (stockDetails == null) {
+    stockDetails = [];
+    index = 0;
+  }
+  index = stockDetails.length;
+  index++;
+
   partDetails.push({
+    index: index,
     partno: partno,
     ordered: ordered,
     notes: notes,
   });
-
-  localStorage.setItem("Part", JSON.stringify(partDetails));
 
   var html = "";
 
   partDetails.forEach(function (element, index) {
     let ind = index + 1;
     html += "<tr>";
-    html += "<td>" + element.partno + "</td>";
+    html += "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + element.partno + "</td>";
     html += "<td>" + ind + "</td>"; //Date.now() 
     html += "<td>" + element.ordered + "</td>";
     html += "<td>" + element.notes + "</td>";
+    html += "<td>" + '<i class="fa-solid fa-xmark delete"></i>' + "</td>";
+
     html += "</tr>";
 
 
@@ -164,16 +292,9 @@ function addpartData() {
 
 }
 
+
 function addstockdata() {
-  debugger;
-
-  console.log("Partdetails in stock function:", partDetails);
-
-  //Todo
-  // 1.Get data from Form
-  // 2. Create Stock Object as per json format
-  // 3. add list data into stock object
-  // 4. Append stock object in to stock list local storage
+  //debugger;
 
   var sname = $("#sname").val();
   var etadate = $("#etadate").val();
@@ -209,34 +330,33 @@ function addstockdata() {
 
   }
   stockDetails.push({
+
+    index: index,
     sname: sname,
     etadate: etadate,
     stkstatus: stkstatus,
     createdby: createdby,
     cdate: cdate,
-    part: partDetails
-
+    notes: notes,
+    stockpart: partDetails,
   });
 
-  tableData.row.add(['', sname, etadate, stkstatus, createdby, cdate, notes, '']).draw();
+  index++;
 
-  // var stockList = [
-  //   {
-  //     "sname" : sname,
-  //     "etadate" : etadate,
-  //     "stkstatus" : stkstatus,
-  //     "createdby" : cdate,
-  //     "notes":notes,
-  //     // "partlist" :[{
-  //     //   partDetails
-  //     // }],
-  //     // "stocklist" : stockDetails,
-  //     "partlist" : partDetails,
+  // $('.edit').setAttribute('data-id',index)
 
-  //   }
-  // ]
 
-  localStorage.setItem("stockList", JSON.stringify(stockDetails));
+
+  tableData.row.add({
+    "": "",
+    "sname": sname,
+    "etadate": etadate,
+    "stkstatus": stkstatus,
+    "createdby": createdby,
+    "cdate": cdate,
+    "notes": notes
+  }).draw();
+
 
   document.getElementById("sname").value = "";
   document.getElementById("etadate").value = "";
@@ -244,4 +364,82 @@ function addstockdata() {
   document.getElementById("partno").value = "";
   document.getElementById("ordered").value = "";
   document.getElementById("notes").value = "";
+  localStorage.setItem("stockList", JSON.stringify(stockDetails));
+
+
+
 }
+
+
+$("#AddStockForm").validate({
+
+
+  errorClass: 'msgerror',
+  rules: {
+    sname: {
+      required: true,
+
+    },
+    etadate: {
+      required: true,
+    },
+    partno: {
+      required: true,
+    }
+  },
+  messages: {
+    sname: {
+      required: "Enter Stock name",
+    },
+    partno: {
+      required: "Enter Part number"
+    },
+    etadate: {
+      required: "Enter ETA date"
+    },
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+});
+
+$("#AddPartForm").validate({
+
+  errorClass: 'msgerror',
+  rules: {
+
+    partno: {
+      required: true,
+    },
+    ordered: {
+      required: true,
+    },
+    notes: {
+      required: true,
+    }
+  },
+  messages: {
+
+    partno: {
+      required: "Enter Part number",
+    },
+    ordered: {
+      required: "Enter number of ordered parts",
+    },
+    notes: {
+      required: "Enter notes",
+    }
+  },
+  submitHandler: function (form) {
+    form.submit();
+  }
+})
+
+//Date Picker
+$(function () {
+  $('input[name="etadate"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    maxYear: parseInt(moment().format('YYYY'), 10)
+  });
+});

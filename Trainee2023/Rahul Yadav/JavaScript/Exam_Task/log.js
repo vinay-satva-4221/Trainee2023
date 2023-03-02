@@ -33,7 +33,7 @@ $(document).ready(function () {
             return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
         });
 
-        $("#form").validate({
+        $("#loginform").validate({
             rules: {
                 email: {
                     required: true,
@@ -45,7 +45,7 @@ $(document).ready(function () {
                 },
             },
             messages: {
-                name: {
+                email: {
                     required: "Enter your Email",
                     Emailcheck: "Please Enter Valid Email",
                 },
@@ -54,14 +54,14 @@ $(document).ready(function () {
                     password: "Please Enter Valid Password",
                 },
             },
-            submitHandler: function (form) {
-                form.submit();
+            submitHandler: function (loginform) {
+                loginform.submit();
             },
         });
-        var form = $("#form");
-        form.validate();
+        var loginform = $("#loginform");
+        loginform.validate();
         $("#login").click(function () {
-            var result = form.valid();
+            var result = loginform.valid();
             if (result == true) {
                 let email = $("#inputemail").val();
                 let password = $("#password").val();
@@ -72,14 +72,14 @@ $(document).ready(function () {
                             Name: users[i][2],
                             Email: users[i][0],
                         });
-                        document.getElementById("form").reset();
+                        document.getElementById("loginform").reset();
                         window.location.replace("db.html");
                     }
                 }
-                document.getElementById("form").reset();
+                document.getElementById("loginform").reset();
                 localStorage.setItem("LogedinUser", JSON.stringify(loggedInUser));
             } else {
-                swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
+                // swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
             }
         });
     }
@@ -87,79 +87,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    on click function of Login Button
-// document.getElementById("login").onclick = function () {
-//     var details = [["abc@gmail.com", "abc123", "Abc"],
-//     ["rahul@gmail.com", "rahul123", "Rahul"],
-//     ["sam@gmail.com", "sam123", "Sam"]];
-//     // var  result=$("#login_form").valid();
-//     let email = document.getElementById("inputemail").value;
-//     let password = document.getElementById("password").value;
-//     // if (result) {
-//         var logged = new Array();
-//         for (let i = 0; i < 4; i++) {
-//             if (email == details[i][0] && password == details[i][1]) {
-//                 logged.push({
-//                     Name: details[i][2],
-//                     Email: details[i][0]
-//                 });
-//             }
-//             localStorage.setItem("logged", JSON.stringify(logged));
-//             window.location.replace("db.html");
-
-//         }
-//     // }
-// };
-
-//  function for log out
-// document.getElementById("logout").onclick = function () {
-//     window.location.href = "log.html"
-// };
-
-// var logged = JSON.parse(localStorage.getItem("logged"));
-// if (logged != '') {
-//     debugger;
-//     window.location.replace("db.html");
-// } else {
-//     console.log("Invalid username");
-// }
-
-
-
-// function remove() {
-//     localStorage.removeItem('logged');
-
-// }
 
 
 

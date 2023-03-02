@@ -1,0 +1,269 @@
+/* nav */
+body {
+    margin: 0;
+    overflow-x: hidden !important;
+
+}
+
+.Dlogo {
+    width: 165px;
+    margin-left: -6%;
+}
+
+.nav-item {
+    margin-right: 5%;
+}
+
+.navItem {
+    margin-right: 18%;
+}
+
+
+.adminImg {
+    border-radius: 50px;
+    height: 41px;
+    margin-top: 2px;
+}
+
+.welcome {
+    font-size: 11px;
+    opacity: 70%;
+    margin-bottom: -18%;
+    margin-top: 8%;
+}
+
+.getN {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dynamicN {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: -29%;
+
+}
+
+#logout {
+    margin-right: -7%;
+}
+
+
+
+.fa-solid {
+    color: #858585;
+}
+
+
+
+@media only screen and (max-width: 575px) {
+    .Dlogo {
+        width: 165px;
+        margin-left: -2%;
+    }
+}
+
+
+/* section */
+.section {
+    background-color: #F7F8FA;
+}
+
+
+/* stock */
+.stock_heading {
+    font-size: 22px;
+    margin-left: 3.5%;
+}
+
+.stockSearch {
+    width: 29%;
+    margin-right: 3%;
+}
+
+#stock_search {
+    width: 97%;
+}
+
+.btnNew {
+    margin-right: 30px;
+    width: 50px;
+    height: 26px;
+    margin-top: 16px;
+}
+
+.btnLog {
+
+    font-size: 12px;
+    width: 68px;
+    height: 122%;
+    border-radius: 6px;
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+
+}
+
+/* active class */
+.active {
+    border-bottom: 2px solid black;
+    height: 60px;
+    color: black;
+    font-weight: bold;
+
+}
+
+
+
+
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+    font-weight: 300;
+    height: 59%;
+}
+
+/* table */
+
+.table_div {
+    width: 94%;
+}
+
+.th_color {
+    color: white;
+    font-weight: 400;
+}
+
+#stock_table {
+    width: 100%;
+}
+
+thead {
+    background-color: black;
+    border-radius: 1em;
+}
+
+table {
+    font-size: small;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.tablehead {
+    font-size: 12px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-weight: 200 !important; */
+    /* font-family: 'Noto Sans', sans-serif; */
+}
+
+.body_backgroud {
+    background-color: #F7F8FA;
+}
+
+
+
+.addpartbtn {
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid white;
+    margin-left: -10%;
+    width: 124px;
+}
+
+.stModal1 {
+    width: 137%;
+}
+
+table.dataTable td.dt-control:before {
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    margin: 3px;
+    margin-right: 6%;
+    
+}
+
+table.dataTable td.dt-control {
+    text-align: start !important;
+    padding-right: 3px;
+    color: #3A9CFF;
+}
+
+table.dataTable td.dt-center {
+    cursor: pointer;
+}
+
+.bi::before,
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    margin-left: 12px;
+}
+
+
+
+
+/* paginate */
+#stock_table_paginate {
+    margin-top: -2.6%;
+}
+
+#stock_table_info {
+    margin-left: 75%;
+}
+
+
+/* modal save btn */
+#myMod {
+    background-color: #326C96;
+    color: white;
+}
+
+/* modal 2 */
+#modal2{
+    background-color: #326C96;
+    color: white;
+}
+
+#modal2_size{
+    width: 23%;
+    margin-left: 47%;
+    margin-top: 6.7%;
+}
+
+
+/* table indentation */
+table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting_asc_disabled, table.dataTable thead>tr>th.sorting_desc_disabled, table.dataTable thead>tr>td.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting_asc_disabled, table.dataTable thead>tr>td.sorting_desc_disabled {
+    cursor: pointer;
+    position: relative;
+    padding-right: 0px;
+}
+
+
+/* radio button */
+.btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active {
+    color: var(--bs-btn-active-color);
+    background-color: #326c96;
+    border-color: #326c97;
+}
+.btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active  :hover {
+   color: white;
+   
+}
+
+/* pagination number */
+a.page-link{
+    height: 60%;
+    padding-top: 10%;
+}
