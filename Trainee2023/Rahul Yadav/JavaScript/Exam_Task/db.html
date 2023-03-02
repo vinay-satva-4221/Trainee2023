@@ -71,7 +71,8 @@
                 </div>
                 <div class="col-lg-3 offset-lg-6 pt-4 pe-5">
                     <div class="form-group has-search">
-                        <input type="text" class="form-control" placeholder="Search here" id="datatablesearch">
+                        <input type="text" class="form-control searchbar" placeholder="Search here" id="datatablesearch">
+                        <i class="bi bi-search searchicon"></i>
                     </div>
                 </div>
 
@@ -80,10 +81,27 @@
                         <thead class="thead-dark rounded"></thead>
                     </table>
                     <div id="popover-content" style="display: none;">
-                        <div>
-                            <span>Ordered 3</span>
-                            <input type="checkbox">
-                            <span>Assigned 2</span>
+                        <div class="row p-0 m-0 col-12">
+                            <div class="col-md-12">
+                                <p class="text-start text-dark fw-bold">Assigned to</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p class="text-success">Ordered:3 <span class="text-secondary">|</span></p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p class="text-danger text-start">Assigned:2</p>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Manuel
+                                    Pimentel</p>
+
+                            </div>
+                            <div class="col-md-12">
+                                <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Dave
+                                    Pimentel</p>
+                            </div>
                         </div>
                     </div>
                 </div>
