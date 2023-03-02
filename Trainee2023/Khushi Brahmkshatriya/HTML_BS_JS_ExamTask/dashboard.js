@@ -20,12 +20,12 @@ $(document).ready(function () {
   var StockLocation = $.fn.dataTable.absoluteOrder(
     [{ value: 'Stock Location', position: 'top' },
     { value: 'ETA Date', position: 'top' }]);
-    
+
   var table = $("#dashboardTable").DataTable({
     data: dataSet,
     "order": [],
     "dom": 'rtip',
-  
+
     language: {
       "info": "Items _START_ to _END_ of _TOTAL_ total",
       paginate: {
@@ -38,30 +38,33 @@ $(document).ready(function () {
       { targets: 0, type: StockLocation },
       { orderable: true, targets: 0 },
       { orderable: false, targets: '_all' },
-     
+
     ],
-   
+
     columns: [
       { title: "Part Number" },
-      { title: "In Warehouse",className:'text-center' },
-      { title: "Available",className:'text-center' },
-      { title: "C100",className:'text-center' },
-      { title: "C101",className:'text-center' },
-      { title: "C102",className:'text-center' },
+      { title: "In Warehouse", className: 'text-center' },
+      { title: "Available", className: 'text-center' },
+      { title: "C100", className: 'text-center' },
+      { title: "C101", className: 'text-center' },
+      { title: "C102", className: 'text-center' },
     ],
   });
   $('#txtSearch').keyup(function () {
-    table.search($(this).val()).draw(); 
-      // this  is for customized searchbox with datatable search feature.
+    table.search($(this).val()).draw();
+    // this  is for customized searchbox with datatable search feature.
   })
   //$('[data-bs-toggle="popover"]').popover();  
   $('[data-bs-toggle="popover"]').popover({
-   
+
     container: 'body',
     placement: 'right',
-    html: true, 
-    content: function() {
-          return $('#popover-form').html();
+    html: true,
+    content: function () {
+      return $('#popover-form').html();
     }
-});
+  });
 })
+
+
+

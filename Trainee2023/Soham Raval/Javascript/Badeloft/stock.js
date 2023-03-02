@@ -58,6 +58,9 @@ $(document).ready(function () {
     ]
     var table = $('#example').DataTable({
         data:data1,
+        paging:true,
+        binfo:true,
+        bFilter:true,
         columns: [
             {
                 className: 'dt-control',

@@ -74,27 +74,27 @@ arryObj5.push(obj5);
 localStorage.setItem("User5", JSON.stringify(arryObj5));
 
 function validate() {
-   debugger
+   debugger;
    var email = document.getElementById("email").value;
    var lowerCaseEmail = email.toLowerCase();
    var password = document.getElementById("password").value;
-   var loggedIn = false;
+   var name;
 
-   // Loop through the localStorage keys and check if the email matches the username for any of them
-   for (var i = 0; i < localStorage.length; i++) {
-      var key = localStorage.key(i);
-      if (key.startsWith("User")) {
-         var storedData = JSON.parse(localStorage.getItem(key));
-         var storedEmail = storedData[0].username;
-         var storedPassword = storedData[0].password;
-         if (lowerCaseEmail === storedEmail && password === storedPassword) {
-            loggedIn = true;
-            break;
-         }
-         else{
-            document.getElementById("error").innerHTML = "Wrong Email or Password!"
-         }
-      }
+   let valid = false;
+ 
+   for (let i = 0; i < localStorage.length; i++) {
+     let key = localStorage.key(i);
+     if (key.startsWith("User")) {
+       let storedData = JSON.parse(localStorage.getItem(key));
+       let storedEmail = storedData[0].username;
+       let storedPassword = storedData[0].password;
+      //  var storedname = storedData[0].name;
+ 
+       if (lowerCaseEmail === storedEmail && password === storedPassword) {
+         valid = true;
+         break;
+       }
+     }
    }
 
    if (lowerCaseEmail == "user1@yopmail.com") {
@@ -109,7 +109,7 @@ function validate() {
       var obj = arryObj5;
    }
 
-   if (loggedIn) {
+   if (valid) {
       localStorage.setItem("loginUser", JSON.stringify(obj));
       location.replace("dashboard.html");
    }
