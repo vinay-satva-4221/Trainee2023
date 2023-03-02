@@ -76,3 +76,13 @@ $(document).ready(function () {
 $(document).ready(function() {
   $('.js-example-basic-multiple').select2();
 });
+
+
+
+var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
+   
+$('.nav-item a').each(function(){
+    if ($(this).attr('href') == pathname){
+    $(this).addClass('active');
+    }
+});

@@ -204,3 +204,12 @@ $("#status_search").on("keyup", function () {
     table.search(this.value).draw();
   });
   
+
+  //active
+  var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
+   
+    $('.nav-item a').each(function(){
+        if ($(this).attr('href') == pathname){
+        $(this).addClass('active');
+        }
+    });

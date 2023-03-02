@@ -67,13 +67,13 @@ body {
 }
 
 /* active class */
-.active {
+/* .active {
     border-bottom: 2px solid black;
     height: 60px;
     color: black;
     font-weight: bold;
 
-}
+} */
 
 
 /* status */
@@ -192,4 +192,31 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
     right: 608px;
     line-height: 9px;
     font-size: .8em;
+}
+
+
+/* active */
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    top: 47px;
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 19px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar-nav .nav-link.active::before
+ {
+    visibility: visible;
+    transform: scaleX(1);
 }
