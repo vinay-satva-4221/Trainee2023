@@ -63,6 +63,7 @@ $(document).ready(function () {
         $(document).ready(function () {
             var table = $('#table_div1').DataTable({
                 data: datasets,
+                info: "Items _START_ to _END_ of _TOTAL_ total",
                 language: {
 
                     paginate: {
@@ -83,9 +84,9 @@ $(document).ready(function () {
                 ],
                 columns: [
                     { title: ' QB Invoice#', className: 'dt-control', orderable: true, },
-                    { title: 'Name', orderable: true, className: 'TextCenter', },
-                    { title: 'QB Ship date', orderable: true, className: 'TextCenter' },
-                    { title: 'QB Payment Status', orderable: true, className: 'TextCenter' },
+                    { title: 'Name', orderable: false, className: 'TextCenter', },
+                    { title: 'QB Ship date', orderable: false, className: 'TextCenter' },
+                    { title: 'QB Payment Status', orderable: false, className: 'TextCenter' },
                     { title: 'QB status', orderable: false, className: 'TextCenter' },
                     { title: 'QB Delivery Phone', orderable: false, className: 'TextCenter' },
                     { title: 'Called', orderable: false, className: 'TextCenter' },
@@ -101,7 +102,7 @@ $(document).ready(function () {
             });
 
             // Add event listener for opening and closing details
-            $('#table_div1 tbody').on('click', 'td.dt-control', function () {
+            $('#table_div1 tbody').on('click', 'td', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
 
