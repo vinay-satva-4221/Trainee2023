@@ -124,7 +124,7 @@ $(document).ready(function () {
         class: "text-center",
       },
       {
-        data: "stock_S",
+        data: "stockStatus",
         title: "Stock Location",
         orderable: false,
         class: "text-center",
@@ -206,58 +206,74 @@ var user = JSON.parse(localStorage.getItem("user"));
 console.log(user);
 
 var newStock = [];
-var rv1;
+var Stockstatus;
 
 function addData() {
-  //login user
-
   // parts
-  var stockN = document.getElementById("stock").value;
+  var stockName = document.getElementById("stock").value;
   var dateM = document.getElementById("date").value;
 
-  // radio btn val
-  // if (r1 == true) {
-  //   r1V = "On Production";
-  // } else if (r2 == true) {
-  //   r1V = "On Water";
-  // } else if (r3 == true) {
-  //   r1V = "In Warehouse";
-  // }
-
-  r1V = display();
+  Stockstatus = radioBtnValue();
 
   console.log(parts.length);
-  if (stockN != null && parts.length > 0) {
+  if (stockName != null && parts.length > 0) {
     if (localStorage.getItem("newStock") == null) {
       newStock = [];
       var newObj = {
-        stock: stockN,
+        stock: stockName,
         date: dateM,
-        stock_S: r1V,
+        stockStatus: Stockstatus,
         CreatedDate: today,
         Part: parts,
         user: user,
       };
       newStock.push(newObj);
+      table.row.add(newObj).draw();
+      localStorage.setItem("newStock", JSON.stringify(newStock));
+      $("#StockModal").modal("hide");
+      resetSVal();
+      parts = [];
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      var newObj = {
-        stock: stockN,
-        date: dateM,
-        stock_S: r1V,
-        CreatedDate: today,
-        Part: parts,
-        user: user,
-      };
-      newStock.push(newObj);
-    }
+      // console.log("ello",newStock[0].stock)
+      // console.log("ello", newStock.length);
 
-    table.row.add(newObj).draw();
-    localStorage.setItem("newStock", JSON.stringify(newStock));
-    $("#StockModal").modal("hide");
-    resetSVal();
+      var flag;
+      for (let i = 0; i < newStock.length; i++) {
+        flag = false;
+        if (stockName == newStock[i].stock) {
+          flag = true;
+          break;
+        } else {
+          flag = false;
+        }
+      }
+
+      if (flag == false) {
+        var newObj = {
+          stock: stockName,
+          date: dateM,
+          stockStatus: Stockstatus,
+          CreatedDate: today,
+          Part: parts,
+          user: user,
+        };
+        newStock.push(newObj);
+        table.row.add(newObj).draw();
+        localStorage.setItem("newStock", JSON.stringify(newStock));
+        $("#StockModal").modal("hide");
+        resetSVal();
+        parts = [];
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Duplicate Stock Name is not allowed",
+          icon: "error",
+        });
+      }
+    }
   } else {
-    if (stockN == "") {
+    if (stockName == "") {
       Swal.fire({
         title: "Error!",
         text: "Add Stock Name",
@@ -272,7 +288,7 @@ function addData() {
     }
   }
 
-  parts = [];
+  
 }
 
 // loading the documnet to show data in table
@@ -285,14 +301,12 @@ function showMt2() {
     "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
   parts.forEach(function (element, index) {
     html += "<tr>";
-    html += "<td class=text-start>" + parts[index].PartN + "</td>";
-    html += "<td class=text-start>" + Date.now() + "</td>";
-    html += "<td class=text-start>" + parts[index].Order + "</td>";
-    html += "<td class=text-start>" + parts[index].Comments + "</td>";
+    html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
+    html += "<td class=text-start >" + Date.now() + "</td>";
+    html += "<td class=text-start > " + parts[index].Order + "</td>";
+    html += "<td class=text-start >" + parts[index].Comments + "</td>";
     html +=
-      "<td class=text-center><i class= 'fa-solid fa-x' onclick='deleteData( " +
-      index +
-      " )'></i> </td>";
+      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' + index + ' )"   ></i> </td>';
     html += "</tr>";
     html += "</tbody>";
 
@@ -350,28 +364,21 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
 
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
-  // document.getElementById("pNum").value = newStockModal[indexRow].Part[0].PartN;
-  // document.getElementById("order").value =  newStockModal[indexRow].Part[0].Order;
-  // document.getElementById("floatingTextarea").value =  newStockModal[indexRow].Part[0].Comments;
 
-  document.querySelector("#myMod").onclick = function () {
-    var ustock = (newStockModal[indexRow].stock =
+  parts = newStockModal[indexRow].Part;
+  showMt2();
+  document.querySelector("#modalstock").onclick = function () {
+    var updatestock = (newStockModal[indexRow].stock =
       document.getElementById("stock").value);
-    var udate = (newStockModal[indexRow].date =
+    var updatedate = (newStockModal[indexRow].date =
       document.getElementById("date").value);
 
-    if (r1 == true) {
-      r1V = "On Production";
-    } else if (r2 == true) {
-      r1V = "On Water";
-    } else if (r3 == true) {
-      r1V = "In Warehouse";
-    }
+    Stockstatus = radioBtnValue();
 
     var newObj = {
-      stock: ustock,
-      date: udate,
-      stock_S: r1V,
+      stock: updatestock,
+      date: updatedate,
+      stockStatus: Stockstatus,
       CreatedDate: today,
       Part: parts,
       user: user,
@@ -383,14 +390,22 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
   };
 });
 
-function display() {
-  var r;
+function radioBtnValue() {
+  var btnChecked;
   if (document.getElementById("btnradio1").checked) {
-    r = document.getElementById("btnradio1").value;
+    btnChecked = document.getElementById("btnradio1").value;
   } else if (document.getElementById("btnradio2").checked) {
-    r = document.getElementById("btnradio2").value;
+    btnChecked = document.getElementById("btnradio2").value;
   } else if (document.getElementById("btnradio3").checked) {
-    r = document.getElementById("btnradio3").value;
+    btnChecked = document.getElementById("btnradio3").value;
   }
-  return r;
+  return btnChecked;
+}
+
+
+function deletePartTableRow(index){
+  console.log(index)
+  parts.splice(index,1)
+  console.log(parts)
+  showMt2()
 }

@@ -13,7 +13,7 @@ $(document).ready(function () {
                 dynamicChildRow += '<thead><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th></tr></thead>';
                 dynamicChildRow += '<tbody>';
                 d.partiteam.forEach((partiteam, index) => {
-                    dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td>td' + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td></tr>" ;
+                    dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td>td' + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td></tr>";
                 });
                 dynamicChildRow += '</tbody></table>';
             }
@@ -88,7 +88,7 @@ $(document).ready(function () {
                 $('#etadate').val(tablerowdata.date);
                 // $('#stockstatus').val(tablerowdata.stockstatus);
                 // editpartsdetail=tablerowdata.partiteam;
-                debugger
+
                 if (tablerowdata.partiteam && tablerowdata.partiteam.length > 0) {
                     tablerowdata.partiteam.forEach(function (partiteam, index) {
                         $('#root').append('<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>');
@@ -97,6 +97,33 @@ $(document).ready(function () {
                 partiteam = tablerowdata.partiteam;
 
                 $('#stockModal').modal('show');
+
+                $("#save_changes").unbind('click').click(function () {
+                    // Get form data
+                    var stockName = $("#StockName").val();
+                    var etaDate = $("#ETAdate").val();
+                    var selectedValue = $('input[name="btnradio"]:checked').val();
+                    var createdby = "Kenneth";
+                    var createddate = "08/25/2000";
+                    var action = "";
+                    // Update object at the specified index in the array
+                    var StockDataObject = {
+                        stockName: stockName,
+                        etaDate: etaDate,
+                        selectedValue: selectedValue,
+                        partData: partdata,
+                        createdby: createdby,
+                        createddate: createddate,
+                        action: action
+                    };
+                    var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
+                    StockData[index] = StockDataObject;
+                    localStorage.setItem("StockData", JSON.stringify(StockData));
+                    $('#AddStockModal').modal('hide');
+                    location.reload(true);
+                });
+
+
             });
 
         });

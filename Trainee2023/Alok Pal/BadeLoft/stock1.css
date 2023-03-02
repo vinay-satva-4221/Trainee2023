@@ -114,6 +114,12 @@ body {
 
 }
 
+th{
+    color:white
+}
+
+
+
 .page-item.active .page-link {
     background-color: black !important;
     border-color: black !important;
@@ -222,7 +228,7 @@ table.dataTable td.dt-center {
 
 
 /* modal save btn */
-#myMod {
+#modalstock {
     background-color: #326C96;
     color: white;
 }
