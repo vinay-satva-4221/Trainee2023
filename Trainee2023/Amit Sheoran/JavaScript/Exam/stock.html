@@ -5,104 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Stock</title>
 
+    <link rel="stylesheet" href="./stock.css">
+    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+        integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <!-- Open Sans -->
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <!-- Jquery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+    <!-- Datatable CDN -->
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+
     <script type="text/javascript"
         src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
 
-    </script>
-    <style>
-        thead {
-            background-color: black;
-            color: aliceblue;
-        }
-
-        .navbar-nav .nav-link {
-            position: relative;
-        }
-
-        .navbar-nav .nav-link::before {
-            content: "";
-            position: absolute;
-            width: 33%;
-            height: 2px;
-            bottom: -23px;
-            left: 20px;
-            background-color: #000;
-            visibility: hidden;
-            transform: scaleX(0);
-
-        }
-
-        .navbar-nav .nav-link.active::before {
-            visibility: visible;
-            transform: scaleX(1);
-        }
 
 
-        body {
-            overflow-x: hidden;
-        }
-
-        th {
-            color: #000000;
-        }
-
-        .sorting {
-            color: honeydew;
-        }
-
-        #example.dataTable td.dt-control:before {
-            background-color: white;
-            color: #1188FF;
-            border-color: #1188FF;
-        }
-
-        table {
-            font-size: small;
-            border-collapse: collapse;
-            border-radius: 0.2em;
-            overflow: hidden;
-            background-color: white;
-            border-bottom: none;
-            border: 1px solid #bbb8b8;
-        }
-
-
-        .btn-check:checked+.btn,
-        .btn.active,
-        .btn.show,
-        .btn:first-child:active,
-        :not(.btn-check)+.btn:active {
-            background-color: #4872b1;
-        }
-
-        #savechanges {
-            background-color: #4872b1;
-        }
-
-        #addbutton {
-            background-color: #4872b1;
-        }
-
-        #parentclosebutton {
-            background-color: white;
-            color: grey;
-        }
-    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg p-0">
-        <div class="container">
+        <div class="container p-0">
             <div class="navbar-brand">
                 <img src="./02/02.png" style="height: 28px; width: 215px;" alt="">
             </div>
@@ -116,7 +48,7 @@
                         <a class="nav-link " aria-current="page" href="dashboard.html">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  active" href="stock.html">Stock</a>
+                        <a class="nav-link active" href="stock.html">Stock</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="status.html">Status</a>
@@ -136,7 +68,7 @@
                     </div>
                     <div class="col-6 text-center">
                         <p class="small mb-0">Welcome</p>
-                        <p id="active" class="fw-bolder mb-0"></p>
+                        <p id="activeusername" class=" fw-bolder mb-0"></p>
                     </div>
                     <div class="col-3 text-right p-0">
                         <div class="nav-item logoutbutton">
@@ -148,159 +80,166 @@
             </div>
     </nav>
 
+    <!-- Modal Popups -->
+    <button id="AddNewStock" class="btn mx-3 text-white" style="background-color: #326C96;" data-toggle="modal"
+        data-target="#AddStockModal"><i class="fas fa-plus"></i> New</button>
 
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal" id="addbutton">+
-        New</button>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog  modal-lg" role="document">
+    <!-- HTML code for the modal -->
+    <div class="modal  fade" id="AddStockModal" tabindex="-1" role="dialog" aria-labelledby="AddStockModalLabel"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
-
+                <div class="modal-header d-flex justify-content-between align-items-center">
+                    <div class="text-start">
+                        <h3 class="m-0">Add New Stock</h3>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="">Stock name:</label>
-                            <input type="text" class="form-control" id="name" class="validate">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="etaDate">ETA Date:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="etaDate">
-                                <div class="input-group-append">
-                                    <span class="input-group-text form-control">
-                                        <i class="fa fa-calendar"></i>
-                                    </span>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="StockName" class="fw-medium text-secondary">
+                                        Stock Name
+                                    </label>
+                                    <input type="text" class="form-control mt-2" id="StockName" name="StockName" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ETAdate" class="fw-medium text-secondary">
+                                        ETA Date
+                                    </label>
+                                    <input type="date" class="form-control mt-2" id="ETAdate" name="ETAdate" />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <label for="">Stock Status</label>
-                            <div>
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <div class="row mt-2">
+                            <div class="form-group">
+                                <label for="onButtons" class="fw-medium text-secondary">
+                                    Stock Status
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <div class="btn-group" role="group" aria-label="..." id="onButtons">
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                        autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="btnradio1">OnProduction</label>
+                                        autocomplete="off" checked value="On Water">
+                                    <label class="btn btn-outline-primary" for="btnradio1">On Water</label>
 
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio2">OnWater</label>
+                                        autocomplete="off" value="On Production">
+                                    <label class="btn btn-outline-primary" for="btnradio2">On Production</label>
 
                                     <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btnradio3">InWarehouse</label>
+                                        autocomplete="off" value="In Warehouse">
+                                    <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" class="btn " data-toggle="modal" data-target="#exampleModal1"
-                                    id="nestedadd"><i class="fa fa-thin fa-circle-plus"></i> Add Part Number</button>
-                                <table id="stock-table" class="table table-responsive">
-                                    <thead>
-                                        <tr>
-                                            <th style="color:white;">Part Number</th>
-                                            <th style="color:white;">Ordered</th>
-                                            <th style="color:white;">Notes</th>
-                                            <th style="color:white;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                        <div class="row mt-2">
+                            <div class="col-md-12" style="color:gray;">
+                                <button id="AddPart" type="button" class="btn text-start"><i
+                                        class="fa fa-plus-circle"></i>&emsp;Add
+                                    Part Number</button>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                    id="savechanges">Save</button>
-                                <button type="button" class="btn btn-secondary" id="parentclosebutton">Close</button>
-                            </div>
-                        </div>
-                    </div>
+                        <table class="display" id="table2" style="width: 100%;">
+                            <thead>
+                                <th>Part Number</th>
+                                <th>Invoice#</th>
+                                <th>Ordered</th>
+                                <th>Notes</th>
+                                
+                            </thead>
+                            <tbody id="table2body">
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-start">
+                    <button type="button" id="save_changes" class="btn btn-md"
+                        style="background: #366491; color:white;">Save</button>
+                    <button type="button" class="close btn btn-md btn-outline-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
 
+
+    <!-- ----------------------------Second Modal Popup--------------------------------------- -->
+    <div class="modal fade" id="AddPartModal" tabindex="-1" role="dialog" aria-labelledby="AddPartModalLabel"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="text-start fw-bold">
+                        <div class="m-0">Add New Part Number</div>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-1">
-                            <input type="text" class="form-control" id="partnumber" class="validate"
+                    <form id="sub_form">
+                        <div class="form-group mt-1">
+                            <input type="text" class="form-control" id="part_num" name="part_num"
                                 placeholder="Part Number">
                         </div>
-                        <div class="col-md-12 mb-1">
-                            <input type="text" class="form-control" id="order" placeholder="Ordered">
+                        <div class="form-group mt-2">
+                            <input type="text" class="form-control" id="ordered" name="ordered" placeholder="Ordered">
                         </div>
-                        <div class="col-md-12 mb-1">
-                            <input type="text" class="form-control" id="notes" placeholder="Notes">
+                        <div class="form-group mt-2">
+                            <textarea name="" id="notes" class="form-control" placeholder="Notes"></textarea>
                         </div>
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-secondary" id="nestedclosebutton">Close</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="nestedsave">Save
-                                changes</button>
-                        </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-start">
+                    <button type="button" id="save_part" class="btn btn-SM"
+                        style="background: #366491; color:white;">Save</button>
+                    <button type="button" class="close btn btn-SM btn-outline-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
-    <div style="background-color: #e0e3ec;">
-        <div class="container">
-            <section id="dataTable" class="dataTable">
-                <div class="row">
-                    <div class="col-md-12 p-0">
-                        <div class="container-fluid">
 
-                            <br />
-                            <div id="table_box_bootstrap " class="table-responsive">
 
-                                <table id="example" class="display" style="width:100%">
-                                    <thead>
-                                        <tr class="text-start" style="border-radius: 10px;">
-                                            <th></th>
-                                            <th>Stock Name</th>
-                                            <th>ETA Date</th>
-                                            <th>Stock Location</th>
-                                            <th>Created By</th>
-                                            <th>Created Date</th>
-                                            <th>Notes</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
+    <!------------------------------------>
 
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <script src="./stock.js"></script>
+    <section class="container-fluid p-4 bg-light">
+        <table id="Stockable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Stock Name</th>
+                    <th>ETA Date</th>
+                    <th>Stock Location</th>
+                    <th>Created By</th>
+                    <th>Created Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </section>
+    
+     <script src="./stock.js">
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
+        integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Bootstrap JS CDN  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        var etaDateInput = document.getElementById("etaDate");
-        flatpickr(etaDateInput);
-    </script>
-
 </body>
 
 </html>

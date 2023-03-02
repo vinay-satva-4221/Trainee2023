@@ -114,6 +114,9 @@ body {
 
 }
 
+th{
+    color:white
+}
 
 
 
@@ -225,7 +228,7 @@ table.dataTable td.dt-center {
 
 
 /* modal save btn */
-#myMod {
+#modalstock {
     background-color: #326C96;
     color: white;
 }

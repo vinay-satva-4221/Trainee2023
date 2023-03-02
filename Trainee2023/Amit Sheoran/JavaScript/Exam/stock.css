@@ -1,0 +1,203 @@
+#Stockable thead tr th {
+    background-color: black;
+    color: white;
+}
+
+#childtable thead tr th {
+    background-color: #F5F6FA !important;
+    color: black !important;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: black !important;
+    border-color:black !important ;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    background-color: #4872b1 !important;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 20px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+#table2 thead tr th {
+    background-color: black;
+    color: white;
+}
+
+.datatable-pagination {
+    margin-top: 20px;
+}
+
+#Stockable_filter {
+    margin-bottom: 25px;
+}
+
+.toolbar {
+    float: left;
+}
+
+#Stockable tr:last-of-type td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#Stockable tr:last-of-type td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+/* .navbar-nav .nav-item .nav-link.active {
+    border-bottom: 2px solid black !important;
+} */
+#Stockable td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+    text-align: center;
+}
+
+#table2 {
+    border-collapse: collapse;
+}
+
+#table2 th,
+#table2 td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#main {
+    background-color: #F8F8F8;
+}
+
+tbody {
+    background-color: white;
+}
+
+
+#Stockable thead tr th {
+    background-color: black;
+    color: white;
+}
+
+.datatable-pagination {
+    margin-top: 20px;
+}
+
+#Stockable_filter {
+    margin-bottom: 25px;
+}
+
+.toolbar {
+    float: left;
+}
+
+#Stockable tr:last-of-type td:last-child {
+    border-bottom-right-radius: 10px;
+
+}
+
+#Stockable tr:last-of-type td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+
+#Stockable td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+    text-align: center;
+}
+
+table.dataTable thead>tr>th.sorting:before,
+table.dataTable thead>tr>th.sorting:after,
+table.dataTable thead>tr>th.sorting_asc:before,
+table.dataTable thead>tr>th.sorting_asc:after,
+table.dataTable thead>tr>th.sorting_desc:before,
+table.dataTable thead>tr>th.sorting_desc:after,
+table.dataTable thead>tr>th.sorting_asc_disabled:before,
+table.dataTable thead>tr>th.sorting_asc_disabled:after,
+table.dataTable thead>tr>th.sorting_desc_disabled:before,
+table.dataTable thead>tr>th.sorting_desc_disabled:after,
+table.dataTable thead>tr>td.sorting:before,
+table.dataTable thead>tr>td.sorting:after,
+table.dataTable thead>tr>td.sorting_asc:before,
+table.dataTable thead>tr>td.sorting_asc:after,
+table.dataTable thead>tr>td.sorting_desc:before,
+table.dataTable thead>tr>td.sorting_desc:after,
+table.dataTable thead>tr>td.sorting_asc_disabled:before,
+table.dataTable thead>tr>td.sorting_asc_disabled:after,
+table.dataTable thead>tr>td.sorting_desc_disabled:before,
+table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    position: absolute;
+    display: block;
+    opacity: 0.600;
+    right: 50% !important;
+    line-height: 9px;
+    font-size: 0.8em;
+}
+
+#Stockable_info {
+    position: relative;
+    right: -74%;
+}
+
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+
+}
+
+li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+}
+
+li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+}
+
+/*   
+  .navbar-nav .nav-item .nav-link.active {
+    border-bottom: 2px solid black !important;
+    padding-bottom: 20px;
+  } */
+
+.navdiv {
+    height: 52px;
+}
+
+.dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+    position: relative;
+    left: 75%;
+}
