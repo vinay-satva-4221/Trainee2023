@@ -72,12 +72,12 @@ a {
     text-decoration: none;
 }
 
-/* .active {
-    border-bottom: 2px solid black;
+.active {
+    /* border-bottom: 2px solid black;
     height: 60px;
-    color: black;
+    color: black; */
     font-weight: bold;
-} */
+}
 
 
 

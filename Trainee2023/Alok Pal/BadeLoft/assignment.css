@@ -76,6 +76,12 @@ body {
 
 } */
 
+/* active */
+.active {
+    
+    font-weight: bold;
+}
+
 .navbar-nav .nav-link {
     position: relative;
 }
@@ -162,4 +168,54 @@ body {
     width: 13em;
 } */
 
+/* modal width */
+.modal-content.stModal1{
+    width: 140%;
+}
 
+
+/* Add  button */
+.AddBtn {
+
+    font-size: 12px;
+    width: 66px;
+    height: 52%;
+    border-radius: 6px;
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 39%;
+}
+
+#myMod{
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+}
+
+
+/*main table */
+
+.table_div {
+    width: 94%;
+}
+
+thead {
+    background-color: black;
+    border-radius: 1em;
+}
+
+table {
+    font-size: small;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.tablehead {
+    font-size: 12px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-weight: 200 !important; */
+    /* font-family: 'Noto Sans', sans-serif; */
+}
