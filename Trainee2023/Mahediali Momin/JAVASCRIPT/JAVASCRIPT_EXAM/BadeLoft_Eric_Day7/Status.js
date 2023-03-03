@@ -16,7 +16,7 @@ function format(d) {
         '<th>Part Number</th>' +
         '<th>Stock Location</th>' +
         '<th>Action</th>' +
-        '</tr>' +
+        '</tr>' + '</thead>' +
         '<tr>' +
         '<td>1</td>' +
         '<td>BW-01-S-M</td>' +
@@ -29,7 +29,7 @@ function format(d) {
         '<td>C-101</td>' +
         '<td>Close</td>' +
         '</tr>' +
-        '</thead>' +
+       
         '</table>'
     );
 }
@@ -153,6 +153,11 @@ $(document).ready(function () {
                 previous: "<",
                 next: ">"
             },
+            info: "Items 1 to 15 of 30 total",
+            paginate: {
+                next: "&#62",
+                previous: "&#60",
+            },
             
         },
         
@@ -164,7 +169,7 @@ $(document).ready(function () {
 
 
     // Add event listener for opening and closing details
-    $('#Statustable tbody').on('click', 'td.dt-control', function () {
+    $('#Statustable tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
 

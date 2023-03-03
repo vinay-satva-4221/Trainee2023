@@ -59,24 +59,65 @@ function format(d) {
   var id = 1;
   q.forEach((e) => {
 
-    childrow += '<tr><td>' + id++ + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td><td>' + e.index + '</td><td>' + '<i class="fa-solid fa-xmark deletechild"></i>' + '</td</tr>';
+    childrow += '<tr data-stockid='+d.index+' data-partid='+e.index+'><td>' + id++ + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td><td>' + e.index + '</td><td>' + '<i class="fa-solid fa-xmark deletechild"></i>' + '</td</tr>';
   });
   childrow += '</tbody></table>';
-
- 
-
+  
   return childrow;
 
-  
+ 
+  // $(".deletechild").click(function(){
+    
+  // });
 }
+
+$(document).on("click",".deletechild",function()
+ {
+  var tr = $(this).closest("tr");
+  console.log(tr.data("stockid"));
+  console.log(tr.data("partid"));  
+  var details = stockDetails[parseInt(tr.data("stockid"))-1];
+  var i = $(this).closest('tr').index();
+  details.stockpart = details.stockpart.splice(i,1);  
+  stockDetails[parseInt(tr.data("stockid"))-1] = details;
+  localStorage.setItem("stockList", JSON.stringify(stockDetails));
+  $(this).closest('tr').remove();
+  //localStorage.setItem() stockDetails
+  //details.partlist
+  //todo:
+  // Get stocl details from local storage
+  // Remmove part using partid
+  // upldate local storage
+  // alert(tr.data("stockid") + tr.data("partid"));
+
+  // var par = JSON.parse(localStorage.getItem('stockList'));
+  // var par = JSON.parse(localStorage.getItem('stockList'));
+
+  // // alert(tr)
+  // console.log(par);
+
+
+  
+  // var i = $(this).closest('tr').index();
+  // console.log(i)
+  // partDetails.splice(i,1); 
+  // console.log(partDetails)
+  
+  // $(this).closest('tr').remove();
+  
+});
+
+
 
 $(document).ready(function () {
 
-  
-
+ 
   $("#addpartno").click(function () {
+    
     $("#innermodal").modal("show");
+    document.getElementById("AddPartForm").reset();
 
+    
   });
 
 
@@ -151,31 +192,31 @@ $(document).ready(function () {
         data: "etadate",
         title: 'ETA Date',
         orderable: false,
-        className: "text-center"
+        // className: "text-center"
       },
       {
         data: "stkstatus",
         title: 'Stock Location',
         orderable: false,
-        className: "text-center"
+        // className: "text-center"
       },
       {
         data: "createdby",
         title: 'Created By',
         orderable: false,
-        className: "text-center"
+        // className: "text-center"
       },
       {
         data: "cdate",
         title: 'Created Date',
         orderable: false,
-        className: "text-center"
+        // className: "text-center"
       },
       {
         data: "notes",
         title: 'Notes',
         orderable: false,
-        className: "text-center"
+        // className: "text-center"
       },
       {
         data: null,
@@ -185,7 +226,7 @@ $(document).ready(function () {
           '<span id="editstock" class="edit edit-stock" data-id="' + index + '"><i  class="fas fa-pen"></i></span> ' +
           '<span class="history">&nbsp;&nbsp;<i class="fas fa-history"></i></span> ' +
           '</div>',
-        className: 'row-edit dt-center',
+        className: 'row-edit',
       }
     ]
 
@@ -276,12 +317,10 @@ $('#stock tbody').on('click', 'td.dt-control', function () {
 
 
 
-$("#childtablepart").on('click', '.deletechild', function () {
-  $(this).closest('tr').remove();
-});
-
-
-
+// $("#childtablepart").on('click', '.deletechild', function () {
+//   $(this).closest('tr').remove();
+// });
+  
 // $("#editstock").on('click','.edit',function(){
 //   var i = $(this).closest('tr').findIndex();
 //   console.log('closest index',i)
@@ -404,8 +443,7 @@ function addpartData() {                                                        
     $(this).closest('tr').remove();
 
   });
-
-
+ 
 }
 
 
@@ -439,6 +477,12 @@ function addstockdata() {                                                       
   } else if (warehouse == true) {
     stkstatus = "In Warehouse";
   }
+
+ 
+  
+  // $("#addstockbtn").click(function () {
+
+  // if ($("#AddStockForm").valid() == true) {
 
   if (stockDetails == null) {
 
@@ -482,9 +526,10 @@ function addstockdata() {                                                       
   document.getElementById("notes").value = "";
   localStorage.setItem("stockList", JSON.stringify(stockDetails));
 
+  }
+// });
+// }
 
-
-}
 
 
 $("#AddStockForm").validate({
@@ -502,16 +547,17 @@ $("#AddStockForm").validate({
     partno: {
       required: true,
     }
+   
   },
   messages: {
     sname: {
       required: "Enter Stock name",
     },
     partno: {
-      required: "Enter Part number"
+      required: "Enter Part number",
     },
     etadate: {
-      required: "Enter ETA date"
+      required: "Enter ETA date",
     },
   },
   submitHandler: function (form) {
@@ -549,6 +595,7 @@ $("#AddPartForm").validate({
   submitHandler: function (form) {
     form.submit();
   }
+ 
 })
 
 //Date Picker

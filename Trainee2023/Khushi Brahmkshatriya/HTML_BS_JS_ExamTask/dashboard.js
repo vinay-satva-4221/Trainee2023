@@ -56,7 +56,7 @@ $(document).ready(function () {
   })
   //$('[data-bs-toggle="popover"]').popover();  
   $('[data-bs-toggle="popover"]').popover({
-
+    
     container: 'body',
     placement: 'right',
     html: true,
@@ -64,6 +64,16 @@ $(document).ready(function () {
       return $('#popover-form').html();
     }
   });
+  $('#closepopover').click(function(){
+    alert('clicked')
+    
+  })
+ 
+  const input = document.querySelector('input[type="search"]');
+    input.addEventListener("search", () => {
+        table.search(input.value).draw();
+        // console.log(`The term searched for was ${}`);
+    });
 })
 
 

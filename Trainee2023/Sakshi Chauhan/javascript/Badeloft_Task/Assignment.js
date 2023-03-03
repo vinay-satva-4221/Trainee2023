@@ -10,6 +10,18 @@ $(document).ready(function () {
                 $('#AssignmentTable_filter').prepend(modal);
 
               },
+              language: {
+                search: "_INPUT_",
+                  // "search": '<i class="fa fa-search"></i>',
+                    searchPlaceholder: 'Search...',
+                    paginate: {
+                      next: '&#62',
+                      previous: '&#60' 
+                    },
+                    "info": "Items _START_ to _END_ of _TOTAL_ total"
+
+              },
+          
         columns: [
             {
                 className: 'dt-control',
@@ -47,14 +59,14 @@ $(document).ready(function () {
 });
 
 function logout(){
-    window.location.replace("Badeloft.html")
+    window.location.replace("login.html")
     localStorage.clear();
   }
 
   
 window.onload = (event) => {
   if (localStorage.getItem("Badeloft-Details") == null) {
-    window.location.replace("Badeloft.html");
+    window.location.replace("login.html");
   }
   else{
     var par = JSON.parse(localStorage.getItem('Badeloft-Details'));
