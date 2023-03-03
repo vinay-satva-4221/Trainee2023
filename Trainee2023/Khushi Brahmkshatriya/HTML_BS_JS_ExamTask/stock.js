@@ -52,6 +52,11 @@ $(document).ready(function () {
                 "targets": "_all",
 
             },
+            {'max-width': '197px', 'targets': 0},
+            {'max-width': '181px', 'targets': 1},
+            {'max-width': '235px', 'targets': 2},
+            {'max-width': '181px', 'targets': 3},
+            {'max-width': '212px', 'targets': 4},
             { "orderable": false, "targets": [3, 4, 5] },
             { "orderable": true, "targets": [0, 1, 2] }],
             language: {
@@ -67,18 +72,18 @@ $(document).ready(function () {
                 [
                     {
                         data: "StockName", title: "Stock Name", className: "dt-control",
-                        orderable: false
+                        orderable: false,'max-width': '197px'
                     },
-                    { data: "ETADate", title: "ETA Date", orderable: false },
-                    { data: "StockStatus", title: "Stock Location", orderable: false },
-                    { data: "CreatedBy", title: "Created By", orderable: false },
+                    { data: "ETADate", title: "ETA Date", orderable: false,'max-width': "181px" },
+                    { data: "StockStatus", title: "Stock Location", orderable: false,'max-width': "235px" },
+                    { data: "CreatedBy", title: "Created By", orderable: false,'max-width': "181px" },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),
-                        keyInput: false, title: "Created Date", orderable: false
+                        keyInput: false, title: "Created Date", orderable: false,'max-width': "212px"
                     },
                     {
-                        data: "null", title: "Action", className: "dt-center editor-edit",
-                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder editor-edit stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+                        data: "null", title: "Action", className: "dt-center ",
+                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder edit stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
                     },
                 ],
 
@@ -100,8 +105,8 @@ $(document).ready(function () {
                 tr.addClass("shown");
             }
         });
-        $('#stocktable tbody').on('click', 'td.editor-edit', function () {
-
+        $('#stocktable tbody').on('click', '.edit', function () {
+            debugger
             console.log((table.row(this).data()));
             var data = table.row($(this).parents('tr')).data();
             var index = table.row($(this).parents('tr')).index();
@@ -127,31 +132,30 @@ $(document).ready(function () {
             console.log(PartData)
             // Show AddStockModal
             $('#stockModal').modal('show');
-
             // Handle click on Save Changes button
-            $("#saveStock").unbind('click').click(function () {
-                // Get form data
-                var StockName = $("#stockName").val();
-                var ETADate = $("#etaDate").val();
-                var StockStatus = $('input[name="btnradio"]:checked').val();
-                // var CreatedBy = createdBy.UserName;
-                //   var createddate = "08/25/2000";
-                //   var action = "";
+            $("#saveStock")
+         .unbind()
+         .click(function () {
+            debugger
+            var updatedStockName = $("#stockName").val();
+            var updatedETADate = $("#etaDate").val();
+            var updatedStockStatus = $('input[name="btnradio"]:checked').val();
+            //var updatedcreateddate = Date.now();
+           
 
-                var editedStockData = {
-                    CreatedBy: createdBy.UserName,
-                    StockName: StockName,
-                    ETADate: ETADate,
-                    StockStatus: StockStatus,
-                    Parts: PartData,
-
-                };
-                var StockData = JSON.parse(localStorage.getItem("stockandparts")) || [];
-                StockData[index] = editedStockData;
-                localStorage.setItem("stockandparts", JSON.stringify(StockData));
-                $('#saveStock').modal('hide');
-                // location.reload(true);
-            });
+            var StockDataObject = {
+               StockName: updatedStockName,
+               ETADate: updatedETADate,
+               StockStatus: updatedStockStatus,
+               CreatedBy: createdBy.UserName,
+               Parts: PartData,
+            };
+            var StockData = JSON.parse(localStorage.getItem("stockandparts")) || [];
+            StockData[index] = StockDataObject;
+            localStorage.setItem("stockandparts", JSON.stringify(StockData));
+            $("#stockModal").modal("hide");
+            location.reload(true);
+         });
 
         });
         $('#stocktable tbody').on('click', '.bi-clock-history', function () {
@@ -252,7 +256,7 @@ $(document).ready(function () {
     }, "* Duplicate");
 
     $('#saveStock').click(function () {
-        debugger
+
         var result = form.valid();
         console.log(result);
 
@@ -264,7 +268,7 @@ $(document).ready(function () {
             // }
         }
         else {
-            debugger
+
             // $('#PartModal').modal("hide")
             // $('#saveStock').attr(' data-bs-dismiss','modal');
             //$('#saveStock').attr("data-dismiss","modal"); 
@@ -280,7 +284,7 @@ $(document).ready(function () {
             // $(".modal-backdrop.show").css("opacity", 0);
 
             addDataToLocal();
-            resetForm();
+            //resetForm();
         }
     })
 
@@ -299,59 +303,59 @@ $(document).ready(function () {
         $('#partTable').html(null);
     }
 
-    $('input[name="etaDate"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        autoUpdateInput: false,
-        locale: {
-            cancelLabel: 'Clear'
-        }
+    // $('input[name="etaDate"]').daterangepicker({
+    //     singleDatePicker: true,
+    //     showDropdowns: true,
+    //     autoUpdateInput: false,
+    //     locale: {
+    //         cancelLabel: 'Clear'
+    //     }
 
-    });
-    $('input[name="etaDate"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY'));
-    });
-    $('input[name="etaDate"]').on('cancel.daterangepicker', function (ev, picker) {
-        $(this).val('');
-    });
-    //$('#etaDate').val('');
-    $('#etaDate').click(function () {
+    // });
+    // $('input[name="etaDate"]').on('apply.daterangepicker', function (ev, picker) {
+    //     $(this).val(picker.startDate.format('MM/DD/YYYY'));
+    // });
+    // $('input[name="etaDate"]').on('cancel.daterangepicker', function (ev, picker) {
+    //     $(this).val('');
+    // });
+    // //$('#etaDate').val('');
+    // $('#etaDate').click(function () {
 
 
-        //datevalidation
-        $("#etaDate").on("keydown blur", function (e) {
-            IsNumeric(this, e.keyCode);
-        });
+    //     //datevalidation
+    //     $("#etaDate").on("keydown blur", function (e) {
+    //         IsNumeric(this, e.keyCode);
+    //     });
 
-        var isShift = false;
-        var seperator = "/";
-        function IsNumeric(input, keyCode) {
+    //     var isShift = false;
+    //     var seperator = "/";
+    //     function IsNumeric(input, keyCode) {
 
-            if ($("#etaDate").val() == "") {
-                //$(".dateError").html("Please Enter Date(MM/DD/YYYY)")
-                $('.error').val('');
-            }
+    //         if ($("#etaDate").val() == "") {
+    //             //$(".dateError").html("Please Enter Date(MM/DD/YYYY)")
+    //             $('.error').val('');
+    //         }
 
-            if (keyCode == 16) {
-                isShift = true;
-            }
-            //Allow only Numeric Keys.
-            if (((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || keyCode <= 37 || keyCode <= 39 || (keyCode >= 96 && keyCode <= 105)) && isShift == false) {
-                if ((input.value.length == 2 || input.value.length == 5) && keyCode != 8) {
-                    input.value += seperator;
-                }
+    //         if (keyCode == 16) {
+    //             isShift = true;
+    //         }
+    //         //Allow only Numeric Keys.
+    //         if (((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || keyCode <= 37 || keyCode <= 39 || (keyCode >= 96 && keyCode <= 105)) && isShift == false) {
+    //             if ((input.value.length == 2 || input.value.length == 5) && keyCode != 8) {
+    //                 input.value += seperator;
+    //             }
 
-                return true;
-            }
-            else {
+    //             return true;
+    //         }
+    //         else {
 
-                $('#etaDate').val('');
-                return false;
+    //             $('#etaDate').val('');
+    //             return false;
 
-            }
-        };
+    //         }
+    //     };
 
-    })
+    // })
 
 
 
@@ -411,7 +415,7 @@ $(document).ready(function () {
 
     const input = document.querySelector('input[type="search"]');
     input.addEventListener("search", () => {
-        table.search(input.value).draw(); 
+        table.search(input.value).draw();
         // console.log(`The term searched for was ${}`);
     });
     // $('#newstock').click(function () {

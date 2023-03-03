@@ -80,17 +80,26 @@ $(document).ready(function () {
 
             var useremail = document.getElementById('email').value;
             var password = document.getElementById('password').value;
-
+            debugger
             const login = LoginData.find(
                 x => x.Email === useremail &&
                     x.Password === password && x.Username);
+            // var email = login.Email;
+            // var pass=login.password;
 
             if (login == undefined) {
                 
-                swal("Error!", "Please enter valid email or password", "error");
+              
+                    //$('.invalidemail').html('Please enter correct email');
+                
+                    $('.invalidpassoremail').html('Please enter correct email  or password');
+              
+                
+                
+                //swal("Error!", "Please enter valid email or password", "error");
             }
             else {
-
+                $('.invalidpassoremail').html('');
                 var userName = login.Username;
                 var userImage = login.UserImage;
                 const loggedUser = [
