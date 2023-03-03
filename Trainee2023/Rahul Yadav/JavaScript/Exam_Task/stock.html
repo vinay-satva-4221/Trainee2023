@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
@@ -33,7 +32,7 @@
                     <div class="tabs ms-auto pe-5" id="links">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link ">
-                                <a href="db.html"> Dashboard
+                                <a href="dashboard.html" class="fontcolor"> Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
@@ -42,11 +41,11 @@
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="status.html">Status</a>
+                                <a href="status.html" class="fontcolor">Status</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="assignment.html">Assignment</a>
+                                <a href="assignment.html" class="fontcolor">Assignment</a>
                                 <div class="underline"></div>
                             </li>
                         </ul>
@@ -74,12 +73,13 @@
                     <b><span id="stock" class="m-lg-5"> Stock</span></b>
                 </div>
                 <div class="col-lg-2 offset-lg-4 p-3">
-                    <button type="button" class="btn" id="addStock" data-bs-toggle="modal"
-                        data-bs-target="#stockModal" onclick="isEdit = false">+ New</button>
+                    <button type="button" class="btn" id="addStock" data-bs-toggle="modal" data-bs-target="#stockModal"
+                        onclick="isEdit = false">+ New</button>
                 </div>
                 <div class="col-lg-3 p-3">
                     <div class="form-group has-search me-5 pe-1">
-                        <input type="text" class="form-control" placeholder="Search" id="datatablesearch" />
+                        <input type="text" class="form-control searchbar" placeholder="Search" id="datatablesearch" />
+                        <i class="bi bi-search searchiconstock"></i>
                     </div>
                 </div>
             </div>
@@ -87,19 +87,19 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title"> <b>Add New Stock</b> </h5>
+                            <h5 class="modal-title" id="modaltitle"> <b>Add New Stock</b> </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body p-4">
                             <form class="row g-3" id="stockform">
                                 <div class="col-md-6">
-                                    <label class="form-label fontcolor" > <b>Stock Name</b> </label>
-                                    <input type="text" class="form-control" id="stockname" name="stockname" placeholder="Stock Name">
+                                    <label class="form-label fontcolor"> <b>Stock Name</b> </label>
+                                    <input type="text" class="form-control" id="stockname" name="stockname"
+                                        placeholder="Stock Name">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fontcolor"> <b>ETA Date</b> </label>
-                                    <input type="text" class="form-control" name="etadate" 
-                                        id="date" />
+                                    <input type="text" class="form-control" name="etadate" id="date" />
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label fontcolor"> <b>Stock Status</b> </label> <br>
@@ -196,6 +196,7 @@
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 

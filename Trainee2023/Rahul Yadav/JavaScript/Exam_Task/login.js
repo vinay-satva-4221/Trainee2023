@@ -1,8 +1,7 @@
-
 $(document).ready(function () {
     var logedinuser = JSON.parse(localStorage.getItem("LogedinUser"));
     if (logedinuser != null) {
-        window.location.href = "db.html";
+        window.location.href = "dashboard.html";
     } else {
         var users = [
             [
@@ -32,7 +31,6 @@ $(document).ready(function () {
         $.validator.addMethod("password", function (value) {
             return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
         });
-
         $("#loginform").validate({
             rules: {
                 email: {
@@ -73,7 +71,7 @@ $(document).ready(function () {
                             Email: users[i][0],
                         });
                         document.getElementById("loginform").reset();
-                        window.location.replace("db.html");
+                        window.location.replace("dashboard.html");
                     }
                 }
                 document.getElementById("loginform").reset();

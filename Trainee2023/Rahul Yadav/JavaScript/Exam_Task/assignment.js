@@ -42,15 +42,15 @@ $(document).ready(function () {
         }
 
         datasets = [
-            ['C100', 'Kenneth', 'Kenneth', '12/08/2021' ,''],
-            ['C1111', 'Kenneth', 'Kenneth', '12/08/2021' ,''],
+
         ]
 
         $(document).ready(function () {
+
             var table = $('#table_div').DataTable({
                 data: datasets,
                 language: {
-
+                    info: "Items _START_ to _END_ of _TOTAL_ total",
                     paginate: {
                         next: '&#62',
                         previous: '&#60'
@@ -68,15 +68,51 @@ $(document).ready(function () {
                     { width: "15%", targets: [0] },
                 ],
                 columns: [
-                   
-                    { title: ' QB Invoice#' , className: 'dt-control', orderable: true, },
+
+                    { title: ' QB Invoice#', className: 'dt-control', orderable: true, },
                     { title: 'Name', orderable: false, className: 'TextCenter' },
                     { title: 'Created By', orderable: false, className: 'TextCenter' },
                     { title: 'Created Date', orderable: false, className: 'TextCenter' },
                     // { title: 'Action', orderable: false, className: 'TextCenter' },
                 ],
                 order: [[1, 'asc']],
+
             });
+
+
+
+            // Retrieve existing data from local storage
+            var StockData = JSON.parse(localStorage.getItem("stockdata")) || [];
+
+            // Populate stock name dropdown
+            var stockSelect = $('#stock-select');
+            stockSelect.empty();
+            stockSelect.append($('<option>', { value: '', text: 'Choose Stock Name' }));
+            $.each(StockData, function (i, stock) {
+                stockSelect.append($('<option>', { value: stock.stockname, text: stock.stockname }));
+            });
+
+
+            $('.js-example-basic-multiple').select2();
+
+            // Handle change event on stock name dropdown
+            stockSelect.change(function () {
+                var selectedStock = $(this).val();
+                var partSelect = $('#part-select');
+                partSelect.empty();
+                partSelect.append($('<option>', { value: '' }));
+                if (selectedStock) {
+                    var selectedStockData = StockData.find(function (stock) {
+                        return stock.stockname === selectedStock;
+                    });
+                    $.each(selectedStockData.partiteam, function (i, part) {
+                        partSelect.append($('<option>', { value: part.partno, text: part.partno }));
+                    });
+                    partSelect.prop('disabled', false);
+                } else {
+                    partSelect.prop('disabled', true);
+                }
+            })
 
             // Add event listener for opening and closing details
             $('#table_div tbody').on('click', 'td.dt-control', function () {
@@ -97,7 +133,7 @@ $(document).ready(function () {
 
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
-            window.location.replace("log.html");
+            window.location.replace("login.html");
         });
 
         $('.sorting').removeClass('sorting')
@@ -107,6 +143,6 @@ $(document).ready(function () {
 
 
     } else {
-        window.location.href = "log.html"
+        window.location.href = "login.html"
     }
 });  

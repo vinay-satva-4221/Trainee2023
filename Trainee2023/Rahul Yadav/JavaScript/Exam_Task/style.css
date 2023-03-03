@@ -115,6 +115,7 @@ button.middle:focus {
 
 #savestock,
 #savepart,
+#saveassignment,
 .btnradio,
 #addassignment {
   color: #f7fdff;
@@ -128,30 +129,34 @@ button.middle:focus {
   height: 38px;
 }
 
+.PopOverorder{
+  color: rgb(116, 207, 116);
+}
+
 label.error {
   color: red;
 }
 
-table.dataTable thead>tr>th.sorting:before,
-table.dataTable thead>tr>th.sorting:after,
-table.dataTable thead>tr>th.sorting_asc:before,
-table.dataTable thead>tr>th.sorting_asc:after,
-table.dataTable thead>tr>th.sorting_desc:before,
-table.dataTable thead>tr>th.sorting_desc:after,
-table.dataTable thead>tr>th.sorting_asc_disabled:before,
-table.dataTable thead>tr>th.sorting_asc_disabled:after,
-table.dataTable thead>tr>th.sorting_desc_disabled:before,
-table.dataTable thead>tr>th.sorting_desc_disabled:after,
-table.dataTable thead>tr>td.sorting:before,
-table.dataTable thead>tr>td.sorting:after,
-table.dataTable thead>tr>td.sorting_asc:before,
-table.dataTable thead>tr>td.sorting_asc:after,
-table.dataTable thead>tr>td.sorting_desc:before,
-table.dataTable thead>tr>td.sorting_desc:after,
-table.dataTable thead>tr>td.sorting_asc_disabled:before,
-table.dataTable thead>tr>td.sorting_asc_disabled:after,
-table.dataTable thead>tr>td.sorting_desc_disabled:before,
-table.dataTable thead>tr>td.sorting_desc_disabled:after {
+table.dataTable thead > tr > th.sorting:before,
+table.dataTable thead > tr > th.sorting:after,
+table.dataTable thead > tr > th.sorting_asc:before,
+table.dataTable thead > tr > th.sorting_asc:after,
+table.dataTable thead > tr > th.sorting_desc:before,
+table.dataTable thead > tr > th.sorting_desc:after,
+table.dataTable thead > tr > th.sorting_asc_disabled:before,
+table.dataTable thead > tr > th.sorting_asc_disabled:after,
+table.dataTable thead > tr > th.sorting_desc_disabled:before,
+table.dataTable thead > tr > th.sorting_desc_disabled:after,
+table.dataTable thead > tr > td.sorting:before,
+table.dataTable thead > tr > td.sorting:after,
+table.dataTable thead > tr > td.sorting_asc:before,
+table.dataTable thead > tr > td.sorting_asc:after,
+table.dataTable thead > tr > td.sorting_desc:before,
+table.dataTable thead > tr > td.sorting_desc:after,
+table.dataTable thead > tr > td.sorting_asc_disabled:before,
+table.dataTable thead > tr > td.sorting_asc_disabled:after,
+table.dataTable thead > tr > td.sorting_desc_disabled:before,
+table.dataTable thead > tr > td.sorting_desc_disabled:after {
   position: absolute;
   display: block;
   opacity: 0.125;
@@ -323,7 +328,7 @@ tbody {
 }
 
 .backgroundcolor {
-  background-color: #f7f8fa;
+  background-color: #F7F8FA;
 }
 
 .pagination {
@@ -438,6 +443,17 @@ table.dataTable td.dt-control:before {
   text-align: right;
 }
 
+.popover-header {
+  display: none;
+}
+.popover-body {
+  width: 219px;
+  height: 185px;
+}
+.popover {
+  font-size: -0.125rem;
+}
+
 /* 
 .btn-primary:hover,
 .btn-primary:focus,
@@ -448,10 +464,8 @@ table.dataTable td.dt-control:before {
   border-color: #082f4b !important;
 } */
 
-
-
-.btn-check:active+.btn-outline-primary,
-.btn-check:checked+.btn-outline-primary,
+.btn-check:active + .btn-outline-primary,
+.btn-check:checked + .btn-outline-primary,
 .btn-outline-primary.active,
 .btn-outline-primary.dropdown-toggle.show,
 .btn-outline-primary:active {
@@ -472,32 +486,31 @@ table.dataTable td.dt-control:before {
   border: 1px solid black;
 }
 
-/* 
-div.table-responsive #childpartTable th {
-  color: gray;
-}
-
-div.table-responsive #childpartTable thead {
-  background-color: rgb(220, 223, 232);
-  border-collapse: collapse;
-  border-radius: 5px;
-
-}
-
-div.table-responsive table #childpartTable {
-  font-size: small;
-  border-radius: 5px;
-  overflow: hidden;
-} */
-
 
 .searchicon {
   position: absolute;
   top: 78px;
-  right: 341px;
+  right: 299px;
   padding: 2px;
+  color: gray !important;
+}
+
+.searchiconstock {
+  position: absolute;
+  top: 70px;
+  right: 295px;
+  padding: 2px;
+  color: gray !important;
 }
 
 .searchbar {
   padding-left: 27px;
+}
+
+.select2-dropdown{
+  z-index: 1100 !important;
+}
+
+.select2-selection{
+  width: 250px;
 }

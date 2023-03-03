@@ -5,29 +5,27 @@ if (localStorage.getItem('LogedinUser') !== null) {
     function format(d) {
         let dynamicChildRow = '';
         if (d.partiteam && d.partiteam.length > 0) {
-            dynamicChildRow += '<table class:"table rounded p-0 m-0 w-100 h-100" id="childpartTable " style="width:100%">';
-            dynamicChildRow += '<thead class=" fw-normal"><tr><th>#</th><th>Part Number</th><thOrdered</th><th>Assigned</th><th>Notes</th><th>Action</th></tr></thead>';
+            dynamicChildRow += '<table class:"table  p-0 m-0 w-100 h-100" class="" id="childpartTable " style="width:100%">';
+            dynamicChildRow += '<thead class=" fw-normal bg-light childtable rounded"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
             dynamicChildRow += '<tbody>';
             d.partiteam.forEach((partiteam, index) => {
-                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td><td>' + '<button type="button" class="btn-close" aria-label="Close"></button>' + '</td></tr>';
+                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td><td>' + '<button type="button" class="btn-close delete" aria-label="Close"></button>' + '</td></tr>';
             });
             dynamicChildRow += '</tbody></table>';
         }
         return dynamicChildRow;
     }
 
-
-    $("#childpartTable").on("click", ".btn-close", function () {
-        $(this).closest("tr").remove();
-        partiteam.splice(this, 1)
+    $("#childpartTable tbody").on("click", ".btn-close", function () {
+        var index = table.row($(this).parents('tr')).index();
+        console.log(" table index", index);
     });
 
     var isEdit = false;
     $(document).ready(function () {
-        var a = JSON.parse(localStorage.getItem("stockdata"));
-        console.log(a);
+        var stockdataset = JSON.parse(localStorage.getItem("stockdata"));
         var table = $('#table_div1').DataTable({
-            data: a,
+            data: stockdataset,
             language: {
                 info: "Items _START_ to _END_ of _TOTAL_ total",
                 paginate: {
@@ -52,7 +50,7 @@ if (localStorage.getItem('LogedinUser') !== null) {
                 { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
                 { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
                 { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
-                { data: null, title: 'Action', orderable: false, className: 'editmodel', defaultContent: '<i class="bi bi-pencil-fill"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history" style="font-size: 1rem; color: gray;"></i>' },
+                { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editmodel"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history" style="font-size: 1rem; color: gray;"></i>' },
             ],
             order: [[1, 'asc']],
         });
@@ -76,14 +74,16 @@ if (localStorage.getItem('LogedinUser') !== null) {
 
         $('#table_div1 tbody').on('click', '.editmodel', function () {
             isEdit = true;
+            var heading = document.getElementById('modaltitle');
+            heading.textContent = 'Edit Stock';
             var rowdata = table.row($(this).parents('tr')).data();
             var index = table.row($(this).parents('tr')).index();
             $("#stockname").val(rowdata.stockname);
             $("#date").val(rowdata.date);
             $('input[name="btnradio"][value="' + rowdata.stockstatus + '"]').prop('checked', true);
             if (rowdata.partiteam && rowdata.partiteam.length > 0) {
-                rowdata.partiteam.forEach(function (partiteam, index) {
-                    $("#root").append('<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td></tr>');
+                rowdata.partiteam.forEach(function (partiteam) {
+                    $("#root").append('<tr><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td><td>' + '<button type="button" class="btn-close" aria-label="Close"></button>' + '</td></tr>');
                 });
             }
             partiteam = rowdata.partiteam;
@@ -112,7 +112,10 @@ if (localStorage.getItem('LogedinUser') !== null) {
                 $('#stockModal').modal('hide');
             });
         });
-
+        $("#root").on("click", ".btn-close", function () {
+            $(this).closest("tr").remove();
+            partiteam.splice(this, 1)
+        });
 
         $("#partform").validate({
             rules: {
@@ -171,8 +174,6 @@ if (localStorage.getItem('LogedinUser') !== null) {
             partiteam.splice(this, 1)
         });
 
-
-
         $("#stockform").validate({
             rules: {
                 stockname: {
@@ -207,7 +208,17 @@ if (localStorage.getItem('LogedinUser') !== null) {
                     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
                     var useridname = logedinUser[0].Name;
                     var date = new Date().toLocaleDateString();
-                    console.log(useridname);
+                    var stockData = JSON.parse(localStorage.getItem('stockdata'));
+                    for (var i = 0; i < stockData.length; i++) {
+                        if (stockData[i].stockname === stockname) {
+                            swal("Invalid Detail!", "Enter Different Stock Name , This stock all ready Exist!", "warning");
+                            return;
+                        }
+                    }
+                    if (partiteam.length === 0) {
+                        swal("InComplete Detail!", "You Have to Add Atlest One Part!", "warning");
+                        return;
+                    }
                     var obj1 = {
                         stockname: stockname,
                         date: etadate,
@@ -216,7 +227,6 @@ if (localStorage.getItem('LogedinUser') !== null) {
                         createddate: date,
                         partiteam: partiteam
                     }
-
                     if (localStorage.getItem("stockdata") == null) {
                         stockdata = [];
                     } else {
@@ -247,12 +257,12 @@ if (localStorage.getItem('LogedinUser') !== null) {
 
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
-            window.location.replace("log.html");
+            window.location.replace("logic.html");
         });
 
         $('.sorting').removeClass('sorting')
 
     });
 } else {
-    window.location.href = "log.html"
+    window.location.href = "logic.html"
 }

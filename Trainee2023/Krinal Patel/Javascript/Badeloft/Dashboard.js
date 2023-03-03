@@ -21,12 +21,12 @@ window.onload = (event) => {debugger;
     localStorage.clear();
   }
   
+ 
 
 // Data table Dashboard
 
-$(document).ready(function () {
 
-  
+$(document).ready(function () {
 
 
   var table = $('#Dashboard').DataTable({
@@ -70,7 +70,13 @@ $(document).ready(function () {
           { title: 'C102',orderable:false,className: "text-center" },
 
       ],
+
   });
+
+  // var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+  // var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  //   return new bootstrap.Popover(popoverTriggerEl)
+  // })
 
   // Add event listener for opening and closing details
   $('#Dashboard tbody').on('click', 'td.dt-control', function () {
@@ -87,6 +93,7 @@ $(document).ready(function () {
           tr.addClass('shown');
       }
   });
+
   $('[data-bs-toggle="popover"]').popover({
 
     container: 'body',
@@ -100,23 +107,23 @@ $(document).ready(function () {
 var dataSet = [
   ["Stock Location","", "", "On Water", "On Water", "In Production"],
   ["ETA Date","", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-  ["BW-01-S-M","1", "0", "<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
-  ["BW-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BW-01-Q-M","", "0", "3", "<button class='text-primary border-0 bg-light'>2</button>", "1"],
-  ["BW-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BR-08-X2P","1", "0", "<button class='text-primary border-0 bg-light'>2</button>", "0", "1"],
-  ["BK-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BA-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BB-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BC-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BD-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BE-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BF-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BF-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BZ-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BK-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BL-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
-  ["BM-03-XL-G","1", "1", "<button class='text-primary border-0 bg-light'>2</button>", "2", "1"],
+  ["AB-01-S-M","1", "0", "<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover-form'>3</button>", "0", "0"],
+  ["BW-03-XL-G","1", "1",   "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BW-01-Q-M","", "0",  "<button class='text-primary  border-0 bg-light'>2</button>", "1", "1"],
+  ["BW-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BR-08-X2P","1", "0",   "<button class='text-primary  border-0 bg-light'>2</button>" ,"0", "1"],
+  ["BK-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BA-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BB-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BC-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BD-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BE-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BF-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BF-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BZ-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BK-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BL-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
+  ["BM-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
   
 
   
@@ -126,3 +133,14 @@ var StockLocation = $.fn.dataTable.absoluteOrder(
   [{ value: 'Stock Location', position: 'top' },
   { value: 'ETA Date', position: 'top' } ]);
    
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+  })
+
+  
+  // $(function () {
+  //   $('#popover-form').popover({
+  //     container: 'body'
+  //   })
+  // })

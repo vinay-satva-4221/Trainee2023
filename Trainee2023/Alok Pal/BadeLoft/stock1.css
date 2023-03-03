@@ -285,6 +285,10 @@ a.page-link{
 
 
 /* stock active */
+.active {
+    
+    font-weight: bold;
+}
 .navbar-nav .nav-link {
     position: relative;
 }
