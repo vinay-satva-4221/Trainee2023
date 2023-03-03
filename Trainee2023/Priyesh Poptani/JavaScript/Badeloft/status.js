@@ -12,11 +12,13 @@ $(function(){
 function format(d) {
     // `d` is the original data object for the row
     return (
-        '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+
+
+        '<table cellpadding="0" cellspacing="5" border="0" class="table border rounded">' +
         '<tr>' +
 
-        '<th>#</th>' +
-        '<th>Part Number</th>' +
+        '<th >#</th>' +
+        '<th style="color: white;">Part Number</th>' +
         // '<th>' +
         // d.name +
         // '</th>' +
@@ -26,28 +28,28 @@ function format(d) {
         '<th>Action</th>' +
         '</tr>' +
 
-        '<tr>'+
+        '<tr style="color: black;">'+
 
-        '<td> 1</td>'+
-        '<td> BW-01-S-M</td>'+
-        '<td> Warehouse</td>'+
-        '<td> x</td>'+
+        '<td style="color: black;"> 1</td>'+
+        '<td style="color: black;"> BW-01-S-M</td>'+
+        '<td style="color: black;"> Warehouse</td>'+
+        '<td style="color: black;","text-align: right !important;"> x</td>'+
         '</tr>'+
 
         '<tr>'+
 
-        '<td> 2</td>'+
-        '<td> AT-01-BLK</td>'+
-        '<td> C-101</td>'+
-        '<td> x</td>'+
-        '</tr>'+
+        '<td style="color: black;"> 2</td>'+
+        '<td style="color: black;"> AT-01-BLK</td>'+
+        '<td style="color: black;"> C-101</td>'+
+        '<td style="color: black;"> x</td>'+
+        '</tr style="color: black;">'+
 
         '<tr>'+
 
-        '<td> 3</td>'+
-        '<td> BW-03-XL-G</td>'+
-        '<td> E-501</td>'+
-        '<td> x</td>'+
+        '<td style="color: black;"> 3</td>'+
+        '<td style="color: black;"> BW-03-XL-G</td>'+
+        '<td style="color: black;"> E-501</td>'+
+        '<td style="color: black;"> x</td>'+
         '</tr>'+
 
         
@@ -70,7 +72,7 @@ $(document).ready(function () {
         data:datalist,
         language: {
 
-            info: "items _PAGE_ to _PAGES_ of _PAGES_ total ",
+            "info": "Items _START_ to _END_ of _TOTAL_ total ",
             paginate:{
                 next:'&#62',
                 previous:'&#60'
@@ -82,7 +84,7 @@ $(document).ready(function () {
         columns: [
             {
                 
-                className: 'dt-control toHide',
+                className: 'toHide',
 
                 orderable: false,
                 data: null,
@@ -90,9 +92,9 @@ $(document).ready(function () {
                 
             },
 
-           {title: 'QB Invoive#',className: "colSpan"},
+           {title: 'QB Invoice#',className: " text-left dt-control colSpan"},
            { title: "Name" },
-      { title: "QB Ship date" },
+      { title: "QB Ship date"},
       { title: "QB Payment Status", orderable: false, },
       { title: "QB Status", orderable: false, },
       { title: "QB Delivery Phone", orderable: false, },
@@ -139,22 +141,22 @@ var datalist = [
     //   Name : 'Keneth Woodard',
     //   QB_Ship_date : '12/08/2021',
     // }
-    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
     ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
 
-    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+    ["","150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
     ["","150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
     ["","150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
     ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
     ["","150001", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
     ["","150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'>Paid</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
     ["","150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'>Unpaid</i></button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
-    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pendding Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
+    ["","150004", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-warning px-1 p-0 m-0'><i class='bi bi-info-circle-fill'>Pending Approval</i></button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-126"],
   
   
   ];

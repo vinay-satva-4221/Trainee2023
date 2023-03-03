@@ -38,10 +38,9 @@ a:link {
 }
 
 #dashboardtable_info {
-   align-items: end;
-   text-align: end;
-   margin-left: 1020px;
-   margin-top: 10px;
+    margin-top: 5px;
+    width: 1100px !important;
+    text-align: end;
 }
 
 #dashboardtable_length {
@@ -187,9 +186,9 @@ a:link {
     color: white;
 }
 
-.pagination {
+/* .pagination {
     display: inline-block;
-}
+} */
 
 .pagination a {
     color: black;
@@ -217,30 +216,75 @@ a:link {
     background-color: black !important;
     border-color: black !important;
     color: white;
-  }
-  
-  .dataTables_wrapper .dataTables_paginate .paginate_button {
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 0% !important;
     margin: 0% !important;
-  
-  }
-  li.paginate_button.page-item.active {
+
+}
+
+li.paginate_button.page-item.active {
     background: none !important;
     border: none !important;
-  }
-  li.paginate_button.page-item:hover {
+}
+
+li.paginate_button.page-item:hover {
     background: none !important;
     border: none !important;
-  }
-  /* span a.paginate_button.current{
+}
+
+/* span a.paginate_button.current{
     background-color: black !important;
     color: white !important;
   }
    span a.paginate_button{
     color: red !important;
   } */
-  /* paginate_button  */
-  li.paginate_button.page-item{
+/* paginate_button  */
+li.paginate_button.page-item {
     padding: 0px !important;
     margin: 0px !important;
-  }
+}
+
+#dashboardtable_info {
+    margin-top: -3px;
+    /* margin-right: 10011px; */
+    width: 1200px !important;
+    justify-content: end;
+}
+
+
+@media only screen and (max-width: 1250px) {
+    #dashboardtable_info {
+        width: 900px !important;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    #dashboardtable_info {
+        width: 800px !important;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    #dashboardtable_info {
+        width: 700px !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #dashboardtable_info {
+        width: 600px !important;
+    }
+}
+
+/* 
+  @media only screen and (max-width: 800px) {
+    #dashboardtable_info {
+         width: 200px!important;
+     }
+     #dashboardtable_paginate{
+        width: 200px!important;
+     }
+  } */

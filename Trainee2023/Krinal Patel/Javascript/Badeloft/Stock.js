@@ -30,6 +30,7 @@ function format(d) {
   //debugger;
   console.log(partDetails);
   console.log(d)
+  console.log(d.partDetails);
   var tr = $(this).parents('tr');
   var row = tableData.row(tr);
 
@@ -55,10 +56,10 @@ function format(d) {
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded" id="childtablepart">';
   childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
-
+  var id = 1;
   q.forEach((e) => {
 
-    childrow += '<tr><td>' + e.index + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td><td>' + e.index + '</td><td>' + '<i class="fa-solid fa-xmark deletechild"></i>' + '</td</tr>';
+    childrow += '<tr><td>' + id++ + '</td><td>' + e.partno + '</td><td>' + e.ordered + '</td><td>' + e.index + '</td><td>' + '<i class="fa-solid fa-xmark deletechild"></i>' + '</td</tr>';
   });
   childrow += '</tbody></table>';
 
@@ -195,12 +196,12 @@ $(document).ready(function () {
 
 $("#stock tbody").on('click', '.fa-pen', function () {
   partDetails = [];
-  var i = $(this).closest('tr').index();
+  // var i = $(this).closest('tr').index();
 
-  // var datatableIndex = tableData.row(this).index()
-  // console.log(datatableIndex,"datatableIndex")
+  var datatableIndex = tableData.row($(this).parents('tr')).index()
+  console.log(datatableIndex,"datatableIndex")
 
-  currentStockIndex = i; 
+  currentStockIndex = datatableIndex; 
   $("#addstockbtn").hide();
   $("#editstockbtn").show();
 
@@ -210,22 +211,22 @@ $("#stock tbody").on('click', '.fa-pen', function () {
   console.log(currentStockIndex, stockDetails[currentStockIndex])
 
   //EDIT STOCK  
-  console.log(stockDetails[i])
+  console.log(stockDetails[datatableIndex])
   // console.log(stockDetails[i].stockpart[0].partno)
-  currentStockId = stockDetails[i].index;
+  currentStockId = stockDetails[datatableIndex].index;
 
   //findIndex of currentStock
 
-  var index = stockDetails.findIndex(x => x.index == currentStockId)
+  // var index = stockDetails.findIndex(x => x.index == currentStockId)
 
-  document.getElementById("sname").value = stockDetails[i].sname;
-  document.getElementById("etadate").value = stockDetails[i].etadate;
+  document.getElementById("sname").value = stockDetails[datatableIndex].sname;
+  document.getElementById("etadate").value = stockDetails[datatableIndex].etadate;
 
-  partDetails = stockDetails[i].stockpart
+  partDetails = stockDetails[datatableIndex].stockpart
 
   var html = "";
 
-  stockDetails[i].stockpart.forEach(function (element, index) {
+  stockDetails[datatableIndex].stockpart.forEach(function (element, index) {
     let ind = index + 1;
     html += "<tr>";
     html += "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + element.partno + "</td>";
@@ -333,7 +334,7 @@ function updatestockdata(){                                                     
   createdby: createdby,
   cdate: cdate,
   notes: notes,
-  partDetails: partDetails
+  stockpart: partDetails
 }
   stockDetails[currentStockIndex] = updateddata
 

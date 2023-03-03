@@ -49,7 +49,7 @@ $(document).ready(function () {
       qb_pay_status: '<button class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "asasxc",
-      called: '<input type="checkbox"></input>',
+      called: '<input type="checkbox" ></input>',
       qb_tracking: "WBC-123"
     },
     {
