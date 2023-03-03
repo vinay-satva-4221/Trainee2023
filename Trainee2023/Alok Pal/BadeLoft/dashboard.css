@@ -72,13 +72,12 @@ a {
     text-decoration: none;
 }
 
-.active {
+/* .active {
     border-bottom: 2px solid black;
     height: 60px;
     color: black;
     font-weight: bold;
-
-}
+} */
 
 
 
@@ -150,7 +149,7 @@ table.dataTable thead>tr>td.sorting_desc_disabled:after {
     position: absolute;
     display: block;
     opacity: .125;
-    right: 130px;
+    right: 129px;
     line-height: 9px;
     font-size: .8em;
 }

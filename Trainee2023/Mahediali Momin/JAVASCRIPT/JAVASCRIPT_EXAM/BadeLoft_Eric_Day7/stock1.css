@@ -1,3 +1,19 @@
+/* thead {
+    background-color: black;
+    border-collapse: collapse;
+    border-radius: 1em;
+
+}
+
+table {
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 1.2em;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid black;
+} */
+
 #inner_table thead {
     background-color: black;
     border-collapse: collapse;
@@ -36,7 +52,7 @@ table #StockTable {
 
 .addPartBtn {
     border: 1px solid white;
-    /* border-color: white; */
+    border-color: white;
     background-color: white;
 }
 #StockTable_length{
@@ -251,6 +267,18 @@ input[type=checkbox]:checked {
 
 }
 
+#StockTable.dataTable td.dt-control:before {
+    background-color: white;
+    color: #1188FF;
+    border-color: #063894;
+    margin: 5px;
+}
+table.dataTable td.dt-control {
+    text-align: start !important;
+    color: rgb(95, 159, 248);
+    padding-right: 3px;
+}
+
 
 .page-item.active .page-link {
     background-color: black !important;
@@ -270,4 +298,32 @@ input[type=checkbox]:checked {
   li.paginate_button.page-item:hover {
     background: none !important;
     border: none !important;
+  }
+
+  #StockTable th.sorting_asc.sorting_asc::before {
+
+   display: none;
+  }
+  
+  #StockTable th.sorting_asc.sorting_asc::after {
+  
+   display: none;
+  }
+  
+  #StockTable th.sorting_desc.sorting_desc::after {
+  
+   display: none;
+  }
+  
+  #StockTable th.sorting_desc.sorting_desc::before {
+  
+   display: none;
+  }
+  
+  #StockTable th.sorting_asc::before {
+   display: none;
+  }
+  
+  #StockTable th.sorting_desc::after {
+   display: none;
   }

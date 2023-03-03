@@ -43,7 +43,7 @@ function format(d) {
     dynamicChildRow +=
       '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
     dynamicChildRow +=
-      '<thead class ="table border text-center"><tr style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th></tr></thead>';
+      '<thead class ="table border text-center"><tr style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th><th style="color:black"><b>Action</b></th></tr></thead>';
     dynamicChildRow += "<tbody  class ='table '  >";
     d.Part.forEach((e, index) => {
       let indx = index + 1;
@@ -56,7 +56,7 @@ function format(d) {
         e.Order +
         "</td><td>" +
         e.Comments +
-        "</td></tr>";
+        "</td><td>" + "<i  class= 'fa-solid fa-x delete' style='cursor:pointer' onclick='deleteMainTableRow(" + index + " )'   ></i>" + "</td></tr>"
     });
     dynamicChildRow += "</tbody></table>";
   }
@@ -82,7 +82,7 @@ if (dd < 10) {
 if (mm < 10) {
   mm = "0" + mm;
 }
-today = dd + "/" + mm + "/" + yyyy;
+today = mm + "/" + dd + "/" + yyyy;
 // document.write(today);
 
 // global variable
@@ -114,37 +114,42 @@ $(document).ready(function () {
       {
         data: "stock",
         title: "Stock Name",
-        className: "dt-control",
+        className: "dt-control  showchildRow",
         orderable: false,
       },
       {
         data: "date",
         title: "ETA Date",
         orderable: false,
+        className:"showchildRow",
         class: "text-center",
       },
       {
         data: "stockStatus",
         title: "Stock Location",
         orderable: false,
+        className:"showchildRow",
         class: "text-center",
       },
       {
         data: "user[0].Admin",
         title: "Created By",
         orderable: false,
+        className:"showchildRow",
         class: "text-center",
       },
       {
         data: "CreatedDate",
         title: "Created Date",
         orderable: false,
+        className:"showchildRow",
         class: "text-center",
       },
       {
         data: "Part[0].Comments",
         title: "Notes",
         orderable: false,
+        className:"showchildRow",
         class: "text-center",
       },
       {
@@ -159,7 +164,7 @@ $(document).ready(function () {
   });
 
   // Add event listener for opening and closing details
-  $("#stock_table tbody").on("click", "td.dt-control", function () {
+  $("#stock_table tbody").on("click", "td.showchildRow", function () {
     var tr = $(this).closest("tr");
     var row = table.row(tr);
 
@@ -178,7 +183,7 @@ $(document).ready(function () {
 // Array creation
 var parts = new Array();
 
-function getM() {
+function getModal() {
   var partN = document.getElementById("pNum").value;
   var order = document.getElementById("order").value;
   var comments = document.getElementById("floatingTextarea").value;
@@ -209,21 +214,18 @@ var newStock = [];
 var Stockstatus;
 
 function addData() {
-  //login user
-
   // parts
-  var stockN = document.getElementById("stock").value;
+  var stockName = document.getElementById("stock").value;
   var dateM = document.getElementById("date").value;
 
- 
   Stockstatus = radioBtnValue();
 
   console.log(parts.length);
-  if (stockN != null && parts.length > 0) {
+  if (stockName != null && parts.length > 0) {
     if (localStorage.getItem("newStock") == null) {
       newStock = [];
       var newObj = {
-        stock: stockN,
+        stock: stockName,
         date: dateM,
         stockStatus: Stockstatus,
         CreatedDate: today,
@@ -231,25 +233,55 @@ function addData() {
         user: user,
       };
       newStock.push(newObj);
+      table.row.add(newObj).draw();
+      localStorage.setItem("newStock", JSON.stringify(newStock));
+      $("#StockModal").modal("hide");
+      resetSVal();
+      parts = [];
+      $("#partTable").append("<tbody></tbody");
+
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      var newObj = {
-        stock: stockN,
-        date: dateM,
-        stockStatus: Stockstatus,
-        CreatedDate: today,
-        Part: parts,
-        user: user,
-      };
-      newStock.push(newObj);
-    }
+      // console.log("ello",newStock[0].stock)
+      // console.log("ello", newStock.length);
 
-    table.row.add(newObj).draw();
-    localStorage.setItem("newStock", JSON.stringify(newStock));
-    $("#StockModal").modal("hide");
-    resetSVal();
+      var flag;
+      for (let i = 0; i < newStock.length; i++) {
+        flag = false;
+        if (stockName == newStock[i].stock) {
+          flag = true;
+          break;
+        } else {
+          flag = false;
+        }
+      }
+
+      if (flag == false) {
+        var newObj = {
+          stock: stockName,
+          date: dateM,
+          stockStatus: Stockstatus,
+          CreatedDate: today,
+          Part: parts,
+          user: user,
+        };
+        newStock.push(newObj);
+        table.row.add(newObj).draw();
+        localStorage.setItem("newStock", JSON.stringify(newStock));
+        $("#StockModal").modal("hide");
+        resetSVal();
+        parts = [];
+        $("#partTable").append("<tbody></tbody");
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Duplicate Stock Name is not allowed",
+          icon: "error",
+        });
+      }
+    }
   } else {
-    if (stockN == "") {
+    if (stockName == "") {
       Swal.fire({
         title: "Error!",
         text: "Add Stock Name",
@@ -264,28 +296,24 @@ function addData() {
     }
   }
 
-  parts = [];
-  
+
 }
 
 // loading the documnet to show data in table
-// document.onload = showMt2();
 
 // show data
-function showMt2() {
+function showModaltable() {
   var html = "";
   html =
     "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
   parts.forEach(function (element, index) {
     html += "<tr>";
-    html += "<td class=text-start>" + parts[index].PartN + "</td>";
-    html += "<td class=text-start>" + Date.now() + "</td>";
-    html += "<td class=text-start>" + parts[index].Order + "</td>";
-    html += "<td class=text-start>" + parts[index].Comments + "</td>";
+    html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
+    html += "<td class=text-start >" + Date.now() + "</td>";
+    html += "<td class=text-start > " + parts[index].Order + "</td>";
+    html += "<td class=text-start >" + parts[index].Comments + "</td>";
     html +=
-      "<td class=text-center><i class= 'fa-solid fa-x' onclick='deleteData( " +
-      index +
-      " )'></i> </td>";
+      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' + index + ' )"   ></i> </td>';
     html += "</tr>";
     html += "</tbody>";
 
@@ -343,27 +371,20 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
 
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
-  // document.getElementById("pNum").value = newStockModal[indexRow].Part[0].PartN;
-  // document.getElementById("order").value =  newStockModal[indexRow].Part[0].Order;
-  // document.getElementById("floatingTextarea").value =  newStockModal[indexRow].Part[0].Comments;
 
-  document.querySelector("#myMod").onclick = function () {
-    var ustock = (newStockModal[indexRow].stock =
+  parts = newStockModal[indexRow].Part;
+  showModaltable();
+  document.querySelector("#modalstock").onclick = function () {
+    var updatestock = (newStockModal[indexRow].stock =
       document.getElementById("stock").value);
-    var udate = (newStockModal[indexRow].date =
+    var updatedate = (newStockModal[indexRow].date =
       document.getElementById("date").value);
 
-    if (r1 == true) {
-      Stockstatus = "On Production";
-    } else if (r2 == true) {
-      Stockstatus = "On Water";
-    } else if (r3 == true) {
-      Stockstatus = "In Warehouse";
-    }
+    Stockstatus = radioBtnValue();
 
     var newObj = {
-      stock: ustock,
-      date: udate,
+      stock: updatestock,
+      date: updatedate,
       stockStatus: Stockstatus,
       CreatedDate: today,
       Part: parts,
@@ -373,6 +394,7 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
     newStock[indexRow] = newObj;
     localStorage.setItem("newStock", JSON.stringify(newStock));
     $("#StockModal").modal("hide");
+    window.location.reload();
   };
 });
 
@@ -387,3 +409,45 @@ function radioBtnValue() {
   }
   return btnChecked;
 }
+
+
+function deletePartTableRow(index) {
+  debugger
+  console.log(index)
+  parts.splice(index, 1)
+  console.log(parts)
+  showModaltable()
+}
+
+
+function deleteMainTableRow(index) {
+  var newStockModal = JSON.parse(localStorage.getItem("newStock"));
+  // var indexRow = table.row(this).index();
+  // console.log(indexRow);
+
+  // var tabledata = table.row(this).data();
+
+  // $('#example tbody').on('click', 'td.delete', function () {
+  //   table
+  //     .row($(this).parents('tr'))
+  //     .remove()
+  //     .draw();
+  // });
+  // console.log(tabledata)
+  // newStockModal[index].Part.splice(index, 1);
+  // console.log(newStockModal[index].Part.splice(1, 1))
+
+  //  newStockModal[index].Part[index].splice(index, 1)
+  console.log(newStockModal[index].Part[index])
+  // localStorage.setItem("newStock", JSON.stringify(newStock));
+  // showModaltable()
+}
+
+//active
+var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
+   
+$('.nav-item a').each(function(){
+    if ($(this).attr('href') == pathname){
+    $(this).addClass('active');
+    }
+});

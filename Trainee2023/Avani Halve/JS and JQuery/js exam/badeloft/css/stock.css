@@ -121,8 +121,8 @@ h3 {
 /* plus icons of table */
  #stockTable.dataTable td.dt-control:before {
     background-color: white;
-    color: grey;
-    border-color: grey
+    color: #326C96;
+    border-color: #326C96;
   }
  
     /* search box */

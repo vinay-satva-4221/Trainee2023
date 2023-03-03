@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-lg-2 offset-lg-4 p-3">
                     <button type="button" class="btn" id="addStock" data-bs-toggle="modal"
-                        data-bs-target="#stockModal">+ New</button>
+                        data-bs-target="#stockModal" onclick="isEdit = false">+ New</button>
                 </div>
                 <div class="col-lg-3 p-3">
                     <div class="form-group has-search me-5 pe-1">
@@ -93,16 +93,16 @@
                         <div class="modal-body p-4">
                             <form class="row g-3" id="stockform">
                                 <div class="col-md-6">
-                                    <label class="form-label">Stock Name</label>
+                                    <label class="form-label fontcolor" > <b>Stock Name</b> </label>
                                     <input type="text" class="form-control" id="stockname" name="stockname" placeholder="Stock Name">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">ETA Date</label>
-                                    <input type="text" class="form-control" name="etadate" value="10/24/1984"
+                                    <label class="form-label fontcolor"> <b>ETA Date</b> </label>
+                                    <input type="text" class="form-control" name="etadate" 
                                         id="date" />
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label">Stock Status</label> <br>
+                                    <label class="form-label fontcolor"> <b>Stock Status</b> </label> <br>
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
                                         id="stockstatus">
                                         <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
@@ -140,7 +140,7 @@
                             </form>
                         </div>
                         <div class="modal-footer justify-content-start">
-                            <button type="button" class="btn " id="savestock">Save </button>
+                            <button type="button" class="btn" id="savestock">Save </button>
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>

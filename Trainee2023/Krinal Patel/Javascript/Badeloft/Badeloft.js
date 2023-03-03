@@ -1,16 +1,18 @@
-window.onload = (event) => {
-  debugger;
-  if (localStorage.getItem("LoginDetails") != null) {
-    window.location.replace("Dashboard.html");
-  }
-};
+// window.onload = (event) => {
+//   // debugger;
+
+//   }
+// };
 
 
 //Data table Dashboard
 
 
 $(document).ready(function () {
-  $('#myTable').DataTable();
+  if (localStorage.getItem("LoginDetails") != null) {
+    window.location.replace("Dashboard.html");
+  }
+  // $('#myTable').DataTable();
 });
 
 
@@ -29,10 +31,16 @@ function validatecheck() {
   var passwordC2 = "Krinal@123";
   var passwordC3 = "Krinal@123";
   var passwordC4 = "Krinal@123";
+  validateemail();
+  validatepassword()
+  // if ( !validateemail() || !validatepassword()) { 
 
+  //   swal("Please enter details correctly")
 
+  //  }
 
-  debugger;
+if(email != '' && password != ''){
+console.log(email)
   if (email.toLowerCase() == emailC1 && password == passwordC1) {
     console.log("Log in");
 
@@ -83,9 +91,12 @@ function validatecheck() {
     user.push(userObj);
 
     localStorage.setItem('LoginDetails', JSON.stringify(user));
-  } else {
+  }
   
-
+  else {
+  
+    // console.log("Please enter");
+    swal("Please enter correct Credeantials")
     // swal({
     //   title: "Incorrect Credentials",
     //   text: "Please enter correct details",
@@ -93,46 +104,92 @@ function validatecheck() {
     //   button: "Ok"
     // });
 
-
   }
 }
+}
 
-$.validator.addMethod("Emailcheck", function (value) {
-  return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-});
-$.validator.addMethod("password", function (value) {
-  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
-});
+// $.validator.addMethod("Emailcheck", function (value) {
+//   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+// });
+// $.validator.addMethod("password", function (value) {
+//   return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
+// });
 // $("#checkConfirmPass").css("color", "red");
 
 
 
-$("form[name='login_form']").validate({
+// $("form[name='login_form']").validate({
 
 
-  errorClass: 'msgerror',
-  rules: {
-    email: {
-      required: true,
-      Emailcheck: true,
-    },
-    password: {
-      required: true,
-      password: true,
-    },
-  },
-  messages: {
-    email: {
-      required: "Enter your Email",
-      email: true,
-      Emailcheck: "Enter valid Email",
-    },
-    password: {
-      required: "Enter your Password",
-      password: "Please enter one Special character, one Uppercase, one Lowercase, one numeric and minimum 8 characters",
-    },
-  },
-  submitHandler: function (form) {
-    form.submit();
+//   errorClass: 'msgerror',
+//   rules: {
+//     email: {
+//       required: true,
+//       Emailcheck: true,
+//     },
+//     password: {
+//       required: true,
+//       password: true,
+//     },
+//   },
+//   messages: {
+//     email: {
+//       required: "Enter your Email",
+//       email: true,
+//       Emailcheck: "Enter valid Email",
+//     },
+//     password: {
+//       required: "Enter your Password",
+//       password: "Please enter one Special character, one Uppercase, one Lowercase, one numeric and minimum 8 characters",
+//     },
+//   },
+//   submitHandler: function (form) {
+//     form.submit();
+//     // $("#loginbtn").click();
+//   }
+// });
+
+
+
+
+
+
+
+
+
+function validateemail() {
+  let setemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  let email = document.getElementById("email").value;
+  let msgemail = document.getElementById("invalid_email");
+  if(!email){
+    msgemail.innerHTML = "*Please enter email";
+    msgemail.style.color = "red";
+    document.getElementById("invalid_email").style.display = "unset";
+    return false;
   }
-});
+  if (!setemail.test(email)) {
+      msgemail.innerHTML = "*Please enter @ and .com";
+      msgemail.style.color = "red";
+      document.getElementById("invalid_email").style.display = "unset";
+
+      return false;
+  } else {
+      document.getElementById("invalid_email").style.display = "none";
+      return true;
+  }
+}
+function validatepassword() {
+  let setpass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  let password = document.getElementById("password").value;
+  let msgpass = document.getElementById("invalid_password");
+  if (!setpass.test(password)) {
+       msgpass.innerHTML = "*Please enter one Special character, one Uppercase, one Lowercase, one numeric and minimum 8 characters";
+       msgpass.style.color = "red";
+      document.getElementById("invalid_password").style.display = "unset";
+
+      return false;
+  } else {
+      document.getElementById("invalid_password").style.display = "none";
+      return true;
+  }
+}

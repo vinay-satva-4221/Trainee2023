@@ -1,3 +1,10 @@
+.navbar{
+  width: 90%;
+  margin-left: 60px;
+  text-align: center;
+  padding: 0 !important;
+  
+}
 .parent {
   /* position: absolute; */
   top: 0;
@@ -165,14 +172,14 @@ li.paginate_button.page-item:hover {
 /* pagination and info css */
 .pagination{
   float: right !important;
-  margin-right: -270px !important;
+  margin-right: -300px !important;
   margin-top: 20px !important;
   
 }
 
 .dataTables_info{
   float: right !important;
-  margin-right: 80px !important;
+  margin-right: 115px !important;
   padding-right: 37px !important;
   margin-top: 17px !important;
   color: #3F4D65;
@@ -195,7 +202,11 @@ input[type=checkbox]:checked {
 .edit,.history{
   color:#878585;
 }
-
+.popover-body{
+  padding: 0%;
+  margin: 3% 0% 0% 0%;
+ 
+}
 
 
 
@@ -217,19 +228,64 @@ input[type=checkbox]:checked {
   width: 33%;
   height: 2px;
   bottom: -23px;
-  left: 29px;
+  /* margin: auto; */
+  right: 50%;
+  transform: translate(50%,-50%);
+  /* left: 29px; */
   background-color: #000;
   visibility: hidden;
-  transform: scaleX(0);
+  /* transform: scaleX(0); */
   /* / transition: all 0.3s ease-in-out 0s; / */
 }
 
 .navbar-nav .nav-link.active::before
 {
   visibility: visible;
-  transform: scaleX(1);
+  /* transform: scaleX(1); */
 }
 
 .modal-footer{
   justify-content: flex-start;
+}
+
+
+/* sorting arrow placement */
+
+/* .sorting ,.sorting_desc{
+  margin-right: 88px;
+} */
+
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+  background-image: url(images/search.PNG);
+  background-repeat: no-repeat;
+  background-size: 26px;
+  padding-left: 28px;
+}
+
+.fa-pen:before {
+  content: "\f304";
+  cursor: pointer;}
+
+
+
+/* Datatable sorting icon dashboard */
+
+  table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:after {
+    opacity: .6;
+    margin-right: 73%;
+}
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after {
+  top: 50%;
+  content: "▼";
+  margin-right: 73%;
+}
+
+/* Stock status color dropdown */
+
+.btn-group-vertical>.btn-check:checked+.btn, .btn-group-vertical>.btn-check:focus+.btn, .btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover, .btn-group>.btn-check:checked+.btn, .btn-group>.btn-check:focus+.btn, .btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus, .btn-group>.btn:hover {
+  z-index: 1;
+  background-color: #326C96;
 }

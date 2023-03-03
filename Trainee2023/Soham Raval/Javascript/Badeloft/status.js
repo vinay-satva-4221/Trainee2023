@@ -85,6 +85,27 @@ var data1=[
          called:'yes',
          QBTracking:'WBC-124',
     },
+    {
+        QBInvoice:'15001',
+        name:'James Fenske',
+        QBShipdate:'10/08/2021',
+        QBShipaymentstatus:'<span class="alert alert-success p-0"><i class="bi bi-check"></i>Paid</span>',
+        QBStatus:'shipped',
+         QBDeliveryPhone:'618-234-6400',
+         called:'yes',
+         QBTracking:'WBC-124',
+    },
+    {
+        QBInvoice:'15002',
+        name:'James Fenske',
+        QBShipdate:'10/08/2021',
+        QBShipaymentstatus:'<span class="alert alert-primary p-0"><i class="bi bi-check"></i>Paid</span>',
+        QBStatus:'shipped',
+         QBDeliveryPhone:'618-234-6400',
+         called:'yes',
+         QBTracking:'WBC-124',
+    },
+    
 ]
 $(document).ready(function () {
     var table = $('#status_table').DataTable({

@@ -23,7 +23,7 @@ body {
 
 } */
 /* ytte */
-/* .navbar-nav .nav-link {
+.navbar-nav .nav-link {
     position: relative;
 }
 
@@ -33,6 +33,7 @@ body {
     width: 33%;
     height: 2px;
     bottom: -23px;
+    top: 47px;
     left: 29px;
     background-color: #000;
     visibility: hidden;
@@ -44,7 +45,7 @@ body {
  {
     visibility: visible;
     transform: scaleX(1);
-} */
+}
 
 
 .adminImg {
