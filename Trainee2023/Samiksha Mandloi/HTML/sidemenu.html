@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Menu</title>
+    <style>
+        .main{
+            display: flex;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+            }
+
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            
+        }
+
+        .sidenav a:hover {
+        color: #f1f1f1;
+        background:rgb(103, 201, 240);
+
+        }
+
+        .form {
+            margin-left: 200px; 
+            font-size: 28px; 
+            padding: 0px 10px;
+            margin-right: 0px;
+        }
+
+        input[type=text], select {
+        width: 100%;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: 1px solid;
+        border-radius: 4px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="sidenav">
+            <a href="#">Dashboard</a><br>
+            <a href="#">Items</a><br>
+            <a href="#">Banking</a><br>
+            <a href="#">Sales</a><br>
+            <a href="#">Retainers Invoice</a><br>
+            <a href="#">Credit Notes</a><br>
+            <a href="#">Purchases</a><br>
+            <a href="#">Time Tracking</a><br>
+            <a href="#">Gst Filing</a><br>
+        </div>
+    <div class="form">
+        <h2 style="margin: auto; padding: auto;">New Customer</h2><br><hr>
+    <form>
+        <table>
+            <tr>
+                <td>Customer Type</td>
+                <td>Business<input type="radio" value="Busniess"></td>
+                <td>Individual<input type="radio" value="Individual"></td>
+            </tr>
+            <tr>
+                <td>Primary Contact</td>
+                <td><select name="Salutation">
+                    <option>Salutation</option>
+                    <option>Mr.</option>
+                    <option>Miss</option>
+                  </select></td>
+                  <td><input type="text" placeholder="First Name" id="fname" pattern="^[A-Za-z]{1,10}$" autofocus required></td>
+                  <td><input type="text" placeholder="Last Name" id="lname" required></td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td colspan="2"><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Customer Display Name</td>
+                <td colspan="2"><select required>
+                    <option></option>
+                    <option></option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Customer Email</td>
+                    <td colspan="2"><input type="text" required></td>
+                </tr>
+                <tr>
+                    <td>Customer Phone</td>
+                    <td><input type="text" placeholder="Work Phone" required></td>
+                    <td><input type="text" placeholder="Mobile" required></td>
+                </tr>
+                <tr>
+                    <td><a href="#">Add more details</a></td>
+                </tr>
+                <tr>
+                    <td>Website</td>
+                    <td><input type="text" required></td>
+                </tr>
+        </table>
+        <div>
+            <button style="background-color:skyblue;" type="submit">Save</button>
+            <button input type="button">Cancel</button>
+        </div>
+    </form>
+    </div>
+    </div>
+</body>
+</html>

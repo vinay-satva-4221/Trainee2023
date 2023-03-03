@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            color: #f1f1f1;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a,
+        .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover,
+        .dropdown-btn:hover {
+            color: #f1f1f1;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 200px;
+            /* Same as the width of the sidenav */
+            font-size: 20px;
+            /* Increased text to enable scrolling */
+            padding: 0px 10px;
+        }
+
+        /* Add an active class to the active dropdown button */
+        .active {
+            background-color: green;
+            color: white;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+            .sidenav a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <ul style="list-style: none;">
+            <li>Dashboard</li><br>
+            <li>Items</li><br>
+            <li>Banking</li><br>
+            <li>Sales</li><br>
+            <li>Customers</li><br>
+            <li>Retainer Invoices</li><br>
+            <li>Invoices</li><br>
+            <li>Payments received</li><br>
+            <li>Recurring Invoices</li><br>
+            <li>Credit Notes</li><br>
+            <li>Purchases</li><br>
+            <li>Time Tracking</li><br>
+            <li>e-way Bills</li><br>
+            <li>GST Filling</li><br>
+        </ul>
+
+
+
+    </div>
+
+    <div class="main">
+        <h2>New Customer</h2>
+        <hr>
+        <form>
+            <label for="type">Customer Type &nbsp;</label>
+            <input type="radio" name="Business" value="Business"> Business
+            <input type="radio" name="Individual" value="Individual"> Individual<br><br>
+            <label for="contact">Primary Contact &nbsp;</label>
+            <select id="sal" name="sal">
+                <option value="Mr">Mr. </option>
+                <option value="Mrs. ">Mrs. </option>
+            </select>
+            <input type="text" id="text" name="fname" placeholder="First Name" required autofocus>
+            <input type="text" id="text" name="lname" placeholder="Last Name" required><br><br>
+            <label for="cname">Company Name &nbsp;</label>
+            <input type="text" id="cname" name="lname"><br><br>
+            <label for="cdn">Customer Display name</label>
+            <input type="text" id="cdn" name="cdn"><br><br>
+
+            <label for="email">Customer Email</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="phone">Customer Phone</label>
+            <input type="tel" id="phone" name="Work Phone" placeholder="Work Phone" required>
+            <input type="tel" id="phone" name="phone" placeholder="Mobile" required><br><br>
+            <h5 style="color: blue;">Add More Details</h4>
+                <label for="url">Website </label>
+                <input type="url" placeholder="http://github.com" id="url" required>
+                <br><br>
+                <input type="submit" value="Submit">
+                <input type="submit" value="Cancel">
+
+    </div>
+    </form>
+
+</body>
+
+</html>

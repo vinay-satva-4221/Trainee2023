@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dashboard</title>
+
+      <!-- Bootsrap Cdn  -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+
+      <!-- font awsome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+      <!-- datatable -->
+      <link src="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+
+      <link rel="stylesheet" href="./css/dashboard.css" />
+
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /> -->
+
+      <!-- jquery bottom and 2 jquery links -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg">
+         <div class="container-fluid" style="background-color: white">
+            <div class="navbar-brand">
+               <img src="./Images/02.png" style="height: 28px; width: 215px" alt="" />
+            </div>
+            <button
+               class="navbar-toggler"
+               type="button"
+               data-bs-toggle="collapse"
+               data-bs-target="#navbarResponsive"
+               aria-controls="navbarResponsive"
+               aria-expanded="false"
+               aria-label="Toggle navigation"
+            >
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+               <div class="tabs mx-auto" id="navlinks">
+                  <ul class="navbar-nav">
+                     <li class="nav-link">
+                        <a href="./dashboard.html" class="nav-item nav-link fw-bold mx-3 active" style="text-decoration: none">Dashboard</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="./stock.html" class="nav-item nav-link mx-3" style="text-decoration: none">Stock</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="status.html" class="nav-item nav-link mx-3" style="text-decoration: none">Status</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="assignment.html" class="nav-item nav-link mx-3" style="text-decoration: none">Assignment</a>
+                        <div class="underline"></div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="d-flex align-items-center" style="height: 80px; width: 200px">
+               <div class="row">
+                  <div class="col-3">
+                     <img src="./Images/person1.jfif" class="rounded-circle" height="50px" width="50px" alt="" />
+                  </div>
+                  <div class="col-6 text-center mt-3">
+                     <p class="small mb-0" id="">Welcome</p>
+                     <p id="user" class="small mb-0"></p>
+                  </div>
+                  <div class="col-3 text-right">
+                     <button class="btn btn-outline-secondary border-0 mt-3" id="logout" onclick="logout()">
+                        <i class="fa fa-sign-out"></i>
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </nav>
+
+      <div class="container-fluid me-5">  
+         <span class="heading">Dashboard</span>
+
+         <div class="main">
+            <div class="form-group has-search">
+               <span class="fa fa-search form-control-feedback"></span>
+               <input type="text" id="search" class="form-control" placeholder="Search" />
+            </div>
+         </div>
+
+         <table id="dashboardTable" class="table">
+            <thead class="table-dark">
+               <tr>
+                  <th id="partNumber">Part Number</th>
+                  <th class="text-center">In WareHouse</th>
+                  <th class="text-center">Available</th>
+                  <th class="text-center">C100</th>
+                  <th class="text-center">C101</th>
+                  <th class="text-center">C102</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Stock Location</td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-center">On Water</td>
+                  <td class="text-center">In Production</td>
+                  <td class="text-center">On Water</td>
+               </tr>
+               <tr>
+                  <td>ETA Date</td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-center">10/08/2022</td>
+                  <td class="text-center">10/08/2022</td>
+                  <td class="text-center">10/08/2022</td>
+               </tr>
+               <tr>
+                  <td>BW-01-S-M</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >3</a
+                     >
+                  </td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">0</td>
+               </tr>
+               <tr>
+                  <td>BW-03-XL-G</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >2</a
+                     >
+                  </td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">0</td>
+               </tr>
+               <tr>
+                  <td>BW-01-S-M</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >3</a
+                     >
+                  </td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">1</td>
+               </tr>
+               <tr>
+                  <td>BW-01-L</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >4</a
+                     >
+                  </td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">1</td>
+               </tr>
+               <tr>
+                  <td>AW-01</td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >1</a
+                     >
+                  </td>
+                  <td class="text-center">0</td>
+                  <td class="text-center">1</td>
+               </tr>
+               <tr>
+                  <td>AG-M</td>
+                  <td class="text-center">2</td>
+                  <td class="text-center">4</td>
+                  <td class="text-center">
+                     <a
+                        href="JavaScript:void(0);"
+                        data-toggle="popover"
+                        title="Assigned to"
+                        data-content="Some content inside the popover"
+                        style="text-decoration: none"
+                        >2</a
+                     >
+                  </td>
+                  <td class="text-center" d class="text-center">3</td>
+                  <td class="text-center">22</td>
+               </tr>
+            </tbody>
+         </table>
+         <div id="popover-content" class="d-none p-0">
+            <div class="row p-0 m-0">
+               <div class="col-md-8">
+               </div>
+               <div class="col-md-2">
+               </div>
+               <div class="col-md-6">
+                   <p class="text-success"> Ordered: 3</p>
+               </div>
+               <div class="col-md-6">
+                   <p class="text-danger">Assigned: 2</p>
+               </div>
+               <div class="col-md-12">
+                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Manuel Pimentel</p>
+   
+               </div>
+               <div class="col-md-12">
+                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger"></i> Dave Pimentel</p>
+               </div>
+           </div>
+         </div>
+
+         <script src="./js/dashboard.js"></script>
+         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+         <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+         <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+         <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+         <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+         <!-- popover -->
+         <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+            integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+         ></script>
+   </body>
+</html>
+
+<!-- # ki jagah -->
+<!-- javascript:void(0) -->

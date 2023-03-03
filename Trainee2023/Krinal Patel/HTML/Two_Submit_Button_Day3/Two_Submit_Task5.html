@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Table Using Two Buttons</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: rgb(63, 62, 62);
+        }
+        h2{
+            text-align: left;
+            font-size: 50px;
+            color: rgb(63, 62, 62);
+        }
+        
+        table, td, th {
+            border: 1px solid;
+            padding: 10px;
+            width: 200px;
+            text-align: left;
+        }
+
+        table {
+            width: fit-content;
+            border-collapse: collapse;
+            
+            
+        }
+        button{
+            padding: 10px;
+            width: 150px;
+            border-radius: 8px;
+            background-color: rgb(59, 134, 196);
+            border-style: none;
+            font-weight: bold;
+            color: white;
+            height: 40px;
+        }
+        .name{
+            padding-bottom: 10px;
+            font-weight: bold;
+            
+        }
+        #name{
+            height: 30px;
+            width : 300px;
+
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="mainDiv">
+        <h1>
+            Two Submit Buttons with Different Actions 
+        </h1>
+
+        <hr>
+        <form class="form">
+            <div>
+                <h3>
+                    Enter your name :
+                </h3>
+            </div>
+            <div class="name">
+                <input type="text" name="name" id="name">
+            </div>
+            
+            <div>
+                <button type="button" onclick="changeContent(this)" >Submit 1</button> 
+                <button type="button" onclick="changeContent(this)" >Submit 2</button>
+            </div>
+            
+        </form>
+    </div>
+    <br>
+    <div class="mainDiv">
+        <table id="tableData">
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Submitted Via
+                </th>
+            </tr>
+            <tr>
+                <td id="setName1">Text 1</td>
+                <td id="setButton1">Submit 1</td>
+            </tr>
+            <tr>
+                <td id="setName2">Text 2</td>
+                <td id="setButton2">Submit 2</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function changeContent(e)
+        {
+            var name  = document.getElementById('name').value;
+            console.log(name);
+            var getButton = (e.innerText);
+            console.log(getButton);
+            if(getButton=="Submit 1")
+            {
+                document.getElementById('setName1').innerText = name;
+                document.getElementById('setButton1').innerText = getButton;
+            }
+            else{
+                document.getElementById('setName2').innerText = name;
+               document.getElementById('setButton2').innerText = getButton;
+            }
+        
+        }
+        
+            
+    </script>
+</body>
+</html>

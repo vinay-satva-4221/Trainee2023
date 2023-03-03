@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+
+
+    <link rel="stylesheet" href="https://bossanova.uk/jspreadsheet/v4/jexcel.css" type="text/css" />
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+    <script src="https://bossanova.uk/jspreadsheet/v4/jexcel.js"></script>
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="demo">
+    </div>
+
+    <div class="container mt-5">
+        <div class="col-md-4 col-sm-12">
+            <input type="text" class="form-control mb-4" id="number">
+            <button class="btn btn-primary mx-3" onclick="addRow()">Add Row</button>
+            <button class="btn btn-danger" onclick="table.deleteRow(1,0);">Delete Last Row</button>
+        </div>
+    </div>
+
+    <div class="col-md-10 col-sm-12" style="margin-left: 100px;">
+        <table id="mytable" class="table table-responsive table-bordered mt-5" style="border: 1px solid rgb(0, 0, 0);">
+            <tr style="background-color: rgb(43, 42, 42); color: white;">
+                <th>SR. No</th>
+                <th>Project Name</th>
+                <th>TimeLogDate</th>
+                <th>Phase</th>
+                <th>Status</th>
+                <th>LoggedHours</th>
+                <th>BillableHours</th>
+                <th>Notes</th>
+                <th>OutOfStock</th>
+                <th>BC Link</th>
+                <th>BC Description</th>
+            </tr>
+            <tbody id="thata">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="./JexcelUsingJquery.js"></script>
+    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

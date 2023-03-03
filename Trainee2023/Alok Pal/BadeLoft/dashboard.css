@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    overflow-y: hidden;
+}
+
+.dashboard_heading {
+    font-size: 22px;
+    margin-left: -10.5%;
+}
+
+thead {
+    background-color: black;
+    border-radius: 1em;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+table {
+    font-size: small;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.bodybackgroud {
+    background-color: #F7F8FA;
+}
+
+/* .dataTables_paginate, .paging_simple_numbers
+{
+    margin-bottom: 5%;
+} */
+
+.dashboardTableDiv {
+    width: 94%;
+}
+
+#dashboard_table {
+    width: 100%;
+}
+
+.theadTable {
+    font-size: 12px;
+    color:
+        white;
+    font-weight: 400;
+}
+
+.fa-solid {
+    color: #858585;
+}
+
+#dashboard_search {
+    width: 90%;
+}
+
+.D_search {
+    margin-right: -8.5%;
+    width: 29%;
+}
+
+
+
+/* color the number in table */
+
+.dataColor {
+    color: rgb(95, 159, 248);
+}
+
+
+/* table font */
+
+a {
+    text-decoration: none;
+}
+
+/* .active {
+    border-bottom: 2px solid black;
+    height: 60px;
+    color: black;
+    font-weight: bold;
+} */
+
+
+
+/* pagination title shift */
+.dataTables_info {
+    margin-left: 66%;
+}
+
+
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+    font-weight: 300;
+    height: 59%;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+
+}
+
+li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+}
+
+li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+
+}
+
+.paginate_button.current {
+    background-color: black;
+}
+
+a.page-link {
+    height: 60%;
+    padding-top: 10%;
+}
+
+
+.dataTables_info {
+    margin-left: 75%;
+}
+
+table.dataTable thead>tr>th.sorting:before,
+table.dataTable thead>tr>th.sorting:after,
+table.dataTable thead>tr>th.sorting_asc:before,
+table.dataTable thead>tr>th.sorting_asc:after,
+table.dataTable thead>tr>th.sorting_desc:before,
+table.dataTable thead>tr>th.sorting_desc:after,
+table.dataTable thead>tr>th.sorting_asc_disabled:before,
+table.dataTable thead>tr>th.sorting_asc_disabled:after,
+table.dataTable thead>tr>th.sorting_desc_disabled:before,
+table.dataTable thead>tr>th.sorting_desc_disabled:after,
+table.dataTable thead>tr>td.sorting:before,
+table.dataTable thead>tr>td.sorting:after,
+table.dataTable thead>tr>td.sorting_asc:before,
+table.dataTable thead>tr>td.sorting_asc:after,
+table.dataTable thead>tr>td.sorting_desc:before,
+table.dataTable thead>tr>td.sorting_desc:after,
+table.dataTable thead>tr>td.sorting_asc_disabled:before,
+table.dataTable thead>tr>td.sorting_asc_disabled:after,
+table.dataTable thead>tr>td.sorting_desc_disabled:before,
+table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    position: absolute;
+    display: block;
+    opacity: .125;
+    right: 129px;
+    line-height: 9px;
+    font-size: .8em;
+}
+
+
+
+
+@media only screen and (max-width: 575px) {
+    .Dlogo {
+        width: 165px;
+        margin-left: -2%;
+    }
+}
+
+
+
+.popover {
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    transform: translate(782px, 172px);
+    width: 16%;
+    /* height: 43%; */
+}
+
+
+.userCol {
+    color: red;
+}
+
+.cross {
+    margin-left: 74%;
+    /* padding-top: -10%; */
+    /* position: reltive; */
+    position: absolute;
+}
+
+
+
+
+/* paginate height */
+#dashboard_table_next {
+    height: 0% !important;
+}
+
+#dashboard_table_previous {
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active {
+    height: 0% !important;
+}
+
+
+
+/* search icon */
+/* .bi-search::before {
+    content: "\f52a";
+    position: absolute;
+    top: 13%;
+    right: 21.1%;
+    font-size: 14px;
+    outline: none;
+} */
+
+
+
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 21.2%;
+    font-size: 14px;
+}
+
+.dashboard_search{
+    outline: none;
+}

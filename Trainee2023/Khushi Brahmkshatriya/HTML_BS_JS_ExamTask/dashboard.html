@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="./bs5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    
+</head>
+
+<body>
+    <header id="AddNavbar"></header>
+    <section>
+        <div class="container-fluid">
+            <div class="bg-light px-5 h-100">
+                <div class="row pt-3">
+                    <div class="col-md-4">
+                        <h4 class=" fw-bolder">Dashboard</h4>
+                    </div>
+                    <div class="col-md-8 d-flex justify-content-end">
+
+                        <div id="example_filter" class="dataTables_filter  px-3">
+                            <input class="form-control fw-light " type="search"  placeholder="&#xF002; Search Here" aria-label="Search"
+                                id="txtSearch" style="font-family:Arial, FontAwesome" >
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="table-responsive w-100 h-100">
+                        <table id="dashboardTable" class="table border w-100 h-100 datatableStyle">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="popover-form" class="d-none p-0">
+        <div class="row p-0 m-0 col-12">
+            <div class="col-md-12">
+                <p class="text-start text-dark fw-bold">Assigned to <i class="bi bi-x fs-5 float-end"></i></p>
+            </div>
+            
+            <div class="col-md-12">  
+                <p class="text-success">Ordered:3 <span class="text-secondary px-3">|</span><span class="text-danger text-start">Assigned:2</span></p>
+            </div>
+
+            <!-- <div class="col-md-6">
+                <p class="text-danger text-start">Assigned:2</p>
+            </div> -->
+            <div class="col-md-12">
+                <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Manuel Pimentel</p>
+                <hr class="text-secondary bg-secondary">
+            </div>
+            <div class="col-md-12">
+                <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Dave Pimentel</p>
+            </div>
+        </div>
+    </div>
+    <script src="./bs5/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="./bs5/js/bootstrap.min.js"></script>
+    <script src="./bs5/js/bootstrap.bundle.min.js"></script>
+    <script src="./dashboard.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.3/sorting/absolute.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+   
+</body>
+
+</html>

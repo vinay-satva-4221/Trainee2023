@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <title>form validation</title>
+    <style>
+      .main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+      }
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: 1px solid;
+        border-radius: 4px;
+      }
+      a {
+        text-decoration: none;
+      }
+      aside {
+        background: rgb(9, 199, 233);
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 20px 0;
+      }
+      aside ul li a {
+        display: block;
+        padding: 15px;
+        color: rgb(241, 237, 237);
+        font-size: 16px;
+        margin-left: -25%;
+      }
+      aside ul li a .icon {
+        color: #dee4ec;
+        width: 30px;
+        display: inline-block;
+      }
+      aside ul li a:hover,
+      aside ul li a.active {
+        color: white;
+        background: rgb(103, 201, 240);
+      }
+      button {
+        border: none;
+        padding: 12px 23px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <aside style="width: 150px">
+        <ul style="list-style-type: none">
+          <li>
+            <a href="#" class="active">
+              <span><b><u> Dashboard </u></b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><b>Items</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><b></b>Banking</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><b>Purchases</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span><b>Time Tracking</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>e-Way Bills</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>GST Filling</b></span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <section style="width: calc(100vw - 200px)">
+        <h2>New Customer</h2>
+        <hr />
+        <form>
+          <table>
+            <tr>
+              <td>Customer Type</td>
+              <td>
+                <label for="Business">Business</label>
+                <input type="radio" name="Business" value="Business" />
+              </td>
+              <td>
+                <label for="Individual">Individual</label>
+                <input type="radio" name="Individual" value="Individual" />
+              </td>
+            </tr>
+            <tr>
+              <td>Primary Contact</td>
+              <td>
+                <select name="Salutation">
+                  <option>Salutation</option>
+                  <option>Mr.</option>
+                  <option>Miss</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  id="fname"
+                  pattern="^[A-Za-z]{1,10}$"
+                  required
+                  autofocus
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id="lname"
+                  pattern="^[A-Za-z]{1,10}$"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>Company Name</td>
+              <td colspan="2"><input type="text" required /></td>
+            </tr>
+            <tr>
+              <td>Customer Display Name</td>
+              <td colspan="2">
+                <select required>
+                  <option>Prerna</option>
+                  <option>Prerna1</option>
+                  <option>Prerna2</option>
+                  <option>Prerna3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Customer Email</td>
+              <td colspan="2"><input type="email" required /></td>
+            </tr>
+            <tr>
+              <td>Customer Phone</td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Work Phone"
+                  size="10"
+                  required
+                />
+              </td>
+              <td>
+                <input type="text" placeholder="Mobile" size="10" 
+                pattern="^[0-9]{1,10}$"
+                required />
+              </td>
+            </tr>
+            <tr>
+              <td><a href="#">Add more details</a></td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td colspan="2"><input type="url" required /></td>
+            </tr>
+            <br />
+            <tr>
+              <td>
+                <button style="background-color: rgb(16, 189, 241)">
+                  Save
+                </button>
+                <button>Cancel</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>

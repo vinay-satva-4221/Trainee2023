@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="CSS\bootstrap.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 7px;
+        }
+
+        body {
+            background-color: #f1f1f1;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #regForm {
+            background-color: lightgray;
+            margin: 100px auto;
+            font-family: Roboto;
+            padding: 40px;
+            width: 70%;
+            min-width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 17px;
+            font-family: Raleway;
+            border: 1px solid #aaaaaa;
+        }
+
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+            background-color: #ffdddd;
+        }
+
+        /* Hide all steps by default: */
+        .tab {
+            display: none;
+        }
+
+        button {
+            background-color: #04AA6D;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 17px;
+            font-family: Raleway;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #prevBtn {
+            background-color: #bbbbbb;
+        }
+
+        /* Make circles that indicate the steps of the form: */
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color: #04AA6D;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="regForm">
+        <!-- One "tab" for each step in the form: -->
+
+        <div class="tab">
+            <div>
+                <h1 style="text-align:center">Registration</h1>
+            </div>
+            <div>
+                <h3><b>PERSONAL DETAILS</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="First name..." id="fname" onchange="return validatefname()"
+                            oninput="this.className = ''" name="fname">
+                        <p id="invalid_msg"></p>
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Last name..." id="lname" onchange="return validatelname()"
+                            oninput="this.className = ''" name="lname">
+                        <p id="invalid_msg1"></p>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-select " id="gen" onchange="return validategender()"
+                        aria-label="Default select example">
+                        <option value=""> Select Gender </option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <p id="genmsg"></p>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-lg-12">
+                    <p><input placeholder="Enter Zip Code..." id="zip" onchange="return validatezip()"
+                            oninput="this.className = ''" name="zip">
+                        <p id="invalid_msg2"></p>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <h3><b>PROFILE INFORMATION</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="E-mail..." id="email" onchange="return validateemail()"
+                            oninput="this.className = ''" name="email">
+                        <p id="invalid_msg3"></p>
+
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Username" id="usr" onchange="return validateusername()"
+                            oninput="this.className = ''" name="username">
+                        <p id="invalid_msg4"></p>
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="password" placeholder="Password" id="pass" onchange="return checkPassword()"
+                            oninput="this.className = ''" name="Password">
+                        <p id="invalid_msg5"></p>
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="password" placeholder="Confirm Password" onchange="return verifyPassword()"
+                            id="cpass" oninput="this.className = ''" name="Confirm Password">
+                        <p id="invalid_msg6"></p>
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+            <div>
+                <h3><b>BANK INFORMATION</b></h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mt-3">
+                    <select class="form-select " id="bank" aria-label="Default select example"
+                        onchange="return validatebank()">
+                        <option selected disabled value="">Choose Bank..</option>
+                        <option value="SBI">SBI</option>
+                        <option value="PNB">PNB</option>
+                        <option value="Kotak">Kotak</option>
+                        <option value="HDFC">HDFC</option>
+
+                    </select>
+                    <p id="bankmsg"></p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <select class="form-select " id="branch" aria-label="Default select example"
+                        onchange="return validatebranch()">
+                        <option selected disabled value="">Choose Branch</option>
+                        <option value="Unjha">Unjha</option>
+                        <option value="Ahemdabad">Ahemdabad</option>
+                        <option value="Mehsana">Mehsana</option>
+                        <option value="Palanpur">Palanpur</option>
+                    </select>
+                    <p id="branchmsg"></p>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-select " id="account" aria-label="Default select example" onchange="return validatetype()">
+                        <option selected disabled value="">Choose Account</option>
+                        <option value="Current">Current</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Salary">Salary</option>
+
+                    </select>
+                    <p id="typemsg"></p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <p><input placeholder="Account Number" id="accn" onchange="return validate_acct_no()"
+                            oninput="this.className = ''" name="Account Number">
+                        <p id="invalid_msg7"></p>
+
+                    </p>
+
+                </div>
+            </div>
+            <!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> -->
+        </div>
+
+        <div class="tab">
+            <div>
+                <h3><b>PAYMENT INFORMATION</b></h3>
+            </div>
+            <div class="col-lg-12">
+                <select class="form-select " id="card" aria-label="Default select example"  onchange="return validate_card()">
+                    <option selected value="">Master Card</option>
+                    <option value="Visa">Visa</option>
+                    <option value="Rupay">Rupay</option>
+    
+                </select>
+                <p id="cardmsg"></p>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mt-3">
+                    <p><input placeholder="Holdername" id="hname" onchange="return validate_acc_holder()"
+                            oninput="this.className = ''" name="Holdername">
+                        <p id="invalid_msg8"></p>
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="Card Number" id="cnum" onchange="return validate_card_no()"
+                            oninput="this.className = ''" name="Card Number">
+                        <p id="invalid_msg9"></p>
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input placeholder="CVV" id="cvv" onchange="return validate_CVV()" oninput="this.className = ''"
+                            name="CVV">
+                        <p id="invalid_msg10"></p>
+
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><input type="month" placeholder="--/--/--" id="date" onchange="return validate_Exp()" oninput="this.className = ''" name="expiry">
+                        <p id="msgexp"></p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab">
+
+            <div class="mb-2 text-center">
+                <h3><b>USER DETAILS</b></h3>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    First Name:
+                </div>
+                <div class="col-lg-6 py-2">
+                    <p id="namef"></p>
+                </div>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Last Name:
+                </div>
+                <div class="col-lg-6 ">
+                    <p id="lname1"></p>
+                </div>
+            </div>
+
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Gender:
+                </div>
+                <div class="col-lg-6">
+                    <p id="gender1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Zip Code:
+                </div>
+                <div class="col-lg-6">
+                    <p id="zip1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Email:
+                </div>
+                <div class="col-lg-6">
+                    <p id="email1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Username:
+                </div>
+                <div class="col-lg-6">
+                    <p id="username1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Password:
+                </div>
+                <div class="col-lg-6">
+                    <p id="pass1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Bank Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="bank1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Branch Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="branch1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Account Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="acc1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Account Number:
+                </div>
+                <div class="col-lg-6">
+                    <p id="accn1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Payment Type:
+                </div>
+                <div class="col-lg-6">
+                    <p id="pay1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Holder Name:
+                </div>
+                <div class="col-lg-6">
+                    <p id="hname1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Card Number:
+                </div>
+                <div class="col-lg-6">
+                    <p id="cnum1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    CVV:
+                </div>
+                <div class="col-lg-6">
+                    <p id="cvv1"></p>
+                </div>
+            </div>
+            <div class="row border px-2 py-2">
+                <div class="col-lg-6">
+                    Expiry Date:
+                </div>
+                <div class="col-lg-6">
+                    <p id="date1"></p>
+                </div>
+            </div>
+
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </form>
+
+
+
+    <script src="button.js"> </script>
+
+</body>
+
+
+</html>

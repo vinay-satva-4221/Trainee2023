@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<body>
+
+  <div class="container mainC mt-2">
+    <div class="container">
+      <div class="container text-center ">
+        <p class="heading">
+          <b>
+            <h5>Request for Taxpayer Identification Number and Certification.</h5>
+          </b>
+        <p>Go to www.irs.gov/FormW9 for instructions and the latest information.</p>
+      </div>
+      <hr>
+      <form onsubmit="return nameV1()">
+        <div class="row mt-2 " id="colorC">
+          <div class="form-group form-line ">
+            <label for="" class="form-label " id="form-label">1. Name as shown on your income tax return Name is
+              required
+              on this
+              line; do not leave this line blank.</label><span class="star"><b>*</b></span>
+            <div class="col-md-8 col-sm-12 mt-2 text-center">
+              <input type="text" class="form-control form-textbox colorC1" id="inp1" onblur="return nameV1()">
+            </div>
+            <span id="error"><img src="./assets/exclamation-mark-in-a-circle (1).png" id="img" alt=""> This field is
+              required</span>
+          </div>
+        </div>
+        <div>
+        </div>
+
+        <div class=" row mt-3">
+          <div class="form-group form-line">
+            <label for="" class="form-label ">2. Business name/disregarded entity name, if different from
+              above</label></span>
+            <div class="col-md-8 col-sm-12 mt-2">
+              <input type="text" class="form-control colorC1">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Checkbox -->
+        <div class="row  mt-4">
+          <div class="col-md-7 col-sm-12 form-group form-line">
+            <label class="form-label colorC1" id="label_4" for="input_4"> 3. Check appropriate box for federal tax
+              classification of the person whose name is entered on line 1. Check only one of the following seven
+              boxes.</label>
+          </div>
+
+          <div class="chck">
+            <div class="form-check mt-2 ">
+              <input class="form-check-input  colorC1 " type="checkbox" onclick="cl()" value="" id="First">
+              <label class="form-check-label" for="First">
+                Individual/sole proprietor or single-member LLC
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input  colorC1" type="checkbox" value="" id="second">
+              <label class="form-check-label" for="second">
+                C Corporation
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="third">
+              <label class="form-check-label" for="third">
+                S Corporation
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="fourth">
+              <label class="form-check-label" for="fourth">
+                Partnership
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="fifth">
+              <label class="form-check-label" for="fifth">
+                Trust/estate
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input colorC1" type="checkbox" value="" id="sixth">
+              <label class="form-check-label" for="sixth">
+                Limited liability company.
+              </label>
+            </div>
+            <div class="form-check">
+              <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
+              <input class="form-check-input" type="checkbox" value="" name="chkbox"
+                onchange="return showHide(this.checked)" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Other
+              </label>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-8 col-sm-12">
+                <span id="hiddenfield" style="display:none;"><input type="text" class="form-control text-muted"
+                    name="hidden" placeholder="Please type another option here"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="form-group form-line">
+              <label for="" class="col-md-7 col-sm-12 ">If you selected "Limited liability company", enter the tax
+                classification (C=C corporation, S=S
+                corporation, P=Partnership)</label>
+              <div class="col-md-8 col-sm-12 mt-2">
+                <input type="text" class="form-control colorC1 " id="oth" maxlength="1">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- 4 -->
+        <div class="row mt-4">
+          <div class="form-group form-line">
+            <label for="" class="form-label ">4. Exemptions (codes apply only to certain entities, not individuals; see
+              instructions on page
+              3):</label>
+            <div class="col-md-8 col-sm-12 mt-3">
+              <label for="" class="text-muted form-label">Exempt payee code (if any)</label>
+              <input type="email" class="form-control mt-2 colorC1">
+            </div>
+            <div class="col-md-8 col-sm-12 mt-3">
+              <label for="" class="text-muted form-label">Exempt payee code (if any)</label>
+              <input type="email" class="form-control mt-2 colorC1">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 5 -->
+        <div class="row">
+          <div class="row mt-4">
+            <div class="form-group form-line">
+              <label for="" class="form-label">5. Address</label>
+              <div class="col-md-8 col-sm-12 mt-2 ">
+                <input type="text" class="form-control mb-1 colorC1 ">
+                <small class="form-text text-muted form-label ">Number,Street,and Apt. or Suite No.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">City</small>
+            </div>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">State</small>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="form-group form-label">
+              <div class="col-md-8 col-sm-12">
+                <input type="text" class="form-control mb-1 colorC1">
+                <small class="form-text text-muted">Zip Code</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row mt-4 form-label ">
+            <label for="">Requester's name</label>
+          </div>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">First Name</small>
+            </div>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">Last Name</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row mt-4">
+            <div class="form-group form-label ">
+              <label for="">Requester's address</label>
+              <div class="col-md-8 col-sm-12 mt-2">
+                <input type="text" class="form-control mb-1 colorC1">
+                <small class="form-text text-muted">Number,Street,and Apt. or Suite No.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">City</small>
+            </div>
+            <div class="media form-label">
+              <input type="text" class="form-control mb-1 colorC1">
+              <small class="form-text text-muted">State</small>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="form-group form-label ">
+              <div class="col-md-8 col-sm-12 colorC1">
+                <input type="text" class="form-control mb-1">
+                <small class="form-text text-muted colorC1">Zip Code</small>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="row mt-4 " id="colA">
+            <div class="col-md-8 col-sm-12 form-label">
+              <label for="">List account number(s) here (optional)</label>
+              <input type="text" class="form-control mt-3 mb-5 colorC1 col1 ">
+            </div>
+          </div>
+        </div>
+
+        <b>
+          <h4>Social security number</h4>
+          <div class="col-md-8 col-sm-12">
+            <hr>
+          </div>
+          <div class="row">
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text1" onkeyup="moveCursor(this,'text2')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num sn" name="numonly" maxlength="1"
+                minlength="0" placeholder="_" id="text2" onkeyup="moveCursor(this,'text3')">
+            </div>
+
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text3" onkeyup="moveCursor(this,'text4')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text4" onkeyup="moveCursor(this,'text5')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text5" onkeyup="moveCursor(this,'text6')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text6" onkeyup="moveCursor(this,'text7')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text7" onkeyup="moveCursor(this,'text8')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text8" onkeyup="moveCursor(this,'text9')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="text9" onkeyup="moveCursor(this,'text10')">
+            </div>
+          </div>
+        </b>
+
+
+
+
+        <b>
+          <h4 class="mt-5">Employer identification number</h4>
+          <div class="col-md-8 col-sm-12">
+            <hr>
+          </div>
+          <div class="row" id="security">
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" notdisabled>
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="-" disabled>
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="TEXT6" onkeyup="moveCursor(this,'TEXT7')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="TEXT7" onkeyup="moveCursor(this,'TEXT8')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="TEXT8" onkeyup="moveCursor(this,'TEXT9')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_" id="TEXT9" onkeyup="moveCursor(this,'TEXT10')">
+            </div>
+            <div class="security_media">
+              <input type="text" class="form-control m-1 text-center sec_num" name="numonly" maxlength="1" minlength="0"
+                placeholder="_">
+            </div>
+          </div>
+        </b>
+
+        <div class="row mt-3">
+          <div class="media">
+            <label for="">Signature</label>
+            <div>
+              <div class="form-control mt-3">
+                <canvas id="signature"></canvas>
+              </div>
+            </div>
+            <div style="text-align:right;" class="mt-2">
+              <button type="button" id="clear-signature" class="btn btn butn-Clr  p-0 px-2">Clear</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-2 ">
+          <div class="media">
+            <label for="">Date</label>
+            <input type="text" class="form-control mb-1 mt-2 colorC1" name="date">
+            <small class="form-text text-muted">Date</small>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div>
+            <button class="btn btn-success butn-Sub mb-3">Submit</button>
+          </div>
+        </div>
+    </div>
+
+    </form>
+
+  </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.3.4/signature_pad.js"
+  integrity="sha512-j36pYCzm3upwGd6JGq6xpdthtxcUtSf5yQJSsgnqjAsXtFT84WH8NQy9vqkv4qTV9hK782TwuHUTSwo2hRF+/A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="index.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+</html>
