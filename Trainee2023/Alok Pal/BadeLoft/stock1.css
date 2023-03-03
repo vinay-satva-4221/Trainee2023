@@ -273,10 +273,13 @@ a.page-link{
     padding-top: 10%;
 }
 
+
+
+/* search icon */
 .searchicon{
     position: absolute !important;
     top: 78px;
-    right: 347px;
+    right: 22.3%;
     font-size: 14px;
 }
 
@@ -304,4 +307,17 @@ a.page-link{
  {
     visibility: visible;
     transform: scaleX(1);
+}
+
+
+/* paginate height */
+#stock_table_next{
+    height: 0% !important;
+}
+#stock_table_previous{
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active{
+    height: 0% !important;
 }
