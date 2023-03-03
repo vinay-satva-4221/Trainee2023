@@ -33,19 +33,19 @@
                     </div>
                     <div class="col-md-8 d-flex justify-content-end">
                         <button type="button" class="btn buttonColor text-white" data-bs-toggle="modal"
-                            data-bs-target="#assignmentModal">+ New
+                            data-bs-target="#assignmentModal" id="newAssignment">+ New
                         </button>
 
                         <div id="example_filter" class="dataTables_filter  px-3">
-                            <input class="form-control" type="search" placeholder="&#xF002; Search Here"
-                                aria-label="Search" id="myCustomSearchBox" style="font-family:Arial, FontAwesome">
+                            <input class="form-control" type="search" placeholder="&#xF002; Search Here..." aria-label="Search"
+                            id="txtSearch" style="font-family:Arial, FontAwesome" >
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="table-responsive w-100 h-100">
-                        <table id="assignmentTable" class="table border w-100 h-100 datatableStyle">
+                        <table id="assignedparttable" class="table border w-100 h-100 datatableStyle">
 
                         </table>
                     </div>
@@ -92,48 +92,30 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="part" class="form-label text-secondary">Parts</label>
-                                <!-- <select class="js-example-basic-multiple" id="parts" name="states[]" multiple="multiple">
+                            <select class="partnumbers" id="parts" name="parts[]" multiple="multiple">
 
                                 </select>
-                                                             -->
-                                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                    <option value="WY">Wyoming</option>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                </select>
-
-                                <!-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                      ...
-                                    <option value="WY">Wyoming</option>
-                                  </select> -->
-                             
-                                <!-- <select name="parts" id="parts" class="form-control " multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option selected value="CA">California</option>
-                            
-                                  </select> -->
+                                                             
                             </div>
 
                             <div class="col-md-2">
                                 <label for="add" class="form-label text-white">add</label>
                                 <button type="button" class="btn buttonColor text-white w-100"
-                                    id="saveAssignment">Add</button>
+                                    id="addPartsToStock">Add</button>
                             </div>
                         </div>
                     </form>
+                    <div class="table-responsive mt-2">
+                        
+                        <table class="table border w-100 h-100 datatableStyle" id="partTable"></table>
 
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-start">
 
                     <button type="button" class="btn buttonColor text-white" data-bs-dismiss="modal"
-                        id="saveStock">Save</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        id="saveAssignments">Save</button>
+                    <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

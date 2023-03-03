@@ -12,9 +12,16 @@ window.onload = () => {
 
 
 $(document).ready(function () {
+    $("newButton").click(function () {
+        document.getElementById("addstockform").reset();
+        $('#AddNewStockModal').html('Add New Stock');
+        $('#save_outer').text('Save');
+    });
+
     var stockdata = JSON.parse(localStorage.getItem('stock'));
     // console.log(stockdata);
     var button = document.getElementById("newButton");
+
     var table = $('#StockTable ').DataTable({
         "fnInitComplete": function () {
             $('#StockTable_length').html('<h4><strong>Stock</strong></h4>');
@@ -34,8 +41,17 @@ $(document).ready(function () {
             { data: 'createdDate', title: 'Created Date', 'sortable': false },
             { data: 'note', title: 'Notes', 'sortable': false },
             {
-                data: 'Action', title: 'Action', 'sortable': false, className: "dt-center editor-edit",
-                defaultContent: '<button class="btn edit-row"><i class="bi bi-pencil-fill text-secondary fw-bolder"/></button>'
+                // data: 'Action', title: 'Action', 'sortable': false, className: "dt-center editor-edit",
+                // defaultContent: '<button class="btn edit-row"><i class="bi bi-pencil-fill text-secondary fw-bolder"/></button>'
+                data: 'Action',
+                title: 'Action',
+                className: 'text-end',
+                render: function (data, type, row) {
+                    return (
+                        '<i class="fa fa-pencil edit-row mx-2 p-0"></i>' +
+                        '<i class="fa fa-history mx-3 p-0"></i>'
+                    );
+                },
             }
         ],
         columnDefs: [
@@ -65,6 +81,7 @@ $(document).ready(function () {
 
 
     $('#save_inner').on('click', function () {
+        
         var partnum = $('#part_num').val();
         var invoice = counter++;
         var ordered = $('#ordered').val();
@@ -99,13 +116,57 @@ $(document).ready(function () {
     });
 
 
+    var names = []; // array to hold names
     $('#save_outer').on('click', function () {
+
+        // document.getElementById("addstockform").reset();
+        
 
         var name = $('#stock_name').val();
         var etaDate = $('#eta_date').val();
         var stocklocation = $('input[name="btnradio"]:checked').next('label').text();
         var note = $('#note').val();
-        console.log(note);
+
+        // Perform validation checks here
+        var isValid = true;
+        if (name.trim() === '') {
+            $('#stock_name').addClass('is-invalid');
+            swal("Error", "Enter Correct name", "error");
+            isValid = false;
+        }
+        else if ($.inArray(name, names) !== -1) { // check if name already exists in array
+            $('#stock_name').addClass('is-invalid');
+            swal("Error",'Stock name already exists, please enter a different name', "error");
+            return;
+        }
+        else {
+            $('#stock_name').removeClass('is-invalid');
+        }
+
+        if (!isValid) {
+            return false;
+        }
+
+        var name = $('#stock_name').val(); // get input value
+        if (name.trim() === '') { // validate if name is empty
+            alert('Please enter a name');
+            return;
+        }
+        if ($.inArray(name, names) !== -1) { // check if name already exists in array
+            alert('Name already exists, please enter a different name');
+            return;
+        }
+        
+        names.push(name); // add name to array
+
+        // reset the form and close the modal
+        $('#addstockform')[0].reset();
+
+        // display name in list
+        $('#nameList').append('<li>' + name + '</li>');
+
+        // Add the new name to the list of names
+        names.push(name);
 
         var activeuser = JSON.parse(localStorage.getItem("loggUser"));
         console.log(activeuser)
@@ -148,60 +209,85 @@ $(document).ready(function () {
 
         var stockData = JSON.parse(localStorage.getItem('stock')) || [];
 
-        stockData.push(finaldata);
+        if (isEditMode) {
+            // If in edit mode, find and replace the existing row with the new data
+            var index = table.row('.selected').index();
+            stockData[index] = finaldata;
+        } else {
+            // If in add mode, append the new data to the end of the array
+            stockData.push(finaldata)
+        }
+
+        // stockData.push(finaldata);
         localStorage.setItem('stock', JSON.stringify(stockData));
 
         table.clear().rows.add(stockData).draw();
 
+        // $('#stock_name').val('');
+        // $('#eta_date').val('');
+        // $('#note').val('');
+        // $('#inner-table tbody').empty();
+        // $('input[name="btnradio"]').prop('checked', false);
+
         $('#stock_name').val('');
         $('#eta_date').val('');
-        $('#note').val('');
-        $('#inner-table tbody').empty();
         $('input[name="btnradio"]').prop('checked', false);
+        $('#note').val('');
+        $('#inner_table tbody').empty();
 
 
-        //$("#StockTable Modal").modal("hide")
+        // Hide the modal
+        $('#outerModal').modal('hide');
+
+        //$("#StockTable Modal").modal("hide")    
     });
+
     $('#save_outer').on('click', function () {
         $("#inner_table tbody").empty();
     });
 
 
-$('#StockTable tbody').on('click', '.edit-row', function () {
-    var tr = $(this).closest('tr');
-    var row = table.row(tr);
-    var data = row.data(); // Get the data from the row
+    var isEditMode = false; // flag to indicate edit mode
+    $('#StockTable tbody').on('click', '.edit-row', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+        var data = row.data(); // Get the data from the row
 
-    // Populate the edit form with the data
-    $('#stock_name').val(data.name);
-    $('#note').val(data.etaDate);
-    $('input[name="btnradio"][value="' + data.stocklocation + '"]').prop('checked', true);
+        // Populate the edit form with the data
+        $('#stock_name').val(data.name);
+        $('#note').val(data.etaDate);
+        // $('input[name="btnradio"][value="' + data.stocklocation + '"]').prop('checked', true);
+        data.stocklocation = $('input[name="btnradio"]:checked').data('stock-location');
 
-    // Show the edit modal
-    $('#outerModal').modal('show');
+        // Show the edit modal
+        $('#outerModal').modal('show');
 
-    $('#save_outer').off('click').on('click', function () {
-        // Update the data of the selected row with the new values 
-        data.name = $('#stock_name').val();
-        data.etaDate = $('#note').val();
-        data.stocklocation = $('input[name="btnradio"]:checked').val();
+        $('#AddNewStockModal').html('Edit New Stock');
+        $('#save_outer').text('Update');
 
-        // Update the existing row's data
-        row.data(data);
-        
-        table.draw();
+        // $('#AddNewStockModal').html('Edit New Stock');
+        $('#save_outer').on('click', function () {
 
-        // Hide the edit modal
-        $('#outerModal').modal('hide');
+            // Update the data of the selected row with the new values 
+            data.name = $('#stock_name').val();
+            data.etaDate = $('#note').val();
+            data.stocklocation = $('input[name="btnradio"]:checked').val();
 
-        var rowData = table.rows().data().toArray();
-        localStorage.setItem('stock', JSON.stringify(rowData));
+            // Update the existing row's data
+            row.data(data);
+
+            table.draw();
+
+            // Hide the edit modal
+            $('#outerModal').modal('hide');
+
+            var rowData = table.rows().data().toArray();
+            localStorage.setItem('stock', JSON.stringify(rowData));
+
+            isEditMode = false; // reset edit mode flag
+        });
+        isEditMode = true; // set edit mode flag
     });
-});
-
-
-    
-
 
 
     $('#StockTable  tbody').on('click', 'td.dt-control', function () {

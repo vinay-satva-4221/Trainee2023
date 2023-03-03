@@ -15,30 +15,30 @@ var data = {
    "Alex John": ["15005"],
 };
 
-var categorySelect = document.getElementById("category");
-for (var category in data) {
+var customerSelect = document.getElementById("customer");
+for (var customer in data) {
    var option = document.createElement("option");
-   option.value = category;
-   option.text = category;
-   categorySelect.add(option);
+   option.value = customer;
+   option.text = customer;
+   customerSelect.add(option);
 }
 
-
 var invoiceSelectt = document.getElementById("invoice");
-categorySelect.addEventListener("change", function () {
+customerSelect.addEventListener("change", function () {
    invoiceSelectt.innerHTML = "";
-   var selectedCategory = this.value;
-   if (selectedCategory != "") {
-      var subcategories = data[selectedCategory];
-      for (var i = 0; i < subcategories.length; i++) {
+   var selectedCustomer = this.value;
+   if (selectedCustomer != "") {
+      var subcustomer = data[selectedCustomer];
+      for (var i = 0; i < subcustomer.length; i++) {
          var option = document.createElement("option");
-         option.value = subcategories[i];
-         option.text = subcategories[i];
+         option.value = subcustomer[i];
+         option.text = subcustomer[i];
          invoiceSelectt.add(option);
       }
    }
 });
 
+//StockName selectBox
    var StockDetails = JSON.parse(localStorage.getItem("stockDetail"));
    var select = document.getElementById("stock");
 
@@ -50,7 +50,20 @@ categorySelect.addEventListener("change", function () {
       select.appendChild(option);
 }
 
-var customer = document.getElementById("category").value;
+// //partsName selectBox
+// debugger
+// var PartsDetail = JSON.parse(localStorage.getItem("stockDetail"));
+// var select = document.getElementById("parts");
+
+// for (i = 0; i < PartsDetail.length; i++) {
+//   var partName = PartsDetail[i].partName;
+//   var option = document.createElement("option");
+//   option.value = partName;
+//   option.textContent = partName;
+//   select.appendChild(option);
+// }
+
+var customer = document.getElementById("customer").value;
 var invoice = document.getElementById("invoice").value;
 var stock = document.getElementById("stock").value;
 var parts = document.getElementById("parts").value;
@@ -79,14 +92,13 @@ function format(d) {
 }
 
 var assignementDetails = JSON.parse(localStorage.getItem('assignmentDetail'));
-
 var table = $("#example").DataTable({
   data: assignementDetails,
   bFilter: false,
   bInfo: true,
   "bLengthChange": false,
   language: {
-    "info": "items _START_ to _END_ of _TOTAL_ entries",
+    "info": "Items _START_ to _END_ of _TOTAL_ entries",
     search: "_INPUT_",
     searchPlaceholder: "Search here...",
     paginate: {
@@ -102,7 +114,7 @@ var table = $("#example").DataTable({
       defaultContent: "",
     },
     { data: "invoice" },
-    { data: "category" },
+    { data: "customer" },
     { data: "createdBy" },
     { data: "createdDate" },
     { data: "null",
@@ -127,7 +139,6 @@ $('#example tbody').on('click', '.fa-trash', function () {
   row.remove().draw();
 });
 
-
 $("#example tbody").on("click", "td.dt-control", function () {
   var tr = $(this).closest("tr");
   var row = table.row(tr);
@@ -141,6 +152,7 @@ $("#example tbody").on("click", "td.dt-control", function () {
   }
 });
 
+//search
 $("#search").on("keyup", function() {
   var value = $(this).val().toLowerCase();
   $("#example tbody tr").filter(function() {
@@ -148,19 +160,21 @@ $("#search").on("keyup", function() {
   });
 });
 
-function addStock() {
-  debugger
+function addAssignment() {
   let currentDate = new Date().toLocaleString();
-  let category = document.getElementById("category").value;
+  let customer = document.getElementById("customer").value;
   let invoice = document.getElementById("invoice").value;
   let stock = document.getElementById("stock").value;
-  let parts = document.getElementById("parts").value;
+
+  var checked = document.querySelectorAll('#parts :checked');
+  var selectedParts = [...checked].map(option => option.value);
+  checked.value = selectedParts.join('|');
 
   let assignementDetails = {
-    category: category,
+    customer: customer,
     invoice: invoice,
     stock: stock,
-    parts: parts,
+    parts: checked.value,
     createdBy: username,
     createdDate: currentDate,
   };
@@ -172,9 +186,9 @@ function addStock() {
   assignementDetailsArray.push(assignementDetails);
   localStorage.setItem('assignmentDetail', JSON.stringify(assignementDetailsArray));
 
-  // Add new row to DataTable
   table.row.add(assignementDetails).draw(); 
-  document.getElementById("category").value = "";
+
+  document.getElementById("customer").value = "";
   document.getElementById("invoice").value = "";
   document.getElementById("stock").value = "";
 }

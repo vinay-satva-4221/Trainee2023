@@ -9,31 +9,43 @@
 
   <link rel="stylesheet" href="./stock.css">
 
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <!-- Moment.js CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+  <!-- DataTables CDN -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- jQuery Validation plugin CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+
+  <!-- Date Range Picker CDN -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+    integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
+    integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Open Sans font from Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
   <!-- Bootstrap CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <!-- font awesome cdn -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
-    integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
-  <!-- Open Sans -->
-  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-  <!-- Jquery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-
-<!-- Datatable CDN -->
-  <link rel="stylesheet" type="text/css"
-  href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
-
-<script type="text/javascript"
-  src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 
 
 </head>
@@ -100,11 +112,12 @@
             <h3 class="m-0">Add New Stock</h3>
           </div>
           <div class="text-end">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close closemodal" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
         </div>
         <div class="modal-body">
-          <form>
+
+          <form id="StockForm">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -119,7 +132,7 @@
                   <label for="ETAdate" class="fw-medium text-secondary">
                     ETA Date
                   </label>
-                  <input type="text" class="form-control mt-2" id="ETAdate" name="ETAdate"  placeholder="Enter Date" />
+                  <input type="text" class="form-control mt-2" id="ETAdate" name="ETAdate" placeholder="Enter Date" />
                 </div>
               </div>
             </div>
@@ -135,15 +148,17 @@
                 <div class="btn-group " role="group" aria-label="..." id="onButtons">
                   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked
                     value="On Water">
-                  <label class="btn btn-outline-primary" for="btnradio1">On Water</label>
+                  <label class="btn btn-outline-secondary" for="btnradio1">On Water</label>
 
                   <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
                     value="On Production">
-                  <label class="btn btn-outline-primary" for="btnradio2">On Production</label>
+                  <label class="btn btn-outline-secondary" for="btnradio2">On Production</label>
 
                   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"
                     value="In Warehouse">
-                  <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+                  <label class="btn btn-outline-secondary" for="btnradio3">In Warehouse</label>
+
+                  <label id="btnradio-error" class="error" for="btnradio">Please select an option</label>
                 </div>
               </div>
             </div>
@@ -153,7 +168,7 @@
                   Part Number</button>
               </div>
             </div>
-            <table class="display" id="table2" style="width: 100%;">
+            <table class="display" id="table2" style="width: 100%; ">
               <thead>
                 <th>Part Number</th>
                 <th>Invoice#</th>
@@ -169,7 +184,7 @@
         <div class="modal-footer d-flex justify-content-start">
           <button type="button" id="save_changes" class="btn btn-md"
             style="background: #366491; color:white;">Save</button>
-          <button type="button" class="close btn btn-md btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="close btn btn-md btn-outline-secondary closemodal" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
@@ -190,7 +205,7 @@
           </div>
         </div>
         <div class="modal-body">
-          <form id="sub_form">
+          <form id="PartNumberForm">
             <div class="form-group mt-1">
               <input type="text" class="form-control" id="part_num" name="part_num" placeholder="Part Number">
             </div>
@@ -215,28 +230,22 @@
     <table id="Stockable" class="display" style="width:100%">
       <thead>
         <tr>
-          <th></th>
           <th>Stock Name</th>
           <th>ETA Date</th>
           <th>Stock Location</th>
           <th>Created By</th>
           <th>Created Date</th>
+          <th>Notes</th>
           <th>Action</th>
         </tr>
       </thead>
     </table>
   </section>
-  
+
+  <!-- Your custom script -->
   <script src="./stock.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
-    integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- Bootstrap JS CDN  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>

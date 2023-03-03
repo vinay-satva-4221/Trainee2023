@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badeloft Task</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-0">
+                <img src="./background1.png" alt="" class="background" id="background">
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-5">
+                <div class="row p-5">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
+                        <img src="./02.png" id="Badeloft" alt="">
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <h5>Welcome, Let's Get Started!</h5>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 line mb-4">
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <form action="" id="Login" name="Login">
+                            <div class="row">
+                                <div class="col-12 col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 mb-4">
+                                    <label for="Email" class="form-label">Email Address</label>
+                                    <input type="email" id="Email" name="Email" class="form-control" placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                    <label for="Password" class="form-label">Password</label>
+                                    <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter Password">
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-12 col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+                                    <button type="button" class="form-control btn btn-primary btn-block" id="login" style="background-color: #326C96;" onclick="checkEmailPass()">Log in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./bootstrap/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./login.js"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@ var partDetails = []; //global variables
 var tableData;
 var stockList = [];
 var todayDate;
+var indexvalue;
 $(function () {
   $("#navbar").load("navbardata.html");
 });
@@ -9,15 +10,19 @@ $(function () {
 function format(d) {
   console.log(d);
   // `d` is the original data object for the row
-  // var p = partDetails;
-  // console.log(p)
-  let p = d.partDetails;
+ 
+
+
+  let p = partDetails;
   console.log(p);
 
+  if(d.stockList==null)
+  {
+    d.stockList=partDetails;
+  }
+
   let childrow = "";
-  // if (d.p.length > 0) {
-  // console.log(partDetails)
-  // if(d.p && d.p.length>0){
+
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded">';
   childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
@@ -34,6 +39,39 @@ function format(d) {
 
 
 $(document).ready(function () {
+
+  // $('#addpartdatais').click(function () {
+  //   $('#partform').valid() == true
+  // })
+  // //part data popup validation
+  // $("#partform").validate({
+  //   rules: {
+  //     partname: {
+  //       required: true,
+  //       validpartname: true
+  //     },
+  //     orderd: {
+  //       required: true,
+  //       validorderd: true
+  //     },
+  //   },
+  //   messages: {
+  //     partname: {
+  //       required: "Enter partnumber",
+  //       // validpartname:""
+  //     },
+  //     orderd: {
+  //       required: "Enter orderd",
+  //       // validorderd: ""
+  //     },
+  //   },
+  // });
+
+  $("#Addstockmodel").click(function(){
+    document.getElementById("stockform").reset();
+
+  });
+
   todayDate = new Date(Date.now()).toLocaleString().split(',')[0];
   stockList = JSON.parse(localStorage.getItem('stockList') || '[]');
   console.log(stockList)
@@ -42,35 +80,17 @@ $(document).ready(function () {
     stockList = []
     localStorage.setItem('stockList', stockList)
   }
-  console.log(stockList)
-
-  // toolbar name
-
-
-  //  daterange
-  $(function () {
-    $('input[name="etadatename"]').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 1901,
-      maxYear: parseInt(moment().format('YYYY'), 10)
-    }, function (start, end, label) {
-      var years = moment().diff(start, 'years');
-
-    });
-  });
-
-
+  console.log(stockList);
 
   // datatable code
   var modal = document.getElementById('Addstockmodel');
  
   tableData = $('#stock').DataTable({
-    
+   
 
     language: {
 
-      "info": "items _PAGE_ to _PAGES_ of _PAGES_ total ",
+      info: "Items _START_ to _END_ of _TOTAL_ total",
       paginate: {
         next: '&#62',
         previous: '&#60',
@@ -90,10 +110,11 @@ $(document).ready(function () {
     },
 
     lengthChange: false,
-    info: false,
+    info:true,
+    
     columns: [
       {
-        className: 'dt-control toHide',
+        className: ' toHide',
         orderable: false,
         data: null,
         defaultContent: '',
@@ -101,15 +122,15 @@ $(document).ready(function () {
 
 
 
-      { title: 'Stock Name', orderable: false, className: "text-left colSpan", data: "sname" },
-      { title: 'ETA Date', orderable: false, className: "text-center", data: "etadate" },
+      { title: 'Stock Name', orderable: false, className: "text-left dt-control colSpan", data: "sname" },
+      { title: 'ETA Date', orderable: false, className: "text-center  ", data: "etadate" },
       { title: 'Stock Location', orderable: false, className: "text-center", data: "stkstatus" },
       { title: 'Created By', orderable: false, className: "text-center", data: "createdby" },
       { title: 'Created Date', orderable: false, className: "text-center", data: "createdDate" },
       { title: 'Notes', orderable: false, className: "text-center", data: "notes" },
       { title: 'Action', orderable: false, className: "text-center", 
       data: null,
-      className: "dt-center editor-edit dt-center editor-delete",
+      className: "dt-center editor-edit history",
       defaultContent: '<i class="fa fa-pencil"/> <i class="fa fa-history"/>',
       orderable: false
     },
@@ -123,26 +144,53 @@ $(document).ready(function () {
   $('th.toHide').hide();
   $('th.colSpan').attr("colspan", 2);
 
-  // Edit record
-  // $('#stock').on('click', 'td.editor-edit', function (e) {
-  //   e.preventDefault();
 
-  //   editor.edit($(this).closest('tr'), {
-  //     title: 'Edit record',
-  //     buttons: 'Update'
-  //   });
-  // });
+  //Edit record
+  $('#stock tbody').on('click', '.editor-edit', function (e) {
+    e.preventDefault();
+    // var data = tableData.row($(this).parents('tr')).data();
+    // console.log(data);
+    // var index = tableData.row($(this).parents('tr')).index();
+    // console.log(index);
+    // debugger
+    // var indexvalue = $(this).closest('tr').index();
+    var datatableIndex = tableData.row($(this).parents('tr')).index()
+    console.log(datatableIndex)
+    var indexvalue = datatableIndex;
+    $("#stockmodelid").modal("show");
+   
+   console.log(stockList[indexvalue].sname)
+  
+    document.getElementById("stockname").value = stockList[indexvalue].sname;
+    document.getElementById("etadate").value = stockList[indexvalue].etadate;
+  
+    // $("#stockname").val(stockList[indexvalue].sname)
+  
+    var html = "";
+  
+    stockList[indexvalue].partDetails.forEach(function (element, index,) {
+      let ind = index + 1;
+      
+      html += "<tr>";
+      html += "<td>" + element.partno + "</td>";
+      html += "<td>" + ind + "</td>"; 
+  
+      html += "<td>" + element.ordered + "</td>";
+      html += "<td>" + element.notes + "</td>";
+      html += "<td>" + '<i class="fa-solid fa-xmark delete"></i>' + "</td>";
+  
+      html += "</tr>";
+  
+  
+      document.getElementById("tdata").innerHTML = html;
+  
+    });
 
-  // Delete a record
-  // $('#stock').on('click', 'td.editor-delete', function (e) {
-  //   e.preventDefault();
+        
+        
+  });
 
-  //   editor.remove($(this).closest('tr'), {
-  //     title: 'Delete record',
-  //     message: 'Are you sure you wish to remove this record?',
-  //     buttons: 'Delete'
-  //   });
-  // });
+
 
   // Add event listener for opening and closing details
   $('#stock tbody').on('click', 'td.dt-control', function () {
@@ -159,15 +207,94 @@ $(document).ready(function () {
       tr.addClass('shown');
     }
   });
+
+  //delete parttable row in array
+ 
+  $("#tdata").on('click','.delete',function(){
+    var i = $(this).closest('tr').index();
+    console.log(i)
+    partDetails.splice(i,1); 
+    console.log(partDetails)
+    
+    $(this).closest('tr').remove();
+  });
+
+
 });
+
+function updatestockdata(){                                                                                       // update stock
+
+
+// debugger;
+  //Getting all stock details and part details
+  var stockname = $("#stockname").val();
+  var etadate = $("#etadate").val();
+  // var notes = $("#notes").val();
+
+ //Getting username for created by
+  var par = JSON.parse(localStorage.getItem('loggedUser'));
+  var createdby = par.name;
+  console.log('createdby');
+
+  //Getting current date
+  var cdate = new Date(Date.now()).toLocaleString().split(',')[0];
+  console.log(partDetails)
+  var notes = partDetails[0].notes;
+
+  //Getting Stock status
+  var production = document.getElementById("onproduction").checked;
+  var water = document.getElementById("onwater").checked;
+  var warehouse = document.getElementById("onwarehouse").checked;
+
+  var stkstatus = "";
+
+  if (production == true) {
+    stkstatus = "On Production";
+  } else if (water == true) {
+    stkstatus = "On Water";
+  } else if (warehouse == true) {
+    stkstatus = "In Warehouse";
+  }
+  //part details
+  // var partno = document.getElementById("partno").value
+  // var ordered = document.getElementById("ordered").value
+  // var notes = document.getElementById("notes").value
+
+ var updateddata ={
+  index: indexvalue,
+  stockname: stockname,
+  etadate: etadate,
+  stkstatus: stkstatus,
+  createdby: createdby,
+  cdate: cdate,
+  notes: notes,
+  stockList: partDetails
+}
+stockList[indexvalue] = updateddata
+
+  localStorage.setItem("stockList", JSON.stringify(stockList));
+
+  delete updateddata['index'];
+  delete updateddata['partDetails'];
+
+  tableData.row(indexvalue).data(updateddata).draw();
+
+
+}
+
 
 
 function addpartData() {
+
   debugger;
+
+
+
+
   // var partDetails = [];
   console.log(partDetails);
   // var partDetails = localStorage.getItem("partDetails");
-  debugger
+ 
 
 
   var partno = document.getElementById('partname').value;
@@ -192,27 +319,29 @@ function addpartData() {
 
   partDetails.forEach(function (element, index) {
     let ind = index + 1;
+
+    
+    // id='row" + id + "
     html += "<tr>";
     html += "<td>" + element.partno + "</td>";
     html += "<td>" + ind + "</td>";
+   
     html += "<td>" + element.ordered + "</td>";
     html += "<td>" + element.notes + "</td>";
+    html += "<td>" + '<i class="fa fa-times delete aria-hidden="true"></i>'+ "</td>";
+    // html += "<td>" + '<button onclick="deleteRecord(" + id + ")">Remove</button> '+ "</td>";
+    
     html += "</tr>";
 
-
     document.getElementById("tdata").innerHTML = html;
+    
   });
-
-
-  // document.getElementById ("#partname").value="";
-  // document.getElementById ("#orderd").value="";
-  // document.getElementById ("#notes").value="";
 
 }
 
 
 function addstockdata() {
-  debugger;
+
   // var stockDetails = [];
   console.log("Partdetails in stock function:", partDetails);
 
@@ -262,39 +391,12 @@ function addstockdata() {
   console.log("stockList", stockList)
 
   localStorage.setItem("stockList", JSON.stringify(stockList));
-
-  // var stockList = JSON.parse(localStorage.getItem("stockList"));
-
-  // var html = "";
-
-
-
-  // $('#maintdata').html('')
-  // console.log(stockList);
-  // stockList.forEach(function (element, index) {
-  //   html += "<tr>";
-  //   html += "<td>" + "" + "</td>";
-  //   html += "<td>" + element.sname + "</td>";
-  //   html += "<td>" + element.etadate + "</td>";
-  //   html += "<td>" + element.stkstatus + "</td>";
-  //   html += "<td>" + element.createdby + "</td>";
-  //   html += "<td>" + element.createdDate + "</td>";
-  //   // html += "<td>" + element.ordered + "</td>";
-  //   html += "<td>" + element.notes + "</td>";
-  //   html += "</tr>";
-
-
-  //   document.getElementById("maintdata").innerHTML = document.getElementById("maintdata").innerHTML + html;
-  // });
-
-
-  // document.getElementById("sname").value="";
-  // document.getElementById("etadate").value="";
-  // document.getElementById("stkstatus").value="";
-  // document.getElementById("partname").value="";
-  // document.getElementById("orderd").value="";
-  // document.getElementById("notes").value="";
-
-
-
 }
+//array data delete code
+// function deleteRecord(id) {
+//   document.querySelector('#row' + id).remove();
+//   const updatedArray = users.filter((user) => Number(user[0]) !== id);
+//   console.log(updatedArray);
+// }
+
+

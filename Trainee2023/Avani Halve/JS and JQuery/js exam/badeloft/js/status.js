@@ -185,7 +185,7 @@ $(document).ready(function () {
          $("div.toolbar").html("<h2></h2>");
       },
       language: {
-        "info": "items _START_ to _END_ of _TOTAL_ entries",
+        "info": "Items _START_ to _END_ of _TOTAL_ entries",
          search: "_INPUT_",
          searchPlaceholder: "Search here...",
          paginate: {
