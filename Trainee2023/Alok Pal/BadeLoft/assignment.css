@@ -68,12 +68,46 @@ body {
 
 
 /* active class */
-.active {
+/* .active {
     border-bottom: 2px solid black;
     height: 60px;
     color: black;
     font-weight: bold;
 
+} */
+
+/* active */
+.active {
+    
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    top: 46px;
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 31px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+
+
+
+
+.navbar-nav .nav-link.active::before
+ {
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 
@@ -95,6 +129,9 @@ body {
 
 #stock_search {
     width: 97%;
+    height: 64% !important;
+    border-radius: 4px;
+    outline: none;
 }
 
 .btnNew {
@@ -118,3 +155,67 @@ body {
 }
 
 
+/* Select 2  */
+
+.select2-dropdown{
+    z-index: 1100 !important;
+    
+}
+.select2-container{
+    width: 100% !important;
+}
+/* .select2-search__field{
+    width: 13em;
+} */
+
+/* modal width */
+.modal-content.stModal1{
+    width: 140%;
+}
+
+
+/* Add  button */
+.AddBtn {
+
+    font-size: 12px;
+    width: 66px;
+    height: 52%;
+    border-radius: 6px;
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 39%;
+}
+
+#myMod{
+    background-color: #326C96;
+    color: white;
+    border: 1px solid white;
+}
+
+
+/*main table */
+
+.table_div {
+    width: 94%;
+}
+
+thead {
+    background-color: black;
+    border-radius: 1em;
+}
+
+table {
+    font-size: small;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.tablehead {
+    font-size: 12px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    /* font-weight: 200 !important; */
+    /* font-family: 'Noto Sans', sans-serif; */
+}

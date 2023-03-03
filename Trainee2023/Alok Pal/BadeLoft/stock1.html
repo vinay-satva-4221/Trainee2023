@@ -81,8 +81,9 @@
                 <button type="button" class="btnLog" onclick="modal()" nowrap>+
                     New </button>
             </div>
-            <div class="stockSearch mt-3 text-end">
-                <input type="text" id="stock_search" placeholder="Search here">
+            <div class="stockSearch mt-3 text-end d-flex">
+                <i class="bi bi-search searchicon"></i>
+                <input type="search" id="stock_search"  class="ps-4 searchtextbox" placeholder="Search here...">
             </div>
 
         </div>
@@ -154,7 +155,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-start ">
-                                <button type="button" class="btn  " id="modalstock" onclick="addData()">Save</button>
+                                <button type="button" class="btn  " id="modalstock" onclick="addStockData()">Save</button>
                                 <button type="button" class="btn btn-secondary" onclick="resetSVal() " data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -193,7 +194,7 @@
                         </form>
                     </div>
                     <div class="modal-footer justify-content-start">
-                        <button type="button" class="btn " onclick="getM() ,showMt2(),resetPartModal()" id="modal2">Save </button>
+                        <button type="button" class="btn " onclick="getModal() ,showModaltable(),resetPartModal()" id="modal2">Save </button>
                         <button type="button" class="btn btn-secondary "  onclick="resetPartModal()" data-bs-dismiss="modal">Cancel</button>
                         <!-- check for valid direct data toggle -->
 

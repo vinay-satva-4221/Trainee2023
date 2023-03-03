@@ -115,6 +115,7 @@ button.middle:focus {
 
 #savestock,
 #savepart,
+#saveassignment,
 .btnradio,
 #addassignment {
   color: #f7fdff;
@@ -126,6 +127,10 @@ button.middle:focus {
   background-color: #326c96;
   width: 85px;
   height: 38px;
+}
+
+.PopOverorder{
+  color: rgb(116, 207, 116);
 }
 
 label.error {
@@ -159,6 +164,7 @@ table.dataTable thead > tr > td.sorting_desc_disabled:after {
   line-height: 9px;
   font-size: 0.8em;
 }
+
 /* 
 table.dataTable thead > tr > th.sorting_asc:before,
 table.dataTable thead > tr > th.sorting_desc:after,
@@ -322,7 +328,7 @@ tbody {
 }
 
 .backgroundcolor {
-  background-color: #f7f8fa;
+  background-color: #F7F8FA;
 }
 
 .pagination {
@@ -437,11 +443,74 @@ table.dataTable td.dt-control:before {
   text-align: right;
 }
 
+.popover-header {
+  display: none;
+}
+.popover-body {
+  width: 219px;
+  height: 185px;
+}
+.popover {
+  font-size: -0.125rem;
+}
+
+/* 
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  color: #fff;
+  background-color: #062d49 !important;
+  border-color: #082f4b !important;
+} */
+
 .btn-check:active + .btn-outline-primary,
 .btn-check:checked + .btn-outline-primary,
 .btn-outline-primary.active,
 .btn-outline-primary.dropdown-toggle.show,
 .btn-outline-primary:active {
-  color: #fff;
-  background-color: #0a738d;
+  color: #fff !important;
+  background-color: #0a738d !important;
+  border-color: #0a738d !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: white !important;
+  color: #000 !important;
+  border: 1px solid black;
+}
+
+.btn-outline-primary {
+  color: black;
+  border-color: white;
+  border: 1px solid black;
+}
+
+
+.searchicon {
+  position: absolute;
+  top: 78px;
+  right: 299px;
+  padding: 2px;
+  color: gray !important;
+}
+
+.searchiconstock {
+  position: absolute;
+  top: 70px;
+  right: 295px;
+  padding: 2px;
+  color: gray !important;
+}
+
+.searchbar {
+  padding-left: 27px;
+}
+
+.select2-dropdown{
+  z-index: 1100 !important;
+}
+
+.select2-selection{
+  width: 250px;
 }

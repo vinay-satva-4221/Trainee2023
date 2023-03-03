@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 </head>
@@ -76,7 +76,8 @@
             </div> -->
             <div class="col-md-1 mt-3">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal"
+                    data-bs-target="#outerModal">
                     + New
                 </button>
             </div>
@@ -92,15 +93,15 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" role="dialog" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" role="dialog" id="outerModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Stock</h5>
+                    <h5 class="modal-title" id="AddNewStockModal">Add New Stock</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form id="addstockform" action="">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="" class="text-muted"><strong>Stock Name</strong></label>
@@ -109,23 +110,25 @@
                             <div class="col-md-6">
                                 <label for="" class="text-muted"><strong>ETA Date</strong></label>
                                 <!-- <input type="date" class="form-control" id="eta_date"> -->
-                                <input type="text" name="birthday" class="form-control" value="10/24/1984" />
+                                <input type="text" name="date" class="form-control" id="eta_date" value="10/24/1984" />
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
                                 <div class="row">
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                            autocomplete="off" checked>
-                                        <label class="btn btn-outline" for="btnradio1">On Production</label>
+                                        <input type="radio" class="btn-check" name="btnradio" id="on-production"
+                                            value="On production" data-stock-location="On production" autocomplete="off"
+                                            checked>
+                                        <label class="btn btn-outline" for="on-production">On Production</label>
 
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline" for="btnradio2">On Water</label>
+                                        <input type="radio" class="btn-check" name="btnradio" id="on-water"
+                                            value="On water" data-stock-location="On water" autocomplete="off">
+                                        <!-- <input type="radio" name="btnradio" class="form-check-input" id="on-water" value="On water" data-stock-location="On water"> -->
+                                        <label class="btn btn-outline" for="on-water">On Water</label>
 
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                            autocomplete="off">
-                                        <label class="btn btn-outline" for="btnradio3">In Warehouse</label>
+                                        <input type="radio" class="btn-check" name="btnradio" id="in-warehouse"
+                                            value="In warehouse" data-stock-location="In warehouse" autocomplete="off">
+                                        <label class="btn btn-outline" for="in-warehouse">In Warehouse</label>
                                     </div>
                                 </div>
                             </div>
@@ -136,10 +139,11 @@
                                             src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
                                             style="padding-left: 10px;" alt=""><span class="text-muted addPartBtn">Add
                                             Part Number</span></button> -->
-                                            <button type="button" class=" addPartBtn mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
-                                                src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg"
-                                                style="margin-left:-11px;" alt=""><span class="text-muted ">Add
-                                                    Part Number</span></button>
+                                    <button type="button" class=" addPartBtn mt-2" id="AddPart" data-bs-toggle="modal"
+                                        data-bs-target="#innerModal"><img
+                                            src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" style="margin-left:-11px;"
+                                            alt=""><span class="text-muted">Add
+                                            Part Number</span></button>
                                 </div>
                             </div>
                             <table id="inner_table" class="table mt-2" style="width:100%" ;>
@@ -149,6 +153,7 @@
                                         <th>Invoice #</th>
                                         <th>Ordered</th>
                                         <th>Notes</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -159,17 +164,17 @@
                     </form>
                 </div>
                 <div class="modal-footer justify-content-start">
-                    <button type="button" class="btn btn" data-bs-dismiss="modal" id="save_outer">Save</button>
-                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn" id="save_outer">Save</button>
+                    <!-- <button type="button" class="btn btn" data-bs-dismiss="modal" id="update_outer">Update</button> -->
+                    <button type="button" class="btn btn-outline text-muted" data-bs-dismiss="modal"
+                        id="close_outer">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Button trigger modal -->
-
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
+    <div class="modal fade" id="innerModal" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -177,7 +182,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="" id="inner_form">
                         <div class="col-md-12">
                             <input type="text" class="form-control" id="part_num" placeholder="Part Number">
                         </div>
@@ -191,14 +196,14 @@
                 </div>
                 <div class="modal-footer justify-content-start">
                     <button type="button" class="btn btn" data-bs-dismiss="modal" id="save_inner">Save</button>
-                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-secondary" id="close_inner">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-       
+
     </script>
 
 
@@ -213,10 +218,12 @@
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script> -->
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </body>
 

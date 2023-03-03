@@ -83,6 +83,8 @@ body {
 
 #stock_search {
     width: 97%;
+    height: 66%;
+    outline: none;
 }
 
 .btnNew {
@@ -106,13 +108,13 @@ body {
 }
 
 /* active class */
-.active {
+/* .active {
     border-bottom: 2px solid black;
     height: 60px;
     color: black;
     font-weight: bold;
 
-}
+} */
 
 th{
     color:white
@@ -269,4 +271,57 @@ table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>th.sorting_asc, ta
 a.page-link{
     height: 60%;
     padding-top: 10%;
+}
+
+
+
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 22.3%;
+    font-size: 14px;
+}
+
+
+/* stock active */
+.active {
+    
+    font-weight: bold;
+}
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    top: 47px;
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 16px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s; 
+}
+
+.navbar-nav .nav-link.active::before
+ {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+
+/* paginate height */
+#stock_table_next{
+    height: 0% !important;
+}
+#stock_table_previous{
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active{
+    height: 0% !important;
 }

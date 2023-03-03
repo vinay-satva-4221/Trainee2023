@@ -1,9 +1,9 @@
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
   ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-  ['BW-01-S-M', '1', '0', "<button class='AddColor border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
-  ['BW-03-XL-G', '1', '1', "<div class='AddColor'>2</div>", '2', '1'],
-  ['BW-01-Q-M', '', '0', "<div class='AddColor'>3 </div>", '0', '1'],
+  ['BW-01-S-M', '1', '0', "<button class='AddColor border-0 bg-light' data-bs-toggle='popover'>3</button>", '0', '0'],
+  ['BW-03-XL-G', '1', '1', "<button class='AddColor border-0 bg-light' data-bs-toggle='popover'>2</button>", '2', '1'],
+  ['BW-01-Q-M', '', '0', "<button class='AddColor border-0 bg-light' data-bs-toggle='popover'>1</button>", '0', '1'],
 
 ];
 
@@ -56,14 +56,24 @@ $(document).ready(function () {
   })
   //$('[data-bs-toggle="popover"]').popover();  
   $('[data-bs-toggle="popover"]').popover({
-
+    
     container: 'body',
     placement: 'right',
     html: true,
     content: function () {
       return $('#popover-form').html();
     }
-});
+  });
+  $('#closepopover').click(function(){
+    alert('clicked')
+    
+  })
+ 
+  const input = document.querySelector('input[type="search"]');
+    input.addEventListener("search", () => {
+        table.search(input.value).draw();
+        // console.log(`The term searched for was ${}`);
+    });
 })
 
 

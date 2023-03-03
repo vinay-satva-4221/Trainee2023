@@ -9,53 +9,114 @@ window.onload = (event) => {
       uname.innerHTML = u;
     }
 };
+
 function logout(){
     window.location.replace("Badeloft.html")
     localStorage.clear();
   }
-const CityData = '{"Cities":['+
-'{"StateId":"1","Id":"1","Name":"150001"},' +
-'{"StateId":"1","Id":"2","Name":"150002"},' +
-'{"StateId":"1","Id":"2","Name":"150003"},' +
-'{"StateId":"1","Id":"2","Name":"150004"},' +
-'{"StateId":"1","Id":"2","Name":"150005"},' +
-'{"StateId":"2","Id":"1","Name":"150006"},' +
-'{"StateId":"2","Id":"2","Name":"150007"},' +
-'{"StateId":"2","Id":"2","Name":"150008"},' +
-'{"StateId":"2","Id":"2","Name":"150009"},' +
-'{"StateId":"2","Id":"2","Name":"150010"},' +
-'{"StateId":"2","Id":"1","Name":"150011"},' +
-'{"StateId":"2","Id":"2","Name":"150012"},' +
-'{"StateId":"2","Id":"2","Name":"150008"},' +
-'{"StateId":"2","Id":"2","Name":"150009"},' +
-'{"StateId":"2","Id":"2","Name":"150010"},' +
+  //Row 1 cascading
+const QuickbookInvoices = '{"Invoices":['+
+'{"InvoiceId":"1","Id":"1","InvoiceNo:"150001"},' +
+'{"InvoiceId":"1","Id":"2","InvoiceNo:"150002"},' +
+'{"InvoiceId":"1","Id":"3","InvoiceNo:"150003"},' +
+'{"InvoiceId":"1","Id":"4","InvoiceNo:"150004"},' +
+'{"InvoiceId":"1","Id":"5","InvoiceNo:"150005"},' +
+'{"InvoiceId":"2","Id":"6","InvoiceNo:"150006"},' +
+'{"InvoiceId":"2","Id":"7","InvoiceNo:"150007"},' +
+'{"InvoiceId":"2","Id":"8","InvoiceNo:"150008"},' +
+'{"InvoiceId":"2","Id":"9","InvoiceNo:"150009"},' +
+'{"InvoiceId":"2","Id":"10","InvoiceNo":"150010"},' +
+'{"InvoiceId":"3","Id":"11","InvoiceNo":"150011"},' +
+'{"InvoiceId":"3","Id":"12","InvoiceNo":"150012"},' +
+'{"InvoiceId":"3","Id":"13","InvoiceNo":"150013"},' +
+'{"InvoiceId":"3","Id":"14","InvoiceNo":"150014"},' +
+'{"InvoiceId":"3","Id":"15","InvoiceNo":"150015"},' +
+'{"InvoiceId":"4","Id":"16","InvoiceNo":"150016"},' +
+'{"InvoiceId":"4","Id":"17","InvoiceNo":"150017"},' +
+'{"InvoiceId":"4","Id":"18","InvoiceNo":"150018"},' +
+'{"InvoiceId":"4","Id":"19","InvoiceNo":"150019"},' +
+'{"InvoiceId":"4","Id":"20","InvoiceNo":"150020"},' +
+'{"InvoiceId":"5","Id":"21","InvoiceNo":"150021"},' +
+'{"InvoiceId":"5","Id":"22","InvoiceNo":"150022"},' +
+'{"InvoiceId":"5","Id":"23","InvoiceNo":"150023"},' +
+'{"InvoiceId":"5","Id":"24","InvoiceNo":"150024"},' +
+'{"InvoiceId":"5","Id":"25","InvoiceNo":"150025"}]}';
 
 
-const StateData = '{"States":['+
-'{"Id":"1","Name":"Eric Jensen"},' +
-'{"Id":"2","Name":"Kenneth Woodard"},' +
-'{"Id":"3","Name":"Kelly McCrory"},' +    
-'{"Id":"4","Name":"frances Badger"},' +                    
-'{"Id":"5","Name":"John Doe"}]}';
+const customers = '{"Customer":['+
+'{"Id":"1","CustomerName":"Eric Jensen"},' +
+'{"Id":"2","CustomerName":"Kenneth Woodard"},' +
+'{"Id":"3","CustomerName":"Kelly McCrory"},' +    
+'{"Id":"4","CustomerName":"frances Badger"},' +                    
+'{"Id":"5","CustomerName":"John Doe"}]}';
 
 $(document).ready(function(){
 
-    var StateJsonData = JSON.parse(StateData);
-    $.each(StateJsonData.States,function(i,option){
+    var customersJSONdata = JSON.parse(customers);
+    $.each(customersJSONdata.Customer,function(i,option){
         $("#customer").append($('<option></option>').val(option.Id).html(option.Name));
     })
 
     $("#customer").change(function(){
-        var CityJsonData = JSON.parse(CityData);
-        $("#selstock").html('');
-        $.each(CityJsonData.Cities,function(i,option){
+        var QuickbookInvoicesJSONdata = JSON.parse(QuickbookInvoices);
+        $("#invoices").html('');
+        $.each(QuickbookInvoicesJSONdata.Invoices,function(i,option){
             if($("#customer").val() == option.StateId){
-                $("#selstock").append($('<option></option>').val(option.Id).html(option.Name));
+                $("#invoices").append($('<option></option>').val(option.Id).html(option.Name));
             }
     })
 
     });
+
+    //   $(".js-example-placeholder-multiple").select2({
+    //     placeholder: "Select a state"
+    // });
 });
+
+//Row 2 Cascading
+
+// const parts = '{"Part":['+
+// '{"PartId":"1","Id":"1","PartName":"BW-01-S-M"},' +
+// '{"PartId":"1","Id":"2","PartName":"AT-01-BLK"},' +
+
+// '{"PartId":"2","Id":"3","PartName":"BW-03-XL-G"},' +
+// '{"PartId":"2","Id":"4","PartName":"BW-02-L-M"},' +
+
+// '{"PartId":"3","Id":"5","PartName":"WB-05-M-G"},' +
+// '{"PartId":"3","Id":"6","PartName":"ZK-08-X2P"},' +
+
+// '{"PartId":"4","Id":"7","PartName":"BY-09-L-X"},' +
+// '{"PartId":"4","Id":"8","PartName":"XP-01-D-T"},' +
+
+// '{"PartId":"5","Id":"9","PartName":"PP-03-A-B"},' +
+// '{"PartId":"5","Id":"10","PartName":"PD-05-D-H"}]}';
+
+
+// const stocks = '{"Stock":['+
+// '{"Id":"1","StockName":"C100"},' +
+// '{"Id":"2","StockName":"BW521"},' +
+// '{"Id":"3","StockName":"D4010"},' +    
+// '{"Id":"4","StockName":"PJ250"},' +                    
+// '{"Id":"5","StockName":"AK302"}]}';
+
+// $(document).ready(function(){
+
+//     var StockJSONdata = JSON.parse(stocks);
+//     $.each(StockJSONdata.Stock,function(i,option){
+//         $("#stock").append($('<option></option>').val(option.Id).html(option.Name));
+//     })
+
+//     $("#stock").change(function(){
+//         var PartsJSONdata = JSON.parse(parts);
+//         $("#part").html('');
+//         $.each(PartsJSONdata.Part,function(i,option){
+//             if($("#stock").val() == option.StateId){
+//                 $("#part").append($('<option></option>').val(option.Id).html(option.Name));
+//             }
+//     })
+
+//     });
+// });
 
 
 $(document).ready(function () {

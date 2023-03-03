@@ -98,9 +98,6 @@ $(document).ready(function () {
         }
     });
     $("#submit").click(function () {
-
-
-
         if ($("#myform").valid() == true) {
             debugger
 

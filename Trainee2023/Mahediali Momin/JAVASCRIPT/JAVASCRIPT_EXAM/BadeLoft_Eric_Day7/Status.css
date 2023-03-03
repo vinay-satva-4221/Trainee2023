@@ -31,7 +31,6 @@ table {
 }
 
 .maintable {
-  background-color: black;
   color: white;
   border: 1px;
 }
@@ -227,3 +226,27 @@ table.dataTable td.dt-control {
 /* .dt-control.sorting_disabled{
   display: non;
 } */
+
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+
+li.paginate_button.page-item {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+

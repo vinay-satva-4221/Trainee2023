@@ -1,12 +1,3 @@
-// $(document).ready(function () {
-//     var name = localStorage.getItem("details");
-//     console.log(name)
-
-//     var det = name.uname;
-//     console.log(det)
-// })
-
-
 window.onload = () => {
     if (localStorage.getItem("loggUser") == null) {
 
@@ -17,21 +8,15 @@ window.onload = () => {
 var data1 = [
     ["Stock Location", "", "", "On water", "On water", "In Production"],
     ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-    ["BW-01-S-M", "1", "0", "3", "0", "0"],
+    ["BW-01-S-M", "1", "0", "<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["ZK-08-X2P", "1", "0", "3", "0", "1"],
-    ["Stock Location", "", "", "On water", "On water", "In Production"],
-    ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-    ["BW-01-S-M", "1", "0", "3", "0", "0"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["ZK-08-X2P", "1", "0", "3", "0", "1"],
-    ["Stock Location", "", "", "On water", "On water", "In Production"],
-    ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-    ["BW-01-S-M", "1", "0", "3", "0", "0"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
@@ -53,25 +38,7 @@ $(document).ready(function () {
             { title: 'In Warehouse', "sortable": false },
             { title: 'Available', "sortable": false },
             {
-                title: 'C100', "sortable": false, fnDrawCallback: function () {
-                    $('[data-toggle="popover"]').popover();
-                }
-                // title: 'C100',
-                // "sortable": false,
-                // "render": function (data, type, row) {
-                //     var popover_content = "This is a popover for C100 column.";
-                //     return "<a href='#' data-toggle='popover' title='C100' data-content='" + popover_content + "'>" + data + "</a>";
-                // }
-                // title: 'C100',
-                // "sortable": false,
-                // "render": function (data, type, row, meta) {
-                //     if (meta.row >= 2 && meta.row <= 15 && meta.col == 3) {
-                //         var popover_content = "This is a popover for C100 column.";
-                //         return "<a href='#' data-toggle='popover' title='C100' data-content='" + popover_content + "'>" + data + "</a>";
-                //     } else {
-                //         return data;
-                //     }
-                // }
+                title: 'C100', "sortable": false,
 
             },
             { title: 'C101', "sortable": false },
@@ -107,18 +74,24 @@ $(document).ready(function () {
             },
         },
     });
-    // $('[data-toggle="popover"]').popover();
 
 
     $('[data-bs-toggle="popover"]').popover({
-        container: "body",
-        placement: "right",
+
+        container: 'body',
+        placement: 'right',
         html: true,
         content: function () {
-            return $("#Popover").html();
-        },
+            return $('#popover-form').html();
+        }
     });
 
+
+    $(document).on('click', '.close-popover', function () {
+        debugger
+        $(this).closest('.popover').popover('hide');
+    });
+    
 
     $('.sorting').removeClass('sorting');
 
@@ -130,5 +103,5 @@ $(document).ready(function () {
 
 function logout() {
     window.location.replace("LoginPage.html");
-    localStorage.clear();
+    localStorage.removeItem('loggUser');
 }
