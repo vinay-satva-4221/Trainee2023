@@ -90,8 +90,15 @@ $(document).ready(function () {
 
 
 
-        $('[data-toggle="popover"]').popover()
+        $('[data-bs-toggle="popover"]').popover({
 
+            container: 'body',
+            placement: 'right',
+            html: true,
+            content: function () {
+                return $('#popover-content').html();
+            }
+        });
     }
     else {
         window.location.href = "index.html"

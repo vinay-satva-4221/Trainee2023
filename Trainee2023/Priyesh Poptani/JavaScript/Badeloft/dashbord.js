@@ -14,15 +14,15 @@ $(document).ready(function () {
     $('#dashbordtable').DataTable( {
       bFilter: true, bInfo: true,
       language: {
-        "info": "items _PAGE_ to _PAGES_ of _PAGES_ total ",
+        "info": "Items _START_ to _END_ of _TOTAL_ total ",
         paginate:{
             next:'&#62',
             previous:'&#60',
            
         },
-        searchPlaceholder:" Search here...",
-        search: '<i class="fa fa-search"></i>',
        
+        search: "_INPUT_",
+                searchPlaceholder:" Search here...",
         
     },
 
@@ -49,3 +49,7 @@ $(document).ready(function () {
     [{ value: 'Stock Location', position: 'top' },
     { value: 'ETA Date', position: 'top' } ]);
 
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })

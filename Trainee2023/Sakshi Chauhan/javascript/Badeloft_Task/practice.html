@@ -118,9 +118,52 @@
   </div>
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-
-
+  function SecondPartDetails()
+  {
+    debugger;
+      // var SecondModalDetails = localStorage.getItem("SecondPartDetail");
+      var Partnumber = document.getElementById('partNo').value;
+      var Ordered = document.getElementById('order').value;
+      var Notes = document.getElementById('notes').value;
+      var invoice = 15000;
+      var stockObj = {
+        Partnumber:Partnumber,
+        invoice:invoice,
+        Ordered:Ordered,
+        Notes:Notes
+      };
+  
+      var SecondPartDetail = JSON.parse(localStorage.getItem("SecondPartDetail")) || [];
+      // if(SecondPartDetail==null)
+      // {
+      //   SecondPartDetail=[];
+      // }
+      // else{
+      SecondPartDetail.push(stockObj);
+        localStorage.setItem("SecondPartDetail", JSON.stringify(SecondPartDetail));
+      // };
+      
+      var html = "";
+      SecondPartDetail.forEach(function (element,index) {
+        html += "<tr>";
+        html += "<td>" + element.Partnumber + "</td>";
+        html += "<td>" + element.invoice + "</td>";
+        // html += "<td>" + Date.now() + "</td>";
+        html += "<td>" + element.Ordered + "</td>";
+        html += "<td>" + element.Notes + "</td>";
+        html += "<tr>";
+        document.getElementById("ModalData").innerHTML = html;
+  
+    });
+    // var getLocal = JSON.parse(SecondPartDetail);
+    //  console.log(getLocal.Partnumber);
+  
+      document.getElementById("partNo").value="";
+      document.getElementById("order").value="";
+      document.getElementById("notes").value="";
+    }
 
 
 

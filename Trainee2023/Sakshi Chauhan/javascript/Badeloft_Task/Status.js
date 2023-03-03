@@ -65,14 +65,13 @@ $(document).ready(function () {
         data:details,
         columns: [
             {
-                className: 'dt-control',
-                orderable: false,
+                className: 'toHide',
                 data: null,
                 defaultContent: '',
             },
-            {title: 'QB Invoice#'},
-            {title: 'Name'},
-            {title: 'QB Ship Date'},
+            {title: 'QB Invoice#', className:"text-start dt-control",orderable:true},
+            {title: 'Name',orderable:true},
+            {title: 'QB Ship Date',orderable:true},
             {title: 'QB Payment Status',oradable:false},
             {title: 'QB Status',oradable:false},
             {title: 'QB Delivery Phone',oradable:false},
@@ -84,6 +83,17 @@ $(document).ready(function () {
         select:{
             style: 'os',
             selector: 'td:first-child'
+        },
+        language: {
+            search: "_INPUT_",
+              // "search": '<i class="fa fa-search"></i>',
+                searchPlaceholder: 'Search...',
+                paginate: {
+                    next: '&#62',
+                    previous: '&#60' 
+                  },
+                  "info": "Items _START_ to _END_ of _TOTAL_ total"
+
         },
       
         
@@ -105,6 +115,7 @@ $(document).ready(function () {
             tr.addClass('shown');
         }
     });
+    
 });
 var details = [
     ["","150000","Kenneth Woondard","12/08/2021","Paid","Shipped","617-235-7647","","WBC-123"],
@@ -124,14 +135,15 @@ var details = [
 
 ];
 function logout(){
-    window.location.replace("Badeloft.html")
+    window.location.replace("login.html")
     localStorage.clear();
   }
 
-  
+ 
+
 window.onload = (event) => {
   if (localStorage.getItem("Badeloft-Details") == null) {
-    window.location.replace("Badeloft.html");
+    window.location.replace("login.html");
   }
   else{
     var par = JSON.parse(localStorage.getItem('Badeloft-Details'));

@@ -31,7 +31,7 @@ function logout() {
 // Table Populating
 var dataSet = [
   ["Stock Location", "", "", "On Water", "On Water", "In production"],
-  ["Eta Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
+  ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
   ["BW-01-S-M", "1", "0", "<button class='dataColor border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
   [
     "BW-03-XL-G",
@@ -104,5 +104,15 @@ $(document).ready(function () {
       return $("#Popover").html();
     },
   });
+
+
+  //active
+  var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
+   
+    $('.nav-item a').each(function(){
+        if ($(this).attr('href') == pathname){
+        $(this).addClass('active');
+        }
+    });
 });
 

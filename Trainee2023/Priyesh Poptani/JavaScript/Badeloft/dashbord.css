@@ -3,7 +3,13 @@ div.dataTables_wrapper div.dataTables_length label {
    display: none;
 }
 
+.gc {
+  color: red;
+}
 
+.rc {
+  color: green;
+}
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
    
@@ -64,13 +70,13 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 {
   position: absolute;
 
-  right: 400px;
+  right: 390px;
 }
 table.dataTable thead>tr>th.sorting:before,thead>tr>th.sorting_desc:before
 {
   position: absolute;
 
-  right: 400px;
+  right: 390px;
    
 }
 
@@ -97,12 +103,16 @@ div.dataTables_wrapper div.dataTables_filter label {
  
   color: black;
 
+  
+
 }
 
-table.dataTable tbody tr :nth-child(4) {
+/* table.dataTable tbody tr :nth-child(4) {
   color:#3399FF;
+} */
+.fa-user{
+  color: red;
 }
-
 
 
 div.dataTables_wrapper div.dataTables_info {
@@ -118,3 +128,5 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination
   left: 73%;
   
 }
+
+ 

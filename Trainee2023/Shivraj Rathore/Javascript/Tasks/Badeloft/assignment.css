@@ -1,0 +1,121 @@
+
+#example thead tr th {
+  background-color: black;
+  color: white;
+}
+
+.datatable-pagination {
+  margin-top: 20px;
+}
+
+#example_filter {
+  margin-bottom: 25px;
+}
+
+.toolbar {
+  float: left;
+}
+
+#example tr:last-of-type td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+#example tr:last-of-type td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+  border-bottom: 2px solid black !important;
+}
+
+#example td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+  text-align: center;
+}
+
+
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+
+  }
+
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+
+  }
+
+  li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+  }
+
+  li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+  }
+
+  
+  .navbar-nav .nav-item .nav-link.active {
+    border-bottom: 2px solid black !important;
+    padding-bottom: 20px;
+  }
+
+  .navdiv{
+    height: 52px;
+  }
+
+  .dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+    position: relative;
+    left: 75%;
+}
+
+table.dataTable td.dt-control:before {
+  height: 1em;
+  width: 1em;
+  margin-top: -9px;
+  display: inline-block;
+  color: #326C96 !important;
+  border: 0.1em solid #326C96 !important;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "Courier New",Courier,monospace;
+  line-height: 1em;
+  content: "+";
+  background-color: white !important;
+  margin-right: 10px;
+}
+.select2-container {
+  z-index: 99999;
+}
+
+.select2-container--default .select2-selection--multiple {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: text;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  /* position: relative; */
+  display: inline-block;
+  margin-right: 20px;
+  width: 232px;
+}
+
+
+ .choosepart{
+ 
+  width: 355px;
+  height: 69px;
+}
