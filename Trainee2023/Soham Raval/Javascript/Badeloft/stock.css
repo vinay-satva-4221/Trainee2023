@@ -75,6 +75,24 @@ height:90% ;
     background-color:#3F759C !important;
     color: white !important;
   }
+  .fa-clock-rotate-left:before, .fa-history:before {
+    content: "\f1da";
+    padding-left: 8px;
+}
+.active>.page-link, .page-link.active {
+ 
+  background-color: #000000 !important;
+  border-color: black !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+padding: 0px;
+}
+li.paginate_button.page-item.active{
+  padding: 0px;
+}
+.msg{
+  color: red;
+}
   /* table{
     font-size: small;
     border-collapse: collapse;

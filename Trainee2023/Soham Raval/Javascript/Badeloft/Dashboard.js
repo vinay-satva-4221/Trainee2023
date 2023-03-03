@@ -81,7 +81,6 @@ $(document).ready(function () {
     });
 
     $('[data-bs-toggle="popover"]').popover({
-
       container: 'body',
       placement: 'right',
       html: true, 
