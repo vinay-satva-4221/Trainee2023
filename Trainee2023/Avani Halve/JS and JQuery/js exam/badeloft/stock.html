@@ -24,6 +24,9 @@
     <!-- datatable -->
     <link src="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+
+    <!-- SweetAlert -->
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> -->
  
     </head>
 <body>
@@ -153,19 +156,19 @@
                                 </div>
                             </form>
                             <div>
-                                <table class="table " id="parttable">
+                            <table class="table " id="parttable">
                             <thead class=" table text-light bg-dark">
-                                        <tr>
-                                            <th scope="col">PartNumber</th>
-                                            <th scope="col">Invoice</th>
-                                            <th scope="col">Ordered</th>
-                                            <th scope="col">notes</th>
-                                            <th scope="col" style="color:black"></th>   
-                                        </tr>
-                                    </thead> 
-                                     <tbody class="table-group-divider bg-light"></tbody>
+                                <tr>
+                                    <th scope="col">PartNumber</th>
+                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Ordered</th>
+                                    <th scope="col">notes</th>
+                                    <th scope="col" style="color:black"></th>   
+                                </tr>
+                            </thead> 
+                            <tbody class="table-group-divider bg-light"></tbody>
                                     
-                                </table>
+                            </table>
                             </div>
                         </div>
                         <!-- <a data-toggle="modal" href="#AddPart" class="btn btn-primary">Launch modal</a> -->
@@ -212,6 +215,44 @@
                 </div>
             </div>
         </div>
+
+        <!-- History Modal -->
+  <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <h5 class="modal-title m-3" id="exampleModalLabel">Audit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+         <strong style="color: #326C96;">Stock</strong>
+         <div >
+            <span style="color: #326C96;">&#9402;</span>
+            <span><strong>C100 stock added by Eric</strong></span>
+            <div><small>Add part BW-01-S-M with ordered quantity 5 | Add part AT-01-BLK with ordered quantity 4</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">Eric on 02/22/2022 09:00AM</span></small></div>
+            <hr>
+        </div>
+         <div >
+            <span style="color: #326C96;">&#9407;</span>
+            <span><strong>Stock updated by jeshal</strong></span>
+            <div><small>Edit part AT01 with ordered quantity 5</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">jeshal on 02/22/2022 12:30PM</span></small></div>
+            <hr>
+        </div>
+        <div >
+            <span style="color: #326C96;">&#9402;</span>
+            <span><strong>Part has been deleted by Eric</strong></span>
+            <div><small>Edit part AT03</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">Eric on 02/22/2022 02:15PM</span></small></div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="table-responsive">
         <table id="stockTable" class="display " style="width:100%">
             <thead class="table-dark">
@@ -222,7 +263,7 @@
                     <th>Stock Location</th>
                     <th>Created By</th>
                     <th>Created Date</th>
-                    <th>Notes</th>
+                    <!-- <th>Notes</th> -->
                     <th>Action</th>
                 </tr>
             </thead>
@@ -241,7 +282,11 @@
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
     <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
