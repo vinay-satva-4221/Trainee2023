@@ -43,7 +43,7 @@ $(document).ready(function () {
       bLengthChange: false,
 
       language: {
-         info: "items _START_ to _END_ of _TOTAL_ entries",
+         info: "Items _START_ to _END_ of _TOTAL_ entries",
          search: "_INPUT_",
          searchPlaceholder: "Search here...",
          paginate: {
@@ -64,7 +64,7 @@ $(document).ready(function () {
          { data: "status" },
          { data: "createdBy" },
          { data: "createdDate" },
-         { data: "notes" },
+         // { data: "notes" },
          {
             data: "null",
             render: function (data, type, row) {
@@ -81,24 +81,33 @@ $(document).ready(function () {
    $("#stockForm").validate({
       rules: {
          stockname: {
-            required: true,
-         },
-         etadate: {
-            required: true,
-         },
+              required: true,
+          },
+          etadate: {
+              required: true,
+              date: true
+          },
+          stock_status: {
+              required: true,
+          },
       },
       messages: {
          stockname: {
-            required: "Enter Stock Name",
-         },
-         etadate: {
-            required: "Enter ETA Date",
-         },
-      },
+              required: "Please enter stock name",
+          },
+          etadate: {
+              required: "Please enter ETA Date",
+              date: "Please enter valid date"
+          },
+          stock_status: {
+              required: "Please select stock status",
+          }
+      }
    });
 
    //edit
    $("#stockTable tbody").on("click", ".edit", function () {
+      
       console.log(table.row(this).data());
       var data = table.row($(this).parents("tr")).data();
       var index = table.row($(this).parents("tr")).index();
@@ -106,6 +115,7 @@ $(document).ready(function () {
       $("#etadate").val(data.etaDate);
       $('input[name="stock_status"][value="' + data.status + '"]').prop("checked", true);
       if (data.itemDetails && data.itemDetails.length > 0) {
+        
          let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
          data.itemDetails.forEach(function (PartData) {
             dynamicTR +=
@@ -127,6 +137,7 @@ $(document).ready(function () {
          $("#parttable").html(dynamicTR);
       }
       itemDetails = data.itemDetails;
+      $('.modal-header').data("Edit Stock");
       $("#AddStock").modal("show");
       console.log(itemDetails);
       $("#save")
@@ -143,7 +154,7 @@ $(document).ready(function () {
                status: StockStatus,
                createdBy: username,
                createdDate: createddate,
-               notes: "Static notes",
+               // notes: "Static notes",
                Action: "",
                itemDetails: itemDetails,
             };
@@ -154,55 +165,33 @@ $(document).ready(function () {
             location.reload(true);
          });
 
-         //delete part from delete
-         $("#parttable").on("click", ".btn-delete", function() {
+      //delete part from edit
+      $("#parttable").on("click", ".btn-delete", function () {
+         if (itemDetails.length == 1) {
+            swal("Error!", "Can't delete last partNumber", "error");
+         } else {
             $(this).closest("tr").remove();
-            itemDetails.splice((this),1);
-         });
+            itemDetails.splice(this, 1);
+         }
+      });
    });
 
-   //delete the row
-   // $("#stockTable tbody").on("click", ".fa-history", function () {
-      
-   // //    debugger;
-   // //    var row = table.row($(this).parents("tr"));
-   // //    var data = row.data();
-   // //    var index = stockDetails.findIndex(function (item) {
-   // //       return item.stockName === data.stockName;
-   // //    });
-   // //    if (index !== -1) {
-   // //       stockDetails.splice(index, 1);
-   // //       localStorage.setItem("stockDetail", JSON.stringify(stockDetails));
-   // //    }
-   // //    row.remove().draw();
-   // // });
+   //history modal
+   $(".fa-history").on("click", function () {
+      $("#historyModal").modal("toggle");
+   });
 
-   // // $("#stockTable tbody").on("click", "td.dt-control", function () {
-   // //    var tr = $(this).closest("tr");
-   // //    var row = table.row(tr);
-   // //    if (row.child.isShown()) {
-   // //       row.child.hide();
-   // //       tr.removeClass("shown");
-   // //    } else {
-   // //       row.child(format(row.data())).show();
-   // //       tr.addClass("shown");
-   // //    }
-   // });
-
-   //delete part
-   //    $("#parttable tbody").on("click", "#deletePart", function () {
-   //       debugger;
-   //       var row = table.row($(this).parents("tr"));
-   //       var data = row.data();
-   //       var index = stockDetails.findIndex(function (item) {
-   //          return item.partno === data.partno;
-   //       });
-   //       if (index !== -1) {
-   //          stockDetails.splice(index, 1);
-   //          localStorage.setItem("stockDetail", JSON.stringify(stockDetails));
-   //       }
-   //       row.remove().draw();
-   //    });
+   $("#stockTable tbody").on("click", "td.dt-control", function () {
+      var tr = $(this).closest("tr");
+      var row = table.row(tr);
+      if (row.child.isShown()) {
+         row.child.hide();
+         tr.removeClass("shown");
+      } else {
+         row.child(format(row.data())).show();
+         tr.addClass("shown");
+      }
+   });
 });
 
 $("#save").click(function () {
@@ -216,7 +205,7 @@ $("#save").click(function () {
       status: status,
       createdBy: username,
       createdDate: eta,
-      notes: "Static notes",
+      //  notes: "Static notes",
       Action: "",
       itemDetails: stockItemDetails,
    };
@@ -239,11 +228,11 @@ $("#newBtn").click(function () {
    $("#etadate").val("");
 });
 
-$("#addpart").click(function(){
+$("#addpart").click(function () {
    $("#partNumber").val("");
    $("#orderNumber").val("");
    $("#notes").val("");
-})
+});
 
 var stockItemDetails = [];
 function addItemDetails() {
@@ -268,18 +257,20 @@ function addItemDetails() {
    dtr = dtr + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
    dtr = dtr + "</tr>";
    $("#parttable tbody").append(dtr);
-
 }
 
-// $("#parttable tbody").on("click", ".btn-delete", function () {
-//    debugger;
-//    if (stockItemDetails.length == 1) {
-//       alert("can't delete last part");
-//    } else {
-//       $(this).closest("tr").remove();
-//    }
-// });
+//delete part from outside
+$("#parttable").on("click", "#deletePart", function () {
+   debugger;
+   if (itemDetails.length == 1) {
+      swal("Error!", "Atleast have 1 PartNumber", "error");
+   } else {
+      $(this).closest("tr").remove();
+      itemDetails.splice(this, 1);
+   }
+});
 
+//search
 $("#search").on("keyup", function () {
    var value = $(this).val().toLowerCase();
    $("#stockTable tbody tr").filter(function () {

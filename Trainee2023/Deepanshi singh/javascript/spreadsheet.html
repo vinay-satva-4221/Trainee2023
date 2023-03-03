@@ -61,6 +61,7 @@ var data = [
 ];
 function append(){
     var table=document.getElementById("table");
+    // var drop=document.getElementById("drop");
     var newrow=table.insertRow(1);
     var cell1=newrow.insertCell(0);
     var cell2=newrow.insertCell(1);
@@ -73,18 +74,8 @@ function append(){
     var cell5=newrow.insertCell(8);
     var cell5=newrow.insertCell(9);
     var cell5=newrow.insertCell(10);
-    cell1.innerHTML=data;
-    cell2.innerHTML=data;
-    cell3.innerHTML=data;
-    cell4.innerHTML=data;
-//    var html=" ";
-
-//    document.onclick("#button").forEach(function(index,value){
-//     var a=index+1;
-//      html+="<tr>"+index+1
-
-
-//    });
+      cell1.innerHTML=data;
+   
    
 
 }
@@ -101,13 +92,7 @@ function add(){
    }
 }
 function deletee(){
-
-if(table1.data==' '){
-  table1.deleteRow();
-
-  
-}
-
+ table1.deleteRow();
 }
  
 var table1=jspreadsheet(document.getElementById('spreadsheet'), {

@@ -6,25 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stock</title>
 
-  <!-- Bootstrap 4 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
-
   <!-- Bootstrap 5 -->
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+
 
   <!-- Data Table -->
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" />
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
 
   <!-- bootstrap Icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
 
   <!-- Daterange Picker -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-  <link rel="stylesheet" href="./stock.css" />
-  <link rel="stylesheet" href="./Navbar.css" />
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./Stock.css">
 </head>
 
 <body>
@@ -33,7 +32,7 @@
       <a class="navbar-brand" href="#">
         <img src="./02.png" alt="" class="d-inline-block align-text-top Badeloft-logo" />
       </a>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-center ms-2">
         <div class="navbar-nav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -69,29 +68,29 @@
       </div>
     </div>
   </nav>
-  <div class="container-fluid">
-
-  <table class="table border-rounded" id="stock">
-    <thead class="table table-dark rounded">
+  <div class="container-fluid"  style="background-color:#F7F8FA">
+  <table class="table border" id="Stock_Table">
+    <thead>
 
     </thead>
     <tbody id="stockbody">
 
     </tbody>
   </table>
-  <button type="button" id="FirstModal" data-bs-toggle="modal" tabindex="-1" data-bs-target="#myModal" class="btn m-2">
+  <button type="button" id="AddStock" data-bs-toggle="modal" tabindex="-1" data-bs-target="#AddNewStock" class="btn m-2">
     + New
   </button>
   <!-- Modal 1 -->
-  <div class="modal" id="myModal">
+  <div class="modal" id="AddNewStock">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title"><b>Add New Stock</b></h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="container"></div>
+
         <div class="modal-body">
+          <form action="" id="AddStockForm">
           <div class="row p-2">
             <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <label for="StockName" class="form-label"><b>Stock Name</b></label>
@@ -99,43 +98,44 @@
             </div>
             <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
               <label for="ETADate" class="form-label"><b>ETA Date</b></label>
-              <input type="date" name="ETADate" class="form-control"/>
+              <input type="date" name="ETADate" id="ETADate" value="" class="form-control"/>
             </div>
           </div>
-          <div class="row p-2">
+          <div class="row p-2"> 
             <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <label for="StockStatus" class="form-label"><b>Stock Status</b></label>
             </div>
             <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
-                <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+              <div class="btn-group border" role="group" aria-label="Basic radio toggle button group"  id="StockStatus">
+                <input type="radio" class="btn-check" name="StockStatus" id="On Production" value="On Production" autocomplete="off" checked />
+                <label class="btn" for="On Production" >On Production</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
-                <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+                <input type="radio" class="btn-check" name="StockStatus" id="On Water" value="On Water" autocomplete="off" />
+                <label class="btn" for="On Water">On Water</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-                <label class="btn btn-outline-primary" for="btnradio3">In Warehouse</label>
+                <input type="radio" class="btn-check" name="StockStatus" id="In Warehouse" value="In Warehouse" autocomplete="off" />
+                <label class="btn" for="In Warehouse">In Warehouse</label>
               </div>
             </div>
           </div>
           <!-- Second Modal Call -->
           <div class="row">
             <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2">
-              <button type="button" id="SecondModal" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
+              <button type="button" id="AddPartNumber" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
                 class="btn justify-content-start" data-bs-backdrop="static">
                 <i class="bi bi-plus-circle"></i> Add Part Number
               </button>
             </div>
           </div>
           <!-- Calling Done -->
-          <table id="ModalTable" class="table table-striped">
+          <table id="AddNewStockTable" class="table">
             <thead>
               <tr>
-                <th class="no-sort">Part Number</th>
+                <th class="no-sort" >Part Number</th>
                 <th class="no-sort">Invoice #</th>
                 <th class="no-sort">Ordered</th>
                 <th class="no-sort">Notes</th>
+                <th class="no-sort text-left"></th>
               </tr>
             </thead>
             <tbody id="ModalData">
@@ -143,8 +143,10 @@
             </tbody>
           </table>
         </div>
+      </form>
         <div class="modal-footer justify-content-start">
-          <button type="button" class="btn" id="save">Save</button>
+          <button type="button" class="btn hideModal" id="save"  data-bs-dismiss="modal" onclick="AddNewStock()">Save</button>
+          <button type="button" class="btn" id="SaveStock"  data-bs-dismiss="modal">Update</button>
           <button type="button" class="btn bg-light" data-bs-dismiss="modal" id="cancel">
             Cancel
           </button>
@@ -155,7 +157,7 @@
   <!-- First Modal End -->
 
   <!-- Modal Popup 2 Start -->
-  <div class="modal  bd-example-modal-sm pt-5" id="modalTwo" data-backdrop="static">
+  <div class="modal  bd-example-modal-sm pt-5" id="addpartModal" data-backdrop="static">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -199,27 +201,22 @@
   </div>
   
 </div>
-  <!-- Bootstrap 4 -->
+ 
   <script src="./bootstrap/jquery-3.6.3.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-
     <!-- data table -->
-  <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <!-- jquery Validate -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
 
   <!-- bootstrap 5 -->
   <script src="../bootstrap/js/bootstrap.min.js"></script>
 
   <script src="./stock.js"></script>  
-  <script src="./Navbar.js"></script>
+
 </body>
 
 </html>

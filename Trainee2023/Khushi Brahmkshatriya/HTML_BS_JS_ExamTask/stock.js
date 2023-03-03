@@ -287,7 +287,11 @@ $(document).ready(function () {
         return timeRepeated === 1 || timeRepeated === 0;
 
     }, "* Duplicate");
-    //add stock 
+    $(document).on("click", ".cancelbtn",function () {
+        $("#table2body").html("");
+        $("#ETAdate").val("");
+        $("#StockName").val("");
+    })
     $('#saveStock').click(function () {
         debugger
         if (!isEdit) {

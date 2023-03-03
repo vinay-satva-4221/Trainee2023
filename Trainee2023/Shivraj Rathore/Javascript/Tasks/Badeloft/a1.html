@@ -8,13 +8,9 @@
   <title>Assignment</title>
     <!-- Jquery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <!-- Bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  
   <!-- font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
- 
-
 
   <link rel="stylesheet" type="text/css"
     href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.css" />
@@ -22,11 +18,11 @@
     src="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.13.2/b-2.3.4/sl-1.6.0/datatables.min.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
-
-
+    <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
   </script>
 
   <style>
@@ -149,19 +145,18 @@
               <p class="fw-bolder mt-3">Add Stock</p>
             </div>
             <div id="create">
-              <div class="row mb-3">
+              <div class="row">
                 <div class="col-md-6">
-                  <label for="stock-select" class="form-label">Stock Name</label>
-                  <select class="form-select" id="stock-select">
-                    <option selected disabled>Choose Stock Name</option>
-              
+                  <label for="stockname" class="form-label">Stock Name</label>
+                  <select id="stockname" class="form-select">
+                    <option value="" selected disabled>Choose stock name</option>
+                    <!-- Populate stock names dynamically using StockData from localStorage -->
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label for="part-select" class="form-label">Part Number</label>
-                  <select class="form-select" id="part-select" multiple>
-                    <option selected disabled>Choose Part Number</option>
-            
+                  <label for="partnumbers" class="form-label">Part Numbers</label>
+                  <select id="partnumbers" class="form-select" multiple="multiple">
+                    <!-- Populate part numbers dynamically using the selected stock name -->
                   </select>
                 </div>
               </div>
@@ -263,28 +258,28 @@ userData.forEach(user => {
   userSelect.appendChild(option);
 });
 
-var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
+// var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
 
-// Populate stock name dropdown
-var stockSelect = $("#stock-select");
-$.each(StockData, function(index, stock) {
-  stockSelect.append("<option value='" + stock.stockName + "'>" + stock.stockName + "</option>");
-});
+// // Populate stock name dropdown
+// var stockSelect = $("#stock-select");
+// $.each(StockData, function(index, stock) {
+//   stockSelect.append("<option value='" + stock.stockName + "'>" + stock.stockName + "</option>");
+// });
 
-// Populate part number dropdown based on selected stock name
-var partSelect = $("#part-select");
-stockSelect.change(function() {
-  var selectedStock = $(this).val();
-  partSelect.empty();
-  $.each(StockData, function(index, stock) {
-    if (stock.stockName === selectedStock) {
-      $.each(stock.partData, function(index, part) {
-        partSelect.append("<option value='" + part.part_num + "'>" + part.part_num + "</option>");
-      });
-    }
-  });
-  partSelect.select2();
-});
+// // Populate part number dropdown based on selected stock name
+// var partSelect = $("#part-select");
+// stockSelect.change(function() {
+//   var selectedStock = $(this).val();
+//   partSelect.empty();
+//   $.each(StockData, function(index, stock) {
+//     if (stock.stockName === selectedStock) {
+//       $.each(stock.partData, function(index, part) {
+//         partSelect.append("<option value='" + part.part_num + "'>" + part.part_num + "</option>");
+//       });
+//     }
+//   });
+//   partSelect.select2();
+// });
 
 $("#logout").click(function () {
   localStorage.removeItem("loggedInUser");
@@ -293,33 +288,30 @@ $("#logout").click(function () {
 });
 
 // try 1
- 
-    // var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
+var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
 
+// Populate stock names
+$.each(StockData, function(index, stock) {
+  $('#stockname').append('<option value="' + stock.name + '">' + stock.name + '</option>');
+});
 
-    // var stockSelect = $('#stock-select');
-    // stockSelect.empty();
-    // stockSelect.append($('<option>', {value: '', text: 'Choose Stock Name'}));
-    // $.each(StockData, function(i, stock) {
-    //   stockSelect.append($('<option>', {value: stock.stockName, text: stock.stockName}));
-    // });
-  
-    // stockSelect.change(function() {
-    //   var selectedStock = $(this).val();
-    //   var partSelect = $('#part-select');
-    //   partSelect.empty();
-    //   partSelect.append($('<option>', {value: '', text: 'Choose Part Number'}));
-    //   if (selectedStock) {
-    //     var selectedStockData = StockData.find(function(stock) {
-    //       return stock.stockName === selectedStock;
-    //     });
-    //     $.each(selectedStockData.partData, function(i, part) {
-    //       partSelect.append($('<option>', {value: part.part_num, text: part.part_num}));
-    //     });
-    //     partSelect.prop('disabled', false);
-    //   } else {
-    //     partSelect.prop('disabled', true);
-    //   }
-    // });
+// Update part numbers when a stock name is selected
+$('#stockname').on('change', function() {
+  var stockName = $(this).val();
+  var stock = $.grep(StockData, function(s) {
+    return s.name == stockName;
+  })[0];
+  $('#partnumbers').empty();
+  $.each(stock.parts, function(index, part) {
+    $('#partnumbers').append('<option value="' + part.part_num + '">' + part.part_num + '</option>');
+  });
+});
+
+// Initialize Select2 plugin for part numbers
+$('#partnumbers').select2({
+  placeholder: 'Choose part numbers',
+  allowClear: true
+});
+    
 
 </script>

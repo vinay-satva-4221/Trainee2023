@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css
     ">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./Assignment.css">
-    <link rel="stylesheet" href="./Navbar.css">
 </head>
 <body>
     <nav class="navbar site-nav navbar-expand-lg navbar-lighT">
@@ -21,7 +22,7 @@
               class="d-inline-block align-text-top Badeloft-logo"
             />
           </a>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse justify-content-center ms-2" >
             <div class="navbar-nav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -46,17 +47,17 @@
                 </li> 
                 <li class="nav-item me-3">
                     <h6 style="color: #87909F;" class="mb-0 mt-2">Welcome</h6>
-                    <h6 id="username"><b>Sakshi</b></h6>
+                    <h6 id="username"><b></b></h6>
               </li>
             </ul>
         </div>
         <div class="navbar-nav">
-          <button class="btn btn-outline-secondary border-0" id="logout" onclick="logout()" >
+          <button class="btn btn-outline-secondary border-0 mt-3" id="logout" onclick="logout()" >
             <i class="fa fa-sign-out"></i>
         </div>
         </div>
       </nav>
-      <div class="container-fluid mt-3 pt-3" style="background-color: #F7F8FA">
+      <div class="container-fluid" style="background-color:#F7F8FA">
       <table id="AssignmentTable" class="display" style="width:100%">
         <thead>
             <tr>
@@ -132,13 +133,13 @@
           </div>
         </div>
       </div>
-    <!-- <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js
-    "></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="./Assignment.js"></script>
-    <script src="./Navbar.js"></script>
+
 
 </body>
 </html>
