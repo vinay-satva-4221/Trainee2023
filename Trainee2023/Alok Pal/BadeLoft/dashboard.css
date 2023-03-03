@@ -116,7 +116,7 @@ li.paginate_button.page-item:hover {
     background-color: black;
 }
 
-a.page-link{
+a.page-link {
     height: 60%;
     padding-top: 10%;
 }
@@ -176,13 +176,55 @@ table.dataTable thead>tr>td.sorting_desc_disabled:after {
 }
 
 
-.userCol{
+.userCol {
     color: red;
 }
 
-.cross{
+.cross {
     margin-left: 74%;
     /* padding-top: -10%; */
     /* position: reltive; */
     position: absolute;
+}
+
+
+
+
+/* paginate height */
+#dashboard_table_next {
+    height: 0% !important;
+}
+
+#dashboard_table_previous {
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active {
+    height: 0% !important;
+}
+
+
+
+/* search icon */
+/* .bi-search::before {
+    content: "\f52a";
+    position: absolute;
+    top: 13%;
+    right: 21.1%;
+    font-size: 14px;
+    outline: none;
+} */
+
+
+
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 21.2%;
+    font-size: 14px;
+}
+
+.dashboard_search{
+    outline: none;
 }

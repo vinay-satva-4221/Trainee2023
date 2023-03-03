@@ -6,37 +6,35 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="./dashboard.css" />
-    <link rel="stylesheet" href="./Navbar.css">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./Dashboard.css">
   </head>
   <body>
     <nav class="navbar site-nav navbar-expand-lg navbar-lighT">
-      <div class="container-fluid">
+      <div class="container-fluid pb-0">
         <a class="navbar-brand" href="#">
-          <img
-            src="./02.png"
-            alt=""
-            class="d-inline-block align-text-top Badeloft-logo"
-          />
+          <img src="./02.png" alt="" class="Badeloft-Logo">
         </a>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-center ms-2">
           <div class="navbar-nav">
-          <ul class="navbar-nav me-auto mb-2 mb-0">
+          <ul class="navbar-nav me-auto mb-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="Dashboard.html"><b>Dashboard</b></a>
+              <!-- <div class="inner">&nbsp;</div> -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="stock.html"><b>Stock</b></a>
+              <!-- <div class="inner">&nbsp;</div> -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Status.html"><b>Status</b></a>
+              <!-- <div class="inner">&nbsp;</div> -->
             </li>
             <li class="nav-item">
               <a class="nav-link" href="Assignment.html"><b>Assignment</b></a>
+              <!-- <div class="inner">&nbsp;</div> -->
             </li>
           </ul>
           </div>
@@ -58,16 +56,16 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid" style="background-color: #F7F8FA">
-        <table id="myTable" class="table table-striped">
+    <div class="container-fluid pt-0" style="background-color:#F7F8FA">
+        <table id="DashboardTable" class="table border">
           <thead>
             <tr>
-              <th style="text-align: left;">Part Number:</th>
-              <th class="no-sort">In Warehouse</th>
-              <th class="no-sort">Available</th>
-              <th class="no-sort">C100</th>
-              <th class="no-sort">C101</th>
-              <th class="no-sort">C102</th>
+              <th class="text-start">Part Number</th>
+              <th>In Warehouse</th>
+              <th>Available</th>
+              <th>C100</th>
+              <th>C101</th>
+              <th>C102</th>
             </tr>
           </thead>
           <tbody>
@@ -83,7 +81,7 @@
               <td>ETA Date</td>
               <td></td>
               <td></td>
-              <td>10/08/2021</td>
+              <td>15/08/2021</td>
               <td>10/08/2021</td>
               <td>10/08/2021</td>
             </tr>
@@ -91,7 +89,7 @@
               <td>BW-01-S-M</td>  
               <td>1</td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>0</td>
             </tr>
@@ -99,7 +97,7 @@
               <td>BW-03-XL-G</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -107,7 +105,7 @@
               <td>BW-01-Q-M</td>
               <td></td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -115,7 +113,7 @@
               <td>BW-03-XL-G</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -123,7 +121,7 @@
               <td>ZK-08-X2P</td>
               <td>1</td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -131,23 +129,7 @@
               <td>AP-03-XL-G</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>WB-05-M-G</td>
-              <td></td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>ZK-08-X2P</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -155,7 +137,7 @@
               <td>WB-05-M-G</td>
               <td></td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -163,7 +145,23 @@
               <td>ZK-08-X2P</td>
               <td>1</td>
               <td>1</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>WB-05-M-G</td>
+              <td></td>
+              <td>0</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>ZK-08-X2P</td>
+              <td>1</td>
+              <td>1</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -175,59 +173,12 @@
               <td></td>
               <td></td>
             </tr>
-            <tr>
-              <td>Stock Location</td>
-              <td></td>
-              <td></td>
-              <td>On Water</td>
-              <td>On Water</td>
-              <td>In Production</td>
-            </tr>
-            <tr>
-              <td>ETA Date</td>
-              <td></td>
-              <td></td>
-              <td>10/08/2021</td>
-              <td>10/08/2021</td>
-              <td>10/08/2021</td>
-            </tr>
-            <tr>
-              <td>BW-01-S-M</td>
-              <td>1</td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>BW-03-XL-G</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>BW-01-Q-M</td>
-              <td></td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>BW-03-XL-G</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
+
             <tr>
               <td>ZK-08-X2P</td>
               <td>1</td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -235,7 +186,7 @@
               <td>AP-03-XL-G</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -243,7 +194,7 @@
               <td>WB-05-M-G</td>
               <td></td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -251,7 +202,7 @@
               <td>ZK-08-X2P</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -259,7 +210,7 @@
               <td>WB-05-M-G</td>
               <td></td>
               <td>0</td>
-              <td>3</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">3</a></td>
               <td>0</td>
               <td>1</td>
             </tr>
@@ -267,111 +218,7 @@
               <td>ZK-08-X2P</td>
               <td>1</td>
               <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>WB-05-M-G</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Stock Location</td>
-              <td></td>
-              <td></td>
-              <td>On Water</td>
-              <td>On Water</td>
-              <td>In Production</td>
-            </tr>
-            <tr>
-              <td>ETA Date</td>
-              <td></td>
-              <td></td>
-              <td>10/08/2021</td>
-              <td>10/08/2021</td>
-              <td>10/08/2021</td>
-            </tr>
-            <tr>
-              <td>BW-01-S-M</td>
-              <td>1</td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>BW-03-XL-G</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>BW-01-Q-M</td>
-              <td></td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>BW-03-XL-G</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>ZK-08-X2P</td>
-              <td>1</td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>AP-03-XL-G</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>WB-05-M-G</td>
-              <td></td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>ZK-08-X2P</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>WB-05-M-G</td>
-              <td></td>
-              <td>0</td>
-              <td>3</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>ZK-08-X2P</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
+              <td><a href="#" data-bs-html="true" class="popovers" data-bs-toggle="popover"  data-bs-content="<b>Assigned to&emsp;&emsp;&emsp;</b><i class='cpop h6 fa fa-times'></i><br/><span class='rc'>Ordered:3 </span>|<span class='gc'> Assigned:2</span><br/></br><i class='fas fa-user'></i> Manuel Pimentel <hr/> <i class='fas fa-user'></i> Dave Ernst">2</a></td>
               <td>2</td>
               <td>1</td>
             </tr>
@@ -383,18 +230,20 @@
               <td></td>
               <td></td>
             </tr>
+
           </tbody>
         </table>
     </div>
         
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="./dashboard.js"></script>
-    <script src="./Navbar.js"></script>
+
   </body>
 </html>
