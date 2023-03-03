@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAVBAR</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <style>
         #logo {
             width: auto;
@@ -14,7 +14,7 @@
         }
 
         .active {
-            border-bottom: 2px solid black;
+            /* border-bottom: 2px solid black; */
             font-weight: bold;
          
             font: "Myriad Pro";
@@ -30,15 +30,22 @@
             margin-right: 18px;
         }
         .navbar{
-            padding: 0px;
+            padding: 0px !important;
         }
-      
+        .bottom-border {
+    width: 30px;
+    height: 1px;
+    margin: 0px auto;
+
+    margin-top: 20px;
+    border-bottom: 2px solid #000;
+}
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:white;">
         <div class="container-fluid navbar-container">
             <a class="navbar-brand " href="#">
                 <img src="./02.png" alt="" id="logo" />
@@ -50,20 +57,20 @@
                 <ul class="navbar-nav d-flex" id="main-navigation">
 
                     <li class="nav-item ">
-                        <a class="nav-link mx-3 " href="dashbord.html">Dashboard</a>
-                        <div class="underline"></div>
+                        <a class="nav-link mx-3 mt-3 " href="dashbord.html">Dashboard</a>
+                        <div class="inner">&nbsp;</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="stock.html">Stock</a>
-                        <div class="underline"></div>
+                        <a class="nav-link mx-3 mt-3" href="stock.html">Stock</a>
+                        <div class="inner">&nbsp;</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="status.html">Status</a>
-                        <div class="underline"></div>
+                        <a class="nav-link mx-3 mt-3" href="status.html">Status</a>
+                        <div class="inner">&nbsp;</div>
                     </li>
-                    <li class="nav-item mx-3">
+                    <li class="nav-item mx-3 mt-3">
                         <a class="nav-link" href="assignment.html">Assignment</a>
-                        <div class="underline"></div>
+                        <div class="inner">&nbsp;</div>
                     </li>
                 </ul>
 
@@ -97,6 +104,7 @@
         $('.nav-item a').each(function () {
             if ($(this).attr('href') == pathname) {
                 $(this).addClass('active');
+                $(this).siblings('.inner').addClass("bottom-border")
             }
         });
 

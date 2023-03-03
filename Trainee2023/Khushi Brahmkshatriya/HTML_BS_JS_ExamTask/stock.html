@@ -37,12 +37,12 @@
                                     <label for="stockName" class="form-label text-secondary">Stock
                                         Name</label>
                                     <input type="text" class="form-control unique" placeholder="" id="stockName"
-                                        name="stockName">
+                                        name="stockName" maxlength="50">
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <label for="ETADate" class="form-label text-secondary ">ETA
                                         Date</label>
-                                    <input type="text" class="form-control" maxlength="10"
+                                    <input type="date" class="form-control" maxlength="10"
                                         id="etaDate" name="etaDate">
                                 </div>
                                 <div class="col-md-12 mt-2">
@@ -83,6 +83,8 @@
 
                         <button type="button" class="btn buttonColor text-white" 
                         id="saveStock">Save</button>
+                        <button type="button" class="btn buttonColor text-white" hidden
+                        id="updateStock">Update</button>
                         <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>

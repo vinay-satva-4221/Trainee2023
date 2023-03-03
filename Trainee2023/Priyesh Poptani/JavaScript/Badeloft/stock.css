@@ -21,10 +21,10 @@ table.dataTable th {
     margin-right: 10px;
 }
     
-.btn{
+/* .btn{
     background-color: #326C96;
     color: white;
-}
+} */
 
 
   table.dataTable td.dt-control:before {
@@ -32,6 +32,7 @@ table.dataTable th {
     color: #326C96;
     box-shadow: 0 0 0.2em #326C96;
     margin-top: 4px;
+  
     
 }
 table.dataTable tr.dt-hasChild td.dt-control:before {
@@ -40,6 +41,14 @@ table.dataTable tr.dt-hasChild td.dt-control:before {
     color: #326C96;
     box-shadow: 0 0 0.2em #326C96;
     margin-top: 4px;
+    
+}
+table.dataTable td.dt-control:before {
+    background-color: white;
+    color: #326C96;
+    box-shadow: 0 0 0.2em #326c96;
+    margin-top: 4px;
+    margin-right: 10px;
 }
 table{
     border-collapse: collapse;
@@ -64,4 +73,78 @@ table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sort
 table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after {
     top: 50%;
     content: "";
+}
+a.btn{
+    align-items: center;
+}
+.modal-footer{
+    justify-content: left;
+    
+}
+#Addstockmodel,#addstockdatais,#addpartdatais{
+    background-color: #326C96;
+    color: white;
+}
+#addpartdataidcancle,#addstockdataidcancle{
+    border: 1px solid #CFD3D8;
+    color: gray;
+}
+.dataTables_info {
+    color: inherit;
+    margin-left: 1060px;
+}
+.toHide{
+    padding: 0% !important;
+}
+.fa.fa-history{
+    color: #878585;
+    margin-left: 10px;
+}
+.fa.fa-pencil{
+    color: #878585;
+}
+
+
+/* Date */
+input[type="date"]:before {
+    color: transparent;
+    background: none;
+    cursor: pointer;
+    font-family: 'FontAwesome';
+    content: '\f073';
+    width: 15px;
+    height: 20px;
+    position: absolute;
+    right: 6px;
+    color: #999;
+  }
+  input#etadate{
+    position:relative;
+    display: inline-block;
+  }
+  input#etadate::-webkit-calendar-picker-indicator{
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+  
+  .btn-check:active+.btn, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:active {
+    background-color:#3F759C !important;
+    color: white !important;
+  
+
+  }
+.btn-group {
+    border: 1px solid gray;
+ 
+}
+label.btn{
+    margin-bottom: 0px !important;
 }
