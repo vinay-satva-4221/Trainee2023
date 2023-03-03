@@ -249,8 +249,8 @@ li.paginate_button.page-item {
 
 #dashboardtable_info {
     margin-top: -3px;
-    /* margin-right: 10011px; */
-    width: 1200px !important;
+    /* margin-right: 1100%; */
+    width: 1150px !important;
     justify-content: end;
 }
 

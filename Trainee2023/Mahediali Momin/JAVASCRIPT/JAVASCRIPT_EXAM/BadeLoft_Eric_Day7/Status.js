@@ -107,6 +107,34 @@ var data1 = [
         QBDeliveryPhone: '618-234-6400',
         QBTracking: 'WBC-124'
     },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    
 ];
 
 $(document).ready(function () {

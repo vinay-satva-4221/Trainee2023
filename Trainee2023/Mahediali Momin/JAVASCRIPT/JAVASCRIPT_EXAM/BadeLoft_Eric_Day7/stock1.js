@@ -41,8 +41,7 @@ $(document).ready(function () {
             { data: 'createdDate', title: 'Created Date', 'sortable': false },
             { data: 'note', title: 'Notes', 'sortable': false },
             {
-                // data: 'Action', title: 'Action', 'sortable': false, className: "dt-center editor-edit",
-                // defaultContent: '<button class="btn edit-row"><i class="bi bi-pencil-fill text-secondary fw-bolder"/></button>'
+                
                 data: 'Action',
                 title: 'Action',
                 className: 'text-end',
