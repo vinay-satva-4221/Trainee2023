@@ -25,17 +25,17 @@ function format(d) {
       '<td>1</td>' +
       '<td>BW-01-S-M</td>' +
       '<td>Warehouse</td>' +
-      '<td>close</td>' +
+      '<td><i class="fa-solid fa-xmark delete"></i></td>' +
       '</tr>' +
       '<td>2</td>' +
       '<td>AT-01-BLK</td>' +
       '<td>C-101</td>' +
-      '<td>Close</td>' +
+      '<td><i class="fa-solid fa-xmark delete"></i></td>' +
       '</tr>' +
       '<td>3</td>' +
       '<td>BW-03-XL-G</td>' +
       '<td>E-501</td>' +
-      '<td>Close</td>' +
+      '<td><i class="fa-solid fa-xmark delete"></i></td>' +
       '</tr>' +
 
       '</table>'

@@ -31,7 +31,6 @@ table {
 }
 
 .maintable {
-  background-color: black;
   color: white;
   border: 1px;
 }
@@ -250,5 +249,4 @@ li.paginate_button.page-item {
   padding: 0px !important;
   margin: 0px !important;
 }
-
 

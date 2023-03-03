@@ -50,7 +50,7 @@ $(document).ready(function () {
     $("#StockName").val("");
     $("#ETAdate").val("");
     $('input[name="btnradio"]').prop('checked', false);
-    $("#table2body").empty();
+    $("#table2body").html("");
     // Show AddStockModal
     $('#AddStockModal').modal('show');
   })
@@ -121,6 +121,10 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".closemodal", function () {
+    $("#StockName").val("");
+    $("#ETAdate").val("");
+    $('input[name="btnradio"]').prop('checked', false);
+    $("#table2body").html("");
     partdata = [];
   });
 
@@ -196,6 +200,8 @@ $(document).ready(function () {
     }
     return childRowHTML;
   }
+
+  
   // Define the DataTable
   var table = $('#Stockable').DataTable({
     "paging": true,
@@ -291,7 +297,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".cancelpart", function () {
-    var index = $(this).attr("data-index");
+    var index;
     var currentStockName = $(this).attr("data-stock");
     debugger
     // Remove the corresponding data from local storage
@@ -300,7 +306,7 @@ $(document).ready(function () {
     if (StockData[stockIndex].partData && StockData[stockIndex].partData.length > 0) {
       StockData[stockIndex].partData.splice(index, 1);
       localStorage.setItem("StockData", JSON.stringify(StockData));
-    }
+    }+
     partdata.splice(index, 1);
     $(this).closest("tr").remove();
     location.reload(true);

@@ -21,7 +21,7 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <!-- Select2 cdn -->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
 
         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"> -->
@@ -29,6 +29,9 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
         <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+        
+
+        <link href="sumoselect.min.css" rel="stylesheet" />
     </head>
 <body>
         <!-- Navbar -->
@@ -113,8 +116,8 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="category">Choose Customer</label>
-                                                <select name="category" class="form-select" id="category">
+                                                <label for="customer">Choose Customer</label>
+                                                <select name="customer" class="form-select" id="customer">
                                                     <option value="">Choose Customer</option>
                                                 </select>
                                             </div>
@@ -135,7 +138,7 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <label>Parts</label>
-                                                <select name="parts[]" class="js-multiple" multiple="multiple" id="parts">
+                                                <select class="form-select multiSelect" id="parts" multiple>
                                                     <option value="BW-01-5-M">BW-01-5-M</option>
                                                     <option value="AT-01-BLK">AT-01-BLK</option>
                                                     <option value="BW-03-XL-G">BW-03-XL-G</option>
@@ -145,11 +148,12 @@
                                                 </select>    
                                             </div>
                                             <div class="col-md-2">
-                                                <button class="btn mt-4" style="background-color:#326C96 ; color:white;" id="btnadd" onclick="addStock()">Add</button>
+                                                <button class="btn mt-4" style="background-color:#326C96 ; color:white;" id="btnadd" onclick="addAssignment()">Add</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                
                             </div>
                         </div>
                         <div class="m-5">
@@ -190,10 +194,12 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+   <script src="./jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/src/jquery.multi-select.min.js"></script>
+   <script src="./jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/src/jquery.multi-select.js"></script>
     <script>
         $(document).ready(function() {
-            $('.js-multiple').select2();
+            $('#parts').multiSelect();
         });
     </script>
 </body>

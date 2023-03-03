@@ -195,8 +195,9 @@ li.paginate_button.page-item:hover {
 
 /* checkboxes css */
 
-input[type=checkbox]:checked {
-  accent-color: green;
+.form-check-input:checked {
+  background-color: #009900;
+  border-color: #009900;
 }
 
 .edit,.history{
@@ -289,3 +290,6 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
   z-index: 1;
   background-color: #326C96;
 }
+
+
+

@@ -96,3 +96,26 @@ table.dataTable td.dt-control:before {
   background-color: white !important;
   margin-right: 10px;
 }
+.select2-container {
+  z-index: 99999;
+}
+
+.select2-container--default .select2-selection--multiple {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: text;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  /* position: relative; */
+  display: inline-block;
+  margin-right: 20px;
+  width: 232px;
+}
+
+
+ .choosepart{
+ 
+  width: 355px;
+  height: 69px;
+}

@@ -216,7 +216,7 @@ console.log(user);
 var newStock = [];
 var Stockstatus;
 
-function addData() {
+function addStockData() {
   // parts
   var stockName = document.getElementById("stock").value;
   var dateM = document.getElementById("date").value;
@@ -429,7 +429,7 @@ function deleteMainTableRow(element) {
   console.log("Part index", PartIndex);
   
   // var partLength = newStockModal[PartIndex].Part.length ;
-  console.log("length",newStockModal[PartIndex].Part.length)
+  // console.log("length",newStockModal[PartIndex].Part.length)
   console.log("Stock index", StockIndex);
   
   // if( partLength <= 0 ){
@@ -445,16 +445,7 @@ function deleteMainTableRow(element) {
 
   var tr = $(element).closest("tr")
   tr.remove()
-  // var prevtr = tr.next("tr")[1];
-  // var data = table.row(prevtr).data();
-  // console.log(data)
-  // .row( $(element).parents('tr') )
-  
-  
-
-  // console.log(newStockModal[index].Part[index]);
-  // localStorage.setItem("newStock", JSON.stringify(newStock));
-  // showModaltable()
+ 
 }
 
 //active

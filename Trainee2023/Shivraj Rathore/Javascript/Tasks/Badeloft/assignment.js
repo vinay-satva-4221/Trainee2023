@@ -12,7 +12,52 @@ $(document).ready(function () {
 
   $('#newassign').click(function () {
     $('#assignmodal').modal('show');
+    
   });
+
+  var stockassigned = [];
+
+  $("#addassign").click(function () {
+    var customer = $("#user-select").val();
+    var invoice = $("#invoice_num").val();
+    var stock_name = $("#stock-select").val();
+    var part_name = $("#part-select").val();
+
+    part_name = part_name.toString().replaceAll(","," | ");
+
+    // Create object with properties and add to array
+    var obj = {
+      customer: customer,
+      invoice: invoice,
+      stock_name: stock_name,
+      part_name: part_name
+    };
+    stockassigned.push(obj);
+
+    
+  
+    // Append row to table with index
+    var index = stockassigned.length;
+    $("#AssignmentInnerTable").append("<tr><td class='text-center'>" + index + "</td><td class='text-center'>"
+      + stock_name + "</td><td class='text-center'>"
+       + part_name
+        + "</td><td class='text-center'><button type='button' class='btn btn-sm btn-danger delete-row class='text-center'' >Delete</button></td></tr>");
+  
+    // Delete Function
+    $(document).on("click", ".delete-row", function () {
+      var index = $(this).closest("tr").index();
+      stockassigned.splice(index - 1, 1);
+      $(this).closest("tr").remove();
+
+      
+  
+      // Update table indices
+      $("#AssignmentInnerTable tr:gt(0)").each(function (i) {
+        $(this).find("td:first").text(i + 1);
+      });
+    });
+  });
+  
 
 
   $('#example').DataTable({
@@ -35,34 +80,52 @@ $(document).ready(function () {
     userSelect.appendChild(option);
   });
 
-    // Retrieve existing data from local storage
+  // Retrieve existing data from local storage
   var StockData = JSON.parse(localStorage.getItem("StockData")) || [];
 
   // Populate stock name dropdown
   var stockSelect = $('#stock-select');
   stockSelect.empty();
-  stockSelect.append($('<option>', {value: '', text: 'Choose Stock Name'}));
-  $.each(StockData, function(i, stock) {
-    stockSelect.append($('<option>', {value: stock.stockName, text: stock.stockName}));
+  stockSelect.append($('<option>', { value: '', text: 'Choose Stock Name' }));
+  $.each(StockData, function (i, stock) {
+    stockSelect.append($('<option>', { value: stock.stockName, text: stock.stockName }));
   });
 
+  $('.js-example-basic-multiple').select2();
+
   // Handle change event on stock name dropdown
-  stockSelect.change(function() {
+  stockSelect.change(function () {
     var selectedStock = $(this).val();
     var partSelect = $('#part-select');
     partSelect.empty();
-    partSelect.append($('<option>', {value: '', text: 'Choose Part Number'}));
+    partSelect.append($('<option>', { value: '', text: 'Choose Part Number' }));
     if (selectedStock) {
-      var selectedStockData = StockData.find(function(stock) {
+      var selectedStockData = StockData.find(function (stock) {
         return stock.stockName === selectedStock;
       });
-      $.each(selectedStockData.partData, function(i, part) {
-        partSelect.append($('<option>', {value: part.part_num, text: part.part_num}));
+      $.each(selectedStockData.partData, function (i, part) {
+        partSelect.append($('<option>', { value: part.part_num, text: part.part_num }));
       });
       partSelect.prop('disabled', false);
     } else {
       partSelect.prop('disabled', true);
     }
+
+
+
+
+    // Add selected data to an array and store it in local storage
+    // var selectedData = JSON.parse(localStorage.getItem("selectedData")) || [];
+    // var selectedCustomer = userSelect.value;
+    // var selectedParts = Array.from(partSelect.selectedOptions).map(option => option.value);
+    // if (selectedStock && selectedCustomer && selectedParts.length > 0) {
+    //   selectedData.push({
+    //     stockName: selectedStock,
+    //     customer: selectedCustomer,
+    //     parts: selectedParts
+    //   });
+    //   localStorage.setItem("selectedData", JSON.stringify(selectedData));
+    // }
   });
 
 
