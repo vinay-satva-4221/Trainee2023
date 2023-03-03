@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- Bootstrap5 cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Datatables cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
+
+    <link href="Badeloft.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
+            <img src="images/Black-logo.png" width="215px" height="28px" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Stock.html">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Status.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Assignment.html "><b>Assignment</b></a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav: mx-5">
+                <li class="nav-item">
+                      <img alt="profile-image" class="rounded-circle" src="images/user.jfif" style="width: 60px; height: 60px;"/>
+                     
+                </li> 
+                <li class="nav-item">
+                    <h5 style="color: gray; font-size: medium;">Welcome</h5>
+                    <h4 id="username"><b>Eric Jenson</b></h4>
+                   
+              </li>
+              
+            </ul>
+            <div>
+                <img src="images/Log-Out.jpg" alt="" onclick="logout()">
+            </div>
+        </nav>
+          
+    
+      
+        <div class="table-responsive bg-light">
+
+            <div class="m-5">
+              
+        
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="addassignment" data-bs-target="#myModal" style="background-color: #326C96; border: none; font-size: 18px; margin-right: 1%; font-family: 'Segoe UI'; font-weight:600;">
+                            <img src="images/Plus.png" style="height: 18px;"> New  
+                           </button>
+                        <!-- <input type="search" class="form-control" id="datatable-search-input" placeholder="Search here"> -->
+        
+        
+
+            <table class="table border rounded" id="assignment">
+                <thead class="table table-dark rounded">
+                    
+                </thead>
+           
+            </table>
+            </div>
+        </div> 
+        
+            <div class="modal" id="myModal" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+        
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Assignment</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                    <label for="fname">Choose Customer</label>
+                                    <select id="customer" class="form-control">
+                                        <option value="" disabled selected="selected">Select Customer</option>
+                                    </select>                                    
+                                </div>
+                                    <div class="col-lg-6">
+                                <label for="fname">QuickBooks Invoice #</label>
+                                <input type="text" class="form-control" id="lname" placeholder="Enter Last name"><br>
+                                    </div>
+                                </div>
+                                <label for="fname"><b>Add Stock</b></label>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                <label for="fname">Stock</label>
+                                <select id="selstock" class="form-control">
+                                    <option value="" disabled selected="selected">Select Stock</option>
+                                </select>                                     
+                                 </div>
+                                    <div class="col-lg-5">
+                                <label for="fname">Parts</label>
+                                <select id="selpart" class="form-control">
+                                    <option value="" disabled selected="selected">Choose Part</option>
+                                </select>  
+                                    </div>
+
+                                    <div class="col-lg-2">  
+                                        <label for="fname">&nbsp;</label>
+
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                                    </div>
+
+                                </div>  
+                                <br><br>                       
+                                <br><br>                       
+                                <br><br>                       
+                                                   
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+        
+                            </div>
+        
+                            
+        
+                        </div>
+                    </div>
+                </div>
+        
+                </div>
+        
+            <br><br><br>
+
+
+        </div>
+
+      
+    
+
+    <script src="JQ/jquery-3.6.3.min.js"></script>
+    <!-- <script src="JS/bootstrap.min.js"></script>  -->
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+    <!-- <script src="Badeloft.js"></script> -->
+    <script src="Assignment.js"></script>
+
+
+
+
+
+</body>
+
+</html>

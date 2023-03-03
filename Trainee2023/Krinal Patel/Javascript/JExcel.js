@@ -1,5 +1,5 @@
 var data = [
-    ['', '', '2018-07-11', '', '', '', 'HTML Task',true,'www.bc.com','Todays JS'],
+    ['', '', '', '', '', '', 'HTML Task',true,'www.bc.com','Todays JS'],
 ];
 debugger;
 var j1 = jspreadsheet(document.getElementById('spreadsheet'), {
@@ -16,7 +16,24 @@ var j1 = jspreadsheet(document.getElementById('spreadsheet'), {
         { type: 'checkbox', title:'Out of Scope', width:120, },
         { type: 'text', title:'BC Link', width:100},
         { type: 'text', title:'BC Description', width:200 },
-     ]
+        
+     ],
+    
+    // onblur:function(instance, rowNumber, numOfRows, rowRecords, insertBefore){
+    //     var g = j1.getData();
+    //     t1.setData(g);
+    //     console.log(t,g)
+    //     t=g;
+    // }
+    onselection:function(instance, x1, y1, x2, y2, origin){
+        var g = j1.getData();
+            t1.setData(g);
+            console.log(t,g)
+            t=g;
+        }
+        
+        
+        
 });
 
 // $('#spreadsheet').jspreadsheet({
@@ -24,22 +41,21 @@ var j1 = jspreadsheet(document.getElementById('spreadsheet'), {
 //     onchange:update,
   
 // });
-var t1 = jspreadsheet(document.getElementById('table'), {
+var t1 = jspreadsheet(document.getElementById('tb'), {
     data:data,
-    columns:[
-        // { title:'Model', width:300 },
-        // { title:'Price', width:80 },
-        // { title:'Model', width:100 }
-        { title:'Project Name', width:200 },
-        { title:'Timelog Date', width:200 },
-        { title:'Phase', width:100 },
-        { title:'Status', width:100 },
-        { title:'Logged Hours', width:150},
-        { title:'Billable Hours', width:150},
-        { title:'Notes', width:200 },
-        { title:'Out of Scope', width:120, },
-        { title:'BC Link', width:100},
-        { title:'BC Description', width:200 },
+    columns: [
+      
+        { title:'Project Name', width:200,readOnly:true },
+        { title:'Timelog Date', width:200 ,readOnly:true },
+        { title:'Phase', width:100 ,readOnly:true },
+        { title:'Status', width:100 ,readOnly:true },
+        { title:'Logged Hours', width:150,readOnly:true },
+        { title:'Billable Hours', width:150,readOnly:true },
+        { title:'Notes', width:200 ,readOnly:true },
+        { title:'Out of Scope', width:120,readOnly:true },
+        { title:'BC Link', width:100,readOnly:true },
+        { title:'BC Description', width:200 ,readOnly:true },
+        
         
     ]
 });
@@ -51,10 +67,11 @@ function add(){
         j1.insertRow();
     }
 }
-function adddata(){
-    var g = j1.getData();
-    t1.setData(g);
-    console.log(t,g)
-    t=g;
-}
+// var updates = function (){
+
+//     var g = j1.getData();
+//     t1.setData(g);
+//     console.log(t,g)
+//     t=g;
+// }
 
