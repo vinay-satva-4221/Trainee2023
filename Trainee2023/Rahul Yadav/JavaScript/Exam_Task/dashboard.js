@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     if (localStorage.getItem('LogedinUser') !== null) {
 
         var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
@@ -24,21 +23,16 @@ $(document).ready(function () {
             [{ value: 'Stock Location', position: 'top' },
             { value: 'ETA Date', position: 'top' }]);
 
-
-
         $("#table_div").DataTable({
             data: dataSet,
             language: {
                 info: "Items _START_ to _END_ of _TOTAL_ total",
-
                 paginate: {
                     next: '&#62',
                     previous: '&#60'
                 }
             },
             columnDefs: [
-
-
                 { targets: 0, type: StockLocation },
                 { orderable: true, targets: 0 },
                 { orderable: false, targets: "_all" },
@@ -70,7 +64,6 @@ $(document).ready(function () {
         });
 
         var table = $("#table_div").DataTable();
-
         $("#datatablesearch").on("keyup", function () {
             table.search(this.value).draw();
         });
@@ -82,25 +75,12 @@ $(document).ready(function () {
             },
         });
 
-
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
-            window.location.replace("log.html");
-        });
-
-
-
-        $('[data-bs-toggle="popover"]').popover({
-
-            container: 'body',
-            placement: 'right',
-            html: true,
-            content: function () {
-                return $('#popover-content').html();
-            }
+            window.location.replace("login.html");
         });
     }
     else {
-        window.location.href = "index.html"
+        window.location.href = "login.html"
     }
 })  

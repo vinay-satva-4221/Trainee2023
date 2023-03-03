@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Assignment</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
@@ -13,9 +13,9 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -34,16 +34,16 @@
                     <div class="tabs ms-auto pe-5" id="links">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-link ">
-                                <a href="db.html"> Dashboard
+                                <a href="dashboard.html" class="fontcolor"> Dashboard
                                 </a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link  ">
-                                <a href="status.html"> Stock</a>
+                                <a href="stock.html" class="fontcolor"> Stock</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link">
-                                <a href="status.html">Status</a>
+                                <a href="status.html" class="fontcolor">Status</a>
                                 <div class="underline"></div>
                             </li>
                             <li class="nav-link active-link">
@@ -80,7 +80,9 @@
                 </div>
                 <div class="col-lg-3 p-3">
                     <div class="form-group has-search me-5 pe-1">
-                        <input type="text" class="form-control" placeholder="Search" id="datatablesearch" />
+                        <input type="text" class="form-control searchbar" placeholder="Search here"
+                            id="datatablesearch" />
+                        <i class="bi bi-search searchiconstock"></i>
                     </div>
                 </div>
             </div>
@@ -97,17 +99,23 @@
                             <form class="row g-3" id="stockform">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="inputState" class="form-label">Choose Customer</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
+                                        <label for="inputState" class="form-label fontcolor">Choose Customer</label>
+                                        <select class="form-select form-control mt-2" id="user-select">
+                                            <option selected disabled>Choose...</option>
+                                            <option value="Kenneth Woodard">Kenneth Woodard</option>
+                                            <option value="Jay">Jay</option>
+                                            <option value="">Eric Jensen</option>
+                                            <option value="">Rahul</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="inputState" class="form-label">QuickBooks Invoice #</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
+                                        <label for="inputState" class="form-label fontcolor">QuickBooks Invoice
+                                            #</label>
+                                        <select class="form-select form-control mt-2"
+                                            aria-label="Default select example">
+                                            <option selected disabled>Choose...</option>
+                                            <option value="150001">150001</option>
+                                            <option value="150002">150002</option>
                                         </select>
                                     </div>
 
@@ -116,31 +124,27 @@
                                 <h6> <b>Add Stock</b></h6>
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <label for="inputState" class="form-label">Stock</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
+                                        <label for="inputState" class="form-label fontcolor">Stock</label>
+                                        <select class="form-select form-control" id="stock-select">
+                                            <option selected disabled>Choose...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-5">
-                                        <label for="inputState" class="form-label">Parts</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
+                                        <label for="inputState" class="form-label fontcolor">Parts</label> <br>
+                                        <select class="js-example-basic-multiple" name="states[]" id="part-select"
+                                            multiple="multiple">
+                                            <!-- <option value="AL" selected disabled>Choose....</option> -->
                                         </select>
                                     </div>
                                     <div class="col-2 pb-0 pt-4">
                                         <button type="button" class="btn" id="addassignment">Add</button>
                                     </div>
                                 </div>
-
                                 <table class="table rounded" id="root"></table>
-
                             </form>
-
                         </div>
                         <div class="modal-footer justify-content-start">
-                            <button type="submit" class="btn " id="save">Save </button>
+                            <button type="submit" class="btn " id="saveassignment">Save </button>
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
@@ -149,7 +153,7 @@
 
             <div class="row backgroundcolor">
                 <div class=" displayTable table-responsive pt-4 px-5">
-                    <table id="table_div" class="table table-display table-hover  table-sm " style="width:100%">
+                    <table id="table_div" class="table table-display  table-sm " style="width:100%">
 
                         <thead class="thead-dark">
 
@@ -163,13 +167,13 @@
 
     <script src="jquery/jquery.js"></script>
     <script src="assignment.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js  "></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 
