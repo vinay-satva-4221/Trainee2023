@@ -1,158 +1,254 @@
 thead {
-    background-color: black;
-    border-collapse: collapse;
-    border-radius: 1em;  
-    
+  background-color: black;
+  border-collapse: collapse;
+  border-radius: 1em;
+
 }
-table{
-   font-size: small;
-   border-collapse: collapse;
-   border-radius: 1.2em;
-   overflow: hidden;
-   background-color: white;
-   border: 1px solid black;
-   
+
+table {
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1.2em;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid black;
+
 }
-#Statustable_length, #Statustable_filter, #Statustable_info {
-    display: none;
+
+/* #Statustable_length, #Statustable_filter, #Statustable_info {
+  display: none;
+} */
+
+#example_length, #example_filter, #example_info {
+  display: none;
 }
 
 .nav_logo {
-    margin: 10px;
-    height: 20px;
-    width: 170px;
-    padding-left: 20px;
+  margin: 10px;
+  height: 20px;
+  width: 170px;
+  padding-left: 20px;
 }
 
 .maintable {
-    background-color: black;
-    color: white;
-    border: 1px;
+  background-color: black;
+  color: white;
+  border: 1px;
 }
 
 .styl {
-    height: 50px;
-    width: 60px;
-    padding-bottom: 10px;
+  height: 50px;
+  width: 60px;
+  padding-bottom: 10px;
 }
 
 .rounded-circle {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
-.navbar a.active {
-    border-bottom: 3px solid #000000;
 
-}
 
 #logout {
-    color: rgb(150, 147, 143);
-    margin-top: 30px;
-    margin-left: 30px;
+  color: rgb(150, 147, 143);
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 #Uname {
-    margin-right: 15px;
-    margin-top: 5px;
+  margin-right: 15px;
+  margin-top: 5px;
 }
 
 #img {
-    margin-right: 10px;
-    margin-top: 13px;
+  margin-right: 10px;
+  margin-top: 13px;
 }
 
 #Uname {
-    margin-right: 15px;
-    margin-top: 7px;
+  margin-right: 15px;
+  margin-top: 7px;
 }
 
 #bade_logo {
-    width: 100%;
-    margin-left: -35px;
+  width: 100%;
+  margin-left: -35px;
 }
 
 #production, #water, #warehouse {
-    background-color: #326C96;
-    color: white;
+  background-color: #326C96;
+  color: white;
 }
 
 #save_outer {
-    background-color: #326C96;
-    color: white;
-    width: 11%;
+  background-color: #326C96;
+  color: white;
+  width: 11%;
 }
+
 #close_outer {
-    width: 11%;
-    color: rgb(150, 147, 143);
+  width: 11%;
+  color: rgb(150, 147, 143);
 }
-#save_inner{
-    background-color: #326C96;
-    color: white;
-    width: 15%;
+
+#save_inner {
+  background-color: #326C96;
+  color: white;
+  width: 15%;
 }
-#close{
-    width: 17%;
+
+#close {
+  width: 17%;
 }
+
 .pagination {
-    display: inline-block;
+  display: inline-block;
 }
+
 .pagination .page-item.active .page-link {
-    background-color: black;
-    border: black;
-    color: white;
+  background-color: black;
+  border: black;
+  color: white;
 }
+
 .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
 }
+
 .pagination a.active {
-    background-color: black;
-    color: white;
-    border: 1px solid black;
-  }
-  
-  #Statustable.dataTable td.dt-control:before {
-    background-color: white;
-    color: #1188FF;
-    border-color: #1188FF;
-  }
-  #Statustable th.sorting.sorting_asc::before{
-   
-    margin-right: 15%;
-  }
-  #Statustable th.sorting.sorting_asc::after{
-   
-    margin-right: 15%;
-  }
-  #Statustable th.sorting.sorting_desc::after{
-   
-    margin-right: 15%;
-  }
-  #Statustable th.sorting.sorting_desc::before{
-   
-    margin-right: 15%;
-  }
-  #Statustable th.sorting::before{
-    margin-right: 15%;
-  }
-  #Statustable th.sorting::after{
-    margin-right: 15%;
-  }
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+
+
+#Statustable th.sorting.sorting_asc::before {
+
+  margin-right: 15%;
+}
+
+#Statustable th.sorting.sorting_asc::after {
+
+  margin-right: 15%;
+}
+
+#Statustable th.sorting.sorting_desc::after {
+
+  margin-right: 15%;
+}
+
+#Statustable th.sorting.sorting_desc::before {
+
+  margin-right: 15%;
+}
+
+#Statustable th.sorting::before {
+  margin-right: 15%;
+}
+
+#Statustable th.sorting::after {
+  margin-right: 15%;
+}
+
 /* 
   table.dataTable td.dt-control {
     text-align: start !important;
     color: rgb(95, 159, 248);
     padding-right: 3px;
   } */
-  
-  input[type=checkbox]:checked {
-    accent-color: green;
-  }
+
+input[type=checkbox]:checked {
+  accent-color: green;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 2px;
+  bottom: -23px;
+  left: 20px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  /* transition: all 0.3s ease-in-out 0s; */
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+}
+#Statustable.dataTable td.dt-control:before {
+  background-color: white;
+  color: #1188FF;
+  border-color: #063894;
+  margin: 5px;
+}
+
+/* table.dataTable td.dt-control:before {
+  background-color: white !important;
+  color: #326C96 !important;
+  border: 0.15em solid #326C96 !important;
+  margin: 3px;
+} */
+
+table.dataTable td.dt-control {
+  text-align: start !important;
+  color: rgb(95, 159, 248);
+  padding-right: 3px;
+}
 
 
-  
+#Statustable_length {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+#Statustable_filter input[type=search] {
+  width: 300px;
+  height: 35px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+#Statustable_paginate{
+  margin-top: 8px;
+}
+/* .dt-control.sorting_disabled{
+  display: non;
+} */
+
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0% !important;
+  margin: 0% !important;
+
+}
+
+li.paginate_button.page-item.active {
+  background: none !important;
+  border: none !important;
+}
+
+li.paginate_button.page-item:hover {
+  background: none !important;
+  border: none !important;
+}
+
+li.paginate_button.page-item {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+

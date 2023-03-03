@@ -20,7 +20,7 @@
 <body>
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light p-0 ">
         <div class="container">
             <img class="Dlogo" src="images/logo2.jpg" alt="">
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
@@ -31,16 +31,16 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0 navItem">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Dashboard.html">Dashboard </a>
+                        <a class="nav-link nav-item" href="Dashboard.html" target="_self">Dashboard </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="stock.html">Stock</a>
+                        <a class="nav-link" href="stock1.html" target="_self">Stock</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="status.html">Status</a>
+                        <a class="nav-link" href="status.html" target="_self">Status</a>
                     </li>
                     <li class="nav-item assign">
-                        <a class="nav-link" href="#">Assignment</a>
+                        <a class="nav-link" href="assignment.html" target="_self">Assignment</a>
                     </li>
 
 
@@ -61,52 +61,35 @@
 
             </div>
         </div>
-    </nav>
-
-    <section class="container" style="background-color: rgb(240, 240, 240);">
-        <div class="container d-flex mt-3">
-            <div class="container">
-                <p class="stock"><b> Status</b></p>
-            </div>
-            <!-- <div>
-                <input type="text" placeholder="Search here">
-            </div> -->
         </div>
 
-        <div class="container table-responsive ">
 
-            <table id="tab" class="table border text-start">
+    </nav>
 
+    <section class="container-fluid section">
+        <div class="container d-flex ">
+            <div class="container-fluid mt-3">
+                <p class="status_heading"><b>Status </b></p>
+            </div>
+            <div class="S_search mt-3">
+                <input type="text" id="status_search" placeholder="Search here">
+            </div>
+        </div>
+
+        <div class="container-fluid table-responsive table_div">
+
+            <table id="status_tab" class="table border text-start ">
+              <thead class="bg-dark">
+                <!-- <th class="color-white"></th> -->
+              </thead>
             </table>
 
         </div>
 
 
-    
-    <div class="container d-flex justify-content-end">
-        <nav aria-label="Page navigation example">
 
-            <ul class="pagination mt-2">
-                <div class="d-flex mt-2 pageNo">
-                    <p>Items 1 to 5 of 1 total</p>
-                </div>
-                <li class="page-item ">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</section>
+
+    </section>
 
     <script src="jquery/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>

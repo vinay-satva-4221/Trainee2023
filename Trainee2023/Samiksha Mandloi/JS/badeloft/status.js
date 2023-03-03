@@ -1,5 +1,10 @@
-
-
+var loginUser = JSON.parse(localStorage.getItem('loginuser'));
+var username = loginUser.name;
+document.getElementById("user").innerHTML ="Welcome"+ "<br>"+"<b>"+ username+ "</b>";
+function logout() {
+    localStorage.removeItem("loginuser");
+    location.replace("badeloft.html");
+}
 //    $("#example").DataTable();
 
 function format(d) {
@@ -67,12 +72,21 @@ $(document).ready(function () {
             { title: 'QB Status', orderable: false, className: 'TextCenter' },
             { title: 'QB Delivery Phone', orderable: false, className: 'TextCenter' },
             { title: 'Called', orderable: false, className: 'TextCenter' },
-            { title: 'QB_InvTrackingoice', orderable: false, className: 'TextCenter' },
+            { title: 'QB Tracking', orderable: false, className: 'TextCenter' },
 
 
 
         ],
         order: [[1, 'asc']],
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: 'Search here...'
+        },
+
+        "fnInitComplete": function () {
+            $('div.dataTables_length').html('<h2>Status</h2>');
+        },
+
     });
 
     // Add event listener for opening and closing details

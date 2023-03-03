@@ -1,10 +1,10 @@
-var loginUser = JSON.parse(localStorage.getItem('loginUser'));
+var loginUser = JSON.parse(localStorage.getItem("loginUser"));
 var username = loginUser[0].name;
 document.getElementById("user").innerHTML = username;
 
 function logout() {
-    localStorage.removeItem("loginUser");
-    location.replace("login.html");
+   localStorage.removeItem("loginUser");
+   location.replace("login.html");
 }
 
 $(document).ready(function () {
@@ -42,91 +42,158 @@ $(document).ready(function () {
          "</table>"
       );
    }
+
    var data = [
-      [
-         "",
-         "<span style='color: #0086e5'>150000</span>",
-         "Kenneth",
-         "12/08/2021",
-         '<span class="alert alert-primary" style="padding:5px;"><i class="fa fa-check"></i>Paid</span>',
-         "Shipped",
-         "617-235-7627",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked" >',
-         "WBC-123",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150001</span>",
-         "James Fenske",
-         "10/08/2021",
-         '<span class="alert alert-success" style="padding:5px;"><i class="fa fa-check"></i>Paid</span>',
-         "Shipped",
-         "618-234-6400",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked" >',
-         "WBC-124",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150002</span>",
-         "Kelly McCrory",
-         "08/08/2021",
-         '<span class="alert alert-success" style="padding:5px;"><i class="fa fa-check"></i>Paid</span>',
-         "STD",
-         "630-367-8448",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked" >',
-         "",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150003</span>",
-         "Alex John",
-         "05/08/2021",
-         '<span class="alert alert-danger" style="padding:5px;"><i class=" fa fa-times" aria-hidden="true""></i>UnPaid</span>',
-         "Shipped",
-         "203-963-9428",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked" >',
-         "WBC-125",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150004</span>",
-         "Johnson Zender",
-         "03/08/2021",
-         '<span class="alert alert-success" style="padding:5px;"><i class="fa fa-check"></i>Paid</span>',
-         "STD",
-         "508-206-0722",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked" >',
-         "",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150005</span>",
-         "Aisha Lii",
-         "02/08/2021",
-         '<span class="alert alert-warning" style="padding:5px;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>Pending Approval</span>',
-         "Shipped",
-         "201-905-4664",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked">',
-         "WBC-127",
-      ],
-      [
-         "",
-         "<span style='color: #0086e5'>150006</span>",
-         "Samantha Southard",
-         "01/08/2021",
-         '<span class="alert alert-success" style="padding:5px;"><i class="fa fa-check"></i>Paid</span>',
-         "Shipped",
-         "707-271-9421",
-         '<input class="form-check-input" type="checkbox" value = "" id="flexCheckchecked">',
-         "WBC-128",
-      ],
+      {
+         qb_invoice: "150000",
+         name: "Kenneth Woodward",
+         qb_shipdate: "09/08/2001",
+         qb_pay_status: '<button class="btn-sm alert alert-primary p-1" id="changeAlert" style=""><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "asasxc",
+         called: '<input type="checkbox" style="text-align: center;"></input>',
+         qb_tracking: "WBC-123",
+      },
+      {
+         qb_invoice: "150001",
+         name: "James Fenske",
+         qb_shipdate: "09/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "618-234-6400",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-124",
+      },
+      {
+         qb_invoice: "150002",
+         name: "Kelly McCrory",
+         qb_shipdate: "02/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "STD",
+         qb_delievery_phone: "630-367-8448",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "",
+      },
+      {
+         qb_invoice: "150003",
+         name: "Linda Englund",
+         qb_shipdate: "03/08/2001",
+         qb_pay_status: '<button class="btn-sm alert alert-danger p-1"><i class="fa fa-close"></i>&nbsp;Unpaid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "203-963-9428",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-125",
+      },
+      {
+         qb_invoice: "150004",
+         name: "Frances Badger",
+         qb_shipdate: "04/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "STD",
+         qb_delievery_phone: "508-206-0722",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "",
+      },
+      {
+         qb_invoice: "150005",
+         name: "Tasha Tapia",
+         qb_shipdate: "05/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-warning p-1"><i class="fa fa-exclamation-circle"></i>&nbsp;Pending Approval</button>',
+         status: "Shipped",
+         qb_delievery_phone: "201-905-4664",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-127",
+      },
+      {
+         qb_invoice: "150006",
+         name: "Samantha Southard",
+         qb_shipdate: "06/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "707-271-9412",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-128",
+      },
+      {
+         qb_invoice: "150007",
+         name: "James Fenske",
+         qb_shipdate: "07/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "618-234-6400",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-124",
+      },
+      {
+         qb_invoice: "150008",
+         name: "Kelly McCrory",
+         qb_shipdate: "08/08/2001",
+         qb_pay_status: '<button class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "STD",
+         qb_delievery_phone: "630-367-8448",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "",
+      },
+      {
+         qb_invoice: "150009",
+         name: "Linda Englund",
+         qb_shipdate: "09/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-danger p-1"><i class="fa fa-close"></i>&nbsp;Unpaid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "203-963-9428",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-125",
+      },
+      {
+         qb_invoice: "150010",
+         name: "Frances Badger",
+         qb_shipdate: "10/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "508-206-0722",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "",
+      },
+      {
+         qb_invoice: "150011",
+         name: "Tasha Tapia",
+         qb_shipdate: "11/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-warning p-1"><i class="fa fa-exclamation-circle"></i>&nbsp;Pending Approval</button>',
+         status: "STD",
+         qb_delievery_phone: "201-905-4664",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-127",
+      },
+      {
+         qb_invoice: "150012",
+         name: "Samantha Southard",
+         qb_shipdate: "12/08/2001",
+         qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+         status: "Shipped",
+         qb_delievery_phone: "707-271-9412",
+         called: '<input type="checkbox"></input>',
+         qb_tracking: "WBC-128",
+      },
    ];
 
-   var table = $("#statusTable").DataTable({
-      data: data,
+   var table = $("#example").DataTable({
+      paging: true,
       dom: '<"toolbar">frtip',
-      "bLengthChange": false,
-      "bInfo" : false,
+      bFilter: false,
+      bInfo: true,
+      fnInitComplete: function () {
+         $("div.toolbar").html("<h2></h2>");
+      },
+      language: {
+        "info": "items _START_ to _END_ of _TOTAL_ entries",
+         search: "_INPUT_",
+         searchPlaceholder: "Search here...",
+         paginate: {
+            previous: "<",
+            next: ">",
+         },
+      },
+      data: data,
       columns: [
          {
             className: "dt-control",
@@ -134,40 +201,69 @@ $(document).ready(function () {
             data: null,
             defaultContent: "",
          },
-         { title: "QB_Invoice" },
-         { title: "Name"},
-         { title: "QB Ship date"},
-         { title: "QB Payment Status", orderable: false, className: "TextCenter" },
-         { title: "QB Status", orderable: false, className: "TextCenter" },
-         { title: "QB Delivery Phone", orderable: false, className: "TextCenter" },
-         { title: "Called", orderable: false, className: "TextCenter" },
-         { title: "QB_InvTrackingoice", orderable: false, className: "TextCenter" },
+         { data: "qb_invoice", orderable: true },
+         { data: "name", orderable: true },
+         { data: "qb_shipdate", orderable: true },
+         { data: "qb_pay_status", orderable: true },
+         { data: "status", orderable: true },
+         { data: "qb_delievery_phone", orderable: true },
+         { data: "called", orderable: true },
+         { data: "qb_tracking", orderable: true },
       ],
-      fnInitComplete: function () {
-         $("div.toolbar").html("<h2>Status</h2>");
-      },
       order: [[1, "asc"]],
-      language: {
-         search: "_INPUT_",
-         searchPlaceholder: "Search here...",
-         paginate:{
-            previous:"<",
-            next:">"
-         },
-      },
-
    });
 
    // Add event listener for opening and closing details
-   $("#statusTable tbody").on("click", "td.dt-control", function () {
+   $("#example tbody").on("click", "td.dt-control", function () {
       var tr = $(this).closest("tr");
       var row = table.row(tr);
+
       if (row.child.isShown()) {
+         // This row is already open - close it
          row.child.hide();
          tr.removeClass("shown");
       } else {
+         // Open this row
          row.child(format(row.data())).show();
          tr.addClass("shown");
       }
    });
+
+   //click anywhere in the row
+   var table = $('#example').DataTable();
+
+   $('#example tbody').on('click', 'tr', function() {
+     var data = table.row(this).data();
+     if (table.row(this).child.isShown()) {
+       table.row(this).child.hide();
+       var alertElement = $('#changeAlert');
+       alertElement.removeClass('alert-success');
+       alertElement.addClass('alert-primary');
+     } else {
+       table.row(this).child(format()).show();
+       var alertElement = $('#changeAlert');
+       alertElement.removeClass('alert-primary');
+       alertElement.addClass('alert-success');
+     }
+   });
 });
+
+// Add event listener for opening and closing details
+$("#statusTable tbody").on("click", "td.dt-control", function () {
+   var tr = $(this).closest("tr");
+   var row = table.row(tr);
+   if (row.child.isShown()) {
+      row.child.hide();
+      tr.removeClass("shown");
+   } else {
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+   }
+});
+
+  $("#search").on("keyup", function () {
+    var value = $(this).val().toLowerCase();
+    $("#example tbody tr").filter(function () {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    });
+ });

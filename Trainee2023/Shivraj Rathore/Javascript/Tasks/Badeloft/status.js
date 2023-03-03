@@ -9,46 +9,47 @@ $(document).ready(function () {
   $("#activeuser").html(activeuser.username);
 
 
-  function format(d) {
-return (
-'<table class="text-center"  style="width:100%;"> ' +
-'<tr>' +
-'<th>#</th>' +
-'<th>Part Number</th>' +
-'<th>Stock Location</th>' +
-'<th>Action</th>' +
-'</tr>' +
-'<tr>' +
-'<td>1</td>' +
-'<td>BW-01-S-M</td>' +
-'<td>Warehouse</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'<tr>' +
-'<td>2</td>' +
-'<td>AP-03-XL-G</td>' +
-'<td>C-101</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'<tr>' +
-'<td>3</td>' +
-'<td>BW-03-XL-G</td>' +
-'<td>E-501</td>' +
-'<td><i class="fa fa-close"></i></td>' +
-'</tr>' +
-'</table>'
-);
-}
 
-  var data = [
+  function format(d) {
+    return (
+      '<table class="text-center"  style="width:100%;"> ' +
+      '<tr>' +
+      '<th>#</th>' +
+      '<th>Part Number</th>' +
+      '<th>Stock Location</th>' +
+      '<th>Action</th>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>1</td>' +
+      '<td>BW-01-S-M</td>' +
+      '<td>Warehouse</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>2</td>' +
+      '<td>AP-03-XL-G</td>' +
+      '<td>C-101</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '<tr>' +
+      '<td>3</td>' +
+      '<td>BW-03-XL-G</td>' +
+      '<td>E-501</td>' +
+      '<td><i class="fa fa-close"></i></td>' +
+      '</tr>' +
+      '</table>'
+    );
+  }
+
+  var Statusdata = [
     {
       qb_invoice: "150000",
       name: "Kenneth Woodward",
       qb_shipdate: "09/08/2001",
-      qb_pay_status: '<button class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "asasxc",
-      called: '<input type="checkbox"></input>',
+      called: '<input type="checkbox" ></input>',
       qb_tracking: "WBC-123"
     },
     {
@@ -145,7 +146,7 @@ return (
       qb_invoice: "150010",
       name: "Frances Badger",
       qb_shipdate: "10/08/2001",
-      qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "508-206-0722",
       called: '<input type="checkbox"></input>',
@@ -165,7 +166,7 @@ return (
       qb_invoice: "150012",
       name: "Samantha Southard",
       qb_shipdate: "12/08/2001",
-      qb_pay_status: '<button  class="btn-sm alert alert-primary p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
+      qb_pay_status: '<button  class="btn-sm alert alert-success p-1"><i class="fa fa-check"></i>&nbsp;Paid</button>',
       status: 'Shipped',
       qb_delievery_phone: "707-271-9412",
       called: '<input type="checkbox"></input>',
@@ -173,7 +174,7 @@ return (
     }
   ]
 
-  var table = $('#example').DataTable({
+  var table = $('#Statusdata').DataTable({
     "paging": true,
     "dom": '<"toolbar">frtip',
     bFilter: true,
@@ -181,28 +182,32 @@ return (
     fnInitComplete: function () {
       $('div.toolbar').html('<h2>Status</h2>');
     },
-    data: data,
+    data: Statusdata,
+    language: {
+      search: "_INPUT_",
+          searchPlaceholder: 'Search...',
+          paginate: {
+            next: '&#62',
+            previous: '&#60' 
+          },
+          "info": "Items _START_ to _END_ of _TOTAL_ total" 
+    },
     columns: [
-      {
-        className: 'dt-control',
-        orderable: false,
-        data: null,
-        defaultContent: '',
-      },
-      { data: 'qb_invoice' },
-      { data: 'name' },
-      { data: 'qb_shipdate' },
-      { data: 'qb_pay_status' },
-      { data: 'status',},
-      { data: 'qb_delievery_phone' },
-      { data: 'called' },
-      { data: 'qb_tracking' },
+      { data: 'qb_invoice', orderable: true, className: 'dt-control text-start ' },
+      { data: 'name', orderable: true,className: 'text-start' },
+      { data: 'qb_shipdate', orderable: true ,className: 'text-start'},
+      { data: 'qb_pay_status', orderable: false ,className: 'text-start'},
+      { data: 'status', orderable: false ,className: 'text-start'},
+      { data: 'qb_delievery_phone', orderable: false ,className: 'text-start'},
+      { data: 'called', orderable: false ,className: 'text-center'},
+      { data: 'qb_tracking', orderable: false ,className: 'text-start'},
     ],
     order: [[1, 'asc']],
   });
 
+
   // Add event listener for opening and closing details
-  $('#example tbody').on('click', 'td.dt-control', function () {
+  $('#Statusdata tbody').on('click', 'td.dt-control', function () {
     var tr = $(this).closest('tr');
     var row = table.row(tr);
 

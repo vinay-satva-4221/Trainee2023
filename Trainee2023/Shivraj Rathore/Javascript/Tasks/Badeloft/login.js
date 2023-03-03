@@ -3,6 +3,7 @@ $(document).ready(function () {
   if (loggedInUser) {
     location.replace("dashboard.html");
   }
+
   const users = [
     {
       username: "JohnDoe",
@@ -43,20 +44,22 @@ $(document).ready(function () {
 
   $("#myform").validate({
     rules: {
-      email: {
+      email: {required:true,
         validemail: true,
       },
       password: {
+        required:true,
         validpass: true,
         minlength: 6,
         maxlength: 10
       }
     },
     messages: {
-      email: {
+      email: {required: "Please enter email",
         validemail: "Enter Valid Email",
       },
       password: {
+        required: "Please enter Password",
         validpass: "Enter Valid Password",
         minlength: "Minimum Length 6",
         maxlength: "Maximum Length 10"
@@ -67,22 +70,21 @@ $(document).ready(function () {
   $("#login").click(function () {
     if ($("#myform").valid() == true) {
       // Check email and password with input and alert if matches
-      const inputEmail = document.getElementById('validationCustom01').value;
-      const lowerCaseEmail = inputEmail.toLowerCase();
-      const inputPassword = document.getElementById('validationCustom02').value;
+      const inputEmail = document.getElementById('email').value;
+      const Email = inputEmail.toLowerCase();
+      const inputPassword = document.getElementById('password').value;
 
       const storedUsers = JSON.parse(localStorage.getItem("userData"));
 
-      const user = storedUsers.find(u => u.email === lowerCaseEmail && u.password === inputPassword);
+      const user = storedUsers.find(u => u.email === Email && u.password === inputPassword);
 
       if (user) {
 
         localStorage.setItem("loggedInUser", JSON.stringify(user));
-        
         location.replace("dashboard.html");
 
       } else {
-        alert("Email or password is incorrect.");
+        swal("Inavalid Credentials!", "Check Username And Password", "warning");
       }
     }
   });

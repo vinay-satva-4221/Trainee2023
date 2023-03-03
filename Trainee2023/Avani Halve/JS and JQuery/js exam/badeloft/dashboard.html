@@ -6,25 +6,13 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Dashboard</title>
 
-      <!-- jquery cdn -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
       <!-- Bootsrap Cdn  -->
-      <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"></script> -->
-
-      <!-- bootstrap versions -->
-      <!-- <link
-         href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-         rel="stylesheet"
-         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-         crossorigin="anonymous"
-      /> -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
 
       <!-- font awsome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 
-      <!-- datatable -->  
+      <!-- datatable -->
       <link src="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
 
@@ -33,7 +21,7 @@
       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /> -->
 
       <!-- jquery bottom and 2 jquery links -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
    </head>
    <body>
       <nav class="navbar navbar-expand-lg">
@@ -55,20 +43,20 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
                <div class="tabs mx-auto" id="navlinks">
                   <ul class="navbar-nav">
-                     <li class="nav-link active-link">
-                        <a href="./dashboard.html" style="text-decoration: none">Dashboard</a>
+                     <li class="nav-link">
+                        <a href="./dashboard.html" class="nav-item nav-link fw-bold mx-3 active" style="text-decoration: none">Dashboard</a>
                         <div class="underline"></div>
                      </li>
                      <li class="nav-link">
-                        <a href="./stock.html" style="text-decoration: none">Stock</a>
+                        <a href="./stock.html" class="nav-item nav-link mx-3" style="text-decoration: none">Stock</a>
                         <div class="underline"></div>
                      </li>
                      <li class="nav-link">
-                        <a href="status.html" style="text-decoration: none">Status</a>
+                        <a href="status.html" class="nav-item nav-link mx-3" style="text-decoration: none">Status</a>
                         <div class="underline"></div>
                      </li>
                      <li class="nav-link">
-                        <a href="assignment.html" style="text-decoration: none">Assignment</a>
+                        <a href="assignment.html" class="nav-item nav-link mx-3" style="text-decoration: none">Assignment</a>
                         <div class="underline"></div>
                      </li>
                   </ul>
@@ -92,7 +80,17 @@
             </div>
          </div>
       </nav>
-      <div class="container-fluid">
+
+      <div class="container-fluid me-5">  
+         <span class="heading">Dashboard</span>
+
+         <div class="main">
+            <div class="form-group has-search">
+               <span class="fa fa-search form-control-feedback"></span>
+               <input type="text" id="search" class="form-control" placeholder="Search" />
+            </div>
+         </div>
+
          <table id="dashboardTable" class="table">
             <thead class="table-dark">
                <tr>
@@ -109,9 +107,9 @@
                   <td>Stock Location</td>
                   <td></td>
                   <td></td>
-                  <td  class="text-center">On Water</td>
-                  <td  class="text-center">In Production</td>
-                  <td  class="text-center">On Water</td>
+                  <td class="text-center">On Water</td>
+                  <td class="text-center">In Production</td>
+                  <td class="text-center">On Water</td>
                </tr>
                <tr>
                   <td>ETA Date</td>
@@ -127,7 +125,7 @@
                   <td class="text-center">0</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -144,7 +142,7 @@
                   <td class="text-center">1</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -161,7 +159,7 @@
                   <td class="text-center">0</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -178,7 +176,7 @@
                   <td class="text-center">1</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -195,7 +193,7 @@
                   <td class="text-center">0</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -212,7 +210,7 @@
                   <td class="text-center">4</td>
                   <td class="text-center">
                      <a
-                        href="#"
+                        href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
                         data-content="Some content inside the popover"
@@ -220,68 +218,48 @@
                         >2</a
                      >
                   </td>
-                  <td class="text-center"d class="text-center">3</td>
+                  <td class="text-center" d class="text-center">3</td>
                   <td class="text-center">22</td>
                </tr>
             </tbody>
          </table>
-         <div id="popover-content" style="display: none">
-            <div>
-               <span>abcd</span>
-               <input type="checkbox" />
-               <span>aaaa</span>
-            </div>
+         <div id="popover-content" class="d-none p-0">
+            <div class="row p-0 m-0">
+               <div class="col-md-8">
+               </div>
+               <div class="col-md-2">
+               </div>
+               <div class="col-md-6">
+                   <p class="text-success"> Ordered: 3</p>
+               </div>
+               <div class="col-md-6">
+                   <p class="text-danger">Assigned: 2</p>
+               </div>
+               <div class="col-md-12">
+                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Manuel Pimentel</p>
+   
+               </div>
+               <div class="col-md-12">
+                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger"></i> Dave Pimentel</p>
+               </div>
+           </div>
          </div>
-      </div>
 
-      <script>
-         $(document).ready(function () {
-            var StickRow = $.fn.dataTable.absoluteOrder([
-               { value: "Stock Location", position: "top" },
-               { value: "ETA Date", position: "top" },
-            ]);
-
-            $("#dashboardTable").DataTable({
-               dom: '<"toolbar">frtip',
-               bFilter: true,
-               bInfo: false,
-               language: {
-                  search: "_INPUT_",
-                  searchPlaceholder: "Search here...",
-                  paginate: {
-                     previous: "<",
-                     next: ">",
-                  },
-               },
-              
-               columnDefs: [
-                  { orderable: true, className: "reorder", targets: 0 },
-                  { orderable: false, targets: "_all" },
-                  { targets: 0, type: StickRow },
-               ],
-               fnInitComplete: function () {
-                  $("div.toolbar").html("<h2>Dashboard</h2>");
-               },
-            });
-         });
-      </script>
-
-      <script src="./js/dashboard.js"></script>
-
-      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
-      <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-      <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
-      <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-      <!-- popover -->
-      <script
-         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
-         integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
-         crossorigin="anonymous"
-         referrerpolicy="no-referrer"
-      ></script>
+         <script src="./js/dashboard.js"></script>
+         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+         <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+         <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+         <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+         <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+         <!-- popover -->
+         <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+            integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+         ></script>
    </body>
 </html>
 

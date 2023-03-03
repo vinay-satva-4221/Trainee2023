@@ -33,7 +33,7 @@ $(document).ready(function () {
             return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(value);
         });
 
-        $("#form").validate({
+        $("#loginform").validate({
             rules: {
                 email: {
                     required: true,
@@ -45,7 +45,7 @@ $(document).ready(function () {
                 },
             },
             messages: {
-                name: {
+                email: {
                     required: "Enter your Email",
                     Emailcheck: "Please Enter Valid Email",
                 },
@@ -54,14 +54,14 @@ $(document).ready(function () {
                     password: "Please Enter Valid Password",
                 },
             },
-            submitHandler: function (form) {
-                form.submit();
+            submitHandler: function (loginform) {
+                loginform.submit();
             },
         });
-        var form = $("#form");
-        form.validate();
+        var loginform = $("#loginform");
+        loginform.validate();
         $("#login").click(function () {
-            var result = form.valid();
+            var result = loginform.valid();
             if (result == true) {
                 let email = $("#inputemail").val();
                 let password = $("#password").val();
@@ -72,14 +72,14 @@ $(document).ready(function () {
                             Name: users[i][2],
                             Email: users[i][0],
                         });
-                        document.getElementById("form").reset();
+                        document.getElementById("loginform").reset();
                         window.location.replace("db.html");
                     }
                 }
-                document.getElementById("form").reset();
+                document.getElementById("loginform").reset();
                 localStorage.setItem("LogedinUser", JSON.stringify(loggedInUser));
             } else {
-                swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
+                // swal("InCorrect Detail!", "You Have Entered Invalid Detail!", "warning");
             }
         });
     }

@@ -25,7 +25,7 @@ function format(d) {
       '<td>1</td>' +
       '<td>BW-01-S-M</td>' +
       '<td>Warehouse</td>' +
-      '<td>Close</td>' +
+      '<td>close</td>' +
       '</tr>' +
       '<td>2</td>' +
       '<td>AT-01-BLK</td>' +
@@ -71,11 +71,12 @@ $(document).ready(function () {
               orderable: false,
               data: null,
               defaultContent: '',
+              width: "1%",
              
              
           },
 
-          { title: 'QB Invoice#', width:"10%",render:function(data,type,row){
+          { title: 'QB Invoice#', width:"12%",render:function(data,type,row){
             if(type=='display'){
                 return '<span style="color: #1188FF;">' + data + '</span>';
             }
@@ -83,11 +84,11 @@ $(document).ready(function () {
                 return data;
             }
         } },
-          { title: 'Name',className: "text-center",width:"12%" },
-          { title: 'QB Ship date' , className: "text-center",width:"18%"},
-          { title: 'QB Payment status' ,orderable:false,width:"15%"},
-          { title: 'QB Status' ,orderable:false, className: "text-center",width:"10%"},
-          { title: 'QB Delivery Phone' ,orderable:false,className: "text-center",width:"20%"},
+          { title: 'Name',width:"15%" },
+          { title: 'QB Ship date',width:"12%"},
+          { title: 'QB Payment status' ,orderable:false,width:"17%"},
+          { title: 'QB Status' ,orderable:false, className: "text-center",width:"9%"},
+          { title: 'QB Delivery Phone' ,orderable:false,className: "text-center",width:"17%"},
           { title: 'Called' ,orderable:false,width:"5%",render:function(){return '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="form-check-input">'},className: "text-center" },
           { title: 'QB Tracking' ,orderable:false,width:"25%",className: "text-center"},
 

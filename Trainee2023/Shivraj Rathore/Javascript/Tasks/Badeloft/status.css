@@ -1,0 +1,120 @@
+ #Statusdata thead tr th {
+     background-color: black;
+     color: white;
+ }
+
+ .datatable-pagination {
+     margin-top: 20px;
+ }
+
+ #Statusdata_filter {
+     margin-bottom: 25px;
+ }
+
+ .toolbar {
+     float: left;
+ }
+
+ #Statusdata tr:last-of-type td:last-child {
+     border-bottom-right-radius: 10px;
+ }
+
+ #Statusdata tr:last-of-type td:first-child {
+     border-bottom-left-radius: 10px;
+ }
+
+ .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -15px;
+    left: 19px !important;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+  }
+  
+  .navbar-nav .nav-link.active::before
+  {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
+ #Statusdata td:nth-child(3),
+ td:nth-child(4),
+ td:nth-child(5),
+ td:nth-child(6),
+ td:nth-child(7),
+ td:nth-child(8) {
+     text-align: center;
+ }
+
+ table.dataTable.row-border tbody tr:first-child th,
+ table.dataTable.row-border tbody tr:first-child td,
+ table.dataTable.display tbody tr:first-child th,
+ table.dataTable.display tbody tr:first-child td {
+     background-color: white;
+ }
+
+ input[type=checkbox]:checked {
+     accent-color: green;
+ }
+
+ .navdiv {
+     height: 52px;
+ }
+
+ .page-item.active .page-link {
+     background-color: black !important;
+     border-color: black !important;
+     color: white;
+
+ }
+
+ .dataTables_wrapper .dataTables_paginate .paginate_button {
+     padding: 0% !important;
+     margin: 0% !important;
+
+ }
+
+ li.paginate_button.page-item.active {
+     background: none !important;
+     border: none !important;
+ }
+
+ li.paginate_button.page-item:hover {
+     background: none !important;
+     border: none !important;
+ }
+
+ .dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left;
+    padding-top: 0.755em;
+    position: relative;
+    left: 75%;
+}
+
+table.dataTable td.dt-control:before {
+    height: 1em;
+    width: 1em;
+    margin-top: -9px;
+    display: inline-block;
+    color: #326C96 !important;
+    border: 0.1em solid #326C96 !important;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em #444;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    font-family: "Courier New",Courier,monospace;
+    line-height: 1em;
+    content: "+";
+    background-color: white !important;
+    margin-right: 10px;
+}

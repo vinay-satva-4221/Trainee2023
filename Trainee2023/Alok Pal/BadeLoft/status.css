@@ -1,3 +1,139 @@
+/* nav */
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.Dlogo {
+    width: 165px;
+    margin-left: -6%;
+}
+
+.nav-item {
+    margin-right: 5%;
+}
+
+.navItem {
+    margin-right: 18%;
+}
+
+
+.adminImg {
+    border-radius: 50px;
+    height: 41px;
+    margin-top: 2px;
+}
+
+.welcome {
+    font-size: 11px;
+    opacity: 70%;
+    margin-bottom: -18%;
+    margin-top: 8%;
+}
+
+.getN {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dynamicN {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: -29%;
+
+}
+
+#logout{
+    margin-right: -7%;
+}
+
+
+
+.fa-solid {
+    color: #858585;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 575px) {
+    .Dlogo {
+        width: 165px;
+        margin-left: -2%;
+    }
+}
+
+/* active class */
+/* .active {
+    border-bottom: 2px solid black;
+    height: 60px;
+    color: black;
+    font-weight: bold;
+
+} */
+
+
+/* status */
+
+.section{
+    background-color: #F7F8FA;
+}
+
+/* status heading */
+.status_heading {
+    font-size: 22px;
+    margin-left: -7.8%;
+}
+
+
+#status_search {
+    width: 87%;
+}
+
+.S_search {
+    margin-right: -8.5%;
+    width: 29%;
+}
+
+/* Table */
+#status_tab{
+    width: 1250px;
+}
+
+.table_div {
+    width: 94%;
+}
+
+table.dataTable td.dt-control:before {
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    margin: 3px;
+    margin-right: 6%;
+
+}
+
+table.dataTable td.dt-control {
+    text-align: start !important;
+    padding-right: 3px;
+}
+
+
+table.dataTable td.dt-control {
+    text-align: start !important;
+    padding-right: 3px;
+    color: #68b1fe;
+}
+
+/* paginate */
+#status_tab_paginate{
+    margin-top: -2.5%;
+}
+
+
 .fa {
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -10,7 +146,9 @@
 th {
     font-size: 12px;
     color: white;
-    font-weight: 400;
+    /* font-weight: 400; */
+    font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 td .dt-control {
@@ -35,4 +173,50 @@ table.dataTable tr.dt-hasChild td.dt-control::before {
 
     background-color: rgb(248 249 250);
     color: blue;
+}
+
+thead{
+    background-color: #F5F6FA;
+    color: black;
+}
+/* checkbox */
+input[type=checkbox]:checked {
+    accent-color: green;
+}
+
+/* sorting sync */
+table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:before, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:before, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:before, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:before, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:before, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:before, table.dataTable thead>tr>td.sorting_desc_disabled:after {
+    position: absolute;
+    display: block;
+    opacity: .125;
+    right: 608px;
+    line-height: 9px;
+    font-size: .8em;
+}
+
+
+/* active */
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    top: 47px;
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    left: 19px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar-nav .nav-link.active::before
+ {
+    visibility: visible;
+    transform: scaleX(1);
 }

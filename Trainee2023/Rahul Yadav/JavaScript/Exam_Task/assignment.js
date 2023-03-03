@@ -42,25 +42,38 @@ $(document).ready(function () {
         }
 
         datasets = [
-            ['', 'C100', '12/08/2021', 'WareHouse', 'Kenneth', '12/08/2021'],
-            ['', 'C1111', '12/08/2021', 'WareHouse', 'Kenneth', '12/08/2021'],
+            ['C100', 'Kenneth', 'Kenneth', '12/08/2021' ,''],
+            ['C1111', 'Kenneth', 'Kenneth', '12/08/2021' ,''],
         ]
 
         $(document).ready(function () {
             var table = $('#table_div').DataTable({
                 data: datasets,
-                columns: [
+                language: {
+
+                    paginate: {
+                        next: '&#62',
+                        previous: '&#60'
+                    }
+                },
+                columnDefs: [
+
+
+                    { orderable: true, className: "reorder", targets: 0 },
+                    { orderable: false, targets: "_all" },
                     {
-                        className: 'dt-control',
-                        orderable: false,
-                        data: null,
-                        defaultContent: '',
+                        className: "dt-left",
+                        targets: [0],
                     },
-                    { title: ' QB Invoice#' },
+                    { width: "15%", targets: [0] },
+                ],
+                columns: [
+                   
+                    { title: ' QB Invoice#' , className: 'dt-control', orderable: true, },
                     { title: 'Name', orderable: false, className: 'TextCenter' },
                     { title: 'Created By', orderable: false, className: 'TextCenter' },
                     { title: 'Created Date', orderable: false, className: 'TextCenter' },
-                    { title: 'Action', orderable: false, className: 'TextCenter' },
+                    // { title: 'Action', orderable: false, className: 'TextCenter' },
                 ],
                 order: [[1, 'asc']],
             });

@@ -1,5 +1,4 @@
 function format(d) {
-    // `d` is the original data object for the row
     return (
         '<table cellpadding="2" cellspacing="0" border="0" style="padding-left:50px;" class="w-100">' +
         '<tr>' +
@@ -86,6 +85,27 @@ var data1=[
          called:'yes',
          QBTracking:'WBC-124',
     },
+    {
+        QBInvoice:'15001',
+        name:'James Fenske',
+        QBShipdate:'10/08/2021',
+        QBShipaymentstatus:'<span class="alert alert-success p-0"><i class="bi bi-check"></i>Paid</span>',
+        QBStatus:'shipped',
+         QBDeliveryPhone:'618-234-6400',
+         called:'yes',
+         QBTracking:'WBC-124',
+    },
+    {
+        QBInvoice:'15002',
+        name:'James Fenske',
+        QBShipdate:'10/08/2021',
+        QBShipaymentstatus:'<span class="alert alert-primary p-0"><i class="bi bi-check"></i>Paid</span>',
+        QBStatus:'shipped',
+         QBDeliveryPhone:'618-234-6400',
+         called:'yes',
+         QBTracking:'WBC-124',
+    },
+    
 ]
 $(document).ready(function () {
     var table = $('#status_table').DataTable({
@@ -111,9 +131,6 @@ $(document).ready(function () {
             }  },
             { data: 'name'  },
             { data: 'QBShipdate' },
-            // { data: 'QBShipaymentstatus' ,"sortable": false,render:function(){
-            //     return '<div class="alert alert-primary styl m-0 p-0" role="alert">Paid</div>';
-            // } },
             {data:'QBShipaymentstatus',"sortable":false},
             { data: 'QBStatus' ,"sortable": false },
             { data: 'QBDeliveryPhone',"sortable": false},
@@ -128,19 +145,32 @@ $(document).ready(function () {
                 className: 'text-center'
             }
           ],
-          language:{
-            search: "_INPUT_",
-            searchPlaceholder: 'Search here',
-            paginate:{
+        //   language:{
+        //     search: "_INPUT_",
+        //     searchPlaceholder: 'Search here',
+        //     paginate:{
+        //         first: 'First',
+        //         last: 'Last',
+        //         previous:"<",
+        //         next:">",
+        //         info: 'items _START_ to _END_ of _TOTAL_ items',
+        //     },
+        //   },
+        language: {
+           
+            info: "items _START_ to _END_ of _TOTAL_ items",
+                paginate:{
+          
                 previous:"<",
-                next:">"
+                next:">",
             },
-          },
+         
+        },
       
         order: [[1, 'asc']],
     })
     $('#CustomSearchBox').keyup(function() {
-        table.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
+        table.search($(this).val()).draw(); 
     });
 
     $('#status_table tbody').on('click', 'td.dt-control', function () {
@@ -148,11 +178,11 @@ $(document).ready(function () {
         var row = table.row(tr);
  
         if (row.child.isShown()) {
-            // This row is already open - close it
+           
             row.child.hide();
             tr.removeClass('shown');
         } else {
-            // Open this row
+        
             row.child(format(row.data())).show();
             tr.addClass('shown');
         }

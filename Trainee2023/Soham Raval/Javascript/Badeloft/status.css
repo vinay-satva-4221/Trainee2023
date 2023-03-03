@@ -1,54 +1,26 @@
 
-
-/* .dataTables_length,.dataTables_info{
-  display: none;
-}
-#example_filter{
-  display: none;
-} */
 .img_round{
   height: 70%;
   width: 37%;
 }
 
-.navbar a.active{
+/* .navbar a.active{
     border-bottom: 1px solid #000000;
   }
-  
-
- 
-  /* .pagination .page-item.active .page-link{
-    background-color: black;
-    border-color: black;
-   }  */
-   /* .dataTables_wrapper .paginate .current a {
-    background-color: black;
-    border-color: rgb(0, 0, 0);
-} */
-
-  #status_table.dataTable td.dt-control:before{
-    background-color: #3F759C;
+   */
+  #status_table.dataTable td.dt-control:before {
+    background-color: white;
+    color: #3F759C;
+    border-color: #3F759C;
   }
   input:checked ~ .checkmark {
     background-color: pink;
   }
  
    .fa-arrow-right-from-bracket:before, .fa-sign-out:before {
-    color: #707071;
+    color: #707060;
 }
- /* .paginate_button.current {
-  background-color: black;
-  color: white;
-} */
-
-/* .dataTables_wrapper .dataTables_paginate .paginate_button.current{
-  background-color: black;
-  color: white;
-} */
-/* .dataTables_paginate .paginate_button.current {
-  background-color: black !important ;
-  color: white !important;
-} */
+ 
 input[type=checkbox]:checked{
   accent-color: green;
 }
@@ -68,10 +40,54 @@ thead{
   background-color: black;
   color: white;
 }
-/* 
-@media screen and (max-width: 574px) {
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 33%;
+  height: 2px;
+  bottom: -23px;
+  left: 29px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+   /* transition: all 0.3s ease-in-out 0s; */
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+}
+#status_table_info{
+  margin-left: 77%;
+}
+#status_table_previous{
+  background-color: white;
+}
+#status_table_next{
+  background-color: white;
+}
+/* .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+ 
+background-color: black !important;
+color: white !important;
+} */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
   
-    .navbar_list {
-       padding-left: 0px;
-      }
-  } */
+  background-color: black !important;
+  color: white !important;
+}
+/* #status_table_current{
+  color: white !important;
+} */
+a.paginate_button.current {
+  color: white !important;
+}
+
+/* .dataTables_info{
+  margin-left: 77%;
+} */
