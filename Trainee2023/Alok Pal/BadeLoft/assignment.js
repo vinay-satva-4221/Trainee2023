@@ -73,16 +73,50 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function() {
-  $('.js-example-basic-multiple').select2();
+
+// Select 2 library
+$(document).ready(function () {
+  $('.multipleSelect').select2();
 });
 
 
 
+
+// Active class
 var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
-   
-$('.nav-item a').each(function(){
-    if ($(this).attr('href') == pathname){
+$('.nav-item a').each(function () {
+  if ($(this).attr('href') == pathname) {
     $(this).addClass('active');
-    }
+  }
+});
+
+
+
+// Dynamic value of dropdown
+var stockData = JSON.parse(localStorage.getItem('newStock'));
+
+var stockOptions = '';
+for (i = 0; i < stockData.length; i++) {
+
+  stockOptions += '<option value="' + stockData[i].stock + '">' + stockData[i].stock + '</option>';
+}
+$("#stockname").append(stockOptions).on('change', function () {
+  debugger
+  var selected = $(this).find('option:selected').val();
+
+  // $("#parts").html("<option selected disabled>Choose parts</option>");
+  const parts = stockData.filter(m => m.stock == selected);
+  console.log(parts)
+  parts.forEach(function(element,index) {
+   
+    var option;
+     option += "<option val='" + element.Part[0].PartN + "'>" + element.Part[0].PartN + "</option>";
+    option += "<option val='" + element.Part[1].PartN + "'>" + element.Part[1].PartN + "</option>";
+    option += "<option val='" + element.Part[2].PartN + "'>" + element.Part[2].PartN + "</option>";
+    // option += "<option val='" + element.Part[3].PartN + "'>" + element.Part[3].PartN + "</option>";
+    // option += "<option val='" + element.Part[4].PartN + "'>" + element.Part[4].PartN + "</option>";
+
+
+    $("#parts").append(option);
+  });
 });

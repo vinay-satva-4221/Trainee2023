@@ -37,18 +37,19 @@ function logout() {
 var r = JSON.parse(localStorage.getItem("newStock"));
 console.log(r);
 
-function format(d) {
+function format(d,id) {
+  // debugger
   let dynamicChildRow = "";
   if (d.Part && d.Part.length > 0) {
     dynamicChildRow +=
       '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
     dynamicChildRow +=
-      '<thead class ="table border text-center"><tr style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th><th style="color:black"><b>Action</b></th></tr></thead>';
+      '<thead class ="table border text-center"><tr  style= "background-color:#ebebeb" ><th style="color:black"><b> # </b></th><th style="color:black"><b>Part Number</b></th><th style="color:black"><b> Ordered </b></th><th style="color:black"><b>Assigned</b></th><th style="color:black"><b>Action</b></th></tr></thead>';
     dynamicChildRow += "<tbody  class ='table '  >";
     d.Part.forEach((e, index) => {
       let indx = index + 1;
       dynamicChildRow +=
-        "<tr><td>" +
+        "<tr ><td>" +
         indx +
         "</td><td>" +
         e.PartN +
@@ -56,7 +57,9 @@ function format(d) {
         e.Order +
         "</td><td>" +
         e.Comments +
-        "</td><td>" + "<i  class= 'fa-solid fa-x delete' style='cursor:pointer' onclick='deleteMainTableRow(" + index + " )'   ></i>" + "</td></tr>"
+        "</td><td >" +
+        `<i  class= 'fa-solid fa-x delete'  style='cursor:pointer' data-stock-id='${d.stock}' onclick='deleteMainTableRow(this)'  data-part-index='${index}' ></i>` +
+        "</td></tr>";
     });
     dynamicChildRow += "</tbody></table>";
   }
@@ -121,35 +124,35 @@ $(document).ready(function () {
         data: "date",
         title: "ETA Date",
         orderable: false,
-        className:"showchildRow",
+        className: "showchildRow",
         class: "text-center",
       },
       {
         data: "stockStatus",
         title: "Stock Location",
         orderable: false,
-        className:"showchildRow",
+        className: "showchildRow",
         class: "text-center",
       },
       {
         data: "user[0].Admin",
         title: "Created By",
         orderable: false,
-        className:"showchildRow",
+        className: "showchildRow",
         class: "text-center",
       },
       {
         data: "CreatedDate",
         title: "Created Date",
         orderable: false,
-        className:"showchildRow",
+        className: "showchildRow",
         class: "text-center",
       },
       {
         data: "Part[0].Comments",
         title: "Notes",
         orderable: false,
-        className:"showchildRow",
+        className: "showchildRow",
         class: "text-center",
       },
       {
@@ -174,7 +177,7 @@ $(document).ready(function () {
       tr.removeClass("shown");
     } else {
       // Open this row
-      row.child(format(row.data())).show();
+      row.child(format(row.data(),table.row(this).index())).show();
       tr.addClass("shown");
     }
   });
@@ -239,7 +242,6 @@ function addData() {
       resetSVal();
       parts = [];
       $("#partTable").append("<tbody></tbody");
-
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
       // console.log("ello",newStock[0].stock)
@@ -295,8 +297,6 @@ function addData() {
       });
     }
   }
-
-
 }
 
 // loading the documnet to show data in table
@@ -313,7 +313,9 @@ function showModaltable() {
     html += "<td class=text-start > " + parts[index].Order + "</td>";
     html += "<td class=text-start >" + parts[index].Comments + "</td>";
     html +=
-      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' + index + ' )"   ></i> </td>';
+      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
+      index +
+      ' )"   ></i> </td>';
     html += "</tr>";
     html += "</tbody>";
 
@@ -410,44 +412,56 @@ function radioBtnValue() {
   return btnChecked;
 }
 
-
 function deletePartTableRow(index) {
-  debugger
-  console.log(index)
-  parts.splice(index, 1)
-  console.log(parts)
-  showModaltable()
+  debugger;
+  console.log(index);
+  parts.splice(index, 1);
+  console.log(parts);
+  showModaltable();
 }
 
-
-function deleteMainTableRow(index) {
+function deleteMainTableRow(element) {
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
-  // var indexRow = table.row(this).index();
-  // console.log(indexRow);
+  
+  var stockID = $(element).attr('data-stock-id');
+  var StockIndex = newStockModal.findIndex(x => x.stock == stockID);
+  var PartIndex = $(element).attr('data-part-index');
+  console.log("Part index", PartIndex);
+  
+  // var partLength = newStockModal[PartIndex].Part.length ;
+  console.log("length",newStockModal[PartIndex].Part.length)
+  console.log("Stock index", StockIndex);
+  
+  // if( partLength <= 0 ){
 
-  // var tabledata = table.row(this).data();
+  // }
 
-  // $('#example tbody').on('click', 'td.delete', function () {
-  //   table
-  //     .row($(this).parents('tr'))
-  //     .remove()
-  //     .draw();
-  // });
-  // console.log(tabledata)
-  // newStockModal[index].Part.splice(index, 1);
-  // console.log(newStockModal[index].Part.splice(1, 1))
 
-  //  newStockModal[index].Part[index].splice(index, 1)
-  console.log(newStockModal[index].Part[index])
+  newStockModal[StockIndex].Part.splice(PartIndex, 1);
+
+  console.log(newStockModal);
+
+  localStorage.setItem("newStock", JSON.stringify(newStockModal));
+
+  var tr = $(element).closest("tr")
+  tr.remove()
+  // var prevtr = tr.next("tr")[1];
+  // var data = table.row(prevtr).data();
+  // console.log(data)
+  // .row( $(element).parents('tr') )
+  
+  
+
+  // console.log(newStockModal[index].Part[index]);
   // localStorage.setItem("newStock", JSON.stringify(newStock));
   // showModaltable()
 }
 
 //active
-var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
-   
-$('.nav-item a').each(function(){
-    if ($(this).attr('href') == pathname){
-    $(this).addClass('active');
-    }
+var pathname = window.location.pathname.match(/[^\/]+$/)[0];
+
+$(".nav-item a").each(function () {
+  if ($(this).attr("href") == pathname) {
+    $(this).addClass("active");
+  }
 });

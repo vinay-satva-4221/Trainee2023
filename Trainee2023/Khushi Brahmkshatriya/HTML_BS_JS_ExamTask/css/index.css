@@ -286,3 +286,34 @@ table {
   margin: 3% 0% 0% 0%;
  
 }
+
+
+/* Date */
+input[type="date"]:before {
+  color: transparent;
+  background: none;
+  cursor: pointer;
+  font-family: 'FontAwesome';
+  content: '\f073';
+  width: 15px;
+  height: 20px;
+  position: absolute;
+  right: 6px;
+  color: #999;
+}
+input#etaDate{
+  position:relative;
+  display: inline-block;
+}
+input#etaDate::-webkit-calendar-picker-indicator{
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
