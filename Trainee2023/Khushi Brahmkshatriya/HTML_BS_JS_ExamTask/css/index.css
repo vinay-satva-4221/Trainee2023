@@ -317,3 +317,15 @@ input#etaDate::-webkit-calendar-picker-indicator{
   top: 0;
   width: auto;
 }
+
+
+
+/* Select 2  */
+
+.select2-dropdown{
+  z-index: 1100 !important;
+  
+}
+.select2-container{
+  width: 100% !important;
+}

@@ -196,6 +196,8 @@ $(document).ready(function () {
     }
     return childRowHTML;
   }
+
+  
   // Define the DataTable
   var table = $('#Stockable').DataTable({
     "paging": true,
