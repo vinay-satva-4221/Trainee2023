@@ -37,7 +37,7 @@ function logout() {
 var r = JSON.parse(localStorage.getItem("newStock"));
 console.log(r);
 
-function format(d,id) {
+function format(d, id) {
   // debugger
   let dynamicChildRow = "";
   if (d.Part && d.Part.length > 0) {
@@ -177,7 +177,7 @@ $(document).ready(function () {
       tr.removeClass("shown");
     } else {
       // Open this row
-      row.child(format(row.data(),table.row(this).index())).show();
+      row.child(format(row.data(), table.row(this).index())).show();
       tr.addClass("shown");
     }
   });
@@ -273,6 +273,7 @@ function addStockData() {
         $("#StockModal").modal("hide");
         resetSVal();
         parts = [];
+        showModaltable()
         $("#partTable").append("<tbody></tbody");
       } else {
         Swal.fire({
@@ -304,25 +305,32 @@ function addStockData() {
 // show data
 function showModaltable() {
   var html = "";
-  html =
-    "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
-  parts.forEach(function (element, index) {
-    html += "<tr>";
-    html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
-    html += "<td class=text-start >" + Date.now() + "</td>";
-    html += "<td class=text-start > " + parts[index].Order + "</td>";
-    html += "<td class=text-start >" + parts[index].Comments + "</td>";
+  if (parts.length > 0) {
     html +=
-      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
-      index +
-      ' )"   ></i> </td>';
-    html += "</tr>";
-    html += "</tbody>";
-
+      '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
+    html =
+      "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
+    parts.forEach(function (element, index) {
+      html += "<tr>";
+      html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
+      html += "<td class=text-start >" + Date.now() + "</td>";
+      html += "<td class=text-start > " + parts[index].Order + "</td>";
+      html += "<td class=text-start >" + parts[index].Comments + "</td>";
+      html +=
+        '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
+        index +
+        ' )"   ></i> </td>';
+      html += "</tr>";
+      html += "</tbody>";
+      html += "</tbody></table>";
+    });
     $("#partTable").html(html);
 
     $("#PartModal").modal("hide");
-  });
+
+    
+
+  }
 }
 
 //reset
@@ -337,6 +345,7 @@ function resetPartModal() {
   document.getElementById("pNum").value = "";
   document.getElementById("order").value = "";
   document.getElementById("floatingTextarea").value = "";
+
 }
 // for search bar
 $("#stock_search").on("keyup", function () {
@@ -422,16 +431,16 @@ function deletePartTableRow(index) {
 
 function deleteMainTableRow(element) {
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
-  
+
   var stockID = $(element).attr('data-stock-id');
   var StockIndex = newStockModal.findIndex(x => x.stock == stockID);
   var PartIndex = $(element).attr('data-part-index');
   console.log("Part index", PartIndex);
-  
+
   // var partLength = newStockModal[PartIndex].Part.length ;
   // console.log("length",newStockModal[PartIndex].Part.length)
   console.log("Stock index", StockIndex);
-  
+
   // if( partLength <= 0 ){
 
   // }
@@ -445,7 +454,7 @@ function deleteMainTableRow(element) {
 
   var tr = $(element).closest("tr")
   tr.remove()
- 
+
 }
 
 //active
