@@ -10,18 +10,24 @@ var dashboarddata = [
     ["BW-01-S-M", "1", "0", "<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    // ["BW-01-Q-M", "", "0", "3", "0", "1"],
 ]
-
-// var getdata1=data1[0].
 $(document).ready(function () {
     var StockLocation = $.fn.dataTable.absoluteOrder( 
         [{ value: 'Stock Location', position: 'top' },
         { value: 'ETA Date', position: 'top' }]);
-
-        
-   var table= $('#dashboard_table').DataTable({
+   var datatable= $('#dashboard_table').DataTable({
         data: dashboarddata,
-
           fnInitComplete: function () {
             $('#dashboard_table_length').html('<b><h3>&nbsp;Stock</h3></b>');},
         columns: [
@@ -42,18 +48,6 @@ $(document).ready(function () {
             },
             { targets: 0, type: StockLocation },
           ],
-       
-
-          // language:{
-          //   search: "_INPUT_",
-          //   searchPlaceholder: 'Search here',
-          //   paginate:{
-          //       previous:"<",
-          //       next:">",
-          //       first: 'First',
-           
-          //         },
-          // },
           language: {
               search: "_INPUT_",
             searchPlaceholder: 'Search here',
@@ -65,41 +59,78 @@ $(document).ready(function () {
             },
          
         },
-      //   createdRow: function(row, data, dataIndex) {
-      //     // Loop through each cell in the row
-      //     $(row).children('td').each(function() {
-      //         // Enable popover for this cell
-      //         var pop = $(this);
-      //         pop.popover({
-      //             title: 'Popover Title',
-      //             content: 'Popover Content',
-      //             placement: 'top',
-      //             trigger: 'hover',
-      //         });
-      //     });
-      // }
     });
-
     $('[data-bs-toggle="popover"]').popover({
       container: 'body',
       placement: 'right',
       html: true, 
       content: function() {
-            return $('#popover-form').html();
+            return $('#popover_details').html();
       }
     });
-
+    $(document).on('click', '.fa-times', function() {
+  $('[data-bs-toggle="popover"]').popover('hide');
 });
-// $('[data-toggle="popover"]').popover();
-let a=JSON.parse(localStorage.getItem("details"));
-console.log("a",a); 
-$("#Uname").html(a[0].Name);
-console.log(a[0].Name);
+});
+let Usernameget=JSON.parse(localStorage.getItem("details"));
+console.log("Usernameget",Usernameget); 
+$("#Username").html(Usernameget[0].Name);
+console.log(Usernameget[0].Name);
 function logout() {
     window.location="Login.html"
     localStorage.clear();
+}$(document).on('click', '.fa-times', function() {
+  $('[data-bs-toggle="popover"]').popover('hide');
+});
+
+function stockdatastore() {
+  
+    if (!editstockdetails) {
+        debugger
+        
+        console.log(partDetails)
+        if($("#stockform").valid()==true)
+        {
+        var stockname = $('#stockname').val();
+        var eta_date = $('#date').val();
+        var stock_status = $('input[name="btnradio"]:checked').next('label').text();
+        var usernameget = Usernameget[0].Name;
+        //Getting current date
+        var getcurrentdate = new Date(Date.now()).toLocaleString().split(',')[0];
+        console.log(getcurrentdate)
+        var notes = $("#notes").val();
+        let stockList = JSON.parse(localStorage.getItem("stockList")) || [];
+        if (stockDetails == null) {
+            stockDetails = [];
+        }
+        stockDetails.push({
+            stockname: stockname,
+            eta_date: eta_date,
+            stock_status: stock_status,
+            usernameget: usernameget,
+            getcurrentdate: getcurrentdate,
+            partDetails: partDetails,
+            notes: notes
+        });
+        console.log(partDetails)
+        var stock = {
+            "stockname": stockname,
+            "eta_date": eta_date,
+            "stock_status": stock_status,
+            "usernameget": usernameget,
+            "getcurrentdate": getcurrentdate,
+            "partlist": partDetails,
+            "notes": notes
+        };
+        stockList.push(stock);
+        console.log("StockList", stockList)
+
+        
+        tableData.row.add(['', stockname, eta_date, stock_status, usernameget, getcurrentdate, notes]).draw();
+        localStorage.setItem("stockList", JSON.stringify(stockList));
+        console.log("part", partDetails)
+        location.reload(true)
+
+    }
+ }
 }
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})

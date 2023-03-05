@@ -1,15 +1,19 @@
 #newbuttonassignment{
     background-color: #326C96;
   }
+  #Assignment_btn{
+    background-color: #326C96;
+
+  }
   /* .navbar a.active{
     border-bottom: 1px solid #000000;
   } */
-  .dataTables_length,.dataTables_info{
+  /* .dataTables_length,.dataTables_info{
     display: none;
   }
   #example_filter{
     display: none;
-  }
+  } */
   .navbar-nav .nav-link {
     position: relative;
   }
@@ -31,4 +35,19 @@
   {
     visibility: visible;
     transform: scaleX(1);
+  }
+/* table.dataTable td.dt-control:before {
+    background-color: white;
+    color: #3F759C;
+    border-color: #3F759C;
+  } */
+
+  #assignment_table.dataTable td.dt-control:before {
+    background-color: #3F759C;
+    color: white
+  }
+
+  table.dataTable td.dt-control:before {
+    background-color: white;
+    color: #3F759C 
   }

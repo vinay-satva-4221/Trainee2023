@@ -89,6 +89,30 @@ table{
 a:link{
   text-decoration: none;
 }
+.fa-user:first-child {
+  border-bottom: 1px solid black;
+}
+
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  padding: 0px;
+
+}
+/* .active>.page-link, .page-link.active {
+ 
+  background-color: #000000 !important;
+  border-color: black !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+padding: 0px;
+}
+li.paginate_button.page-item.active{
+  padding: 0px;
+} */
+/* .fa-user:last-child {
+  border-left: 1px solid black;
+} */
+
 /* .dataTables_info{
   margin-left: 77%;
 } */

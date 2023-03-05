@@ -4,10 +4,6 @@
   width: 37%;
 }
 
-/* .navbar a.active{
-    border-bottom: 1px solid #000000;
-  }
-   */
   #status_table.dataTable td.dt-control:before {
     background-color: white;
     color: #3F759C;
@@ -54,7 +50,6 @@ thead{
   background-color: #000;
   visibility: hidden;
   transform: scaleX(0);
-   /* transition: all 0.3s ease-in-out 0s; */
 }
 
 .navbar-nav .nav-link.active::before
@@ -62,35 +57,24 @@ thead{
   visibility: visible;
   transform: scaleX(1);
 }
-/* #status_table_info{
-  margin-left: 77%;
-} */
+
 #status_table_previous{
   background-color: white;
 }
 #status_table_next{
   background-color: white;
 }
-/* .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
- 
-background-color: black !important;
-color: white !important;
-} */
+
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
   
   background-color: black !important;
   color: white !important;
 }
-/* #status_table_current{
-  color: white !important;
-} */
+
 a.paginate_button.current {
   color: white !important;
 }
 
-/* .dataTables_info{
-  margin-left: 77%;
-} */
 table.dataTable {
   border-collapse: collapse;
   border-spacing: 0;
