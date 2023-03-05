@@ -87,35 +87,29 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="assignmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="assignmentModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> <b>New Assignment</b> </h5>
+                            <h5 class="modal-title" id="ModalLabel"> <b>New Assignment</b> </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body p-4">
-                            <form class="row g-3" id="stockform">
+                            <form class="row g-3" id="assignmentform">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="inputState" class="form-label fontcolor">Choose Customer</label>
-                                        <select class="form-select form-control mt-2" id="user-select">
+                                        <label for="customername" class="form-label fontcolor">Choose Customer</label>
+                                        <select class="form-select form-control mt-2" name="customername"
+                                            id="user-select">
                                             <option selected disabled>Choose...</option>
-                                            <option value="Kenneth Woodard">Kenneth Woodard</option>
-                                            <option value="Jay">Jay</option>
-                                            <option value="">Eric Jensen</option>
-                                            <option value="">Rahul</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="inputState" class="form-label fontcolor">QuickBooks Invoice
+                                        <label for="invoice" class="form-label fontcolor">QuickBooks Invoice
                                             #</label>
                                         <select class="form-select form-control mt-2"
-                                            aria-label="Default select example">
+                                            aria-label="Default select example" name="invoice" id="invoice">
                                             <option selected disabled>Choose...</option>
-                                            <option value="150001">150001</option>
-                                            <option value="150002">150002</option>
                                         </select>
                                     </div>
 
@@ -124,23 +118,34 @@
                                 <h6> <b>Add Stock</b></h6>
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <label for="inputState" class="form-label fontcolor">Stock</label>
-                                        <select class="form-select form-control" id="stock-select">
+                                        <label for="stock" class="form-label fontcolor">Stock</label>
+                                        <select class="form-select form-control" name="stock" id="stock-select">
                                             <option selected disabled>Choose...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-5">
-                                        <label for="inputState" class="form-label fontcolor">Parts</label> <br>
-                                        <select class="js-example-basic-multiple" name="states[]" id="part-select"
+                                        <label for="parts" class="form-label fontcolor">Parts</label> <br>
+                                        <select class="js-example-basic-multiple" name="parts" id="part-select"
                                             multiple="multiple">
-                                            <!-- <option value="AL" selected disabled>Choose....</option> -->
+                                            <option value="AL" selected disabled>Choose....</option>
                                         </select>
                                     </div>
                                     <div class="col-2 pb-0 pt-4">
                                         <button type="button" class="btn" id="addassignment">Add</button>
                                     </div>
                                 </div>
-                                <table class="table rounded" id="root"></table>
+                                <table class="table  table-display  table-sm  ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>stock</th>
+                                            <th>Part</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="root">
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
                         <div class="modal-footer justify-content-start">

@@ -16,6 +16,11 @@ if (localStorage.getItem('LogedinUser') !== null) {
         return dynamicChildRow;
     }
 
+    // $("#childpartTable tbody").on("click", ".btn-close", function () {
+    //     var index = table.row($(this).parents('tr')).index();
+    //     console.log(" table index", index);
+    // });
+
     var isEdit = false;
     $(document).ready(function () {
         var stockdataset = JSON.parse(localStorage.getItem("stockdata"));
