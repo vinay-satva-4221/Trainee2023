@@ -70,7 +70,7 @@ $(document).ready(function () {
                 let i = index + 1;
                 dynamicChildRow += '<tr><td>' + i + '</td><td>' + partdetail.partnumber + '</td><td>' + partdetail.ordred + '</td><td>' + partdetail.ordred + '</td>' +
                     '<td>' + partdetail.notes + '</td>' +
-                    '<td>' + `<button type="button" class="btn-close"  aria-label="Close"  onclick = "deleterow(${i}) "></button>` + '</td>'
+                    '<td>' + `<button type='button' class='btn-close' aria-label='Close' id='childTabledeleteBtn' data-stock-id='${d.StockName}' onclick='deleteMainTableRow(this)'  data-part-index='${index}' ></button>` + '</td>'
                 '</tr>';
             });
 
@@ -118,16 +118,23 @@ $(document).ready(function () {
                         data: "StockName", title: "Stock Name", className: "dt-control",
                         orderable: false, 'max-width': '197px'
                     },
-                    { data: "ETADate", title: "ETA Date", orderable: false, 'max-width': "181px",className: "rowclickable" },
-                    { data: "StockStatus", title: "Stock Location", orderable: false, 'max-width': "235px",className: "rowclickable"  },
-                    { data: "CreatedBy", title: "Created By", orderable: false, 'max-width': "181px",className: "rowclickable"  },
+                    { data: "ETADate", title: "ETA Date", orderable: false, 'max-width': "181px", className: "rowclickable" },
+                    { data: "StockStatus", title: "Stock Location", orderable: false, 'max-width': "235px", className: "rowclickable" },
+                    { data: "CreatedBy", title: "Created By", orderable: false, 'max-width': "181px", className: "rowclickable" },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),
-                        keyInput: false, title: "Created Date", orderable: false, 'max-width': "212px",className: "rowclickable" 
+                        keyInput: false, title: "Created Date", orderable: false, 'max-width': "212px", className: "rowclickable"
                     },
+                    
                     {
                         data: "null", title: "Action", className: "dt-center ",
-                        defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder edit stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+                        render: function (data, type, row) {
+                            return (
+                               '<button type="button" class="bi bi-pencil-fill text-secondary fw-bolder edit stockeditbtn fs-6 border-0 bg-light"></button>' +
+                               '<button type="button" class="bi bi-clock-history text-secondary fw-bolder fs-6 border-0 bg-light"></button>'
+                            );
+                         },
+                        //defaultContent: '<i class="bi bi-pencil-fill text-secondary fw-bolder edit stockeditbtn fs-6"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
                     },
                 ],
 
@@ -152,37 +159,46 @@ $(document).ready(function () {
             tr.addClass("shown");
         }
     });
+   
+    $(".bi-clock-history").on("click", function () {
+        $("#historyModal").modal("toggle");
+     });
+  
     //editing stockdata 
     $('#stocktable tbody').on('click', '.edit', function () {
         isEdit = true;
         console.log((table.row(this).data()));
         var data = table.row($(this).parents('tr')).data();
         var index = table.row($(this).parents('tr')).index();
-
+       
         // Populate AddStockModal with data
         $("#stockName").val(data.StockName);
         $("#etaDate").val(data.ETADate);
 
         $('input[name="btnradio"][value="' + data.StockStatus + '"]').prop('checked', true);
 
+        if (data.PartData && data.PartData.length > 0) {
 
-        let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
-        data.PartData.forEach(function (part) {
-            dynamicTR += ("<tr>" + "<td>" + part.partnumber + "</td>" + "<td>" + part.invoice + "</td>" + "<td>" + part.ordred + "</td>" + "<td>" + part.notes + "</td>" +
-                "<td class='text-end'><button type='button' class='btn-close DeleteParts' aria-label='Close'></button></td></tr>");
-        });
-        dynamicTR += "</tbody>";
-        console.log(dynamicTR)
-        $('#partTable').html(dynamicTR);
+            let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
+            data.PartData.forEach(function (part) {
+                dynamicTR += ("<tr>" + "<td>" + part.partnumber + "</td>" + "<td>" + part.invoice + "</td>" + "<td>" + part.ordred + "</td>" + "<td>" + part.notes + "</td>" +
+                    "<td class='text-end'><button type='button' class='btn-close DeleteParts' aria-label='Close'></button></td></tr>");
+            });
+            dynamicTR += "</tbody>";
+            console.log(dynamicTR)
+            $('#partTable').html(dynamicTR);
+
+        }
 
 
-        PartData = data.Parts;
+        Parts = data.PartData;
         console.log(Parts)
+        $(' #stocktitle').html("Edit Stock");
         // Show AddStockModal
         $('#stockModal').modal('show');
         // Handle click on Save Changes button
         $("#saveStock").click(function () {
-            debugger
+
             var updatedStockName = $("#stockName").val();
             var updatedETADate = $("#etaDate").val();
             var updatedStockStatus = $('input[name="btnradio"]:checked').val();
@@ -203,6 +219,7 @@ $(document).ready(function () {
             $("#stockModal").modal("hide");
 
         });
+
 
     });
 
@@ -243,6 +260,23 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+    $("#stockName").on("blur change", function () {
+
+        var stocknamevalue = $(this).val();
+        let localData = localStorage.getItem('stockandparts');
+        let stockname = JSON.parse(localData);
+        var uniqueStockName = stockname.find(
+            x => x.StockName === stocknamevalue);
+        if (uniqueStockName == undefined) {
+            $('.errorforduplicate').html('');
+            return true;
+
+        }
+        else {
+            $('.errorforduplicate').html('Please enter unique stock name');
+            return false;
+        }
+    });
 
     $("#stockForm").validate({
         // in 'rules' user have to specify all the constraints for respective fields
@@ -250,6 +284,7 @@ $(document).ready(function () {
         rules: {
             stockName: {
                 required: true,
+
             },
             etaDate: {
                 required: true,
@@ -262,6 +297,7 @@ $(document).ready(function () {
         messages: {
             stockName: {
                 required: "Please enter stock name",
+                unique: "Please enter unique stock name",
             },
             etaDate: {
                 required: "Please enter ETA Date",
@@ -274,26 +310,14 @@ $(document).ready(function () {
     });
     var form = $("#stockForm");
     form.validate();
-    $.validator.addMethod("unique", function (value, element) {
-        var parentForm = $(element).closest('form');
-        var timeRepeated = 0;
-        if (value != '') {
-            $(parentForm.find(':text')).each(function () {
-                if ($(this).val() === value) {
-                    timeRepeated++;
-                }
-            });
-        }
-        return timeRepeated === 1 || timeRepeated === 0;
 
-    }, "* Duplicate");
-    $(document).on("click", ".cancelbtn",function () {
-        $("#table2body").html("");
-        $("#ETAdate").val("");
-        $("#StockName").val("");
-    })
+    // $(document).on("click", ".cancelbtn", function () {
+    //     $("#table2body").html("");
+    //     $("#ETAdate").val("");
+    //     $("#StockName").val("");
+    // })
     $('#saveStock').click(function () {
-        debugger
+
         if (!isEdit) {
             var result = form.valid();
             console.log(result);
@@ -335,10 +359,18 @@ $(document).ready(function () {
         $("input[name='btnradio']:checked").val('');
         $('#partTable').html(null);
     }
-    //deleting parts data
+    //deleting parts data from parttable 
     $("#partTable").on("click", ".DeleteParts", function () {
-        console.log($(this).closest("tr").remove());
-        Parts.splice(this, 1)
+        if(Parts.length==1)
+        {
+            alert("Please have atleast one part")
+        }
+        else{
+            
+            console.log($(this).closest("tr").remove());
+            Parts.splice(this, 1)
+        }
+       
     });
     //empty part data in modal
     $('#partnum').click(function () {
@@ -346,7 +378,7 @@ $(document).ready(function () {
         $('#ordred').val('');
         $('#notes').val('');
     })
-    $('#newstock').click(function(){
+    $('#newstock').click(function () {
         resetForm();
     })
     //search cross or clear button event
@@ -356,20 +388,30 @@ $(document).ready(function () {
         // console.log(`The term searched for was ${}`);
     });
 
+
 })
 
-//deleting row from stockdatatble
-function deleterow( index){
-   console.log(index) 
+ // delete partdata from child row
+ function deleteMainTableRow(element) {
     debugger
-   var data = JSON.parse(localStorage.getItem("stockandparts"))
-   console.log( data[index].PartData)
+    var newStockModal = JSON.parse(localStorage.getItem("stockandparts"));
+    
+    
+    var stockID = $(element).attr('data-stock-id');
+    var StockIndex = newStockModal.findIndex(x => x.StockName == stockID);
+    var PartIndex = $(element).attr('data-part-index');
+    console.log("Part index", PartIndex);
+    console.log(newStockModal[PartIndex].PartData)
+    console.log("Stock index", StockIndex);
+    
+    newStockModal[StockIndex].PartData.splice(PartIndex, 1);
+  
+    console.log(newStockModal);
+  
+    localStorage.setItem("stockandparts", JSON.stringify(newStockModal));
+  
+    var tr = $(element).closest("tr")
+    tr.remove()
+   
+  }
 
-   data[index].PartData.splice(index,1)
-
-   localStorage.setItem('stockandparts', JSON.stringify(data));
-
-//    .row( $(this).parents('tr') )
-//         .remove()
-        
-}
