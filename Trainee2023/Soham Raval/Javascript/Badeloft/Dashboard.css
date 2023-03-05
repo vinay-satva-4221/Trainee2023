@@ -92,8 +92,6 @@ a:link{
 .fa-user:first-child {
   border-bottom: 1px solid black;
 }
-
-
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
   padding: 0px;
 
