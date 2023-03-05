@@ -51,3 +51,36 @@
     background-color: white;
     color: #3F759C 
   }
+  .active>.page-link, .page-link.active {
+ 
+    background-color: #000000 !important;
+    border-color: black !important;
+  }
+  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  padding: 0px;
+  }
+  li.paginate_button.page-item.active{
+    padding: 0px;
+  }
+  .maintable{
+    background-color: black;
+    color: white;
+  }
+  table.dataTable {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  table{
+    font-size: small;
+    border-collapse: collapse;
+    border-radius: 1.2em;
+    overflow: hidden;
+    background-color: white;
+    
+  }
+  .fa-clock-rotate-left:before, .fa-trash:before {
+    content: "\f1da";
+    padding-left: 8px;
+}

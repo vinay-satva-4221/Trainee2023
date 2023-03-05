@@ -20,7 +20,7 @@ $(document).ready(function () {
         rules: {
             stockname: {
                 required: true,
-                minlength: 4
+                
             },
         },
         messages: {
@@ -34,15 +34,13 @@ $(document).ready(function () {
         rules: {
             partnumber: {
                 required: true,
-                minlength: 4
+                
             },
             order:{
                 required: true,
-                minlength: 2
             },
             notes:{
                 required:true,
-                minlength:10,
             }
         },
         messages: {
