@@ -93,6 +93,20 @@ li.paginate_button.page-item.active{
 .msg{
   color: red;
 }
+table.dataTable {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+table{
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1.2em;
+  overflow: hidden;
+  background-color: white;
+  
+}
   /* table{
     font-size: small;
     border-collapse: collapse;

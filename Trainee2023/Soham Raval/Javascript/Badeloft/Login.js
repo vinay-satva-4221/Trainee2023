@@ -25,7 +25,6 @@ $(document).ready(function () {
     });
   });
 });
-
 const data = [
   { email: "ravalsoham17@gmail.com", password: "12345678", name: "Raval",Image:"/Badeloft/Assets/3_image.jfif" },
   { email: "soham17@gmail.com", password: "43211111", name: "Soham",Image:"/Badeloft/Assets/4_image.jfif" },
@@ -37,9 +36,9 @@ function loginpage() {
   debugger
   if ($("#login_form").valid() == true) {
     var email = document.getElementById("email").value;
-    var email1=email.toLowerCase();
+    var emaillowercase=email.toLowerCase();
     var password = document.getElementById("password").value;
-    var password1=password.toLowerCase();
+    var passwordlowercase=password.toLowerCase();
     var details;
     if (localStorage.getItem("details") == null) {
       details = [];
@@ -48,19 +47,19 @@ function loginpage() {
     else {
       details = JSON.parse(localStorage.getItem("details"));
       // console.log("key",details)
-      if ((email1 == data[0].email  && password1==data[0].password) )
+      if ((emaillowercase == data[0].email  && passwordlowercase==data[0].password) )
        {
         details.push({
-          email: email1,
+          email: emaillowercase,
           Name:data[0].name,
           image:data[0].Image
         });
         window.location.replace("Dashboard.html");
       }
-      else if((email1 == data[1].email && password1==data[1].password ))
+      else if((emaillowercase == data[1].email && passwordlowercase==data[1].password ))
       {
         details.push({
-          email: email1,
+          email: emaillowercase,
           Name:data[1].name,
           image:data[1].Image
 
@@ -69,22 +68,19 @@ function loginpage() {
 
         window.location.replace("Dashboard.html");
       }
-
-      else if((email1 == data[2].email && password1==data[2].password ))
+      else if((emaillowercase == data[2].email && passwordlowercase==data[2].password ))
       {
         details.push({
-          email: email1,
+          email: emaillowercase,
           Name:data[2].name,
            image:data[2].Image
-
         });
         localStorage.setItem("details",JSON.stringify(details));
-
         window.location.replace("Dashboard.html");
-      }else if((email1 == data[3].email && password1==data[3].password ))
+      }else if((emaillowercase == data[3].email && passwordlowercase==data[3].password ))
       {
         details.push({
-          email: email1,
+          email: emaillowercase,
           Name:data[3].name,
          image:data[3].Image
 
@@ -94,7 +90,6 @@ function loginpage() {
 
         window.location.replace("Login.html");
       }
-
       else {
         if ((email != data[0].email)) {
           document.getElementById("invalid_email").innerHTML = "This  is not login user*"
@@ -104,6 +99,5 @@ function loginpage() {
     localStorage.setItem("details", JSON.stringify(details));
     console.log(details);
     // localStorage.setItem("validdetails", JSON.stringify(details));
-
   }
 }
