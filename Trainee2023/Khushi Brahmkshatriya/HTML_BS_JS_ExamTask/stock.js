@@ -119,7 +119,8 @@ $(document).ready(function () {
                         orderable: false, 'max-width': '197px'
                     },
                     { data: "ETADate", title: "ETA Date", orderable: false, 'max-width': "181px", className: "rowclickable" },
-                    { data: "StockStatus", title: "Stock Location", orderable: false, 'max-width': "235px", className: "rowclickable" },
+                    { data: "StockStatus", title: "Stock Location", orderable: false, 'max-width': "235px", className: "rowclickable",
+                     },
                     { data: "CreatedBy", title: "Created By", orderable: false, 'max-width': "181px", className: "rowclickable" },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),

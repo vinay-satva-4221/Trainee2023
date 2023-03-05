@@ -243,8 +243,16 @@ $(document).ready(function () {
 
     //delete data of partTable
     $("#partTable").on("click", ".DeletePartsTable", function () {
-        console.log($(this).closest("tr").remove());
-        partsAssignedToStock.splice(this, 1)
+        if(partsAssignedToStock.length==1)
+        {
+            alert("You can't delete last data")
+        }
+        else
+        {
+            console.log($(this).closest("tr").remove());
+            partsAssignedToStock.splice(this, 1)
+        }
+       
     });
 
     //delete maintable row
