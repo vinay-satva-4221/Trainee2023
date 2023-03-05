@@ -300,6 +300,7 @@ function addPartData() {
 
 
 function addStockData() {
+  debugger
   var user = JSON.parse(localStorage.getItem("user"));
   console.log(user[0].Admin)
   var customer = $("#Customer").val();
@@ -363,7 +364,7 @@ function showModaltable() {
 
 //delete Part Table
 function deletePartTableRow(index) {
-  debugger;
+
   console.log(index);
   StockNameParts.splice(index, 1);
   console.log(parts);
@@ -390,10 +391,13 @@ function deleteMainTableRow(element) {
 
 }
 
+function resetValue(){
+  document.getElementById("Customer").value = ''
+  document.getElementById("Invoice").value = ''
+  document.getElementById("stockname").value =''
+}
 
-
-// Edit
-$("#Assignmenttable").on("click", "td.editor-edit", function (e) {
+$("#Assignmenttable").on("click", ".editor-edit", function (e) {
   e.preventDefault();
   $("#AssignedModal").modal("show");
 
@@ -403,57 +407,38 @@ $("#Assignmenttable").on("click", "td.editor-edit", function (e) {
   var tabledata = table.row(this).data();
   console.log(tabledata);
 
+  $("#Customer").val(tabledata.Customer)
+  $("#Invoice").val(tabledata.Invoice)
+
+
   var newStockModal = JSON.parse(localStorage.getItem("Assigned"));
-
-  // document.getElementById("stock").value = newStockModal[indexRow].stock;
-  // document.getElementById("date").value = newStockModal[indexRow].date;
-  document.getElementById("Customer").value = newStockModal[indexRow].Customer;
-  document.getElementById("Invoice").value = newStockModal[indexRow].Invoice;
-  document.getElementById("stockname").value = newStockModal[indexRow].StockParts[indexRow].StockName
-
-  var Parts = $("#parts").val()
-  Parts = newStockModal[indexRow].StockParts[indexRow].Parts
-
-  // parts = newStockModal[indexRow].Part;
-  showModaltable();
+  // User
+  var user = JSON.parse(localStorage.getItem("user"));  
 
   document.querySelector("#AssignedModalId").onclick = function () {
-    var updateCustomerName = (document.getElementById("Customer").value = newStockModal[indexRow].Customer);
-    var updateInvoice = (document.getElementById("Invoice").value = newStockModal[indexRow].Invoice);
-
-    var updateStockName = (document.getElementById("stockname").value = newStockModal[indexRow].StockParts[indexRow].StockName)
-
-    var updteParts = (Parts = newStockModal[indexRow].StockParts[indexRow].Parts)
-
-    var UStockNameParts = [];
-    UStockNameParts.push({
-      StockName: updateStockName,
-      Parts: updteParts
-    })
-
-    // User
-    var user = JSON.parse(localStorage.getItem("user"));    
+    
+    var updateCustomerName = document.getElementById("Customer").value
+    var updateInvoice = document.getElementById("Invoice").value
 
     var newObj = {
       Customer: updateCustomerName,
       Invoice: updateInvoice,
-      StockParts: UStockNameParts,
+      StockParts: StockNameParts,
       UserName: user[0].Admin,
       id: Date.now(),
       CreatedTime: Time,
     }
-    Assigned.push(newObj);
+    Assigned[indexRow] = newObj;
     localStorage.setItem("Assigned", JSON.stringify(Assigned));
     $("#AssignedModal").modal("hide");
     window.location.reload();
-  };
-  $("#AssignedModal").modal("hide");
-  resetValue()
+  }
+
+
+})
+
+
+// for search bar
+$("#stock_search").on("keyup", function () {
+  table.search(this.value).draw();
 });
-
-
-function resetValue(){
-  document.getElementById("Customer").value = ''
-  document.getElementById("Invoice").value = ''
-  document.getElementById("stockname").value =''
-}

@@ -37,12 +37,6 @@ a:link {
     border: 1px;
 }
 
-#dashboardtable_info {
-    margin-top: 5px;
-    width: 1100px !important;
-    text-align: end;
-}
-
 #dashboardtable_length {
     margin-bottom: 10px;
     margin-top: 15px;
@@ -131,6 +125,7 @@ a:link {
     color: rgb(150, 147, 143);
     margin-top: 30px;
     margin-left: 30px;
+    cursor: pointer;
 }
 
 #img {
@@ -247,9 +242,9 @@ li.paginate_button.page-item {
     margin: 0px !important;
 }
 
-#dashboardtable_info {
+/* #dashboardtable_info {
     margin-top: -3px;
-    /* margin-right: 1100%; */
+    margin-right: 1100%;
     width: 1150px !important;
     justify-content: end;
 }
@@ -277,7 +272,7 @@ li.paginate_button.page-item {
     #dashboardtable_info {
         width: 600px !important;
     }
-}
+} */
 
 /* 
   @media only screen and (max-width: 800px) {

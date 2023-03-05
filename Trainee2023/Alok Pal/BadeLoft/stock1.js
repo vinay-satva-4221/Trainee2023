@@ -159,11 +159,22 @@ $(document).ready(function () {
         data: "null",
         title: "Action",
         orderable: false,
-        className: "dt-center editor-edit",
-        defaultContent:
-          '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6" on-click="editdata()"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+        className: "dt-center ",
+        render: function (data, type, row) {
+          return (
+            '<button type="button" class="bi bi-pencil-fill text-secondary fw-bolder editor-edit stockeditbtn fs-6 border-0 bg-light"></button>' +
+            '<button type="button" class="bi bi-clock-history text-secondary fw-bolder fs-6 border-0 bg-light"></button>'
+          );
+        },
+
       },
     ],
+    
+  });
+
+  $(".bi-clock-history").on("click", function () {
+    debugger
+    $("#historyModal").modal("toggle");
   });
 
   // Add event listener for opening and closing details
@@ -182,6 +193,8 @@ $(document).ready(function () {
     }
   });
 });
+
+
 
 // Array creation
 var parts = new Array();
@@ -328,7 +341,7 @@ function showModaltable() {
 
     $("#PartModal").modal("hide");
 
-    
+
 
   }
 }
@@ -367,15 +380,17 @@ $(function () {
   );
 });
 
-$("#stock_table").on("click", "td.editor-edit", function (e) {
-  e.preventDefault();
+$("#stock_table").on("click", ".editor-edit", function (e) {
   $("#StockModal").modal("show");
 
-  var indexRow = table.row(this).index();
-  console.log(indexRow);
+  // var indexRow = table.row(this).index();
+  // console.log(indexRow);
 
-  var tabledata = table.row(this).data();
-  console.log(tabledata);
+  // var tabledata = table.row(this).data();
+  // console.log(tabledata);
+  var tabledata = table.row($(this).parents('tr')).data();
+  var indexRow = table.row($(this).parents('tr')).index();
+
 
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
   console.log(newStockModal[indexRow].Part[0]);
@@ -465,3 +480,6 @@ $(".nav-item a").each(function () {
     $(this).addClass("active");
   }
 });
+
+
+// 

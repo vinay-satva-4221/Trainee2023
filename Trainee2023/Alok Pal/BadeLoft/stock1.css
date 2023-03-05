@@ -325,3 +325,7 @@ a.page-link{
 li.paginate_button.page-item.active{
     height: 0% !important;
 }
+
+
+/* modal */
+.historyTextcolor{color:#326C96}
