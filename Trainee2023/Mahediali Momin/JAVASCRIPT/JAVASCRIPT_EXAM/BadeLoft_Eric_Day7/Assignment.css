@@ -8,18 +8,28 @@ thead {
   table {
     font-size: small;
     border-collapse: collapse;
-    border-radius: 1.2em;
+    border-radius: 0.8em;
     overflow: hidden;
     background-color: white;
     border: 1px solid black;
   
   }
+  #assignmentTable_length {
+    margin-bottom: -40px;
+    margin-top: 2px;
+}
+  #assignmentTable_filter input[type=search] {
+    width: 300px;
+    height: 35px;
+    /* margin-top: 12px; */
+    margin-bottom: 20px;
+}
   
-  #Statustable_length, #Statustable_filter, #Statustable_info {
+  /* #Statustable_length, #Statustable_filter, #Statustable_info {
     display: none;
-  }
+  } */
   
-  #example_length, #example_filter, #example_info {
+  #example_length {
     display: none;
   }
   
@@ -53,7 +63,8 @@ thead {
     color: rgb(150, 147, 143);
     margin-top: 30px;
     margin-left: 30px;
-  }
+    cursor: pointer;
+}
   
   #Uname {
     margin-right: 15px;

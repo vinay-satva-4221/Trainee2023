@@ -188,7 +188,7 @@ body {
     margin-top: 39%;
 }
 
-#myMod{
+#AssignedModalId{
     background-color: #326C96;
     color: white;
     border: 1px solid white;
@@ -218,4 +218,77 @@ table {
     font-family: 'Source Sans Pro', sans-serif;
     /* font-weight: 200 !important; */
     /* font-family: 'Noto Sans', sans-serif; */
+}
+
+/* plus */
+table.dataTable td.dt-control:before {
+    background-color: white !important;
+    color: #326C96 !important;
+    border: 0.15em solid #326C96 !important;
+    margin: 3px;
+    margin-right: 6%;
+}
+table.dataTable td.dt-control {
+    text-align: center;
+    cursor: pointer;
+    padding-right: 11%;
+}
+
+/* page */
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+    font-weight: 300;
+    /* height: 59%; */
+}
+div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+    margin-top: -2.4%;
+}
+div.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.85em;
+    padding-left: 78%;
+}
+
+.addStock{
+    font-size: 14px;
+}
+
+.customer{
+    font-size: 12px;
+    opacity: 60%;
+}
+
+.Invoice{
+    font-size: 12px;
+    opacity: 60%;
+}
+.stock{
+    font-size: 12px;
+    opacity: 60%;
+}
+.parts{
+    font-size: 12px;
+    opacity: 60%;
+}
+
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 22.3%;
+    font-size: 14px;
+}
+.stockSearch {
+    width: 29%;
+    margin-right: 3%;
+}
+
+#stock_search {
+    width: 97%;
+    height: 66%;
+    outline: none;
 }
