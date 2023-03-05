@@ -275,3 +275,20 @@ div.dataTables_wrapper div.dataTables_info {
     opacity: 60%;
 }
 
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 22.3%;
+    font-size: 14px;
+}
+.stockSearch {
+    width: 29%;
+    margin-right: 3%;
+}
+
+#stock_search {
+    width: 97%;
+    height: 66%;
+    outline: none;
+}

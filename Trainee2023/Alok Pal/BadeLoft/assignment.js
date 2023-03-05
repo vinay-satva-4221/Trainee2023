@@ -437,60 +437,8 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
 
 })
 
-// Edit
-// $("#Assignmenttable").on("click", "td.editor-edit", function (e) {
-  
-//   e.preventDefault();
-//   $("#AssignedModal").modal("show");
 
-//   var indexRow = table.row(this).index();
-//   console.log(indexRow);
-
-//   var tabledata = table.row(this).data();
-//   console.log(tabledata);
-
-//   var newStockModal = JSON.parse(localStorage.getItem("Assigned"));
-
-//   document.getElementById("Customer").value = newStockModal[indexRow].Customer;
-//   document.getElementById("Invoice").value = newStockModal[indexRow].Invoice;
-//   // document.getElementById("stockname").value = newStockModal[indexRow].StockParts[indexRow].StockName
-
-//   var Parts = $("#parts").val()
-//   Parts = newStockModal[indexRow].StockParts
-
-//   // parts = newStockModal[indexRow].Part;
-//   showModaltable();
-
-//   document.querySelector("#AssignedModalId").onclick = function () {
-//     var updateCustomerName = (document.getElementById("Customer").value = newStockModal[indexRow].Customer);
-//     var updateInvoice = (document.getElementById("Invoice").value = newStockModal[indexRow].Invoice);
-
-//     var updateStockName = document.getElementById("stockname").value ;
-//     var updteParts = Parts
-
-//     var UStockNameParts = [];
-//     UStockNameParts.push({
-//       StockName: updateStockName,
-//       Parts: updteParts
-//     })
-
-//     // User
-//     var user = JSON.parse(localStorage.getItem("user"));    
-
-//     var newObj = {
-//       Customer: updateCustomerName,
-//       Invoice: updateInvoice,
-//       StockParts: UStockNameParts,
-//       UserName: user[0].Admin,
-//       id: Date.now(),
-//       CreatedTime: Time,
-//     }
-//     Assigned[indexRow] = newObj;
-//     localStorage.setItem("Assigned", JSON.stringify(Assigned));
-//   };
-//   // window.location.reload();
-//   $("#AssignedModal").modal("hide");
-//   resetValue()
-// });
-
-
+// for search bar
+$("#stock_search").on("keyup", function () {
+  table.search(this.value).draw();
+});
