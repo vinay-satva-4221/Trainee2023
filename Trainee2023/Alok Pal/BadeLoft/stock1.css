@@ -285,6 +285,10 @@ a.page-link{
 
 
 /* stock active */
+.active {
+    
+    font-weight: bold;
+}
 .navbar-nav .nav-link {
     position: relative;
 }
@@ -321,3 +325,7 @@ a.page-link{
 li.paginate_button.page-item.active{
     height: 0% !important;
 }
+
+
+/* modal */
+.historyTextcolor{color:#326C96}

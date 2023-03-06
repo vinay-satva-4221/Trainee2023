@@ -196,7 +196,10 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 
 /* active */
-
+.active {
+    
+    font-weight: bold;
+}
 .navbar-nav .nav-link {
     position: relative;
 }

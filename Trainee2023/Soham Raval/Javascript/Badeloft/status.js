@@ -1,3 +1,5 @@
+
+
 function format(d) {
     return (
         '<table cellpadding="2" cellspacing="0" border="0" style="padding-left:50px;" class="w-100">' +
@@ -145,27 +147,29 @@ $(document).ready(function () {
                 className: 'text-center'
             }
           ],
-        //   language:{
-        //     search: "_INPUT_",
-        //     searchPlaceholder: 'Search here',
-        //     paginate:{
-        //         first: 'First',
-        //         last: 'Last',
+        // language: {
+           
+        //     info: "items _START_ to _END_ of _TOTAL_ items",
+        //         paginate:{
+          
         //         previous:"<",
         //         next:">",
-        //         info: 'items _START_ to _END_ of _TOTAL_ items',
         //     },
-        //   },
-        language: {
-           
-            info: "items _START_ to _END_ of _TOTAL_ items",
-                paginate:{
-          
-                previous:"<",
-                next:">",
-            },
          
-        },
+        // },
+
+        language: {
+            search: "_INPUT_",
+          searchPlaceholder: 'Search here',
+          info: "items _START_ to _END_ of _TOTAL_ items",
+              paginate:{
+        
+              previous:"<",
+              next:">",
+          },
+       
+      },
+
       
         order: [[1, 'asc']],
     })
@@ -189,10 +193,10 @@ $(document).ready(function () {
     });
 
 });
-let a=JSON.parse(localStorage.getItem("details"));
-console.log("a",a); 
+let usernameget=JSON.parse(localStorage.getItem("details"));
+console.log("usernameget",usernameget); 
 
-$("#Uname").html(a[0].Name);
+$("#Username").html(usernameget[0].Name);
 function logout() {
     window.location="Login.html"
     localStorage.clear();
