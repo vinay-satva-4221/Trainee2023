@@ -58,16 +58,25 @@ $(document).ready(function () {
   $('[data-bs-toggle="popover"]').popover({
     
     container: 'body',
+    title : '<p class="text-start text-dark fw-bold bg-white">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
     placement: 'right',
     html: true,
     content: function () {
       return $('#popover-form').html();
     }
   });
-  $('#closepopover').click(function(){
-    alert('clicked')
+  // $('.close').popover(function(){
+  //   alert('clicked')
     
-  })
+  // })
+
+  $(document).on("click", ".popover .close" , function(){
+   
+    $('.popover').hide();
+    
+});
+
+
  
   const input = document.querySelector('input[type="search"]');
     input.addEventListener("search", () => {
@@ -76,5 +85,8 @@ $(document).ready(function () {
     });
 })
 
+function closePopover(){
+  alert('clicked')
+}
 
 

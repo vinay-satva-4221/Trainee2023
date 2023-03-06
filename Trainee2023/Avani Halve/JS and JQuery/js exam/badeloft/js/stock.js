@@ -35,6 +35,7 @@ function format(d) {
 }
 
 var stockDetails = JSON.parse(localStorage.getItem("stockDetail"));
+
 $(document).ready(function () {
    var table = $("#stockTable").DataTable({
       data: stockDetails,
@@ -257,6 +258,16 @@ function addItemDetails() {
    dtr = dtr + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
    dtr = dtr + "</tr>";
    $("#parttable tbody").append(dtr);
+
+   $("#parttable").on("click", ".btn-delete", function () {
+      debugger;
+      if (stockItemDetails.length == 1) {
+         swal("Error!", "Atleast have 1 PartNumber", "error");
+      } else {
+         $(this).closest("tr").remove();
+         stockItemDetails.splice(this, 1);
+      }
+   });
 }
 
 //delete part from outside
