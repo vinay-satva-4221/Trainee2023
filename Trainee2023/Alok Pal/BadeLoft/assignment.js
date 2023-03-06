@@ -352,6 +352,7 @@ function addStockData() {
   localStorage.setItem("Assigned", JSON.stringify(Assigned));
   $("#AssignedModal").modal("hide");
   resetValue()
+  StockNameParts =[];
 }
 
 // Dynamic adding of table
@@ -366,7 +367,7 @@ function showModaltable() {
     html += "<td class=text-start >" + StockNameParts[index].StockName + "</td>";
     html += "<td class=text-start > " + StockNameParts[index].Parts + "</td>";
     html +=
-      '<td class=text-center><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
+      '<td class=text-start><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
       index +
       ' )"   ></i> </td>';
     html += "</tr>";
@@ -432,6 +433,7 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
   var newStockModal = JSON.parse(localStorage.getItem("Assigned"));
   // User
   var user = JSON.parse(localStorage.getItem("user"));  
+  showModaltable();
 
   document.querySelector("#AssignedModalId").onclick = function () {
     

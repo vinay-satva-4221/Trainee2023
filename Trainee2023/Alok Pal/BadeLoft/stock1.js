@@ -257,8 +257,7 @@ function addStockData() {
       $("#partTable").append("<tbody></tbody");
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      // console.log("ello",newStock[0].stock)
-      // console.log("ello", newStock.length);
+      
 
       var flag;
       for (let i = 0; i < newStock.length; i++) {
