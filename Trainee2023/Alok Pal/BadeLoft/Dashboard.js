@@ -42,7 +42,9 @@ var dataSet = [
     "2",
     "1",
   ],
-  // ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
+  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], 
+  // ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
+  //  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
 ];
 
 
