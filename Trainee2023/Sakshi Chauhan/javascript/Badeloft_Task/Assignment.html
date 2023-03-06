@@ -3,12 +3,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status</title>
+    <title>Assignment</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css
     ">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./Assignment.css">
 </head>
@@ -71,73 +74,82 @@
         </thead>
     </table>
     </div>
-    <button type="button" id="ModalPopup" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn m-2">+ New</button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <button type="button" id="ModalPopup" data-bs-toggle="modal" data-bs-target="#assignmentModal" class="btn m-2">+ New</button>
+    <div class="modal fade" id="assignmentModal" role="dialog" aria-labelledby="assignmentModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><b>New Assignment</b></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="" id="ModalAssignment">
-                <div class="row">
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <label for="customer" class="form-label">Choose Customer</label>
-                    <select name="customer" id="customer" class="form-control form-select">
-                      <option value="Choose Customer" selected disabled>Choose Customer</option>
-                      <option value="xyz">XYZ</option>
-                      <option value="abc">ABC</option>
-                    </select>
+              <div class="modal-header">
+                  <h5 class="modal-title fw-bold" id="assigntitle">New Assignment</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form action="" id="AssignmentForm">
+                      <div class="row">
+
+                          <div class="col-md-6 mt-2">
+                              <label for="Customer" class="form-label text-secondary">Choose Customer</label>
+                              <select class="form-select" aria-label="Default select" id="customer" name="customer">
+                                  <option selected disabled value="null">Choose customer</option>
+                                  <option value="Keneth">Keneth</option>
+                                  <option value="Eric Jensan">Eric Jensan</option>
+                                  <option value="Kelly McCrory">Kelly McCrory</option>
+                              </select>
+                          </div>
+                          <div class="col-md-6 mt-2">
+                              <label for="QuickBooks" class="form-label text-secondary ">QuickBooks Invoice#</label>
+                              <select class="form-select" aria-label="Default select" id="quickbookInvoice" name="quickbookInvoice">
+                                  <option selected disabled value="null">Choose Invoice</option>
+
+                              </select>
+                          </div>
+                          <div class="col-md-12 mt-4">
+                              <p class="form-title fw-bold">Add Stock</p>
+                          </div>
+                          <div class="col-md-5">
+                              <label for="stock" class="form-label text-secondary">Stock</label>
+                              <select class="form-select" aria-label="Default select" id="stockname" name="stockname">
+                                  <option selected disabled value="null">Choose stock</option>
+                              </select>
+                          </div>
+                          <div class="col-md-5">
+                              <label for="part" class="form-label text-secondary">Parts</label>
+                          <select class="partnumbers" id="parts" name="parts" multiple="multiple">
+
+                              </select>
+                                                           
+                          </div>
+
+                          <div class="col-md-2">
+                              <label for="add" class="form-label text-white">add</label>
+                              <button type="button" class="btn text-white w-100"
+                                  id="addPartsToStock">Add</button>
+                          </div>
+                      </div>
+                  </form>
+                  <div class="table-responsive mt-2">
+                      
+                      <table class="table border w-100 h-100 datatableStyle" id="partTable"></table>
+
                   </div>
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <label for="quickbooks" class="form-label">QuickBooks Invoice#</label>
-                    <select name="quickbooks" id="quickbooks" class="form-control form-select">
-                      <option value="xyz">XYZ</option>
-                      <option value="abc">ABC</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3">
-                    <h6 class="modal-title"><b>Add Stock</b></h6>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <label for="stock" class="form-label">Stock</label>
-                    <select name="stock" id="stock" class="form-control form-select">
-                      <option value="Choose Stock" selected disabled>Choose Stock</option>
-                      <option value="xyz">XYZ</option>
-                      <option value="abc">ABC</option>
-                    </select>
-                  </div>
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <label for="parts" class="form-label">Parts</label>
-                    <select name="parts" id="parts" class="form-control form-select">
-                      <option value="Choose Stock" selected disabled>Choose Part</option>
-                      <option value="xyz">XYZ</option>
-                      <option value="abc">ABC</option>
-                    </select>
-                  </div>
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                    <button type="button" class="btn" id="AddId">Add</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer mt-5">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+              </div>
+              <div class="modal-footer justify-content-start">
+
+                  <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal"
+                      id="AssignmentSave">Save</button>
+                  <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
+              </div>  
           </div>
-        </div>
       </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script src="./Assignment.js"></script>
 
 
