@@ -16,7 +16,7 @@ function format(d) {
         '<th>Part Number</th>' +
         '<th>Stock Location</th>' +
         '<th>Action</th>' +
-        '</tr>' +
+        '</tr>' + '</thead>' +
         '<tr>' +
         '<td>1</td>' +
         '<td>BW-01-S-M</td>' +
@@ -29,7 +29,7 @@ function format(d) {
         '<td>C-101</td>' +
         '<td>Close</td>' +
         '</tr>' +
-        '</thead>' +
+       
         '</table>'
     );
 }
@@ -107,6 +107,34 @@ var data1 = [
         QBDeliveryPhone: '618-234-6400',
         QBTracking: 'WBC-124'
     },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    {
+        QBInvoice: '150008',
+        Name: 'James Fenske',
+        QBShipdate: '10/08/2021',
+        QBPaymentStatus: '<span class="alert alert-primary px-2 p-1" style="background-color:rgb(230, 241, 232); border-color:rgb(230, 241, 232); color:green"><i class="fa fa-check"></i>Paid</span>',
+        QBStatus: 'Shipped',
+        QBDeliveryPhone: '618-234-6400',
+        QBTracking: 'WBC-124'
+    },
+    
 ];
 
 $(document).ready(function () {
@@ -153,6 +181,11 @@ $(document).ready(function () {
                 previous: "<",
                 next: ">"
             },
+            info: "Items 1 to 15 of 30 total",
+            paginate: {
+                next: "&#62",
+                previous: "&#60",
+            },
             
         },
         
@@ -164,7 +197,7 @@ $(document).ready(function () {
 
 
     // Add event listener for opening and closing details
-    $('#Statustable tbody').on('click', 'td.dt-control', function () {
+    $('#Statustable tbody').on('click', 'td', function () {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
 

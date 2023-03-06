@@ -24,6 +24,9 @@
     <!-- datatable -->
     <link src="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+
+    <!-- SweetAlert -->
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> -->
  
     </head>
 <body>
@@ -118,6 +121,7 @@
                                         <div class="col-md-6">
                                             <label for="">ETA Date:</label>
                                             <input type="date" class="form-control" name="etadate" id="etadate">
+                                            
 
                                         </div>
                                     </div>
@@ -144,7 +148,7 @@
                                                     for="in_warehouse">In Warehouse</label>
                                             </div>
                                         </div>
-                                    </div>stockDetails
+                                    </div>
                                     <br>
                                     <div class="row">
                                         <a data-toggle="modal" href="#AddPart" class="btn btn-light col-md-3"><i class="fa fa-plus-circle"></i> Add Part
@@ -153,19 +157,19 @@
                                 </div>
                             </form>
                             <div>
-                                <table class="table " id="parttable">
+                            <table class="table " id="parttable">
                             <thead class=" table text-light bg-dark">
-                                        <tr>
-                                            <th scope="col">PartNumber</th>
-                                            <th scope="col">Invoice</th>
-                                            <th scope="col">Ordered</th>
-                                            <th scope="col">notes</th>
-                                            <th scope="col" style="color:black"></th>   
-                                        </tr>
-                                    </thead> 
-                                     <tbody class="table-group-divider bg-light"></tbody>
+                                <tr>
+                                    <th scope="col">PartNumber</th>
+                                    <th scope="col">Invoice</th>
+                                    <th scope="col">Ordered</th>
+                                    <th scope="col">notes</th>
+                                    <th scope="col" style="color:black"></th>   
+                                </tr>
+                            </thead> 
+                            <tbody class="table-group-divider bg-light"></tbody>
                                     
-                                </table>
+                            </table>
                             </div>
                         </div>
                         <!-- <a data-toggle="modal" href="#AddPart" class="btn btn-primary">Launch modal</a> -->
@@ -212,6 +216,61 @@
                 </div>
             </div>
         </div>
+
+        <!-- History Modal -->
+  <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <h5 class="modal-title m-3" id="exampleModalLabel">Audit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+         <strong style="color: #326C96;">Stock</strong>
+         <div >
+            <span style="color: #326C96;">&#9402;</span>
+            <span><strong>C100 stock added by Eric</strong></span>
+            <div><small>Add part BW-01-S-M with ordered quantity 5 | Add part AT-01-BLK with ordered quantity 4</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">Eric on 02/22/2022 09:00AM</span></small></div>
+            <hr>
+        </div>
+         <div >
+            <span style="color: #326C96;">&#9407;</span>
+            <span><strong>Stock updated by jeshal</strong></span>
+            <div><small>Edit part AT01 with ordered quantity 5</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">jeshal on 02/22/2022 12:30PM</span></small></div>
+            <hr>
+        </div>
+        <div >
+            <span style="color: #326C96;">&#9402;</span>
+            <span><strong>Part has been deleted by Eric</strong></span>
+            <div><small>Edit part AT03</small></div>
+            <div><small>Last Updated by <span style="color: #326C96;">Eric on 02/22/2022 02:15PM</span></small></div>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true" style="color: black;">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="JavaScript:void(0);">1</a></li>
+                  <li class="page-item "><a class="page-link" style="color: black;" href="JavaScript:void(0);">2</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black;" href="JavaScript:void(0);">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link"  href="#" aria-label="Next">
+                      <span aria-hidden="true" style="color: black;">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="table-responsive">
         <table id="stockTable" class="display " style="width:100%">
             <thead class="table-dark">
@@ -222,7 +281,7 @@
                     <th>Stock Location</th>
                     <th>Created By</th>
                     <th>Created Date</th>
-                    <th>Notes</th>
+                    <!-- <th>Notes</th> -->
                     <th>Action</th>
                 </tr>
             </thead>
@@ -237,10 +296,14 @@
 
     <!-- dataTable  -->
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
     <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
+  
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script> -->
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.18.0/jquery.validate.js"></script>
 </body>
 

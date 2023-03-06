@@ -40,7 +40,7 @@ var dataSet = [
   //   Name : 'Keneth Woodard',
   //   QB_Ship_date : '12/08/2021',
   // }
-  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-primary px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
+  ["150000", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-128"],
   ["150001", "James Fenske", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-123"],
   ["150002", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-success px-1 p-0 m-0'><i class='bi bi-check'></i>Paid</button>", "Shipped", "617-235-7647", "<input type=checkbox checked>", "WBC-129"],
   ["150003", "Keneth Woodard", "12/08/2021", "<button type='button' class='alert alert-danger px-1 p-0 m-0'><i class='bi bi-x'></i>Unpaid</button>", "STD", "617-235-7647", "<input type=checkbox>", "WBC-122"],
@@ -115,5 +115,9 @@ $(document).ready(function () {
       tr.addClass("shown");
     }
   });
-
+  const input = document.querySelector('input[type="search"]');
+  input.addEventListener("search", () => {
+      table.search(input.value).draw();
+      // console.log(`The term searched for was ${}`);
+  });
 });

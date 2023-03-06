@@ -196,7 +196,10 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
 
 
 /* active */
-
+.active {
+    
+    font-weight: bold;
+}
 .navbar-nav .nav-link {
     position: relative;
 }
@@ -220,3 +223,31 @@ table.dataTable thead>tr>th.sorting:before, table.dataTable thead>tr>th.sorting:
     visibility: visible;
     transform: scaleX(1);
 }
+
+
+/* paginate height */
+#status_tab_next{
+    height: 0% !important;
+}
+#status_tab_previous{
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active{
+    height: 0% !important;
+}
+
+/* search icon */
+.searchicon{
+    position: absolute !important;
+    top: 78px;
+    right: 20.6%;
+    font-size: 14px;
+    outline: none;
+}
+
+.status_search{
+outline: none;
+}
+
+

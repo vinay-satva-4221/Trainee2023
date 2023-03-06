@@ -1,0 +1,128 @@
+.mainbody {
+  background-color: #F7F8FA;
+}
+#Dashboard {
+  font-size: 2rem;
+  color: black;
+}
+
+#tableDashboard thead {
+  color: #ffffff;
+  background-color: #212529;
+  
+}
+#tableDashboard tbody{
+  background-color: #ffffff;
+}
+#tableDashboard th {
+  color: #ffffff;
+  background-color: #212529;
+ 
+  font-weight: normal;
+}
+.displayTable {
+  /* padding: 0% 2%; */
+  padding-left: 3%;
+  padding-right: 2%;
+}
+#tableDashboard_length,
+#tableDashboard_filter {
+  display: none;
+}
+#tableDashboard_info {
+  margin-top: 1%;
+  margin-left: 70%;
+}
+@media only screen and (max-width: 800px) {
+  #tableDashboard_info {
+    margin-left: 30%;
+  }
+}
+#tableDashboard_filter {
+  margin-bottom: 2%;
+  margin-top: 3%;
+}
+thead {
+  background-color: black;
+  border-radius: 1em;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+}
+
+table {
+  /* font-size: small; */
+  border-radius: 0.5em;
+  overflow: hidden;
+  border: 1px gray solid;
+}
+
+/* Move sorting option */
+
+table.dataTable thead > tr > th.sorting:before,
+table.dataTable thead > tr > th.sorting:after,
+table.dataTable thead > tr > th.sorting_asc:before,
+table.dataTable thead > tr > th.sorting_asc:after,
+table.dataTable thead > tr > th.sorting_desc:before,
+table.dataTable thead > tr > th.sorting_desc:after,
+table.dataTable thead > tr > th.sorting_asc_disabled:before,
+table.dataTable thead > tr > th.sorting_asc_disabled:after,
+table.dataTable thead > tr > th.sorting_desc_disabled:before,
+table.dataTable thead > tr > th.sorting_desc_disabled:after,
+table.dataTable thead > tr > td.sorting:before,
+table.dataTable thead > tr > td.sorting:after,
+table.dataTable thead > tr > td.sorting_asc:before,
+table.dataTable thead > tr > td.sorting_asc:after,
+table.dataTable thead > tr > td.sorting_desc:before,
+table.dataTable thead > tr > td.sorting_desc:after,
+table.dataTable thead > tr > td.sorting_asc_disabled:before,
+table.dataTable thead > tr > td.sorting_asc_disabled:after,
+table.dataTable thead > tr > td.sorting_desc_disabled:before,
+table.dataTable thead > tr > td.sorting_desc_disabled:after {
+  position: absolute;
+  display: block;
+  opacity: 0.125;
+  right: 70% !important;
+  line-height: 9px;
+  font-size: 0.8em;
+}
+/* PAGINATION */
+.current{
+  background-color: #212529 !important;
+  /* color: #ffffff !important; */
+}
+#tableDashboard_paginate {
+  border: 1px rgb(220, 218, 218) solid;
+  border-radius: 3px;
+  margin-top: 1%;
+}
+.dataTables_wrapper .dataTables_paginate {
+  padding-top: 0% !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  
+}
+.AssignedName{
+  color: gray;
+}
+.user{
+  color: red;
+}
+
+
+/* PopOver */
+#PopoverOrdered{
+  color: green;
+}
+#PopoverAssigned{
+  color: red;
+}
+/* #ClosePopover{
+  float: right;
+} */
+
+#tableDashboard_paginate a.paginate_button.current {
+  color: white !important;
+  background-color: black !important;
+}

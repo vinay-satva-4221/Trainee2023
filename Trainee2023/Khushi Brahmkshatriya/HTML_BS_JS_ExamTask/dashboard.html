@@ -28,8 +28,8 @@
                     <div class="col-md-8 d-flex justify-content-end">
 
                         <div id="example_filter" class="dataTables_filter  px-3">
-                            <input class="form-control fw-light " type="search"  placeholder="&#xF002; Search Here" aria-label="Search"
-                                id="txtSearch" style="font-family:Arial, FontAwesome" >
+                            <input class="form-control" type="search" placeholder="&#xF002; Search Here..." aria-label="Search"
+                            id="txtSearch" style="font-family:Arial, FontAwesome" >
                         </div>
                        
                     </div>
@@ -47,19 +47,19 @@
     <div id="popover-form" class="d-none p-0">
         <div class="row p-0 m-0 col-12">
             <div class="col-md-12">
-                <p class="text-start text-dark fw-bold">Assigned to</p>
+                <p class="text-start text-dark fw-bold">Assigned to <span class="float-end closepopover "onclick='closepopover()'id="closepopover">X</span></p>
             </div>
             
-            <div class="col-md-6">  
-                <p class="text-success">Ordered:3 <span class="text-secondary">|</span></p>
+            <div class="col-md-12">  
+                <p class="text-success">Ordered:3 <span class="text-secondary px-3">|</span><span class="text-danger text-start">Assigned:2</span></p>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <p class="text-danger text-start">Assigned:2</p>
-            </div>
+            </div> -->
             <div class="col-md-12">
                 <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Manuel Pimentel</p>
-                
+                <hr class="text-secondary bg-secondary">
             </div>
             <div class="col-md-12">
                 <p class="text-secondary fw-light"><i class="bi bi-person-fill text-danger "></i> Dave Pimentel</p>

@@ -1,0 +1,132 @@
+#Assignment {
+  font-size: 2rem;
+  color: black;
+}
+#newAssignment {
+  background-color: #326c96;
+  color: white;
+  margin-left: 70%;
+}
+input[type=search]{
+  width: 83%;
+}
+#CloseAssignmentModal{
+  border: none;
+  background-color: white;
+}
+#addSelectedParts {
+  background-color: #326c96;
+  color: white;
+}
+thead {
+  background-color: black;
+  border-radius: 1em;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+}
+
+.select2{
+  width: 100% !important;
+  padding-top: 5px;
+  height: 50px;
+}
+table {
+  /* font-size: small; */
+  border-radius: 0.5em;
+  overflow: hidden;
+  border: 1px gray solid;
+}
+label {
+  color: #8f8a8c;
+}
+#CloseModal {
+  border: none;
+}
+#childTableofAssigned{
+  width: 100%;
+}
+#childTableofAssigned thead{
+  background-color: #CFD3D8 !important;
+}
+#childTableofAssigned td{
+  color: black !important;
+}
+table.dataTable td.dt-control:before {
+  height: 1em;
+  width: 1em;
+  margin-top: -9px;
+  display: inline-block;
+  color: #326c96 !important;
+  border: 0.15em solid #326c96 !important;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1em;
+  content: "+";
+  background-color: #ebf1eb !important;
+}
+#table_assignment tr td:nth-child(1){
+  color: #1188FF;
+}
+
+/* Table */
+
+#table_assignment thead{
+  background-color: #262626;
+}
+#table_assignment th{
+color: white;
+}
+.displayTable{
+  margin-left: 2.6%;
+  margin-right: 3%;
+}
+#saveAssigment,#editAssignment{
+  background-color: #326c96;
+  color: white;
+}
+#table_assignment_length,#table_assignment_filter{
+  display: none;
+}
+#table_assignment_info{
+  margin-left: 72%;
+  margin-top: 1%;
+}
+input[type=text]{
+  width: 82%;
+}
+#table_assignment_paginate a.paginate_button.current {
+  color: white !important;
+  background-color: black !important;
+}
+#table_assignment_paginate {
+  border: 1px rgb(220, 218, 218) solid;
+  border-radius: 3px;
+  margin-top: 1%;
+}
+.dataTables_wrapper .dataTables_paginate {
+  padding-top: 0% !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  
+}
+#SelectParts{
+  width: 200px;
+  height: 40px;
+}
+
+/* Select2 */
+.select2-dropdown{
+  z-index: 1100 !important;
+}
+#AssignedPartTable th{
+ color: white;
+}
+.DeleteChildrow{
+  border: none;
+}

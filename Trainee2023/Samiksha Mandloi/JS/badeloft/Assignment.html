@@ -30,9 +30,9 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <!-- Multiple select  -->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <link rel="stylesheet" href="css/jquery.multiselect.css">
 
+       
 
         <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@100&family=Water+Brush&display=swap"
@@ -159,20 +159,20 @@
                                                 <select id="stock" class="form-control" tabindex="5"></select>
 
                                             </div>
-                                            <div class="col-md-5 col-sm-12">
-                                                <label for="fruits">Choose Parts</label>
-                                                <select id="select-box" multiple></select>
-
-                                                <div id="checkboxes">
-                                                    <label><input type="checkbox" value="option1"> Option 1</label>
-                                                    <label><input type="checkbox" value="option2"> Option 2</label>
-                                                    <label><input type="checkbox" value="option3"> Option 3</label>
-                                                    <label><input type="checkbox" value="option4"> Option 4</label>
+                                            
+                                                <div class="col-md-5">
+                                                    <label>Parts</label>
+                                                    <select class="form-select multiSelect" id="asignparts" multiple="multiple">
+                                                        <option value="BW-01-5-M">BW-01-5-M</option>
+                                                        <option value="AT-01-BLK">AT-01-BLK</option>
+                                                        <option value="BW-03-XL-G">BW-03-XL-G</option>
+                                                        <option value="BW-02-L-M">BW-02-L-M</option>
+                                                        <option value="WB-05-M-G">WB-05-M-G</option>
+                                                        <option value="ZK-0B-X2P">ZK-0B-X2P</option>
+                                                    </select>    
                                                 </div>
 
-                                                </select>
-
-                                            </div>
+                                            <!-- </div> -->
 
                                             <div class="col-md-2 mt-2">
                                                 <button type="button" class="btn btn-primary" id="addparts"
@@ -223,6 +223,8 @@
     </div>
 
     <script src="./Assignment.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -234,6 +236,13 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script> -->
+    <script src="./jQuery-multi-select-js/jQuery-Plugin-multi-select-js/src/jquery.multi-select.min.js"></script>
+    <script src="./jQuery-multi-select-js/jQuery-Plugin-multi-select-js/src/jquery.multi-select.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#asignparts').multiSelect();
+        });
+    </script>
 
 
 

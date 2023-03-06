@@ -273,15 +273,22 @@ a.page-link{
     padding-top: 10%;
 }
 
+
+
+/* search icon */
 .searchicon{
     position: absolute !important;
     top: 78px;
-    right: 347px;
+    right: 22.3%;
     font-size: 14px;
 }
 
 
 /* stock active */
+.active {
+    
+    font-weight: bold;
+}
 .navbar-nav .nav-link {
     position: relative;
 }
@@ -304,4 +311,36 @@ a.page-link{
  {
     visibility: visible;
     transform: scaleX(1);
+}
+
+
+/* paginate height */
+#stock_table_next{
+    height: 0% !important;
+}
+#stock_table_previous{
+    height: 0% !important;
+}
+
+li.paginate_button.page-item.active{
+    height: 0% !important;
+}
+
+
+/* modal */
+.historyTextcolor{color:#326C96}
+
+/* Audit */
+.paginationAudit{
+    height: 3.5rem;
+}
+
+
+/* Dropdown */
+.statusdropdown{
+    color: #76aaf7;
+    border: 1px solid #76aaf7;
+    border-radius: 4px;
+    width: 23%;
+    margin-right: 2%;
 }

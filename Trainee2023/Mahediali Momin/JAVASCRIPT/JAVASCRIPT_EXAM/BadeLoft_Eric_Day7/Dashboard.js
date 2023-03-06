@@ -8,11 +8,19 @@ window.onload = () => {
 var data1 = [
     ["Stock Location", "", "", "On water", "On water", "In Production"],
     ["ETA Date", "", "", "10/08/2021", "10/08/2021", "10/08/2021"],
-    ["BW-01-S-M", "1", "0","<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
+    ["BW-01-S-M", "1", "0", "<button class='text-primary  border-0 bg-light' data-bs-toggle='popover' id='popover'>3</button>", "0", "0"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
     ["BW-01-Q-M", "", "0", "3", "0", "1"],
     ["BW-03-XL-G", "1", "1", "2", "2", "1"],
-    ["ZK-08-X2P", "1", "0", "3", "0", "1"],    
+    ["ZK-08-X2P", "1", "0", "3", "0", "1"],
+    ["BW-03-XL-G", "1", "1", "2", "2", "1"],
+    ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    ["BW-03-XL-G", "1", "1", "2", "2", "1"],
+    ["ZK-08-X2P", "1", "0", "3", "0", "1"],
+    ["BW-03-XL-G", "1", "1", "2", "2", "1"],
+    ["BW-01-Q-M", "", "0", "3", "0", "1"],
+    ["BW-03-XL-G", "1", "1", "2", "2", "1"],
+    ["ZK-08-X2P", "1", "0", "3", "0", "1"],
 ]
 
 $(document).ready(function () {
@@ -72,11 +80,18 @@ $(document).ready(function () {
 
         container: 'body',
         placement: 'right',
-        html: true, 
-        content: function() {
-              return $('#popover-form').html();
+        html: true,
+        content: function () {
+            return $('#popover-form').html();
         }
-      });
+    });
+
+
+    $(document).on('click', '.close-popover', function () {
+        debugger
+        $(this).closest('.popover').popover('hide');
+    });
+    
 
     $('.sorting').removeClass('sorting');
 
@@ -88,5 +103,5 @@ $(document).ready(function () {
 
 function logout() {
     window.location.replace("LoginPage.html");
-    localStorage.clear();
+    localStorage.removeItem('loggUser');
 }

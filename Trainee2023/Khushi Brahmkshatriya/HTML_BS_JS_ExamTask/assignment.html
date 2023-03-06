@@ -33,19 +33,19 @@
                     </div>
                     <div class="col-md-8 d-flex justify-content-end">
                         <button type="button" class="btn buttonColor text-white" data-bs-toggle="modal"
-                            data-bs-target="#assignmentModal">+ New
+                            data-bs-target="#assignmentModal" id="newAssignment">+ New
                         </button>
 
                         <div id="example_filter" class="dataTables_filter  px-3">
-                            <input class="form-control" type="search" placeholder="&#xF002; Search Here"
-                                aria-label="Search" id="myCustomSearchBox" style="font-family:Arial, FontAwesome">
+                            <input class="form-control" type="search" placeholder="&#xF002; Search Here..." aria-label="Search"
+                            id="txtSearch" style="font-family:Arial, FontAwesome" >
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="table-responsive w-100 h-100">
-                        <table id="assignmentTable" class="table border w-100 h-100 datatableStyle">
+                        <table id="assignedparttable" class="table border w-100 h-100 datatableStyle">
 
                         </table>
                     </div>
@@ -54,11 +54,11 @@
             </div>
         </div>
     </section>
-    <div class="modal fade" id="assignmentModal" role="dialog" aria-labelledby="assignmentModal" aria-hidden="true">
+    <div class="modal fade" id="assignmentModal" role="dialog" aria-labelledby="assignmentModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="assignmentModal">New Assignment</h5>
+                    <h5 class="modal-title fw-bold" id="assigntitle">New Assignment</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -67,7 +67,7 @@
 
                             <div class="col-md-6 mt-2">
                                 <label for="Customer" class="form-label text-secondary">Choose Customer</label>
-                                <select class="form-select" aria-label="Default select" id="customer">
+                                <select class="form-select" aria-label="Default select" id="customer" name="customer">
                                     <option selected disabled value="null">Choose customer</option>
                                     <option value="Keneth Woodard">Keneth Woodard</option>
                                     <option value="Kelly">Kelly</option>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label for="QuickBooks" class="form-label text-secondary ">QuickBooks Invoice#</label>
-                                <select class="form-select" aria-label="Default select" id="quickbookInvoice">
+                                <select class="form-select" aria-label="Default select" id="quickbookInvoice" name="quickbookInvoice">
                                     <option selected disabled value="null">Choose Invoice</option>
 
                                 </select>
@@ -86,54 +86,36 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="stock" class="form-label text-secondary">Stock</label>
-                                <select class="form-select" aria-label="Default select" id="stockname">
+                                <select class="form-select" aria-label="Default select" id="stockname" name="stockname">
                                     <option selected disabled value="null">Choose stock</option>
                                 </select>
                             </div>
                             <div class="col-md-5">
                                 <label for="part" class="form-label text-secondary">Parts</label>
-                                <!-- <select class="js-example-basic-multiple" id="parts" name="states[]" multiple="multiple">
+                            <select class="partnumbers" id="parts" name="parts[]" multiple="multiple">
 
                                 </select>
-                                                             -->
-                                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                    <option value="WY">Wyoming</option>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                </select>
-
-                                <!-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                      ...
-                                    <option value="WY">Wyoming</option>
-                                  </select> -->
-                             
-                                <!-- <select name="parts" id="parts" class="form-control " multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option selected value="CA">California</option>
-                            
-                                  </select> -->
+                                                             
                             </div>
 
                             <div class="col-md-2">
                                 <label for="add" class="form-label text-white">add</label>
                                 <button type="button" class="btn buttonColor text-white w-100"
-                                    id="saveAssignment">Add</button>
+                                    id="addPartsToStock">Add</button>
                             </div>
                         </div>
                     </form>
+                    <div class="table-responsive mt-2">
+                        
+                        <table class="table border w-100 h-100 datatableStyle" id="partTable"></table>
 
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-start">
 
                     <button type="button" class="btn buttonColor text-white" data-bs-dismiss="modal"
-                        id="saveStock">Save</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        id="saveAssignments">Save</button>
+                    <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
