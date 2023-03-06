@@ -133,11 +133,12 @@ $(document).ready(function () {
         orderable: false,
         class: "text-center",
         render: function (data, type, row) {
-            // create a select element with options
-            var select = '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
-            // return the select element as the cell content
-            return select + data;
-        }
+          // create a select element with options
+          var select =
+            '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+          // return the select element as the cell content
+          return select + data;
+        },
       },
       {
         data: "user[0].Admin",
@@ -171,34 +172,31 @@ $(document).ready(function () {
             '<button type="button" class="bi bi-clock-history text-secondary fw-bolder fs-6 border-0 bg-light"></button>'
           );
         },
-
       },
     ],
-    
   });
 
-  $('#stock_table tbody').on('change', 'select', function () {
-    debugger
-
-    var rowData = table.row($(this).closest('tr')).data(); // get the data for the current row
+  $("#stock_table tbody").on("change", "select", function () {
+    debugger;
+    var rowData = table.row($(this).closest("tr")).data(); // get the data for the current row
     var newValue = $(this).val(); // get the new value from the dropdown
     rowData.stockStatus = newValue; // update the data object
-    table.row($(this).closest('tr')).data(rowData); // update the table
+    table.row($(this).closest("tr")).data(rowData); // update the table
 
     // update the local storage
-    var data = JSON.parse(localStorage.getItem('newStock'));
+    var data = JSON.parse(localStorage.getItem("newStock"));
     var index = data.findIndex(function (item) {
-        return item.stock === rowData.stock;
+      return item.stock === rowData.stock;
     });
     if (index !== -1) {
-        data[index].stockStatus = newValue;
-        localStorage.setItem('newStock', JSON.stringify(data));
+      data[index].stockStatus = newValue;
+      localStorage.setItem("newStock", JSON.stringify(data));
     }
-    location.reload(true)
-});
+    location.reload(true);
+  });
 
   $(".bi-clock-history").on("click", function () {
-    debugger
+    debugger;
     $("#historyModal").modal("toggle");
   });
 
@@ -218,8 +216,6 @@ $(document).ready(function () {
     }
   });
 });
-
-
 
 // Array creation
 var parts = new Array();
@@ -282,7 +278,6 @@ function addStockData() {
       $("#partTable").append("<tbody></tbody");
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      
 
       var flag;
       for (let i = 0; i < newStock.length; i++) {
@@ -310,7 +305,7 @@ function addStockData() {
         $("#StockModal").modal("hide");
         resetSVal();
         parts = [];
-        showModaltable()
+        showModaltable();
         $("#partTable").append("<tbody></tbody");
       } else {
         Swal.fire({
@@ -364,9 +359,6 @@ function showModaltable() {
     $("#partTable").html(html);
 
     $("#PartModal").modal("hide");
-
-
-
   }
 }
 
@@ -382,7 +374,6 @@ function resetPartModal() {
   document.getElementById("pNum").value = "";
   document.getElementById("order").value = "";
   document.getElementById("floatingTextarea").value = "";
-
 }
 // for search bar
 $("#stock_search").on("keyup", function () {
@@ -412,9 +403,8 @@ $("#stock_table").on("click", ".editor-edit", function (e) {
 
   // var tabledata = table.row(this).data();
   // console.log(tabledata);
-  var tabledata = table.row($(this).parents('tr')).data();
-  var indexRow = table.row($(this).parents('tr')).index();
-
+  var tabledata = table.row($(this).parents("tr")).data();
+  var indexRow = table.row($(this).parents("tr")).index();
 
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
   console.log(newStockModal[indexRow].Part[0]);
@@ -422,10 +412,13 @@ $("#stock_table").on("click", ".editor-edit", function (e) {
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
 
-  $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop('checked', true);
+  $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop(
+    "checked",
+    true
+  );
 
-  parts = newStockModal[indexRow].Part;
   showModaltable();
+  parts = newStockModal[indexRow].Part;
   document.querySelector("#modalstock").onclick = function () {
     var updatestock = (newStockModal[indexRow].stock =
       document.getElementById("stock").value);
@@ -473,9 +466,9 @@ function deletePartTableRow(index) {
 function deleteMainTableRow(element) {
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
 
-  var stockID = $(element).attr('data-stock-id');
-  var StockIndex = newStockModal.findIndex(x => x.stock == stockID);
-  var PartIndex = $(element).attr('data-part-index');
+  var stockID = $(element).attr("data-stock-id");
+  var StockIndex = newStockModal.findIndex((x) => x.stock == stockID);
+  var PartIndex = $(element).attr("data-part-index");
   console.log("Part index", PartIndex);
 
   // var partLength = newStockModal[PartIndex].Part.length ;
@@ -488,9 +481,8 @@ function deleteMainTableRow(element) {
 
   localStorage.setItem("newStock", JSON.stringify(newStockModal));
 
-  var tr = $(element).closest("tr")
-  tr.remove()
-
+  var tr = $(element).closest("tr");
+  tr.remove();
 }
 
 //active
@@ -502,5 +494,9 @@ $(".nav-item a").each(function () {
   }
 });
 
-
-// 
+//search cancel
+const input = document.querySelector('input[type="search"]');
+input.addEventListener("search", () => {
+    table.search(input.value).draw();
+    // console.log(`The term searched for was ${}`);
+});

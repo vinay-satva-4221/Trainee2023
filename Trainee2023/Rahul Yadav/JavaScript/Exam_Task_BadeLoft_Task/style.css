@@ -129,7 +129,7 @@ button.middle:focus {
   height: 38px;
 }
 
-.PopOverorder{
+.PopOverorder {
   color: rgb(116, 207, 116);
 }
 
@@ -328,7 +328,7 @@ tbody {
 }
 
 .backgroundcolor {
-  background-color: #F7F8FA;
+  background-color: #f7f8fa;
 }
 
 .pagination {
@@ -486,7 +486,6 @@ table.dataTable td.dt-control:before {
   border: 1px solid black;
 }
 
-
 .searchicon {
   position: absolute;
   top: 78px;
@@ -507,10 +506,38 @@ table.dataTable td.dt-control:before {
   padding-left: 27px;
 }
 
-.select2-dropdown{
+.select2-dropdown {
   z-index: 1100 !important;
 }
 
-.select2-selection{
+.select2-selection {
   width: 250px;
+}
+
+/* .choosepart {
+  width: 355px;
+  height: 69px;
+} */
+
+.statusdropdown{
+  background-color: white;
+  color: #326C96;
+  border: 1px solid #326C96;
+  border-radius: 5px;
+  width: 70px;
+}
+
+
+.History_Modal_Text_Color{
+  color: #07678d;
+}
+
+.History_Modal_Text_size{
+  font-size: 11px;
+}
+
+.page-active , .page-active:hover{
+  background-color: black;
+  color: white;
+  height: 37px;
 }

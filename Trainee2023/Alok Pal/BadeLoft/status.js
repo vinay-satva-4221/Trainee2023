@@ -213,3 +213,10 @@ $("#status_search").on("keyup", function () {
         $(this).addClass('active');
         }
     });
+
+    // search cancel
+    const input = document.querySelector('input[type="search"]');
+    input.addEventListener("search", () => {
+        table.search(input.value).draw();
+        // console.log(`The term searched for was ${}`);
+    });

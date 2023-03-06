@@ -8,10 +8,10 @@ $(document).ready(function () {
     });
     var dataSet = [
       [
-        "ZK-08-X2P",
+        "AK-08-X",
         "1",
         "0",
-        "<a href='#' data-toggle='popover'  data-content='Some content inside the popover' style='text-decoration: none; color:#3399FF'>1</a>",
+        "<a href='#' data-toggle='popover' data-bs-html='true'  data-content='Some content inside the popover' style='text-decoration: none; color:#3399FF'>1</a>",
         "0",
         "0",
       ],
@@ -167,15 +167,10 @@ $(document).ready(function () {
         return $("#popover-content").html();
       },
     });
-    // $(document).on('click','.paginate_button',function(){
-    //   if($(this).hasClass('current')){
-    //     $(this).css('color','white');
-    //   }
-    // });
-    //  $(document).on('clicked','#ClosePopover',function(){
-    //     alert("CLicked")
-    //     $("#popover-content").hide();
-    //   })
+     $(document).on('clicked','.closebtn',function(){
+        alert("CLicked")
+        $("#popover-content").hide();
+      })
   } else {
     window.location.href = "index.html";
   }

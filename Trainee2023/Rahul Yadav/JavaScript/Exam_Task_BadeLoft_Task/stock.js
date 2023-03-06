@@ -16,11 +16,6 @@ if (localStorage.getItem('LogedinUser') !== null) {
         return dynamicChildRow;
     }
 
-    // $("#childpartTable tbody").on("click", ".btn-close", function () {
-    //     var index = table.row($(this).parents('tr')).index();
-    //     console.log(" table index", index);
-    // });
-
     var isEdit = false;
     $(document).ready(function () {
         var stockdataset = JSON.parse(localStorage.getItem("stockdata"));
@@ -51,15 +46,19 @@ if (localStorage.getItem('LogedinUser') !== null) {
                         // create a select element with options
                         var select = '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
                         // return the select element as the cell content
-                        return select + data;
+                        return select + "  " + data;
                     }
                 },
                 { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
                 { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
                 { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
-                { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editmodel"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history" style="font-size: 1rem; color: gray;"></i>' },
+                { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editmodel"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history  historymodel" style="font-size: 1rem; color: gray;"></i>' },
             ],
             order: [[1, 'asc']],
+        });
+
+        $('#table_div1 tbody').on('click', '.historymodel', function () {
+            $("#History_Modal").modal('show');
         });
 
 
@@ -116,13 +115,17 @@ if (localStorage.getItem('LogedinUser') !== null) {
             partiteam = rowdata.partiteam;
             $('#stockModal').modal('show');
             $("#savestock").click(function () {
+                var stockdData = JSON.parse(localStorage.getItem("stockdata"));
                 var stockname = document.getElementById("stockname").value;
                 var etadate = document.getElementById("date").value;
                 var stockstatus = document.querySelector('input[name="btnradio"]:checked').value;
                 var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
                 var useridname = logedinUser[0].Name;
                 var date = new Date().toLocaleDateString();
-                console.log(useridname);
+                if (partiteam.length === 0) {
+                    swal("InComplete Detail!", "You Have to Add Atlest One Part!", "warning");
+                    return;
+                }
                 var objnew = {
                     stockname: stockname,
                     date: etadate,
@@ -131,18 +134,17 @@ if (localStorage.getItem('LogedinUser') !== null) {
                     createddate: date,
                     partiteam: partiteam
                 }
-                console.log(objnew);
-                console.log(index);
-                var stockdData = JSON.parse(localStorage.getItem("stockdata"));
                 stockdData[index] = objnew;
                 localStorage.setItem("stockdata", JSON.stringify(stockdData));
                 $('#stockModal').modal('hide');
+                location.reload(true);
             });
         });
         $("#root").on("click", ".btn-close", function () {
             $(this).closest("tr").remove();
             partiteam.splice(this, 1)
         });
+
 
         $("#partform").validate({
             rules: {
@@ -236,12 +238,12 @@ if (localStorage.getItem('LogedinUser') !== null) {
                     var useridname = logedinUser[0].Name;
                     var date = new Date().toLocaleDateString();
                     var stockData = JSON.parse(localStorage.getItem('stockdata'));
-                    // for (var i = 0; i < stockData.length; i++) {
-                    //     if (stockData[i].stockname === stockname) {
-                    //         swal("Invalid Detail!", "Enter Different Stock Name , This stock all ready Exist!", "warning");
-                    //         return;
-                    //     }
-                    // }
+                    for (var i = 0; i < stockData.length; i++) {
+                        if (stockData[i].stockname === stockname) {
+                            swal("Invalid Detail!", "Enter Different Stock Name , This stock all ready Exist!", "warning");
+                            return;
+                        }
+                    }
                     if (partiteam.length === 0) {
                         swal("InComplete Detail!", "You Have to Add Atlest One Part!", "warning");
                         return;
@@ -263,6 +265,7 @@ if (localStorage.getItem('LogedinUser') !== null) {
                     localStorage.setItem("stockdata", JSON.stringify(stockdata));
                     document.getElementById("stockform").reset();
                     $('#stockModal').modal('hide');
+                    location.reload(true);
                 }
             }
         };
@@ -280,7 +283,7 @@ if (localStorage.getItem('LogedinUser') !== null) {
             } +
                 partiteam.splice(index, 1);
             $(this).closest("tr").remove();
-            // location.reload(true);
+            location.reload(true);
         });
 
         $(function () {
