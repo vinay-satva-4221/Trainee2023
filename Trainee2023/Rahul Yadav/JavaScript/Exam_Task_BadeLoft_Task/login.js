@@ -25,7 +25,7 @@ $(document).ready(function () {
                 "Eric",
             ],
         ];
-        $.validator.addMethod("Emailcheck", function (value) {
+        $.validator.addMethod("email", function (value) {
             return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
         });
         $.validator.addMethod("password", function (value) {
@@ -35,7 +35,7 @@ $(document).ready(function () {
             rules: {
                 email: {
                     required: true,
-                    Emailcheck: true,
+                    email: true,
                 },
                 password: {
                     required: true,
@@ -45,7 +45,7 @@ $(document).ready(function () {
             messages: {
                 email: {
                     required: "Enter your Email",
-                    Emailcheck: "Please Enter Valid Email",
+                    email: "Please Enter Valid Email",
                 },
                 password: {
                     required: "Enter your Password",

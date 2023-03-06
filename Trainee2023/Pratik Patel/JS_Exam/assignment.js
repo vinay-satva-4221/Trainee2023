@@ -399,17 +399,6 @@ $(document).ready(function () {
       }
     });
 
-
-    //   var myData = ['New York','Los Angeles','Chicago' ]
-    //   $(function() {
-
-    //  var instance = $('#SelectParts').magicSuggest({
-
-    //    data: myData
-
-    //  });
-
-    //  });
   } else {
     window.location.href = "index.html";
   }
