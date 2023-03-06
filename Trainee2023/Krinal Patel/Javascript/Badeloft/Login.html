@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Badeloft</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Badeloft.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+    <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6 col-xl-6 parent">
+                <img class="image1" src="images/Loginpage.png">
+                <img class="image2" src="images/White-logo.png">
+            </div>
+            <form id="login_form" name="login_form">
+                <div class="col-sm-12  col-xs-12 col-md-12 col-lg-6 col-xl-6 parentright">
+                    <div class="col-sm-10  col-xs-10 col-md-10 col-lg-10 col-xl-10 my-5">
+                        <img class="image3" src="images/Black-logo.png">
+                        <h4 style="color: black; font-family: 'Source Sans Pro', sans-serif; opacity: 60%;"><br>&nbsp;
+                            <b>Welcome, Let's Get
+                                Started!</b>
+                        </h4>
+                        <hr class="hr" style="color: #326C96; opacity: 100%; width: 40px;">
+                    </div>
+                    <div class="col-sm-10  col-xs-10 col-md-10 col-lg-10 col-xl-10 my-5">
+                        <div class="form-group">
+                            <label for="email" class="form-label py-2">Email Address</label>
+                            <input type="text" name="email" class="form-control" id="email" onblur="validateemail()"
+                                onkeyup="validateemail()" placeholder="Enter email">
+                            <p id="invalid_email"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label py-2">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                onblur="validatepassword()" onkeyup="validatepassword()" placeholder="Enter password">
+                            <p id="invalid_password"></p>
+                        </div><br>
+                        <input type="button" style="background-color: #326C96;"
+                            class="btn btn-primary btn-block w-100 lg1" value="Log in" onclick="validatecheck()"
+                            id="loginbtn" name="loginbtn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="JQ/jquery-3.6.3.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <script src="Login.js"></script>
+</body>
+
+</html>

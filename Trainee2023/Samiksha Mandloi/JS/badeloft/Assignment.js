@@ -50,20 +50,20 @@ for (i = 0; i < restock.length; i++) {
 }
 
 
-$(document).ready(function () {
-    $('#select-box').select2();
-    $('#addparts').on('click', function () {
-        // debugger;
-        var checkboxes = $('#checkboxes input[type=checkbox]:checked');
-        checkboxes.each(function (index, checkbox) {
-            $('#select-box').append($('<option>', {
-                value: $(checkbox).val(),
-                text: $(checkbox).parent().text()
-            }));
-        });
-        $('#select-box').trigger('change.select2');
-    });
-});
+// $(document).ready(function () {
+//     $('#select-box').select2();
+//     $('#addparts').on('click', function () {
+//         // debugger;
+//         var checkboxes = $('#checkboxes input[type=checkbox]:checked');
+//         checkboxes.each(function (index, checkbox) {
+//             $('#select-box').append($('<option>', {
+//                 value: $(checkbox).val(),
+//                 text: $(checkbox).parent().text()
+//             }));
+//         });
+//         $('#select-box').trigger('change.select2');
+//     });
+// });
 function format(d) {
 
     return (
@@ -106,7 +106,7 @@ var table = $("#example").DataTable({
         {
             data: null,
             render: function (data, type, row) {
-                return '<button type="button" class="fa fa-pencil" onclick="editRow()" style="border: none;"></button>' +
+                return '<button type="button" class="fa fa-pencil"  style="border: none;"></button>' +
                   '<button type="button" class="fa fa-trash" style="border: none;"></button>';
               }
         }
@@ -114,6 +114,18 @@ var table = $("#example").DataTable({
     order: [[1, "asc"]],
 });
 
+$('#example tbody').on('click', '.fa-trash', function () {
+    var row = table.row($(this).parents('tr'));
+    var data = row.data();
+    var index = AssignmentDetail.findIndex(function (item) {
+      return item.stockName === data.stockName;
+    });
+    if (index !== -1) {
+        AssignmentDetail.splice(index, 1);
+      localStorage.setItem('assignmentDetail', JSON.stringify(AssignmentDetail));
+    }
+    row.remove().draw();
+  });
 // Add event listener for opening and closing details
 $("#example tbody").on("click", "td.dt-control", function () {
     var tr = $(this).closest("tr");
@@ -164,6 +176,10 @@ function addAssignment() {
     document.getElementById("Invoice").value = "";
     document.getElementById("stock").value = "";
 }
+
+
+
+
 
 
 
