@@ -38,13 +38,14 @@ $(document).ready(function () {
         },
       },
       messages: {
-        name: {
-          required: "Enter your Email",
-          Emailcheck: "Please Enter Prroper Email",
+        email: {
+          required: "Enter your email",
+          email: "Please enter valid email",
+          Emailcheck: "Please enter valid email",
         },
         password: {
           required: "Enter your Password",
-          password: "Please Enter Proper Password",
+          password: "Please Enter valid Password",
         },
       },
       submitHandler: function (form) {
@@ -63,10 +64,15 @@ $(document).ready(function () {
 
         var logInUser = new Array();
         // debugger;
+        let checkValidation = true;
         for (let i = 0; i < users.length; i++) {
           // alert(users[i][0])
-          if (email.toLowerCase() === users[i][0].toLowerCase() && password === users[i][1]) {
+          if (
+            email.toLowerCase() === users[i][0].toLowerCase() &&
+            password === users[i][1]
+          ) {
             // alert("inside if")
+            checkValidation = false;
             logInUser.push({
               Name: users[i][2],
               Email: users[i][0],
@@ -74,16 +80,18 @@ $(document).ready(function () {
               Picture: users[i][4],
             });
             document.getElementById("form").reset();
-            window.location.replace("stock.html");
+            window.location.replace("Dashboard.html");
           }
         }
         document.getElementById("form").reset();
         localStorage.setItem("LogedinUser", JSON.stringify(logInUser));
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "User is not Registered!",
-        });
+        if (checkValidation == true) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "User is not Registered!",
+          });
+        }
       }
     });
   }

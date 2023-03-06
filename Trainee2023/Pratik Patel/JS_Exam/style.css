@@ -13,12 +13,20 @@ body {
   height: 790px;
   overflow: hidden;
 }
+#CompanyLogo{
+  margin-left: 2%;
+}
+#submit{
+  background-color: #326c96;
+  color: #ffffff;
+}
 
 #LOGO {
   padding-top: 50%;
 }
 .loginContents {
-  padding: 25% 10%;
+  padding: 20% 10%;
+  margin-right: 20%;
 }
 @media only screen and (max-width: 1000px) {
   #imagediv {
@@ -30,13 +38,14 @@ hr{
   width: 10%;
 }
 hr:not([size]) {
-  height: 3px;
+  height: 3px !important;
   color: #326c96;
 }
 #welcomeText {
   font-size: 1.3rem;
   /* font-family: "Roboto", sans-serif; */
   color: rgb(73, 73, 73);
+  margin-left: 1%;
   padding-left: 10px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 800;
@@ -51,6 +60,21 @@ input {
   border: 1px solid #326c96;
   opacity: 1;
 }
+.line {
+  width: 7%;
+  border: 1px solid#4d89b4;
+  background-color: #326C96;
+  opacity: 1;
+  margin-top: 0%;
+}
 .error {
   color: red;
+}
+
+#PartsTable thead{
+  background-color: rgb(43, 42, 42)!important;
+}
+
+.dropdown-menu{
+  z-index: 1100 !important;
 }

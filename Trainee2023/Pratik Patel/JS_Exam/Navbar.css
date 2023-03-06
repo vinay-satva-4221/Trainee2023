@@ -1,3 +1,6 @@
+nav{
+  background-color: #FFFFFF !important;
+}
 #navlogo {
     width: 200px;
   }
@@ -29,3 +32,7 @@
     color: brown;
   }
   
+  .active {
+    border-bottom: 2px solid black;
+    border-radius: 2px;
+} 
