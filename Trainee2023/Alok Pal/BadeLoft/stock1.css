@@ -329,3 +329,8 @@ li.paginate_button.page-item.active{
 
 /* modal */
 .historyTextcolor{color:#326C96}
+
+/* Audit */
+.paginationAudit{
+    height: 3.5rem;
+}
