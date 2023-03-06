@@ -14,9 +14,12 @@
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet"/>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
             integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <!-- fontawesome -->
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -29,9 +32,7 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
         <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-        
-
-        <link href="sumoselect.min.css" rel="stylesheet" />
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" /> -->
     </head>
 <body>
         <!-- Navbar -->
@@ -137,8 +138,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-5">
-                                                <label>Parts</label>
-                                                <select class="form-select multiSelect" id="parts" multiple>
+                                                <label>Parts</lastock detailbel>
+                                                <select  multiple="multiple" name="parts[]" class="form-control select2">
                                                     <option value="BW-01-5-M">BW-01-5-M</option>
                                                     <option value="AT-01-BLK">AT-01-BLK</option>
                                                     <option value="BW-03-XL-G">BW-03-XL-G</option>
@@ -164,7 +165,7 @@
                 </div>
             </div>
  
-        <table id="assignmentTable"  class="table">
+        <table id="example"  class="table">
             <thead class="table-dark">
                 <tr>
                     <th></th>
@@ -197,11 +198,13 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
    <!-- <script src="./jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/src/jquery.multi-select.min.js"></script>
    <script src="./jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/jQuery-Plugin-For-Multiple-Select-With-Checkboxes-multi-select-js/src/jquery.multi-select.js"></script> -->
-    <script src="./jQuery-multi-select-js/jQuery-Plugin-multi-select-js/src/jquery.multi-select.min.js"></script>
-    <script src="./jQuery-multi-select-js/jQuery-Plugin-multi-select-js/src/jquery.multi-select.js"></script>
-    <script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+   <script>
         $(document).ready(function() {
-            $('#parts').multiSelect();
+            $('.select2[multiple]').select2({
+                width: '100%',
+                closeOnSelect: false
+            })
         });
     </script>
 </body>
