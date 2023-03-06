@@ -131,8 +131,13 @@ $(document).ready(function () {
         data: "stockStatus",
         title: "Stock Location",
         orderable: false,
-        className: "showchildRow",
         class: "text-center",
+        render: function (data, type, row) {
+            // create a select element with options
+            var select = '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+            // return the select element as the cell content
+            return select + data;
+        }
       },
       {
         data: "user[0].Admin",
@@ -171,6 +176,26 @@ $(document).ready(function () {
     ],
     
   });
+
+  $('#stock_table tbody').on('change', 'select', function () {
+    debugger
+
+    var rowData = table.row($(this).closest('tr')).data(); // get the data for the current row
+    var newValue = $(this).val(); // get the new value from the dropdown
+    rowData.stockStatus = newValue; // update the data object
+    table.row($(this).closest('tr')).data(rowData); // update the table
+
+    // update the local storage
+    var data = JSON.parse(localStorage.getItem('newStock'));
+    var index = data.findIndex(function (item) {
+        return item.stock === rowData.stock;
+    });
+    if (index !== -1) {
+        data[index].stockStatus = newValue;
+        localStorage.setItem('newStock', JSON.stringify(data));
+    }
+    location.reload(true)
+});
 
   $(".bi-clock-history").on("click", function () {
     debugger
@@ -397,6 +422,8 @@ $("#stock_table").on("click", ".editor-edit", function (e) {
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
 
+  $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop('checked', true);
+
   parts = newStockModal[indexRow].Part;
   showModaltable();
   document.querySelector("#modalstock").onclick = function () {
@@ -454,11 +481,6 @@ function deleteMainTableRow(element) {
   // var partLength = newStockModal[PartIndex].Part.length ;
   // console.log("length",newStockModal[PartIndex].Part.length)
   console.log("Stock index", StockIndex);
-
-  // if( partLength <= 0 ){
-
-  // }
-
 
   newStockModal[StockIndex].Part.splice(PartIndex, 1);
 
