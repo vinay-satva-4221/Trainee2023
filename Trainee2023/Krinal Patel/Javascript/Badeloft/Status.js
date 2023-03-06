@@ -1,6 +1,6 @@
 window.onload = (event) => {
     if (localStorage.getItem("LoginDetails") == null) {
-      window.location.replace("Badeloft.html");
+      window.location.replace("Login.html");
     }
     else{
       var par = JSON.parse(localStorage.getItem('LoginDetails'));
@@ -135,7 +135,7 @@ var dataSet = [
 
 
 function logout(){
-  window.location.replace("Badeloft.html")
+  window.location.replace("Login.html")
   localStorage.clear();
 }
 

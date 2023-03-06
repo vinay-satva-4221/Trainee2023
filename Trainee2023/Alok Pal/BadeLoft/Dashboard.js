@@ -42,7 +42,9 @@ var dataSet = [
     "2",
     "1",
   ],
-  // ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
+  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], 
+  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
+  //  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
 ];
 
 
@@ -50,7 +52,7 @@ $(document).ready(function () {
 
   var StockLocation = $.fn.dataTable.absoluteOrder(
     [{value: 'Stock Location', position: 'top' },
-    {value: 'Eta Date', position: 'top' }]
+    {value: 'ETA Date', position: 'top' }]
   );
 
   $("#dashboard_table").DataTable({
@@ -102,9 +104,8 @@ $(document).ready(function () {
     html: true,
     content: function () {
       return $("#Popover").html();
-    },
-  });
-
+    }
+  })
 
   //active
   var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
@@ -113,6 +114,13 @@ $(document).ready(function () {
         if ($(this).attr('href') == pathname){
         $(this).addClass('active');
         }
+    });
+
+
+    const input = document.querySelector('input[type="search"]');
+    input.addEventListener("search", () => {
+        table.search(input.value).draw();
+        // console.log(`The term searched for was ${}`);
     });
 });
 

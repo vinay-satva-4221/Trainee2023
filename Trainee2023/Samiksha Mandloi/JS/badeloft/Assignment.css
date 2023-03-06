@@ -1,69 +1,116 @@
-
 body {
-font-family: 'Roboto', sans-serif;
-background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
+    background-color: lightgray;
 }
 
- h3 {
-     float: left;
- }
+h3 {
+    float: left;
+}
 
- /* .container-fluid {
+/* .container-fluid {
      background-color: lightgray;
  } */
 
- .form-input {
+.form-input {
 
-     height: auto;
-     text-indent: 33px;
-     border-radius: 10px;
-     float: right;
- }
-
- .modal:nth-of-type(even) {
-     z-index: 1052 !important;
- }
-
- .modal-backdrop.show:nth-of-type(even) {
-     z-index: 1051 !important;
- }
-
- #example_length {
-     display: none;
- }
- 
- #example_filter {
-     display: none;
- }
- table.dataTable td.dt-control:before {
-height: 1em;
-width: 1em;
-margin-top: -9px;
-display: inline-block;
-color: #316ab1 !important;
-border: 0.15em solid #316ab1 !important;
-border-radius: 1em;
-/* box-shadow: 0 0 0.2em #444; */
-box-sizing: content-box;
-text-align: center;
-text-indent: 1 !important;
-font-family: "Courier New", Courier, monospace;
-line-height: 1em;
-content: "+";
-background-color: #dee2e6 !important;
+    height: auto;
+    text-indent: 33px;
+    border-radius: 10px;
+    float: right;
 }
+
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+}
+
+#example_length {
+    display: none;
+}
+
+#example_filter {
+    display: none;
+}
+
+table.dataTable td.dt-control:before {
+    height: 1em;
+    width: 1em;
+    margin-top: -9px;
+    display: inline-block;
+    color: #316ab1 !important;
+    border: 0.15em solid #316ab1 !important;
+    border-radius: 1em;
+    /* box-shadow: 0 0 0.2em #444; */
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 1 !important;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1em;
+    content: "+";
+    background-color: #dee2e6 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: var(--bs-pagination-active-color);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(230, 230, 230, 0.1);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(230, 230, 230, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+    background: -webkit-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -moz-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -ms-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: -o-linear-gradient(top, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    background: black !important;
+}
+
+.select2-container.select2-container--default.select2-container--open {
+    z-index: 5000;
+}
+
+.select2-results__option.select2-results__option--selectable {
+    width: 100%;
+}
+
+.select2-selection.select2-selection--multiple {
+    overflow: auto;
+    /* height: 38px; */
+}
+
+
+.select2-selection.select2-selection--multiple::-webkit-scrollbar {
+    width: 10px;
+}
+
+.select2-selection.select2-selection--multiple::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.select2-selection.select2-selection--multiple::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.select2-selection.select2-selection--multiple::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.select2Custom {
+    width: 300px;
+}
+
 /* #example_info {
 position: fixed;
 left: 1080px;
 } */
 
 
- /* .form-input:focus{
+/* .form-input:focus{
 
 box-shadow: none;
 border:none;
 } */
- /* .container-fluid{
+/* .container-fluid{
 background-color: grey;
 } */
-
