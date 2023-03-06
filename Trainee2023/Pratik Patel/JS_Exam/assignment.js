@@ -239,6 +239,7 @@ $(document).ready(function () {
         // //alert(Customer);
         let QuickBooksInvoice = $("#QuickBooksInvoice").val();
          
+
         createddate=new Date()
         createddate=createddate.toLocaleDateString()+" at "+ createddate.toLocaleTimeString();
 
@@ -290,6 +291,8 @@ $(document).ready(function () {
     $(".closemodal").click(function () {
       $("#assignmentModal").modal("hide");
       $(".save").attr("id", "saveAssigment");
+      SelectedPartsStock=[]
+      displaySelectedStockParts()
       document.getElementById("assignmentform").reset();
     });
     $(document).on("click", ".Edit", function () {
@@ -330,10 +333,12 @@ $(document).ready(function () {
         AssignedDataParts[Index]=newObj
 
 
-     
+        table.row(Index).data(newObj).draw();
       localStorage.setItem("Assigned", JSON.stringify(AssignedDataParts));
       //  delete  newObj.parts
-      table.row(Index).data(newObj).draw();
+     
+      SelectedPartsStock = [];
+      displaySelectedStockParts();
       $("#assignmentModal").modal("hide");
       $(".save").attr("id", "saveAssigment");
       document.getElementById("assignmentform").reset();

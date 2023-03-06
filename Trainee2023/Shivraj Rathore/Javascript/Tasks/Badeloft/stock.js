@@ -24,6 +24,9 @@ $(document).ready(function () {
       },
       btnradio: {
         required: true
+      },
+      ETAdate: {
+        required: true
       }
     },
     messages: {
@@ -33,7 +36,11 @@ $(document).ready(function () {
       },
       btnradio: {
         required: "Please select an option"
+      },
+      ETAdate: {
+        required: "Choose Date"
       }
+
     }
   })
 
@@ -183,8 +190,8 @@ $(document).ready(function () {
   });
 
 
-  var stockData = JSON.parse(localStorage.getItem("StockData"));
   function format(d) {
+    debugger
     let childRowHTML = '';
     if (d.partData && d.partData.length > 0) {
       childRowHTML += '<table class="text-center" id="childtable" style="width:100%;">';
@@ -201,7 +208,8 @@ $(document).ready(function () {
     return childRowHTML;
   }
 
-  
+
+  var stockData = JSON.parse(localStorage.getItem("StockData"));
   // Define the DataTable
   var table = $('#Stockable').DataTable({
     "paging": true,
@@ -224,7 +232,18 @@ $(document).ready(function () {
     columns: [
       { data: 'stockName', className: 'text-start dt-control', orderable: false },
       { data: 'etaDate', className: 'text-center', orderable: false },
-      { data: 'selectedStockstatus', className: 'text-center', orderable: false },
+      {
+        data: 'selectedStockstatus',
+        className: 'text-center',
+        orderable: false,
+        render: function (data, type, row) {
+            // create a select element with options
+            var select = '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+            // return the select element as the cell content
+            return select + data;
+        }
+      }
+    ,
       { data: 'createdby', className: 'text-center', orderable: false },
       { data: 'createddate', className: 'text-center', orderable: false },
       { data: 'StockNotes', className: 'text-center', orderable: false },
@@ -241,6 +260,27 @@ $(document).ready(function () {
     ],
     order: [],
   });
+
+  $('#Stockable tbody').on('change', 'select', function () {
+
+    var rowData = table.row($(this).closest('tr')).data(); // get the data for the current row
+    var newValue = $(this).val(); // get the new value from the dropdown
+    rowData.selectedStockstatus = newValue; // update the data object
+    table.row($(this).closest('tr')).data(rowData); // update the table
+
+    // update the local storage
+    var data = JSON.parse(localStorage.getItem('StockData'));
+    var index = data.findIndex(function (item) {
+        return item.stockName === rowData.stockName;
+    });
+    if (index !== -1) {
+        data[index].selectedStockstatus = newValue;
+        localStorage.setItem('StockData', JSON.stringify(data));
+    }
+    location.reload(true)
+});
+
+
   $('#Stockable tbody').on('click', '.edit', function () {
     var data = table.row($(this).parents('tr')).data();
     var index = table.row($(this).parents('tr')).index();
@@ -306,8 +346,8 @@ $(document).ready(function () {
     if (StockData[stockIndex].partData && StockData[stockIndex].partData.length > 0) {
       StockData[stockIndex].partData.splice(index, 1);
       localStorage.setItem("StockData", JSON.stringify(StockData));
-    }+
-    partdata.splice(index, 1);
+    } +
+      partdata.splice(index, 1);
     $(this).closest("tr").remove();
     location.reload(true);
   });
@@ -315,6 +355,7 @@ $(document).ready(function () {
 
   // Add event listener for opening and closing details
   $('#Stockable tbody').on('click', 'td.dt-control', function () {
+    debugger
     var tr = $(this).closest('tr');
     var row = table.row(tr);
     if (row.child.isShown()) {
