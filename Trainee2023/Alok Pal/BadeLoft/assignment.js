@@ -201,7 +201,7 @@ function format(d, id) {
         "</td><td>" +
         e.Parts +
         "</td><td>" +
-        `<i  class= 'fa-solid fa-x delete'  style='cursor:pointer' data-stock-id='${d.id}' onclick='deleteMainTableRow(this)'  data-part-index='${index}' ></i>` +
+        `<i  class= 'fa-solid fa-x '  style='cursor:pointer' data-stock-id='${d.id}' onclick='deleteMainTableRow(this)'  data-part-index='${index}' ></i>` +
         "</td></tr>";
     });
     dynamicChildRow += "</tbody></table>";
@@ -278,41 +278,29 @@ $(document).ready(function () {
 
 // delete
 $(document).on("click", ".delete", function () {
-  debugger
-  var AssignedData= JSON.parse(localStorage.getItem("Assigned"));
-  // alert(table.row($(this).parents('tr')).index())
-  let Index=table.row($(this).parents('tr')).index();
+  var AssignedData = JSON.parse(localStorage.getItem("Assigned"));
+  let Index = table.row($(this).parents('tr')).index();
   table.row(Index).remove().draw()
-  AssignedData.splice(Index,1)
+  AssignedData.splice(Index, 1)
   localStorage.setItem("Assigned", JSON.stringify(AssignedData));
-  
+
 });
 
 // Global
-// var customerNameInvoce = new Array();
 var StockNameParts = new Array();
 var Assigned = [];
 
 function addPartData() {
-  // var customer = $("#Customer").val();
-  // var QBInvoice = $("#Invoice").val();
-
-  // customerNameInvoce.push({
-  //   CustomerName : customer,
-  //   Invoice :QBInvoice
-  // })
-
+  debugger
   var stock = $("#stockname").val();
   var PartNumber = $("#parts").val();
-
+  PartNumber = PartNumber.toString().replaceAll(",", " | ");
   StockNameParts.push({
     StockName: stock,
     Parts: PartNumber
   })
 
 }
-// console.log(customerNameInvoce)
-// console.log(StockNameParts)
 
 
 function addStockData() {
@@ -351,36 +339,43 @@ function addStockData() {
   table.row.add(newObj).draw();
   localStorage.setItem("Assigned", JSON.stringify(Assigned));
   $("#AssignedModal").modal("hide");
+  $('#partTable').html(null);
+  $("#partTable").append("<tbody></tbody");
   resetValue()
+
+  location.reload(true)
 }
 
 // Dynamic adding of table
 function showModaltable() {
+  debugger
   var html = "";
-  html =
-    "<thead><th class=text-start color='color:white'>#</th><th class=text-start>Stock</th><th class=text-start>Part</th><th class=text-start>Action</th></thead><tbody id='root'>";
-  StockNameParts.forEach(function (element, index) {
-    var indx = index + 1;
-    html += "<tr>";
-    html += "<td class=text-start  > " + indx + "</td>";
-    html += "<td class=text-start >" + StockNameParts[index].StockName + "</td>";
-    html += "<td class=text-start > " + StockNameParts[index].Parts + "</td>";
-    html +=
-      '<td class=text-center><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
-      index +
-      ' )"   ></i> </td>';
-    html += "</tr>";
-    html += "</tbody>";
+  if (StockNameParts.length > 0) {
+    html =
+      "<thead><th class=text-start color='color:white'>#</th><th class=text-start>Stock</th><th class=text-start>Part</th><th class=text-start>Action</th></thead><tbody id='root'>";
+    StockNameParts.forEach(function (element, index) {
+      var indx = index + 1;
+      html += "<tr>";
+      html += "<td class=text-start  > " + indx + "</td>";
+      html += "<td class=text-start >" + StockNameParts[index].StockName + "</td>";
+      html += "<td class=text-start > " + StockNameParts[index].Parts + "</td>";
+      html +=
+        '<td class=text-start><i  class= "fa-solid fa-x " style="cursor:pointer" onclick="deletePartTableRow(' +
+        index +
+        ' )"   ></i> </td>';
+      html += "</tr>";
+      html += "</tbody>";
 
-    $("#partTable").html(html);
+      $("#partTable").html(html);
 
-  });
+    });
+  }
 }
 
 
 //delete Part Table
 function deletePartTableRow(index) {
-
+  debugger
   console.log(index);
   StockNameParts.splice(index, 1);
   console.log(parts);
@@ -392,7 +387,7 @@ function deletePartTableRow(index) {
 
 function deleteMainTableRow(element) {
   var Assigned = JSON.parse(localStorage.getItem("Assigned"));
-
+  debugger
   var stockID = $(element).attr('data-stock-id');
   var StockIndex = Assigned.findIndex(x => x.id == stockID);
   var PartIndex = $(element).attr('data-part-index');
@@ -407,21 +402,16 @@ function deleteMainTableRow(element) {
 
 }
 
-function resetValue(){
+function resetValue() {
   document.getElementById("Customer").value = ''
   document.getElementById("Invoice").value = ''
-  document.getElementById("stockname").value =''
+  document.getElementById("stockname").value = ''
 }
 
 $("#Assignmenttable").on("click", ".editor-edit", function (e) {
-  e.preventDefault();
+  debugger
   $("#AssignedModal").modal("show");
 
-  // var indexRow = table.row(this).index();
-  // console.log(indexRow);
-
-  // var tabledata = table.row(this).data();
-  // console.log(tabledata);
   var tabledata = table.row($(this).parents('tr')).data();
   var indexRow = table.row($(this).parents('tr')).index();
 
@@ -429,12 +419,15 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
   $("#Invoice").val(tabledata.Invoice)
 
 
-  var newStockModal = JSON.parse(localStorage.getItem("Assigned"));
+  var newAssigned = JSON.parse(localStorage.getItem("Assigned"));
   // User
-  var user = JSON.parse(localStorage.getItem("user"));  
+  var user = JSON.parse(localStorage.getItem("user"));
+
+   StockNameParts = newAssigned[indexRow].StockParts;
+  showModaltable();
 
   document.querySelector("#AssignedModalId").onclick = function () {
-    
+
     var updateCustomerName = document.getElementById("Customer").value
     var updateInvoice = document.getElementById("Invoice").value
 
@@ -446,10 +439,11 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
       id: Date.now(),
       CreatedTime: Time,
     }
-    Assigned[indexRow] = newObj;
-    localStorage.setItem("Assigned", JSON.stringify(Assigned));
+    newAssigned[indexRow] = newObj;
+    localStorage.setItem("Assigned", JSON.stringify(newAssigned));
     $("#AssignedModal").modal("hide");
     window.location.reload();
+    resetValue()
   }
 
 
@@ -461,4 +455,10 @@ $("#stock_search").on("keyup", function () {
   table.search(this.value).draw();
 });
 
+// search cancel
+const input = document.querySelector('input[type="search"]');
+input.addEventListener("search", () => {
+  table.search(input.value).draw();
+  // console.log(`The term searched for was ${}`);
+});
 

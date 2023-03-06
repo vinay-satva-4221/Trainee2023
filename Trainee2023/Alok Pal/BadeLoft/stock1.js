@@ -69,6 +69,7 @@ function format(d, id) {
 // parts new
 
 function modal() {
+  IsEditing = false;
   $("#StockModal").modal("show");
   parts = [];
 }
@@ -131,8 +132,14 @@ $(document).ready(function () {
         data: "stockStatus",
         title: "Stock Location",
         orderable: false,
-        className: "showchildRow",
         class: "text-center",
+        render: function (data, type, row) {
+          // create a select element with options
+          var select =
+            '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+          // return the select element as the cell content
+          return select + data;
+        },
       },
       {
         data: "user[0].Admin",
@@ -166,14 +173,31 @@ $(document).ready(function () {
             '<button type="button" class="bi bi-clock-history text-secondary fw-bolder fs-6 border-0 bg-light"></button>'
           );
         },
-
       },
     ],
-    
+  });
+
+  $("#stock_table tbody").on("change", "select", function () {
+    debugger;
+    var rowData = table.row($(this).closest("tr")).data(); // get the data for the current row
+    var newValue = $(this).val(); // get the new value from the dropdown
+    rowData.stockStatus = newValue; // update the data object
+    table.row($(this).closest("tr")).data(rowData); // update the table
+
+    // update the local storage
+    var data = JSON.parse(localStorage.getItem("newStock"));
+    var index = data.findIndex(function (item) {
+      return item.stock === rowData.stock;
+    });
+    if (index !== -1) {
+      data[index].stockStatus = newValue;
+      localStorage.setItem("newStock", JSON.stringify(data));
+    }
+    location.reload(true);
   });
 
   $(".bi-clock-history").on("click", function () {
-    debugger
+    debugger;
     $("#historyModal").modal("toggle");
   });
 
@@ -194,12 +218,12 @@ $(document).ready(function () {
   });
 });
 
-
-
 // Array creation
 var parts = new Array();
+var IsEditing = false;
 
 function getModal() {
+  debugger
   var partN = document.getElementById("pNum").value;
   var order = document.getElementById("order").value;
   var comments = document.getElementById("floatingTextarea").value;
@@ -230,48 +254,18 @@ var newStock = [];
 var Stockstatus;
 
 function addStockData() {
-  // parts
-  var stockName = document.getElementById("stock").value;
-  var dateM = document.getElementById("date").value;
-
-  Stockstatus = radioBtnValue();
-
-  console.log(parts.length);
-  if (stockName != null && parts.length > 0) {
-    if (localStorage.getItem("newStock") == null) {
-      newStock = [];
-      var newObj = {
-        stock: stockName,
-        date: dateM,
-        stockStatus: Stockstatus,
-        CreatedDate: today,
-        Part: parts,
-        user: user,
-      };
-      newStock.push(newObj);
-      table.row.add(newObj).draw();
-      localStorage.setItem("newStock", JSON.stringify(newStock));
-      $("#StockModal").modal("hide");
-      resetSVal();
-      parts = [];
-      $("#partTable").append("<tbody></tbody");
-    } else {
-      newStock = JSON.parse(localStorage.getItem("newStock"));
-      // console.log("ello",newStock[0].stock)
-      // console.log("ello", newStock.length);
-
-      var flag;
-      for (let i = 0; i < newStock.length; i++) {
-        flag = false;
-        if (stockName == newStock[i].stock) {
-          flag = true;
-          break;
-        } else {
-          flag = false;
-        }
-      }
-
-      if (flag == false) {
+  if(!IsEditing){
+    debugger
+    // parts
+    var stockName = document.getElementById("stock").value;
+    var dateM = document.getElementById("date").value;
+  
+    Stockstatus = radioBtnValue();
+  
+    console.log(parts.length);
+    if (stockName != null && parts.length > 0) {
+      if (localStorage.getItem("newStock") == null) {
+        newStock = [];
         var newObj = {
           stock: stockName,
           date: dateM,
@@ -285,30 +279,62 @@ function addStockData() {
         localStorage.setItem("newStock", JSON.stringify(newStock));
         $("#StockModal").modal("hide");
         resetSVal();
-        parts = [];
-        showModaltable()
+        // parts = [];
+        $('#partTable').html(null);
         $("#partTable").append("<tbody></tbody");
+      } else {
+        newStock = JSON.parse(localStorage.getItem("newStock"));
+  
+        var flag;
+        for (let i = 0; i < newStock.length; i++) {
+          flag = false;
+          if (stockName == newStock[i].stock) {
+            flag = true;
+            break;
+          } else {
+            flag = false;
+          }
+        }
+  
+        if (flag == false) {
+          var newObj = {
+            stock: stockName,
+            date: dateM,
+            stockStatus: Stockstatus,
+            CreatedDate: today,
+            Part: parts,
+            user: user,
+          };
+          newStock.push(newObj);
+          table.row.add(newObj).draw();
+          localStorage.setItem("newStock", JSON.stringify(newStock));
+          $("#StockModal").modal("hide");
+          resetSVal();
+          // parts = [];
+          $('#partTable').html(null);
+          $("#partTable").append("<tbody></tbody");
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Duplicate Stock Name is not allowed",
+            icon: "error",
+          });
+        }
+      }
+    } else {
+      if (stockName == "") {
+        Swal.fire({
+          title: "Error!",
+          text: "Add Stock Name",
+          icon: "error",
+        });
       } else {
         Swal.fire({
           title: "Error!",
-          text: "Duplicate Stock Name is not allowed",
+          text: "Please add part",
           icon: "error",
         });
       }
-    }
-  } else {
-    if (stockName == "") {
-      Swal.fire({
-        title: "Error!",
-        text: "Add Stock Name",
-        icon: "error",
-      });
-    } else {
-      Swal.fire({
-        title: "Error!",
-        text: "Please add part",
-        icon: "error",
-      });
     }
   }
 }
@@ -317,6 +343,7 @@ function addStockData() {
 
 // show data
 function showModaltable() {
+  debugger
   var html = "";
   if (parts.length > 0) {
     html +=
@@ -340,9 +367,6 @@ function showModaltable() {
     $("#partTable").html(html);
 
     $("#PartModal").modal("hide");
-
-
-
   }
 }
 
@@ -358,7 +382,6 @@ function resetPartModal() {
   document.getElementById("pNum").value = "";
   document.getElementById("order").value = "";
   document.getElementById("floatingTextarea").value = "";
-
 }
 // for search bar
 $("#stock_search").on("keyup", function () {
@@ -380,7 +403,9 @@ $(function () {
   );
 });
 
-$("#stock_table").on("click", ".editor-edit", function (e) {
+$("#stock_table").on("click", ".editor-edit", function () {
+  debugger
+  IsEditing = true;
   $("#StockModal").modal("show");
 
   // var indexRow = table.row(this).index();
@@ -388,39 +413,47 @@ $("#stock_table").on("click", ".editor-edit", function (e) {
 
   // var tabledata = table.row(this).data();
   // console.log(tabledata);
-  var tabledata = table.row($(this).parents('tr')).data();
-  var indexRow = table.row($(this).parents('tr')).index();
+  var tabledata = table.row($(this).parents("tr")).data();
+  var indexRow = table.row($(this).parents("tr")).index();
 
-
-  var newStockModal = JSON.parse(localStorage.getItem("newStock"));
+  var newStockModal = JSON.parse(localStorage.getItem("newStock"))|| [];
   console.log(newStockModal[indexRow].Part[0]);
 
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
 
+  $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop(
+    "checked",
+    true
+  );
+
+  
   parts = newStockModal[indexRow].Part;
   showModaltable();
   document.querySelector("#modalstock").onclick = function () {
-    var updatestock = (newStockModal[indexRow].stock =
-      document.getElementById("stock").value);
-    var updatedate = (newStockModal[indexRow].date =
-      document.getElementById("date").value);
-
-    Stockstatus = radioBtnValue();
-
-    var newObj = {
-      stock: updatestock,
-      date: updatedate,
-      stockStatus: Stockstatus,
-      CreatedDate: today,
-      Part: parts,
-      user: user,
-    };
-
-    newStock[indexRow] = newObj;
-    localStorage.setItem("newStock", JSON.stringify(newStock));
-    $("#StockModal").modal("hide");
-    window.location.reload();
+    if(IsEditing){
+      debugger
+      var updatestock = (newStockModal[indexRow].stock =
+        document.getElementById("stock").value);
+      var updatedate = (newStockModal[indexRow].date =
+        document.getElementById("date").value);
+  
+      Stockstatus = radioBtnValue();
+  
+      var newObj = {
+        stock: updatestock,
+        date: updatedate,
+        stockStatus: Stockstatus,
+        CreatedDate: today,
+        Part: parts,
+        user: user,
+      };
+  
+      newStockModal[indexRow] = newObj;
+      localStorage.setItem("newStock", JSON.stringify(newStockModal));
+      $("#StockModal").modal("hide");
+      window.location.reload();
+    }
   };
 });
 
@@ -447,19 +480,14 @@ function deletePartTableRow(index) {
 function deleteMainTableRow(element) {
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
 
-  var stockID = $(element).attr('data-stock-id');
-  var StockIndex = newStockModal.findIndex(x => x.stock == stockID);
-  var PartIndex = $(element).attr('data-part-index');
+  var stockID = $(element).attr("data-stock-id");
+  var StockIndex = newStockModal.findIndex((x) => x.stock == stockID);
+  var PartIndex = $(element).attr("data-part-index");
   console.log("Part index", PartIndex);
 
   // var partLength = newStockModal[PartIndex].Part.length ;
   // console.log("length",newStockModal[PartIndex].Part.length)
   console.log("Stock index", StockIndex);
-
-  // if( partLength <= 0 ){
-
-  // }
-
 
   newStockModal[StockIndex].Part.splice(PartIndex, 1);
 
@@ -467,9 +495,8 @@ function deleteMainTableRow(element) {
 
   localStorage.setItem("newStock", JSON.stringify(newStockModal));
 
-  var tr = $(element).closest("tr")
-  tr.remove()
-
+  var tr = $(element).closest("tr");
+  tr.remove();
 }
 
 //active
@@ -481,5 +508,9 @@ $(".nav-item a").each(function () {
   }
 });
 
-
-// 
+//search cancel
+const input = document.querySelector('input[type="search"]');
+input.addEventListener("search", () => {
+    table.search(input.value).draw();
+    // console.log(`The term searched for was ${}`);
+});

@@ -46,8 +46,8 @@
     <div class="modal" id="stockmodelid">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add New Stock</h4>
+                <div class="modal-header" >
+                    <h4 class="modal-title" id="titleofmodel" >Add New Stock</h4>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
                 </div>
 
@@ -79,19 +79,19 @@
                                 <br>
                                 <div class="btn-group " role="group" aria-label="Basic radio toggle button group"
                                     id="stvalue">
-                                    <input type="radio" class="btn-check " name="btnradio" id="onproduction"
+                                    <input type="radio" class="btn-check " name="btnradio" id="btnradio1"
                                         autocomplete="off" checked>
                                     <label class="btn " for="btnradio1"
                                         onclick="document.getElementById('stvalue').setAttribute('value', 'On Production')">On
                                         Production</label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="onwater"
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
                                         autocomplete="off">
                                     <label class="btn " for="btnradio2"
                                         onclick="document.getElementById('stvalue').setAttribute('value', 'On Water')">On
                                         Water </label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="onwarehouse"
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
                                         autocomplete="off">
                                     <label class="btn  " for="btnradio3"
                                         onclick="document.getElementById('stvalue').setAttribute('value', 'On Warehouse')">On
@@ -136,8 +136,8 @@
 
                     <a href="#" data-bs-dismiss="modal" class="btn" id="addstockdatais"
                         onclick="addstockdata()">Save</a>
-                        <a href="#" type="button" data-bs-dismiss="modal" class="btn " onclick=" updatestockdata()"
-                        id="addpartdatais">Update</a>  
+                        <a href="#" data-bs-dismiss="modal" class="btn" id="updatestockdetails"
+                        onclick="updatestockdata()">Update</a>   
                     <a href="#" id="addstockdataidcancle" data-bs-dismiss="modal" class="btn">Cancel</a>
 
 
@@ -179,7 +179,7 @@
                         <br>
                         <div class="row">
                             <div class="col-12  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <textarea name="" id="notes" class="form-control" cols="30" rows="3"
+                                <textarea name="notes" id="notes" class="form-control" cols="30" rows="3"
                                     placeholder="Notes"></textarea>
 
                             </div>
@@ -189,8 +189,7 @@
                 <div class="modal-footer">
                     <a href="#" type="button" data-bs-dismiss="modal" class="btn " onclick=" addpartData()"
                         id="addpartdatais">Save</a>
-                        <a href="#" type="button" data-bs-dismiss="modal" class="btn " onclick=" updatestockdata()"
-                        id="addpartdatais">Update</a>   
+                        
                     <a href="#" data-bs-dismiss="modal" id="addpartdataidcancle" class="btn ">Cancel</a>
 
                 </div>

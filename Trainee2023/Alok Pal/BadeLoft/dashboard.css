@@ -166,14 +166,16 @@ table.dataTable thead>tr>td.sorting_desc_disabled:after {
 
 
 
-.popover {
+/* .popover {
     position: absolute;
     inset: 0px auto auto 0px;
     margin: 0px;
     transform: translate(782px, 172px);
     width: 16%;
-    /* height: 43%; */
-}
+} */
+.close{
+    margin-top: -4%;
+}  
 
 
 .userCol {
@@ -228,3 +230,4 @@ li.paginate_button.page-item.active {
 .dashboard_search{
     outline: none;
 }
+
