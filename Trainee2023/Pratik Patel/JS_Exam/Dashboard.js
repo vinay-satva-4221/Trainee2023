@@ -167,15 +167,10 @@ $(document).ready(function () {
         return $("#popover-content").html();
       },
     });
-    // $(document).on('click','.paginate_button',function(){
-    //   if($(this).hasClass('current')){
-    //     $(this).css('color','white');
-    //   }
-    // });
-    //  $(document).on('clicked','#ClosePopover',function(){
-    //     alert("CLicked")
-    //     $("#popover-content").hide();
-    //   })
+     $(document).on('clicked','#ClosePopover',function(){
+        alert("CLicked")
+        $("#popover-content").hide();
+      })
   } else {
     window.location.href = "index.html";
   }
