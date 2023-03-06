@@ -79,7 +79,7 @@ function format(d) {
 }
 
 var assignementDetails = JSON.parse(localStorage.getItem('assignmentDetail'));
-var table = $("#example").DataTable({
+var table = $("#assignmentTable").DataTable({
   data: assignementDetails,
   bFilter: false,
   bInfo: true,
@@ -115,7 +115,7 @@ var table = $("#example").DataTable({
   order: [[1, "asc"]],
 });
 
-$('#example tbody').on('click', '.fa-trash', function () {
+$('#assignmentTable tbody').on('click', '.fa-trash', function () {
   var row = table.row($(this).parents('tr'));
   var data = row.data();
   var index = assignementDetails.findIndex(function (item) {
@@ -128,7 +128,7 @@ $('#example tbody').on('click', '.fa-trash', function () {
   row.remove().draw();
 });
 
-$("#example tbody").on("click", "td.dt-control", function () {
+$("#assignmentTable tbody").on("click", "td.dt-control", function () {
   var tr = $(this).closest("tr");
   var row = table.row(tr);
 
@@ -142,7 +142,7 @@ $("#example tbody").on("click", "td.dt-control", function () {
 });
 
 //edit
-$("#example tbody").on("click", ".fa-pencil", function () {
+$("#assignmentTable tbody").on("click", ".fa-pencil", function () {
   console.log(table.row(this).data());
   var data = table.row($(this).parents("tr")).data();
   var index = table.row($(this).parents("tr")).index();
@@ -183,7 +183,7 @@ $("#example tbody").on("click", ".fa-pencil", function () {
 //search
 $("#search").on("keyup", function () {
   var value = $(this).val().toLowerCase();
-  $("#example tbody tr").filter(function () {
+  $("#assignmentTable tbody tr").filter(function () {
     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
   });
 });
