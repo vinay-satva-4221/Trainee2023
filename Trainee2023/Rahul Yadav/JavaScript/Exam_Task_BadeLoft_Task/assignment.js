@@ -250,13 +250,10 @@ $(document).ready(function () {
 
 
 
-            // Retrieve existing data from local storage
             var StockData = JSON.parse(localStorage.getItem("stockdata")) || [];
-
-            // Populate stock name dropdown
             var stockSelect = $('#stock-select');
             stockSelect.empty();
-            stockSelect.append($('<option>', { value: '' }));
+            stockSelect.append($('<option>', { value: '' , text: 'Choose Stock Name' }));
             $.each(StockData, function (i, stock) {
                 stockSelect.append($('<option>', { value: stock.stockname, text: stock.stockname }));
             });
@@ -264,7 +261,7 @@ $(document).ready(function () {
 
             $('.js-example-basic-multiple').select2();
 
-            // Handle change event on stock name dropdown
+
             stockSelect.change(function () {
                 var selectedStock = $(this).val();
                 var partSelect = $('#part-select');
