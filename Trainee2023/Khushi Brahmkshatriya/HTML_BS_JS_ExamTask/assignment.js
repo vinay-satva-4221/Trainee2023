@@ -65,7 +65,12 @@ $(document).ready(function () {
         });
 
         $('.partnumbers').select2({
-            placeholder: "Select a Part",
+            closeOnSelect : false,
+			placeholder : "Select a Part",
+			allowHtml: true,
+			allowClear: true,
+			tags: true // создает новые опции на лету
+           
         });
     }
     else {
@@ -79,10 +84,9 @@ $(document).ready(function () {
         }
         else {
 
-
             console.log($(".partnumbers").val());
             var allparts = ($(".partnumbers").val());
-            var partnum = allparts.toString().replaceAll(',', '|');
+            var partnum = allparts.toString().replaceAll(',', ' | ');
             partsAssignedToStock.push({
                 StockName: $('#stockname').val(),
                 PartNumbers: partnum,
@@ -116,7 +120,7 @@ $(document).ready(function () {
             const obj = {
                 CreatedBy: createdBy.UserName,
                 Name: $('#customer').val(),
-                CreatedDate: CreatedDate,
+                CreatedDate: Time,
                 QBInvoice: $('#quickbookInvoice').val(),
                 PartData: partsAssignedToStock,
             };
@@ -132,7 +136,7 @@ $(document).ready(function () {
 
                 CreatedBy: createdBy.UserName,
                 Name: $('#customer').val(),
-                CreatedDate: CreatedDate,
+                CreatedDate: Time,
                 QBInvoice: $('#quickbookInvoice').val(),
                 PartData: partsAssignedToStock,
             };
@@ -270,9 +274,10 @@ $(document).ready(function () {
         console.log((table.row(this).data()));
         var data = table.row($(this).parents('tr')).data();
         var index = table.row($(this).parents('tr')).index();
-
+        var cust = $("#customer").val(data.Name);
+       
         // Populate assignmentmodal with data
-        $("#customer").val(data.Name).change();
+        cust.change();
         $("#quickbookInvoice").val(data.QBInvoice);
         // $("#stockname").val(data.StockName).change();
         // $("#parts").val(data.PartNumbers);
@@ -418,4 +423,52 @@ function deleteMainTableRow(element) {
     tr.remove()
 
 }
+
+
+// Time
+function formatDate(dateVal) {
+    var newDate = new Date(dateVal);
+  
+    var sMonth = padValue(newDate.getMonth() + 1);
+    var sDay = padValue(newDate.getDate());
+    var sYear = newDate.getFullYear();
+    var sHour = newDate.getHours();
+    var sMinute = padValue(newDate.getMinutes());
+    var sAMPM = "AM";
+  
+    var iHourCheck = parseInt(sHour);
+  
+    if (iHourCheck > 12) {
+      sAMPM = "PM";
+      sHour = iHourCheck - 12;
+    } else if (iHourCheck === 0) {
+      sHour = "12";
+    }
+  
+    sHour = padValue(sHour);
+  
+    return (
+      sMonth +
+      "/" +
+      sDay +
+      "/" +
+      sYear +
+      " " +
+      "at" +
+      " " +
+      +sHour +
+      ":" +
+      sMinute +
+      " " +
+      sAMPM
+    );
+  }
+  
+  function padValue(value) {
+    return value < 10 ? "0" + value : value;
+  }
+  
+  var Time = formatDate(new Date());
+  console.log(Time);
+  
 

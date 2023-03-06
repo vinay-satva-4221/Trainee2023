@@ -39,6 +39,7 @@ customerSelect.addEventListener("change", function () {
 });
 
 var restock = JSON.parse(localStorage.getItem("stockDetail"));
+if(!restock) { restock = [] }
 var select = document.getElementById("stock");
 
 for (i = 0; i < restock.length; i++) {
@@ -48,6 +49,10 @@ for (i = 0; i < restock.length; i++) {
     option.textContent = stockName;
     select.appendChild(option);
 }
+
+$(document).ready(function() {
+    $('#asignparts').select2();
+});
 
 
 // $(document).ready(function () {
@@ -80,7 +85,7 @@ function format(d) {
         '<tr>' +
         '<td></td>' +
         '<td>' + d.stock + '</td>' +
-        '<td>' + d.invoice + '</td>' +
+        '<td>' + d.part + '</td>' +
         '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
         '</tr>' +
         '</tbody>' +
@@ -102,11 +107,12 @@ var table = $("#example").DataTable({
         { data: "customer" },
         { data: "createdBy" },
         { data: "createdDate" },
+        
 
         {
             data: null,
             render: function (data, type, row) {
-                return '<button type="button" class="fa fa-pencil"  style="border: none;"></button>' +
+                return '<button type="button" class="fa fa-pencil edit"  style="border: none;"></button>' +
                   '<button type="button" class="fa fa-trash" style="border: none;"></button>';
               }
         }
@@ -115,6 +121,7 @@ var table = $("#example").DataTable({
 });
 
 $('#example tbody').on('click', '.fa-trash', function () {
+   
     var row = table.row($(this).parents('tr'));
     var data = row.data();
     var index = AssignmentDetail.findIndex(function (item) {
@@ -144,10 +151,11 @@ var AssignmentDetail = JSON.parse(localStorage.getItem('assignmentDetail'));
 
 
 function addAssignment() {
-    debugger
+    // debugger
     var customer = document.getElementById("customer").value;
     var invoice = document.getElementById("Invoice").value;
     var stock = document.getElementById("stock").value;
+    var part = document.getElementById("asignparts").value
 
     var currentDate = new Date().toLocaleString();
 
@@ -155,6 +163,7 @@ function addAssignment() {
         customer: customer,
         invoice: invoice,
         stock: stock,
+        part: part,
         createdBy: username,
         createdDate: currentDate,
         //   notes: "Hello EveryOne",
@@ -175,7 +184,60 @@ function addAssignment() {
     document.getElementById("customer").value = "";
     document.getElementById("Invoice").value = "";
     document.getElementById("stock").value = "";
+    document.getElementById("asignparts").value = "";
 }
+
+
+$('#example tbody').on('click', '.edit', function () {
+    // debugger
+    console.log(table.row(this).data());
+    var data = table.row($(this).parents("tr")).data();
+    var index = table.row($(this).parents("tr")).index();
+    $("#customer").val(data.customer);
+  $("#Invoice").val(data.invoice);
+  $("#stock").val(data.stock);
+  $("#asignparts").val(data.part);
+  $(this).parents('tr').addClass('editing');
+  $('#myModal').modal('show');
+});
+
+$('#save').on('click', function() {
+    debugger
+    var $row = table.row('.editing');
+    var $childRow = $row.child();
+    var data = $row.data();
+    data.customer = $('#customer').val();
+    data.invoice = $('#invoice').val();
+    data.stock = $('#stock').val();
+    data.part = $('#asignparts').val();
+    if ($childRow) {
+        $childRow.find('.stock').text(data.stock);
+        $childRow.find('.part').text(data.part);
+    }
+    $row.data(data).draw(false);
+    $('#myModal').modal('hide');
+});
+$('#myModal').on('hidden.bs.modal', function () {
+    table.$('tr.editing').removeClass('editing');
+});
+
+
+// const multiSelect = document.getElementById("asignparts");
+// const selectedPartsTable = document.getElementById("selectedPartsTable");
+
+// multiSelect.addEventListener("change", function() {
+//   const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+  
+//   // Clear the table body
+//   selectedPartsTable.tBodies[0].innerHTML = "";
+  
+//   // Add a row for each selected option
+//   selectedOptions.forEach(stockName => {
+//     const row = selectedPartsTable.tBodies[0].insertRow();
+//     const cell = row.insertCell();
+//     cell.appendChild(document.createTextNode(stockName));
+//   });
+// });
 
 
 

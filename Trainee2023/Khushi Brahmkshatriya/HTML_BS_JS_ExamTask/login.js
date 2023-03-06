@@ -87,19 +87,30 @@ $(document).ready(function () {
             // var email = login.Email;
             // var pass=login.password;
 
+
             if (login == undefined) {
                 
-                
+
+                const emaildata = LoginData.find(
+                    x => x.Email === useremail);
                     //$('.invalidemail').html('Please enter correct email');
-                
-                    $('.invalidpassoremail').html('Please enter correct email  or password');
-              
-                
+
+                    if(emaildata==undefined)
+                    {
+                        $('.invalidemail').html('Please enter correct email');
+                    }
+                    else{
+                        $('.invalidpass').html('Please enter correct password');
+                    }
+
+               $('.invalidemail').html('Please enter correct email');
+               $('.invalidpass').html('Please enter correct password');
                 
                 //swal("Error!", "Please enter valid email or password", "error");
             }
             else {
-                $('.invalidpassoremail').html('');
+                $('.invalidemail').html('');
+                $('.invalidpass').html('');
                 var userName = login.Username;
                 var userImage = login.UserImage;
                 const loggedUser = [
