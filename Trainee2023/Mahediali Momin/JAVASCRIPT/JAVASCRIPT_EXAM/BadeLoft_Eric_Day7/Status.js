@@ -140,7 +140,7 @@ var data1 = [
 $(document).ready(function () {
     var table = $('#Statustable').DataTable({
         "fnInitComplete": function () {
-            $('#Statustable_length').html('<h5>Status</h5>');
+            $('#Statustable_length').html('<h5><strong>Status</strong></h5>');
         },
         data: data1,
         //ajax: '../ajax/data/objects.txt',

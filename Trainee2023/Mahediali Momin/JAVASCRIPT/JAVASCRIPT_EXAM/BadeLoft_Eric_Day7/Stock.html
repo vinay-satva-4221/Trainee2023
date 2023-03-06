@@ -6,25 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock</title>
-    <link rel="stylesheet" href="./Status.css">
-
-    <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stock.css">
+    <!-- <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-
-    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 </head>
 
-<body>
+<body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid px-5">
@@ -42,7 +41,7 @@
                             <a href="Dashboard.html" class="nav-item mx-3 nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="Stock.html" class="nav-item mx-3 fw-bolder nav-link active">Stock</a>
+                            <a href="stock.html" class="nav-item mx-3 fw-bolder nav-link active">Stock</a>
                         </li>
                         <li class="nav-item">
                             <a href="Status.html" class="nav-item mx-3 nav-link">Status</a>
@@ -63,7 +62,7 @@
                             <h5 class="nav-item fw-bold nav-link" style="margin-top: -18px;" id="Uname"></h5>
                         </li>
                         <li>
-                            <i class="fa-solid fa-arrow-right-from-bracket fa-lg" onclick="logout()" id="logout"></i>
+                            <i class="fa-solid fa-arrow-right-from-bracket" onclick="logout()" id="logout"></i>
                         </li>
                     </ul>
                 </div>
@@ -72,173 +71,221 @@
     </header>
     <div class="container-fluid bg-light">
         <div class="row">
-            <div class="col-md-8 mt-3">
-                <h4><strong>Stock</strong></h4>
-            </div>
-            <div class="col-md-1 mt-3">
+            <div class="col-md-12 mt-3">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn new_btn" data-toggle="modal" data-target="#exampleModal"
-                    id="outer_modal" style="background-color: #326C96; color: white;">
+                <button type="button" class="btn btn" id="newButton" data-bs-toggle="modal"
+                    data-bs-target="#outerModal">
                     + New
                 </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><strong>Add New Stock</strong></h5>
-                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_outer">
-                                    <span aria-hidden="true">&times;</span>
-                                </button> -->
-                            </div>
-                            <div class="modal-body">
-                                <form action="">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="" class="text-muted"><strong>Stock Name</strong></label>
-                                            <input type="text" class="form-control" id="stock_name">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="" class="text-muted"><strong>ETA Date</strong></label>
-                                            <input type="date" class="form-control" id="eta_date">
-                                        </div>
-                                        <div class="col-md-4 mt-2">
-                                            <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
-                                            <div class="row">
-                                                <div class="btn-group" role="group"
-                                                    aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                                                        autocomplete="off" checked>
-                                                    <label class="btn btn-outline-primary"
-                                                        for="btnradio1">OnProduction</label>
-
-                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                                                        autocomplete="off">
-                                                    <label class="btn btn-outline-primary"
-                                                        for="btnradio2">OnWater</label>
-
-                                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-                                                        autocomplete="off">
-                                                    <label class="btn btn-outline-primary"
-                                                        for="btnradio3">InWarehouse</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <button type="button" class="btn btn-outline-light bg-white text-dark"
-                                                    data-toggle="modal" data-target="#exampleModal1"
-                                                    id="inner_modal"><img
-                                                        src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
-                                                        style="padding-left: 10px;" alt=""><span class="text-muted">Add
-                                                        Part Number</span></button>
-                                            </div>
-                                        </div>
-                                        <table id="innermodal" class="table mt-2" style="width:100%" ;>
-                                            <thead style="background-color: black; color: white;">
-                                                <tr>
-                                                    <th>Part Number</th>
-                                                    <th>Invoice #</th>
-                                                    <th>Ordered</th>
-                                                    <th>Notes</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer justify-content-start">
-                                <button type="button" class="btn btn" id="save_outer" data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-light border" id="close_outer">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Button trigger modal -->
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
-                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_inner" >
-                                    <span aria-hidden="true">&times;</span>
-                                </button> -->
-
-                            </div>
-                            <div class="modal-body">
-                                <form action="">
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" id="part_num" placeholder="Part Number">
-                                    </div>
-                                    <div class="col-md-12 mt-3">
-                                        <input type="text" class="form-control" id="ordered" placeholder="Ordered">
-                                    </div>
-                                    <div class="col-md-12 mt-3">
-                                        <textarea name="" class="form-control" rows="3" id="note"
-                                            placeholder="Notes"></textarea>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="modal-footer justify-content-start">
-                                <button type="button" class="btn btn" data-dismiss="modal" id="save_inner"
-                                    data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-light border"
-                                    id="close_inner"><strong>Cancel</strong></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-3 mt-3 mb-3">
-                <input type="search" class="form-control" id="myCustomSearchBox" placeholder="Search here...">
             </div>
         </div>
         <div class="table-responsive">
-            <table id="example" class="table" style="width:100%">
-                <thead class="maintable">
-                    <tr>
-                        <th>Stock Name</th>
-                        <th>ETA Date</th>
-                        <th>Stock Location</th>
-                        <th>Created By</th>
-                        <th>Created Date</th>
-                        <th>Notes</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <table id="StockTable" class="table rounded" style="width:100%; background-color: white;">
+                <thead style="color: white;"></thead>
 
-                </tbody>
             </table>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" role="dialog" id="outerModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddNewStockModal">Add New Stock</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addstockform" action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="" class="text-muted"><strong>Stock Name</strong></label>
+                                <input type="text" class="form-control" id="stock_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" class="text-muted"><strong>ETA Date</strong></label>
+                                <!-- <input type="date" class="form-control" id="eta_date"> -->
+                                <input type="text" name="date" class="form-control" id="eta_date" value="10/24/1984" />
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="" class="mb-2 text-muted"><strong>Stock Status</strong></label>
+                                <div class="row">
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="on-production"
+                                            value="On production" data-stock-location="On production" autocomplete="off"
+                                            checked>
+                                        <label class="btn btn-outline" for="on-production">On Production</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="on-water"
+                                            value="On water" data-stock-location="On water" autocomplete="off">
+                                        <!-- <input type="radio" name="btnradio" class="form-check-input" id="on-water" value="On water" data-stock-location="On water"> -->
+                                        <label class="btn btn-outline" for="on-water">On Water</label>
+
+                                        <input type="radio" class="btn-check" name="btnradio" id="in-warehouse"
+                                            value="In warehouse" data-stock-location="In warehouse" autocomplete="off">
+                                        <label class="btn btn-outline" for="in-warehouse">In Warehouse</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!-- <button type="button" class=" mt-2"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal1"><img
+                                            src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" class="mx-2"
+                                            style="padding-left: 10px;" alt=""><span class="text-muted addPartBtn">Add
+                                            Part Number</span></button> -->
+                                    <button type="button" class=" addPartBtn mt-2" id="AddPart" data-bs-toggle="modal"
+                                        data-bs-target="#innerModal"><img
+                                            src="/JAVASCRIPT/JAVASCRIPT_EXAM/Assets/Plus.svg" style="margin-left:-11px;"
+                                            alt=""><span class="text-muted">Add
+                                            Part Number</span></button>
+                                </div>
+                            </div>
+                            <table id="inner_table" class="table mt-2" style="width:100%" ;>
+                                <thead style="background-color: black; color: white;">
+                                    <tr>
+                                        <th>Part Number</th>
+                                        <th>Invoice #</th>
+                                        <th>Ordered</th>
+                                        <th>Notes</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn" id="save_outer">Save</button>
+                    <!-- <button type="button" class="btn btn" data-bs-dismiss="modal" id="update_outer">Update</button> -->
+                    <button type="button" class="btn btn-outline text-muted" data-bs-dismiss="modal"
+                        id="close_outer">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="innerModal" tabindex="-1" aria-labelledby="exampleModal1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Part Number</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="inner_form">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="part_num" placeholder="Part Number">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <input type="text" class="form-control" id="ordered" placeholder="Ordered">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <textarea name="" class="form-control" rows="3" id="note" placeholder="Notes"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn" data-bs-dismiss="modal" id="save_inner">Save</button>
+                    <button type="button" class="btn btn-secondary" id="close_inner">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold" id="historyModalLabel">Audit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="fw-bold historyTextcolor">Stock C100</p>
+                        </div>
+                        <div class="col-md-1">
+                            <i class="bi bi-2-circle-fill mx-auto "></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">C100 stock added by Eric</p>
+                            <p class="fs-6 text-secondary mb-0">Add part BW-01-S-M with ordered quantity 5 | Add part AT-01-BLK with ordered quantity 4</p>
+                            <p>Last Updated by <span class="historyTextcolor">Eric on 02/22/2022 09:00AM</span></p>
+                        </div>
+                        <hr class="bg-secondary text-secondary">
+                        <div class="col-md-1">
+                            <i class="bi bi-2-circle-fill mx-auto"></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">Stock updated by jeshal</p>
+                            <p class="fs-6 text-secondary mb-0">Edit part AT01 with ordered quantity 5</p>
+                            <p>Last Updated by <span class="historyTextcolor">jeshal on 02/22/2022 12:30PM</span></p>
+                        </div>
+                        <hr class="bg-secondary text-secondary">
+                        <div class="col-md-1">
+                            <i class="bi bi-2-circle-fill mx-auto"></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">Part has been deleted by Eric</p>
+                            <p class="fs-6 text-secondary mb-0">Edit part AT03</p>
+                            <p>Last Updated by <span class="historyTextcolor">Eric on 02/22/2022 02:15PM</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <nav aria-label="Page navigation" class="float-end historyPagination">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true" class="fw-bold">&lt;</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true" class="fw-bold">&gt;</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <!-- <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+    integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="./stock.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+    <!-- <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script> -->
 
-    <script src="./Stock.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </body>
 
