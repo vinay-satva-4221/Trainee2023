@@ -247,9 +247,13 @@ $(document).ready(function () {
         data: "null",
         title: "Action",
         orderable: false,
-        className: "dt-center editor-edit",
-        defaultContent:
-          '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6" on-click="editdata()"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+        className: "dt-center ",
+        render: function (data, type, row) {
+          return (
+            '<button type="button" class="bi bi-pencil-fill text-secondary fw-bolder editor-edit stockeditbtn fs-6 border-0 bg-light"></button>' +
+            '<button type="button" class="bi bi-trash3-fill text-secondary fw-bolder fs-6 border-0 bg-light delete"></button>'
+          );
+        },
       },
     ],
     order: [[1, 'asc']],
@@ -270,6 +274,18 @@ $(document).ready(function () {
       tr.addClass('shown');
     }
   });
+});
+
+// delete
+$(document).on("click", ".delete", function () {
+  debugger
+  var AssignedData= JSON.parse(localStorage.getItem("Assigned"));
+  // alert(table.row($(this).parents('tr')).index())
+  let Index=table.row($(this).parents('tr')).index();
+  table.row(Index).remove().draw()
+  AssignedData.splice(Index,1)
+  localStorage.setItem("Assigned", JSON.stringify(AssignedData));
+  
 });
 
 // Global
@@ -401,11 +417,13 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
   e.preventDefault();
   $("#AssignedModal").modal("show");
 
-  var indexRow = table.row(this).index();
-  console.log(indexRow);
+  // var indexRow = table.row(this).index();
+  // console.log(indexRow);
 
-  var tabledata = table.row(this).data();
-  console.log(tabledata);
+  // var tabledata = table.row(this).data();
+  // console.log(tabledata);
+  var tabledata = table.row($(this).parents('tr')).data();
+  var indexRow = table.row($(this).parents('tr')).index();
 
   $("#Customer").val(tabledata.Customer)
   $("#Invoice").val(tabledata.Invoice)
@@ -442,3 +460,5 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
 $("#stock_search").on("keyup", function () {
   table.search(this.value).draw();
 });
+
+
