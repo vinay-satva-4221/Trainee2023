@@ -92,13 +92,6 @@ ul li {
 .tabs {
     margin-left: 10%;
 }
-.paginate_button.active>.page-link, .page-link.active {
-    z-index: 3;
-    color: var(--bs-pagination-active-color);
-    background-color: #0e0e0e;
-    border-color: #181818;
-}
-
 
 
 

@@ -5,8 +5,8 @@ margin: 10px;
 }
 
 .form-check-input:checked {
-    background-color: #198754 !important;
-    border-color: #198754 !important;
+background-color: green;
+border-color: green;
 }
 #dashboadr-table_length {
 margin: 10px;
