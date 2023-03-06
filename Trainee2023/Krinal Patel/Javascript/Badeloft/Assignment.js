@@ -20,7 +20,24 @@ function logout(){
     window.location.replace("Login.html")
     localStorage.clear();
   }
-
+  function format(d) {
+    console.log("D=",d)
+    let HTML = '';
+    // if (d.partlist && d.partlist.length > 0) {
+      HTML += '<table class="text-center" style="width:100%;">';
+      HTML += '<thead><tr><th class="text-center">#</th><th class="text-center">Stock</th><th class="text-center">Part</th><th class="text-center">Action</th></tr></thead>';
+      HTML += '<tbody>';
+      d.partlist.forEach((partlist, index) => {
+          const rowadd = index + 1;
+          HTML += '<tr><td>' + rowadd + '</td><td>' + partlist.stock + '</td><td>' + partlist.parts + '</td><td><button ><i class="fa fa-close deletechildrow"></i></button></td></tr>';
+      });
+      HTML += '</tbody>';
+      HTML += '</table>';
+    // }
+    return HTML;
+    }
+    
+    
   $(document).ready(function () {
 
 
@@ -55,15 +72,13 @@ function logout(){
       info: true,
       paging: true,
      ordering:false,
-      columns: [
-        {
-          
-          data: null,
-          className: 'dt-control',
-          orderable: false,
-          defaultContent: '',
-  
-        },
+     columns: [{
+      data: null,
+      className: 'dt-control',
+      orderable: false,
+      defaultContent: '',
+      width:"1%",
+    },
         {
           data:"QBInvoice_number",
           title: 'QB Invoice #',
@@ -78,7 +93,7 @@ function logout(){
         }
         },
         {
-          data:"createdby",
+          data:"customersname",
           title: 'Name',
           orderable: false,
           className: "text-center"
@@ -130,9 +145,15 @@ function logout(){
     const userdata = JSON.parse(localStorage.getItem("staticdata"));
     const userSelect = document.getElementById("select_customer");
   // Select 2 library
-$(document).ready(function () {
-  $(".multipleSelect").select2();
+  $(".js-example-placeholder-multiple").select2({
+    dropdownParent: $('#myModal'),
+    placeholder: "Choose Part",
+    width: 'resolve' // need to override the changed default
+
+
 });
+
+
 const stockdata = JSON.parse(localStorage.getItem("stockList"));
 var stocknameSelect = document.getElementById("select_stockname");
 stockdata.forEach(user => {
@@ -200,7 +221,7 @@ console.log(parts )
 
         //  html = "<thead><th>#</th><th>Stock</th><th>Parts</th><th class='text-end'>Action</th></thead><tbody>";
         for (let i = 0; i < partDetails.length; i++) {
-          
+
           html += "<tr>" + "<td>" + i + "</td>" + "<td>" + partDetails[i].stock + "</td>" + "<td>" + partDetails[i].parts
                 + "</td>" +
                 "<td class='text-end'><button type='button' class='btn-close DeletePartsTable'  aria-label='Close' ></button></td></tr>"
@@ -210,42 +231,93 @@ console.log(parts )
         $('#Assignment_table_data').html(html);
 });
 
+
+function addassignment() {
+  console.log(partDetails)
+  //Getting all stock details and part details
+  var sname = $("#sname").val();
+  var etadate = $("#etadate").val();
+  // var notes = $("#notes").val();
+
+ //Getting username for created by
+  var par = JSON.parse(localStorage.getItem('LoginDetails'));
+  var createdby = par[0].username;
+
+  //Getting current date
+  var cdate = new Date(Date.now()).toLocaleString().split(',')[0];
+var customersname = document.getElementById("Customer").value;
+  let assignmentList = JSON.parse(localStorage.getItem("Assignment")) || [];
+  if (assignmentDetails == null) {
+      assignmentDetails = [];
+  }
+  assignmentDetails.push({
+  
+      "createdby": createdby,
+      "cdate": cdate,
+      "partlist":partDetails,
+      "QBInvoice_number":QBInvoice_number,
+      "customersname":customersname
+    
+  });
+  console.log(partDetails)
+  var stock = {
+  
+    "createdby": createdby,
+    "cdate": cdate,
+    "partlist":partDetails,
+    "QBInvoice_number":QBInvoice_number,
+    "customersname":customersname
+  };
+
+assignmentList.push(stock);
+  tableData.row.add(['',QBInvoice_number,customersname,createdby, cdate, '']).draw();
+  
+
+  localStorage.setItem("Assignment", JSON.stringify(assignmentList));
+  location.reload(true)
+}
+
+
+
+
+
+
 //   // Row 1 cascading
 const QuickbookInvoices = '{"Invoices":['+
-'{"InvoiceId":"1","Id":"1","Name":"150001"},' +
-'{"InvoiceId":"1","Id":"2","Name":"150002"},' +
-'{"InvoiceId":"1","Id":"3","Name":"150003"},' +
-'{"InvoiceId":"1","Id":"4","Name":"150004"},' +
-'{"InvoiceId":"1","Id":"5","Name":"150005"},' +
-'{"InvoiceId":"2","Id":"6","Name":"150006"},' +
-'{"InvoiceId":"2","Id":"7","Name":"150007"},' +
-'{"InvoiceId":"2","Id":"8","Name":"150008"},' +
-'{"InvoiceId":"2","Id":"9","Name":"150009"},' +
-'{"InvoiceId":"2","Id":"10","Name":"150010"},' +
-'{"InvoiceId":"3","Id":"11","Name":"150011"},' +
-'{"InvoiceId":"3","Id":"12","Name":"150012"},' +
-'{"InvoiceId":"3","Id":"13","Name":"150013"},' +
-'{"InvoiceId":"3","Id":"14","Name":"150014"},' +
-'{"InvoiceId":"3","Id":"15","Name":"150015"},' +
-'{"InvoiceId":"4","Id":"16","Name":"150016"},' +
-'{"InvoiceId":"4","Id":"17","Name":"150017"},' +
-'{"InvoiceId":"4","Id":"18","Name":"150018"},' +
-'{"InvoiceId":"4","Id":"19","Name":"150019"},' +
-'{"InvoiceId":"4","Id":"20","Name":"150020"},' +
-'{"InvoiceId":"5","Id":"21","Name":"150021"},' +
-'{"InvoiceId":"5","Id":"22","Name":"150022"},' +
-'{"InvoiceId":"5","Id":"23","Name":"150023"},' +
-'{"InvoiceId":"5","Id":"24","Name":"150024"},' +
-'{"InvoiceId":"5","Id":"25","Name":"150025"}]}';
+'{"InvoiceId":"Eric Jension","Id":"1","Name":"150001"},' +
+'{"InvoiceId":"Eric Jension","Id":"2","Name":"150002"},' +
+'{"InvoiceId":"Eric Jension","Id":"3","Name":"150003"},' +
+'{"InvoiceId":"Eric Jension","Id":"4","Name":"150004"},' +
+'{"InvoiceId":"Eric Jension","Id":"5","Name":"150005"},' +
+'{"InvoiceId":"Kenneth Woodard","Id":"6","Name":"150006"},' +
+'{"InvoiceId":"Kenneth Woodard","Id":"7","Name":"150007"},' +
+'{"InvoiceId":"Kenneth Woodard","Id":"8","Name":"150008"},' +
+'{"InvoiceId":"Kenneth Woodard","Id":"9","Name":"150009"},' +
+'{"InvoiceId":"Kenneth Woodard","Id":"10","Name":"150010"},' +
+'{"InvoiceId":"Kelly Mccrocy","Id":"11","Name":"150011"},' +
+'{"InvoiceId":"Kelly Mccrocy","Id":"12","Name":"150012"},' +
+'{"InvoiceId":"Kelly Mccrocy","Id":"13","Name":"150013"},' +
+'{"InvoiceId":"Kelly Mccrocy","Id":"14","Name":"150014"},' +
+'{"InvoiceId":"Kelly Mccrocy","Id":"15","Name":"150015"},' +
+'{"InvoiceId":"Frances Badger","Id":"16","Name":"150016"},' +
+'{"InvoiceId":"Frances Badger","Id":"17","Name":"150017"},' +
+'{"InvoiceId":"Frances Badger","Id":"18","Name":"150018"},' +
+'{"InvoiceId":"Frances Badger","Id":"19","Name":"150019"},' +
+'{"InvoiceId":"Frances Badger","Id":"20","Name":"150020"},' +
+'{"InvoiceId":"John Doe","Id":"21","Name":"150021"},' +
+'{"InvoiceId":"John Doe","Id":"22","Name":"150022"},' +
+'{"InvoiceId":"John Doe","Id":"23","Name":"150023"},' +
+'{"InvoiceId":"John Doe","Id":"24","Name":"150024"},' +
+'{"InvoiceId":"John Doe","Id":"25","Name":"150025"}]}';
 
 
 
 const customers = '{"Customer":['+
-'{"Id":"1","Name":"Eric Jensen"},' +
-'{"Id":"2","Name":"Kenneth Woodard"},' +
-'{"Id":"3","Name":"Kelly McCrory"},' +    
-'{"Id":"4","Name":"frances Badger"},' +                    
-'{"Id":"5","Name":"John Doe"}]}';
+'{"Id":"Eric Jension","Name":"Eric Jensen"},' +
+'{"Id":"Kenneth Woodard","Name":"Kenneth Woodard"},' +
+'{"Id":"Kelly Mccrocy","Name":"Kelly Mccrocy"},' +
+'{"Id":"Frances Badger","Name":"frances Badger"},' +                    
+'{"Id":"John Doe","Name":"John Doe"}]}';
 
 $(document).ready(function(){
 
@@ -266,5 +338,3 @@ $(document).ready(function(){
     });
 
 });
-
-
