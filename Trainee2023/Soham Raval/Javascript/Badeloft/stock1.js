@@ -15,11 +15,18 @@ var editstockdetails = false;
 $(document).ready(function () {
     debugger
 
+
+    // $.validator.addMethod("uniqueStockName", function(value, element) {
+
+    // }, "This stockname is already taken.");
+
+
     $("#stockform").validate({
         errorClass: 'msg',
         rules: {
             stockname: {
                 required: true,
+                // uniqueStockName: true
                 
             },
         },
@@ -161,6 +168,11 @@ $(document).ready(function () {
     $("#innermodel_table_data").on('click', '.delete', function () {
         $(this).closest('tr').remove();
     });
+    $('#stock_table tbody').on('click', '.history', function () {
+        $('#historyModal').modal('show');
+
+      })
+
     // $("#stock_table tbody").on('click', '.deletechildrow', function () {
     //     let stockList = JSON.parse(localStorage.getItem('stockList'));
     //     let index = 1;
@@ -184,24 +196,41 @@ $(document).ready(function () {
     //     $(this).closest('tr').remove();
     //   });
     $("#stock_table tbody").on('click', '.deletechildrow', function () {
+        debugger
         let stockList = JSON.parse(localStorage.getItem('stockList'));
         console.log("partlist",stockList)
-        let stockIndex = $(this).closest('tr').index(); // Get the index of the parent row
-        console.log('stockIndex:', stockIndex);
-        let partIndex = $(this).closest('td').index(); // Get the index of the child cell
-        
-        if (stockList[stockIndex].partlist) { // Check if partlist property exists
-            console.log('Before:', stockList);
-          stockList[stockIndex].partlist.splice(partIndex, 1); // Remove the selected index from partlist
-          console.log('After:', stockList);
-        //   if (stockList[stockIndex].partlist.length === 0) {
-        //     stockList.splice(stockIndex, 1); // Remove the parent row if partlist is empty
-        //   }
+        let stockIndex = $(this).closest('tr').index(); 
+        let partIndex = $(this).closest('td').index(); 
+        if (stockList[stockIndex].partlist) 
+        { 
+          stockList[stockIndex].partlist.splice(partIndex, 1);
           localStorage.setItem('stockList', JSON.stringify(stockList));
         }
         $(this).closest('tr').remove();
       });
+    // $("#stock_table tbody").on('click', '.deletechildrow', function (element) {
+    //     debugger
+    //     var stockList = JSON.parse(localStorage.getItem("stockList"));
+        
+        
+    //     var stockID = $(element).attr('data-stock-id');
+    //     var StockIndex = stockList.findIndex(x => x.stockname == stockID);
+    //     var PartIndex = $(element).attr('data-part-index');
+    //     console.log("Part index", PartIndex);
+    //     console.log(stockList[PartIndex].Partlist)
+    //     console.log("Stock index", StockIndex);
+        
+    //     stockList[StockIndex].Partlist.splice(PartIndex, 1);
       
+    //     console.log(stockList);
+      
+    //     localStorage.setItem("stockList", JSON.stringify(stockList));
+      
+    //     var tr = $(element).closest("tr")
+    //     tr.remove()
+    // });
+
+
 
     $("#add_part").click(function () {
         $("#partnumber").val("");
@@ -379,13 +408,10 @@ function stockdatastore() {
         };
         stockList.push(stock);
         console.log("StockList", stockList)
-
-        
         tableData.row.add(['', stockname, eta_date, stock_status, usernameget, getcurrentdate, notes]).draw();
         localStorage.setItem("stockList", JSON.stringify(stockList));
         console.log("part", partDetails)
         location.reload(true)
-
     }
  }
 }

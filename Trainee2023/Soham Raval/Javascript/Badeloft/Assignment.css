@@ -84,3 +84,16 @@
     content: "\f1da";
     padding-left: 8px;
 }
+
+
+.select2-dropdown {
+  z-index: 1100 !important;
+
+}
+
+.select2-container {
+  width: 100% !important;
+}
+.select2-selection{
+  margin-top: 8px;
+}

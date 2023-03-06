@@ -98,14 +98,31 @@ $(document).ready(function () {
 
 
   //pop over
+  // $('[data-bs-toggle="popover"]').popover({
+  //   container: "body",
+  //   placement: "right",
+  //   html: true,
+  //   content: function () {
+  //     return $("#Popover").html();
+  //   }
+  // })
   $('[data-bs-toggle="popover"]').popover({
-    container: "body",
-    placement: "right",
+    
+    container: 'body',
+    title : '<p class="text-start text-dark fw-bold bg-white">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
+    placement: 'right',
     html: true,
     content: function () {
-      return $("#Popover").html();
+      return $('#Popover').html();
     }
-  })
+  });
+
+
+  $(document).on("click", ".popover .close" , function(){
+   
+    $('.popover').hide();
+    
+});
 
   //active
   var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);

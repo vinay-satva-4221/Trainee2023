@@ -9,6 +9,23 @@ function logout() {
     window.location = "Login.html"
     localStorage.clear();
 }
+var editstockdetails = false;
+const customerList = [
+  { Customer: "Raval", Invoice: "150001" },
+  { Customer: "Raval", Invoice: "150002" },
+  { Customer: "Raval", Invoice: "150003" },
+  { Customer: "Soham", Invoice: "160001" },
+  { Customer: "Soham", Invoice: "160002" },
+  { Customer: "Soham", Invoice: "160003" },
+  { Customer: "Soham", Invoice: "160004" },
+  { Customer: "abc", Invoice: "170001" },
+  { Customer: "abc", Invoice: "170002" },
+  { Customer: "abc", Invoice: "170003" },
+  { Customer: "xyz", Invoice: "180001" },
+  { Customer: "xyz", Invoice: "180002" },
+  { Customer: "xyz", Invoice: "180003" },
+  { Customer: "xyz", Invoice: "180004" },
+];
 var QBInvoice_number = 15000;
 var editit = false;
 $(document).ready(function () {
@@ -33,10 +50,11 @@ $(document).ready(function () {
                 data: null,
                 defaultContent: '',
             },
-            { data: function(row,type,set,meta){
-                var qbinvoiceNumber = meta.row + 15000;
-                return qbinvoiceNumber;
-            }, title: 'QB Invoice#', orderable: false, className: "text-center" },
+            // { data: function(row,type,set,meta){
+            //     var qbinvoiceNumber = meta.row + 15000;
+            //     return qbinvoiceNumber;
+            // }, title: 'QB Invoice#', orderable: false, className: "text-center" },
+            {data:"select_qbinvoice",title:'QB Invoice#',ordeeable:false,className:"text-center"},
             { data: "nameget", title: 'Name', orderable: false, className: "text-center" },
             { data: "nameget", title: 'Created By', orderable: false, className: "text-center" },
             { data: "getcurrentdate", title: 'Created Date', orderable: false, className: "text-center" },
@@ -85,14 +103,36 @@ $(document).ready(function () {
       stocknameSelect.appendChild(option);
     });
 
+
     //for select invoice
-    const InvoiceSelect = document.getElementById("select_Invoice");
-    stockdata.forEach(user => {
-      const option = document.createElement("option");
-      option.value = user.invoicenumber;
-      option.textContent = user.invoicenumber;
-      InvoiceSelect.appendChild(option);
-    });
+    // const InvoiceSelect = document.getElementById("select_Invoice");
+    // stockdata.forEach(user => {
+    //   const option = document.createElement("option");
+    //   option.value = user.invoicenumber;
+    //   option.textContent = user.invoicenumber;
+    //   InvoiceSelect.appendChild(option);
+    // });
+    
+    // for dependent dropdown
+    const qbinvoiceSelect = document.getElementById("select_Invoice");
+userSelect.addEventListener("change", function() {
+  const selectedusername = userSelect.value;
+  const selecteduser = customerList.filter(item => item.Customer === selectedusername);
+
+  qbinvoiceSelect.innerHTML = ""; // clear existing options
+  selecteduser.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.Invoice;
+    option.textContent = item.Invoice;
+    qbinvoiceSelect.appendChild(option);
+  });
+  });
+//   qbinvoiceSelect.addEventListener("change", function() {
+//     const selectedPartnumber = qbinvoiceSelect.value;
+//     qbinvoiceSelect.value = selectedPartnumber;
+// });
+    // for dependent dropdown
+
 
     // event change on stock change
 //     stocknameSelect.change(function () {
@@ -197,18 +237,22 @@ $("#Assignment_table_data").on('click', '.delete', function () {
 
 $('#assignment_table tbody').on('click', '.edit', function () {
     debugger
+    
     editstockdetails = true;
+
     var data = tableData.row($(this).parents('tr')).data();
     console.log(data);
     var index = tableData.row($(this).parents('tr')).index();
     console.log(index);
     $("#select_customer").val(data.select_customer);
     $("#select_customer option[value='" + data.select_customer + "']").prop("selected", true);
+    $("#select_Invoice").val(data.select_qbinvoice);
+    $("#select_Invoice option[value='" + data.select_qbinvoice + "']").prop("selected", true);
     // $("#select_stockname").val(data.select_stockname);
+    // console.log("qbb",data.select_qbinvoice)
     $("#select_stockname option[value='" + data.select_stockname + "']").prop("selected", true);
     // console.log("Option values: ", $("#select_stockname option").map(function() { return $(this).val(); }).get());
     // console.log("Selected value: ", data.select_stockname);
-    
     // $("#select_parts").val(data.select_parts);
     $("#select_parts option[value='" + data.select_parts + "']").prop("selected", true);
 
@@ -216,80 +260,76 @@ $('#assignment_table tbody').on('click', '.edit', function () {
 
     partDetails  = JSON.parse(localStorage.getItem("stockList"));
     console.log("partDetails ",partDetails);
-
-    // for (var i = 0; i < partDetails.length; i++) {
-    //     for (var j = 0; j < partDetails[i].partlist.length; j++) {
-    //         var partnumber = partDetails[i].partlist[j].partnumber;
-    //         // var invoice = partDetails[i].partlist[j].invoice;
-    //         var order =  partDetails[i].partlist[j].order;
-    //         var notes = partDetails[i].partlist[j].notes;
-    //         var addedtable = "<tr><td>" + partnumber + "</td><td>" + order + "</td><td>" + notes + "</td><td>" + '<i class="fa fa-times delete"></i>' + "</td></tr>";
-    //         $("#innermodel_table tbody").append(addedtable);
-    //     }
-    // }
-
     if(data.partlist && data.partlist.length>0){
-    
-
         data.partlist.forEach(function (partlist) {
             $("#Assignment_table_data").append("<tr><td>" + partlist.invoicenumber + "</td><td>" + partlist.stock + "</td><td>"
               + partlist.parts + "</td><td>" + '<i class="fa fa-times delete"></i>' + "</td></tr>");
           });
     }
     partDetails = data.partlist;
+    $("#save_btn").click(function () {
+        if (editstockdetails) {
+          var nameget = Usernameget[0].Name;
+          var select_customer = $('#select_customer').val();
+          var select_qbinvoice=$('#select_Invoice').val();
+          var qbinvoicenumber = QBInvoice_number++;
+          //Getting current date
+          var getcurrentdate = new Date(Date.now()).toLocaleString().split(',')[0];
+          console.log(getcurrentdate)
+          let assignmentList = JSON.parse(localStorage.getItem("assignmentList")) || [];
+          if (assignmentDetails == null) {
+              assignmentDetails = [];
+          }
+          assignmentDetails.push({
+              "nameget": nameget,
+              "getcurrentdate": getcurrentdate,
+              "partDetails":partDetails,
+              "select_customer":select_customer,
+              "select_qbinvoice":select_qbinvoice
+          });
+          console.log(partDetails)
+          var stock = {
+          
+              "nameget": nameget,
+              "getcurrentdate": getcurrentdate,
+              "partlist":partDetails,
+              "select_customer":select_customer,
+              "select_qbinvoice":select_qbinvoice
+          };
+          assignmentList[index] = stock;
+            debugger
+            localStorage.setItem("assignmentList", JSON.stringify(assignmentList));
+            location.reload(true)
+        }
+    });
+});
+$('.js-example-basic-multiple').select2();
 
-    
-    // $("#savechange").click(function () {
-    //     if (editstockdetails) {
-    //         console.log(partDetails)
-    //         var stockname = $('#stockname').val();
-    //         var eta_date = $('#date').val();
-    //         var stock_status = $('input[name="btnradio"]:checked').next('label').text();
-    //         // var stock_status=$('input[name="btnradio"]:checked').val();
-    //         var usernameget = Usernameget[0].Name;
-    //         //Getting current date
-    //         var getcurrentdate = new Date(Date.now()).toLocaleString().split(',')[0];
-    //         console.log(getcurrentdate)
-    //         var notes = $("#notes").val();
-    //         stockList = JSON.parse(localStorage.getItem("stockList")) || [];
-        
-    //         if (stockDetails == null) {
-    //             stockDetails = [];
-    //         }
-    //         stockDetails.push({
-    //             stockname: stockname,
-    //             eta_date: eta_date,
-    //             stock_status: stock_status,
-    //             usernameget: usernameget,
-    //             getcurrentdate: getcurrentdate,
-    //             partDetails: partDetails,
-    //             notes: notes
-    //         });
-    //         console.log(partDetails)
-    //         var stock = {
-    //             "stockname": stockname,
-    //             "eta_date": eta_date,
-    //             "stock_status": stock_status,
-    //             "usernameget": usernameget,
-    //             "getcurrentdate": getcurrentdate,
-    //             "partlist": partDetails,
-    //             "notes": notes
-    //         };
-    //         stockList[index] = stock;
-    //         console.log("StockList", stockList);
-    //         debugger
-    //         localStorage.setItem("stockList", JSON.stringify(stockList));
-    //         location.reload(true)
-    //     }
-    // });
+$("#assignment_table tbody").on('click', '.deletechildrow', function () {
+  let assignmentList = JSON.parse(localStorage.getItem('assignmentList'));
+  console.log("assignmentList",assignmentList)
+  let assignmentIndex = $(this).closest('tr').index(); 
+  console.log('assignmentIndex:', assignmentIndex);
+  let partIndex = $(this).closest('td').index(); 
+  
+  if (assignmentList[assignmentIndex].partlist) { 
+      console.log('Before:', assignmentList);
+    assignmentList[assignmentIndex].partlist.splice(partIndex, 1);
+    console.log('After:', assignmentList);
+
+    localStorage.setItem('assignmentList', JSON.stringify(assignmentList));
+  }
+  $(this).closest('tr').remove();
 });
 
  });
  function Assignmentdatastore() {
+  if (!editstockdetails) {
         console.log(partDetails)
         var nameget = Usernameget[0].Name;
+        var select_customer = $('#select_customer').val();
+        var select_qbinvoice=$('#select_Invoice').val();
         var qbinvoicenumber = QBInvoice_number++;
-
         //Getting current date
         var getcurrentdate = new Date(Date.now()).toLocaleString().split(',')[0];
         console.log(getcurrentdate)
@@ -298,19 +338,19 @@ $('#assignment_table tbody').on('click', '.edit', function () {
             assignmentDetails = [];
         }
         assignmentDetails.push({
-        
             "nameget": nameget,
             "getcurrentdate": getcurrentdate,
-            "partDetails":partDetails
-            
-          
+            "partDetails":partDetails,
+            "select_customer":select_customer,
+            "select_qbinvoice":select_qbinvoice
         });
         console.log(partDetails)
         var stock = {
-        
             "nameget": nameget,
             "getcurrentdate": getcurrentdate,
-            "partlist":partDetails
+            "partlist":partDetails,
+            "select_customer":select_customer,
+            "select_qbinvoice":select_qbinvoice
         };
         console.log("nameget:", nameget);
 console.log("getcurrentdate:", getcurrentdate);
@@ -319,6 +359,7 @@ assignmentList.push(stock);
         tableData.row.add([qbinvoicenumber,nameget, nameget, getcurrentdate]).draw();
         localStorage.setItem("assignmentList", JSON.stringify(assignmentList));
         location.reload(true)
+ }
 }
 function format(d) {
     let HTML = '';
