@@ -9,7 +9,7 @@ h3 {
 
 #example_info {
     position: relative;
-    left: 1011px;
+    left: 1080px;
 }
 
 
@@ -53,7 +53,7 @@ table.dataTable td.dt-control:before {
 
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    color: white !important;
+    color: var(--bs-pagination-active-color);
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: rgba(230, 230, 230, 0.1);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(230, 230, 230, 0.1)), color-stop(100%, rgba(0, 0, 0, 0.1)));
