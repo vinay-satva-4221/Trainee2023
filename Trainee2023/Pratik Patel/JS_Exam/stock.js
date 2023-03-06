@@ -123,7 +123,7 @@ $(document).ready(function () {
                        </div>
                   </div>
                   <div class="col-md-6 ">
-                  <div id="statuss">
+                  <div id="status">
                     ${data}
                   </div>
                 </div>
@@ -163,6 +163,24 @@ $(document).ready(function () {
         },
       ],
     });
+
+    $("#tableStocks tbody").on("click", ".Stock_location", function () {
+
+    var stocks=JSON.parse(localStorage.getItem("stock"));
+    var rowData=table.row($(this).closest('tr')).data()
+     console.log(rowData)
+     rowData.status=$(this).val()
+      for(let i=0;i<stocks.length;i++){
+        if(rowData.stockname==stocks[i].stockname){
+          stocks[i]=rowData
+          table.row(i).data(rowData).draw();
+          break
+        }
+      }
+      // STOCKS.push(rowData)
+      localStorage.setItem("stock",JSON.stringify(stocks))
+    })
+
 
     // Add event listener for opening and closing details
     $("#tableStocks tbody").on("click", "td.ShowChildrow", function () {
