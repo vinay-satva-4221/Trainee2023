@@ -77,51 +77,83 @@ $(document).ready(function () {
                     }
                 },
                 columnDefs: [
-                    { orderable: true, className: "reorder", targets: 0 },
+                    { orderable: true, targets: 0 },
                     { orderable: false, targets: "_all" },
                     {
                         className: "dt-left",
                         targets: [0],
                     },
-                    { width: "15%", targets: [0] },
+                    { width: "30%", targets: [0] },
+                    { width: "28%", targets: [1] },
+                    { width: "15%", targets: [2] },
                 ],
                 columns: [
 
-                    { data: 'Invoice', title: ' QB Invoice#', className: 'dt-control', orderable: true, },
-                    { data: 'UserId', title: 'Name', orderable: false, className: 'TextCenter' },
+                    { data: 'Invoice', title: ' QB Invoice#', className: 'dt-control', orderable: false, },
+                    { data: 'UserId', title: 'Name', orderable: true, className: 'TextCenter' },
                     { data: 'Username', title: 'Created By', orderable: false, className: 'TextCenter' },
                     { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
-                    { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editassignment"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history  deleteparts" style="font-size: 1rem; color: gray;"></i>' },
+                    { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editassignment"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history  deleteparts historymodel" style="font-size: 1rem; color: gray;"></i>' },
                 ],
                 order: [[1, 'asc']],
 
             });
 
+            $('#table_div tbody').on('click', '.historymodel', function () {
+                $("#History_Modal").modal('show');
+            });
+
+
+            // $("#stock_parts").validate({
+            //     rules: {
+            //         stock: {
+            //             required: true,
+            //         },
+            //         parts: {
+            //             required: true,
+            //         },
+            //     },
+            //     messages: {
+            //         stock: {
+            //             required: "This field is required",
+            //         },
+            //         parts: {
+            //             required: "This field is required",
+            //         },
+            //     },
+            //     submitHandler: function (stock_parts) {
+            //         stock_parts.submit();
+            //     },
+            // });
+            // var stock_parts = $("#stock_parts");
+            // stock_parts.validate();
             var stock_part_name = new Array;
             document.getElementById("addassignment").onclick = function () {
-                var stockname = document.getElementById("stock-select").value;
-                var partname = document.getElementById("part-select").value;
-                partname = partname.toString().replaceAll(",", " | ");
+                // var result = stock_parts.valid();
+                // if (result == true) {
+                    var stockname = document.getElementById("stock-select").value;
+                    var partname = $("#part-select").val()
+                    partname = partname.toString().replaceAll(",", " | ");
 
-                var stock_part_obj = {
-                    Stock: stockname,
-                    Part: partname
-                }
-                stock_part_name.push(stock_part_obj);
-                var html = "";
-                stock_part_name.forEach(function (element, index) {
-                    html += "<tr>";
-                    html += "<td>" + (index + 1) + "</td>";
-                    html += "<td>" + element.Stock + "</td>";
-                    html += "<td>" + element.Part + "</td>";
-                    html += "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
-                    html += "</tr>"
-                });
-                document.getElementById("root").innerHTML = html;
-
+                    var stock_part_obj = {
+                        Stock: stockname,
+                        Part: partname
+                    }
+                    stock_part_name.push(stock_part_obj);
+                    var html = "";
+                    stock_part_name.forEach(function (element, index) {
+                        html += "<tr>";
+                        html += "<td>" + (index + 1) + "</td>";
+                        html += "<td>" + element.Stock + "</td>";
+                        html += "<td>" + element.Part + "</td>";
+                        html += "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
+                        html += "</tr>"
+                    });
+                    document.getElementById("partstable").innerHTML = html;
+                // }
             }
 
-            $("#root").on("click", ".btn-delete", function () {
+            $("#partstable").on("click", ".btn-delete", function () {
                 $(this).closest("tr").remove();
                 stock_part_name.splice(this, 1)
             });
@@ -134,12 +166,12 @@ $(document).ready(function () {
                     invoice: {
                         required: true,
                     },
-                    stock: {
-                        required: true,
-                    },
-                    parts: {
-                        required: true,
-                    },
+                    // stock: {
+                    //     required: true,
+                    // },
+                    // parts: {
+                    //     required: true,
+                    // },
                 },
                 messages: {
                     customername: {
@@ -148,12 +180,12 @@ $(document).ready(function () {
                     invoice: {
                         required: "This field is required",
                     },
-                    stock: {
-                        required: "This field is required",
-                    },
-                    parts: {
-                        required: "This field is required",
-                    },
+                    // stock: {
+                    //     required: "This field is required",
+                    // },
+                    // parts: {
+                    //     required: "This field is required",
+                    // },
                 },
                 submitHandler: function (assignmentform) {
                     assignmentform.submit();
@@ -171,12 +203,19 @@ $(document).ready(function () {
                         var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
                         var useridname = logedinUser[0].Name;
                         var date = new Date();
+                        var current_date = (date.getMonth() + 1) + "-" + date.getDate() + "-" + + date.getFullYear();
+                        var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                        var date_time = current_date + " at " + current_time;
                         var assignmentdata = JSON.parse(localStorage.getItem('assignmentdata'));
+                        if (stock_part_name.length === 0) {
+                            swal("InComplete Detail!", "You Have to Add Atlest One Part!", "warning");
+                            return;
+                        }
                         var obj1 = {
                             Username: username,
                             Invoice: invoice,
                             UserId: useridname,
-                            createddate: date,
+                            createddate: date_time,
                             stock_part_name: stock_part_name
                         }
                         if (localStorage.getItem("assignmentdata") == null) {
@@ -188,6 +227,7 @@ $(document).ready(function () {
                         localStorage.setItem("assignmentdata", JSON.stringify(assignmentdata));
                         document.getElementById("assignmentform").reset();
                         $('#assignmentModal').modal('hide');
+                        location.reload(true);
                     }
                 }
             };
@@ -208,7 +248,7 @@ $(document).ready(function () {
 
                 if (rowdata.stock_part_name && rowdata.stock_part_name.length > 0) {
                     rowdata.stock_part_name.forEach(function (stock_part_name, index) {
-                        $("#root").append('<tr><td>' + (1 + index) + '</td><td>' + stock_part_name.Stock + '</td><td>' + stock_part_name.Part + '</td><td>' + '<button type="button" class="btn-close delete btn-delete" aria-label="Close"></button>' + '</td></tr>');
+                        $("#partstable").append('<tr><td>' + (1 + index) + '</td><td>' + stock_part_name.Stock + '</td><td>' + stock_part_name.Part + '</td><td>' + '<button type="button" class="btn-close delete btn-delete" aria-label="Close"></button>' + '</td></tr>');
                     });
                 }
                 stock_part_name = rowdata.stock_part_name;
@@ -219,17 +259,21 @@ $(document).ready(function () {
                     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
                     var useridname = logedinUser[0].Name;
                     var date = new Date();
+                    var current_date = (date.getMonth() + 1) + "-" + date.getDate() + "-" + + date.getFullYear();
+                    var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                    var date_time = current_date + " at " + current_time;
                     var objnew = {
                         Username: username,
                         Invoice: invoice,
                         UserId: useridname,
-                        createddate: date,
+                        createddate: date_time,
                         stock_part_name: stock_part_name
                     }
                     var assignmentdata = JSON.parse(localStorage.getItem('assignmentdata'));
                     assignmentdata[index] = objnew;
                     localStorage.setItem("assignmentdata", JSON.stringify(assignmentdata));
                     $('#assignmentModal').modal('hide');
+                    location.reload(true);
                 });
             });
 
@@ -245,20 +289,18 @@ $(document).ready(function () {
                 } +
                     stock_part_name.splice(index, 1);
                 $(this).closest("tr").remove();
-                // location.reload(true);
+                location.reload(true);
             });
-
-
 
             var StockData = JSON.parse(localStorage.getItem("stockdata")) || [];
             var stockSelect = $('#stock-select');
             stockSelect.empty();
-            stockSelect.append($('<option>', { value: '' , text: 'Choose Stock Name' }));
+            stockSelect.append($('<option>', { value: '', text: 'Choose Stock Name' }));
             $.each(StockData, function (i, stock) {
                 stockSelect.append($('<option>', { value: stock.stockname, text: stock.stockname }));
             });
 
-
+            // select2 library
             $('.js-example-basic-multiple').select2();
 
 
@@ -266,13 +308,13 @@ $(document).ready(function () {
                 var selectedStock = $(this).val();
                 var partSelect = $('#part-select');
                 partSelect.empty();
-                partSelect.append($('<option>', { value: '' }));
+                partSelect.append($('<option>', { value: ''},'</option>'));
                 if (selectedStock) {
                     var selectedStockData = StockData.find(function (stock) {
                         return stock.stockname === selectedStock;
                     });
                     $.each(selectedStockData.partiteam, function (i, part) {
-                        partSelect.append($('<option>', { value: part.partno, text: part.partno }));
+                        partSelect.append($('<option>', { value: part.partno, text: part.partno }, '</option>'));
                     });
                     partSelect.prop('disabled', false);
                 } else {
@@ -309,10 +351,6 @@ $(document).ready(function () {
             localStorage.removeItem("LogedinUser");
             window.location.replace("login.html");
         });
-
-        $('.sorting').removeClass('sorting')
-
-        $('[data-toggle="popover"]').popover()
 
     } else {
         window.location.href = "login.html"
