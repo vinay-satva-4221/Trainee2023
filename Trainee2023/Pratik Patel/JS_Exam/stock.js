@@ -2,11 +2,37 @@ $(document).ready(function () {
   if (localStorage.getItem("LogedinUser") !== null) {
     var StockDetails = new Array();
 
+    var AssignedStockData= JSON.parse(localStorage.getItem("Assigned"));
+//  console.log(AssignedStockData)
+
+
     $("#navigation").load("Navbar.html");
     //Display name in Navbar
     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
     var table;
     function format(d, ParentRowid) {
+
+      rowdata=STOCKS[ParentRowid]
+
+     console.log("cc",rowdata.parts)
+       let assignedValue=0
+      for(let i=0;i<AssignedStockData.length;i++){
+        for(let j=0;j<AssignedStockData[i].AssignedParts.length;j++)
+        {
+          
+          if(rowdata.stockname==AssignedStockData[i].AssignedParts[j].selectedStock){
+            debugger
+            for(let k=0;k<rowdata.parts.length;k++){
+              for(let l=0;l<AssignedStockData[i].AssignedParts[j].selectedStock.length;l++){
+                if(rowdata.parts[k].partsnumber==AssignedStockData[i].AssignedParts[j].selectedparts[l])
+                assignedValue++
+              }
+            }
+          }
+        }
+      }
+      // console.log("ASXAc",assignedValue)
+      // console.log("ss",rowAssignedData)
       //debugger;
       // //alert(ParentRowid)
       //console.log(d.parts);
@@ -18,6 +44,8 @@ $(document).ready(function () {
           "<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>";
         list += "<tbody>";
         d.parts.forEach((partdetail, index) => {
+
+
           list +=
             "<tr id=" +
             [index + 1] +
@@ -27,9 +55,9 @@ $(document).ready(function () {
             partdetail.partsnumber +
             "</td><td>" +
             partdetail.Order +
-            "</td><td>" +
-            partdetail.notes +
-            "</td><td class='deleteparts' data-val=" +
+            "</td><td><button type='button' data-val=" +
+            [index + 1] +" data-parentrowid=" +
+            [ParentRowid] + " class='btn showAssignedUser' data-toggle='popover' data-html='true'  data-content='Some content inside the popover'>"+ assignedValue+"</button></td><td class='deleteparts' data-val=" +
             [index + 1] +
             " data-parentrowid=" +
             [ParentRowid] +
@@ -536,6 +564,29 @@ $(document).ready(function () {
     input.addEventListener("search", () => {
       table.search(input.value).draw();
     });
+
+    //Show assigeduser popover
+    // $(document).on("click",".showAssignedUser",function(){
+      $('[data-toggle="popover"]').popover({
+        
+        html: true,
+        trigger: 'focus',
+        // title : 'Assigned to <a href="#" class="close" data-dismiss="alert">&times;</a>',
+        content: function () {
+          debugger
+          return `<small>hello</small>`
+          
+        },
+        // $(document).on('clicked','.closebtn',function(){
+        //   alert("CLicked")
+        //   $("#popover-content").hide();
+        //   $(this).parents(".popover").popover('hide');
+        // })
+        // $(".closebtn").click(function(){
+  
+        // })
+      });
+    // })
   } else {
     window.location.href = "index.html";
   }
