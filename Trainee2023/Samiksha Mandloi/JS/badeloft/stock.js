@@ -17,7 +17,7 @@ function logout() {
 
 
 function format(d) {
-
+  debugger
   let childRowHTML = '';
   if (d.itemDetails && d.itemDetails.length > 0) {
     childRowHTML += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
@@ -76,20 +76,20 @@ var table = $("#example").DataTable({
 });
 
 // Add event listener for opening and closing details
-$("#example tbody").on("click", "td.dt-control", function () {
-  var tr = $(this).closest("tr");
-  var row = table.row(tr);
+// $("#example tbody").on("click", "td.dt-control", function () {
+//   var tr = $(this).closest("tr");
+//   var row = table.row(tr);
 
-  if (row.child.isShown()) {
-    // This row is already open - close it
-    row.child.hide();
-    tr.removeClass("shown");
-  } else {
-    // Open this row
-    row.child(format(row.data())).show();
-    tr.addClass("shown");
-  }
-});
+//   if (row.child.isShown()) {
+//     // This row is already open - close it
+//     row.child.hide();
+//     tr.removeClass("shown");
+//   } else {
+//     // Open this row
+//     row.child(format(row.data())).show();
+//     tr.addClass("shown");
+//   }
+// });
 // var table2 = $("#example").DataTable();
 
 $("#search").on("keyup", function () {
@@ -103,7 +103,7 @@ $("#search").on("keyup", function () {
 
 
 function addStock() {
-  debugger
+  // debugger
   let stockName = document.getElementById("stock_name").value;
   let eta = document.getElementById("etadate").value;
   var status = document.querySelector('input[name="status"]:checked').value;
@@ -164,9 +164,9 @@ $("#parttable tbody").on("click", ".btn-delete", function () {
   $(this).closest("tr").remove();
 });
 
- //edit
- $("#example tbody").on("click", ".edit", function () {
-      
+
+$("#example tbody").on("click", ".edit", function () {
+  // debugger
   console.log(table.row(this).data());
   var data = table.row($(this).parents("tr")).data();
   var index = table.row($(this).parents("tr")).index();
@@ -174,81 +174,97 @@ $("#parttable tbody").on("click", ".btn-delete", function () {
   $("#etadate").val(data.etaDate);
   $('input[name="status"][value="' + data.status + '"]').prop("checked", true);
   if (data.itemDetails && data.itemDetails.length > 0) {
-    
-     let dTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
-     data.itemDetails.forEach(function (PartData) {
-        dTR +=
-           "<tr>" +
-           "<td>" +
-           PartData.partno +
-           "</td>" +
-           "<td>" +
-           "<td>" +
-           PartData.order +
-           "</td>" +
-           "<td>" +
-           PartData.notes +
-           "</td>" +
-           "<td class='text-end'><button type='button' class='btn-close btn-delete' aria-label='Close'></button></td></tr>";
-     });
-     dynamicTR += "</tbody>";
-     console.log("row" + dTR);
-     $("#parttable").html(dTR);
+
+    let dTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
+    data.itemDetails.forEach(function (PartData) {
+      dTR +=
+        "<tr>" +
+        "<td>" +
+        PartData.partno +
+        "</td>" +
+        "<td>" +
+        "<td>" +
+        PartData.order +
+        "</td>" +
+        "<td>" +
+        PartData.notes +
+        "</td>" +
+        "<td class='text-end'><button type='button' class='btn-close btn-delete' aria-label='Close'></button></td></tr>";
+    });
+    dTR += "</tbody>";
+    console.log("row" + dTR);
+    $("#parttable").html(dTR);
   }
   itemDetails = data.itemDetails;
   $('.modal-header').data("Edit Stock");
   $("#myModal").modal("show");
   console.log(itemDetails);
-  $("#save")
-     .unbind()
-     .click(function () {
-        var StockName = $("#stock_name").val();
-        var ETADate = $("#etadate").val();
-        var status = $('input[name="status"]:checked').val();
-        var createddate = "08/25/2000";
+  $("#savestock")
+    .unbind()
+    .click(function () {
+      var StockName = $("#stock_name").val();
+      var ETADate = $("#etadate").val();
+      var status = $('input[name="status"]:checked').val();
+      var createddate = "08/25/2000";
 
-        var stockDetails = {
-           stockName: StockName,
-           etaDate: ETADate,
-           status: StockStatus,
-           createdBy: username,
-           createdDate: createddate,
-           // notes: "Static notes",
-           Action: "",
-           itemDetails: itemDetails,
-        };
-        var StockData = JSON.parse(localStorage.getItem("stockDetail")) || [];
-        StockData[index] = stockDetails;
-        localStorage.setItem("stockDetail", JSON.stringify(StockData));
-        $("#save").modal("hide");
-        location.reload(true);
-     });
+      var stockDetails = {
+        stockName: StockName,
+        etaDate: ETADate,
+        status: status,
+        createdBy: username,
+        createdDate: createddate,
+        // notes: "Static notes",
+        Action: "",
+        itemDetails: itemDetails,
+      };
+      var StockData = JSON.parse(localStorage.getItem("stockDetail")) || [];
+      StockData[index] = stockDetails;
+      localStorage.setItem("stockDetail", JSON.stringify(StockData));
+      $("#savestock").modal("hide");
+      location.reload(true);
+    });
 
-  //delete part from edit
+
   $("#parttable").on("click", ".btn-delete", function () {
-     if (itemDetails.length == 1) {
-        swal("Error!", "Can't delete last partNumber", "error");
-     } else {
-        $(this).closest("tr").remove();
-        itemDetails.splice(this, 1);
-     }
+    if (itemDetails.length == 1) {
+      // swal("Error!", "Can't delete last partNumber", "error");
+      alert("You cant delete the last one");
+    } else {
+      $(this).closest("tr").remove();
+      itemDetails.splice(this, 1);
+    }
   });
 });
 
 //history modal
-$(".fa-history").on("click", function () {
-  $("#historyModal").modal("toggle");
-});
+// $(".fa-history").on("click", function () {
+//   $("#historyModal").modal("toggle");
+// });
 
-$("#stockTable tbody").on("click", "td.dt-control", function () {
+$("#example tbody").on("click", "td.dt-control", function () {
   var tr = $(this).closest("tr");
   var row = table.row(tr);
   if (row.child.isShown()) {
-     row.child.hide();
-     tr.removeClass("shown");
+    row.child.hide();
+    tr.removeClass("shown");
   } else {
-     row.child(format(row.data())).show();
-     tr.addClass("shown");
+    row.child(format(row.data())).show();
+    tr.addClass("shown");
+  }
+});
+// Add event listener for opening and closing details
+$("#example tbody").on("click", "td.dt-control", function () {
+  var tr = $(this).closest("tr");
+  var row = table.row(tr);
+
+  if (row.child.isShown()) {
+    // This row is already open - close it
+    row.child.hide();
+    tr.removeClass("shown");
+  } else {
+    // Open this row
+    row.child(format(row.data())).show();
+    tr.addClass("shown");
   }
 });
 // });
