@@ -94,7 +94,7 @@ $(document).ready(function () {
                 <div class="row">
                 <div class="col-md-4 ">
                       <div class="dropdown">
-                        <a class="btn btn-outline-primary dropdown-toggle" role="button" id="Stock_loc${row.stockname}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-outline-primary dropdown-toggle dropdownbtn" role="button" id="Stock_loc${row.stockname}" data-bs-toggle="dropdown" aria-expanded="false">
                         change
                          </a>
           

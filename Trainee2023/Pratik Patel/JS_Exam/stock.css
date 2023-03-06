@@ -207,3 +207,7 @@ table.table-condensed thead {
 .bi-p-circle-fill{
   color: #326C96;
 }
+.dropdownbtn {
+  color: #0d6efd !important;
+  border-color: #0d6efd !important;
+}
