@@ -46,13 +46,40 @@ if (localStorage.getItem('LogedinUser') !== null) {
             columns: [
                 { data: 'stockname', title: ' Stock Name', className: 'dt-left dt-control', orderable: false, },
                 { data: 'date', title: 'ETA Date', orderable: false, className: 'TextCenter' },
-                { data: 'stockstatus', title: 'Stock Location', orderable: false, className: 'TextCenter' },
+                {
+                    data: 'stockstatus', title: 'Stock Location', orderable: false, className: 'TextCenter', render: function (data, type, row) {
+                        // create a select element with options
+                        var select = '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+                        // return the select element as the cell content
+                        return select + data;
+                    }
+                },
                 { data: 'username', title: 'Created By', orderable: false, className: 'TextCenter' },
                 { data: 'createddate', title: 'Created Date', orderable: false, className: 'TextCenter' },
                 { data: 'partiteam[0].notes', title: 'Notes', orderable: false, className: 'TextCenter' },
                 { data: null, title: 'Action', orderable: false, className: 'editauditmodel', defaultContent: '<i class="bi bi-pencil-fill editmodel"  style="font-size: 1rem; color: gray;"></i> &nbsp; <i class="bi bi-clock-history" style="font-size: 1rem; color: gray;"></i>' },
             ],
             order: [[1, 'asc']],
+        });
+
+
+        $('#table_div1 tbody').on('change', 'select', function () {
+
+            var rowData = table.row($(this).closest('tr')).data(); // get the data for the current row
+            var newValue = $(this).val(); // get the new value from the dropdown
+            rowData.stockstatus = newValue; // update the data object
+            table.row($(this).closest('tr')).data(rowData); // update the table
+
+            // update the local storage
+            var data = JSON.parse(localStorage.getItem('stockdata'));
+            var index = data.findIndex(function (item) {
+                return item.stockname === rowData.stockname;
+            });
+            if (index !== -1) {
+                data[index].stockstatus = newValue;
+                localStorage.setItem('stockdata', JSON.stringify(data));
+            }
+            // location.reload(true)
         });
 
         var table = $("#table_div1").DataTable();
