@@ -1,0 +1,209 @@
+
+.mainbody {
+  background-color: #F7F8FA;
+}
+#stock {
+  font-size: 2rem;
+  color: black;
+}
+
+/* Modal */
+#addStock {
+  background-color: #326c96;
+  color: white;
+  margin-left: 70%;
+}
+@media only screen and (max-width: 1000px) {
+  #addStock {
+    margin-left: 1%;
+  }
+}
+label{
+    color: #8F8A8C;
+}
+.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
+  color: #fff !important;
+  background-color: #326C96 !important;
+  border-color: gray;
+}
+.btn-outline-primary{
+  color: black !important;
+  border: 1px rgb(206, 206, 206) solid !important;
+}
+.btn-group{
+    width: 150%;
+    border-radius: 6px;
+    background-color :#ffffff;
+}
+.btn-grp{
+    background-color :#ffffff;
+    color: rgb(43, 43, 43);
+}
+#savestock,#editstock{
+  background-color: #326c96;
+  padding: 7% 30%;
+  color: white;
+  
+}
+#saveparts{
+  background-color: #326c96;
+  padding: 11% 30%;
+  color: white;
+  
+}
+#CancelbtnLowwerAddStock{
+  margin-top: 1%;
+}
+.btn-outline-secondary{
+  padding: 6% 30%;
+}
+#upperStockModalclose,#upperPartsmodalcolse{
+  border: 0px;
+  color: grey;
+  background-color: white;
+}
+.bi-plus-circle{
+  color: #8F8A8C;
+}
+
+/* 
+#PartsTable thead */
+
+#tableStocks th{
+  font-weight: normal;
+  color: white;
+}
+#childTable thead{
+  color: #8F8A8C;
+}
+#tableStocks tr td:nth-child(1){
+  color: #1188FF;
+}
+.displayTable{
+  padding: 0% 3%;
+}
+#AddParts{
+  text-decoration: none;
+  font-size: small;
+}
+.dataTables_length,#table_div1_filter,#tableStocks_filter{
+  display: none;
+}
+.dataTables_info{
+  margin-top: 1%;
+    margin-left: 69%;
+}
+/* #saveparts{
+  background-color:#326c96 ;
+  color: #ffffff;
+  padding:7% 20%;
+} */
+/* #PartsTable{
+  border-radius: 10px !important;
+} */
+
+
+table.dataTable td.dt-control:before {
+  background-color: white !important;
+  color: #326C96 !important;
+  border: 1px solid #326C96 !important;
+  
+}
+table.dataTable td.dt-control:before {
+  height: 1em;
+  width: 1em;
+  margin-right: 3%;
+  margin-top: -9px;
+  display: inline-block;
+  color: white;
+  border: 0.15em solid #1188FF;
+  border-radius: 1em;
+  box-shadow: 0 0 0.2em #444;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1em;
+  content: "+";
+  background-color: #31b131;
+}
+#PartsTable{
+  border: 1px gray solid;
+}
+
+td{
+  background-color: #ffffff !important;
+}
+#PartsTable th{
+  background-color: #212529;
+  color: #ffffff;
+  font-weight: normal;
+}
+#childTable thead{
+  background-color: #F5F6FA;
+  /* padding: 0% 10%; */
+  border-radius: 8% !important;
+}
+#childTable th{
+  color: #8F8A8C;
+}
+
+ #childTable{
+  width: 95% !important;
+  margin: 0% 2%;
+}
+#childTable tr{
+  border-radius: 6px;
+  color: black;
+  
+}
+thead {
+  background-color: black;
+  border-radius: 1em;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+}
+
+table {
+  /* font-size: small; */
+  border-radius:0.5em;
+  overflow: hidden;
+  border: 1px gray solid;
+}
+
+#childTable tr td:nth-child(1){
+  color: #000000;
+}
+
+/* error */
+
+.error{
+  color: red;
+}
+
+
+/* PAGINATION */
+
+.current{
+  background-color: #212529 !important;
+}
+
+#tableStocks_paginate{
+  border: 1px rgb(220, 218, 218) solid;
+  border-radius: 3px;
+  margin-top: 1%;
+  color: #ffffff;
+}
+.dataTables_wrapper .dataTables_paginate {
+  padding-top: 0% !important;
+}
+
+/* calendar */
+
+table.table-condensed thead {
+  background-color: white;
+}
+
+.AuditStockName{color:#326C96}
+.bi-p-circle-fill{
+  color: #326C96;
+}

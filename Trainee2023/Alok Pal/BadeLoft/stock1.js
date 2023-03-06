@@ -37,7 +37,7 @@ function logout() {
 var r = JSON.parse(localStorage.getItem("newStock"));
 console.log(r);
 
-function format(d,id) {
+function format(d, id) {
   // debugger
   let dynamicChildRow = "";
   if (d.Part && d.Part.length > 0) {
@@ -131,8 +131,14 @@ $(document).ready(function () {
         data: "stockStatus",
         title: "Stock Location",
         orderable: false,
-        className: "showchildRow",
         class: "text-center",
+        render: function (data, type, row) {
+          // create a select element with options
+          var select =
+            '<select class="statusdropdown"><option value="Change">Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+          // return the select element as the cell content
+          return select + data;
+        },
       },
       {
         data: "user[0].Admin",
@@ -159,11 +165,39 @@ $(document).ready(function () {
         data: "null",
         title: "Action",
         orderable: false,
-        className: "dt-center editor-edit",
-        defaultContent:
-          '<i class="bi bi-pencil-fill text-secondary fw-bolder fs-6" on-click="editdata()"/> <i class="bi bi-clock-history text-secondary fw-bolder fs-6"/>',
+        className: "dt-center ",
+        render: function (data, type, row) {
+          return (
+            '<button type="button" class="bi bi-pencil-fill text-secondary fw-bolder editor-edit stockeditbtn fs-6 border-0 bg-light"></button>' +
+            '<button type="button" class="bi bi-clock-history text-secondary fw-bolder fs-6 border-0 bg-light"></button>'
+          );
+        },
       },
     ],
+  });
+
+  $("#stock_table tbody").on("change", "select", function () {
+    debugger;
+    var rowData = table.row($(this).closest("tr")).data(); // get the data for the current row
+    var newValue = $(this).val(); // get the new value from the dropdown
+    rowData.stockStatus = newValue; // update the data object
+    table.row($(this).closest("tr")).data(rowData); // update the table
+
+    // update the local storage
+    var data = JSON.parse(localStorage.getItem("newStock"));
+    var index = data.findIndex(function (item) {
+      return item.stock === rowData.stock;
+    });
+    if (index !== -1) {
+      data[index].stockStatus = newValue;
+      localStorage.setItem("newStock", JSON.stringify(data));
+    }
+    location.reload(true);
+  });
+
+  $(".bi-clock-history").on("click", function () {
+    debugger;
+    $("#historyModal").modal("toggle");
   });
 
   // Add event listener for opening and closing details
@@ -177,7 +211,7 @@ $(document).ready(function () {
       tr.removeClass("shown");
     } else {
       // Open this row
-      row.child(format(row.data(),table.row(this).index())).show();
+      row.child(format(row.data(), table.row(this).index())).show();
       tr.addClass("shown");
     }
   });
@@ -244,8 +278,6 @@ function addStockData() {
       $("#partTable").append("<tbody></tbody");
     } else {
       newStock = JSON.parse(localStorage.getItem("newStock"));
-      // console.log("ello",newStock[0].stock)
-      // console.log("ello", newStock.length);
 
       var flag;
       for (let i = 0; i < newStock.length; i++) {
@@ -273,6 +305,7 @@ function addStockData() {
         $("#StockModal").modal("hide");
         resetSVal();
         parts = [];
+        showModaltable();
         $("#partTable").append("<tbody></tbody");
       } else {
         Swal.fire({
@@ -304,25 +337,29 @@ function addStockData() {
 // show data
 function showModaltable() {
   var html = "";
-  html =
-    "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
-  parts.forEach(function (element, index) {
-    html += "<tr>";
-    html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
-    html += "<td class=text-start >" + Date.now() + "</td>";
-    html += "<td class=text-start > " + parts[index].Order + "</td>";
-    html += "<td class=text-start >" + parts[index].Comments + "</td>";
+  if (parts.length > 0) {
     html +=
-      '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
-      index +
-      ' )"   ></i> </td>';
-    html += "</tr>";
-    html += "</tbody>";
-
+      '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
+    html =
+      "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
+    parts.forEach(function (element, index) {
+      html += "<tr>";
+      html += "<td class=text-start text-white>" + parts[index].PartN + "</td>";
+      html += "<td class=text-start >" + Date.now() + "</td>";
+      html += "<td class=text-start > " + parts[index].Order + "</td>";
+      html += "<td class=text-start >" + parts[index].Comments + "</td>";
+      html +=
+        '<td class=text-end><i  class= "fa-solid fa-x delete" style="cursor:pointer" onclick="deletePartTableRow(' +
+        index +
+        ' )"   ></i> </td>';
+      html += "</tr>";
+      html += "</tbody>";
+      html += "</tbody></table>";
+    });
     $("#partTable").html(html);
 
     $("#PartModal").modal("hide");
-  });
+  }
 }
 
 //reset
@@ -358,15 +395,16 @@ $(function () {
   );
 });
 
-$("#stock_table").on("click", "td.editor-edit", function (e) {
-  e.preventDefault();
+$("#stock_table").on("click", ".editor-edit", function (e) {
   $("#StockModal").modal("show");
 
-  var indexRow = table.row(this).index();
-  console.log(indexRow);
+  // var indexRow = table.row(this).index();
+  // console.log(indexRow);
 
-  var tabledata = table.row(this).data();
-  console.log(tabledata);
+  // var tabledata = table.row(this).data();
+  // console.log(tabledata);
+  var tabledata = table.row($(this).parents("tr")).data();
+  var indexRow = table.row($(this).parents("tr")).index();
 
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
   console.log(newStockModal[indexRow].Part[0]);
@@ -374,8 +412,13 @@ $("#stock_table").on("click", "td.editor-edit", function (e) {
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
 
-  parts = newStockModal[indexRow].Part;
+  $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop(
+    "checked",
+    true
+  );
+
   showModaltable();
+  parts = newStockModal[indexRow].Part;
   document.querySelector("#modalstock").onclick = function () {
     var updatestock = (newStockModal[indexRow].stock =
       document.getElementById("stock").value);
@@ -422,20 +465,15 @@ function deletePartTableRow(index) {
 
 function deleteMainTableRow(element) {
   var newStockModal = JSON.parse(localStorage.getItem("newStock"));
-  
-  var stockID = $(element).attr('data-stock-id');
-  var StockIndex = newStockModal.findIndex(x => x.stock == stockID);
-  var PartIndex = $(element).attr('data-part-index');
+
+  var stockID = $(element).attr("data-stock-id");
+  var StockIndex = newStockModal.findIndex((x) => x.stock == stockID);
+  var PartIndex = $(element).attr("data-part-index");
   console.log("Part index", PartIndex);
-  
+
   // var partLength = newStockModal[PartIndex].Part.length ;
   // console.log("length",newStockModal[PartIndex].Part.length)
   console.log("Stock index", StockIndex);
-  
-  // if( partLength <= 0 ){
-
-  // }
-
 
   newStockModal[StockIndex].Part.splice(PartIndex, 1);
 
@@ -443,9 +481,8 @@ function deleteMainTableRow(element) {
 
   localStorage.setItem("newStock", JSON.stringify(newStockModal));
 
-  var tr = $(element).closest("tr")
-  tr.remove()
- 
+  var tr = $(element).closest("tr");
+  tr.remove();
 }
 
 //active
@@ -455,4 +492,11 @@ $(".nav-item a").each(function () {
   if ($(this).attr("href") == pathname) {
     $(this).addClass("active");
   }
+});
+
+//search cancel
+const input = document.querySelector('input[type="search"]');
+input.addEventListener("search", () => {
+    table.search(input.value).draw();
+    // console.log(`The term searched for was ${}`);
 });

@@ -9,17 +9,12 @@ if (localStorage.getItem('LogedinUser') !== null) {
             dynamicChildRow += '<thead class=" fw-normal bg-light childtable rounded"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
             dynamicChildRow += '<tbody>';
             d.partiteam.forEach((partiteam, index) => {
-                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + '</td><td>' + '<button type="button" class="btn-close delete" aria-label="Close"></button>' + '</td></tr>';
+                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + `</td><td> <button type="button" data-stock="${d.stockname}" class="btn-close deleteparts" aria-label="Close"></button></td></tr>`;
             });
             dynamicChildRow += '</tbody></table>';
         }
         return dynamicChildRow;
     }
-
-    $("#childpartTable tbody").on("click", ".btn-close", function () {
-        var index = table.row($(this).parents('tr')).index();
-        console.log(" table index", index);
-    });
 
     var isEdit = false;
     $(document).ready(function () {
@@ -60,7 +55,7 @@ if (localStorage.getItem('LogedinUser') !== null) {
             table.search(this.value).draw();
         });
 
-        $('#table_div1 tbody').on('click', 'td', function () {
+        $('#table_div1 tbody').on('click', 'td.dt-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row(tr);
             if (row.child.isShown()) {
@@ -209,12 +204,12 @@ if (localStorage.getItem('LogedinUser') !== null) {
                     var useridname = logedinUser[0].Name;
                     var date = new Date().toLocaleDateString();
                     var stockData = JSON.parse(localStorage.getItem('stockdata'));
-                    for (var i = 0; i < stockData.length; i++) {
-                        if (stockData[i].stockname === stockname) {
-                            swal("Invalid Detail!", "Enter Different Stock Name , This stock all ready Exist!", "warning");
-                            return;
-                        }
-                    }
+                    // for (var i = 0; i < stockData.length; i++) {
+                    //     if (stockData[i].stockname === stockname) {
+                    //         swal("Invalid Detail!", "Enter Different Stock Name , This stock all ready Exist!", "warning");
+                    //         return;
+                    //     }
+                    // }
                     if (partiteam.length === 0) {
                         swal("InComplete Detail!", "You Have to Add Atlest One Part!", "warning");
                         return;
@@ -239,6 +234,22 @@ if (localStorage.getItem('LogedinUser') !== null) {
                 }
             }
         };
+
+        $(document).on("click", ".deleteparts", function () {
+            var index;
+            var StockName = $(this).attr("data-stock");
+            debugger
+            // Remove the corresponding data from local storage
+            var StockData = JSON.parse(localStorage.getItem("stockdata")) || [];
+            var stockindex = StockData.findIndex(x => x.stockname == StockName);
+            if (StockData[stockindex].partiteam && StockData[stockindex].partiteam.length > 0) {
+                StockData[stockindex].partiteam.splice(index, 1);
+                localStorage.setItem("stockdata", JSON.stringify(StockData));
+            } +
+                partiteam.splice(index, 1);
+            $(this).closest("tr").remove();
+            // location.reload(true);
+        });
 
         $(function () {
             $('input[name="etadate"]').daterangepicker({
