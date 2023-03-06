@@ -30,7 +30,8 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <!-- Multiple select  -->
-        <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+        <link rel="stylesheet" href="css/jquery.multiselect.css">
+
        
 
         <link
@@ -161,7 +162,7 @@
                                             
                                                 <div class="col-md-5">
                                                     <label>Parts</label>
-                                                    <select class="form-select multiSelect" id="asignparts" multiple>
+                                                    <select class="form-select multiSelect" id="asignparts" multiple="multiple">
                                                         <option value="BW-01-5-M">BW-01-5-M</option>
                                                         <option value="AT-01-BLK">AT-01-BLK</option>
                                                         <option value="BW-03-XL-G">BW-03-XL-G</option>
@@ -239,7 +240,7 @@
     <script src="./jQuery-multi-select-js/jQuery-Plugin-multi-select-js/src/jquery.multi-select.js"></script>
     <script>
         $(document).ready(function() {
-            $('#parts').multiSelect();
+            $('#asignparts').multiSelect();
         });
     </script>
 

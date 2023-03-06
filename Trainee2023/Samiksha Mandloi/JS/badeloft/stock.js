@@ -24,7 +24,7 @@ function format(d) {
     childRowHTML += '<thead><tr><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
     childRowHTML += '<tbody>';
     d.itemDetails.forEach((itemDetail) => {
-      childRowHTML += '<tr><td>' + itemDetail.partno + '</td><td>' + itemDetail.order + '</td><td>' + itemDetail.notes + '</td>'<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>'</tr>';
+      childRowHTML += '<tr><td>' + itemDetail.partno + '</td><td>' + itemDetail.order + '</td><td>' + itemDetail.notes + '</td>'+'<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>'+'</tr>';
     });
     childRowHTML += '</tbody></table>';
   }
@@ -213,7 +213,6 @@ $("#example tbody").on("click", ".edit", function () {
         status: status,
         createdBy: username,
         createdDate: createddate,
-        // notes: "Static notes",
         Action: "",
         itemDetails: itemDetails,
       };
@@ -241,32 +240,32 @@ $("#example tbody").on("click", ".edit", function () {
 //   $("#historyModal").modal("toggle");
 // });
 
-$("#example tbody").on("click", "td.dt-control", function () {
-  var tr = $(this).closest("tr");
-  var row = table.row(tr);
-  if (row.child.isShown()) {
-    row.child.hide();
-    tr.removeClass("shown");
-  } else {
-    row.child(format(row.data())).show();
-    tr.addClass("shown");
-  }
-});
+// $("#example tbody").on("click", "td.dt-control", function () {
+//   var tr = $(this).closest("tr");
+//   var row = table.row(tr);
+//   if (row.child.isShown()) {
+//     row.child.hide();
+//     tr.removeClass("shown");
+//   } else {
+//     row.child(format(row.data())).show();
+//     tr.addClass("shown");
+//   }
+// });
 // Add event listener for opening and closing details
 $("#example tbody").on("click", "td.dt-control", function () {
-  var tr = $(this).closest("tr");
-  var row = table.row(tr);
-
-  if (row.child.isShown()) {
-    // This row is already open - close it
-    row.child.hide();
-    tr.removeClass("shown");
-  } else {
-    // Open this row
-    row.child(format(row.data())).show();
-    tr.addClass("shown");
-  }
-});
+    var tr = $(this).closest("tr");
+    var row = table.row(tr);
+  
+    if (row.child.isShown()) {
+      // This row is already open - close it
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      // Open this row
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
 // });
 //     localStorage.setItem('stockDetail', JSON.stringify(stockDetailsArray));
 
