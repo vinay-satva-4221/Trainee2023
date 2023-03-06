@@ -53,10 +53,10 @@ table {
     margin: 20px;
 
 }
-#dashboadr-table_info{
+/* #dashboadr-table_info{
     position: relative;
    left: 1020px;
-}
+} */
 .page-link.active {
     z-index: 3;
     color: var(--bs-pagination-active-color);
@@ -74,13 +74,7 @@ table {
     margin-top: 9px;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{ color: white !important;
-    /* color: inherit !important; */
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    background-color:black !important;
-   background:white;
-}
+
 /* .sorting_asc{
             margin-right: 300px;
         } */
