@@ -53,21 +53,24 @@ $(document).ready(function () {
          },
       },
       columns: [
+         { data: "stockName", className: "text-start dt-control", orderable: false },
+         { data: "etaDate", orderable: false },
          {
-            className: "dt-control",
+            data: "status",
+            className: "text-center",
             orderable: false,
-            targets: "_all",
-            data: null,
-            defaultContent: "",
+            render: function (data, type, row) {
+               var select =
+                  '<select style="border: 2px solid #326C96;  border-radius: 5px; width: 75px; font-size: 14px;" class="statusdropdown"><option value="Change" disable>Change </option><option value="In Warehouse">In Warehouse</option><option value="On Water">On Water</option><option value="On Production">On Production</option></select>';
+               return select + data;
+            },
          },
-         { data: "stockName" },
-         { data: "etaDate" },
-         { data: "status" },
-         { data: "createdBy" },
-         { data: "createdDate" },
+         { data: "createdBy", orderable: false },
+         { data: "createdDate", orderable: false },
          // { data: "notes" },
          {
             data: "null",
+            orderable: false,
             render: function (data, type, row) {
                return (
                   '<button type="button" class="fa fa-pencil edit" style="border: none; color:grey;"></button>' +
@@ -79,36 +82,73 @@ $(document).ready(function () {
       order: [[1, "asc"]],
    });
 
+   //status select box
+   $("#stockTable tbody").on("change", "select", function () {
+      var rowData = table.row($(this).closest("tr")).data();
+      var newValue = $(this).val();
+      rowData.status = newValue;
+      table.row($(this).closest("tr")).data(rowData);
+
+      var data = JSON.parse(localStorage.getItem("stockDetail"));
+      var index = data.findIndex(function (item) {
+         return item.stockName === rowData.stockName;
+      });
+      if (index !== -1) {
+         data[index].status = newValue;
+         localStorage.setItem("stockDetail", JSON.stringify(data));
+      }
+      location.reload(true);
+   });
+
+   // Validations
    $("#stockForm").validate({
       rules: {
          stockname: {
-              required: true,
-          },
-          etadate: {
-              required: true,
-              date: true
-          },
-          stock_status: {
-              required: true,
-          },
+            required: true,
+         },
+         stock_status: {
+            required: true,
+         },
+         etadate: {
+            required: true,
+         },
       },
       messages: {
          stockname: {
-              required: "Please enter stock name",
-          },
-          etadate: {
-              required: "Please enter ETA Date",
-              date: "Please enter valid date"
-          },
-          stock_status: {
-              required: "Please select stock status",
-          }
-      }
+            required: "Please Provide Stock Name",
+         },
+         stock_status: {
+            required: "Please select an option",
+         },
+         etadate: {
+            required: "Choose Date",
+         },
+      },
+   });
+
+   $("#partForm").validate({
+      rules: {
+         partNumber: {
+            required: true,
+         },
+         orderNumber: {
+            required: true,
+            number: true,
+         },
+      },
+      messages: {
+         stockname: {
+            required: "Enter Part Number",
+         },
+         stock_status: {
+            required: "Enter Order Qunatity",
+            number: "Only Enter Number",
+         },
+      },
    });
 
    //edit
    $("#stockTable tbody").on("click", ".edit", function () {
-      
       console.log(table.row(this).data());
       var data = table.row($(this).parents("tr")).data();
       var index = table.row($(this).parents("tr")).index();
@@ -116,7 +156,6 @@ $(document).ready(function () {
       $("#etadate").val(data.etaDate);
       $('input[name="stock_status"][value="' + data.status + '"]').prop("checked", true);
       if (data.itemDetails && data.itemDetails.length > 0) {
-        
          let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
          data.itemDetails.forEach(function (PartData) {
             dynamicTR +=
@@ -138,7 +177,7 @@ $(document).ready(function () {
          $("#parttable").html(dynamicTR);
       }
       itemDetails = data.itemDetails;
-      $('.modal-header').data("Edit Stock");
+      $(".modal-header").data("Edit Stock");
       $("#AddStock").modal("show");
       console.log(itemDetails);
       $("#save")
@@ -196,32 +235,49 @@ $(document).ready(function () {
 });
 
 $("#save").click(function () {
-   let stockName = $("#stockname").val();
-   let eta = $("#etadate").val();
-   let status = $('input[name="stock_status"]:checked').val();
+   if ($("#stockForm").valid() == true) {
+      let stockName = $("#stockname").val();
+      let eta = $("#etadate").val();
+      let status = $('input[name="stock_status"]:checked').val();
 
-   let stockDetails = {
-      stockName: stockName,
-      etaDate: eta,
-      status: status,
-      createdBy: username,
-      createdDate: eta,
-      //  notes: "Static notes",
-      Action: "",
-      itemDetails: stockItemDetails,
-   };
+      // Check if the stock name already exists
+      var StockData = JSON.parse(localStorage.getItem("stockDetail")) || [];
+      debugger;
+      for (var i = 0; i < StockData.length; i++) {
+         if (StockData[i].stockName.toLowerCase() === stockName.toLowerCase()) {
+            swal("Error!", "Stock Name cannot be same", "error");
+            return;
+         }
+      }
+      // Check if at least one part is present
+      if (stockItemDetails.length === 0) {
+         swal("Error!", "Add Part Number", "error");
+         return;
+      }
 
-   var stockDetailsArray = JSON.parse(localStorage.getItem("stockDetail"));
-   if (!stockDetailsArray) {
-      stockDetailsArray = [];
+      let stockDetails = {
+         stockName: stockName,
+         etaDate: eta,
+         status: status,
+         createdBy: username,
+         createdDate: eta,
+         //  notes: "Static notes",
+         Action: "",
+         itemDetails: stockItemDetails,
+      };
+
+      var stockDetailsArray = JSON.parse(localStorage.getItem("stockDetail"));
+      if (!stockDetailsArray) {
+         stockDetailsArray = [];
+      }
+      stockDetailsArray.push(stockDetails);
+      localStorage.setItem("stockDetail", JSON.stringify(stockDetailsArray));
+
+      $("#stockname").val("");
+      $("#etadate").val("");
+      stockItemDetails = [];
+      table.row.add(stockDetails).draw();
    }
-   stockDetailsArray.push(stockDetails);
-   localStorage.setItem("stockDetail", JSON.stringify(stockDetailsArray));
-
-   $("#stockname").val("");
-   $("#etadate").val("");
-   stockItemDetails = [];
-   table.row.add(stockDetails).draw();
 });
 
 $("#newBtn").click(function () {
@@ -242,22 +298,24 @@ function addItemDetails() {
    let notes = document.getElementById("notes").value;
    let invoice = 15001;
 
-   let stockDetail11 = {
-      partno: partNo,
-      order: order,
-      notes: notes,
-   };
+   if ($("#partForm").valid() == true) {
+      let stockDetail11 = {
+         partno: partNo,
+         order: order,
+         notes: notes,
+      };
 
-   stockItemDetails.push(stockDetail11);
+      stockItemDetails.push(stockDetail11);
 
-   let dtr = "<tr>";
-   dtr = dtr + "<td class='txtpartno' data-id='" + stockDetail11.partno + "' >" + stockDetail11.partno + "</td>";
-   dtr = dtr + "<td class='txtinvoice' >" + invoice++ + "</td>";
-   dtr = dtr + "<td class='txtorder' >" + stockDetail11.order + "</td>";
-   dtr = dtr + "<td class='txtnotes' >" + stockDetail11.notes + "</td>";
-   dtr = dtr + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
-   dtr = dtr + "</tr>";
-   $("#parttable tbody").append(dtr);
+      let dtr = "<tr>";
+      dtr = dtr + "<td class='txtpartno' data-id='" + stockDetail11.partno + "' >" + stockDetail11.partno + "</td>";
+      dtr = dtr + "<td class='txtinvoice' >" + invoice++ + "</td>";
+      dtr = dtr + "<td class='txtorder' >" + stockDetail11.order + "</td>";
+      dtr = dtr + "<td class='txtnotes' >" + stockDetail11.notes + "</td>";
+      dtr = dtr + "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
+      dtr = dtr + "</tr>";
+      $("#parttable tbody").append(dtr);
+   }
 
    $("#parttable").on("click", ".btn-delete", function () {
       debugger;
