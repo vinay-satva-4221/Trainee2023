@@ -16,6 +16,10 @@
     margin-left: auto;
 }
 
+.error{
+  color: red;
+}
+
 .navbar-nav .nav-link {
     position: relative;
  }
@@ -100,10 +104,10 @@ body {
     margin-left: 77%;
   }
 
-  .sorting_1{
+  .dt-control{
     color: #1188FF;
   }
-
+  
   #example.dataTable td.dt-control:before {
     background-color: white;
     color: #326C96;

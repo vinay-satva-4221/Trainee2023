@@ -40,7 +40,53 @@ $(document).ready(function () {
         
         order: [[1, 'asc']],
     });
- 
+    var customerInvoice = [
+      { customer: 'Keneth', invoiceNum: '15000' },
+      { customer: 'Keneth', invoiceNum: '15001' },
+      { customer: 'Keneth', invoiceNum: '15002' },
+      { customer: 'Keneth', invoiceNum: '15003' },
+      { customer: 'Eric Jensan', invoiceNum: '16001' },
+      { customer: 'Eric Jensan', invoiceNum: '16002' },
+      { customer: 'Eric Jensan', invoiceNum: '16003' },
+      { customer: 'Kelly McCrory', invoiceNum: '17001' },
+      { customer: 'Kelly McCrory', invoiceNum: '17002' },
+
+  ];
+
+$("#customer").change(function () {
+
+    $("#quickbookInvoice").html("<option selected disabled>Choose invoice</option>");
+    const invoice = customerInvoice.filter(m => m.customer == $("#customer").val());
+    invoice.forEach(element => {
+        const option = "<option val='" + element.invoiceNum + "'>" + element.invoiceNum + "</option>";
+        $("#quickbookInvoice").append(option);
+    });
+
+});
+
+var stockData = JSON.parse(localStorage.getItem('StockDetails'));
+
+var selectOptions = '';
+for (i = 0; i < stockData.length; i++) {
+
+    selectOptions += '<option value="' + stockData[i].stockName + '">' + stockData[i].stockName + '</option>';
+}
+$("#stockname").append(selectOptions).on('change', function () {
+
+    var selected = $(this).find('option:selected').val();
+
+    const parts = stockData.find(m => m.stockName == selected).SecondPartDetail;
+    console.log(parts)
+    $("#parts").html("");
+    parts.forEach(element => {
+
+        const option = "<option val='" + element.Partnumber + "'>" + element.Partnumber + "</option>";
+        $("#parts").append(option);
+    });
+
+
+});
+
     // Add event listener for opening and closing details
     $('#AssignmentTable tbody').on('click', 'td.dt-control', function () {
         var tr = $(this).closest('tr');

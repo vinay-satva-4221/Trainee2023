@@ -22,19 +22,8 @@
 <body  style="background-color: #F7F8FA;">
     <div id="navbar"></div>
     <div class="container-fluid  ">
-        <table id="example" class="display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>QB Invoice#</th>
-                    <th>Name</th>
-                    <th>Created By</th>
-                    <th>Created Date</th>
-                    <th>Action</th>
-                    
-
-
-                </tr>
-            </thead>
+        <table id="assignedparttable" class="display" style="width:100%">
+           
 
         </table>
     </div>
@@ -81,15 +70,17 @@
                             <div class="col-md-5">
                                 <label for="part" class="form-label text-secondary">Parts</label>
                                 <select class="partnumbers" id="parts" name="parts[]" multiple="multiple">
-<option value=""></option>
+
                                 </select>
                                                              
                             </div>
 
                             <div class="col-md-2">
                                 <label for="add" class="form-label text-white">add</label>
-                                <button type="button" class="btn buttonColor text-white w-100"
+
+                                <button type="button" class="btn buttonColor w-100"
                                     id="addPartsToStock">Add</button>
+                                
                             </div>
                         </div>
                     </form>
@@ -100,10 +91,16 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-start">
-                    <a href="#" data-bs-dismiss="modal" class="btn" id="saveAssignments">Save</a>
+                    
+                  
+             
+                <a href="#" data-bs-dismiss="modal" class="btn" id="saveAssignments"
+                   >Save</a>
+                    <!-- <a href="#" data-bs-dismiss="modal" class="btn" id="saveAssignments">Save</a> -->
                     <!-- <button type="button" class="btn buttonColor text-white" data-bs-dismiss="modal"
                         id="saveAssignments">Save</button> -->
-                    <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button>
+                        <a href="#" id="" data-bs-dismiss="modal" class="btn">Cancel</a>
+                    <!-- <button type="button" class="btn btn-outline-secondary cancelbtn" data-bs-dismiss="modal">Cancel</button> -->
                 </div>
             </div>
         </div>
