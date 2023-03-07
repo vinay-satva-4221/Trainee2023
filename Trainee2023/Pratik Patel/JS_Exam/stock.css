@@ -222,3 +222,8 @@ table.table-condensed thead {
   text-decoration: none !important;
   cursor: pointer;
 }
+
+#tableStocks {
+  overflow-y: visible;
+  /* margin-bottom: 5% */
+}

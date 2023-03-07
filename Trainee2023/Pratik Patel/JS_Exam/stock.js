@@ -2,25 +2,32 @@ $(document).ready(function () {
   if (localStorage.getItem("LogedinUser") !== null) {
     var StockDetails = new Array();
 
+    
     var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
-    //  console.log(AssignedStockData)
 
     $("#navigation").load("Navbar.html");
     //Display name in Navbar
     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
+
     var table;
     function format(d, ParentRowid) {
+      debugger
+      var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
+     console.log(AssignedStockData)
+      let assignedValue = 0;
+      if(AssignedStockData!=null || AssignedStockData!=undefined){
+      console.log(ParentRowid)
       rowdata = STOCKS[ParentRowid];
 
       console.log("cc", rowdata.parts);
-      let assignedValue = 0;
+     
       for (let i = 0; i < AssignedStockData.length; i++) {
         for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
           if (
             rowdata.stockname ==
             AssignedStockData[i].AssignedParts[j].selectedStock
           ) {
-            // debugger;
+            // //debugger;
             for (let k = 0; k < rowdata.parts.length; k++) {
               for (
                 let l = 0;
@@ -36,12 +43,7 @@ $(document).ready(function () {
             }
           }
         }
-      }
-      // console.log("ASXAc",assignedValue)
-      // console.log("ss",rowAssignedData)
-      //debugger;
-      // //alert(ParentRowid)
-      //console.log(d.parts);
+      }}
       let list = "";
       if (d.parts && d.parts.length > 0) {
         list +=
@@ -87,9 +89,8 @@ $(document).ready(function () {
     }
 
     var STOCKS = JSON.parse(localStorage.getItem("stock"));
-    debugger;
-    // //console.log(StockDetails[1].stockname)
     table = $("#tableStocks").DataTable({
+
       order: [],
       deferRender: true,
       language: {
@@ -396,7 +397,7 @@ $(document).ready(function () {
           } else {
             var Value = true;
             for (let i = 0; i < StockDetails.length; i++) {
-              if (StockDetails[i].stockname == StockName) {
+              if (StockDetails[i].stockname.toLowerCase() == StockName.toLowerCase()) {
                 Value = false;
                 Swal.fire("Stock Number is already Present");
               }
@@ -464,9 +465,14 @@ $(document).ready(function () {
 
     //Delete Parts in AddstockModal
     $(document).on("click", ".cancel", function () {
+      if(PARTS.length==1){
+        Swal.fire("Atleast 1 part is required")
+      }
+      else{
       let index = parseInt($(this).data("val"));
       PARTS.splice(index - 1, 1);
       PartsTableDIsplay();
+      }
     });
 
     //Search Table
@@ -511,6 +517,19 @@ $(document).ready(function () {
           createddate = new Date();
           createddate = createddate.toLocaleDateString();
           StockDetails = JSON.parse(localStorage.getItem("stock"));
+           
+          let checknameisalreadypreset=false
+          debugger
+          for(let i=0;i<StockDetails.length;i++){
+            if(StockName.toLowerCase() ==StockDetails[i].stockname.toLowerCase()){
+              if(i==Index){
+                continue
+              }
+              
+              checknameisalreadypreset=true
+            }
+          }
+          if(checknameisalreadypreset==false){
           var newObj = {
             stockname: StockName,
             Etadate: ETADate,
@@ -521,10 +540,15 @@ $(document).ready(function () {
           };
 
           StockDetails[Index] = newObj;
-
-          $(".save").attr("id", "savestock");
           localStorage.setItem("stock", JSON.stringify(StockDetails));
           table.row(Index).data(newObj).draw();
+        }
+        else{
+          Swal.fire("Stock is already Present")
+        }
+          $(".save").attr("id", "savestock");
+          document.getElementById("addStocks").reset();
+          PARTS=[]
           $("#addStockModal").modal("hide");
         } else {
           Swal.fire("Please enter at least 1 part");
@@ -587,7 +611,7 @@ $(document).ready(function () {
       for (let i = 0; i < AssignedStockData.length; i++) {
         for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
           if (rowdata.stockname ==AssignedStockData[i].AssignedParts[j].selectedStock) {
-            // debugger;
+            // //debugger;
             for (let k = 0; k < rowdata.parts.length; k++) {
               for (let l = 0;l < AssignedStockData[i].AssignedParts[j].selectedStock.length;l++) {
                 if (rowdata.parts[k].partsnumber ==AssignedStockData[i].AssignedParts[j].selectedparts[l])
