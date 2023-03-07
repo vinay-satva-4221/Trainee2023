@@ -275,11 +275,17 @@ $(document).ready(function () {
     });
     //Delete Parts in Modal
     $(document).on("click", ".cancel", function () {
+
+      if(SelectedPartsStock.length==1){
+        Swal.fire("atleast 1 part is requiered")
+      }
+      else{
       let index = parseInt($(this).data("val"));
       // var index=parseInt( $(this).data('val'))-1
       //////alert(index)
       SelectedPartsStock.splice(index - 1, 1);
       displaySelectedStockParts();
+      }
     });
 
     $("#newAssignment").click(function () {
@@ -399,17 +405,6 @@ $(document).ready(function () {
       }
     });
 
-
-    //   var myData = ['New York','Los Angeles','Chicago' ]
-    //   $(function() {
-
-    //  var instance = $('#SelectParts').magicSuggest({
-
-    //    data: myData
-
-    //  });
-
-    //  });
   } else {
     window.location.href = "index.html";
   }

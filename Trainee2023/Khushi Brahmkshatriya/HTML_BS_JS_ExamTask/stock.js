@@ -23,7 +23,7 @@ $(document).ready(function () {
     function addDataToLocal() {
 
         let localData = localStorage.getItem('stockandparts');
-        console.log($("input[name='btnradio']:checked").val());
+        console.log($("input[name='stockstatusbtn']:checked").val());
         if (localData) {
             let localArray = JSON.parse(localData);
             // let myId = localArray.length - 1;
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 CreatedBy: createdBy.UserName,
                 StockName: $('#stockName').val(),
                 ETADate: $('#etaDate').val(),
-                StockStatus: ($("input[name='btnradio']:checked").val()),
+                StockStatus: ($("input[name='stockstatusbtn']:checked").val()),
                 PartData: Parts,
             };
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 CreatedBy: createdBy.UserName,
                 StockName: $('#stockName').val(),
                 ETADate: $('#etaDate').val(),
-                StockStatus: ($("input[name='btnradio']:checked").val()),
+                StockStatus: ($("input[name='stockstatusbtn']:checked").val()),
                 PartData: Parts,
             };
             arryObj.push(obj);
@@ -119,8 +119,19 @@ $(document).ready(function () {
                         orderable: false, 'max-width': '197px'
                     },
                     { data: "ETADate", title: "ETA Date", orderable: false, 'max-width': "181px", className: "rowclickable" },
-                    { data: "StockStatus", title: "Stock Location", orderable: false, 'max-width': "235px", className: "rowclickable",
-                     },
+                    {
+                        data: 'StockStatus',
+                        title: "Stock Location",
+                        className: "rowclickable",
+                        'max-width': "235px",
+                        orderable: false,
+                        render: function (data, type, row) {
+                            // create a select element with options
+                            var select = '<select class="statusdropdown"><option value="Change" class="optiondata">Change </option><option value="InWarehouse" class="optiondata">In Warehouse</option><option value="OnWater" class="optiondata">On Water</option><option value="OnProduction" class="optiondata">On Production</option></select>';
+                            // return the select element as the cell content
+                            return select + data;
+                        }
+                      },
                     { data: "CreatedBy", title: "Created By", orderable: false, 'max-width': "181px", className: "rowclickable" },
                     {
                         data: DataTable.render.datetime('MM/DD/YYYY'),
@@ -141,6 +152,26 @@ $(document).ready(function () {
 
         });
     }
+
+    $('#stocktable tbody').on('change', 'select', function () {
+
+        var rowData = table.row($(this).closest('tr')).data(); // get the data for the current row
+        var newValue = $(this).val(); // get the new value from the dropdown
+        rowData.selectedStockstatus = newValue; // update the data object
+        table.row($(this).closest('tr')).data(rowData); // update the table
+    
+        // update the local storage
+        var data = JSON.parse(localStorage.getItem('stockandparts'));
+        var index = data.findIndex(function (item) {
+            return item.stockName === rowData.stockName;
+        });
+        if (index !== -1) {
+            data[index].StockStatus = newValue;
+            localStorage.setItem('stockandparts', JSON.stringify(data));
+        }
+        location.reload(true)
+    });
+
     //searching in table
     $('#txtSearch').keyup(function () {
         table.search($(this).val()).draw();   // this  is for customized searchbox with datatable search feature.
@@ -176,7 +207,7 @@ $(document).ready(function () {
         $("#stockName").val(data.StockName);
         $("#etaDate").val(data.ETADate);
 
-        $('input[name="btnradio"][value="' + data.StockStatus + '"]').prop('checked', true);
+        $('input[name="stockstatusbtn"][value="' + data.StockStatus + '"]').prop('checked', true);
 
         if (data.PartData && data.PartData.length > 0) {
 
@@ -202,7 +233,7 @@ $(document).ready(function () {
 
             var updatedStockName = $("#stockName").val();
             var updatedETADate = $("#etaDate").val();
-            var updatedStockStatus = $('input[name="btnradio"]:checked').val();
+            var updatedStockStatus = $('input[name="stockstatusbtn"]:checked').val();
             //var updatedcreateddate = Date.now();
 
 
@@ -261,8 +292,9 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+    
     $("#stockName").on("blur change", function () {
-
+      
         var stocknamevalue = $(this).val();
         let localData = localStorage.getItem('stockandparts');
         let stockname = JSON.parse(localData);
@@ -270,14 +302,14 @@ $(document).ready(function () {
             x => x.StockName === stocknamevalue);
         if (uniqueStockName == undefined) {
             $('.errorforduplicate').html('');
-            return true;
 
         }
         else {
             $('.errorforduplicate').html('Please enter unique stock name');
-            return false;
-        }
+           
+        }   
     });
+    
 
     $("#stockForm").validate({
         // in 'rules' user have to specify all the constraints for respective fields
@@ -291,20 +323,20 @@ $(document).ready(function () {
                 required: true,
                 date: true
             },
-            btnradio: {
+            stockstatusbtn: {
                 required: true,
             },
         },
         messages: {
             stockName: {
                 required: "Please enter stock name",
-                unique: "Please enter unique stock name",
+                
             },
             etaDate: {
                 required: "Please enter ETA Date",
                 date: "Please enter valid date"
             },
-            btnradio: {
+            stockstatusbtn: {
                 required: "Please select stock status",
             }
         }
@@ -333,6 +365,7 @@ $(document).ready(function () {
             else {
 
 
+
                 $('#stockModal').modal("hide");
                 $('#stockModal').on('hidden.bs.modal', function () {
                     $('.modal-backdrop').remove();
@@ -357,7 +390,7 @@ $(document).ready(function () {
 
         $('#stockName').val('');
         $('#etaDate').val('');
-        $("input[name='btnradio']:checked").val('');
+        $("input[name='stockstatusbtn']:checked").val('');
         $('#partTable').html(null);
     }
     //deleting parts data from parttable 

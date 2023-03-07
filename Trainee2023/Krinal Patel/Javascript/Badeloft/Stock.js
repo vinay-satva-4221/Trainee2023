@@ -24,6 +24,7 @@ function logout() {
 
 
 
+
 // Data table stock
 /* Formatting function for row details - modify as you need */
 function format(d) {
@@ -54,7 +55,7 @@ function format(d) {
   // var currentIndex = $(this).closest('tr').index();
 
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded" id="childtablepart">';
-  childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
+  childrow += '<thead class="colorthead"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
   var id = 1;
   q.forEach((e) => {

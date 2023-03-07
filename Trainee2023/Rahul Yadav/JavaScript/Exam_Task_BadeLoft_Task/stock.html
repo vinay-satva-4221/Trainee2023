@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Stock</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
@@ -185,7 +185,85 @@
                 </div>
             </div>
         </div>
+
         </div>
+
+        <div class="modal fade" id="History_Modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 " id="exampleModalLabel"> <b>Audit</b> </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="History_Modal_Text_Color"> <b>Stock C100</b> </p>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="bi bi-r-circle-fill mx-4" style="font-size: 1.2rem; color: #07678d;"></i>
+                            </div>
+                            <div class="col-md-11 mx-0 px-0">
+                                <p class="fw-bold mb-0">C100 stock added by Eric</p>
+                                <p class="History_Modal_Text_size text-secondary mb-0">Add part BW-01-S-M with ordered
+                                    quantity 5 | Add
+                                    part AT-01-BLK with ordered quantity 4</p>
+                                <p class="History_Modal_Text_size"> Last Updated by <span
+                                        class="History_Modal_Text_Color ">Eric on 02/22/2022 09:00AM</span></p>
+                            </div>
+                            <hr class="bg-secondary text-secondary">
+                            <div class="col-md-1">
+                                <i class="bi bi-h-circle-fill mx-4" style="font-size: 1.2rem; color: #07678d;"></i>
+                            </div>
+                            <div class="col-md-11 mx-0 px-0">
+                                <p class=" mb-0"> <b>Stock updated by jeshal</b> </p>
+                                <p class="History_Modal_Text_size text-secondary mb-0">Edit part AT01 with ordered
+                                    quantity 5</p>
+                                <p class="History_Modal_Text_size">Last Updated by <span
+                                        class="History_Modal_Text_Color ">jeshal on 02/22/2022 12:30PM</span>
+                                </p>
+                            </div>
+                            <hr class="bg-secondary text-secondary">
+                            <div class="col-md-1">
+                                <i class="bi bi-r-circle-fill mx-4" style="font-size: 1.2rem; color: #07678d;"></i>
+                            </div>
+                            <div class="col-md-11 mx-0 px-0">
+                                <p class=" mb-0"> <b>Part has been deleted by Eric</b> </p>
+                                <p class="History_Modal_Text_size text-secondary mb-0">Edit part AT03</p>
+                                <p class="History_Modal_Text_size">Last Updated by <span
+                                        class="History_Modal_Text_Color ">Eric on 02/22/2022 02:15PM</span></p>
+                            </div>
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation" class="float-end historyPagination">
+                                    <ul class="pagination paginationAudit">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true" class="fw-bold">&lt;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-active" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true" class="fw-bold">&gt;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <script src="jquery/jquery.js"></script>
