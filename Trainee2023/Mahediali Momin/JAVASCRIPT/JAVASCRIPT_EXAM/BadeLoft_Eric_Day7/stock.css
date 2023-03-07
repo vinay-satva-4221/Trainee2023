@@ -31,25 +31,24 @@ table {
 
 } */
 
-/* #StockTable thead {
+#StockTable thead {
     background-color: black;
     border-collapse: collapse;
     border-radius: 1em;
 
-} */
+}
 
-/* table #StockTable {
+table #StockTable {
     font-size: small;
     border-collapse: collapse;
-    border-radius: 1.2em;
+    border-radius: 0.5em;
     overflow: hidden;
     background-color: white;
     border: 1px solid black;
     font-size: small;
     border-collapse: collapse;
-    border-radius: 1em;
     overflow: hidden;
-} */
+}
 
 .addPartBtn {
     border: 1px solid white;
@@ -268,7 +267,7 @@ input[type=checkbox]:checked {
 .btn:first-child:active,
 :not(.btn-check)+.btn:active {
     background-color: #4872b1 !important;
-    /* border-color: #4872b1 !important; */
+    border-color: #4872b1 !important;
     color: white !important;
 
 }

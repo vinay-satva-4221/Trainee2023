@@ -144,39 +144,47 @@ table {
   border: 1px solid black;
 }
 
-#Statustable.dataTable td.dt-control:before {
+#assignmentTable.dataTable td.dt-control:before {
   background-color: white;
   color: #1188FF;
-  border-color: #1188FF;
+  border-color: #063894;
+  margin: 5px;
 }
 
-#Statustable th.sorting.sorting_asc::before {
-
-  margin-right: 15%;
+table.dataTable td.dt-control {
+  text-align: start !important;
+  color: rgb(95, 159, 248);
+  padding-right: 3px;
 }
 
-#Statustable th.sorting.sorting_asc::after {
+#assignmentTable th.sorting.sorting_asc::before {
 
-  margin-right: 15%;
+  display: none;
 }
 
-#Statustable th.sorting.sorting_desc::after {
+#assignmentTable th.sorting.sorting_asc::after {
 
-  margin-right: 15%;
+  display: none;
 }
 
-#Statustable th.sorting.sorting_desc::before {
+#assignmentTable th.sorting.sorting_desc::after {
 
-  margin-right: 15%;
+  display: none;
 }
 
-#Statustable th.sorting::before {
-  margin-right: 15%;
+#assignmentTable th.sorting.sorting_desc::before {
+
+  display: none;
 }
 
-#Statustable th.sorting::after {
-  margin-right: 15%;
+#assignmentTable th.sorting::before {
+  display: none;
 }
+
+#assignmentTable th.sorting::after {
+  display: none;
+}
+
 
 /* 
     table.dataTable td.dt-control {
