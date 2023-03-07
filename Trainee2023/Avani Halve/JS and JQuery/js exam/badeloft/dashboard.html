@@ -213,7 +213,7 @@
                         href="JavaScript:void(0);"
                         data-toggle="popover"
                         title="Assigned to"
-                        data-content="Some content inside the popover"
+                    
                         style="text-decoration: none"
                         >2</a
                      >
@@ -224,25 +224,18 @@
             </tbody>
          </table>
          <div id="popover-content" class="d-none p-0">
-            <div class="row p-0 m-0">
-               <div class="col-md-8">
-               </div>
-               <div class="col-md-2">
-               </div>
-               <div class="col-md-6">
-                   <p class="text-success"> Ordered: 3</p>
-               </div>
-               <div class="col-md-6">
-                   <p class="text-danger">Assigned: 2</p>
-               </div>
-               <div class="col-md-12">
-                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Manuel Pimentel</p>
-   
-               </div>
-               <div class="col-md-12">
-                   <p class="text-secondary fw-light"><i class="fa fa-user text-danger"></i> Dave Pimentel</p>
-               </div>
-           </div>
+           <div class="row p-0 m-0 col-12">
+            <div class="col-md-12">  
+                <p class="text-success">Ordered:3 <span class="text-secondary px-3">|</span><span class="text-danger text-start">Assigned:2</span></p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Manuel Pimentel</p>
+                <hr class="text-secondary bg-secondary">
+            </div>
+            <div class="col-md-12">
+                <p class="text-secondary fw-light"><i class="fa fa-user text-danger "></i> Dave Pimentel</p>
+            </div>
+        </div>
          </div>
 
          <script src="./js/dashboard.js"></script>
@@ -254,14 +247,11 @@
          <script src="//cdn.datatables.net/plug-ins/1.13.2/sorting/absolute.js"></script>
          <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
          <!-- popover -->
-         <script
+         <!-- <script
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
             integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
-         ></script>
+         ></script> -->
    </body>
 </html>
-
-<!-- # ki jagah -->
-<!-- javascript:void(0) -->

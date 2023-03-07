@@ -2,40 +2,48 @@ $(document).ready(function () {
   if (localStorage.getItem("LogedinUser") !== null) {
     var StockDetails = new Array();
 
-    var AssignedStockData= JSON.parse(localStorage.getItem("Assigned"));
-//  console.log(AssignedStockData)
-
+    
+    var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
 
     $("#navigation").load("Navbar.html");
     //Display name in Navbar
     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
+
     var table;
     function format(d, ParentRowid) {
+      debugger
+      var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
+     console.log(AssignedStockData)
+      let assignedValue = 0;
+      if(AssignedStockData!=null || AssignedStockData!=undefined){
+      console.log(ParentRowid)
+      rowdata = STOCKS[ParentRowid];
 
-      rowdata=STOCKS[ParentRowid]
-
-     console.log("cc",rowdata.parts)
-       let assignedValue=0
-      for(let i=0;i<AssignedStockData.length;i++){
-        for(let j=0;j<AssignedStockData[i].AssignedParts.length;j++)
-        {
-          
-          if(rowdata.stockname==AssignedStockData[i].AssignedParts[j].selectedStock){
-            debugger
-            for(let k=0;k<rowdata.parts.length;k++){
-              for(let l=0;l<AssignedStockData[i].AssignedParts[j].selectedStock.length;l++){
-                if(rowdata.parts[k].partsnumber==AssignedStockData[i].AssignedParts[j].selectedparts[l])
-                assignedValue++
+      console.log("cc", rowdata.parts);
+     
+      for (let i = 0; i < AssignedStockData.length; i++) {
+        for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
+          if (
+            rowdata.stockname ==
+            AssignedStockData[i].AssignedParts[j].selectedStock
+          ) {
+            // //debugger;
+            for (let k = 0; k < rowdata.parts.length; k++) {
+              for (
+                let l = 0;
+                l < AssignedStockData[i].AssignedParts[j].selectedStock.length;
+                l++
+              ) {
+                if (
+                  rowdata.parts[k].partsnumber ==
+                  AssignedStockData[i].AssignedParts[j].selectedparts[l]
+                )
+                  assignedValue++;
               }
             }
           }
         }
-      }
-      // console.log("ASXAc",assignedValue)
-      // console.log("ss",rowAssignedData)
-      //debugger;
-      // //alert(ParentRowid)
-      //console.log(d.parts);
+      }}
       let list = "";
       if (d.parts && d.parts.length > 0) {
         list +=
@@ -44,8 +52,6 @@ $(document).ready(function () {
           "<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>";
         list += "<tbody>";
         d.parts.forEach((partdetail, index) => {
-
-
           list +=
             "<tr id=" +
             [index + 1] +
@@ -56,8 +62,19 @@ $(document).ready(function () {
             "</td><td>" +
             partdetail.Order +
             "</td><td><button type='button' data-val=" +
-            [index + 1] +" data-parentrowid=" +
-            [ParentRowid] + " class='btn showAssignedUser' data-toggle='popover' data-html='true'  data-content='Some content inside the popover'>"+ assignedValue+"</button></td><td class='deleteparts' data-val=" +
+            [index + 1] +
+            " data-parentrowid=" +
+            [ParentRowid] +
+            ` class='btn showAssignedUser' data-bs-toggle='popover' data-bs-html='true' title="<div class='row'>
+            <div class='col-sm-9 ps-0 pe-0'>
+              <span>Assigned to </span>
+            </div>
+            <div class='col-sm-2 '>
+              <a href='javascript:void(0)' class='d-flex justify-content-end close-popover' aria-label='Close'><div class='icon icon-16 icon-lg-16 mb-2 closePopoverbtn'>X</div></a>
+            </div>
+          </div>"  data-bs-content='<small>ekfjk</small>'>` +
+            assignedValue +
+            "</button></td><td class='deleteparts' data-val=" +
             [index + 1] +
             " data-parentrowid=" +
             [ParentRowid] +
@@ -72,9 +89,8 @@ $(document).ready(function () {
     }
 
     var STOCKS = JSON.parse(localStorage.getItem("stock"));
-    debugger;
-    // //console.log(StockDetails[1].stockname)
     table = $("#tableStocks").DataTable({
+
       order: [],
       deferRender: true,
       language: {
@@ -381,7 +397,7 @@ $(document).ready(function () {
           } else {
             var Value = true;
             for (let i = 0; i < StockDetails.length; i++) {
-              if (StockDetails[i].stockname == StockName) {
+              if (StockDetails[i].stockname.toLowerCase() == StockName.toLowerCase()) {
                 Value = false;
                 Swal.fire("Stock Number is already Present");
               }
@@ -405,8 +421,6 @@ $(document).ready(function () {
 
           PARTS = [];
           $("#addStockModal").modal("hide");
-
-         
         } else {
           Swal.fire("Please Enter At Least 1 Part");
         }
@@ -451,9 +465,14 @@ $(document).ready(function () {
 
     //Delete Parts in AddstockModal
     $(document).on("click", ".cancel", function () {
+      if(PARTS.length==1){
+        Swal.fire("Atleast 1 part is required")
+      }
+      else{
       let index = parseInt($(this).data("val"));
       PARTS.splice(index - 1, 1);
       PartsTableDIsplay();
+      }
     });
 
     //Search Table
@@ -461,7 +480,6 @@ $(document).ready(function () {
     $("#search").on("keyup", function () {
       table.search(this.value).draw();
     });
-
 
     //Edit Stock
     $(document).on("click", ".EditStock", function () {
@@ -499,6 +517,19 @@ $(document).ready(function () {
           createddate = new Date();
           createddate = createddate.toLocaleDateString();
           StockDetails = JSON.parse(localStorage.getItem("stock"));
+           
+          let checknameisalreadypreset=false
+          debugger
+          for(let i=0;i<StockDetails.length;i++){
+            if(StockName.toLowerCase() ==StockDetails[i].stockname.toLowerCase()){
+              if(i==Index){
+                continue
+              }
+              
+              checknameisalreadypreset=true
+            }
+          }
+          if(checknameisalreadypreset==false){
           var newObj = {
             stockname: StockName,
             Etadate: ETADate,
@@ -509,10 +540,15 @@ $(document).ready(function () {
           };
 
           StockDetails[Index] = newObj;
-
-          $(".save").attr("id", "savestock");
           localStorage.setItem("stock", JSON.stringify(StockDetails));
           table.row(Index).data(newObj).draw();
+        }
+        else{
+          Swal.fire("Stock is already Present")
+        }
+          $(".save").attr("id", "savestock");
+          document.getElementById("addStocks").reset();
+          PARTS=[]
           $("#addStockModal").modal("hide");
         } else {
           Swal.fire("Please enter at least 1 part");
@@ -565,27 +601,41 @@ $(document).ready(function () {
       table.search(input.value).draw();
     });
 
-    //Show assigeduser popover
-    // $(document).on("click",".showAssignedUser",function(){
-      $('[data-toggle="popover"]').popover({
-        
-        html: true,
-        trigger: 'focus',
-        // title : 'Assigned to <a href="#" class="close" data-dismiss="alert">&times;</a>',
-        content: function () {
-          debugger
-          return `<small>hello</small>`
-          
-        },
-        // $(document).on('clicked','.closebtn',function(){
-        //   alert("CLicked")
-        //   $("#popover-content").hide();
-        //   $(this).parents(".popover").popover('hide');
-        // })
-        // $(".closebtn").click(function(){
-  
-        // })
+    $(document).on("click", ".showAssignedUser", function () {
+      let indexofChildRow = $(this).data("val");
+      let indexofParent = $(this).data("parentrowid");
+      console.log(indexofChildRow);
+      console.log(indexofParent);
+      let rowdata=table.row(indexofParent).data()
+      list = " ";
+      for (let i = 0; i < AssignedStockData.length; i++) {
+        for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
+          if (rowdata.stockname ==AssignedStockData[i].AssignedParts[j].selectedStock) {
+            // //debugger;
+            for (let k = 0; k < rowdata.parts.length; k++) {
+              for (let l = 0;l < AssignedStockData[i].AssignedParts[j].selectedStock.length;l++) {
+                if (rowdata.parts[k].partsnumber ==AssignedStockData[i].AssignedParts[j].selectedparts[l])
+                  list+=' <i class="bi bi-person-fill user"></i><span class="AssignedName">'+AssignedStockData[i].customer+'</span> <br>'
+              }
+            }
+          }
+        }
+      }
+
+      $(this).attr("data-bs-content", list);
+
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl, { html: true });
       });
+      $(document).on("click", ".popover .close-popover" , function(){
+        $(this).closest(".popover").hide();
+    });
+
+    });
     // })
   } else {
     window.location.href = "index.html";

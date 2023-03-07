@@ -1,4 +1,6 @@
 var counter = 150001;
+var nestedData= [];
+//var finaldata = [];
 var isEditMode = false; // flag to indicate edit mode
 
 
@@ -18,7 +20,7 @@ $(document).ready(function () {
   var stockdata = JSON.parse(localStorage.getItem("stock"));
   var button = document.getElementById("newButton");
 
- 
+
   var table = $("#StockTable").DataTable({
     fnInitComplete: function () {
       $("#StockTable_length").html("<h5><strong>Stock</strong></h5>");
@@ -82,6 +84,13 @@ $(document).ready(function () {
     var ordered = $("#ordered").val();
     var note = $("#note").val();
 
+    nestedData.push({
+      partnum: partnum,
+      invoice: invoice,
+      ordered: ordered,
+      note: note,
+  });
+
     var newRow = $("<tr>");
     newRow.append("<td>" + partnum + "</td>");
     newRow.append("<td>" + invoice + "</td>");
@@ -90,15 +99,16 @@ $(document).ready(function () {
     newRow.append(
       '<td><button class="btn delete-row"><i class="fa-solid fa-xmark"></i></button></td>'
     );
-    var stock = JSON.parse(localStorage.getItem("stock")) || [];
-    console.log(stock);
-    var rowData = {
-      partnum: partnum,
-      invoice: invoice,
-      ordered: ordered,
-      note: note,
-    };
-    stock.push(rowData);
+
+    // var stock = JSON.parse(localStorage.getItem("stock")) || [];
+    // console.log(stock);
+    // var rowData = {
+    //   partnum: partnum,
+    //   invoice: invoice,
+    //   ordered: ordered,
+    //   note: note,
+    // };
+    // stock.push(rowData);
 
     $("#inner_table tbody").append(newRow);
   });
@@ -178,6 +188,8 @@ $(document).ready(function () {
         .toLocaleDateString("en-US", options)
         .replace(/\D/g, "/");
 
+
+
       var finaldata = {
         name: name,
         etaDate: etaDate,
@@ -187,28 +199,30 @@ $(document).ready(function () {
         createdDate: formattedDate, //set current date
 
         //     // currentDate:currentDate,
-        nestedData: [],
+        nestedData: nestedData,
       };
-      $("#inner_table tbody tr").each(function () {
-        var partnum = $(this).find("td:eq(0)").text();
-        var ordered = $(this).find("td:eq(2)").text();
-        var note = $(this).find("td:eq(3)").text();
 
-        if (partnum !== "" && ordered !== "" && note !== "") {
-          var rowData = {
-            partnum: partnum,
-            ordered: ordered,
-            note: note,
-          };
-          finaldata.nestedData.push(rowData);
-        }
-      });
 
-      var stockData = JSON.parse(localStorage.getItem("stock")) || [];
+      // $("#inner_table tbody tr").each(function () {
+      //   var partnum = $(this).find("td:eq(0)").text();
+      //   var ordered = $(this).find("td:eq(2)").text();
+      //   var note = $(this).find("td:eq(3)").text();
 
-      stockData.push(finaldata);
-      localStorage.setItem("stock", JSON.stringify(stockData));
-      table.row.add(stockData).draw();
+      //   if (partnum !== "" && ordered !== "" && note !== "") {
+      //     var rowData = {
+      //       partnum: partnum,
+      //       ordered: ordered,
+      //       note: note,
+      //     };
+      //     finaldata.nestedData.push(rowData);
+      //   }
+      // });
+
+      var stock = JSON.parse(localStorage.getItem("stock")) || [];
+
+      stock.push(finaldata);
+      localStorage.setItem("stock", JSON.stringify(stock));
+      table.row.add(stock).draw();
       location.reload(true);
     }
   });
@@ -228,6 +242,7 @@ $(document).ready(function () {
 
 
   $("#StockTable tbody").on("click", ".edit-row", function () {
+    
     isEditMode = true;
     var tr = $(this).closest("tr");
     // var row = table.row(tr);
@@ -242,11 +257,11 @@ $(document).ready(function () {
     data.stocklocation = $('input[name="btnradio"]:checked').data(
       "stock-location"
     );
-    // var invoice = counter++;
+    var invoice = counter++;
     if (data.nestedData && data.nestedData.length > 0) {
-      let dynamicTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
+      let dynamicTR = "<thead style=color:white;><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
       data.nestedData.forEach(function (part) {
-        dynamicTR += ("<tr>" + "<td>" + part.partnum + "</td>" + "<td>" + part.partnum + "</td>" + "<td>" + part.ordered + "</td>" + "<td>" + part.note + "</td>" +
+        dynamicTR += ("<tr>" + "<td>" + part.partnum + "</td>" + "<td>" + part.ordered + "</td>" + "<td>" + part.note + "</td>" +
           "<td class='text-end'><button type='button' class='btn-close DeleteParts' aria-label='Close'></button></td></tr>");
       });
       dynamicTR += "</tbody>";
@@ -254,12 +269,15 @@ $(document).ready(function () {
       $('#inner_table').html(dynamicTR);
 
     }
+
+    nestedData= data.nestedData
     // Show the edit modal
     $("#outerModal").modal("show");
-    
+
 
 
     $("#save_outer").on("click", function () {
+      
       var activeuser = JSON.parse(localStorage.getItem("loggUser"));
       console.log(activeuser);
       var username = activeuser;
@@ -282,6 +300,7 @@ $(document).ready(function () {
         note: $("#note").val(),
         createdby: username[0].name,
         createdDate: formattedDate,
+        nestedData:nestedData,
       };
       var StockData = JSON.parse(localStorage.getItem("stock")) || [];
       StockData[index] = newData;
@@ -311,26 +330,28 @@ $(document).ready(function () {
 
 
   function format(d) {
-    debugger;
+    
     var table =
       '<table cellpadding="2" cellspacing="0" class="table border rounded">';
     table +=
       '<thead style="background-color:lightgrey;"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead> ';
     table += "<tbody>";
-    for (var i = 0; i < d.nestedData; i++)
-    console.log(d.nestedData)
-    {
-      table += "<tr>";
-      table += "<td>" + "</td>";
-      table += "<td>" + d.nestedData[i].partnum + "</td>";
-      // table += '<td>' + d.nestedData[i].invoice + '</td>';
-      table += "<td>" + d.nestedData[i].ordered + "</td>";
-      table += "<td>" + d.nestedData[i].note + "</td>";
-      table +=
-        '<td><button class="btn delete-row"><i class="fa-solid fa-xmark"></i></button></td>';
-      table += "</tr>";
-    }
+    if (d.nestedData && d.nestedData.length > 0) {
+      for (var i = 0; i < d.nestedData.length; i++) {
+        if (d.nestedData[i]) {
 
+          table += "<tr>";
+          table += "<td>" + "</td>";
+          table += "<td>" + d.nestedData[i].partnum + "</td>";
+          // table += '<td>' + d.nestedData[i].invoice + '</td>';
+          table += "<td>" + d.nestedData[i].ordered + "</td>";
+          table += "<td>" + d.nestedData[i].note + "</td>";
+          table +=
+            '<td><button class="btn delete-row"><i class="fa-solid fa-xmark"></i></button></td>';
+          table += "</tr>";
+        }
+      }
+    }
     table += "</tbody></table>";
 
     return table;
@@ -364,6 +385,8 @@ $(document).ready(function () {
   console.log("user", user);
   $("#Uname").html(user[0].name);
 });
+
+
 function logout() {
   window.location.replace("LoginPage.html");
   localStorage.clear();
