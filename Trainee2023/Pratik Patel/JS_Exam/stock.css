@@ -211,3 +211,19 @@ table.table-condensed thead {
   color: #0d6efd !important;
   border-color: #0d6efd !important;
 }
+/* POP Over */
+.icon.icon-16.icon-lg-16.mb-2.closePopoverbtn {
+  color: black;
+}
+.user{
+  color: red;
+}
+.close-popover{
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+#tableStocks {
+  overflow-y: visible;
+  /* margin-bottom: 5% */
+}

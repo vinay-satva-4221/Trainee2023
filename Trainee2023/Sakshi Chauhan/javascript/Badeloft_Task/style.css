@@ -195,7 +195,7 @@ table.dataTable.table-striped>tbody>tr.odd>* {
     margin: 25px;
 }
 
-#AddStock, #save{
+#AddStock, #saveStock,#savePart, #addPartsToStock{
     background-color: #326C96;
     color: #F7F8FA;
 }
