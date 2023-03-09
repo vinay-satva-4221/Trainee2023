@@ -53,7 +53,6 @@ for (i = 0; i < StockDetails.length; i++) {
 var customer = document.getElementById("customer").value;
 var invoice = document.getElementById("invoice").value;
 var stock = document.getElementById("stock").value;
-// var parts = document.getElementById("parts").value;
 
 $(document).ready(function () {
    function format(d) {
@@ -99,18 +98,13 @@ $(document).ready(function () {
          },
       },
       columns: [
-         {
-            className: "dt-control",
-            orderable: false,
-            data: null,
-            defaultContent: "",
-         },
-         { data: "invoice" },
-         { data: "customer" },
-         { data: "createdBy" },
-         { data: "createdDate" },
+         { data: "invoice", className: "text-start dt-control", orderable: false },
+         { data: "customer", orderable: false },
+         { data: "createdBy", orderable: false },
+         { data: "createdDate", orderable: false },
          {
             data: "null",
+            orderable: false,
             render: function (data, type, row) {
                return (
                   '<button type="button" class="fa fa-pencil" style="border: none;"></button>' +
@@ -167,9 +161,6 @@ $(document).ready(function () {
             var invoice = $("#invoice").val();
             var stock = $("#stock").val();
             let currentDate = new Date().toLocaleString();
-            // var checked = document.querySelectorAll("#parts :checked");
-            // var selectedParts = [...checked].map((option) => option.value);
-            // checked.value = selectedParts.join("|");
             var selectedValues = $(".select2").val();
             var checked = selectedValues.join("|");
 
@@ -231,39 +222,68 @@ $(document).ready(function () {
             "</span></span>"
       );
    }
+
+   $("#assignmentForm").validate({
+      rules: {
+         customer: {
+            required: true,
+         },
+         invoice: {
+            required: true,
+         },
+         stock: {
+            required: true,
+         },
+         parts: {
+            required: true,
+         },
+      },
+      messages: {
+         customer: {
+            required: "Select Customer",
+         },
+         invoice: {
+            required: "Select Invoice",
+         },
+         stock: {
+            required: "Select Stock",
+         },
+         parts: {
+            required: "Select Parts",
+         },
+      },
+   });
 });
 
 function addAssignment() {
-   debugger;
-   let currentDate = new Date().toLocaleString();
-   let customer = document.getElementById("customer").value;
-   let invoice = document.getElementById("invoice").value;
-   let stock = document.getElementById("stock").value;
-   // var checked = document.querySelectorAll('#parts :checked');
-   // var selectedParts = [...checked].map(option => option.value);
-   // checked.value = selectedParts.join('|');
-   var selectedValues = $(".select2").val();
-   var checked = selectedValues.join("|");
+   if ($("#assignmentForm").valid() == true) {
+      let currentDate = new Date().toLocaleString();
+      let customer = document.getElementById("customer").value;
+      let invoice = document.getElementById("invoice").value;
+      let stock = document.getElementById("stock").value;
+      var selectedValues = $(".select2").val();
+      var checked = selectedValues.join("|");
 
-   let assignementDetails = {
-      customer: customer,
-      invoice: invoice,
-      stock: stock,
-      parts: checked,
-      createdBy: username,
-      createdDate: currentDate,
-   };
+      let assignementDetails = {
+         customer: customer,
+         invoice: invoice,
+         stock: stock,
+         parts: checked,
+         createdBy: username,
+         createdDate: currentDate,
+      };
 
-   var assignementDetailsArray = JSON.parse(localStorage.getItem("assignmentDetail"));
-   if (!assignementDetailsArray) {
-      assignementDetailsArray = [];
+      var assignementDetailsArray = JSON.parse(localStorage.getItem("assignmentDetail"));
+      if (!assignementDetailsArray) {
+         assignementDetailsArray = [];
+      }
+      assignementDetailsArray.push(assignementDetails);
+      localStorage.setItem("assignmentDetail", JSON.stringify(assignementDetailsArray));
+
+      table.row.add(assignementDetails).draw();
+
+      document.getElementById("customer").value = "";
+      document.getElementById("invoice").value = "";
+      document.getElementById("stock").value = "";
    }
-   assignementDetailsArray.push(assignementDetails);
-   localStorage.setItem("assignmentDetail", JSON.stringify(assignementDetailsArray));
-
-   table.row.add(assignementDetails).draw();
-
-   document.getElementById("customer").value = "";
-   document.getElementById("invoice").value = "";
-   document.getElementById("stock").value = "";
 }

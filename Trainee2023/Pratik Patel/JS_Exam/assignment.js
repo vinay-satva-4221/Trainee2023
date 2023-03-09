@@ -275,11 +275,17 @@ $(document).ready(function () {
     });
     //Delete Parts in Modal
     $(document).on("click", ".cancel", function () {
+
+      if(SelectedPartsStock.length==1){
+        Swal.fire("atleast 1 part is requiered")
+      }
+      else{
       let index = parseInt($(this).data("val"));
       // var index=parseInt( $(this).data('val'))-1
       //////alert(index)
       SelectedPartsStock.splice(index - 1, 1);
       displaySelectedStockParts();
+      }
     });
 
     $("#newAssignment").click(function () {
