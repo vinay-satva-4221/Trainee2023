@@ -109,7 +109,7 @@ $(document).ready(function () {
   $('[data-bs-toggle="popover"]').popover({
     
     container: 'body',
-    title : '<p class="text-start text-dark fw-bold bg-white">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
+    title : '<p class="text-start text-dark fw-bold ">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
     placement: 'right',
     html: true,
     content: function () {

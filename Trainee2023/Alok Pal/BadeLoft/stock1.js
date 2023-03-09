@@ -64,6 +64,7 @@ function format(d, id) {
     dynamicChildRow += "</tbody></table>";
   }
   return dynamicChildRow;
+  
 }
 
 // parts new
@@ -223,7 +224,7 @@ var parts = new Array();
 var IsEditing = false;
 
 function getModal() {
-  debugger
+  debugger;
   var partN = document.getElementById("pNum").value;
   var order = document.getElementById("order").value;
   var comments = document.getElementById("floatingTextarea").value;
@@ -254,14 +255,14 @@ var newStock = [];
 var Stockstatus;
 
 function addStockData() {
-  if(!IsEditing){
-    debugger
+  if (!IsEditing) {
+    debugger;
     // parts
     var stockName = document.getElementById("stock").value;
     var dateM = document.getElementById("date").value;
-  
+
     Stockstatus = radioBtnValue();
-  
+
     console.log(parts.length);
     if (stockName != null && parts.length > 0) {
       if (localStorage.getItem("newStock") == null) {
@@ -280,11 +281,11 @@ function addStockData() {
         $("#StockModal").modal("hide");
         resetSVal();
         // parts = [];
-        $('#partTable').html(null);
+        $("#partTable").html(null);
         $("#partTable").append("<tbody></tbody");
       } else {
         newStock = JSON.parse(localStorage.getItem("newStock"));
-  
+
         var flag;
         for (let i = 0; i < newStock.length; i++) {
           flag = false;
@@ -295,7 +296,7 @@ function addStockData() {
             flag = false;
           }
         }
-  
+
         if (flag == false) {
           var newObj = {
             stock: stockName,
@@ -311,7 +312,7 @@ function addStockData() {
           $("#StockModal").modal("hide");
           resetSVal();
           // parts = [];
-          $('#partTable').html(null);
+          $("#partTable").html(null);
           $("#partTable").append("<tbody></tbody");
         } else {
           Swal.fire({
@@ -343,11 +344,12 @@ function addStockData() {
 
 // show data
 function showModaltable() {
-  debugger
+  debugger;
   var html = "";
+
+  html +=
+    '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
   if (parts.length > 0) {
-    html +=
-      '<table cellpadding="5" class="table  table-border " cellspacing="0"  style="padding-left:50px;width:95%; margin-left:4%">';
     html =
       "<thead><th class=text-start>Part Number</th><th class=text-start>Invoice#</th><th class=text-start>Ordered</th><th class=text-start>Notes</th><th class=text-center></th></thead><tbody id='root'>";
     parts.forEach(function (element, index) {
@@ -364,10 +366,12 @@ function showModaltable() {
       html += "</tbody>";
       html += "</tbody></table>";
     });
-    $("#partTable").html(html);
-
-    $("#PartModal").modal("hide");
+  
   }
+  $("#partTable").html(html);
+
+  $("#PartModal").modal("hide");
+  resetPartModal();
 }
 
 //reset
@@ -403,60 +407,74 @@ $(function () {
   );
 });
 
+//Edit
 $("#stock_table").on("click", ".editor-edit", function () {
-  debugger
+  debugger;
   IsEditing = true;
   $("#StockModal").modal("show");
-
-  // var indexRow = table.row(this).index();
-  // console.log(indexRow);
-
-  // var tabledata = table.row(this).data();
-  // console.log(tabledata);
   var tabledata = table.row($(this).parents("tr")).data();
   var indexRow = table.row($(this).parents("tr")).index();
-
-  var newStockModal = JSON.parse(localStorage.getItem("newStock"))|| [];
+  var newStockModal = JSON.parse(localStorage.getItem("newStock")) ;
   console.log(newStockModal[indexRow].Part[0]);
-
   document.getElementById("stock").value = newStockModal[indexRow].stock;
   document.getElementById("date").value = newStockModal[indexRow].date;
-
   $('input[name="btnradio"][value="' + tabledata.stockStatus + '"]').prop(
     "checked",
     true
   );
-
-  
   parts = newStockModal[indexRow].Part;
   showModaltable();
+
   document.querySelector("#modalstock").onclick = function () {
-    if(IsEditing){
-      debugger
-      var updatestock = (newStockModal[indexRow].stock =
-        document.getElementById("stock").value);
-      var updatedate = (newStockModal[indexRow].date =
-        document.getElementById("date").value);
-  
-      Stockstatus = radioBtnValue();
-  
-      var newObj = {
-        stock: updatestock,
-        date: updatedate,
-        stockStatus: Stockstatus,
-        CreatedDate: today,
-        Part: parts,
-        user: user,
-      };
-  
-      newStockModal[indexRow] = newObj;
-      localStorage.setItem("newStock", JSON.stringify(newStockModal));
-      $("#StockModal").modal("hide");
-      window.location.reload();
+    newStock = JSON.parse(localStorage.getItem("newStock"));
+    var stockName = document.getElementById("stock").value;
+    var flag;
+    for (let i = 0; i < newStock.length; i++) {
+      flag = false;
+      if (stockName == newStock[i].stock) {
+        flag = true;
+        break;
+      } else {
+        flag = false;
+      }
+    }
+
+    if (flag == false) {
+      if (IsEditing) {
+        debugger;
+        var updatestock = (newStockModal[indexRow].stock =
+          document.getElementById("stock").value);
+        var updatedate = (newStockModal[indexRow].date =
+          document.getElementById("date").value);
+
+        Stockstatus = radioBtnValue();
+
+        var newObj = {
+          stock: updatestock,
+          date: updatedate,
+          stockStatus: Stockstatus,
+          CreatedDate: today,
+          Part: parts,
+          user: user,
+        };
+
+        newStockModal[indexRow] = newObj;
+        localStorage.setItem("newStock", JSON.stringify(newStockModal));
+        $("#StockModal").modal("hide");
+        table.row(indexRow).data(newObj).draw();
+        // window.location.reload();
+      }
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Duplicate Stock Name is not allowed",
+        icon: "error",
+      });
     }
   };
 });
 
+// to check radio btn
 function radioBtnValue() {
   var btnChecked;
   if (document.getElementById("btnradio1").checked) {
@@ -511,6 +529,6 @@ $(".nav-item a").each(function () {
 //search cancel
 const input = document.querySelector('input[type="search"]');
 input.addEventListener("search", () => {
-    table.search(input.value).draw();
-    // console.log(`The term searched for was ${}`);
+  table.search(input.value).draw();
+  // console.log(`The term searched for was ${}`);
 });
