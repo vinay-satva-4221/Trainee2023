@@ -47,7 +47,7 @@ label.error{
 /* Navbar-stop */
 
 /* Table Border */
-#DashboardTable,#Stock_Table,#StatusTable,#AssignmentTable,#AddNewStockTable{
+#DashboardTable,#Stock_Table,#StatusTable,#assignedparttable,#AddNewStockTable{
     border-radius: 8px;
     overflow: hidden;
 }
@@ -195,7 +195,7 @@ table.dataTable.table-striped>tbody>tr.odd>* {
     margin: 25px;
 }
 
-#AddStock, #save{
+#AddStock, #saveStock,#savePart, #addPartsToStock{
     background-color: #326C96;
     color: #F7F8FA;
 }
@@ -248,6 +248,7 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 #ChildTableStock thead tr th{
     background-color: #CFD3D8;
    text-align: center;
+   color: black;
 }
 .fa-pen,.fa-history{
     color: gray;
@@ -307,21 +308,21 @@ table.dataTable  tr  {
 /* Status Page End */
 
 /* Assignment Page Start */
-#AssignmentTable thead tr th{
+#assignedparttable thead tr th{
     background-color:  #000;
     color: #fff;
 }
-#AssignmentTable tbody{
+#assignedparttable tbody{
     background-color: white;
 }
 .toolbar {
     float: left;
 }
-#ModalPopup{
+#modalpopup{
     background-color: #326C96;
     color: #F7F8FA;
 }
-#AssignmentTable_filter{
+#assignedparttable_filter{
     margin: 12px;
     margin-bottom: 0px;
 }

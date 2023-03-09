@@ -21,11 +21,7 @@ window.onload = (event) => {debugger;
     localStorage.clear();
   }
   
- 
-
-// Data table Dashboard
-
-
+// Data table Dashboard 
 $(document).ready(function () {
 
 
@@ -140,9 +136,7 @@ var dataSet = [
   ["BK-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
   ["BL-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
   ["BM-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
-  
-
-  
+ 
 ];
 
 var StockLocation = $.fn.dataTable.absoluteOrder( 
@@ -153,10 +147,3 @@ var StockLocation = $.fn.dataTable.absoluteOrder(
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
   })
-
-  
-  // $(function () {
-  //   $('#popover-form').popover({
-  //     container: 'body'
-  //   })
-  // })

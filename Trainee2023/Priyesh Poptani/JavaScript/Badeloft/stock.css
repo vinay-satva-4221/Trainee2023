@@ -27,14 +27,8 @@ table.dataTable th {
 } */
 
 
-  table.dataTable td.dt-control:before {
-    background-color:white ;
-    color: #326C96;
-    box-shadow: 0 0 0.2em #326C96;
-    margin-top: 4px;
-  
     
-}
+
 table.dataTable tr.dt-hasChild td.dt-control:before {
     content: "-";
     background-color:white ;
@@ -148,3 +142,18 @@ input[type="date"]:before {
 label.btn{
     margin-bottom: 0px !important;
 }
+
+/* audiomodel */
+.oval {
+    width: 20px;
+    height: 20px;
+    background: #326C96;
+    border-radius: 300%;
+    text-align: center;
+    color: white;
+    
+  }
+
+  label.error{
+    color: red;
+  }
