@@ -7,3 +7,22 @@
     left: 25%;
     transform: translate(-50%, -50%);
  }
+
+ label.error{
+   color: red;
+ }
+
+ #btn{
+   background-color:#326C96 ; 
+   height: 45px; 
+   color: white;
+ }
+
+ #hr{
+   height: 2px; 
+   width: 50px; 
+   background-color: #0f639e
+ }
+ body {
+  font-family: Myriad Pro;
+}

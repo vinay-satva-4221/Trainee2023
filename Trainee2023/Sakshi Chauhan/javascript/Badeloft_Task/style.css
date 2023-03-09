@@ -1,0 +1,338 @@
+/* Login Page Start */
+.background{
+    width: 100%;
+    height: 100vh;
+}
+#Badeloft{
+  margin-right: 10px;
+  height: 30px;
+  width: 200px;
+}
+.line hr {
+    width: 30px;
+    height: 3px;
+    color: blue;
+}
+@media (max-width:629px) {
+    img#background {
+      display: none;
+    }
+  }
+label.error{
+    color: red;
+}
+
+
+/* Login Page End */
+/* Navbar Start*/
+#navbar{
+    padding: 0px;
+  }
+  #container-fluid{
+    padding: 0px;
+  }
+  .Badeloft-Logo{
+    height: 25px;
+    width: 150px;
+    margin-left: 15px;
+  }
+
+  
+  .ms-2 {
+    margin-left: 13rem!important;
+  }
+  .navbar{
+    padding-bottom: 0px;
+  }
+/* Navbar-stop */
+
+/* Table Border */
+#DashboardTable,#Stock_Table,#StatusTable,#AssignmentTable,#AddNewStockTable{
+    border-radius: 8px;
+    overflow: hidden;
+}
+/* Table Border end */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 6px;
+    background-color: transparent;
+    margin-left: 3px;
+}
+/* Pagenation */
+div.dataTables_wrapper div.dataTables_info{
+    position: relative;
+    left: 75%;
+}
+.page-item.active .page-link {
+    background-color: black !important;
+    border-color: black !important;
+    color: white;
+}
+.page-item a{
+    color: #000;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0% !important;
+    margin: 0% !important;
+}
+ li.paginate_button.page-item.active {
+    background: none !important;
+    border: none !important;
+}
+li.paginate_button.page-item:hover {
+    background: none !important;
+    border: none !important;
+}
+/* Pagenation End */
+
+/* Dashboard Page Start */
+
+#DashboardTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+    text-align: center;
+}
+#DashboardTable thead tr td{
+    color: #fff;
+}
+#DashboardTable tbody{
+    background-color: white;
+}
+/* .popover-body {
+    color: red; 
+} */
+.gc {
+    color: red;
+}
+.rc {
+    color: green;
+}
+.fa-user{
+    color: red;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+}
+#DashboardTable_filter{
+    margin: 20px;
+    padding: 0px;
+}
+.toolbar {
+    float: left;
+    margin: 12px;
+}
+a:link {
+    text-decoration: none;
+  }
+table.dataTable tbody tr td:first-child {
+   text-align: left;
+}
+table.dataTable  tr  {
+    text-align: center;
+ }
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+  padding: 0px;
+  border: none;
+}
+table.dataTable.table-striped>tbody>tr.odd>* {
+  box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_paginate  .paginate_button 
+{
+    max-width: 1.8em !important;
+    max-height: 2.5em !important;
+    text-align: center;
+}
+/* Dashboard Page End */
+
+/* Stock Page Start */
+
+#Stock_Table thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+/* table{
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid black;
+} */
+#AddNewStockTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+#AddNewStockTable thead tr th:first-child{
+    width: 180px;
+}
+#AddNewStockTable thead tr th:nth-child(2) {
+    width: 130px;
+}
+#AddNewStockTable thead tr th:nth-child(3) {
+    width: 130px;
+}
+#AddNewStockTable tbody tr td:first-child{
+    text-align: left;
+}
+
+
+.Badeloft-logoo{
+    height: 25px;
+    width: 130px;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+}
+#Stock_Table_filter{
+    margin: 15px;
+}
+.toolbar {
+    float: left;
+    margin: 25px;
+}
+
+#AddStock, #saveStock,#savePart, #addPartsToStock{
+    background-color: #326C96;
+    color: #F7F8FA;
+}
+.form-label{
+    color: #8F8A8C;
+}
+#cancle{
+    border: 1px solid black;
+}
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
+}
+table.dataTable td.dt-control:before {
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+    color: #326C96;
+    border: 0.15em solid #326C96;
+    border-radius: 1em;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    font-family: "Courier New",Courier,monospace;
+    line-height: 1em;
+    content: "+";
+    background-color: white;
+    box-shadow: none;
+    margin-right: 6px;
+}
+table.dataTable tr.dt-hasChild td.dt-control:before {
+    content: "-";
+    background-color: white;
+
+}
+table.dataTable td.dt-control {
+    padding-top: 5px;
+}
+/* table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:after{
+    opacity:  0.2 !important;
+}
+table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after{
+    opacity: 0.2 !important;
+} */
+#ChildTableStock thead tr th:first-child{
+    text-align: left;
+}
+#ChildTableStock thead tr th{
+    background-color: #CFD3D8;
+   text-align: center;
+}
+.fa-pen,.fa-history{
+    color: gray;
+}
+/* table.dataTable tbody td {
+    text-align: left !important;
+} */
+/* input[type="radio"] {
+	accent-color: green;
+} */
+/* .btn-check{
+    accent-color: #326C96;
+} */
+
+/* Stock Page End */
+
+/* Status Page Start */
+#StatusTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+#StatusTable tbody{
+    background-color: white;
+}
+#StatusTable_filter{
+    margin: 12px;
+    margin-bottom: 0px;
+    margin-top: 17px;
+}
+.toolbar {
+    float: left;
+    margin: 12px;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+  
+}
+input[type=checkbox]:checked {
+    accent-color: green;
+}
+
+#StatusTable thead tr th{
+    text-align: center;
+}
+table.dataTable tbody tr td:child {
+   text-align: left;
+}
+table.dataTable  tr  {
+    text-align: center;
+ }
+ table.dataTable.stripe>tbody>tr.odd>*, table.dataTable.display>tbody>tr.odd>*,
+ table.dataTable.display>tbody>tr.odd>.sorting_1, table.dataTable.order-column.stripe>tbody>tr.odd>.sorting_1,
+ table.dataTable.display>tbody>tr.even>.sorting_1, table.dataTable.order-column.stripe>tbody>tr.even>.sorting_1{
+    box-shadow: none;
+ }
+/* Status Page End */
+
+/* Assignment Page Start */
+#AssignmentTable thead tr th{
+    background-color:  #000;
+    color: #fff;
+}
+#AssignmentTable tbody{
+    background-color: white;
+}
+.toolbar {
+    float: left;
+}
+#ModalPopup{
+    background-color: #326C96;
+    color: #F7F8FA;
+}
+#AssignmentTable_filter{
+    margin: 12px;
+    margin-bottom: 0px;
+}
+#AddId{
+    background-color: #326C96;
+    color: #F7F8FA;
+    margin-top: 32px;
+}
+.rounded-circle{
+    height:50px;
+    width: 50px;
+  
+}
+/* Assignment Page End */

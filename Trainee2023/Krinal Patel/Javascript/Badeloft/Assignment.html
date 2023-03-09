@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- Bootstrap5 cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/12df35c901.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Datatables cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+    <link href="Badeloft.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
+            <img src="images/Black-logo.png" width="215px" height="28px" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="Stock.html">Stock</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Status.html">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Assignment.html "><b>Assignment</b></a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="nav navbar-nav: mx-5">
+                    <li class="nav-item">
+                          <img alt="profile-image" class="rounded-circle" src="images/user.jfif" style="width: 46px; height: 46px; border: 1px solid #EEF0F7;"/>
+                         
+                    </li> 
+                    <li class="nav-item">
+                        <h5 style="color: #87909F; font-size: 13px; margin-bottom: 10%; font-weight: normal;">Welcome</h5>
+                         <h6 id="username"><b></b></h6>      
+                  </li>
+                </ul>
+            </div>
+            <div>
+                <!-- Log-Out -->
+                <img src="images/Log-Out.jpg" style="width: 22px; height: 22px;" alt="" onclick="logout()">
+            </div>
+        
+        </nav>
+          
+    
+      
+        <div class="table-responsive bg-light">
+
+            <div class="m-5">
+              
+        
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="addassignment" data-bs-target="#myModal" style="background-color: #326C96; border: none; font-size: 18px; margin-right: 1%; font-family: 'Segoe UI'; font-weight:600;">
+                            <img src="images/Plus.png" style="height: 18px;"> New  
+                           </button>
+                        <!-- <input type="search" class="form-control" id="datatable-search-input" placeholder="Search here"> -->
+        
+        
+
+            <table class="table border" id="assignment">
+                <thead class="table table-dark rounded">
+                    
+                </thead>
+                <tbody id="maintdata">
+
+                </tbody>
+            </table>
+            </div>
+        </div> 
+        
+            <div class="modal" id="myModal" >
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+        
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add Assignment</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                       
+                                    <label for="Customer" class="form-label customer"><b> Choose Customer </b></label>
+                                    <select class="form-select form-control" id="Customer"
+                                        aria-describedby="validationServer04Feedback" required>
+                                        <option selected disabled value="">Choose Customer</option>
+                                        <!-- <option value="Kenneth Woodard"> Kenneth Woodard</option>
+                                        <option value="James Fenske"> James Fenske</option>
+                                        <option value="Kelly McCrory"> Kelly McCrory</option>
+                                        <option value="Frances Badger">Frances Badger</option> -->
+                            
+                                    </select>                                
+                                </div>
+                                    <div class="col-lg-6">
+                                <label for="QuickBooks" class="form-label Invoice"><b> QuickBooks Invoice</b></label>
+                                <select class="form-select form-control" id="Invoice" required>
+                                    <option selected disabled value="">Select Invoices</option>
+                                </select>
+                                </div> 
+                             
+                                <label for="fname">   <br><b>Add Stock</b></label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="">Stock</label>
+                                        <!-- <input type="text" class="form-control" id="stockname" class="validate"> -->
+                                        <select class="form-select form-control mt-2" id="select_stockname">
+                                          <option selected disabled>Choose Stock</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Parts</label><br>
+                                        <select class="js-example-placeholder-multiple js-states form-select form-control mt-2" id="select_parts" multiple="multiple">
+                                          <!-- <option selected disabled>Choose Part</option> -->
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2">  
+                                        <label for="addassignment">&nbsp;</label><br>
+                                        <button type="button" id="saveparts" class="btn btn-primary">Add</button>
+                                    </div>
+
+                                        <div class="col-md-12">
+                                          <table id="Assignment_table" class="table border-1 "><br>
+                                            <thead class="bg-dark text-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Stock</th>
+                                                    <th>Part</th>
+                                                    <th>Action</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Assignment_table_data"></tbody>
+                                        </table>
+                                        </div>
+                            
+                                     
+
+                                <br><br>                       
+                                <br><br>                       
+                                <br><br>                       
+                                                   
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="addassignment()" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+        
+                            </div>
+        
+                            
+        
+                        </div>
+                    </div>
+                </div>
+        
+                </div>
+        
+            <br><br><br>
+
+
+        </div>
+
+       
+    
+
+    <script src="JQ/jquery-3.6.3.min.js"></script>
+    <!-- <script src="JS/bootstrap.min.js"></script>  -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+    <!-- <script src="Badeloft.js"></script> -->
+    <script src="Assignment.js"></script>
+
+  
+
+</body>
+
+</html>

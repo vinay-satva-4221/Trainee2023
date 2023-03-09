@@ -4,7 +4,7 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Badeloft</title>
+      <title>Badeloft Login</title>
       <!-- jquery cdn -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
       <!-- Bootsrap Cdn  -->
@@ -16,35 +16,39 @@
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
          crossorigin="anonymous"
       />
-      <link rel="stylesheet" href="login.css">
+      <link rel="stylesheet" href="login.css" />
    </head>
    <body>
-      <section class="vh-100"  id="basic_form">
+      <section class="vh-100">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-6 px-0 d-none d-md-block">
                   <img src="Background.png" alt="Login image" id="image" class="w-100 vh-100" style="object-fit: cover" />
                   <div>
-                     <img src="White-logo.png" id="overimg"/>
+                     <img src="White-logo.png" id="overimg" />
                   </div>
                </div>
-               <div class="col-md-6 text-black">
-                  <div class="d-flex align-items-center px-5  mt-5 pt-5">
-                     <form style="width: 23rem">
+               <div class="col-md-6 text-black" style="overflow: auto">
+                  <div class="d-flex align-items-center px-5 mt-5 pt-5">
+                     <form style="width: 23rem" id="basic_form">
                         <img src="02.png" class="mt-5" />
                         <p class="mt-3 fw-bold">Welcome, Let's Get Started!</p>
-                        <div class="form-outline mb-4 mt-5">
+                        <div class="mt-2">
+                           <hr id="hr">
+                       </div><br>
+                        <div class="form-outline mb-4 ">
                            <label class="form-label" for="form2Example18">Email Address</label>
-                           <input type="email" class="form-control form-control-lg" id="user" name="email" required/>
+                           <input type="email" class="form-control form-control-lg" id="user" name="email" />
                         </div>
                         <div class="form-outline mb-4">
                            <label class="form-label" for="form2Example28">Password</label>
-                           <input type="password" class="form-control form-control-lg" id="password" name="password" required/>
+                           <input type="password" class="form-control form-control-lg" id="password" name="password" />
+                           <p id="error" style="color: red;"></p>
                         </div>
                         <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="validate()" >Login</button>
+                           <button type="button" class="btn btn-primary btn-lg btn-block" onclick="validate()" id="btn">Login</button>
                         </div>
-                    </form>
+                     </form>
                   </div>
                </div>
             </div>

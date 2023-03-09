@@ -292,7 +292,7 @@
         };
         arryObj.push(obj);
         localStorage.setItem('localData', JSON.stringify(arryObj));
-        loadDataFromLocal();
+        loaddatafromlocal();
       }
       clearForm();
     }
@@ -308,7 +308,7 @@
        oldRecord. state= $("#dpdlState").val(),
        oldRecord.city=$("#dpdlCity").val()
       localStorage.setItem('localData', JSON.stringify(localArray));
-      loadDataFromLocal();
+      loaddatafromlocal();
       clearForm();
     }
 
@@ -325,7 +325,7 @@
         }
       }
       localStorage.setItem('localData', JSON.stringify(localArray));
-      loadDataFromLocal();
+      loaddatafromlocal();
     }
 
   </script>

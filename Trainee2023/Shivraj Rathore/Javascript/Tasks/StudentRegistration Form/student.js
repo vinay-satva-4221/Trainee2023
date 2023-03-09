@@ -190,10 +190,12 @@ $(document).ready(function () {
     });
   
     $(document).on("click", ".btn-update", function () {
-      debugger;
+    
       var getData = JSON.parse(localStorage.getItem("studentData"));
       var row_index = $(this).closest("tr").index();
+
       var req_index = row_index - 1;
+
       document.getElementById("name").value = getData[req_index].Name;
       document.getElementById("mobile").value = getData[req_index].Mobile;
       document.getElementById("email").value = getData[req_index].Email;
@@ -204,6 +206,8 @@ $(document).ready(function () {
       document.getElementById("city").value = getData[req_index].City;
       document.getElementById("zip").value = getData[req_index].Zip;
       document.getElementById("daterange").value = getData[req_index].FromToWhenYouStudied;
+
+     
     });
   });
   

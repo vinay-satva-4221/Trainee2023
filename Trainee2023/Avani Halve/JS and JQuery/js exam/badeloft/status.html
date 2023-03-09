@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Status</title>
+         <!-- Bootsrap Cdn  -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+   
+         <!-- font awsome -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+   
+         <!-- datatable -->  
+         <link src="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css" />
+   
+      <link rel="stylesheet" href="./css/status.css" />
+
+       <!-- jquery -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg">
+         <div class="container-fluid" style="background-color: white">
+            <div class="navbar-brand">
+               <img src="./Images/02.png" style="height: 28px; width: 215px" alt="" />
+            </div>
+            <button
+               class="navbar-toggler"
+               type="button"
+               data-bs-toggle="collapse"
+               data-bs-target="#navbarResponsive"
+               aria-controls="navbarResponsive"
+               aria-expanded="false"
+               aria-label="Toggle navigation"
+            >
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+               <div class="tabs mx-auto" id="navlinks">
+                  <ul class="navbar-nav">
+                     <li class="nav-link">
+                        <a href="./dashboard.html" class="nav-item nav-link mx-3" style="text-decoration: none">Dashboard</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="./stock.html" class="nav-item nav-link mx-3"  style="text-decoration: none">Stock</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link ">
+                        <a href="./status.html" class="nav-item nav-link fw-bold  mx-3 active" style="text-decoration: none">Status</a>
+                        <div class="underline"></div>
+                     </li>
+                     <li class="nav-link">
+                        <a href="./assignment.html" class="nav-item nav-link mx-3" style="text-decoration: none">Assignment</a>
+                        <div class="underline"></div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="d-flex align-items-center" style="height: 80px; width: 200px">
+               <div class="row">
+                  <div class="col-3 mt-4">
+                     <img src="./Images/person1.jfif" class="rounded-circle" height="50px" width="50px" alt="" />
+                  </div>
+                  <div class="col-6 text-center mt-4">
+                     <p class="small mb-0" id="">Welcome</p>
+                     <p id="user" class="small mb-0"></p>
+                  </div>
+                  <div class="col-3 mt-3">
+                     <button class="btn btn-outline-secondary border-0 mt-3" id="logout" onclick="logout()">
+                        <i class="fa fa-sign-out"></i>
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <section class="container-fluid me-5">
+         <span class="heading">Status</span>
+         <div class="main">
+            <div class="form-group has-search">
+               <span class="fa fa-search form-control-feedback"></span>
+               <input type="text" id="search" class="form-control" placeholder="Search" />
+            </div>
+         </div>
+         <table id="example" class="table" style="width:100%; border: 1px solid grey;">
+           <thead class="table-dark">
+             <tr>
+               <th style="color: white;">QB Invoice#</th>
+               <th>Name</th>
+               <th>QB Ship date</th>
+               <th>QB Payment Status</th>
+               <th>QB Status</th>
+               <th>QB Delivery Phone</th>
+               <th>Called</th>
+               <th>QB Tracking</th>
+             </tr>
+           </thead>
+         </table>
+       </section>
+
+      <script src="./js/status.js"></script>
+     
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
+ 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+     
+      <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+     
+      <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
+      <!-- popover -->
+      <script
+         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+         integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+         crossorigin="anonymous"
+         referrerpolicy="no-referrer"
+      ></script>
+   </body>
+</html>

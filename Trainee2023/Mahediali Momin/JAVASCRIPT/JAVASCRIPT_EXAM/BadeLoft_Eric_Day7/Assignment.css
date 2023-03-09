@@ -1,0 +1,231 @@
+thead {
+  background-color: black;
+  border-collapse: collapse;
+  border-radius: 1em;
+
+}
+
+table {
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 0.5em;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid black;
+
+}
+
+#assignmentTable_length {
+  margin-bottom: -40px;
+  margin-top: 2px;
+}
+
+#assignmentTable_filter input[type=search] {
+  width: 300px;
+  height: 35px;
+  /* margin-top: 12px; */
+  margin-bottom: 20px;
+}
+
+#newButton {
+  background-color: #326C96;
+  border: #326C96;
+  color: white;
+}
+
+#add_parts {
+  background-color: #326C96;
+  border: #326C96;
+  color: white;
+  width: 75%;
+}
+
+.nav_logo {
+  margin: 10px;
+  height: 20px;
+  width: 170px;
+  padding-left: 20px;
+}
+
+.maintable {
+  background-color: black;
+  color: white;
+  border: 1px;
+}
+
+.styl {
+  height: 50px;
+  width: 60px;
+  padding-bottom: 10px;
+}
+
+.rounded-circle {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+#logout {
+  color: rgb(150, 147, 143);
+  margin-top: 30px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+#Uname {
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+#img {
+  margin-right: 10px;
+  margin-top: 13px;
+}
+
+#Uname {
+  margin-right: 15px;
+  margin-top: 7px;
+}
+
+#bade_logo {
+  width: 100%;
+  margin-left: -35px;
+}
+
+#production, #water, #warehouse {
+  background-color: #326C96;
+  color: white;
+}
+
+#save_outer {
+  background-color: #326C96;
+  color: white;
+  width: 11%;
+}
+
+#close_outer {
+  width: 11%;
+  color: rgb(150, 147, 143);
+}
+
+#save_inner {
+  background-color: #326C96;
+  color: white;
+  width: 15%;
+}
+
+#close {
+  width: 17%;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: black;
+  border: black;
+  color: white;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+#assignmentTable.dataTable td.dt-control:before {
+  background-color: white;
+  color: #1188FF;
+  border-color: #063894;
+  margin: 5px;
+}
+
+table.dataTable td.dt-control {
+  text-align: start !important;
+  color: rgb(95, 159, 248);
+  padding-right: 3px;
+}
+
+#assignmentTable th.sorting.sorting_asc::before {
+
+  display: none;
+}
+
+#assignmentTable th.sorting.sorting_asc::after {
+
+  display: none;
+}
+
+#assignmentTable th.sorting.sorting_desc::after {
+
+  display: none;
+}
+
+#assignmentTable th.sorting.sorting_desc::before {
+
+  display: none;
+}
+
+#assignmentTable th.sorting::before {
+  display: none;
+}
+
+#assignmentTable th.sorting::after {
+  display: none;
+}
+
+
+/* 
+    table.dataTable td.dt-control {
+      text-align: start !important;
+      color: rgb(95, 159, 248);
+      padding-right: 3px;
+    } */
+
+input[type=checkbox]:checked {
+  accent-color: green;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 26%;
+  height: 2px;
+  bottom: -23px;
+  left: 37px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+  /* transition: all 0.3s ease-in-out 0s; */
+}
+
+.navbar-nav .nav-link.active::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.select2-dropdown {
+  z-index: 1100 !important
+}
+
+#savedata, #cancel_modal {
+  width: 10%;
+  /* margin-top: 50px; */
+  margin-left: 17px;
+  margin-bottom: 50px;
+}

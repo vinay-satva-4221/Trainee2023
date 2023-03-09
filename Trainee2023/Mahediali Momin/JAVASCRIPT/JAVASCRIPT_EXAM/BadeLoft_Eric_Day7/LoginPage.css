@@ -1,0 +1,52 @@
+.bigimg {
+    position: relative;
+}
+
+.bg_logo {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    height: 27px;
+}
+
+#btn {
+    background-color: #326C96;
+    color: white;
+}
+
+form {
+    width: 30rem;
+}
+
+.error {
+    color: red;
+}
+
+/* hr:not([size]) {
+    height: 3px !important;
+    color: #326c96;
+  } */
+
+.WelcomeLine {
+    width: 7%;
+    border: 1px solid#326C96;
+    background-color: #326C96;
+    opacity: 1;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .bg_logo {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .bigimg {
+        display: none;
+    }
+}

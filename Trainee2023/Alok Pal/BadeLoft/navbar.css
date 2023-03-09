@@ -1,0 +1,98 @@
+/* nav */
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.Dlogo {
+    width: 165px;
+    margin-left: -6%;
+}
+
+.nav-item {
+    margin-right: 5%;
+}
+
+.navItem {
+    margin-right: 18%;
+}
+
+
+
+/* .nav_height{
+
+} */
+/* ytte */
+.navbar-nav .nav-link {
+    position: relative;
+    /* font-weight: bold; */
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    top: 47px;
+    left: 29px;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+   
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+
+.adminImg {
+    border-radius: 50px;
+    height: 41px;
+    margin-top: 2px;
+}
+
+.welcome {
+    font-size: 11px;
+    opacity: 70%;
+    margin-bottom: -18%;
+    margin-top: 8%;
+}
+
+.getN {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.dynamicN {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: -29%;
+
+}
+
+#logout {
+    margin-right: -7%;
+}
+
+
+
+.fa-solid {
+    color: #858585;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 575px) {
+    .Dlogo {
+        width: 165px;
+        margin-left: -2%;
+    }
+}

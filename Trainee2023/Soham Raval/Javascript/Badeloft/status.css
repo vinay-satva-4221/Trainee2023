@@ -1,0 +1,100 @@
+
+.img_round{
+  height: 70%;
+  width: 37%;
+}
+
+  #status_table.dataTable td.dt-control:before {
+    background-color: white;
+    color: #3F759C;
+    border-color: #3F759C;
+  }
+  input:checked ~ .checkmark {
+    background-color: pink;
+  }
+ 
+   .fa-arrow-right-from-bracket:before, .fa-sign-out:before {
+    color: #707060;
+}
+ 
+input[type=checkbox]:checked{
+  accent-color: green;
+}
+.pagination .page-item.active .page-link{
+  background-color: black;
+  border-color: black;
+ } 
+ table{
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 0.5em;
+  overflow: hidden;
+  background-color: white;
+  
+}
+thead{
+  background-color: black;
+  color: white;
+}
+.navbar-nav .nav-link {
+  position: relative;
+}
+
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 33%;
+  height: 2px;
+  bottom: -23px;
+  left: 29px;
+  background-color: #000;
+  visibility: hidden;
+  transform: scaleX(0);
+}
+
+.navbar-nav .nav-link.active::before
+{
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+#status_table_previous{
+  background-color: white;
+}
+#status_table_next{
+  background-color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  
+  background-color: black !important;
+  color: white !important;
+}
+
+a.paginate_button.current {
+  color: white !important;
+}
+
+table.dataTable {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+table{
+  font-size: small;
+  border-collapse: collapse;
+  border-radius: 1.2em;
+  overflow: hidden;
+  background-color: white;
+  
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+padding: 0px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+padding: 0px;
+}
+li.paginate_button.page-item.active{
+  padding: 0px;
+}
