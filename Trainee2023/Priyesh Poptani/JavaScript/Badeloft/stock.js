@@ -7,6 +7,7 @@ $(function () {
   $("#navbar").load("navbardata.html");
 });
 
+
 function format(d) {
   console.log(d);
   // `d` is the original data object for the row
@@ -36,35 +37,12 @@ function format(d) {
 
 $(document).ready(function () {
 
-  $('#addpartdatais').click(function () {
-    $('#partform').valid() == true
-  })
-  //part data popup validation
-  $("#partform").validate({
-    rules: {
-      partname: {
-        required: true,
-        validpartname: true
-      },
-      orderd: {
-        required: true,
-        validorderd: true
-      },
-    },
-    messages: {
-      partname: {
-        required: "Enter partnumber",
-        // validpartname:""
-      },
-      orderd: {
-        required: "Enter orderd",
-        // validorderd: ""
-      },
-    },
-  });
+ 
+
 
   $("#Addstockmodel").click(function(){
     document.getElementById("stockform").reset();
+    $("#updatestockdetails").hide();
 
   });
 
@@ -126,9 +104,16 @@ $(document).ready(function () {
       // { title: 'Notes', orderable: false, className: "text-center", data: "notes" },
       { title: 'Action', orderable: false, className: "text-center", 
       data: null,
-      className: "dt-center editor-edit  history",
-      defaultContent: '<i class="fa fa-pencil"/> <i class="fa fa-history"/>',
-      orderable: false
+      className: "dt-center ",
+      render: function (data, type, row) {
+        return (
+          '<i class="fa fa-pencil pencil"/>' +
+           '<i class="fa fa-history audit"/>'
+        );
+     },
+      // defaultContent: '<i class="fa fa-pencil pencil"/> <i class="fa fa-history audit"/>',
+      orderable: false,
+      
     },
   
     ],
@@ -142,7 +127,7 @@ $(document).ready(function () {
 
 
   //Edit record
-  $('#stock tbody').on('click', '.editor-edit', function (e) {
+  $('#stock tbody').on('click', '.pencil', function (e) {
     e.preventDefault();
    partDetails=[];
     
@@ -187,11 +172,16 @@ $(document).ready(function () {
   
     });
 
-    
+
         
         
   });
 
+
+// audit model 
+$(".fa-history").click(function(){
+  $('#Auditmodelid').modal('show');
+  });
 
 
   // Add event listener for opening and closing details
@@ -291,12 +281,38 @@ $(document).ready(function () {
 
 
 
-function addpartData() {
+// function addpartData() {
 
   
 
+  //part data popup validation
+  $("#partform").validate({
+    rules: {
+      partname: {
+        required: true,
+        //validpartname: true
+      },
+      orderd: {
+        required: true,
+        //validorderd: true
+      },
+    },
+    messages: {
+      partname: {
+        required: "Enter partnumber",
+        // validpartname:""
+      },
+      orderd: {
+        required: "Enter orderd",
+        // validorderd: ""
+      },
+    },
+  });
 
-
+$('#addpartdatais').click(function () {
+  
+ if($("#partform").valid() == true) {
+ 
 
   // var partDetails = [];
   console.log(partDetails);
@@ -318,6 +334,8 @@ function addpartData() {
     partno: partno,
     ordered: ordered,
     notes: notes,
+
+    
   });
   // localStorage.setItem("partDetails", JSON.stringify(partDetails));
 
@@ -343,11 +361,40 @@ function addpartData() {
     document.getElementById("tdata").innerHTML = html;
     
   });
-
+  $('#partmodelid').modal("hide");
 }
+});
+
+// validtion for addstockdata
+$("#stockform").validate({
+  rules: {
+    stockname: {
+      required: true,
+      //validpartname: true
+    },
+    etadatename: {
+      required: true,
+      //validorderd: true
+    },
+  },
+  messages: {
+    stockname: {
+      required: "Enter stockname",
+      // validpartname:""
+    },
+    etadatename: {
+      required: "Enter etadate",
+      // validorderd: ""
+    },
+  },
+});
 
 
-function addstockdata() {
+$('#addstockdatais').click(function () {
+  debugger
+  if($("#stockform").valid() == true) {
+
+// function addstockdata() {
 
   // var stockDetails = [];
   console.log("Partdetails in stock function:", partDetails);
@@ -399,6 +446,7 @@ function addstockdata() {
 
   localStorage.setItem("stockList", JSON.stringify(stockList));
 }
+});
 //array data delete code
 // function deleteRecord(id) {
 //   document.querySelector('#row' + id).remove();

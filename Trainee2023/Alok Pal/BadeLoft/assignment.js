@@ -83,7 +83,6 @@ $(".nav-item a").each(function () {
   }
 });
 
-
 // Dynamic value of dropdown
 var stockData = JSON.parse(localStorage.getItem("newStock"));
 
@@ -115,9 +114,6 @@ $("#stockname")
     // $("#parts").append(option);
     // });
   });
-
-
-
 
 // Time
 function formatDate(dateVal) {
@@ -178,10 +174,6 @@ function resetSVal() {
   document.getElementById("Invoice").value = "";
 }
 
-
-
-
-
 function format(d, id) {
   // debugger
   let dynamicChildRow = "";
@@ -213,7 +205,7 @@ var table;
 $(document).ready(function () {
   var datin = JSON.parse(localStorage.getItem("Assigned"));
 
-  table = $('#Assignmenttable').DataTable({
+  table = $("#Assignmenttable").DataTable({
     data: datin,
     language: {
       info: "Items _START_ to _END_ of _TOTAL_ total",
@@ -233,16 +225,15 @@ $(document).ready(function () {
     ],
     bInfo: true,
     columns: [
-
       {
         data: "Invoice",
         title: "QB Invoice#",
         className: "dt-control  showchildRow",
         orderable: false,
       },
-      { data: 'UserName', title: "Name", },
-      { data: 'Customer', title: "Created By", },
-      { data: 'CreatedTime', title: "Created Date", },
+      { data: "UserName", title: "Name" },
+      { data: "Customer", title: "Created By" },
+      { data: "CreatedTime", title: "Created Date" },
       {
         data: "null",
         title: "Action",
@@ -256,22 +247,22 @@ $(document).ready(function () {
         },
       },
     ],
-    order: [[1, 'asc']],
+    order: [[1, "asc"]],
   });
 
   // Add event listener for opening and closing details
-  $('#Assignmenttable tbody').on('click', 'td.dt-control', function () {
-    var tr = $(this).closest('tr');
+  $("#Assignmenttable tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
     var row = table.row(tr);
 
     if (row.child.isShown()) {
       // This row is already open - close it
       row.child.hide();
-      tr.removeClass('shown');
+      tr.removeClass("shown");
     } else {
       // Open this row
       row.child(format(row.data())).show();
-      tr.addClass('shown');
+      tr.addClass("shown");
     }
   });
 });
@@ -279,11 +270,10 @@ $(document).ready(function () {
 // delete
 $(document).on("click", ".delete", function () {
   var AssignedData = JSON.parse(localStorage.getItem("Assigned"));
-  let Index = table.row($(this).parents('tr')).index();
-  table.row(Index).remove().draw()
-  AssignedData.splice(Index, 1)
+  let Index = table.row($(this).parents("tr")).index();
+  table.row(Index).remove().draw();
+  AssignedData.splice(Index, 1);
   localStorage.setItem("Assigned", JSON.stringify(AssignedData));
-
 });
 
 // Global
@@ -291,25 +281,22 @@ var StockNameParts = new Array();
 var Assigned = [];
 
 function addPartData() {
-  debugger
+  debugger;
   var stock = $("#stockname").val();
   var PartNumber = $("#parts").val();
   PartNumber = PartNumber.toString().replaceAll(",", " | ");
   StockNameParts.push({
     StockName: stock,
-    Parts: PartNumber
-  })
-
+    Parts: PartNumber,
+  });
 }
 
-
 function addStockData() {
-  debugger
+  debugger;
   var user = JSON.parse(localStorage.getItem("user"));
-  console.log(user[0].Admin)
+  console.log(user[0].Admin);
   var customer = $("#Customer").val();
   var QBInvoice = $("#Invoice").val();
-
 
   if (localStorage.getItem("Assigned") == null) {
     Assigned = [];
@@ -320,10 +307,9 @@ function addStockData() {
       UserName: user[0].Admin,
       id: Date.now(),
       CreatedTime: Time,
-    }
+    };
     Assigned.push(newObj);
-  }
-  else {
+  } else {
     Assigned = JSON.parse(localStorage.getItem("Assigned"));
     var newObj = {
       Customer: customer,
@@ -332,23 +318,23 @@ function addStockData() {
       UserName: user[0].Admin,
       id: Date.now(),
       CreatedTime: Time,
-    }
+    };
     Assigned.push(newObj);
   }
   $("#StockModal").modal("hide");
   table.row.add(newObj).draw();
   localStorage.setItem("Assigned", JSON.stringify(Assigned));
   $("#AssignedModal").modal("hide");
-  $('#partTable').html(null);
+  $("#partTable").html(null);
   $("#partTable").append("<tbody></tbody");
-  resetValue()
+  resetValue();
 
-  location.reload(true)
+  location.reload(true);
 }
 
 // Dynamic adding of table
 function showModaltable() {
-  debugger
+  debugger;
   var html = "";
   if (StockNameParts.length > 0) {
     html =
@@ -357,7 +343,8 @@ function showModaltable() {
       var indx = index + 1;
       html += "<tr>";
       html += "<td class=text-start  > " + indx + "</td>";
-      html += "<td class=text-start >" + StockNameParts[index].StockName + "</td>";
+      html +=
+        "<td class=text-start >" + StockNameParts[index].StockName + "</td>";
       html += "<td class=text-start > " + StockNameParts[index].Parts + "</td>";
       html +=
         '<td class=text-start><i  class= "fa-solid fa-x " style="cursor:pointer" onclick="deletePartTableRow(' +
@@ -366,70 +353,64 @@ function showModaltable() {
       html += "</tr>";
       html += "</tbody>";
 
-      $("#partTable").html(html);
-
     });
   }
+  $("#partTable").html(html);
 }
-
 
 //delete Part Table
 function deletePartTableRow(index) {
-  debugger
+  debugger;
   console.log(index);
   StockNameParts.splice(index, 1);
   console.log(parts);
   showModaltable();
 }
 
-
 // delete datatable
 
 function deleteMainTableRow(element) {
   var Assigned = JSON.parse(localStorage.getItem("Assigned"));
-  debugger
-  var stockID = $(element).attr('data-stock-id');
-  var StockIndex = Assigned.findIndex(x => x.id == stockID);
-  var PartIndex = $(element).attr('data-part-index');
+  debugger;
+  var stockID = $(element).attr("data-stock-id");
+  var StockIndex = Assigned.findIndex((x) => x.id == stockID);
+  var PartIndex = $(element).attr("data-part-index");
   console.log("Part index", PartIndex);
 
   console.log("Stock index", StockIndex);
   Assigned[StockIndex].StockParts.splice(PartIndex, 1);
   localStorage.setItem("Assigned", JSON.stringify(Assigned));
 
-  var tr = $(element).closest("tr")
-  tr.remove()
-
+  var tr = $(element).closest("tr");
+  tr.remove();
 }
 
 function resetValue() {
-  document.getElementById("Customer").value = ''
-  document.getElementById("Invoice").value = ''
-  document.getElementById("stockname").value = ''
+  document.getElementById("Customer").value = "";
+  document.getElementById("Invoice").value = "";
+  document.getElementById("stockname").value = "";
 }
 
 $("#Assignmenttable").on("click", ".editor-edit", function (e) {
-  debugger
+  debugger;
   $("#AssignedModal").modal("show");
 
-  var tabledata = table.row($(this).parents('tr')).data();
-  var indexRow = table.row($(this).parents('tr')).index();
+  var tabledata = table.row($(this).parents("tr")).data();
+  var indexRow = table.row($(this).parents("tr")).index();
 
-  $("#Customer").val(tabledata.Customer)
-  $("#Invoice").val(tabledata.Invoice)
-
+  $("#Customer").val(tabledata.Customer);
+  $("#Invoice").val(tabledata.Invoice);
 
   var newAssigned = JSON.parse(localStorage.getItem("Assigned"));
   // User
   var user = JSON.parse(localStorage.getItem("user"));
 
-   StockNameParts = newAssigned[indexRow].StockParts;
+  StockNameParts = newAssigned[indexRow].StockParts;
   showModaltable();
 
   document.querySelector("#AssignedModalId").onclick = function () {
-
-    var updateCustomerName = document.getElementById("Customer").value
-    var updateInvoice = document.getElementById("Invoice").value
+    var updateCustomerName = document.getElementById("Customer").value;
+    var updateInvoice = document.getElementById("Invoice").value;
 
     var newObj = {
       Customer: updateCustomerName,
@@ -438,17 +419,14 @@ $("#Assignmenttable").on("click", ".editor-edit", function (e) {
       UserName: user[0].Admin,
       id: Date.now(),
       CreatedTime: Time,
-    }
+    };
     newAssigned[indexRow] = newObj;
     localStorage.setItem("Assigned", JSON.stringify(newAssigned));
     $("#AssignedModal").modal("hide");
-    window.location.reload();
-    resetValue()
-  }
-
-
-})
-
+    table.row(indexRow).data(newObj).draw();
+    resetValue();
+  };
+});
 
 // for search bar
 $("#stock_search").on("keyup", function () {
@@ -461,4 +439,3 @@ input.addEventListener("search", () => {
   table.search(input.value).draw();
   // console.log(`The term searched for was ${}`);
 });
-

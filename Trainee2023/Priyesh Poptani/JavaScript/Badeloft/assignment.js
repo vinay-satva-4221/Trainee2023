@@ -20,7 +20,6 @@ $(document).ready(function () {
     console.log('createdby');
     var createdDate = new Date(Date.now()).toLocaleString().split(',')[0];
     //  datatable pagination and prepend modal and heading
-    var modal = document.getElementById('modalpopup');
 
     //cascading dropdown
     var customerInvoice = [
@@ -158,6 +157,7 @@ $(document).ready(function () {
         //var dataSet = localArray.push(...loggedData)
         console.log(localArray)
 
+        var modal = document.getElementById('modalpopup');
 
         table = $("#assignedparttable").DataTable({
 
@@ -188,7 +188,7 @@ $(document).ready(function () {
             bFilter: true, bInfo: true,
             fnInitComplete: function () {
                 $('div.toolbar').html(' <h4>Assignment</h4>');
-                $('#example_filter').prepend(modal);
+                $('#assignedparttable_filter label').prepend(modal);
             },
 
             data: localArray,
@@ -237,23 +237,21 @@ $(document).ready(function () {
         return dynamicChildRow;
     }
 
-    
+
     //delete data of partTable
     $("#partTable").on("click", ".DeletePartsTable", function () {
-        if(partsAssignedToStock.length==1)
-        {
+        if (partsAssignedToStock.length == 1) {
             alert("You can't delete last data")
         }
-        else
-        {
+        else {
             console.log($(this).closest("tr").remove());
             partsAssignedToStock.splice(this, 1)
         }
-       
+
     });
 
-      //delete maintable row
-      $('.delete').click(function () {
+    //delete maintable row
+    $('.delete').click(function () {
         var AssignedData = JSON.parse(localStorage.getItem("Assignment"));
         let Index = table.row($(this).parents('tr')).index();
         table.row(Index).remove().draw()
@@ -278,14 +276,14 @@ $(document).ready(function () {
         }
     });
 
-     //editing Assignment data 
-     $('#assignedparttable tbody').on('click', '.edit', function () {
+    //editing Assignment data 
+    $('#assignedparttable tbody').on('click', '.edit', function () {
         isEdit = true;
         console.log((table.row(this).data()));
         var data = table.row($(this).parents('tr')).data();
         var index = table.row($(this).parents('tr')).index();
         var cust = $("#customer").val(data.Name);
-       
+
         // Populate assignmentmodal with data
         cust.change();
         $("#quickbookInvoice").val(data.QBInvoice);
@@ -313,7 +311,34 @@ $(document).ready(function () {
         // Show AddStockModal
         $('#AssignmentModal').modal('show');
         //Handle click on Save Changes button
+
+        // validtion for addstockdata
+        // $("#stockform").validate({
+        //     rules: {
+        //         customer: {
+        //             required: true,
+        //             //validpartname: true
+        //         },
+        //         quickbookInvoice: {
+        //             required: true,
+        //             //validorderd: true
+        //         },
+        //     },
+        //     messages: {
+        //         customer: {
+        //             required: "select customer",
+        //             // validpartname:""
+        //         },
+        //         quickbookInvoice: {
+        //             required: "Enter quickbookInvoice",
+        //             // validorderd: ""
+        //         },
+        //     },
+        // });
         $("#saveAssignments").click(function () {
+
+            
+
 
             var updatedCustomer = $("#customer").val();
             var updatedInvoice = $("#quickbookInvoice").val();
@@ -340,7 +365,7 @@ $(document).ready(function () {
     });
 
     $('#saveAssignments').click(function () {
-        if(!isEdit){
+        if (!isEdit) {
             $('#assignmentModal').modal("hide");
 
 
@@ -348,7 +373,7 @@ $(document).ready(function () {
             //resetForm();
         }
 
-       
+
     });
 
 

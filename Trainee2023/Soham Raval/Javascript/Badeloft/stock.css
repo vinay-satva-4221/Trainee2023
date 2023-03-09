@@ -116,6 +116,12 @@ border: 1px solid gray;
 .btn-group>.btn-group:not(:first-child)>.btn, .btn-group>.btn:nth-child(n+3), .btn-group>:not(.btn-check)+.btn {
 border: 1px solid gray;
 }
+.statusdropdown{
+
+  border-color: #3F759C;
+  color: #3F759C;
+
+}
   /* table{
     font-size: small;
     border-collapse: collapse;
