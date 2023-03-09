@@ -116,15 +116,76 @@ function logout(){
           title: 'Action',
           orderable: false,
           defaultContent: '<div class="action-buttons">' +
-                      '<span class="edit"><i class="fa fa-pencil"></i></span> ' +
-                      '<span class="remove"><i class="fa fa-trash"></i></span> ' +
-                      '<span class="cancel"></span>' +
-                      '</div>',
+          '<span id="editassignment" class="edit edit-assignment"><i  class="fas fa-pen"></i></span> ' +
+          '<span class="history">&nbsp;&nbsp;<i class="fas fa-trash"></i></span> ' +
+          '</div>',
           className: 'row-edit dt-center',
-        }
+        }  
       ]
     
+   
     });
+    // $("#assignment tbody").on('click', '.fa-pen', function () {
+    //   partDetails = [];
+    //   // var i = $(this).closest('tr').index();
+    
+    //   var datatableIndex = tableData.row($(this).parents('tr')).index()
+    //   console.log(datatableIndex,"datatableIndex")
+    
+    //   currentStockIndex = datatableIndex; 
+    //   $("#addstockbtn").hide();
+    //   $("#editstockbtn").show();
+    
+    //   $("#myModal").modal("show"); 
+    //   $("#addstocktitle").html("Edit Stock");
+    
+    //   console.log(currentStockIndex, stockDetails[currentStockIndex])
+    
+    //   //EDIT STOCK  
+    //   console.log(stockDetails[datatableIndex])
+    //   // console.log(stockDetails[i].stockpart[0].partno)
+    //   currentStockId = stockDetails[datatableIndex].index;
+    
+    //   //findIndex of currentStock
+    
+    //   // var index = stockDetails.findIndex(x => x.index == currentStockId)
+    
+    //   document.getElementById("sname").value = stockDetails[datatableIndex].sname;
+    //   document.getElementById("etadate").value = stockDetails[datatableIndex].etadate;
+    
+    //   partDetails = stockDetails[datatableIndex].stockpart
+    
+    //   var html = "";
+    
+    //   stockDetails[datatableIndex].stockpart.forEach(function (element, index) {
+    //     let ind = index + 1;
+    //     html += "<tr>";
+    //     html += "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + element.partno + "</td>";
+    //     html += "<td>" + ind + "</td>"; //Date.now() 
+    //     html += "<td>" + element.ordered + "</td>";
+    //     html += "<td>" + element.notes + "</td>";
+    //     html += "<td>" + '<i class="fa-solid fa-xmark delete"></i>' + "</td>";
+    
+    //     html += "</tr>";
+    //     document.getElementById("tdata").innerHTML = html;
+    
+    //   });
+    
+       
+    //   $(".delete").click(function () {
+    
+    //     var i = $(this).closest('tr').index();
+    //     console.log(i)
+    //     partDetails.splice(i,1); 
+    //     console.log(partDetails)
+    
+        
+    //     $(this).closest('tr').remove();
+    
+    //   });
+    
+    // });
+    
   
     // Add event listener for opening and closing details
     $('#stock tbody').on('click', 'td.dt-control', function () {

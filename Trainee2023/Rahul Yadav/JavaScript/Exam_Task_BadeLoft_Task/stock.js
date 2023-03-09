@@ -5,11 +5,11 @@ if (localStorage.getItem('LogedinUser') !== null) {
     function format(d) {
         let dynamicChildRow = '';
         if (d.partiteam && d.partiteam.length > 0) {
-            dynamicChildRow += '<table class:"table  p-0 m-0 w-100 h-100" class="" id="childpartTable " style="width:100%">';
+            dynamicChildRow += '<table class:"table  p-0 m-0 w-100 h-100"  id="childpartTable " style="width:100%">';
             dynamicChildRow += '<thead class=" fw-normal bg-light childtable rounded"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
             dynamicChildRow += '<tbody>';
             d.partiteam.forEach((partiteam, index) => {
-                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.notes + `</td><td> <button type="button" data-stock="${d.stockname}" class="btn-close deleteparts" aria-label="Close"></button></td></tr>`;
+                dynamicChildRow += '<tr><td>' + (1 + index) + '</td><td>' + partiteam.partno + '</td><td>' + partiteam.order + '</td><td>' + partiteam.order + `</td><td> <button type="button" data-stock="${d.stockname}" class="btn-close deleteparts" aria-label="Close"></button></td></tr>`;
             });
             dynamicChildRow += '</tbody></table>';
         }

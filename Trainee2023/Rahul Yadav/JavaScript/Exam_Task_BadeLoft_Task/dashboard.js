@@ -7,16 +7,16 @@ $(document).ready(function () {
         var dataSet = [
             ['Stock Location', '', '', "On Water", 'On Water', 'In Production'],
             ['ETA Date', '', '', "10/08/2021", '10/08/2021', '10/08/2021'],
-            ['ZK-08-X2P', '1', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '0', '0'],
-            ['BW-01-Q-M', '', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>2</a>", '0', '1'],
-            ['BW-01-XL-G', '2', '1', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '2', '1'],
-            ['BW-01-S-M', '1', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>1</a>", '0', '0'],
-            ['ZK-08-X2P', '3', '1', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '0', '0'],
-            ['ZK-08-X2P', '1', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>2</a>", '0', '0'],
-            ['ZK-08-X2P', '2', '3', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '0', '0'],
-            ['ZK-08-X2P', '1', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '0', '0'],
-            ['ZK-08-X2P', '2', '2', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>1</a>", '0', '0'],
-            ['ZK-08-X2P', '1', '0', "<a href='#' data-toggle='popover' title='Assigned to' data-content='Some content inside the popover' style='text-decoration: none;'>3</a>", '0', '0'],
+            ['ZK-08-X2P', '1', '0', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['BW-01-Q-M', '', '0', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '1'],
+            ['BW-01-XL-G', '2', '1', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '2', '1'],
+            ['BW-01-S-M', '1', '0', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '3', '1', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '1', '0',"<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '2', '3', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '1', '0', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '2', '2', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
+            ['ZK-08-X2P', '1', '0', "<button class='dataColor border-0' data-bs-toggle='popover' id='popover'>3</button>", '0', '0'],
         ];
 
         var StockLocation = $.fn.dataTable.absoluteOrder(
@@ -68,12 +68,43 @@ $(document).ready(function () {
             table.search(this.value).draw();
         });
 
-        $('[data-toggle="popover"]').popover({
+        $('[data-bs-toggle="popover"]').popover({
+
+
+            container: 'body',
+            title: '<p class="text-start text-dark fw-bold bg-white">Assigned to<a href="#" class="close  float-end text-secondary fs-5" data-dismiss="alert">&times;</a></p> ',
+            placement: 'right',
             html: true,
             content: function () {
-                return $("#popover-content").html();
-            },
+                return $('#Popover').html();
+            }
         });
+
+
+        $(document).on("click", ".popover .close", function () {
+
+            $('.popover').hide();
+
+        });
+
+
+
+
+        // $('[data-toggle="popover"]').popover({
+        //     container: 'body',
+        //     title: '<p class="text-start text-dark fw-bold bg-white">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
+        //     placement: 'right',
+        //     html: true,
+        //     content: function () {
+        //         return $("#popover-content").html();
+        //     },
+        // });
+
+        // $(document).on("click", ".popover .close", function () {
+
+        //     $('.popover').hide();
+
+        // });
 
         $("#logout").click(function () {
             localStorage.removeItem("LogedinUser");
@@ -83,4 +114,6 @@ $(document).ready(function () {
     else {
         window.location.href = "login.html"
     }
-})  
+})
+
+

@@ -131,25 +131,26 @@ $(document).ready(function () {
             document.getElementById("addassignment").onclick = function () {
                 // var result = stock_parts.valid();
                 // if (result == true) {
-                    var stockname = document.getElementById("stock-select").value;
-                    var partname = $("#part-select").val()
-                    partname = partname.toString().replaceAll(",", " | ");
+                var stockname = document.getElementById("stock-select").value;
+                var partname = $("#part-select").val()
+                partname = partname.toString().replaceAll(",", " | ");
 
-                    var stock_part_obj = {
-                        Stock: stockname,
-                        Part: partname
-                    }
-                    stock_part_name.push(stock_part_obj);
-                    var html = "";
-                    stock_part_name.forEach(function (element, index) {
-                        html += "<tr>";
-                        html += "<td>" + (index + 1) + "</td>";
-                        html += "<td>" + element.Stock + "</td>";
-                        html += "<td>" + element.Part + "</td>";
-                        html += "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
-                        html += "</tr>"
-                    });
-                    document.getElementById("partstable").innerHTML = html;
+                var stock_part_obj = {
+                    Stock: stockname,
+                    Part: partname
+                }
+                stock_part_name.push(stock_part_obj);
+                var html = "";
+                stock_part_name.forEach(function (element, index) {
+                    html += "<tr>";
+                    html += "<td>" + (index + 1) + "</td>";
+                    html += "<td>" + element.Stock + "</td>";
+                    html += "<td>" + element.Part + "</td>";
+                    html += "<td class='tdAction'><button type='button' class='btn btn-sm btn-delete'>&#x2715;</button></td>";
+                    html += "</tr>"
+                });
+                document.getElementById("partstable").innerHTML = html;
+                document.getElementById("saveassignment").style.backgroundColor="#07678d";
                 // }
             }
 
@@ -308,7 +309,7 @@ $(document).ready(function () {
                 var selectedStock = $(this).val();
                 var partSelect = $('#part-select');
                 partSelect.empty();
-                partSelect.append($('<option>', { value: ''},'</option>'));
+                partSelect.append($('<option>', { value: '', text: 'Choose Parts Name' }));
                 if (selectedStock) {
                     var selectedStockData = StockData.find(function (stock) {
                         return stock.stockname === selectedStock;
