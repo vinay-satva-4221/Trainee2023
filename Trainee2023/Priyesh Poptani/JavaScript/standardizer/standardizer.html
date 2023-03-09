@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standardizer</title>
+    <link rel="stylesheet" href="./Bootstrap_setup/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./standardizer.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./images/Standardizer_logo.png" alt="" >
+              </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="">CoA</a>
+                    <img src="./images/admin.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 7-buttons -->
+    <div class="btngroup"> 
+    <button type="button" class="btn active" id="assetsBtn">Assets</button>
+    <button type="button" class="btn" id="liabilityBtn">Liability</button>
+    <button type="button" class="btn" id="equityBtn">Equity/Capital</button>
+    <button type="button" class="btn" id="revenueBtn">Revenue</button>
+    <button type="button" class="btn" id="cogsBtn">CoGS</button>
+    <button type="button" class="btn" id="gAndAExpensesBtn">G&A Expenses</button>
+    <button type="button" class="btn" id="otherRevenueExpensesBtn">Other Revenue & Expense</button>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 info">
+                Source Account Structure
+                <div class="BSA">Balance Sheet Accounts</div>
+            </div>
+            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 info">
+                Likely Destination Account
+                <div class="mostlikely">Most Likely</div>
+            </div>
+            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 info">
+                <div class="likely">Likely</div>
+            </div>
+            <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 info">
+                <div class="possible">Possible</div>
+            </div>
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 info">
+                Destination Account Structure
+                <div class="BSAA">Balance Sheet Accounts</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./Bootstrap_setup/jquery-3.6.3.min.js"></script>
+<script src="./Bootstrap_setup/js/bootstrap.min.js"></script>
+<script src="./standardizer.js"></script>
+
+</html>
