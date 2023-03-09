@@ -1,0 +1,33 @@
+.navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 51%;
+    height: 2px;
+    bottom: -13px;
+    left: 13px !important;
+    background-color: #8CCFEB;
+    visibility: hidden;
+    transform: scaleX(0);
+  }
+  
+  .navbar-nav .nav-link.active::before
+  {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  .navdiv{
+    height: 52px;
+  }
+
+  .btn.active {
+    background-color:  #3CB7E7 !important;
+    color: white !important; 
+  }
+ /* .btn-sm{
+  background-color:#EFF2F3;
+  color: #c5c9c7;
+ } */
