@@ -21,6 +21,10 @@
     padding-left: 25px;
 
 }
+#ChildTableStock thead tr th{
+  background-color: #CFD3D8;
+ text-align: center;
+}
   .navbar-nav .nav-link.active::before
   {
     visibility: visible;
