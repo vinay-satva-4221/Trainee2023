@@ -70,15 +70,15 @@ $(document).ready(function () {
                 defaultContent: '',
             },
             {title: 'QB Invoice#', className:"text-start dt-control",orderable:true},
-            {title: 'Name',orderable:true},
-            {title: 'QB Ship Date',orderable:true},
-            {title: 'QB Payment Status',oradable:false},
-            {title: 'QB Status',oradable:false},
-            {title: 'QB Delivery Phone',oradable:false},
+            {title: 'Name',orderable:true, className:"text-start"},
+            {title: 'QB Ship Date',orderable:true, className:"text-start"},
+            {title: 'QB Payment Status',oradable:false, className:"text-start"},
+            {title: 'QB Status',oradable:false, className:"text-start"},
+            {title: 'QB Delivery Phone',oradable:false, className:"text-start"},
             {title: 'Called',oradable:false, render: function(){
                 return '<input type = "checkbox">'
             }},
-            {title: 'QB Tracking',oradable:false},
+            {title: 'QB Tracking',oradable:false, className:"text-start"},
         ],
         select:{
             style: 'os',
@@ -118,19 +118,31 @@ $(document).ready(function () {
     
 });
 var details = [
-    ["","150000","Kenneth Woondard","12/08/2021","Paid","Shipped","617-235-7647","","WBC-123"],
-    ["","150001","James Fenske","10/08/2021","Paid","Shipped","618-234-6400","","WBC-124"],
-    ["","150002","Kelly McCrory","08/08/2021","Paid","STD","630-367-8448","",""],
-    ["","150003","Linda Englund","05/08/2021","Unpaid","Shipped","203-963-9428","","WBC-125"],
-    ["","150004","Frances Badger","03/08/2021","Paid","STD","508-206-0722","",""],
-    ["","150005","Tasha Tapia","02/08/2021","Pending Approval","Shipped","201-905-4664","","WBC-127"],
-    ["","150006","Samantha Southard","01/08/2021","Paid","Shipped","707-271-9412","","WBC-128"],
-    ["","150007","James Fenske","10/08/2021","Paid","Shipped","618-234-6400","","WBC-124"],
-    ["","150008","Kelly McCrory","08/08/2021","Paid","STD","630-367-8448","",""],
-    ["","150009","Linda Englund","05/08/2021","Unpaid","Shipped","203-963-9428","","WBC-125"],
-    ["","150010","Frances Badger","03/08/2021","Paid","STD","508-206-0722","",""],
-    ["","150011","Tasha Tapia","02/08/2021","Pending Approval","Shipped","201-905-4664","","WBC-127"],
-    ["","150012","Samantha Southard","01/08/2021","Paid","Shipped","707-271-9412","","WBC-128"],
+    ["","150000","Kenneth Woondard","12/08/2021", '<span class="alert alert-primary px-2 p-1" style="background-color:#2871CC opacity:25%; border-color:rgb(219, 241, 223); color:#2871CC"><i class="fa fa-check"></i>Paid</span>',"Shipped","617-235-7647","","WBC-123"],
+
+    ["","150001","James Fenske","10/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"Shipped","618-234-6400","","WBC-124"],
+
+    ["","150002","Kelly McCrory","08/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"STD","630-367-8448","",""],
+
+    ["","150003","Linda Englund","05/08/2021",'<span class="alert alert-danger px-2 p-1" style="background-color:#DD4B39 opacity:25%; border-color:rgb(219, 241, 223); color:#DD4B39"><i class="fa-solid fa-xmark"></i>&nbsp;Unpaid</span>',"Shipped","203-963-9428","","WBC-125"],
+
+    ["","150004","Frances Badger","03/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"STD","508-206-0722","",""],
+
+    ["","150005","Tasha Tapia","02/08/2021",'<span class="alert alert-warning px-2 p-1" style="background-color:#F19100 opacity:25%; border-color:rgb(219, 241, 223); color:#F19100"><i class="fa-solid fa-circle-exclamation"></i>&nbsp;Pending Approval</span>',"Shipped","201-905-4664","","WBC-127"],
+
+    ["","150006","Samantha Southard","01/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"Shipped","707-271-9412","","WBC-128"],
+
+    ["","150007","James Fenske","10/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"Shipped","618-234-6400","","WBC-124"],
+
+    ["","150008","Kelly McCrory","08/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"STD","630-367-8448","",""],
+
+    ["","150009","Linda Englund","05/08/2021",'<span class="alert alert-danger px-2 p-1" style="background-color:#DD4B39 opacity:25%; border-color:rgb(219, 241, 223); color:#DD4B39"><i class="fa-solid fa-xmark"></i>&nbsp;Unpaid</span>',"Shipped","203-963-9428","","WBC-125"],
+
+    ["","150010","Frances Badger","03/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"STD","508-206-0722","",""],
+
+    ["","150011","Tasha Tapia","02/08/2021",'<span class="alert alert-warning px-2 p-1" style="background-color:#F19100 opacity:25%; border-color:rgb(219, 241, 223); color:#F19100"><i class="fa-solid fa-circle-exclamation"></i>&nbsp;Pending Approval</span>',"Shipped","201-905-4664","","WBC-127"],
+
+    ["","150012","Samantha Southard","01/08/2021",'<span class="alert alert-primary px-2 p-1" style="background-color:rgb(219, 241, 223); border-color:rgb(219, 241, 223); color:green"><i class="fa fa-check"></i>Paid</span>',"Shipped","707-271-9412","","WBC-128"],
 
 
 ];

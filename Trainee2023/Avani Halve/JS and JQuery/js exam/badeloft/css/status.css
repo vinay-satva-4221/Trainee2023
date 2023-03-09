@@ -57,7 +57,7 @@ input[type="checkbox"]:checked {
     accent-color: #28a745; 
 }
 
-.sorting_1{
+.dt-control{
   color: #1188FF;
 }
 
@@ -89,27 +89,6 @@ input[type="checkbox"]:checked {
     border: none !important;
   }
 
-/*   
-  #statusTable th.sorting.sorting_asc::before{
-    margin-right: 50%;
-  }
-  #statusTable th.sorting.sorting_asc::after{
-    margin-right: 50%;
-  }
-  #statusTable th.sorting.sorting_desc::after{
-   
-    margin-right: 50%;
-  }
-  #statusTable th.sorting.sorting_desc::before{
-   
-    margin-right: 50%;
-  }
-  #statusTable th.sorting::before{
-    margin-right: 50%;
-  }
-  #statusTable th.sorting::after{
-    margin-right: 50%;
-  } */
  /* search box */
  .has-search .form-control {
   padding-left: 2.375rem;

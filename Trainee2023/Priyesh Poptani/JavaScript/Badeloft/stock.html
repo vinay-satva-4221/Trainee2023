@@ -46,8 +46,8 @@
     <div class="modal" id="stockmodelid">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header" >
-                    <h4 class="modal-title" id="titleofmodel" >Add New Stock</h4>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="titleofmodel">Add New Stock</h4>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
                 </div>
 
@@ -56,14 +56,14 @@
                         <div class="row">
                             <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <label for="stockname" class="form-label">Stock Name</label>
-                                <input type="text" class="form-control " id="stockname">
+                                <input type="text" class="form-control " id="stockname" name="stockname">
                             </div>
                             <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                 <label for="etadate" class="form-label">ETA Date</label>
-                                <div class="input-group">
+                            
                                     <input type="date" name="etadatename" class="form-control" id="etadate">
 
-                                </div>
+                                
                             </div>
 
 
@@ -103,7 +103,7 @@
 
 
                         </div>
-                  
+
                         <div class="row">
                             <div class="col-12  col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                                 <button type="button" id="secondmodel" class="btn " data-bs-toggle="modal"
@@ -134,17 +134,17 @@
                 </div>
                 <div class="modal-footer">
 
-                    <a href="#" data-bs-dismiss="modal" class="btn" id="addstockdatais"
+                    <a href="#"  class="btn" id="addstockdatais"
                         onclick="addstockdata()">Save</a>
-                        <a href="#" data-bs-dismiss="modal" class="btn" id="updatestockdetails"
-                        onclick="updatestockdata()">Update</a>   
+                    <a href="#" data-bs-dismiss="modal" class="btn" id="updatestockdetails"
+                        onclick="updatestockdata()" style="background-color: #326C96; color: white;">Update</a>
                     <a href="#" id="addstockdataidcancle" data-bs-dismiss="modal" class="btn">Cancel</a>
 
 
 
 
                 </div>
-               
+
             </div>
         </div>
     </div>
@@ -158,9 +158,9 @@
                     <h4 class="modal-title">Add New Part Number</h4>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="container"></div>
+                <div class="container">
                 <div class="modal-body">
-                    <form id="partform" name="partform">
+                    <form id="partform">
                         <div class="row">
                             <div class="col-12  col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
@@ -185,11 +185,10 @@
                             </div>
                         </div>
 
-                </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" data-bs-dismiss="modal" class="btn " onclick=" addpartData()"
+                    <a href="#" type="button"  class="btn " 
                         id="addpartdatais">Save</a>
-                        
+
                     <a href="#" data-bs-dismiss="modal" id="addpartdataidcancle" class="btn ">Cancel</a>
 
                 </div>
@@ -197,6 +196,71 @@
             </div>
         </div>
     </div>
+
+</div>
+</div>
+    <!-- //model-3 for audit -->
+    <!--Button to Trigger Modal-->
+    <!-- <div style="text-align:center; margin-top:10%">
+        <button id="btnShow" class="btn btn-primary btn-lg">Show Modal Popup</button>
+    </div> -->
+    <!-- Modal -->
+    <div class="modal fade" id="Auditmodelid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Audit</h3>
+                    
+           
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                    
+                </div>
+               
+                <div class="modal-body">
+                    <h6 style="color: #326C96;">Stock C100</h6>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <h6 class="oval">E</h6>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+                         <span style="font-weight: bold;">C100 stock added by Eric</span> <br>
+                        Add part BW-01-S-M with ordered quantity 5 <br>
+                        Last Updated By <span style="color: #326C96;"> Eric on 03/06/2023 - 07:00 PM</span>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <h6 class="oval">J</h6>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+                         <span style="font-weight: bold;">stock update by jeshal</span> <br>
+                        Add part BW-01-S-M with ordered quantity 5 <br>
+                        Last Updated By <span style="color: #326C96;"> Eric on 03/06/2023 - 07:00 PM</span>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <h6 class="oval">E</h6>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+                         <span style="font-weight: bold;">Part has been deleted by Eric</span> <br>
+                        Add part BW-01-S-M with ordered quantity 5 <br>
+                        Last Updated By <span style="color: #326C96;"> Eric on 03/06/2023 - 07:00 PM</span>
+                    </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> -->

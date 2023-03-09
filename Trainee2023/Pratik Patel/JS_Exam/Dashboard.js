@@ -11,7 +11,7 @@ $(document).ready(function () {
         "AK-08-X",
         "1",
         "0",
-        "<a href='#' data-toggle='popover' data-bs-html='true'  data-content='Some content inside the popover' style='text-decoration: none; color:#3399FF'>1</a>",
+        "<a href='#' data-toggle='popover' data-html='true'  data-content='Some content inside the popover' style='text-decoration: none; color:#3399FF'>1</a>",
         "0",
         "0",
       ],
@@ -163,14 +163,33 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover({
       html: true,
+      trigger: 'focus',
+      // title : 'Assigned to <a href="#" class="close" data-dismiss="alert">&times;</a>',
       content: function () {
         return $("#popover-content").html();
+        
       },
+      // $(document).on('clicked','.closebtn',function(){
+      //   alert("CLicked")
+      //   $("#popover-content").hide();
+      //   $(this).parents(".popover").popover('hide');
+      // })
+      // $(".closebtn").click(function(){
+
+      // })
     });
-     $(document).on('clicked','.closebtn',function(){
-        alert("CLicked")
-        $("#popover-content").hide();
-      })
+    $(document).on("click", ".popover .close" , function(){
+      // debugger
+      alert("s")
+      // $("#popover-content").hide();
+      // $(this).parents(".popover").popover('hide');
+      // $("[data-toggle='popover']").popover('hide');
+      // $("[data-toggle='popover']").popover('hide');
+      $(document).on("click", ".popover .close" , function(){
+        $(this).parents(".popover").popover('hide');
+    });
+  });
+   
   } else {
     window.location.href = "index.html";
   }
