@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Standardizer-CoA</title>
+        <link rel="stylesheet" href="CoAstyle.css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+              <a class="navbar-brand ms-3" href="javascript:void(0)"><img id="companylogo" src="./assests/Standardizer_logo.png" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse navItemdiv" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll " style="--bs-scroll-height: 100px;">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">CoA</a>
+                  </li>
+                </ul>
+                <form class="d-flex me-4">
+                  <img src="./assests/user.jpg" alt="Profile Image" id="profileImage">
+                  <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+                </form>
+              </div>
+            </div>
+          </nav>
+          <div class="upperbuttons mt-4 ms-4 me-3">
+            <button type="button" class="btn accountTypebtn ms-2">Assets</button>
+            <button type="button" class="btn accountTypebtn ms-2">Liability</button>
+            <button type="button" class="btn accountTypebtn ms-2">Equity/Capital</button>
+            <button type="button" class="btn accountTypebtn ms-2">Revenue</button>
+            <button type="button" class="btn accountTypebtn ms-2">CoGS</button>
+            <button type="button" class="btn accountTypebtn ms-2">G&A Expenses</button>
+            <button type="button" class="btn accountTypebtn  ms-2">other Revenue and Expenses</button>
+            <button type="button" class="btn me-4" id="submitbtn">submit</button>
+          </div>
+        
+          <div class="mainbody d-flex me-0">
+          <div class="columns m-4" >
+            <div id="ScorceAccountTopheading"><b> Source Account Structure</b></div>
+           <div id="headingSourceAccount" class="heading "> <span >Balance Sheet Account</span></div>
+            <ul id="SourceAccountList"></ul>
+
+          </div>
+          <div class="m-4 DropArea" >
+            <div id="MostlikelyTopheading"><b> Likely Destination Account</b></div>
+            <div class="d-flex">
+            <div id="headingMostlikely" class="heading"> <span >Most Likely</span></div>
+            <ul id="Mostlikely"></ul>
+             <div id="headinglikely" class="heading"> <span >Likely</span></div>
+            <ul id="Mostlikely"></ul>
+            <div id="headingossible" class="heading"> <span >Possible</span></div>
+            <ul id="Mostlikely"></ul>
+        
+        </div>
+    </div>
+    <div class="columns m-4" >
+        <div id="DestinationAccountTopheading"><b> Source Account Structure</b></div>
+       <div id="headingDestinationAccount" class="heading "> <span >Destination Sheet Account</span></div>
+        <div class="Destinationbtns" >
+            <!-- <div id="forwordbtn"><button type="button"><i class="bi bi-caret-left"></i></button></div> -->
+            <ul id="Desbuttonslist">
+                <li><button type="button">all</button></li>
+                <li><button type="button">Liability</button></li>
+                <li><button type="button">Equity/Capital</button></li>
+                <li><button type="button">Revanue</button></li>
+                <li><button type="button">CoGS</button></li>
+                <li><button type="button">G&A Expenses</button></li>
+                <li><button type="button">Oter Revanue & Expenses</button></li>
+            </ul>
+            <!-- <div id="backwordbtn"><button type="button"><i class="bi bi-caret-right"></i></button></div> -->
+        </div>
+
+        <ul id="DestinationAccountList">
+       </div>
+      </div>
+</div>
+          
+        <script src="./jquery/jquery.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./CoA.js"></script>
+    </body>
+</html>
