@@ -1,0 +1,113 @@
+body {
+    overflow-x: hidden;
+}
+
+.rounded-circle {
+    width: 33px;
+    height: 33px;
+}
+
+.navbarCoA {
+    background-color: rgb(239 239 239);
+    height: 65px;
+}
+
+#Standardizer_logo {
+    width: 170px;
+    height: 60px;
+}
+
+#coa_text {
+    font-weight: bold;
+    color: #3cb7e7;
+    margin-top: 7px;
+}
+
+#header_button1 {
+    height: 32px;
+    width: 93px;
+    padding-top: 3px;
+    color: white;
+    background-color: #3cb7e7;
+    font-size: 16px;
+}
+
+#header_button2, #header_button4, #header_button5 {
+    height: 32px;
+    width: 93px;
+    padding-top: 3px;
+    color: black;
+    background-color: rgb(239 239 239);
+}
+
+.destination {
+    margin-left: 900px;
+    height: 500px;
+    overflow: scroll;
+}
+.destination1{
+    margin-left: 900px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.list-group-item {
+    margin-bottom: 10px;
+}
+
+#header_button3, #header_button6 {
+    height: 32px;
+    width: 136px;
+    padding-top: 3px;
+    color: black;
+    background-color: rgb(239 239 239);
+}
+
+#header_button7 {
+    height: 32px;
+    width: 224px;
+    padding-top: 3px;
+    color: black;
+    background-color: rgb(239 239 239);
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 47%;
+    height: 2px;
+    bottom: -9px;
+    left: 15px;
+    background-color: #3cb7e7;
+    visibility: hidden;
+    transform: scaleX(0);
+    /* transition: all 0.3s ease-in-out 0s; */
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.balancesheetaccount{
+    background-color: #3cb7e7;
+    border-radius: 4px;
+    width: 250px;
+    height: 30px;
+    margin-left: -3px;
+    padding-left: 8px;
+    margin-top: -6px;
+    font-size: 13px;
+    color: white;
+    padding-top: 6px;
+    
+}
+
+
+
+
+/* tab scroll */
