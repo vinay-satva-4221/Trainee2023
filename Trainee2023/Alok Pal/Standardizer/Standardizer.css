@@ -1,0 +1,101 @@
+/* nav color */
+.navColor {
+    background-color: #EFEFF0;
+}
+
+/* btn font size */
+.btnFontSizeColor {
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #F2F2F2;
+}
+
+.btn-active {
+    background-color: #3CB7E7;
+}
+
+
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    top: 45px;
+    left: 15px;
+    background-color: #3CB7E7;
+    color: #3CB7E7;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+   
+}
+
+.navheading{
+    color: #3CB7E7;
+}
+.imgIcon{
+    width: 54px;
+}
+
+.submitBtn{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* Balance sheet account */
+.SourceAccountDiv{
+    width: 37%;
+
+}
+.BalanceSheet{
+    color: white;
+    background-color: #3CB7E7;
+    font-size: 12px;
+    border-radius: 4px;
+}
+.DestinationAcc{
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc1{
+    background-color: #00C0CD;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc2{
+    background-color: #33CDD7;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+
+}
+.LikelyDestinationAcc3{
+    background-color: #7FDFE6;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc1div{
+    margin-left: -3%;
+}
+.LikelyDestinationDiv{
+    width: 103%;
+}

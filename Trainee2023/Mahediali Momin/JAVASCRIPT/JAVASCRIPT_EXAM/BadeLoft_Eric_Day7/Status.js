@@ -21,13 +21,13 @@ function format(d) {
         '<td>1</td>' +
         '<td>BW-01-S-M</td>' +
         '<td>Warehouse</td>' +
-        '<td>Close</td>' +
+        '<td><i class="fa-solid fa-xmark"></i></td>' +
         '</tr>' +
         '<tr>' +
         '<td>2</td>' +
         '<td>AT-01-BLK</td>' +
         '<td>C-101</td>' +
-        '<td>Close</td>' +
+        '<td><i class="fa-solid fa-xmark"></i></td>' +
         '</tr>' +
        
         '</table>'

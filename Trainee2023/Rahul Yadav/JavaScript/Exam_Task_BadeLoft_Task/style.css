@@ -115,7 +115,6 @@ button.middle:focus {
 
 #savestock,
 #savepart,
-#saveassignment,
 .btnradio,
 #addassignment {
   color: #f7fdff;
@@ -443,17 +442,30 @@ table.dataTable td.dt-control:before {
   text-align: right;
 }
 
-.popover-header {
-  display: none;
+.dataColor {
+  background-color: white;
+  color: #06a0dd;
 }
+
 .popover-body {
-  width: 219px;
-  height: 185px;
+  width: 187px;
+  height: 124px;
+  padding: 4px !important;
+}
+.popover-header{
+  background-color: white;
+  padding: 4px;
+  padding-top: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .popover {
   font-size: -0.125rem;
 }
 
+.linecolor{
+  color: white;
+}
 /* 
 .btn-primary:hover,
 .btn-primary:focus,
@@ -503,7 +515,7 @@ table.dataTable td.dt-control:before {
 }
 
 .searchbar {
-  padding-left: 27px;
+  padding-left: 27px !important;
 }
 
 .select2-dropdown {
@@ -540,4 +552,8 @@ table.dataTable td.dt-control:before {
   background-color: black;
   color: white;
   height: 37px;
+}
+
+.select2-results__option{
+  width: 250px !important;
 }

@@ -1,4 +1,5 @@
 var counter = 1;
+var AssignmentTable= [];
 
 window.onload = () => {
   if (localStorage.getItem("loggUser") == null) {
@@ -9,26 +10,29 @@ window.onload = () => {
 /* Formatting function for row details - modify as you need */
 function format(d) {
   // `d` is the original data object for the row
-  return (
-    '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-    "<tr>" +
-    "<td>Full name:</td>" +
-    "<td>" +
-    d.name +
-    "</td>" +
-    "</tr>" +
-    "<tr>" +
-    "<td>Extension number:</td>" +
-    "<td>" +
-    d.extn +
-    "</td>" +
-    "</tr>" +
-    "<tr>" +
-    "<td>Extra info:</td>" +
-    "<td>And any further details here (images etc)...</td>" +
-    "</tr>" +
-    "</table>"
-  );
+  var table =
+    '<table cellpadding="2" cellspacing="0" class="table border rounded">';
+  table +=
+    '<thead style="background-color:lightgrey;"><tr><th>#</th><th>Stock</th><th>Part</th><th>Action</th></thead> ';
+  table += "<tbody>";
+  if (d.AssignmentTable && d.AssignmentTable.length > 0) {
+    for (var i = 0; i < d.AssignmentTable.length; i++) {
+      if (d.AssignmentTable[i]) {
+
+        table += "<tr>";
+        table += "<td>" + "</td>";
+        table += "<td>" + d.AssignmentTable[i].stockname + "</td>";
+        // table += '<td>' + d.AssignmentTable[i].invoice + '</td>';
+        table += "<td>" + d.AssignmentTable[i].stockpart + "</td>";
+        table +=
+          '<td><button class="btn delete-row"><i class="fa-solid fa-xmark"></i></button></td>';
+        table += "</tr>";
+      }
+    }
+  }
+  table += "</tbody></table>";
+
+  return table;
 }
 
 $(document).ready(function () {
@@ -37,7 +41,7 @@ $(document).ready(function () {
 
   var button = document.getElementById("newButton");
 
-var table =  $("#assignmentTable").DataTable({
+  var table = $("#assignmentTable").DataTable({
     // paging: true,
     // dom: '<"toolbar">frtip',
     // bFilter: true,
@@ -48,6 +52,12 @@ var table =  $("#assignmentTable").DataTable({
     },
     data: assignmentdata,
     columns: [
+      {
+        data: null,
+        defaultContent: " ",
+        className: "dt-control",
+        orderable: false,
+      },
       { data: "quickinvoice", title: "QB Invoice#", sortable: false },
       { data: "customer", title: "Name", sortable: false },
       { data: "createdby", title: "Created By", sortable: false },
@@ -58,8 +68,8 @@ var table =  $("#assignmentTable").DataTable({
         className: "text-end",
         render: function (data, type, row) {
           return (
-            '<i class="bi bi-pencil-fill edit-row mx-2 p-0"></i>' +
-            '<i class="bi bi-trash3-fill history mx-3 p-0"></i>'
+            '<i class="fa fa-pencil edit-row mx-2 p-0"></i>' +
+            '<i class="fa fa-trash history mx-3 p-0"></i>'
           );
         },
       },
@@ -140,12 +150,18 @@ var table =  $("#assignmentTable").DataTable({
     });
   });
 
-  
+
 
   $("#add_parts").on("click", function () {
     var invoice = counter++;
     var stockname = $("#stock_name").val();
     var stockpart = $("#select_parts").val();
+
+    AssignmentTable.push({
+      stockname: stockname,
+      invoice: invoice,
+      stockpart: stockpart,
+    });
 
     var newRow = $("<tr>");
     newRow.append("<td>" + invoice + "</td>");
@@ -166,11 +182,7 @@ var table =  $("#assignmentTable").DataTable({
     var quickinvoice = $("#invoice").val();
     var stockname = $("#stock_name").val();
     var stockpart = $("#select_parts").val();
-    
 
-    // // localStorage.setItem("assignment", JSON.stringify(assignmentData))
-    // // Perform validation checks here
-    
     var activeuser = JSON.parse(localStorage.getItem("loggUser"));
     var username = activeuser[0].name;
 
@@ -179,20 +191,20 @@ var table =  $("#assignmentTable").DataTable({
       month: "2-digit",
       day: "2-digit",
       year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
     };
-    var formattedDate = currentDate
-      .toLocaleDateString("en-US", options)
-      .replace(/\D/g, "/");
+    var formattedDate = currentDate.toLocaleString("en-US", options).replace(/[^\d-/:]/g, "  ");
 
     var finaldata = {
       customer: customer,
       quickinvoice: quickinvoice,
       stockname: stockname,
       stockpart: stockpart,
-      createdby: username[0].name,
-      createdDate: formattedDate, 
+      createdby: username,
+      createdDate: formattedDate,
+      AssignmentTable: AssignmentTable,
     };
-
 
     var assignmentData = JSON.parse(localStorage.getItem("assignment")) || [];
     console.log(assignmentData)
@@ -204,55 +216,127 @@ var table =  $("#assignmentTable").DataTable({
   });
 
 
+  $("#assignmentTable tbody").on("click", ".edit-row", function () {
+    
+    isEditMode = true;
+    var tr = $(this).closest("tr");
+    // var row = table.row(tr);
+    // var data = row.data(); 
+    // Get the data from the row
+    var data = table.row($(this).parents('tr')).data();
+    var index = table.row($(this).parents('tr')).index();
 
-//$(document).on('click','#savedata',function(){
+    // Populate the edit form with the data
+    $("#customer-select").val(data.customer);
+    $("#invoice").val(data.quickinvoice);
+    $("#stock_name").val(data.stockname);
+    $("#select_parts").val(data.stockpart);
+
+    var invoice = counter++;
+    if (data.AssignmentTable && data.AssignmentTable.length > 0) {
+      let dynamicTR = "<thead style=color:white;><tr><th>#</th><th>Stock</th><th>Part</th><th>Action</th></thead><tbody>";
+      data.AssignmentTable.forEach(function (part) {
+        dynamicTR += ("<tr>" + "<td>" + part.stockname + "</td>" + "<td>" + part.stockpart + "</td>" + 
+          "<td class='text-end'><button type='button' class='btn-close DeleteParts' aria-label='Close'></button></td></tr>");
+      });
+      dynamicTR += "</tbody>";
+      console.log(dynamicTR)
+      $('#inner_table').html(dynamicTR);
+
+    }
+
+    AssignmentTable= data.AssignmentTable
+    // Show the edit modal
+    $("#assignmentModal").modal("show");
 
 
-  
+
+    // $("#save_outer").on("click", function () {
+      
+    //   var activeuser = JSON.parse(localStorage.getItem("loggUser"));
+    //   console.log(activeuser);
+    //   var username = activeuser;
+
+    //   var currentDate = new Date();
+    //   var options = {
+    //     month: "2-digit",
+    //     day: "2-digit",
+    //     year: "numeric",
+    //   };
+    //   var formattedDate = currentDate
+    //     .toLocaleDateString("en-US", options)
+    //     .replace(/\D/g, "/");
+
+    //   // Update the data of the selected row with the new values
+    //   var newData = {
+    //     name: $("#stock_name").val(),
+    //     etaDate: $("#eta_date").val(),
+    //     stocklocation: $('input[name="btnradio"]:checked').val(),
+    //     note: $("#note").val(),
+    //     createdby: username[0].name,
+    //     createdDate: formattedDate,
+    //     nestedData:nestedData,
+    //   };
+    //   var StockData = JSON.parse(localStorage.getItem("stock")) || [];
+    //   StockData[index] = newData;
+    //   console.log(JSON.parse(localStorage.getItem("stock")));
+    //   localStorage.setItem("stock", JSON.stringify(StockData));
+    //   $("#outerModal").modal("hide");
+    //   location.reload(true);
+
+    // });
+    // //isEditMode = true; // set edit mode flag
+  });
+
+
+  //$(document).on('click','#savedata',function(){
+
+
+
   //debugger  
-    // document.getElementById("addstockform").reset();
+  // document.getElementById("addstockform").reset();
 
-    // var customer = $("#customer-select").val();
-    // var quickinvoice = $("#invoice").val();
-    // var stockname = $("#stock_name").val();
-    // var stockpart = $("#select_parts").val();
-    
-
-    // // localStorage.setItem("assignment", JSON.stringify(assignmentData))
-    // // Perform validation checks here
-    
-    // var activeuser = JSON.parse(localStorage.getItem("loggUser"));
-    // var username = activeuser[0].name;
-
-    // var currentDate = new Date();
-    // var options = {
-    //   month: "2-digit",
-    //   day: "2-digit",
-    //   year: "numeric",
-    // };
-    // var formattedDate = currentDate
-    //   .toLocaleDateString("en-US", options)
-    //   .replace(/\D/g, "/");
-
-    // var finaldata = {
-    //   customer: customer,
-    //   quickinvoice: quickinvoice,
-    //   stockname: stockname,
-    //   stockpart: stockpart,
-    //   createdby: username[0].name,
-    //   createdDate: formattedDate, 
-    // };
+  // var customer = $("#customer-select").val();
+  // var quickinvoice = $("#invoice").val();
+  // var stockname = $("#stock_name").val();
+  // var stockpart = $("#select_parts").val();
 
 
-    // var assignmentData = JSON.parse(localStorage.getItem("assignment")) || [];
-    // console.log(assignmentData)
+  // // localStorage.setItem("assignment", JSON.stringify(assignmentData))
+  // // Perform validation checks here
 
-    // assignmentData.push(finaldata);
-    // localStorage.setItem("assignment", JSON.stringify(assignmentData));
-    // table.row.add(assignmentData).draw();
-    // location.reload(true);
-  
-//});
+  // var activeuser = JSON.parse(localStorage.getItem("loggUser"));
+  // var username = activeuser[0].name;
+
+  // var currentDate = new Date();
+  // var options = {
+  //   month: "2-digit",
+  //   day: "2-digit",
+  //   year: "numeric",
+  // };
+  // var formattedDate = currentDate
+  //   .toLocaleDateString("en-US", options)
+  //   .replace(/\D/g, "/");
+
+  // var finaldata = {
+  //   customer: customer,
+  //   quickinvoice: quickinvoice,
+  //   stockname: stockname,
+  //   stockpart: stockpart,
+  //   createdby: username[0].name,
+  //   createdDate: formattedDate, 
+  // };
+
+
+  // var assignmentData = JSON.parse(localStorage.getItem("assignment")) || [];
+  // console.log(assignmentData)
+
+  // assignmentData.push(finaldata);
+  // localStorage.setItem("assignment", JSON.stringify(assignmentData));
+  // table.row.add(assignmentData).draw();
+  // location.reload(true);
+
+  //});
 
 
 
@@ -292,6 +376,7 @@ $(document).ready(function () {
   console.log("user", user);
   $("#Uname").html(user[0].name);
 });
+
 function logout() {
   window.location.replace("LoginPage.html");
   localStorage.clear();

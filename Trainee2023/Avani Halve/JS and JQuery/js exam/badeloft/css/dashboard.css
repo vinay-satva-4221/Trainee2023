@@ -5,6 +5,17 @@
     margin-left: auto;
  }
 
+ .popover-header {
+   background-color: white;
+ }
+ 
+
+ /* vertical line */
+ .vl {
+   border-left: 1px solid black;
+   height: 20px;
+ }
+
 .navbar-nav .nav-link {
    position: relative;
 }
