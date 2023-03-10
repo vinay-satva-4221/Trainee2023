@@ -8,10 +8,12 @@
     font-size: 11px;
     font-weight: bold;
     background-color: #F2F2F2;
+    color:  #b1b0b0;;
 }
 
 .btn-active {
     background-color: #3CB7E7;
+    color: white;
 }
 
 
@@ -39,63 +41,137 @@
 .navbar-nav .nav-link.active::before {
     visibility: visible;
     transform: scaleX(1);
-   
+
 }
 
-.navheading{
+.navheading {
     color: #3CB7E7;
 }
-.imgIcon{
+
+.imgIcon {
     width: 54px;
 }
 
-.submitBtn{
+.submitBtn {
     font-size: 11px;
     font-weight: bold;
 }
 
 
 /* Balance sheet account */
-.SourceAccountDiv{
+.SourceAccountDiv {
     width: 37%;
 
 }
-.BalanceSheet{
+
+.BalanceSheet {
     color: white;
     background-color: #3CB7E7;
     font-size: 12px;
     border-radius: 4px;
 }
-.DestinationAcc{
+
+/* DestinationDiv */
+.DestinationDiv{
+    width: 24%;
+}
+.DestinationAcc {
     color: white;
     font-size: 12px;
     border-radius: 4px;
 }
 
-.LikelyDestinationAcc1{
+.LikelyDestinationAcc1 {
     background-color: #00C0CD;
     color: white;
     font-size: 12px;
     border-radius: 4px;
 }
 
-.LikelyDestinationAcc2{
+.LikelyDestinationAcc2 {
     background-color: #33CDD7;
     color: white;
     font-size: 12px;
     border-radius: 4px;
 
 }
-.LikelyDestinationAcc3{
+
+.LikelyDestinationAcc3 {
     background-color: #7FDFE6;
     color: white;
     font-size: 12px;
     border-radius: 4px;
 }
 
-.LikelyDestinationAcc1div{
+.LikelyDestinationAcc1div {
     margin-left: -3%;
 }
-.LikelyDestinationDiv{
+
+.LikelyDestinationDiv {
     width: 103%;
+}
+
+
+/* Dynamic class adding in js */
+.DynamicFontSize {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Navbar scroll destination acc */
+div.scrollmenu {
+    background-color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+
+/* Scrollbtn */
+.scrollBtn {
+    height: 0px;
+}
+
+#scroll-Left-btn {
+    position: relative;
+    margin-left: 90%;
+    border: none;
+    top: 19px;
+    background-color: white;
+    font-weight: bold;
+
+}
+
+#scroll-right-btn {
+    position: relative;
+    border: none;
+    top: 19px;
+    background-color: white;
+    margin-left: 0.3%;
+    font-weight: bold;
+}
+
+.scrollItems {
+    font-size: 12px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.searchIcon{
+  position: absolute; 
+  right: 18rem;
+  font-size: 13px;
+  top: 17.8rem;  
+}
+
+.searchInput{
+    font-size: 13px;
 }
