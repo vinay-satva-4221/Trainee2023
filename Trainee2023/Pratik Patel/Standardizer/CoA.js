@@ -1,16 +1,26 @@
 $(document).ready(function () {
 
+  // var monkeyList = new List('DestinationAccountList', { 
+  //   valueNames: ['Item']
+  // });
+
+  dragula([document.querySelector('#DestinationAccountList'), document.querySelector('#Mostlikely')], {
+    copy: function (el, source) {
+      return source === document.querySelector('#DestinationAccountList')
+    }
+  });
+
     //DEstinationData
   var destinationData;
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function () {
     destinationData = this.responseText;
-    // //console.log(destinationData)
+    //console.log(destinationData)
   };
   xhttp.open("GET", "./DataFiles/MasterChartOfAcounts - Sheet1.csv",false);
   xhttp.send();
   destinationData=CSVtoJSON(destinationData)
-  console.log(destinationData)
+  // console.log(destinationData)
 
   //Source Account Data
   var SourceAccountData;
@@ -26,14 +36,14 @@ $(document).ready(function () {
 //    //console.log(SourceAccountData)
   list=""
   for(let i=1;i<SourceAccountData.length;i++){
-    if(SourceAccountData[i].Type=="Assets")
+    // if(SourceAccountData[i].Type=="Assets")
     // list+=" <div class='dragableDiv'>"+SourceAccountData[i].Number+"</div>"
-    list+="<li class='Item'>"+SourceAccountData[i].Number+ " "+ SourceAccountData[i].Number+"</li>"
+    list+="<li class='Item'>"+SourceAccountData[i].Number+ " "+ SourceAccountData[i].Name+"</li>"
   }
   $("#SourceAccountList").html(list)
 
   destinationList=""
-  for(let j=1;j<destinationData.length;j++){
+  for(let j=0;j<destinationData.length;j++){
     destinationList+="<li class='Item'>"+destinationData[j].AccountCode+"-"+destinationData[j].AccountName +"</li>"
   }
   $("#DestinationAccountList").html(destinationList)
@@ -41,8 +51,61 @@ $(document).ready(function () {
 $('.accountTypebtn').click(function(){
     $(".accountTypebtn").removeClass("activebtn");
     $(this).addClass("activebtn")
+   let ClickedBtn=$(this).data('val')
+   DataSourceAccountDisplay(ClickedBtn)
+     $('#horizontal'+ClickedBtn+'').trigger('click')
+
 })
- 
+$(".horizontalDesBtn").click(function(){
+  debugger
+  $(".horizontalDesBtn").removeClass("activeHorizontalbtn");
+  $(this).addClass("activeHorizontalbtn")
+  let clickedHorizontalBtn=($(this).data('value')).toUpperCase();
+  //alert(clickedHorizontalBtn)
+  DataDestination(clickedHorizontalBtn)
+})
+
+$("#forwordbtn").click(function(){
+  document.getElementById('Desbuttonslist').scrollLeft -= 100;
+})
+$("#backwordbtn").click(function(){
+  document.getElementById('Desbuttonslist').scrollLeft += 100;
+})
+
+function DataSourceAccountDisplay(AccType){
+  //alert(AccType)
+  list=""
+  SourceData=SourceAccountData.filter( function(Data){
+    debugger
+     if(Data.Type.toUpperCase()==AccType.toUpperCase())
+      {list+="<li class='Item'>"+Data.Number+"-"+Data.Name +"</li>"
+      console.log(Data)}
+      return Data
+  })
+  $("#SourceAccountList").html(list)
+
+
+}
+function DataDestination(AccountType){
+  //alert(AccountType)
+  destinationList=""
+  ResultData=destinationData.filter( function(Data){
+    if(AccountType=="All"){
+      for(let j=0;j<destinationData.length;j++){
+        destinationList+="<li class='Item'>"+destinationData[j].AccountCode+"-"+destinationData[j].AccountName +"</li>"
+      }
+      
+    }else{
+     if(Data.AccountTypeName==AccountType)
+      {destinationList+="<li class='Item'>"+Data.AccountCode+"-"+Data.AccountName +"</li>"
+      console.log(Data)}
+      return Data
+  }}
+  )
+
+  $("#DestinationAccountList").html(destinationList)
+}
+
  
 });
 
@@ -62,8 +125,13 @@ var lines=csv.split("\n");
     }
 
     result.push(obj);
-    //console.log(result)
+    // console.log(result)
 
 }
 return result
+}
+
+
+function check(destinationData){
+  return destinationData.AccountTypeName==AccountType
 }

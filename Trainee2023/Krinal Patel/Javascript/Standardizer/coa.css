@@ -1,0 +1,62 @@
+/* Active nav-link */
+.active{
+    color: dodgerblue;
+}
+.navbar-nav .nav-link {
+    position: relative;
+
+  }   
+  .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -15px;
+    right: 50%;
+    transform: translate(50%,-50%);
+    background-color: dodgerblue;
+    visibility: hidden;    color: dodgerblue;
+  }
+  .navbar-nav .nav-link.active::before
+  {
+    visibility: visible;   
+  }
+
+/* Button color */
+  .b1{
+    color: gray;
+    border-color:gray ;
+    height: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .submit{
+    height: 30px;
+    width: 8%;
+    padding: 0;
+  }
+  
+/* Human updated  */
+.human_updated,#human_updated{
+  color: orange;
+  font-weight: 600;
+}
+.form-check-input[type=radio] {
+  border-radius: 50%;
+  border-color: orange;
+  border: 4px solid;
+}
+
+.b2{
+  width: 100%;
+  /* width: webkit-fill-available; */
+  background-color: #326C96;
+  color: white;
+}
+.bh{
+  background-color: #326C96;
+  color: white;
+
+}
