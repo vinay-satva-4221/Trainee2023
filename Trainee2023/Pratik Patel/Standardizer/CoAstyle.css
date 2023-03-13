@@ -85,6 +85,7 @@ ul {
     border: 1px rgb(194, 191, 191) solid;
     margin-bottom: 2%;
     padding: 2%;
+    border-radius: 4px;
 }
 #SourceAccountList{
     margin-top: 2%;
@@ -165,6 +166,9 @@ button#backwordbtn {
  #backwordbtn {
     right: 0px;
     top: 0;
+}
+.doubleRight{
+    float:right;
 }
  .activeHorizontalbtn{
     color: #0d9d66;

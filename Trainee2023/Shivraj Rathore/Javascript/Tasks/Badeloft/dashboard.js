@@ -77,5 +77,9 @@ $('[data-bs-toggle="popover"]').popover({
   }
 });
 
+$(document).on('click', '.btn-close', function() {
+  $('[data-bs-toggle="popover"]').popover('hide');
+});
+
 });
 
