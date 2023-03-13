@@ -4,8 +4,8 @@ document.getElementById("user").innerHTML = "Welcome" + "<br>" + "<b>" + usernam
 // document.getElementById("user").innerHTML = username;
 
 
-var stockname = document.getElementById("location").value;
-var eta = document.getElementById("etadate").value;
+var stockName = document.getElementById("location").value;
+var etaDate = document.getElementById("etadate").value;
 var partno = document.getElementById("npart_no").value;
 var order = document.getElementById("nporder_no").value;
 var notes = document.getElementById("nnotes_no").value;
@@ -17,14 +17,14 @@ function logout() {
 
 
 function format(d) {
-
+  debugger
   let childRowHTML = '';
   if (d.itemDetails && d.itemDetails.length > 0) {
     childRowHTML += '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
     childRowHTML += '<thead><tr><th>Part No</th><th>Order No</th><th>Notes</th></tr></thead>';
     childRowHTML += '<tbody>';
     d.itemDetails.forEach((itemDetail) => {
-      childRowHTML += '<tr><td>' + itemDetail.partno + '</td><td>' + itemDetail.order + '</td><td>' + itemDetail.notes + '</td></tr>';
+      childRowHTML += '<tr><td>' + itemDetail.partno + '</td><td>' + itemDetail.order + '</td><td>' + itemDetail.notes + '</td>'+'<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>'+'</tr>';
     });
     childRowHTML += '</tbody></table>';
   }
@@ -54,7 +54,7 @@ var table = $("#example").DataTable({
     {
       data: null,
       render: function (data, type, row) {
-        return '<button type="button" class="fa fa-pencil" onclick="editRow()" style="border: none;"></button>' +
+        return '<button type="button" class="fa fa-pencil edit"  style="border: none;"></button>' +
           '<button type="button" class="fa fa-history" style="border: none;"></button>';
       }
     }
@@ -76,20 +76,20 @@ var table = $("#example").DataTable({
 });
 
 // Add event listener for opening and closing details
-$("#example tbody").on("click", "td.dt-control", function () {
-  var tr = $(this).closest("tr");
-  var row = table.row(tr);
+// $("#example tbody").on("click", "td.dt-control", function () {
+//   var tr = $(this).closest("tr");
+//   var row = table.row(tr);
 
-  if (row.child.isShown()) {
-    // This row is already open - close it
-    row.child.hide();
-    tr.removeClass("shown");
-  } else {
-    // Open this row
-    row.child(format(row.data())).show();
-    tr.addClass("shown");
-  }
-});
+//   if (row.child.isShown()) {
+//     // This row is already open - close it
+//     row.child.hide();
+//     tr.removeClass("shown");
+//   } else {
+//     // Open this row
+//     row.child(format(row.data())).show();
+//     tr.addClass("shown");
+//   }
+// });
 // var table2 = $("#example").DataTable();
 
 $("#search").on("keyup", function () {
@@ -103,12 +103,12 @@ $("#search").on("keyup", function () {
 
 
 function addStock() {
-  debugger
+  // debugger
   let stockName = document.getElementById("stock_name").value;
   let eta = document.getElementById("etadate").value;
-  let status = document.querySelector('input[name="status"]:checked').value;
+  var status = document.querySelector('input[name="status"]:checked').value;
 
-  let stockDetails = {
+  var stockDetails = {
     stockName: stockName,
     etaDate: eta,
     status: status,
@@ -164,34 +164,115 @@ $("#parttable tbody").on("click", ".btn-delete", function () {
   $(this).closest("tr").remove();
 });
 
-function editRow(rowData) {
-  debugger;
-  // Populate the form fields with the selected row data
-  document.getElementById("stock_name").value = rowData.stockName;
-  document.getElementById("etadate").value = rowData.etaDate;
-  // ...
 
-  // Add an event listener for the save button click
-  document.getElementById("savestock").addEventListener("click", function () {
-    // Update the selected row data
-    rowData.stockName = document.getElementById("stock_name").value;
-    rowData.etaDate = document.getElementById("etadate").value;
-    // ...
+$("#example tbody").on("click", ".edit", function () {
+  // debugger
+  console.log(table.row(this).data());
+  var data = table.row($(this).parents("tr")).data();
+  var index = table.row($(this).parents("tr")).index();
+  $("#stock_name").val(data.stockName);
+  $("#etadate").val(data.etaDate);
+  $('input[name="status"][value="' + data.status + '"]').prop("checked", true);
+  if (data.itemDetails && data.itemDetails.length > 0) {
 
-    // Get the stock details array from localStorage and update the selected row data
-    var stockDetailsArray = JSON.parse(localStorage.getItem('stockDetail'));
-    for (var i = 0; i < stockDetailsArray.length; i++) {
-      if (stockDetailsArray[i].stockName === rowData.stockName) {
-        stockDetailsArray[i] = rowData;
-        break;
-      }
+    let dTR = "<thead><th>Part Number</th><th>Invoice#</th><th>Ordered</th><th>Notes</th><th></th></thead><tbody>";
+    data.itemDetails.forEach(function (PartData) {
+      dTR +=
+        "<tr>" +
+        "<td>" +
+        PartData.partno +
+        "</td>" +
+        "<td>" +
+        "<td>" +
+        PartData.order +
+        "</td>" +
+        "<td>" +
+        PartData.notes +
+        "</td>" +
+        "<td class='text-end'><button type='button' class='btn-close btn-delete' aria-label='Close'></button></td></tr>";
+    });
+    dTR += "</tbody>";
+    console.log("row" + dTR);
+    $("#parttable").html(dTR);
+  }
+  itemDetails = data.itemDetails;
+  $('.modal-header').data("Edit Stock");
+  $("#myModal").modal("show");
+  console.log(itemDetails);
+  $("#savestock")
+    .unbind()
+    .click(function () {
+      var StockName = $("#stock_name").val();
+      var ETADate = $("#etadate").val();
+      var status = $('input[name="status"]:checked').val();
+      var createddate = "08/25/2000";
+
+      var stockDetails = {
+        stockName: StockName,
+        etaDate: ETADate,
+        status: status,
+        createdBy: username,
+        createdDate: createddate,
+        Action: "",
+        itemDetails: itemDetails,
+      };
+      var StockData = JSON.parse(localStorage.getItem("stockDetail")) || [];
+      StockData[index] = stockDetails;
+      localStorage.setItem("stockDetail", JSON.stringify(StockData));
+      $("#savestock").modal("hide");
+      location.reload(true);
+    });
+
+
+  $("#parttable").on("click", ".btn-delete", function () {
+    if (itemDetails.length == 1) {
+      // swal("Error!", "Can't delete last partNumber", "error");
+      alert("You cant delete the last one");
+    } else {
+      $(this).closest("tr").remove();
+      itemDetails.splice(this, 1);
     }
-    localStorage.setItem('stockDetail', JSON.stringify(stockDetailsArray));
-
-    // Redraw the DataTables table with the updated data
-    table.clear().rows.add(stockDetailsArray).draw();
-
-    // Close the modal
-    $("#myModal").modal("hide");
   });
-}
+});
+
+//history modal
+// $(".fa-history").on("click", function () {
+//   $("#historyModal").modal("toggle");
+// });
+
+// $("#example tbody").on("click", "td.dt-control", function () {
+//   var tr = $(this).closest("tr");
+//   var row = table.row(tr);
+//   if (row.child.isShown()) {
+//     row.child.hide();
+//     tr.removeClass("shown");
+//   } else {
+//     row.child(format(row.data())).show();
+//     tr.addClass("shown");
+//   }
+// });
+// Add event listener for opening and closing details
+$("#example tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = table.row(tr);
+  
+    if (row.child.isShown()) {
+      // This row is already open - close it
+      row.child.hide();
+      tr.removeClass("shown");
+    } else {
+      // Open this row
+      row.child(format(row.data())).show();
+      tr.addClass("shown");
+    }
+  });
+// });
+//     localStorage.setItem('stockDetail', JSON.stringify(stockDetailsArray));
+
+//     // Redraw the DataTables table with the updated data
+//     table.clear().rows.add(stockDetailsArray).draw();
+
+//     // Close the modal
+//     $("#myModal").modal("hide");
+//   });
+// }

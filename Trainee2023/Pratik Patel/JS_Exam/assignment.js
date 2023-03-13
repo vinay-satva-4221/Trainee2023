@@ -10,12 +10,8 @@ $(document).ready(function () {
     });
     var AssignedData = JSON.parse(localStorage.getItem("Assigned"));
     console.log(AssignedData);
-    //     $('#assignmentModal').modal({
-    //       backdrop: 'static',
-    //       keyboard: false
-    // })
-
-    //Search Table
+  
+   //AssignmentTable Child row table
 
     function format(d, ParentRowid) {
       console.log(d);
@@ -44,14 +40,9 @@ $(document).ready(function () {
         });
       }
       return list;
-
-      // `d` is the original data object for the row
     }
-    // datasets = [
-    //   ["scas", "scasc", "scsac", "scasc", "scsdc", "dcdsc", "sacdvf"],
-    //   ["scas", "scasc", "scsac", "scasc", "scsdc", "dcdsc", "sacdvf"],
-    // ];
-
+   
+    //AssignmentTable
     StockDetails = JSON.parse(localStorage.getItem("stock"));
 
     // console.log(StockDetails);
@@ -108,6 +99,8 @@ $(document).ready(function () {
         tr.addClass("shown");
       }
     });
+
+    // Dependent Dropdown for customer
     var customerInvoice = [
       { customer: "Keneth", invoiceNumber: "15000" },
       { customer: "Keneth", invoiceNumber: "15001" },
@@ -139,7 +132,7 @@ $(document).ready(function () {
         $("#QuickBooksInvoice").append(option);
       });
     });
-
+//  Table Search 
     table = $("#table_assignment").DataTable();
     $("#search").on("keyup", function () {
       table.search(this.value).draw();
@@ -150,7 +143,7 @@ $(document).ready(function () {
     });
 
     var StockOptions = "";
-    // debugger;
+
     for (let i = 0; i < StockDetails.length; i++) {
       StockOptions +=
         "<option value='" +
@@ -162,7 +155,6 @@ $(document).ready(function () {
     $("#Selectstock").append(StockOptions);
     $("#Selectstock").change(function () {
       var SelectedStock = $(this).find("option:Selected").val();
-      // //alert(SelectedStock)
 
       let option = "<option disabled value='0'>Choose Parts</option>";
       for (let i = 0; i < StockDetails.length; i++) {
@@ -178,6 +170,8 @@ $(document).ready(function () {
       $("#SelectParts").html(option);
       // $("#SelectParts").append(option);
     });
+
+    //Add Assignment
     var SelectedPartsStock = new Array();
 
     $(addSelectedParts).click(function () {
@@ -226,6 +220,9 @@ $(document).ready(function () {
       $("#AssignedPartTable").html(list);
     }
     $("#saveAssigment").click(function () {
+      if(SelectedPartsStock.length==0){
+        Swal.fire("please Enter Stock and Parts")
+      }else{
       // debugger
       if($(".save").attr('id')!='editAssignment'){
       
@@ -274,14 +271,21 @@ $(document).ready(function () {
         // console.log(newObj)
       }
     }
+  }
     });
     //Delete Parts in Modal
     $(document).on("click", ".cancel", function () {
+
+      if(SelectedPartsStock.length==1){
+        Swal.fire("atleast 1 part is requiered")
+      }
+      else{
       let index = parseInt($(this).data("val"));
       // var index=parseInt( $(this).data('val'))-1
       //////alert(index)
       SelectedPartsStock.splice(index - 1, 1);
       displaySelectedStockParts();
+      }
     });
 
     $("#newAssignment").click(function () {
@@ -296,7 +300,7 @@ $(document).ready(function () {
       document.getElementById("assignmentform").reset();
     });
     $(document).on("click", ".Edit", function () {
-      debugger
+      
     
      let Index=table.row($(this).parents('tr')).index();
       SelectedRowData=table.row($(this).parents('tr')).data()
@@ -312,7 +316,11 @@ $(document).ready(function () {
       displaySelectedStockParts();
     });
     $(document).on("click", "#editAssignment", function () {
-      debugger
+      if ($("#QuickBooksInvoice").val() == null) {
+        Swal.fire("Please selecet customer and Invoice");
+      }else  if(SelectedPartsStock.length==0){
+        Swal.fire("please Enter Stock and Parts")
+      }else{
       var AssignedDataParts= JSON.parse(localStorage.getItem("Assigned"));
       let Customer = $("#customer").val();
       let Index = $("#hidden").val();
@@ -342,6 +350,7 @@ $(document).ready(function () {
       $("#assignmentModal").modal("hide");
       $(".save").attr("id", "saveAssigment");
       document.getElementById("assignmentform").reset();
+      }
     })
 
 
@@ -396,17 +405,6 @@ $(document).ready(function () {
       }
     });
 
-
-    //   var myData = ['New York','Los Angeles','Chicago' ]
-    //   $(function() {
-
-    //  var instance = $('#SelectParts').magicSuggest({
-
-    //    data: myData
-
-    //  });
-
-    //  });
   } else {
     window.location.href = "index.html";
   }

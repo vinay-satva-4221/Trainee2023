@@ -24,19 +24,20 @@ function format(d) {
         '<td >1</td>' +
         '<td>WB-01-S-M</td>' +
         '<td>warehouse</td>' +
-        '<td><i class="bi bi-x"></i></td>' +
+        '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
         '</tr>' +
         '<tr>' +
         '<td >2</td>' +
-        '<td>Jacob</td>' +
-        '<td>Thornton</td>' +
-        '<td><i class="bi bi-x"></i></td>' +
+        '<td>AT-01-BLK</td>' +
+        '<td>C-101</td>' +
+        '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
         '</tr>' +
         '<tr>' +
         '<td >3</td>' +
-        '<td >Larry the Bird</td>' +
-        '<td>Thornton</td>' +
-        '<td><i class="bi bi-x"></i></td>' +
+        '<td >BW-03-XL-G</td>' +
+        '<td>E-501</td>' +
+        '<td><button type="button" class="btn btn-sm btn-delete" >&#x2715;</button></td>' +
+        
         '</tr>' +
         '</tbody>' +
         '</table>'
@@ -90,19 +91,18 @@ $(document).ready(function () {
     });
 
     // Add event listener for opening and closing details
-    $('#example tbody').on('click', 'td.dt-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
+$("#example tbody").on("click", "td.dt-control", function () {
+    var tr = $(this).closest("tr");
+    var row = table.row(tr);
 
-        if (row.child.isShown()) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        } else {
-            // Open this row
-            row.child(format(row.data())).show();
-            tr.addClass('shown');
-        }
-    });
-    //   });
+    if (row.child.isShown()) {
+        row.child.hide();
+        tr.removeClass("shown");
+    } else {
+        row.child(format(row.data())).show();
+        tr.addClass("shown");
+    }
 });
+});
+
+    //   });

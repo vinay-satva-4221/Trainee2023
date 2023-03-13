@@ -115,7 +115,6 @@ button.middle:focus {
 
 #savestock,
 #savepart,
-#saveassignment,
 .btnradio,
 #addassignment {
   color: #f7fdff;
@@ -129,7 +128,7 @@ button.middle:focus {
   height: 38px;
 }
 
-.PopOverorder{
+.PopOverorder {
   color: rgb(116, 207, 116);
 }
 
@@ -328,7 +327,7 @@ tbody {
 }
 
 .backgroundcolor {
-  background-color: #F7F8FA;
+  background-color: #f7f8fa;
 }
 
 .pagination {
@@ -443,17 +442,30 @@ table.dataTable td.dt-control:before {
   text-align: right;
 }
 
-.popover-header {
-  display: none;
+.dataColor {
+  background-color: white;
+  color: #06a0dd;
 }
+
 .popover-body {
-  width: 219px;
-  height: 185px;
+  width: 187px;
+  height: 124px;
+  padding: 4px !important;
+}
+.popover-header{
+  background-color: white;
+  padding: 4px;
+  padding-top: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .popover {
   font-size: -0.125rem;
 }
 
+.linecolor{
+  color: white;
+}
 /* 
 .btn-primary:hover,
 .btn-primary:focus,
@@ -486,7 +498,6 @@ table.dataTable td.dt-control:before {
   border: 1px solid black;
 }
 
-
 .searchicon {
   position: absolute;
   top: 78px;
@@ -504,13 +515,45 @@ table.dataTable td.dt-control:before {
 }
 
 .searchbar {
-  padding-left: 27px;
+  padding-left: 27px !important;
 }
 
-.select2-dropdown{
+.select2-dropdown {
   z-index: 1100 !important;
 }
 
-.select2-selection{
+.select2-selection {
   width: 250px;
+}
+
+/* .choosepart {
+  width: 355px;
+  height: 69px;
+} */
+
+.statusdropdown{
+  background-color: white;
+  color: #326C96;
+  border: 1px solid #326C96;
+  border-radius: 5px;
+  width: 70px;
+}
+
+
+.History_Modal_Text_Color{
+  color: #07678d;
+}
+
+.History_Modal_Text_size{
+  font-size: 11px;
+}
+
+.page-active , .page-active:hover{
+  background-color: black;
+  color: white;
+  height: 37px;
+}
+
+.select2-results__option{
+  width: 250px !important;
 }
