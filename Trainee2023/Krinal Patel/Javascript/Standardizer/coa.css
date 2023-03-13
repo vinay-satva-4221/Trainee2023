@@ -31,6 +31,7 @@
     padding-bottom: 2px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-left: 4px;
   }
   .submit{
     height: 30px;
@@ -46,12 +47,15 @@
 .form-check-input[type=radio] {
   border-radius: 50%;
   border-color: orange;
-  border: 4px solid;
+  border: 3px solid;
+} 
+#source,#mostlikely,#likely,#possible,#destination{
+  font-size: x-small;
+  width: 100%;
 }
-
+/* Buttons */
 .b2{
   width: 100%;
-  /* width: webkit-fill-available; */
   background-color: #326C96;
   color: white;
 }
@@ -59,4 +63,15 @@
   background-color: #326C96;
   color: white;
 
+}
+
+/* search bar */
+#filter_users{
+  font-size: smaller;
+  font-weight: 600;
+}
+
+
+#content{
+  margin-top: 7%;
 }

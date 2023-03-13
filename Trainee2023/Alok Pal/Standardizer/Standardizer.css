@@ -8,7 +8,10 @@
     font-size: 11px;
     font-weight: bold;
     background-color: #F2F2F2;
-    color:  #b1b0b0;;
+    color: #b1b0b0;
+    border: 1px solid rgb(166, 166, 166);
+    border-radius: 4px;
+    box-shadow: 1px 1px;
 }
 
 .btn-active {
@@ -72,9 +75,10 @@
 }
 
 /* DestinationDiv */
-.DestinationDiv{
+.DestinationDiv {
     width: 24%;
 }
+
 .DestinationAcc {
     color: white;
     font-size: 12px;
@@ -129,6 +133,7 @@ div.scrollmenu {
 div.scrollmenu a {
     display: inline-block;
     color: black;
+    cursor: pointer;
     text-align: center;
     padding: 14px;
     text-decoration: none;
@@ -165,13 +170,42 @@ div.scrollmenu a {
     font-weight: bold;
 }
 
-.searchIcon{
-  position: absolute; 
-  right: 18rem;
-  font-size: 13px;
-  top: 17.8rem;  
+.searchIcon {
+    position: absolute;
+    right: 18rem;
+    font-size: 13px;
+    top: 318px;
 }
 
-.searchInput{
+.searchInput {
     font-size: 13px;
+}
+
+
+/*Human updated*/
+
+.HumanUpdated p {
+    color: orange;
+    font-size: 12px;
+}
+
+/* .HumanUpdated p i{
+    font-size: 10px;
+} */
+
+.scrollmenu a.active {
+    background-color: green;
+}
+
+/* Active */
+
+.active1 {
+    border-bottom: 2px solid green;
+    /* height: 65px; */
+    font-weight: bold;
+    color: green !important
+}
+
+.SourceDivHeight{
+    height: 50px;
 }
