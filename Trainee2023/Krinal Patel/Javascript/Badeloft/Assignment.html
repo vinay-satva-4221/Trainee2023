@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
     <link href="Badeloft.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -49,21 +49,23 @@
                     </li>
                 </ul>
             </div>
-            <ul class="nav navbar-nav: mx-5">
-                <li class="nav-item">
-                      <img alt="profile-image" class="rounded-circle" src="images/user.jfif" style="width: 60px; height: 60px;"/>
-                     
-                </li> 
-                <li class="nav-item">
-                    <h5 style="color: gray; font-size: medium;">Welcome</h5>
-                    <h4 id="username"><b>Eric Jenson</b></h4>
-                   
-              </li>
-              
-            </ul>
             <div>
-                <img src="images/Log-Out.jpg" alt="" onclick="logout()">
+                <ul class="nav navbar-nav: mx-5">
+                    <li class="nav-item">
+                          <img alt="profile-image" class="rounded-circle" src="images/user.jfif" style="width: 46px; height: 46px; border: 1px solid #EEF0F7;"/>
+                         
+                    </li> 
+                    <li class="nav-item">
+                        <h5 style="color: #87909F; font-size: 13px; margin-bottom: 10%; font-weight: normal;">Welcome</h5>
+                         <h6 id="username"><b></b></h6>      
+                  </li>
+                </ul>
             </div>
+            <div>
+                <!-- Log-Out -->
+                <img src="images/Log-Out.jpg" style="width: 22px; height: 22px;" alt="" onclick="logout()">
+            </div>
+        
         </nav>
           
     
@@ -80,17 +82,19 @@
         
         
 
-            <table class="table border rounded" id="assignment">
+            <table class="table border" id="assignment">
                 <thead class="table table-dark rounded">
                     
                 </thead>
-           
+                <tbody id="maintdata">
+
+                </tbody>
             </table>
             </div>
         </div> 
         
             <div class="modal" id="myModal" >
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg" >
                     <div class="modal-content">
         
                         <!-- Modal Header -->
@@ -104,52 +108,69 @@
                             <div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                    <label>Choose Customer</label>
-                                    <select id="customer" class="form-control">
-                                        <option value="" disabled selected="selected">Select Customer</option>
-                                    </select>                                    
+                                       
+                                    <label for="Customer" class="form-label customer"><b> Choose Customer </b></label>
+                                    <select class="form-select form-control" id="Customer"
+                                        aria-describedby="validationServer04Feedback" required>
+                                        <option selected disabled value="">Choose Customer</option>
+                                        <!-- <option value="Kenneth Woodard"> Kenneth Woodard</option>
+                                        <option value="James Fenske"> James Fenske</option>
+                                        <option value="Kelly McCrory"> Kelly McCrory</option>
+                                        <option value="Frances Badger">Frances Badger</option> -->
+                            
+                                    </select>                                
                                 </div>
                                     <div class="col-lg-6">
-                                <label for="invoices">QuickBooks Invoice #</label>
-                                <select id="invoices" class="form-control">
-                                    <option value="" disabled selected="selected">Select Invoices</option>
-                                </select>  
+                                <label for="QuickBooks" class="form-label Invoice"><b> QuickBooks Invoice</b></label>
+                                <select class="form-select form-control" id="Invoice" required>
+                                    <option selected disabled value="">Select Invoices</option>
+                                </select>
                                 </div> 
                              
                                 <label for="fname">   <br><b>Add Stock</b></label>
                                 <div class="row">
-                                    <div class="col-lg-5">
-                                <label for="stock">Stock</label>
-                                <select id="stock" class="form-control" >
-                                    <option value="" disabled selected="selected">Select Stock</option>
-                                </select>                                     
-                                 </div>
-                                    <div class="col-lg-5">
-                                <label for="part">Parts</label>
-                                <select id="part" class="form-control">
-                                    <option  disabled selected="selected">Choose Part</option>
-                                    <!-- <option  >A015916</option>
-                                    <option>A015916</option>
-                                    <option  >A015916</option>
-                                    <option>A015916</option>
-                                    <option >A015916</option> -->
-
-                                </select>  
+                                    <div class="col-md-4">
+                                        <label for="">Stock</label>
+                                        <!-- <input type="text" class="form-control" id="stockname" class="validate"> -->
+                                        <select class="form-select form-control mt-2" id="select_stockname">
+                                          <option selected disabled>Choose Stock</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="">Parts</label><br>
+                                        <select class="js-example-placeholder-multiple js-states form-select form-control mt-2" id="select_parts" multiple="multiple">
+                                          <!-- <option selected disabled>Choose Part</option> -->
+                                        </select>
                                     </div>
 
-                                    <div class="col-lg-2">  
-                                        <label for="addassignment">&nbsp;</label>
-
-                                        <button type="button" id="addassignment" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                                    <div class="col-md-2">  
+                                        <label for="addassignment">&nbsp;</label><br>
+                                        <button type="button" id="saveparts" class="btn btn-primary">Add</button>
                                     </div>
 
-                                </div>  
+                                        <div class="col-md-12">
+                                          <table id="Assignment_table" class="table border-1 "><br>
+                                            <thead class="bg-dark text-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Stock</th>
+                                                    <th>Part</th>
+                                                    <th>Action</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody id="Assignment_table_data"></tbody>
+                                        </table>
+                                        </div>
+                            
+                                     
+
                                 <br><br>                       
                                 <br><br>                       
                                 <br><br>                       
                                                    
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="addassignment()" data-bs-dismiss="modal">Save</button>
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                                 </div>
         
@@ -168,23 +189,26 @@
 
         </div>
 
-
+       
     
 
     <script src="JQ/jquery-3.6.3.min.js"></script>
     <!-- <script src="JS/bootstrap.min.js"></script>  -->
-    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
 
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 
     <!-- <script src="Badeloft.js"></script> -->
     <script src="Assignment.js"></script>
 
-
-
-
+  
 
 </body>
 

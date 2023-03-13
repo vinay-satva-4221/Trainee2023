@@ -2,7 +2,7 @@
 
 window.onload = (event) => {debugger;
     if (localStorage.getItem("LoginDetails") == null) {
-      window.location.replace("Badeloft.html");
+      window.location.replace("Login.html");
 
      
     }
@@ -17,15 +17,11 @@ window.onload = (event) => {debugger;
 //Logout function
   
   function logout(){
-    window.location.replace("Badeloft.html")
+    window.location.replace("Login.html")
     localStorage.clear();
   }
   
- 
-
-// Data table Dashboard
-
-
+// Data table Dashboard 
 $(document).ready(function () {
 
 
@@ -95,14 +91,30 @@ $(document).ready(function () {
   });
 
   $('[data-bs-toggle="popover"]').popover({
-
     container: 'body',
     placement: 'right',
-    html: true, 
-    content: function() {
-          return $('#popover-form').html();
+    html: true,
+    content: function () {
+      return $('#popover-form').html();
     }
   });
+  $('body').on('mousedown', function (e) {
+    $('[data-bs-toggle="popover"]').each(function () {
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+        }
+    });
+});
+
+$('p').on('mousedown', function (e) {
+  $('[data-bs-toggle="popover"]').each(function () {
+      if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+          $(this).popover('hide');
+      }
+  });
+});
+// $(".close").on('click',function(){})
+// $('#element').popover('hide')
 });
 var dataSet = [
   ["Stock Location","", "", "On Water", "On Water", "In Production"],
@@ -124,9 +136,7 @@ var dataSet = [
   ["BK-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
   ["BL-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
   ["BM-03-XL-G","1", "1",  "<button class='text-primary  border-0 bg-light'>2</button>", "2", "1"],
-  
-
-  
+ 
 ];
 
 var StockLocation = $.fn.dataTable.absoluteOrder( 
@@ -137,10 +147,3 @@ var StockLocation = $.fn.dataTable.absoluteOrder(
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
   })
-
-  
-  // $(function () {
-  //   $('#popover-form').popover({
-  //     container: 'body'
-  //   })
-  // })

@@ -5,10 +5,10 @@ var index = 1;
 var tableData;
 var currentStockId;
 var currentStockIndex;
+
 window.onload = (event) => {
-  //debugger;
   if (localStorage.getItem("LoginDetails") == null) {
-    window.location.replace("Badeloft.html");
+    window.location.replace("Login.html");
   } else {
     var par = JSON.parse(localStorage.getItem('LoginDetails'));
     var u = par[0].username;
@@ -18,9 +18,10 @@ window.onload = (event) => {
 };
 
 function logout() {
-  window.location.replace("Badeloft.html")
+  window.location.replace("Login.html")
   localStorage.clear();
 }
+
 
 
 
@@ -54,7 +55,7 @@ function format(d) {
   // var currentIndex = $(this).closest('tr').index();
 
   childrow += '<table cellpadding="2" cellspacing="0" class="table border rounded" id="childtablepart">';
-  childrow += '<thead><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
+  childrow += '<thead class="colorthead"><tr><th>#</th><th>Part Number</th><th>Ordered</th><th>Assigned</th><th>Action</th></tr></thead>';
   childrow += '<tbody>';
   var id = 1;
   q.forEach((e) => {
@@ -288,6 +289,7 @@ $("#stock tbody").on('click', '.fa-pen', function () {
     console.log(i)
     partDetails.splice(i,1); 
     console.log(partDetails)
+
     
     $(this).closest('tr').remove();
 
@@ -572,6 +574,7 @@ $("#AddPartForm").validate({
 
     partno: {
       required: true,
+
     },
     ordered: {
       required: true,
@@ -584,6 +587,7 @@ $("#AddPartForm").validate({
 
     partno: {
       required: "Enter Part number",
+      
     },
     ordered: {
       required: "Enter number of ordered parts",
@@ -597,6 +601,98 @@ $("#AddPartForm").validate({
   }
  
 })
+a=$("#AddPartForm").validate();
+$("AddStockForm").validate();
+
+$("#addpartdetails").click(function () {
+  debugger;
+  var form = $("#AddPartForm");
+  form.validate();
+
+  var partno = document.getElementById("partno").value
+  var ordered = document.getElementById("ordered").value
+  var notes = document.getElementById("notes").value
+
+  if(partno==""||ordered==""||notes==""||!form.valid ){
+                    swal("Error!", "Missing or improper input", "error");
+    }
+else{
+  swal("Part Added!", "Part Details Added successfully", "success");
+
+  $('#stockModal').modal("hide");
+  $('#stockModal').on('hidden.bs.modal', function () {
+      $('.modal-backdrop').remove();
+  })
+
+  return addpartData()
+}
+
+});
+
+
+$("#addstockbtn").click(function () {
+  debugger;
+  var form = $("#AddStockForm");
+  form.validate();
+
+  var sname = document.getElementById("sname").value
+  var etadate = document.getElementById("etadate").value 
+
+  if(sname==""||etadate==""||!form.valid|| partDetails.length<1){
+                    if(partDetails.length<1){
+                      swal("Minimum 1 part Required!", "Atleast 1 part details required to add Stock", "warning");  
+                      $("#myModal").show();
+
+                    }
+                    else{
+                    swal("Error!", "Missing or improper input", "error");
+                    $("#myModal").show();
+                  }
+    }
+else{
+  swal("Stock Added!", "Stock Details Added successfully", "success");
+  $("#myModal").hide();
+
+  return addstockdata();
+
+}
+
+});
+
+
+$("#editstockbtn").click(function () {
+  debugger;
+  var form = $("#AddStockForm");
+  form.validate();
+
+  var sname = document.getElementById("sname").value
+  var etadate = document.getElementById("etadate").value 
+
+  if(sname==""||etadate==""||!form.valid|| partDetails.length<1){
+                    if(partDetails.length<1){
+                      swal("Minimum 1 part Required!", "Atleast 1 part details required to update Stock", "warning");  
+                      $("#myModal").show();
+
+                    }
+                    else{
+                    swal("Error!", "Missing or improper input", "error");
+                    $("#myModal").show();
+                  }
+    }
+else{
+  swal("Stock Updated!", "Stock Details Updated successfully", "success");
+  $("#myModal").hide();
+
+  return updatestockdata();
+
+}
+
+});
+
+
+
+
+
 
 //Date Picker
 $(function () {
@@ -607,16 +703,3 @@ $(function () {
     placeholder: 'Date Picker'  
   });
 });
-
-
-// delete in dt row
-// $(".deletechild").click(function () {
-
-//   var i = $(this).closest('tr').index();
-//   console.log(i)
-//   partDetails.splice(i,1); 
-//   console.log(partDetails)
-  
-//   $(this).closest('tr').remove();
-
-// });

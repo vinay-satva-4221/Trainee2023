@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standardizer</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./Standardizer.css">
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img src="./Standardizer_logo.png" alt="">
+            </a>
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                data-bs-target="#ResponsiveNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ResponsiveNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ms-5">
+                        <a class="nav-link active" aria-current="page" style="color: #93CCEA;">CoA</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item me-3">
+                      <img alt="profile-image" class="rounded-circle" src="./user.png" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid p-4">
+        <div class="row p-0">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <div class="btn-group justify-content-start" role="group" >
+                <input type="radio" class="btn-check" name="AccountTypeName" id="Assets" autocomplete="off" checked>
+                <label class="btn mx-2 rounded" for="Assets">Assets</label>
+              
+                <input type="radio" class="btn-check" name="AccountTypeName" id="Liability" autocomplete="off">
+                <label class="btn me-2 rounded" for="Liability">Liability</label>
+              
+                <input type="radio" class="btn-check" name="AccountTypeName" id="Equity/Capital" autocomplete="off">
+                <label class="btn me-2 rounded" for="Equity/Capital">Equity/Capital</label>
+
+                <input type="radio" class="btn-check" name="AccountTypeName" id="Revenue" autocomplete="off">
+                <label class="btn me-2 rounded" for="Revenue">Revenue</label>
+
+                <input type="radio" class="btn-check" name="AccountTypeName" id="CoGs" autocomplete="off">
+                <label class="btn me-2 rounded" for="CoGs">CoGs</label>
+
+                <input type="radio" class="btn-check" name="AccountTypeName" id="G&A Expenses" autocomplete="off">
+                <label class="btn me-2 rounded" for="G&A Expenses">G&A Expenses</label>
+
+                <input type="radio" class="btn-check" name="AccountTypeName" id="Other Revenue & G&A Expenses" autocomplete="off">
+                <label class="btn me-2 rounded" for="Other Revenue & G&A Expenses">Other Revenue & G&A Expenses</label>
+              </div>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1 text-end">
+                 <input type="button" class="btn" id="Submit" name="submit" value="Submit">
+            </div>
+        </div>
+        <div class="row p-3">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <i class="fa fa-circle-o">&nbsp;Human Updated</i>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <h6><b>Source Account Structure</b>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <h6><b>Likely Destination Account</b>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <h6><b> Account</b>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <h6><b> Account</b>
+            </div>
+            <div class="col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-end">
+                <h6><b>Destination Account Structure</b>
+            </div>
+        </div>
+    </div>
+    <script src="./bootstrap/jquery-3.6.3.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./Standardizer.js"></script>
+</body>
+
+</html>

@@ -334,3 +334,13 @@ li.paginate_button.page-item.active{
 .paginationAudit{
     height: 3.5rem;
 }
+
+
+/* Dropdown */
+.statusdropdown{
+    color: #76aaf7;
+    border: 1px solid #76aaf7;
+    border-radius: 4px;
+    width: 23%;
+    margin-right: 2%;
+}

@@ -87,11 +87,13 @@ $(document).ready(function () {
     });
 
 
-    $(document).on('click', '.close-popover', function () {
-        debugger
-        $(this).closest('.popover').popover('hide');
-    });
-    
+    // $(document).on('click', '.close-popover', function () {
+    //     debugger
+    //     $(this).closest('.popover').popover('hide');
+    // });
+    $(document).on('click', '.closepopover', function() {
+        $('[data-bs-toggle="popover"]').popover('hide');
+      });
 
     $('.sorting').removeClass('sorting');
 

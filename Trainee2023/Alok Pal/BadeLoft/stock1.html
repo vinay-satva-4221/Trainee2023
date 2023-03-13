@@ -83,7 +83,7 @@
             </div>
             <div class="stockSearch mt-3 text-end d-flex">
                 <i class="bi bi-search searchicon"></i>
-                <input type="search" id="stock_search"  class="ps-4 searchtextbox" placeholder="Search here...">
+                <input type="search" id="stock_search" class="ps-4 searchtextbox" placeholder="Search here...">
             </div>
 
         </div>
@@ -111,7 +111,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="">ETA Date</label>
-                                        <input type="text" name="ETA" class="form-control" id="date" placeholder="dd/mm/yyyy"/>
+                                        <input type="text" name="ETA" class="form-control" id="date"
+                                            placeholder="dd/mm/yyyy" />
                                         <!-- <input type="date"  class="form-control" id="date" /> -->
                                     </div>
                                 </div>
@@ -120,25 +121,25 @@
                                 <div class="row mt-2">
                                     <label for="">Stock Status</label>
                                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check" name="btnradio" value="On Production" id="btnradio1"
-                                            autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="btnradio1">On Production</label>
+                                        <input type="radio" class="btn-check" name="btnradio" value="On Production"
+                                            id="btnradio1" autocomplete="off" checked>
+                                        <label class="btn btn" for="btnradio1">On Production</label>
 
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="On Water"
-                                            autocomplete="off" >
-                                        <label class="btn btn-outline-primary" for="btnradio2">On Water</label>
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                            value="On Water" autocomplete="off">
+                                        <label class="btn btn" for="btnradio2">On Water</label>
 
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value="On Warehouse"
-                                            autocomplete="off" >
-                                        <label class="btn btn-outline-primary" for="btnradio3">On Warehouse</label>
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+                                            value="In Warehouse" autocomplete="off">
+                                        <label class="btn btn" for="btnradio3">In Warehouse</label>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-2 btnDiv">
                                         <button type="button" class=" addpartbtn mt-2" data-bs-toggle="modal"
-                                            data-bs-target="#PartModal"><i
-                                                class="fa-sharp fa-solid fa-circle-plus"></i> Add Part Number </button>
+                                            data-bs-target="#PartModal"><i class="fa-sharp fa-solid fa-circle-plus"></i>
+                                            Add Part Number </button>
 
 
                                     </div>
@@ -146,7 +147,7 @@
                                 <div class="row">
                                     <div class="container table-responsive  mt-3">
                                         <table id="partTable" class="table text-center border ">
-                                          
+
                                         </table>
                                     </div>
                                 </div>
@@ -155,8 +156,10 @@
 
                             </div>
                             <div class="modal-footer justify-content-start ">
-                                <button type="button" class="btn  " id="modalstock" onclick="addStockData()">Save</button>
-                                <button type="button" class="btn btn-secondary" onclick="resetSVal() " data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn  " id="modalstock"
+                                    onclick="addStockData()">Save</button>
+                                <button type="button" class="btn btn-secondary" onclick="resetSVal() "
+                                    data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -189,13 +192,15 @@
                             <div class="row mt-2 form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here"
                                     id="floatingTextarea"></textarea>
-                                <label for="floatingTextarea">Comments</label>
+                                <label for="floatingTextarea">Notes</label>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer justify-content-start">
-                        <button type="button" class="btn " onclick="getModal() ,showModaltable(),resetPartModal()" id="modal2">Save </button>
-                        <button type="button" class="btn btn-secondary "  onclick="resetPartModal()" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn " onclick="getModal() ,showModaltable()"
+                            id="modal2">Save </button>
+                        <button type="button" class="btn btn-secondary " onclick="resetPartModal()"
+                            data-bs-dismiss="modal">Cancel</button>
                         <!-- check for valid direct data toggle -->
 
                     </div>
@@ -211,7 +216,7 @@
 
         </div>
 
-       
+
     </section>
     <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -230,7 +235,8 @@
                         </div>
                         <div class="col-md-11 mx-0 px-0">
                             <p class="fw-bold mb-0">C100 stock added by Eric</p>
-                            <p class="fs-6 text-secondary mb-0">Add part BW-01-S-M with ordered quantity 5 | Add part AT-01-BLK with ordered quantity 4</p>
+                            <p class="fs-6 text-secondary mb-0">Add part BW-01-S-M with ordered quantity 5 | Add part
+                                AT-01-BLK with ordered quantity 4</p>
                             <p>Last Updated by <span class="historyTextcolor">Eric on 02/22/2022 09:00AM</span></p>
                         </div>
                         <hr class="bg-secondary text-secondary">
@@ -254,32 +260,32 @@
                         <div class="col-md-12">
                             <nav aria-label="Page navigation" class="float-end historyPagination">
                                 <ul class="pagination paginationAudit">
-                                  <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                      <span aria-hidden="true" class="fw-bold">&lt;</span>
-                                    </a>
-                                  </li>
-                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                      <span aria-hidden="true" class="fw-bold">&gt;</span>
-                                    </a>
-                                  </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true" class="fw-bold">&lt;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true" class="fw-bold">&gt;</span>
+                                        </a>
+                                    </li>
                                 </ul>
-                              </nav>
+                            </nav>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
-                
-                
+
+
             </div>
         </div>
     </div>
-    
+
 
 
     <script src="jquery/jquery.js"></script>

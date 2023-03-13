@@ -114,11 +114,11 @@
                               <label for="">Stock Status</label>
                               <div>
                               <div class="btn-group" id="btnradio" role="group" aria-label="Basic radio toggle button group">
-                                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+                                  <input type="radio" class="btn-check stock_radio_btn" name="btnradio" id="btnradio1" autocomplete="off" >
                                   <label class="btn  " for="btnradio1">On Production</label>
-                                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                  <input type="radio" class="btn-check stock_radio_btn" name="btnradio" id="btnradio2" autocomplete="off">
                                   <label class="btn  " for="btnradio2">On Water</label>
-                                  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                  <input type="radio" class="btn-check stock_radio_btn" name="btnradio" id="btnradio3" autocomplete="off">
                                   <label class="btn  " for="btnradio3">In Warehouse</label>
                                 </div>
                               </div>
@@ -184,6 +184,74 @@
             </div>
         </div>
     </div>
+
+                        <!-- history modal -->
+    <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title fw-bold" id="historyModalLabel">Audit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="fw-bold historyTextcolor">Stock C100</p>
+                        </div>
+                        <div class="col-md-1">
+                            <i class="bi bi-1-circle-fill mx-auto"></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">C100 stock added by Eric</p>
+                            <p class="fs-6 text-secondary mb-0">Add part BW-01-S-M with ordered quantity 5 | Add part AT-01-BLK with ordered quantity 4</p>
+                            <p>Last Updated by <span class="historyTextcolor">Eric on 02/22/2022 09:00AM</span></p>
+                        </div>
+                        <hr class="bg-secondary text-secondary">
+                        <div class="col-md-1">
+                            <i class="bi bi-2-circle-fill mx-auto"></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">Stock updated by jeshal</p>
+                            <p class="fs-6 text-secondary mb-0">Edit part AT01 with ordered quantity 5</p>
+                            <p>Last Updated by <span class="historyTextcolor">jeshal on 02/22/2022 12:30PM</span></p>
+                        </div>
+                        <hr class="bg-secondary text-secondary">
+                        <div class="col-md-1">
+                            <i class="bi bi-3-circle-fill mx-auto"></i>
+                        </div>
+                        <div class="col-md-11 mx-0 px-0">
+                            <p class="fw-bold mb-0">Part has been deleted by Eric</p>
+                            <p class="fs-6 text-secondary mb-0">Edit part AT03</p>
+                            <p>Last Updated by <span class="historyTextcolor">Eric on 02/22/2022 02:15PM</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <nav aria-label="Page navigation" class="float-end historyPagination">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true" class="fw-bold">&lt;</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true" class="fw-bold">&gt;</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
 </div>
 <script src="./stock1.js"></script>
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
@@ -195,7 +263,7 @@ crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

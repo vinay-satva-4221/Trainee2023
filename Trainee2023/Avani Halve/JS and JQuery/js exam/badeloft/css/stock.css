@@ -5,6 +5,10 @@
     margin-left: auto;
 }
 
+.error{
+    color: red;
+  }
+
 .navbar-nav .nav-link {
     position: relative;
  }
@@ -93,9 +97,9 @@ h3 {
     background-color: white;
 }
 
- .sorting_1{
-    color: #1188FF;
-  }
+.dt-control{
+  color: #1188FF;
+}
   
   /* pagination */
   .page-item.active .page-link {

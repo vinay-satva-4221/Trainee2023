@@ -5,6 +5,12 @@
   padding: 0 !important;
   
 }
+#username{
+  font-size: 19px;
+  width: 23px;
+  font-family:   Calibri;
+  font-weight:bold;
+}
 .parent {
   /* position: absolute; */
   top: 0;
@@ -228,7 +234,7 @@ li.paginate_button.page-item:hover {
   position: absolute;
   width: 33%;
   height: 2px;
-  bottom: -23px;
+  bottom: -18px;
   /* margin: auto; */
   right: 50%;
   transform: translate(50%,-50%);
@@ -238,7 +244,14 @@ li.paginate_button.page-item:hover {
   /* transform: scaleX(0); */
   /* / transition: all 0.3s ease-in-out 0s; / */
 }
-
+#addassignment{
+  height: 35px;
+  width: 75px;
+  padding: 0;
+}
+.sorting_disabled,.sorting {
+  font-weight:normal !important;
+}
 .navbar-nav .nav-link.active::before
 {
   visibility: visible;
@@ -270,20 +283,6 @@ div.dataTables_wrapper div.dataTables_filter input {
   content: "\f304";
   cursor: pointer;}
 
-
-
-/* Datatable sorting icon dashboard */
-
-  table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:after {
-    opacity: .6;
-    margin-right: 73%;
-}
-table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_asc:after, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>th.sorting_asc_disabled:after, table.dataTable thead>tr>th.sorting_desc_disabled:after, table.dataTable thead>tr>td.sorting:after, table.dataTable thead>tr>td.sorting_asc:after, table.dataTable thead>tr>td.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc_disabled:after, table.dataTable thead>tr>td.sorting_desc_disabled:after {
-  top: 50%;
-  content: "▼";
-  margin-right: 73%;
-}
-
 /* Stock status color dropdown */
 
 .btn-group-vertical>.btn-check:checked+.btn, .btn-group-vertical>.btn-check:focus+.btn, .btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover, .btn-group>.btn-check:checked+.btn, .btn-group>.btn-check:focus+.btn, .btn-group>.btn.active, .btn-group>.btn:active, .btn-group>.btn:focus, .btn-group>.btn:hover {
@@ -293,3 +292,8 @@ table.dataTable thead>tr>th.sorting:after, table.dataTable thead>tr>th.sorting_a
 
 
 
+.colorthead{
+  background-color: #F5F6FA;
+  color: #8F8A8C;
+  
+}

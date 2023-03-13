@@ -2,14 +2,48 @@ $(document).ready(function () {
   if (localStorage.getItem("LogedinUser") !== null) {
     var StockDetails = new Array();
 
+    
+    var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
+
     $("#navigation").load("Navbar.html");
     //Display name in Navbar
     var logedinUser = JSON.parse(localStorage.getItem("LogedinUser"));
+
     var table;
     function format(d, ParentRowid) {
-      //debugger;
-      // //alert(ParentRowid)
-      //console.log(d.parts);
+      debugger
+      var AssignedStockData = JSON.parse(localStorage.getItem("Assigned"));
+     console.log(AssignedStockData)
+      let assignedValue = 0;
+      if(AssignedStockData!=null || AssignedStockData!=undefined){
+      console.log(ParentRowid)
+      rowdata = STOCKS[ParentRowid];
+
+      console.log("cc", rowdata.parts);
+     
+      for (let i = 0; i < AssignedStockData.length; i++) {
+        for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
+          if (
+            rowdata.stockname ==
+            AssignedStockData[i].AssignedParts[j].selectedStock
+          ) {
+            // //debugger;
+            for (let k = 0; k < rowdata.parts.length; k++) {
+              for (
+                let l = 0;
+                l < AssignedStockData[i].AssignedParts[j].selectedStock.length;
+                l++
+              ) {
+                if (
+                  rowdata.parts[k].partsnumber ==
+                  AssignedStockData[i].AssignedParts[j].selectedparts[l]
+                )
+                  assignedValue++;
+              }
+            }
+          }
+        }
+      }}
       let list = "";
       if (d.parts && d.parts.length > 0) {
         list +=
@@ -27,9 +61,20 @@ $(document).ready(function () {
             partdetail.partsnumber +
             "</td><td>" +
             partdetail.Order +
-            "</td><td>" +
-            partdetail.notes +
-            "</td><td class='deleteparts' data-val=" +
+            "</td><td><button type='button' data-val=" +
+            [index + 1] +
+            " data-parentrowid=" +
+            [ParentRowid] +
+            ` class='btn showAssignedUser' data-bs-toggle='popover' data-bs-html='true' title="<div class='row'>
+            <div class='col-sm-9 ps-0 pe-0'>
+              <span>Assigned to </span>
+            </div>
+            <div class='col-sm-2 '>
+              <a href='javascript:void(0)' class='d-flex justify-content-end close-popover' aria-label='Close'><div class='icon icon-16 icon-lg-16 mb-2 closePopoverbtn'>X</div></a>
+            </div>
+          </div>"  data-bs-content='<small>ekfjk</small>'>` +
+            assignedValue +
+            "</button></td><td class='deleteparts' data-val=" +
             [index + 1] +
             " data-parentrowid=" +
             [ParentRowid] +
@@ -44,9 +89,8 @@ $(document).ready(function () {
     }
 
     var STOCKS = JSON.parse(localStorage.getItem("stock"));
-    debugger;
-    // //console.log(StockDetails[1].stockname)
     table = $("#tableStocks").DataTable({
+
       order: [],
       deferRender: true,
       language: {
@@ -68,12 +112,6 @@ $(document).ready(function () {
       data: STOCKS,
       bInfo: true,
       columns: [
-        // {
-        //   className: "dt-control",
-        //   data: null,
-        //   defaultContent: "",
-        //   orderable: false,
-        // },
         {
           data: "stockname",
           title: "Stock Name",
@@ -100,7 +138,7 @@ $(document).ready(function () {
                 <div class="row">
                 <div class="col-md-4 ">
                       <div class="dropdown">
-                        <a class="btn btn-outline-primary dropdown-toggle" role="button" id="Stock_loc${row.stockname}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-outline-primary dropdown-toggle dropdownbtn" role="button" id="Stock_loc${row.stockname}" data-bs-toggle="dropdown" aria-expanded="false">
                         change
                          </a>
           
@@ -123,7 +161,7 @@ $(document).ready(function () {
                        </div>
                   </div>
                   <div class="col-md-6 ">
-                  <div id="statuss">
+                  <div id="status">
                     ${data}
                   </div>
                 </div>
@@ -164,6 +202,22 @@ $(document).ready(function () {
       ],
     });
 
+    $("#tableStocks tbody").on("click", ".Stock_location", function () {
+      var stocks = JSON.parse(localStorage.getItem("stock"));
+      var rowData = table.row($(this).closest("tr")).data();
+      console.log(rowData);
+      rowData.status = $(this).val();
+      for (let i = 0; i < stocks.length; i++) {
+        if (rowData.stockname == stocks[i].stockname) {
+          stocks[i] = rowData;
+          table.row(i).data(rowData).draw();
+          break;
+        }
+      }
+      // STOCKS.push(rowData)
+      localStorage.setItem("stock", JSON.stringify(stocks));
+    });
+
     // Add event listener for opening and closing details
     $("#tableStocks tbody").on("click", "td.ShowChildrow", function () {
       var tr = $(this).closest("tr");
@@ -184,13 +238,12 @@ $(document).ready(function () {
       {
         singleDatePicker: true,
         showDropdowns: true,
-        minYear: 2023,
+        minYear: 2000,
         maxYear: 2030,
         placeholder: "MM/DD/YYYY",
       },
       function (start, end, label) {
         var years = moment().diff(start, "years");
-        // //////alert("You are " + years + " years old!");
       }
     );
 
@@ -265,8 +318,6 @@ $(document).ready(function () {
           d.getMinutes() +
           d.getMilliseconds();
 
-        // // //////alert("all"+Invoice)
-        // //console.log(PARTS);
         var check = true;
         for (let i = 0; i < PARTS.length; i++) {
           if (PARTS[i].partsnumber == PartNumber) {
@@ -317,31 +368,17 @@ $(document).ready(function () {
 
     $(document).on("click", "#savestock", function () {
       let AddStockResult = form1.valid();
-
-      //console.log(PARTS.length);
-
-      // //debugger;
       if (AddStockResult == true) {
         if (PARTS.length != 0) {
           var StockName = $("#stockName").val();
           var ETADate = $("#etaDate").val();
           let ele = document.getElementsByName("status");
           var Status = "";
-          // //////alert(StockName)
-          // //////alert(ETADate)
-
           for (i = 0; i < ele.length; i++) {
             if (ele[i].checked) {
               Status = ele[i].value;
             }
           }
-          // var CreatedDate=new Date()
-          // //////alert(CreatedDate)
-          // //console.log(CreatedDate)
-          // const d = new Date();
-          // date = d.getDate();
-          // month = d.getMonth() + 1;
-          // year = d.getFullYear();
           createddate = new Date();
           createddate = createddate.toLocaleDateString();
 
@@ -357,18 +394,10 @@ $(document).ready(function () {
               createdDate: createddate,
               parts: PARTS,
             };
-            // StockDetails.push({
-            //   stockname: StockName,
-            //   Etadate: ETADate,
-            //   status: Status,
-            //   createdBy: logedinUser[0].Name,
-            //   createdDate: created_date,
-            //   parts: PARTS,
-            // });
           } else {
             var Value = true;
             for (let i = 0; i < StockDetails.length; i++) {
-              if (StockDetails[i].stockname == StockName) {
+              if (StockDetails[i].stockname.toLowerCase() == StockName.toLowerCase()) {
                 Value = false;
                 Swal.fire("Stock Number is already Present");
               }
@@ -392,8 +421,6 @@ $(document).ready(function () {
 
           PARTS = [];
           $("#addStockModal").modal("hide");
-
-          // //debugger;
         } else {
           Swal.fire("Please Enter At Least 1 Part");
         }
@@ -438,53 +465,46 @@ $(document).ready(function () {
 
     //Delete Parts in AddstockModal
     $(document).on("click", ".cancel", function () {
+      if(PARTS.length==1){
+        Swal.fire("Atleast 1 part is required")
+      }
+      else{
       let index = parseInt($(this).data("val"));
-      // var index=parseInt( $(this).data('val'))-1
-      //////alert(index)
       PARTS.splice(index - 1, 1);
       PartsTableDIsplay();
+      }
     });
 
     //Search Table
     table = $("#tableStocks").DataTable();
     $("#search").on("keyup", function () {
       table.search(this.value).draw();
-
-      // Delete Parts From Stocks Table
-
-      $(document).on("click", ".deleteparts", function () {
-        let index = $(this).attr("data-val");
-        ////alert(inde)
-      });
     });
-    // function EditStock(SelectedData, index) {
 
-    // }
+    //Edit Stock
     $(document).on("click", ".EditStock", function () {
       let Index = table.row($(this).parents("tr")).index();
-      //alert(Index)
       let SelectedRowData = table.row(Index).data();
-      //console.log(SelectedRowData)
       $("#addStockModal").modal("show");
       $(".error").html("");
       $(".save").attr("id", "editstock");
       $("#stockName").val(SelectedRowData.stockname);
       $("#etaDate").val(SelectedRowData.Etadate);
+      $('input[name="status"][value="' + SelectedRowData.status + '"]').prop(
+        "checked",
+        true
+      );
       $("#hidden").val(Index);
       PARTS = SelectedRowData.parts;
       // $("#stockName").attr("disabled", "disabled");
       PartsTableDIsplay();
     });
+
     $(document).on("click", "#editstock", function () {
       let EditStockResult = form1.valid();
-
-      // //console.log(PARTS.length);
-
-      // //debugger;
       if (EditStockResult == true) {
         if (PARTS.length != 0) {
           let Index = $("#hidden").val();
-          ////alert(Index);
           var StockName = $("#stockName").val();
           var ETADate = $("#etaDate").val();
           let ele = document.getElementsByName("status");
@@ -496,9 +516,20 @@ $(document).ready(function () {
           }
           createddate = new Date();
           createddate = createddate.toLocaleDateString();
-
-          // //console.log(created_date);
           StockDetails = JSON.parse(localStorage.getItem("stock"));
+           
+          let checknameisalreadypreset=false
+          debugger
+          for(let i=0;i<StockDetails.length;i++){
+            if(StockName.toLowerCase() ==StockDetails[i].stockname.toLowerCase()){
+              if(i==Index){
+                continue
+              }
+              
+              checknameisalreadypreset=true
+            }
+          }
+          if(checknameisalreadypreset==false){
           var newObj = {
             stockname: StockName,
             Etadate: ETADate,
@@ -507,52 +538,41 @@ $(document).ready(function () {
             createdDate: createddate,
             parts: PARTS,
           };
-          //console.log(newObj);
-          //debugger
+
           StockDetails[Index] = newObj;
-
-          $(".save").attr("id", "savestock");
-          // $("#stockName").removeAttr("disabled");
-
-          // //console.log(StockDetails)
           localStorage.setItem("stock", JSON.stringify(StockDetails));
-          //  delete  newObj.parts
           table.row(Index).data(newObj).draw();
+        }
+        else{
+          Swal.fire("Stock is already Present")
+        }
+          $(".save").attr("id", "savestock");
+          document.getElementById("addStocks").reset();
+          PARTS=[]
           $("#addStockModal").modal("hide");
-          // location.reload(true);
-          // $("#tableStocks").dataTable().clear().draw();
-          // $("#tableStocks").dataTable().fnDestroy()
-          // //console.log(StockDetails)
-          // table.draw(true)
         } else {
           Swal.fire("Please enter at least 1 part");
         }
       }
     });
+
+    //Delete from chidtable
     $(document).on("click", ".deleteparts", function () {
       let indexofChildRow = $(this).data("val");
-      // //alert(indexofChildRow)
       let indexofParent = $(this).data("parentrowid");
       if (STOCKS[indexofParent].parts.length == 1) {
         Swal.fire("Atleast 1 Part Required");
       } else {
-        // //alert(indexofParent)
         Swal.fire({
           title: "Do you want to Delete the Part?",
           showDenyButton: true,
-          // showCancelButton: true,
           confirmButtonText: "Delete",
           denyButtonText: `Cancel`,
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            // let indexofRow= table.row( parentRow ).data()
-            // //alert(indexofRow)
-
             for (let i = 0; i < STOCKS.length; i++) {
               for (let j = 0; j < STOCKS[i].parts.length; j++) {
                 if (STOCKS[i].parts.length == 1) {
-                  // Swal.fire("Atleast 1 part required")
                   break;
                 }
                 if (j == indexofChildRow - 1 && i == indexofParent) {
@@ -567,22 +587,56 @@ $(document).ready(function () {
 
             // //console.log(STOCKS)
           }
-
-          // else if (result.isDenied) {
-          //   Swal.fire('Changes are not saved', '', 'info')
-          // }
         });
       }
     });
 
-    $(document).on('click','.Audit',function(){
-      $("#AuditModal").modal("show")
-    })
+    $(document).on("click", ".Audit", function () {
+      $("#AuditModal").modal("show");
+    });
 
+    //Search
     const input = document.querySelector('input[type="search"]');
     input.addEventListener("search", () => {
       table.search(input.value).draw();
     });
+
+    $(document).on("click", ".showAssignedUser", function () {
+      let indexofChildRow = $(this).data("val");
+      let indexofParent = $(this).data("parentrowid");
+      console.log(indexofChildRow);
+      console.log(indexofParent);
+      let rowdata=table.row(indexofParent).data()
+      list = " ";
+      for (let i = 0; i < AssignedStockData.length; i++) {
+        for (let j = 0; j < AssignedStockData[i].AssignedParts.length; j++) {
+          if (rowdata.stockname ==AssignedStockData[i].AssignedParts[j].selectedStock) {
+            // //debugger;
+            for (let k = 0; k < rowdata.parts.length; k++) {
+              for (let l = 0;l < AssignedStockData[i].AssignedParts[j].selectedStock.length;l++) {
+                if (rowdata.parts[k].partsnumber ==AssignedStockData[i].AssignedParts[j].selectedparts[l])
+                  list+=' <i class="bi bi-person-fill user"></i><span class="AssignedName">'+AssignedStockData[i].customer+'</span> <br>'
+              }
+            }
+          }
+        }
+      }
+
+      $(this).attr("data-bs-content", list);
+
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl, { html: true });
+      });
+      $(document).on("click", ".popover .close-popover" , function(){
+        $(this).closest(".popover").hide();
+    });
+
+    });
+    // })
   } else {
     window.location.href = "index.html";
   }

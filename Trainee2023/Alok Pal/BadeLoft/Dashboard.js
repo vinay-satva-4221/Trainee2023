@@ -43,7 +43,7 @@ var dataSet = [
     "1",
   ],
   ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], 
-  // ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
+  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
   //  ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"], ["BW-01-Q-M", "", "0", '<div class= "dataColor">3 </div>', "0", "1"],
 ];
 
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
   var StockLocation = $.fn.dataTable.absoluteOrder(
     [{value: 'Stock Location', position: 'top' },
-    {value: 'Eta Date', position: 'top' }]
+    {value: 'ETA Date', position: 'top' }]
   );
 
   $("#dashboard_table").DataTable({
@@ -98,15 +98,31 @@ $(document).ready(function () {
 
 
   //pop over
+  // $('[data-bs-toggle="popover"]').popover({
+  //   container: "body",
+  //   placement: "right",
+  //   html: true,
+  //   content: function () {
+  //     return $("#Popover").html();
+  //   }
+  // })
   $('[data-bs-toggle="popover"]').popover({
-    container: "body",
-    placement: "right",
+    
+    container: 'body',
+    title : '<p class="text-start text-dark fw-bold ">Assigned to<a href="#" class="close  float-end text-secondary fs-4" data-dismiss="alert">&times;</a></p> ',
+    placement: 'right',
     html: true,
     content: function () {
-      return $("#Popover").html();
-    },
+      return $('#Popover').html();
+    }
   });
 
+
+  $(document).on("click", ".popover .close" , function(){
+   
+    $('.popover').hide();
+    
+});
 
   //active
   var pathname = (window.location.pathname.match(/[^\/]+$/)[0]);
@@ -115,6 +131,13 @@ $(document).ready(function () {
         if ($(this).attr('href') == pathname){
         $(this).addClass('active');
         }
+    });
+
+
+    const input = document.querySelector('input[type="search"]');
+    input.addEventListener("search", () => {
+        table.search(input.value).draw();
+        // console.log(`The term searched for was ${}`);
     });
 });
 
