@@ -1,30 +1,28 @@
-table.dataTable tbody tr :nth-child(2) {
-    color:#1188FF;
-  }
-
 .toolbar{
     float: left;
     padding: 15px;
    
 }
 
-table.dataTable tbody tr th:first-child{
-    text-align: left ;
+table.dataTable.display tbody tr td:first-child{
+
+  text-align: left;
 }
-table.dataTable th {
-    background-color: black;
-    color: white;
-    border-right: none;
-    
+
+table.dataTable td.dt-control:before {
+background-color:white !important ; 
+color: #326C96 !important;
+box-shadow: 0 0 0.2em #326C96 !important;
 }
-.addvalue{
-    margin-top: 31px;
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  background-color: black !important;
+  padding: 0%;
 }
-table{
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-  }
+.dataTables_info {
+  color: inherit;
+  margin-left: 1060px;
+
+}
 
 /* Select 2  */
 

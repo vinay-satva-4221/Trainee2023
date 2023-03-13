@@ -305,22 +305,22 @@ $('#assignment_table tbody').on('click', '.edit', function () {
 });
 $('.js-example-basic-multiple').select2();
 
-$("#assignment_table tbody").on('click', '.deletechildrow', function () {
-  let assignmentList = JSON.parse(localStorage.getItem('assignmentList'));
-  console.log("assignmentList",assignmentList)
-  let assignmentIndex = $(this).closest('tr').index(); 
-  console.log('assignmentIndex:', assignmentIndex);
-  let partIndex = $(this).closest('td').index(); 
+// $("#assignment_table tbody").on('click', '.deletechildrow', function () {
+//   let assignmentList = JSON.parse(localStorage.getItem('assignmentList'));
+//   console.log("assignmentList",assignmentList)
+//   let assignmentIndex = $(this).closest('tr').index(); 
+//   console.log('assignmentIndex:', assignmentIndex);
+//   let partIndex = $(this).closest('td').index(); 
   
-  if (assignmentList[assignmentIndex].partlist) { 
-      console.log('Before:', assignmentList);
-    assignmentList[assignmentIndex].partlist.splice(partIndex, 1);
-    console.log('After:', assignmentList);
+//   if (assignmentList[assignmentIndex].partlist) { 
+//       console.log('Before:', assignmentList);
+//     assignmentList[assignmentIndex].partlist.splice(partIndex, 1);
+//     console.log('After:', assignmentList);
 
-    localStorage.setItem('assignmentList', JSON.stringify(assignmentList));
-  }
-  $(this).closest('tr').remove();
-});
+//     localStorage.setItem('assignmentList', JSON.stringify(assignmentList));
+//   }
+//   $(this).closest('tr').remove();
+// });
 
  });
  function Assignmentdatastore() {
@@ -369,10 +369,39 @@ function format(d) {
         HTML += '<tbody>';
         d.partlist.forEach((partlist, index) => {
             const rowadd = index + 1;
-            HTML += '<tr><td>' + rowadd + '</td><td>' + partlist.stock + '</td><td>' + partlist.parts + '</td><td><button ><i class="fa fa-close deletechildrow"></i></button></td></tr>';
+            HTML += '<tr><td>' + rowadd + '</td><td>' + partlist.stock + '</td><td>' + partlist.parts + '</td><td><button class="deletechildrow" data-assignment="${d.select_qbinvoice}"><i class="fa fa-close "></i></button></td></tr>';
         });
         HTML += '</tbody>';
         HTML += '</table>';
     }
+
     return HTML;
 }
+
+$("#assignment_table tbody").on('click', '.deletechildrow', function () {
+    debugger
+    var assignmentList = JSON.parse(localStorage.getItem("assignmentList"));
+    var stockidattribute=$(this).attr('data-assignment');
+    console.log(stockidattribute);
+    var index;
+    var assignmentindexfind=assignmentList.findIndex(list=>list.select_qbinvoice==stockidattribute);
+    assignmentList[assignmentindexfind].partlist.splice(index,1);
+      localStorage.setItem("assignmentList", JSON.stringify(assignmentList));
+      $(this).closest('tr').remove();
+      location.reload(true)
+});
+
+// $("#stock_table tbody").on('click', '.deletechildrow', function () {
+//     debugger
+//     var stockList = JSON.parse(localStorage.getItem("stockList"));
+//     var stockidattribute=$(this).attr('data-stock');
+//     var index;
+
+//     var stockindexfind=stockList.findIndex(list=>list.stockname==stockidattribute);
+//     stockList[stockindexfind].partlist.splice(index,1);
+
+//       localStorage.setItem("stockList", JSON.stringify(stockList));
+//       $(this).closest('tr').remove();
+//       location.reload(true)
+
+// });
