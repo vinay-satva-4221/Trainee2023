@@ -73,8 +73,6 @@ $(".getAccountBtnValue").click(function () {
          mostLikelyTable += '<div class="rounded droppable" >';
          LikelyTable += '<div class="rounded droppable">';
          PossibleTable += '<div class="rounded droppable">';
-         // split line into columns
-         //var columns = tableValues.split(",");
 
          if (menubtn == tableValues.Type && (!tableValues.Number == "" || tableValues.Name == "")) {
             html +=
@@ -104,7 +102,7 @@ $(".getAccountBtnValue").click(function () {
       $("#MostLikelyDrop").each(function () {
          new Sortable(this, {
             group: "shared",
-            animation: 250,   
+            animation: 250,
          });
       });
 
@@ -123,8 +121,8 @@ $(".getAccountBtnValue").click(function () {
       });
    });
 
-   $(this).attr('value') == menubtn;
- });
+   $(this).attr("value") == menubtn;
+});
 const DestinationAccount1 = document.getElementById("DestinationAccount");
 new Sortable(DestinationAccount1, {
    group: {
@@ -169,6 +167,7 @@ $(".masterMenu").click(function () {
       $("#DestinationAccount").append(html);
    });
 
+   //Search
    $("#search").on("keyup", function () {
       var value = $(this).val().toLowerCase();
       $("#DestinationAccount div").filter(function () {
@@ -178,40 +177,6 @@ $(".masterMenu").click(function () {
 
    $(".submitBtn").click(function () {});
 });
-
-//Sortable
-// const DestinationAccount1 = document.getElementById("DestinationAccount");
-// const PossibleDrop1 = document.getElementById("PossibleDrop");
-// const LiklyDrop1 = document.getElementById("LikelyDrop");
-// // const MostLikelyDrop1 = document.getElementById("MostLikelyDrop");
-// new Sortable(DestinationAccount1, {
-//    group: {
-//       name: "shared",
-//       pull: "clone",
-//       put: false,
-//    },
-//    animation: 250,
-//    sort: false,
-// });
-
-// $("#MostLikelyDrop").each(function () {
-//    new Sortable(this, {
-//       group: "shared",
-//       animation: 250,
-//    });
-// });
-
-// new Sortable(PossibleDrop1, {
-//    group: "shared",
-//    animation: 250,
-//    put: true,
-// });
-
-// new Sortable(LiklyDrop1, {
-//    group: "shared",
-//    animation: 250,
-//    put: true,
-// });
 
 const masterNavBar = document.getElementById("masterNavBar");
 const scrollLeftBtn = document.getElementById("scroll-Left-btn");
