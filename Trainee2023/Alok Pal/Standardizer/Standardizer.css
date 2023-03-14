@@ -52,7 +52,7 @@
 }
 
 .imgIcon {
-    width: 54px;
+    width: 39px;
 }
 
 .submitBtn {
@@ -63,7 +63,7 @@
 
 /* Balance sheet account */
 .SourceAccountDiv {
-    width: 37%;
+    width: 22%;
 
 }
 
@@ -120,6 +120,9 @@
 .DynamicFontSize {
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Navbar scroll destination acc */
@@ -206,7 +209,7 @@ div.scrollmenu a {
     color: green !important
 }
 
-.SourceDivHeight{
+.SourceDivHeight {
     height: 28px;
 }
 
@@ -216,19 +219,20 @@ div.scrollmenu a {
     top: 0;
     z-index: 999;
   } */
-
+/* 
   .btnSticky{
     position: sticky;
     top: 75px;
     z-index: 999;
-  }
-  .NavSticky{
+  } */
+.NavSticky {
     position: sticky;
     top: 0;
     z-index: 999;
-  }
-  /* .headingSticky{
+}
+
+.headingSticky {
     position: sticky;
-    top: 120px;
-    z-index: 999;
-  } */
+    top: 57px;
+    z-index: 99;
+}
