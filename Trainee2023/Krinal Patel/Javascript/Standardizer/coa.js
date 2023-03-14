@@ -143,7 +143,7 @@ $(".all").click(function(){debugger
   });
 
 });
-
+  
 $(".Assets").click(function(){debugger
 
   document.getElementById('destination').innerHTML =""
@@ -505,3 +505,17 @@ return {
 const navScrollerTest = navScroller();
 
 
+
+  // Search functionality
+
+  $("#search").on("keyup", function () {
+    var value = $(this).val().toLowerCase();
+    $("#destination li").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+$('#search').on('search', function () {
+    if ($(this).val() === '') {
+        $('#destination li').show();
+    }
+});
