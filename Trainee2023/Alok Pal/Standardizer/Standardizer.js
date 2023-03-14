@@ -46,19 +46,22 @@ var destinationData = JSON.parse(masterChartAccountDataString);
 // LI For DestinationAccount
 
 // Global element
-var html = "";
+var htmlD = "";
 $(document).ready(function () {
   debugger;
   console.log(destinationData);
   destinationData.forEach((item) => {
-    html +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+    htmlD +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'  id='" +
+      item.AccountCode +
+      "' >" +
       "⠿ " +
-      "<p>";
-    item.AccountCode + "-- " + item.AccountName + "</p>";
-    ("</div>");
+      item.AccountCode +
+      "--" +
+      item.AccountName +
+      "</div>";
   });
-  $("#DestinationAccount").html(html);
+  $("#DestinationAccount").html(htmlD);
 
   // btn color
   $(".btnActive").click(function () {
@@ -76,9 +79,11 @@ $(document).ready(function () {
     $(this).addClass("active1");
   });
 
+  // Sortable JS
   var destAcc = document.getElementById("DestinationAccount");
-  console.log(destAcc);
-  var mostLiely = document.getElementById("MostLikely");
+  // console.log(destAcc);
+  var mostLikely = document.querySelectorAll('.MostLikely');
+
   new Sortable(destAcc, {
     group: {
       name: "shared",
@@ -87,12 +92,13 @@ $(document).ready(function () {
     },
     animation: 150,
   });
-  new Sortable(mostLiely, {
+
+
+  
+  new Sortable(mostLikely, {
     group: "shared",
     animation: 150,
   });
-
-
 });
 // --------------------------------------------------------------------------------------------------------
 
@@ -100,7 +106,7 @@ $(document).ready(function () {
 
 // // Make an XMLHttpRequest to fetch the CSV file
 const xhrs = new XMLHttpRequest();
-xhrs.open("GET", "StandardCofA.csv", false);
+xhrs.open("GET", "Standard CofA.csv", false);
 var StandardChartofAccountData = [];
 var StandardChartofAccountDataString;
 var StandardChartofAccountObject;
@@ -145,55 +151,45 @@ xhrs.send();
 var SourceData = JSON.parse(StandardChartofAccountDataString);
 // console.log("Alok1", SourceData);
 
-var SourceAccParentElement = document.getElementById("SourceAccount");
-
+// var SourceAccParentElement = document.getElementById("SourceAccount");
+var html = "";
 var divhtml = "";
-
+var likelyHtml = "";
+var possible = "";
+// debugger;
 SourceData.forEach((Element, index) => {
   // Create a new li element
 
   if (Element.Number != "") {
     // ("I will use it if it is req");
     html +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceAcc ps-2' id='" +
       Element.Number +
-      "-- " +
+      "'>" +
+      Element.Number +
+      " " +
       Element.Name +
-      "</div>";
+      "<i class='fa-sharp fa-solid fa-clock-rotate-left float-end'></i> <i class='bi bi-check2-all text-end float-end ps-2'></i></div>";
     divhtml +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2'></div>";
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight MostLikely ps-2' id='" +
+      Element.Number +
+      "MostLikely'></div>";
+    likelyHtml +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight likely ps-2' id='" +
+      Element.Number +
+      "Likely'></div>";
+    possible +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight possible ps-2' id='" +
+      Element.Number +
+      "Possible'></div>";
   }
 });
 $("#SourceAccount").html(html);
 $("#MostLikely").html(divhtml);
+$("#Likely").html(likelyHtml);
+$("#Possible").html(possible);
 
 // --------------------------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------------------------
-
-// Get the containers
-// const DestinationAccount = document.querySelector("#DestinationAccount");
-// const LikelyDestinationAccount3 = document.querySelector(
-//   "#MostLikely"
-// );
-
-// Initialize Dragula with options
-// dragula([DestinationAccount, LikelyDestinationAccount3], {
-//   copy: true,
-//   accepts: function (el, target) {
-//     return target !== DestinationAccount;
-//   },
-// });
-
-// dragula([DestinationAccount, LikelyDestinationAccount3])
-//   .on("drag", function (el) {
-//     el.className = el.className.replace(" animazing", "");
-//   })
-//   .on("drop", function (el) {
-//     setTimeout(function () {
-//       el.className += " animazing";
-//     }, 0);
-//   });
 
 // --------------------------------------------------------------------------------------------------------
 
@@ -222,19 +218,20 @@ function scrollDown() {
 var destinationAcc = document.getElementById("DestinationAccount");
 var DestinationData = JSON.parse(masterChartAccountDataString);
 // console.log("Alok2", DestinationData);
-
+var html1;
 // For All
 function getAllData() {
-  html = "";
+  debugger;
+  html1 = "";
   DestinationData.forEach((element, index) => {
-    html +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+    html1 +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
       element.AccountCode +
       "--" +
       element.AccountName +
       "</div>";
   });
-  $("#DestinationAccount").html(html);
+  $("#DestinationAccount").html(html1);
 }
 
 // For Asset
@@ -243,9 +240,9 @@ function getAssetData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "ASSETS") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
         element.AccountCode +
-        "-- " +
+        "--" +
         element.AccountName +
         "</div>";
     }
@@ -259,9 +256,9 @@ function getliabilityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "LIABILITIES") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
         element.AccountCode +
-        "-- " +
+        "--" +
         element.AccountName +
         "</div>";
       divhtml +=
@@ -277,9 +274,9 @@ function getEquityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
         element.AccountCode +
-        "-- " +
+        "--" +
         element.AccountName +
         "</div>";
     }
@@ -293,9 +290,9 @@ function getRevenueData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
         element.AccountCode +
-        "-- " +
+        "--" +
         element.AccountName +
         "</div>";
     }
@@ -305,53 +302,127 @@ function getRevenueData() {
 
 // --------------------------------------------------------------------------------------------------------
 
+// Source
+
 var SourceBtnData = JSON.parse(StandardChartofAccountDataString);
 
 // for button click
 
 function getBtnAssetData() {
-  html = "";
-  SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Assets" && element.Number != "") {
-      html +=
-        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-        element.Number +
-        "  " +
-        element.Name +
-        "</li>";
+  debugger;
+  // SourceBtnData.forEach((element, index) => {
+  // for (let i = 0; i < SourceBtnData.length; i++) {
+  //   var id = $(".SourceAcc")[i].id;
+  //   $(`#${id}`).hide();
+  //   var MostId = $(".MostLikely")[i].id;
+  //   $(`#${MostId}MostLikely`).hide();
+
+  //   if (SourceBtnData[i].Type == "Assets" && SourceBtnData[i].Number != "") {
+
+  //     // $(".SourceAcc")[index].id
+  //     // console.log($(".SourceAcc")[index].id)
+  //     var id = $(".SourceAcc")[i].id;
+  //     $(`#${id}`).show();
+  //     var MostId = $(".MostLikely")[i].id;
+  //     $(`#${MostId}MostLikely`).show();
+  //   }
+  // }
+  // $("#SourceAccount").html(html);
+
+  // $.each(".SourceAcc", function(index) {
+  //   console.log(this.id)
+
+  // })
+
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}MostLikely`).hide();
+    $(`#${id}Likely`).hide();
+    $(`#${id}Possible`).hide();
+
+    if (
+      SourceBtnData[index].Type == "Assets" &&
+      SourceBtnData[index].Number != ""
+    ) {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}MostLikely`).show();
+      $(`#${id}Likely`).show();
+      $(`#${id}Possible`).show();
     }
   });
-  $("#SourceAccount").html(html);
+
 }
 
 function getBtnLiabilityData() {
-  html = "";
-  SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Liabilities" && element.Number != "") {
-      html +=
-        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-        element.Number +
-        " " +
-        element.Name +
-        "</li>";
+  // html = "";
+  // SourceBtnData.forEach((element, index) => {
+  //   if (element.Type == "Liabilities" && element.Number != "") {
+  //     html +=
+  //       "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+  //       element.Number +
+  //       " " +
+  //       element.Name +
+  //       "</li>";
+  //   }
+  // });
+  // $("#SourceAccount").html(html);
+debugger
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}MostLikely`).hide();
+    $(`#${id}Likely`).hide();
+    $(`#${id}Possible`).hide();
+
+   if (
+      SourceBtnData[index].Type == "Liabilities" &&
+      SourceBtnData[index].Number != ""
+    )  {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}MostLikely`).show();
+      $(`#${id}Likely`).show();
+      $(`#${id}Possible`).show();
     }
   });
-  $("#SourceAccount").html(html);
 }
 
 function getBtnEquityData() {
-  html = "";
-  SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Equity" && element.Number != "") {
-      html +=
-        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-        element.Number +
-        " " +
-        element.Name +
-        "</li>";
+  // html = "";
+  // SourceBtnData.forEach((element, index) => {
+  //   if (element.Type == "Equity" && element.Number != "") {
+  //     html +=
+  //       "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+  //       element.Number +
+  //       " " +
+  //       element.Name +
+  //       "</li>";
+  //   }
+  // });
+  // $("#SourceAccount").html(html);
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}MostLikely`).hide();
+    $(`#${id}Likely`).hide();
+    $(`#${id}Possible`).hide();
+
+   if (
+      SourceBtnData[index].Type == "Liabilities" &&
+      SourceBtnData[index].Number != ""
+    )  {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}MostLikely`).show();
+      $(`#${id}Likely`).show();
+      $(`#${id}Possible`).show();
     }
   });
-  $("#SourceAccount").html(html);
 }
 
 // --------------------------------------------------------------------------------------------------------
@@ -375,9 +446,9 @@ dataBtn.forEach((btn) => {
 
 // -----------------------------------------------------------------------------------------------------------
 
-jQuery("#searchinput").on("keyup", function() {
+jQuery("#searchinput").on("keyup", function () {
   var value = $(this).val().toLowerCase();
-  jQuery("#DestinationAccount div").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  jQuery("#DestinationAccount div").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
   });
 });
