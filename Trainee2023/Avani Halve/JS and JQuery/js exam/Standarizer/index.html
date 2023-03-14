@@ -26,19 +26,19 @@
             <button
                class="navbar-toggler d-lg-none"
                type="button"
-               data-bs-toggle="collapse"
-               data-bs-target="#collapsibleNavId"
-               aria-controls="collapsibleNavId"
+               data-bs-toggle="Navbar"
+               data-bs-target="#NavId"
+               aria-controls="NavId"
                aria-expanded="false"
                aria-label="Toggle navigation"
             >
                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex" id="collapsibleNavId">
+            <div class="Navbar navbar-collapse d-flex" id="NavId">
                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                   <li class="nav-item ps-5">
                      <a class="nav-link active" aria-current="page"
-                        ><b class="navbarOption"> CoA </b> <span class="visually-hidden">(current)</span></a
+                        ><a href="JavaScript:void(0);" class="navbarOption"><b> CoA </b></a><span class="visually-hidden">(current)</span></a
                      >
                   </li>
                </ul>
@@ -53,20 +53,22 @@
 
       <div class="container-fluid d-flex mt-4 ps-4">
          <div class="container-fluid p-0">
-            <button type="button" class="btn btnActive filterbtn " id="assetsbtn">Assets</button>
-            <button type="button" class="btn btnActive filterbtn" id="liablittbtn">Liability</button>
-            <button type="button" class="btn btnActive filterbtn" id="equitybtn">Equity/Capital</button>
-            <button type="button" class="btn btnActive filterbtn" id="revenuebtn" onclick="">Revenue</button>
-            <button type="button" class="btn btnActive filterbtn" id="CoGSbtn">CoGS</button>
-            <button type="button" class="btn btnActive filterbtn" id="expensesbtn">G&A Expenses</button>
-            <button type="button" class="btn btnActive filterbtn" id="Otherbtn">Other Revenue & Expense</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue" value="Assets">Assets</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue"  value="Liabilities">Liability</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue" value="Equity" >Equity/Capital</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue"  value="Revenue">Revenue</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue" value="COGS" >CoGS</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue" value="Expense" >G&A Expenses</button>
+            <button type="button" class="btn btnActive filterbtn getAccountBtnValue"  value="Other Rev & Exp">Other Revenue & Expense</button>
          </div>
          <div>
             <button type="submit" class="btn mx-2 btn-success submitBtn">Submit</button>
             <div><small class="SubmitUpdate">Last Updated on 24-02-2023 at 06:30pm</small></div>
          </div>
       </div>
-      <div class="mx-4 mt-5" style="color: orangered;"><span class="bi bi-circle"></span><span><b> Human Updated</b></span></div>
+      <div class="mx-4 mt-4" style="color: orangered">
+         <span class="bi bi-circle"></span><span><b> Human Updated</b></span>
+      </div>
       <section>
          <div class="container-fluid d-flex mt-3">
             <div class="container SourceAccountDiv">
@@ -79,15 +81,15 @@
                <div class="container d-flex MostLikely">
                   <div class="container MostLikelycontainer">
                      <div class="MostLikelyHeading ps-2 p-2 px-0">Most Likely</div>
-                     <ul class="list-group" id="MostLikelyDrop"></ul>
+                     <div class="list-group" id="MostLikelyDrop"></div>
                   </div>
                   <div class="container">
                      <div class="LikelyHeading ps-2 p-2">Likely</div>
-                     <ul class="list-group" id="LikelyDrop"></ul>
+                     <div class="list-group" id="LikelyDrop"></div>
                   </div>
                   <div class="container">
                      <div class="PossibleHeading ps-2 p-2">Possible</div>
-                     <ul class="list-group" id="PossibleDrop"></ul>
+                     <div class="list-group" id="PossibleDrop"></div>
                   </div>
                </div>
             </div>
@@ -101,20 +103,20 @@
                   <button id="scroll-right-btn"><i class="bi bi-chevron-left"></i></button>
                </div>
                <div class="scrollmenu border mt-2" id="masterNavBar">
-                  <a class="ps-5 masterScroll" id="allData">All</a>
-                  <a class="masterScroll" id="assestData">Assets</a>
-                  <a class="masterScroll" id="liablittData">Liability</a>
-                  <a class="masterScroll" id="equityData">Equity/Capital</a>
-                  <a class="masterScroll" id="revenueData">Revenue</a>
-                  <a class="masterScroll" id="cogsData">CoGS</a>
-                  <a class="masterScroll" id="expensesData">G&A Expenses</a>
-                  <a class="masterScroll" id="otherData">Other Revenue & Expense</a>
+                  <a class="ps-5  masterMenu" id="allData">All</a>
+                  <a class=" masterMenu"  value="ASSETS" >Assets</a>
+                  <a class=" masterMenu" value="LIABILITIES" >Liability</a>
+                  <a class=" masterMenu" value="EQUITY/CAPITAL">Equity/Capital</a>
+                  <a class=" masterMenu" value="Product Revenue" >Revenue</a>
+                  <a class=" masterMenu" value="Product Costs" >CoGS</a>
+                  <a class=" masterMenu" value="Labor Expense">G&A Expenses</a>
+                  <a class=" masterMenu" value="Outside (or '1099') Professional Services Costs" >Other Revenue & Expense</a>
                </div>
                <div>
                   <i class="bi-search searchIcon"></i>
                   <input type="search" id="search" class="form-control ps-5 searchInput" placeholder="Search Account Here..." />
                </div>
-               <ul class="list-group" id="DestinationAccount"></ul>
+               <div class="list-group" id="DestinationAccount"></div>
             </div>
          </div>
       </section>
