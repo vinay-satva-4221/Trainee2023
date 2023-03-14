@@ -52,11 +52,12 @@ $(document).ready(function () {
   console.log(destinationData);
   destinationData.forEach((item) => {
     html +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'  id='item.AccountCode' >" +
       "⠿ " +
-      "<p>";
-    item.AccountCode + "-- " + item.AccountName + "</p>";
-    ("</div>");
+      item.AccountCode +
+      "-- " +
+      item.AccountName +
+      "</div>";
   });
   $("#DestinationAccount").html(html);
 
@@ -77,7 +78,7 @@ $(document).ready(function () {
   });
 
   var destAcc = document.getElementById("DestinationAccount");
-  console.log(destAcc);
+  // console.log(destAcc);
   var mostLiely = document.getElementById("MostLikely");
   new Sortable(destAcc, {
     group: {
@@ -91,8 +92,6 @@ $(document).ready(function () {
     group: "shared",
     animation: 150,
   });
-
-
 });
 // --------------------------------------------------------------------------------------------------------
 
@@ -100,7 +99,7 @@ $(document).ready(function () {
 
 // // Make an XMLHttpRequest to fetch the CSV file
 const xhrs = new XMLHttpRequest();
-xhrs.open("GET", "StandardCofA.csv", false);
+xhrs.open("GET", "Standard CofA.csv", false);
 var StandardChartofAccountData = [];
 var StandardChartofAccountDataString;
 var StandardChartofAccountObject;
@@ -155,13 +154,17 @@ SourceData.forEach((Element, index) => {
   if (Element.Number != "") {
     // ("I will use it if it is req");
     html +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceAcc ps-2' id='" +
+      Element.Number +
+      "'>" +
       Element.Number +
       "-- " +
       Element.Name +
       "</div>";
     divhtml +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2'></div>";
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2' id='" +
+      Element.Number +
+      "MostLikely'></div>";
   }
 });
 $("#SourceAccount").html(html);
@@ -305,23 +308,34 @@ function getRevenueData() {
 
 // --------------------------------------------------------------------------------------------------------
 
+// Source
+
 var SourceBtnData = JSON.parse(StandardChartofAccountDataString);
 
 // for button click
 
 function getBtnAssetData() {
-  html = "";
-  SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Assets" && element.Number != "") {
-      html +=
-        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-        element.Number +
-        "  " +
-        element.Name +
-        "</li>";
+  debugger;
+  // SourceBtnData.forEach((element, index) => {
+  for (let i = 0; i < SourceBtnData.length; i++) {
+    var id = $(".SourceAcc")[i].id;
+    $(`#${id}`).hide();
+    debugger;
+    if (SourceBtnData[i].Type == "Assets" && SourceBtnData[i].Number != "") {
+      // html +=
+      //   "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2' id='"+element.Number+"'>" +
+      //   element.Number +
+      //   "  " +
+      //   element.Name +
+      //   "</div>";
+
+      // $(".SourceAcc")[index].id
+      // console.log($(".SourceAcc")[index].id)
+      var id = $(".SourceAcc")[i].id;
+      $(`#${id}`).show();
     }
-  });
-  $("#SourceAccount").html(html);
+  }
+  // $("#SourceAccount").html(html);
 }
 
 function getBtnLiabilityData() {
@@ -375,9 +389,9 @@ dataBtn.forEach((btn) => {
 
 // -----------------------------------------------------------------------------------------------------------
 
-jQuery("#searchinput").on("keyup", function() {
+jQuery("#searchinput").on("keyup", function () {
   var value = $(this).val().toLowerCase();
-  jQuery("#DestinationAccount div").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  jQuery("#DestinationAccount div").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
   });
 });
