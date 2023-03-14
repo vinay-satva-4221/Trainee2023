@@ -46,24 +46,60 @@ var destinationData = JSON.parse(masterChartAccountDataString);
 // LI For DestinationAccount
 
 // Global element
-var html = '';
+var html = "";
 $(document).ready(function () {
-  debugger
-  console.log(destinationData)
+  debugger;
+  console.log(destinationData);
   destinationData.forEach((item) => {
-    html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +'⠿'+ item.AccountCode + '-- ' + item.AccountName + "</li>"
-
-    // Append the li element to the parent element
+    html +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'  id='item.AccountCode' >" +
+      "⠿ " +
+      item.AccountCode +
+      "-- " +
+      item.AccountName +
+      "</div>";
   });
-  $('#DestinationAccount').html(html)
-})
+  $("#DestinationAccount").html(html);
+
+  // btn color
+  $(".btnActive").click(function () {
+    // remove "active" class from all buttons
+    $(".btnActive").removeClass("btn-active");
+
+    // add "active" class to clicked button
+    $(this).addClass("btn-active");
+  });
+
+  // Target Active class for the scroll nav
+  $(".scrollmenu a").click(function () {
+    debugger;
+    $(".scrollmenu a").removeClass("active1");
+    $(this).addClass("active1");
+  });
+
+  var destAcc = document.getElementById("DestinationAccount");
+  // console.log(destAcc);
+  var mostLiely = document.getElementById("MostLikely");
+  new Sortable(destAcc, {
+    group: {
+      name: "shared",
+      pull: "clone",
+      put: false, // Do not allow items to be put into this list
+    },
+    animation: 150,
+  });
+  new Sortable(mostLiely, {
+    group: "shared",
+    animation: 150,
+  });
+});
 // --------------------------------------------------------------------------------------------------------
 
 // For Source Account structure
 
 // // Make an XMLHttpRequest to fetch the CSV file
 const xhrs = new XMLHttpRequest();
-xhrs.open("GET", "StandardCofA.csv", false);
+xhrs.open("GET", "Standard CofA.csv", false);
 var StandardChartofAccountData = [];
 var StandardChartofAccountDataString;
 var StandardChartofAccountObject;
@@ -110,54 +146,57 @@ var SourceData = JSON.parse(StandardChartofAccountDataString);
 
 var SourceAccParentElement = document.getElementById("SourceAccount");
 
+var divhtml = "";
+
 SourceData.forEach((Element, index) => {
   // Create a new li element
-  
-    // if (Element.Number != "") {
-      // ("I will use it if it is req");
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +'⠿'+ Element.Number + '-- ' + Element.Name + "</li>"
-    // }
+
+  if (Element.Number != "") {
+    // ("I will use it if it is req");
+    html +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceAcc ps-2' id='" +
+      Element.Number +
+      "'>" +
+      Element.Number +
+      "-- " +
+      Element.Name +
+      "</div>";
+    divhtml +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2' id='" +
+      Element.Number +
+      "MostLikely'></div>";
+  }
 });
-$('#SourceAccount').html(html)
+$("#SourceAccount").html(html);
+$("#MostLikely").html(divhtml);
 
 // --------------------------------------------------------------------------------------------------------
-
-// btn color
-$(document).ready(function () {
-  $(".btnActive").click(function () {
-    // remove "active" class from all buttons
-    $(".btnActive").removeClass("btn-active");
-
-    // add "active" class to clicked button
-    $(this).addClass("btn-active");
-  });
-});
 
 // --------------------------------------------------------------------------------------------------------
 
 // Get the containers
-const DestinationAccount = document.querySelector("#DestinationAccount");
-const LikelyDestinationAccount3 = document.querySelector(
-  "#LikelyDestinationAccount3"
-);
+// const DestinationAccount = document.querySelector("#DestinationAccount");
+// const LikelyDestinationAccount3 = document.querySelector(
+//   "#MostLikely"
+// );
 
 // Initialize Dragula with options
-dragula([DestinationAccount, LikelyDestinationAccount3], {
-  copy: true,
-  accepts: function (el, target) {
-    return target !== DestinationAccount;
-  },
-});
+// dragula([DestinationAccount, LikelyDestinationAccount3], {
+//   copy: true,
+//   accepts: function (el, target) {
+//     return target !== DestinationAccount;
+//   },
+// });
 
-dragula([DestinationAccount, LikelyDestinationAccount3])
-  .on("drag", function (el) {
-    el.className = el.className.replace(" animazing", "");
-  })
-  .on("drop", function (el) {
-    setTimeout(function () {
-      el.className += " animazing";
-    }, 0);
-  });
+// dragula([DestinationAccount, LikelyDestinationAccount3])
+//   .on("drag", function (el) {
+//     el.className = el.className.replace(" animazing", "");
+//   })
+//   .on("drop", function (el) {
+//     setTimeout(function () {
+//       el.className += " animazing";
+//     }, 0);
+//   });
 
 // --------------------------------------------------------------------------------------------------------
 
@@ -183,106 +222,176 @@ function scrollDown() {
 
 // Json data of the Destination account source data
 
-var destinationAcc = document.getElementById("DestinationAccount")
+var destinationAcc = document.getElementById("DestinationAccount");
 var DestinationData = JSON.parse(masterChartAccountDataString);
 // console.log("Alok2", DestinationData);
 
 // For All
 function getAllData() {
-  html = '';
+  html = "";
   DestinationData.forEach((element, index) => {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.AccountCode + '-- ' + element.AccountName + "</li>"
+    html +=
+      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+      element.AccountCode +
+      "--" +
+      element.AccountName +
+      "</div>";
   });
-  $('#DestinationAccount').html(html)
+  $("#DestinationAccount").html(html);
 }
-
 
 // For Asset
 function getAssetData() {
-  html = '';
+  html = "";
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "ASSETS") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.AccountCode + '-- ' + element.AccountName + "</li>"
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.AccountCode +
+        "-- " +
+        element.AccountName +
+        "</div>";
     }
   });
-  $('#DestinationAccount').html(html)
+  $("#DestinationAccount").html(html);
 }
-
 
 // For Liability
 function getliabilityData() {
-  html = '';
+  html = "";
   DestinationData.forEach((element, index) => {
-
     if (element.AccountTypeName == "LIABILITIES") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.AccountCode + '-- ' + element.AccountName + "</li>"
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.AccountCode +
+        "-- " +
+        element.AccountName +
+        "</div>";
+      divhtml +=
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2'></div>";
     }
-  })
-  $('#DestinationAccount').html(html);
-
+  });
+  $("#DestinationAccount").html(html);
 }
 
 // For Equity And Capital
 function getEquityData() {
-  html = '';
+  html = "";
   DestinationData.forEach((element, index) => {
-
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.AccountCode + '-- ' + element.AccountName + "</li>"
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.AccountCode +
+        "-- " +
+        element.AccountName +
+        "</div>";
     }
-  })
-  $('#DestinationAccount').html(html);
-
+  });
+  $("#DestinationAccount").html(html);
 }
 
 // For Revenue
 function getRevenueData() {
-  html = '';
+  html = "";
   DestinationData.forEach((element, index) => {
-
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.AccountCode + '-- ' + element.AccountName + "</li>"
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.AccountCode +
+        "-- " +
+        element.AccountName +
+        "</div>";
     }
-  })
-  $('#DestinationAccount').html(html);
-
+  });
+  $("#DestinationAccount").html(html);
 }
-
-
 
 // --------------------------------------------------------------------------------------------------------
 
+// Source
+
 var SourceBtnData = JSON.parse(StandardChartofAccountDataString);
 
-// for button click 
+// for button click
 
-function getBtnAssetData(){
-  html = '';
-  SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Assets") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.Number + '-- ' + element.Name + "</li>"
+function getBtnAssetData() {
+  debugger;
+  // SourceBtnData.forEach((element, index) => {
+  for (let i = 0; i < SourceBtnData.length; i++) {
+    var id = $(".SourceAcc")[i].id;
+    $(`#${id}`).hide();
+    debugger;
+    if (SourceBtnData[i].Type == "Assets" && SourceBtnData[i].Number != "") {
+      // html +=
+      //   "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2' id='"+element.Number+"'>" +
+      //   element.Number +
+      //   "  " +
+      //   element.Name +
+      //   "</div>";
+
+      // $(".SourceAcc")[index].id
+      // console.log($(".SourceAcc")[index].id)
+      var id = $(".SourceAcc")[i].id;
+      $(`#${id}`).show();
     }
-  });
-  $('#SourceAccount').html(html)
+  }
+  // $("#SourceAccount").html(html);
 }
 
-
-function getBtnLiabilityData(){
-  html = '';
+function getBtnLiabilityData() {
+  html = "";
   SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Liabilities") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.Number + '-- ' + element.Name + "</li>"
+    if (element.Type == "Liabilities" && element.Number != "") {
+      html +=
+        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.Number +
+        " " +
+        element.Name +
+        "</li>";
     }
   });
-  $('#SourceAccount').html(html)
+  $("#SourceAccount").html(html);
 }
 
-function getBtnEquityData(){
-  html = '';
+function getBtnEquityData() {
+  html = "";
   SourceBtnData.forEach((element, index) => {
-    if (element.Type == "Equity") {
-      html += "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + element.Number + '-- ' + element.Name + "</li>"
+    if (element.Type == "Equity" && element.Number != "") {
+      html +=
+        "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
+        element.Number +
+        " " +
+        element.Name +
+        "</li>";
     }
   });
-  $('#SourceAccount').html(html)
+  $("#SourceAccount").html(html);
 }
+
+// --------------------------------------------------------------------------------------------------------
+
+// Button click
+
+var dataBtn = document.querySelectorAll(".btnActive");
+var Scrollitems = document.querySelectorAll(".scrollItems");
+
+dataBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    var linkSelector = btn.dataset.link;
+
+    Scrollitems.forEach((link) => {
+      if (link.matches(linkSelector)) {
+        link.click();
+      }
+    });
+  });
+});
+
+// -----------------------------------------------------------------------------------------------------------
+
+jQuery("#searchinput").on("keyup", function () {
+  var value = $(this).val().toLowerCase();
+  jQuery("#DestinationAccount div").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+  });
+});
