@@ -29,23 +29,49 @@ $(".getAccountBtnValue").click(function () {
    $("#MostLikelyDrop").html("");
    $("#LikelyDrop").html("");
    $("#PossibleDrop").html("");
-   // $("button").removeClass("addbgforBtn");
-   // $(this).addClass("addbgforBtn");
+   var menuvalue = $(this).attr("value");
+   var masterNavbar = menuvalue.toLowerCase();
 
+   $.get("./ExcelSheets/MasterChartOfAcounts.csv", function (data) {
+      $("#DestinationAccount").html("");
+      var jsonData = convertcsv(data);
+      var html = "";
+      jsonData.forEach(function getvalues(tableValues) {
+         html += '<div class="rounded draggable">';
+
+         if (masterNavbar == "all" && tableValues) {
+            html +=
+               '<p class="p-2 mb-2 dynamicDiv rounded"> ⠿' +
+               tableValues.AccountCode +
+               '<span class="">--' +
+               tableValues.AccountName +
+               "</span>" +
+               "</p>";
+         } else if (tableValues.AccountTypeName.toLowerCase().includes(masterNavbar)) {
+            html +=
+               '<p class="p-2 mb-2 dynamicDiv rounded"> ⠿' +
+               tableValues.AccountCode +
+               '<span class="">--' +
+               tableValues.AccountName +
+               "</span>" +
+               "</p>";
+         }
+         html += "</div>";
+      });
+      $("#DestinationAccount").append(html);
+   });
    var menubtn = $(this).val();
    $.get("./ExcelSheets/StandardCofA.csv", function (data) {
       var jsonData = convertcsv(data);
       var html = "";
       var mostLikelyTable = "";
       var LikelyTable = "";
-
       var PossibleTable = "";
 
       jsonData.forEach(function getvalues(tableValues) {
          html += '<div class="rounded">';
          mostLikelyTable += '<div class="rounded droppable" >';
          LikelyTable += '<div class="rounded droppable">';
-
          PossibleTable += '<div class="rounded droppable">';
          // split line into columns
          //var columns = tableValues.split(",");
