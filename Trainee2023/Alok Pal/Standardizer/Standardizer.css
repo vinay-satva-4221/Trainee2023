@@ -1,0 +1,238 @@
+/* nav color */
+.navColor {
+    background-color: #EFEFF0;
+}
+
+/* btn font size */
+.btnFontSizeColor {
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #F2F2F2;
+    color: #b1b0b0;
+    border: 1px solid rgb(166, 166, 166);
+    border-radius: 4px;
+    box-shadow: 1px 1px;
+}
+
+.btn-active {
+    background-color: #3CB7E7;
+    color: white;
+}
+
+
+
+.navbar-nav .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 33%;
+    height: 2px;
+    bottom: -23px;
+    top: 45px;
+    left: 15px;
+    background-color: #3CB7E7;
+    color: #3CB7E7;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+
+}
+
+.navbar-nav .nav-link.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+
+}
+
+.navheading {
+    color: #3CB7E7;
+}
+
+.imgIcon {
+    width: 39px;
+}
+
+.submitBtn {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* Balance sheet account */
+.SourceAccountDiv {
+    width: 22%;
+
+}
+
+.BalanceSheet {
+    color: white;
+    background-color: #3CB7E7;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+/* DestinationDiv */
+.DestinationDiv {
+    width: 24%;
+}
+
+.DestinationAcc {
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc1 {
+    background-color: #00C0CD;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc2 {
+    background-color: #33CDD7;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+
+}
+
+.LikelyDestinationAcc3 {
+    background-color: #7FDFE6;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.LikelyDestinationAcc1div {
+    margin-left: -3%;
+}
+
+.LikelyDestinationDiv {
+    width: 103%;
+}
+
+
+/* Dynamic class adding in js */
+.DynamicFontSize {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Navbar scroll destination acc */
+div.scrollmenu {
+    background-color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+
+/* Scrollbtn */
+.scrollBtn {
+    height: 0px;
+}
+
+#scroll-Left-btn {
+    position: relative;
+    margin-left: 90%;
+    border: none;
+    top: 19px;
+    background-color: white;
+    font-weight: bold;
+
+}
+
+#scroll-right-btn {
+    position: relative;
+    border: none;
+    top: 19px;
+    background-color: white;
+    margin-left: 0.3%;
+    font-weight: bold;
+}
+
+.scrollItems {
+    font-size: 12px;
+    padding: 0px;
+    font-weight: bold;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 18rem;
+    font-size: 13px;
+    top: 318px;
+}
+
+.searchInput {
+    font-size: 13px;
+}
+
+
+/*Human updated*/
+
+.HumanUpdated p {
+    color: orange;
+    font-size: 12px;
+}
+
+/* .HumanUpdated p i{
+    font-size: 10px;
+} */
+
+.scrollmenu a.active {
+    background-color: green;
+}
+
+/* Active */
+
+.active1 {
+    border-bottom: 2px solid green;
+    /* height: 65px; */
+    font-weight: bold;
+    color: green !important
+}
+
+.SourceDivHeight {
+    height: 28px;
+}
+
+/* Navbar sticky */
+/* .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  } */
+/* 
+  .btnSticky{
+    position: sticky;
+    top: 75px;
+    z-index: 999;
+  } */
+.NavSticky {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.headingSticky {
+    position: sticky;
+    top: 57px;
+    z-index: 99;
+}
