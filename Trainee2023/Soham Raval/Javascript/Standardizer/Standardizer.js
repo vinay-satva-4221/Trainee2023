@@ -1,6 +1,4 @@
 var obj = {};
-
-
 var getvalueofcsv = [];
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {

@@ -8,7 +8,9 @@
     <title>CoA</title>
     <link rel="stylesheet" href="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+
     <link rel="stylesheet" href="./StandardizerCOA.css">
 </head>
 
@@ -38,14 +40,17 @@
     <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-10 mt-4">
-                <button type="button" class="btn" id="header_button1">Assets</button>
-                <button type="button" class="btn" id="header_button2">Liability</button>
-                <button type="button" class="btn" id="header_button3">Equity/Capital</button>
-                <button type="button" class="btn" id="header_button4">Revenue</button>
-                <button type="button" class="btn" id="header_button5">CoGS</button>
-                <button type="button" class="btn" id="header_button6">G&A Expenses</button>
-                <button type="button" class="btn" id="header_button7">Other Revenue & Expenses</button>
+                <button type="button"  class="header-button active Assets" data-btn-type="Assets">Assets</button>
+                <button type="button"  class="header-button Liability" data-btn-type="Liabilities">Liability</button>
+                <button type="button"  class="header-button EquityCapital" data-btn-type="Equity">Equity/Capital</button>
+                <button type="button" class="header-button Revenue" data-btn-type="Revenue">Revenue</button>
+                <button type="button"  class="header-button CoGS" data-btn-type="COGS">CoGS</button>
+                <button type="button"  class="header-button GAExpenses" data-btn-type="Expense">G&A Expenses</button>
+                <button type="button"  class="header-button OtherRE" data-btn-type="Other Rev & Exp">Other Revenue &
+                    Expenses</button>
             </div>
+            
+
             <div class="col-md-2 mt-4">
                 <button class="btn pb-1 pt-1 w-50 text-sm-center float-end submit">Submit</button>
             </div>
@@ -53,7 +58,7 @@
 
         <div class="row">
             <div class="col-md-12 mt-4">
-                <i class="fa fa-circle-o human p-1" aria-hidden="true"></i><span class="human">Human Updated</span>
+                <i class="fa-sharp fa-regular fa-circle human"></i><span class="human">Human Updated</span>
             </div>
         </div>
         <!-- <div class="container-fluid">
@@ -79,12 +84,21 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="mostlikely p-1">Most Likely</div>
+                        <ul class="list-group mt-2 empty-list" id="mostlikely">
+
+                        </ul>
                     </div>
                     <div class="col-md-4 ">
                         <div class="Likely p-1">Likely</div>
+                        <ul class="list-group mt-2 empty-list" id="likely">
+
+                        </ul>
                     </div>
                     <div class="col-md-4 ">
                         <div class="possible p-1">Possible</div>
+                        <ul class="list-group mt-2 empty-list" id="possible">
+
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -95,26 +109,27 @@
                 <nav id="menu-container">
                     <div class="scroll mt-2" id="container">
                         <div id="btn-nav-previous">
-                            <i class="fa fa-chevron-left mx-2" aria-hidden="true"></i>
+                            <i class="fa-solid fa-chevron-left"></i>
                         </div>
                         <div id="btn-nav-next">
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            <i class="fa-solid fa-chevron-right"></i>
                         </div>
                         <div class="menu-inner-box mb-0">
-                            <a href="">All</a>
-                            <a href="">Assets</a>
-                            <a href="">Liability</a>
-                            <a href="">Equity/Capital</a>
-                            <a href="">Revenue</a>
-                            <a href="">CoGS</a>
-                            <a href="">G&A Expenses</a>
-                            <a href="">Other Revenue & Expense</a>
+                            <a href="javascript:void(0)" class="all active">All</a>
+                            <a href="javascript:void(0)" class="Assets" data-link-value="ASSETS" data-btn-type="Assets">Assets</a>
+                            <a href="javascript:void(0)" class="Liability" data-link-value="LIABILITIES" data-btn-type="Liabilities">Liability</a>
+                            <a href="javascript:void(0)" class="EquityCapital" data-link-value="EQUITY/CAPITAL" data-btn-type="Equity">Equity/Capital</a>
+                            <a href="javascript:void(0)" class="Revenue" data-link-value="Revenue" data-btn-type="Revenue">Revenue</a>
+                            <a href="javascript:void(0)" class="CoGS" data-link-value="Costs" data-btn-type="COGS">CoGS</a>
+                            <a href="javascript:void(0)" class="GAExpenses" data-link-value="Expense" data-btn-type="Expense">G&A Expenses</a>
+                            <!-- <a href="javascript:void(0)" class="OtherRE"  data-btn-type="Other Rev & Exp">Other Revenue & Expense</a> -->
                         </div>
                     </div>
                 </nav>
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="search" class="form-control search" placeholder="Search Account Here...">
+                        <input type="search" class="form-control search" placeholder="&#xF002; Search Account Here..."
+                            aria-label="Search" id="txtSearch" style="font-family:Arial, FontAwesome; font-size: 11px;">
                     </div>
                 </div>
                 <ul class="list-group destination mt-3" id="section2">
@@ -154,6 +169,7 @@
     </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/jQuery/jQuery.js"></script>
+   
     <script src="/CSS AND BOOTSTRAP/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
     <script src="StandardizerCOA.js"></script>
 </body>
