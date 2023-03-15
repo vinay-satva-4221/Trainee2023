@@ -322,6 +322,22 @@ nav#menu-container {
 
 
 
+/* .border {
+  
+} */
+.empty-list {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border: 1px solid rgb(230, 230, 230);
+    padding: 16px;
+    border-radius: 0px;
+
+}
+
+
+
 
 @media (max-width: 994px) {
     .btn {
