@@ -10,22 +10,22 @@
     <link rel="stylesheet" href="Standardizer.css">
     <script src="jquery/jquery.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" /> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js" integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
-<body>
+<body >
     <nav class="navbar navbar-expand-lg navbar-light navColor NavSticky ">
         <div class="container-fluid ps-4">
             <img src="images/Standardizer_logo.png">
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                data-bs-target="#StandardiserNav" aria-controls="StandardiserNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex" id="collapsibleNavId">
+            <div class="collapse navbar-collapse d-flex" id="StandardiserNav">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item ps-5">
                         <a class="nav-link active" aria-current="page"><b class="navheading"> CoA </b> <span
@@ -47,7 +47,7 @@
 
     <div class="container-fluid d-flex mt-4 ps-3 btnSticky ">
         <div class="container-fluid p-0 buttonEvents">
-            <button type="button" class=" btnActive mx-2 p-1  px-2 btnFontSizeColor" data-link="#Assets"
+            <button type="button" class=" btnActive mx-2 p-1  px-2 btnFontSizeColor" id="assetBtn" data-link="#Assets"
                 onclick="getBtnAssetData()">Assets</button>
             <button type="button" class="  btnActive mx-2 p-1 px-2  btnFontSizeColor" id="Liability"
                 data-link="#Liability" onclick="getBtnLiabilityData()">Liability</button>
@@ -63,7 +63,7 @@
                 data-link="#OtherRevenue">Other Revenue & Expense</button>
         </div>
         <div class=" d-flex justify-content-end ">
-            <button type="submit" class="btn  mx-2 btn-success submitBtn">Submit</button>
+            <button type="submit" class="btn  mx-2 btn-success submitBtn" onclick="AddDataLocalStorage()">Submit</button>
 
         </div>
     </div>

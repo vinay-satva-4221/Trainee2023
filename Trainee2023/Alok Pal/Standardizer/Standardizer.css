@@ -124,7 +124,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.DestinationDynamicFontSize {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /* Navbar scroll destination acc */
 div.scrollmenu {
     background-color: white;
@@ -210,7 +216,7 @@ div.scrollmenu a {
 }
 
 .SourceDivHeight {
-    height: 28px;
+    height: 48px;
 }
 
 /* Navbar sticky */
