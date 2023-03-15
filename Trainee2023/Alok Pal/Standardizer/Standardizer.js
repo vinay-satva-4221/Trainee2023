@@ -33,7 +33,7 @@ xhr.onreadystatechange = function () {
     // Convert the JSON string to a JSON object
     masterChartAccountObject = JSON.parse(masterChartAccountDataString);
 
-    console.log(masterChartAccountObject); // Log the JSON object to the console
+    // console.log(masterChartAccountObject); // Log the JSON object to the console
   }
 };
 xhr.send();
@@ -49,19 +49,23 @@ var destinationData = JSON.parse(masterChartAccountDataString);
 var htmlD = "";
 $(document).ready(function () {
   debugger;
-  console.log(destinationData);
+  // console.log(destinationData);
   destinationData.forEach((item) => {
     htmlD +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'  id='" +
+      "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'  id='" +
       item.AccountCode +
-      "' >" +
+      "' >" + 
       "⠿ " +
       item.AccountCode +
       "--" +
       item.AccountName +
       "</div>";
   });
+ 
   $("#DestinationAccount").html(htmlD);
+
+
+  // ------------------------------------------------------------------------------------------------------
 
   // btn color
   $(".btnActive").click(function () {
@@ -79,26 +83,9 @@ $(document).ready(function () {
     $(this).addClass("active1");
   });
 
-  // Sortable JS
-  var destAcc = document.getElementById("DestinationAccount");
-  // console.log(destAcc);
-  var mostLikely = document.querySelectorAll('.MostLikely');
-
-  new Sortable(destAcc, {
-    group: {
-      name: "shared",
-      pull: "clone",
-      put: false, // Do not allow items to be put into this list
-    },
-    animation: 150,
-  });
 
 
-  
-  new Sortable(mostLikely, {
-    group: "shared",
-    animation: 150,
-  });
+
 });
 // --------------------------------------------------------------------------------------------------------
 
@@ -140,7 +127,7 @@ xhrs.onreadystatechange = function () {
     // Convert the JSON string to a JSON object .. It is used to only check the response
     StandardChartofAccountObject = JSON.parse(StandardChartofAccountDataString);
 
-    console.log(StandardChartofAccountObject); // Log the JSON object to the console
+    // console.log(StandardChartofAccountObject); // Log the JSON object to the console
   }
 };
 xhrs.send();
@@ -164,8 +151,7 @@ SourceData.forEach((Element, index) => {
     // ("I will use it if it is req");
     html +=
       "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceAcc ps-2' id='" +
-      Element.Number +
-      "'>" +
+      Element.Number + "' data-atr= '"+Element.Type+"'>" +
       Element.Number +
       " " +
       Element.Name +
@@ -221,17 +207,31 @@ var DestinationData = JSON.parse(masterChartAccountDataString);
 var html1;
 // For All
 function getAllData() {
-  debugger;
   html1 = "";
   DestinationData.forEach((element, index) => {
     html1 +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
-      element.AccountCode +
-      "--" +
-      element.AccountName +
-      "</div>";
+    "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
+    element.AccountCode +
+    "--" +
+    element.AccountName +
+    "</div>";
   });
+  
   $("#DestinationAccount").html(html1);
+  debugger;
+  // $('.destinatonDrag').each(function(){
+  // console.log("Alok")
+  //   // Sortable JS
+  //   new Sortable(this, {
+  //     group: {
+  //       name: 'shared',
+  //       pull: 'clone',
+  //       put: false // Do not allow items to be put into this list
+  //     },
+  //     sort: false,
+  //     animation: 150
+  //   });
+  //  })
 }
 
 // For Asset
@@ -240,7 +240,7 @@ function getAssetData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "ASSETS") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -256,13 +256,12 @@ function getliabilityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "LIABILITIES") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
         "</div>";
-      divhtml +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight ps-2'></div>";
+     
     }
   });
   $("#DestinationAccount").html(html);
@@ -274,7 +273,7 @@ function getEquityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -290,7 +289,7 @@ function getRevenueData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -342,10 +341,17 @@ function getBtnAssetData() {
     $(`#${id}Likely`).hide();
     $(`#${id}Possible`).hide();
 
+    var dataAttribute = $(this).attr('data-atr');
+    // console.log("Alok",dataAttribute)
+
+    // if (
+    //   SourceBtnData[index].Type == "Assets" &&
+    //   SourceBtnData[index].Number != ""
+    // )
     if (
-      SourceBtnData[index].Type == "Assets" &&
-      SourceBtnData[index].Number != ""
-    ) {
+      dataAttribute.trim() == "Assets" 
+    )
+     {
       var id = this.id;
       $(`#${id}`).show();
       $(`#${id}MostLikely`).show();
@@ -357,19 +363,8 @@ function getBtnAssetData() {
 }
 
 function getBtnLiabilityData() {
-  // html = "";
-  // SourceBtnData.forEach((element, index) => {
-  //   if (element.Type == "Liabilities" && element.Number != "") {
-  //     html +=
-  //       "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-  //       element.Number +
-  //       " " +
-  //       element.Name +
-  //       "</li>";
-  //   }
-  // });
-  // $("#SourceAccount").html(html);
-debugger
+
+  debugger
   $(".SourceAcc").each(function (index) {
     // console.log(this.id);
     var id = this.id;
@@ -378,10 +373,13 @@ debugger
     $(`#${id}Likely`).hide();
     $(`#${id}Possible`).hide();
 
-   if (
-      SourceBtnData[index].Type == "Liabilities" &&
-      SourceBtnData[index].Number != ""
-    )  {
+    var dataAttribute = $(this).attr('data-atr');
+    // console.log("Alok",dataAttribute)
+
+
+    if (
+      dataAttribute.trim() == "Liabilities" 
+    ) {
       var id = this.id;
       $(`#${id}`).show();
       $(`#${id}MostLikely`).show();
@@ -392,18 +390,7 @@ debugger
 }
 
 function getBtnEquityData() {
-  // html = "";
-  // SourceBtnData.forEach((element, index) => {
-  //   if (element.Type == "Equity" && element.Number != "") {
-  //     html +=
-  //       "<li class='list-group-item mt-2 border p-1 DynamicFontSize ps-2'>" +
-  //       element.Number +
-  //       " " +
-  //       element.Name +
-  //       "</li>";
-  //   }
-  // });
-  // $("#SourceAccount").html(html);
+
   $(".SourceAcc").each(function (index) {
     // console.log(this.id);
     var id = this.id;
@@ -412,10 +399,13 @@ function getBtnEquityData() {
     $(`#${id}Likely`).hide();
     $(`#${id}Possible`).hide();
 
-   if (
-      SourceBtnData[index].Type == "Liabilities" &&
-      SourceBtnData[index].Number != ""
-    )  {
+    var dataAttribute = $(this).attr('data-atr');
+    // console.log("Alok",dataAttribute)
+
+
+    if (
+      dataAttribute.trim() == "Equity" 
+    ) {
       var id = this.id;
       $(`#${id}`).show();
       $(`#${id}MostLikely`).show();
@@ -439,6 +429,7 @@ dataBtn.forEach((btn) => {
     Scrollitems.forEach((link) => {
       if (link.matches(linkSelector)) {
         link.click();
+        // this.focus(); 
       }
     });
   });
@@ -446,9 +437,148 @@ dataBtn.forEach((btn) => {
 
 // -----------------------------------------------------------------------------------------------------------
 
+// Search
 jQuery("#searchinput").on("keyup", function () {
   var value = $(this).val().toLowerCase();
   jQuery("#DestinationAccount div").filter(function () {
     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
   });
 });
+
+
+// --------------------------------------------------------------------------------------------------------
+
+// on Window onload the Asset btn willl be clicked
+
+window.addEventListener('load', function () {
+  var assetBtn = this.document.getElementById('assetBtn')
+  assetBtn.click()
+})
+
+// --------------------------------------------------------------------------------------------------------
+
+var destinationAccount = document.getElementById('DestinationAccount')
+// Sortable JS
+new Sortable(destinationAccount, {
+
+  group: {
+    name: 'shared',
+    pull: 'clone',
+    put: false // Do not allow items to be put into this list
+  },
+  sort : false,
+  animation: 150
+});
+
+
+// $(".MostLikely").each(function () {
+//   new Sortable(this, {
+//     group: 'shared',
+//     animation: 150,
+//     onAdd: function (evt) {
+//       // Check if there are any existing items in the div
+//       if (evt.to.children.length > 1) {
+//         // Cancel the addition of the new item
+//         evt.to.removeChild(evt.to.children[0]);
+//       }
+//     }
+//   });
+  
+// })
+
+// $(".likely").each(function () {
+//   new Sortable(this, {
+//     group: 'shared',
+//     animation: 150
+//   });
+// })
+// $(".possible").each(function () {
+//   new Sortable(this, {
+//     group: 'shared',
+//     animation: 150
+//   });
+// })
+
+
+
+$(".MostLikely").each(function() {
+  new Sortable(this, {
+    group: 'shared',
+    animation: 150,
+    onAdd: function(evt) {
+      // console.log('onAdd called');
+      // Check if there are any existing items in the div
+      // $(".DestinationDynamicFontSize").removeClass("mt-2").removeClass("mt-2").removeClass("mt-border ")
+
+      if (evt.to.children.length > 1) {
+        evt.to.removeChild(evt.to.children[0]);
+
+        // Remove the first item from MostLikely and add it to likely
+        var mostLikelyItem = evt.to.children[0];
+        // console.log("Most",mostLikelyItem)
+        var likelyList = document.querySelector('.likely');
+        // console.log(likelyList)
+        // likelyList.insertBefore(mostLikelyItem, likelyList.firstChild);
+
+        // Remove the first item from likely and add it to possible
+        var likelyItem = likelyList.children[0];
+        var possibleList = document.querySelector('.possible');
+        // possibleList.insertBefore(likelyItem, possibleList.firstChild);
+      }
+    }
+  });
+});
+
+$(".likely").each(function() {
+  new Sortable(this, {
+    group: 'shared',
+    animation: 150
+  });
+});
+
+$(".possible").each(function() {
+  new Sortable(this, {
+    group: 'shared',
+    animation: 150
+  });
+});
+
+
+
+// -------------------------------------------------------------------------------------------------------
+// locastorage
+
+document.onload = getLocalStorageData();
+
+var SourceAccount = new Array();
+function AddDataLocalStorage(){
+  // alert("Alok")
+  
+  
+  for(let i =0 ; i < SourceData.length; i++){
+    
+   var sourceAccountObj = {
+      SourceId : SourceData[i].Number,
+      MostLikely: $("#" + SourceData[i].Number +"MostLikely").html(),
+      Likely: $("#" + SourceData[i].Number +"Likely").html(),
+      Possible: $("#" + SourceData[i].Number +"Possible").html(),
+
+    }
+    SourceAccount.push(sourceAccountObj)
+  }
+  // console.log(sourceAccountObj)
+  localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount))
+}
+
+function getLocalStorageData(){
+ var SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"))
+ console.log(SourceData)
+
+ for (let i = 0; i<SourceData.length; i++ ){
+  // $("#" + SourceData[i].Number +"MostLikely").html(SourceAccount[i].MostLikely)
+  // console.log(SourceAccount[i][i].MostLikely)
+ }
+}
+
+
+
