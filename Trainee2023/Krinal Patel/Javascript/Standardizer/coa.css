@@ -18,7 +18,43 @@
       overflow: auto;
       text-align:justify;
       margin-top: 1%;
-  
+      
+}
+
+.destination-nav a.active {
+  color: #0d9d66;
+}
+.destination-nav a {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  margin: 3px 9px;
+  color: #333;
+  font-weight: bold;
+  padding: 8px 4px;
+}
+.destination-nav a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0d9d66;
+  transform: scaleX(0);
+  transform-origin: bottom;
+  transition: transform 0.2s ease-in-out;
+}
+.destination-nav a.active {
+  color: #0d9d66;
+}
+
+.destination-nav a.active:after {
+  transform: scaleX(1);
+}
+
+.account_type{
+  margin-top: 6%;
 }
 .btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
   color: #fff;
@@ -222,7 +258,7 @@
     }
 
     .active {
-      color: black;
+      color: #1e90ff;
       
   }
   .form-control {
@@ -280,10 +316,6 @@
     font-size: 1.25rem;
     transition: opacity .3s;
 
-    /* &:not(.active) {
-      opacity: 0;
-      pointer-events: none;
-    } */
   }
 
 
@@ -302,4 +334,20 @@
 }
 a{
   color: black;
+}
+
+.destinations{
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #212529;
+  height: 37.27px;
+  margin: 1%;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+}
+#mostlikely{
+
+  margin-top: 11px;
 }

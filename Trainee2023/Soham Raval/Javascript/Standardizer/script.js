@@ -26,10 +26,10 @@ $(document).ready(function () {
         }
         result.forEach((columndata) => {
             if (columndata.Number != "") {
-                $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "</li>");
+                $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "<i class='material-icons float-end'>done_all history</i></li>");
             }
         });
-        debugger
+        // debugger
         $(".source_btn").click(function () {
             var type = $(this).data("value");
             $("#Balancesheet_list").html('');
@@ -37,10 +37,21 @@ $(document).ready(function () {
                 if (columndata.Type == type) {
                     console.log(columndata.Name);
                     if (columndata.Number != "") {
-                        $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "</li>");
+
+                        $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "<i class='material-icons float-end'>done_all history</i></li>");
+                      
                     }
                 }
             });
+            
+            // let menu = document.getElementById('mostlikelys');
+            // menu.removeChild(menu.lastElementChild);
+
+            var length = $("#Balancesheet_list li").length;
+            console.log(length)
+            for(i=0;i<length;i++){
+            $("#mostlikelys").append("<li class='list-group-item mostlike'>")}
+          
             const MasterDataMap = {
                 "Assets": "ASSETS",
                 "Liabilities": "LIABILITIES",
@@ -52,23 +63,23 @@ $(document).ready(function () {
             };
             datamatchedofmaster = MasterDataMap[type];
 
-            $("#list").html('');
+            $("#mastersheet_list").html('');
             getvalueofmasterdata.forEach((columndata) => {
 
                 if (columndata.AccountTypeName == datamatchedofmaster) {
 
                     console.log(columndata.AccountName);
                     if (columndata.Number != "") {
-                        $("#list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+                        $("#mastersheet_list").append("<li class='list-group-item'>" + "⠿" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
                     }
                 }
-            });
+            }) 
+            
         });
         return JSON.stringify(result);
     }
     var balancesheetxhttp = new XMLHttpRequest();
     balancesheetxhttp.open("GET", "MasterChartOfAcounts - Sheet1.csv", false);
-
     balancesheetxhttp.onload = function () {
         if (this.readyState == 4 && this.status == 200) {
             csvtojsonmasterdata(this.responseText);
@@ -88,10 +99,15 @@ $(document).ready(function () {
             getvalueofmasterdata.push(obj);
         }
     }
+
+    var html = '';
     getvalueofmasterdata.forEach((columndata) => {
         if (columndata.Number != "") {
-            $("#list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+         // $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+         html += "<li class='list-group-item'>" + "⠿" +columndata.AccountCode + "  " + columndata.AccountName + "</li>"
+                
         }
+        $("#mastersheet_list").html(html)
     });
     $('.menu-item').click(function () {
         var navbarvalue = $(this).data("value");
@@ -105,12 +121,14 @@ $(document).ready(function () {
             "other": "Product Costs"
         };
         datamatchedofnavbar = MasternavbarMap[navbarvalue];
-        $("#list").html('');
+        $("#mastersheet_list").html('');
+        debugger
         getvalueofmasterdata.forEach((columndata) => {
             if (columndata.AccountTypeName == datamatchedofnavbar) {
                 console.log(columndata.AccountName);
-                if (columndata.Number != "") {
-                    $("#list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+                if (columndata.Number != "" ) {
+
+                        $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
                 }
             }
         });
@@ -118,7 +136,7 @@ $(document).ready(function () {
             getvalueofmasterdata.forEach((columndata) => {      
                   console.log(columndata.AccountName);
                   if(columndata.Number!=""){
-                    $("#list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+                    $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
                 }        
 
                });
@@ -147,15 +165,62 @@ $(document).ready(function () {
     });
     $('.search').on('search', function () {
         if ($(this).val() === '') {
-            $('#list li').show();
+            $('#mastersheet_list li').show();
         }
     });
+
+        $('.menu-item.navbar_btn').click(function() {
+          // remove the active class from all links
+          $('.menu-item.navbar_btn').removeClass('active');
+          // add the active class to the clicked link
+          $(this).addClass('active');
+        });
+      
 });
-document.addEventListener('DOMContentLoaded', function() {
-    dragula([
-      document.querySelector('#first-container'),
-      document.querySelector('#second-container'),
-      document.querySelector('#third-container')
-    ]);
+new Sortable(document.getElementById('mostlikely_sortable'), {
+    group: 'shared',
+    animation: 150
+});
+
+new Sortable(document.getElementById('likely_sortable'), {
+    group: 'shared',
+    animation: 150
+});
+
+new Sortable(document.getElementById('possible_sortable'), {
+    group: 'shared',
+    animation: 150
+});
+// create a new li element with desired data
+var newItem = document.createElement('li');
+newItem.innerHTML = '';
+
+// add new item to mastersheet_list
+document.getElementById('mastersheet_list').appendChild(newItem);
+
+// initialize new Sortable instance on mastersheet_list
+new Sortable(document.getElementById('mastersheet_list'), {
+  group: 'shared',
+  animation: 150
+});
+
+
+
+
+const buttons = document.querySelectorAll('.source_btn');
+buttons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const value = event.target.getAttribute('data-value');
+
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    menuItems.forEach((menuItem) => {
+      if (menuItem.getAttribute('data-value') === value) {
+        menuItem.classList.add('active');
+      } else {
+        menuItem.classList.remove('active');
+      }
+    });
   });
-  
+});
+{/* <i class='material-icons md-10'>done_all history</i></div>"); */}
