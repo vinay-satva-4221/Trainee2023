@@ -7,28 +7,83 @@
 //     filter: '.sortable-disabled',
 //     chosenClass: 'active'
 //   });
+$(".destinations").each(function (){
+  new Sortable(this,{
+    group: "list-1",
+    animation:150,
 
-
-  Sortable.create(destination, {
-    group: 'list-1',
-    handle: '.list-group-item'
   });
-  
+});
 
-  Sortable.create(mostlikely, {
-    group: 'list-1',
-    handle: '.list-group-item',
-  });
 
-  Sortable.create(likely, {
-    group: 'list-1',
-    handle: '.list-group-item'
-  });
 
-  Sortable.create(possible, {
-    group: 'list-1',
-    handle: '.list-group-item'
-  });
+Sortable(destination, {
+  group: 'shared', // set both lists to same group
+  animation: 150,
+  pull:'clone',
+  put: 'false'
+});
+
+  Sortable(mostlikely, {
+  group: 'shared',
+  animation: 150
+});
+// Sortable.create(destination, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone',// To clone: set pull to 'clone'
+//   put: false
+
+// });
+
+
+// Sortable.create(mostlikely, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
+
+// });
+
+// Sortable.create(likely, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
+
+// });
+
+// Sortable.create(possible, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
+
+// });
+
+
+// Filter mapping
+const buttons = document.querySelectorAll('.destination_source');
+const links = document.querySelectorAll('.destination-nav a');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(button => {
+        button.classList.remove('active');
+      });
+      button.classList.add('active');
+
+      const btnType = button.getAttribute('data-active-type');
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-active-type') === btnType) {
+          link.classList.add('active');
+          if (link.classList.contains('active')) {
+            link.click();
+          }
+        }
+      });
+    });
+    });
+
+
 
 // Destination Data Get
 const destinationdata = new XMLHttpRequest();
@@ -54,6 +109,7 @@ destinationdata.onreadystatechange = function () {
       masterChartAccountData.push(obj);
     }
 
+   
     masterChartAccountDataString = JSON.stringify(masterChartAccountData);
     masterChartAccountObject = JSON.parse(masterChartAccountDataString);
   }
@@ -65,13 +121,14 @@ const parentElement = document.getElementById('destination');
 
 destinationData.forEach((item) => {
   var liElement = document.createElement('li');
-  liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+  liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
   liElement.classList.add('list-group-item')
   parentElement.appendChild(liElement);
+
+
 });
 
-
-//Source data get
+//Source data
 
 var sourcedata = new XMLHttpRequest();
 sourcedata.open("GET", "StandardCofA.csv",false);
@@ -105,194 +162,320 @@ sourcedata.send();
 var sourcedata = JSON.parse(standardcofstring);
 const parent = document.getElementById('source');
 
+
 sourcedata.forEach((item) => {
+  
+
+  if(item.Number!=""){
+
   var liElement = document.createElement('li');
-  liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+  liElement.innerHTML = `${item.Number} ${'--'} ${item.Name}` +      `<i class='material-icons float-end'>done_all history</i>`  ;
+
+  // li.innerHTML = data[i]["N  umber"] + " -- " + data[i]["Name"] + '<i class="material-icons float-end">done_all history</i>';
   liElement.classList.add('list-group-item')
   parent.appendChild(liElement);
+  
+  // var listlength = $("#source").length;
+  //     console.log(listlength)
+      // $("#mostlikely li").remove();
+        // for(var i=0; i<listlength;i++){
+   
+              $("#mostlikely").append("<li class='list-group-item destinations'></li>");
+              $("#likely").append("<li class='list-group-item destinations'></li>");
+              $("#possible").append("<li class='list-group-item destinations'></li>");
+
+          // }
+  }
 });
 
 
 
 ///Filtering with buttons
+//Filtering with Button 
+$('.btn-check').click(function(){
+ 
+  var mostlikely = document.getElementById('mostlikely');
+  var likely = document.getElementById('likely');
+  var possible = document.getElementById('possible');
+  mostlikely.innerHTML = '';
+  likely.innerHTML = '';
+  possible.innerHTML = '';
+
+  var button = $(this).data("type");
+  console.log(button);
+  document.getElementById('source').innerHTML =""
+  document.getElementById('destination').innerHTML =""
+
+  sourcedata.forEach((item) => {
+
+    if(item.Type==button){
+      if(item.Number!=""){
+    var liElement = document.createElement('li');
+    liElement.innerHTML = `${item.Number} ${'--'} ${item.Name}` +      `<i class='material-icons float-end'>done_all history</i>`  ;
+    liElement.classList.add('list-group-item')
+    parent.appendChild(liElement);
+      
+    $("#mostlikely").append("<li class='list-group-item destinations'></li>");
+    $("#likely").append("<li class='list-group-item destinations'></li>");
+    $("#possible").append("<li class='list-group-item destinations'></li>");
+
+    }}
+
+
+     
+  });
+    
+    var newdestinationData = "";
+    if(button=="Assets"){
+      newdestinationData="ASSETS"
+    }
+    if(button=="Liabilities"){
+      newdestinationData="LIABILITIES"
+    }
+    if(button=="Equity"){
+      newdestinationData="EQUITY/CAPITAL"
+    }
+    if(button=="Revenue"){
+      newdestinationData="Professional Services Revenue" 
+    }
+    if(button=="Other Rev & Exp"){
+      newdestinationData="Labor Expense" 
+    }
+    
+      
+  destinationData.forEach((item) => {
+    if(item.AccountTypeName==newdestinationData){
+    var liElement = document.createElement('li');
+    liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
+    liElement.classList.add('list-group-item')
+    parentElement.appendChild(liElement);
+    } 
+});
+
+
+});
+//Destination Filter
+$('a').click(function(){
+  var button = $(this).data("type");
+  console.log(button);
+
+  // var a = $("data-active-type"); 
+  // const classList = document.getElementById("actives") 
+  // classList.remove(a)
+
+
+  document.getElementById('destination').innerHTML =""
+   
+
+
+  destinationData.forEach((item) => {
+    if(item.AccountTypeName==button){
+    var liElement = document.createElement('li');
+    liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
+    liElement.classList.add('list-group-item')
+    parentElement.appendChild(liElement);
+    } 
+});
+
+
+});
+$('#all').click(function(){
+      destinationData.forEach((item) => {
+      // if(item.AccountTypeName==button){
+      var liElement = document.createElement('li');
+      liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
+      liElement.classList.add('list-group-item')
+      parentElement.appendChild(liElement);
+      // } 
+  });
+  });
+
 
 // document.getElementsByClassName('Assets').onclick = function() {
 //   debugger
  
 
 // };
-$(".all").click(function(){debugger
+// $(".all").click(function(){debugger
 
-  document.getElementById('destination').innerHTML =""
-  document.getElementById('source').innerHTML =""
+//   document.getElementById('destination').innerHTML =""
+//   document.getElementById('source').innerHTML =""
   
-  destinationData.forEach((item) => {
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
+//   destinationData.forEach((item) => {
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
     
-  });
-  sourcedata.forEach((item) => {
+//   });
+//   sourcedata.forEach((item) => {
 
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
     
-  });
+//   });
 
-});
+// });
   
-$(".Assets").click(function(){debugger
 
-  document.getElementById('destination').innerHTML =""
-  document.getElementById('source').innerHTML =""
+
+// $(".Assets").click(function(){debugger
+
+//   document.getElementById('destination').innerHTML =""
+//   document.getElementById('source').innerHTML =""
   
-  destinationData.forEach((item) => {
-    if(item.AccountTypeName=="ASSETS"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
-    } 
-  });
-  sourcedata.forEach((item) => {
+//   destinationData.forEach((item) => {
+//     if(item.AccountTypeName=="ASSETS"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
+//     } 
 
-    if(item.Type=="Assets"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
+// });
+//   sourcedata.forEach((item) => {
 
-});
-$(".Liability").click(function(){
+//     if(item.Type=="Assets"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+  
+//     }
+//   });
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".Liability").click(function(){
 
-  destinationData.forEach((item) => {
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
 
-    if(item.AccountTypeName=="LIABILITIES"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
-    } 
-  });
+//   destinationData.forEach((item) => {
 
-  sourcedata.forEach((item) => {
+//     if(item.AccountTypeName=="LIABILITIES"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
+//     } 
+//   });
 
-    if(item.Type=="Liabilities"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
+//   sourcedata.forEach((item) => {
 
-});
+//     if(item.Type=="Liabilities"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
 
-$(".EquityCapital").click(function(){
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".EquityCapital").click(function(){
 
-  destinationData.forEach((item) => {
-    if(item.AccountTypeName=="EQUITY/CAPITAL"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
-    } 
-  });
-  sourcedata.forEach((item) => {
-    if(item.Type=="Equity"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
-});
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
 
-$(".Revenue").click(function(){
+//   destinationData.forEach((item) => {
+//     if(item.AccountTypeName=="EQUITY/CAPITAL"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
+//     } 
+//   });
+//   sourcedata.forEach((item) => {
+//     if(item.Type=="Equity"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".Revenue").click(function(){
 
-  destinationData.forEach((item) => {
-    if(item.AccountTypeName=="Professional Services Revenue"||item.AccountTypeName=="Product Revenue"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
-    } 
-  });
-  sourcedata.forEach((item) => {
-    if(item.Type=="Revenue"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
-});
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
 
-$(".CoGS").click(function(){
+//   destinationData.forEach((item) => {
+//     if(item.AccountTypeName=="Professional Services Revenue"||item.AccountTypeName=="Product Revenue"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
+//     } 
+//   });
+//   sourcedata.forEach((item) => {
+//     if(item.Type=="Revenue"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".CoGS").click(function(){
 
-  sourcedata.forEach((item) => {
-    if(item.Type=="COGS"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
-});
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
 
-$(".GA_Expenses").click(function(){
+//   sourcedata.forEach((item) => {
+//     if(item.Type=="COGS"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".GA_Expenses").click(function(){
 
-  sourcedata.forEach((item) => {
-    if(item.Type=="Expense"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
-});
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
 
-$(".OtherRE").click(function(){
+//   sourcedata.forEach((item) => {
+//     if(item.Type=="Expense"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
+// });
 
-  document.getElementById('destination').innerHTML =""  
-  document.getElementById('source').innerHTML =""
+// $(".OtherRE").click(function(){
 
-  destinationData.forEach((item) => {
-    if(item.AccountTypeName=="Labor Expense"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
-    liElement.classList.add('list-group-item')
-    parentElement.appendChild(liElement);
-    } 
-  });
-  sourcedata.forEach((item) => {
-    if(item.Type=="Other Rev & Exp"){
-    var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
-    liElement.classList.add('list-group-item')
-    parent.appendChild(liElement);
-    }
-  });
-});
+//   document.getElementById('destination').innerHTML =""  
+//   document.getElementById('source').innerHTML =""
+
+//   destinationData.forEach((item) => {
+//     if(item.AccountTypeName=="Labor Expense"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+//     liElement.classList.add('list-group-item')
+//     parentElement.appendChild(liElement);
+//     } 
+//   });
+//   sourcedata.forEach((item) => {
+//     if(item.Type=="Other Rev & Exp"){
+//     var liElement = document.createElement('li');
+//     liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+//     liElement.classList.add('list-group-item')
+//     parent.appendChild(liElement);
+//     }
+//   });
+// });
+
+
+
+
 /**
   Horizontal scrolling menu.
 
@@ -519,3 +702,8 @@ $('#search').on('search', function () {
         $('#destination li').show();
     }
 });
+
+
+
+
+

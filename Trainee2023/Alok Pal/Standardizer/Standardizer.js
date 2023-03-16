@@ -48,22 +48,20 @@ var destinationData = JSON.parse(masterChartAccountDataString);
 // Global element
 var htmlD = "";
 $(document).ready(function () {
-  debugger;
   // console.log(destinationData);
   destinationData.forEach((item) => {
     htmlD +=
       "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'  id='" +
       item.AccountCode +
-      "' >" + 
+      "' >" +
       "⠿ " +
       item.AccountCode +
       "--" +
       item.AccountName +
       "</div>";
   });
- 
-  $("#DestinationAccount").html(htmlD);
 
+  $("#DestinationAccount").html(htmlD);
 
   // ------------------------------------------------------------------------------------------------------
 
@@ -78,14 +76,9 @@ $(document).ready(function () {
 
   // Target Active class for the scroll nav
   $(".scrollmenu a").click(function () {
-    debugger;
     $(".scrollmenu a").removeClass("active1");
     $(this).addClass("active1");
   });
-
-
-
-
 });
 // --------------------------------------------------------------------------------------------------------
 
@@ -151,23 +144,26 @@ SourceData.forEach((Element, index) => {
     // ("I will use it if it is req");
     html +=
       "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceAcc ps-2' id='" +
-      Element.Number + "' data-atr= '"+Element.Type+"'>" +
+      Element.Number +
+      "' data-atr= '" +
+      Element.Type +
+      "'>" +
       Element.Number +
       " " +
       Element.Name +
       "<i class='fa-sharp fa-solid fa-clock-rotate-left float-end'></i> <i class='bi bi-check2-all text-end float-end ps-2'></i></div>";
     divhtml +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight MostLikely ps-2' id='" +
+      "<div class='SourceAccDivs mt-2 p-1 DynamicFontSize SourceDivHeight MostLikely ps-2' id='" +
       Element.Number +
-      "MostLikely'></div>";
+      "ML'></div>";
     likelyHtml +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight likely ps-2' id='" +
+      "<div class='SourceAccDivs mt-2 p-1 DynamicFontSize SourceDivHeight likely ps-2' id='" +
       Element.Number +
-      "Likely'></div>";
+      "L'></div>";
     possible +=
-      "<div class='list-group-item mt-2 border p-1 DynamicFontSize SourceDivHeight possible ps-2' id='" +
+      "<div class='SourceAccDivs mt-2 p-1 DynamicFontSize SourceDivHeight possible ps-2' id='" +
       Element.Number +
-      "Possible'></div>";
+      "P'></div>";
   }
 });
 $("#SourceAccount").html(html);
@@ -210,28 +206,14 @@ function getAllData() {
   html1 = "";
   DestinationData.forEach((element, index) => {
     html1 +=
-    "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
-    element.AccountCode +
-    "--" +
-    element.AccountName +
-    "</div>";
+      "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+      "⠿ " +
+      element.AccountCode +
+      "--" +
+      element.AccountName +
+      "</div>";
   });
-  
   $("#DestinationAccount").html(html1);
-  debugger;
-  // $('.destinatonDrag').each(function(){
-  // console.log("Alok")
-  //   // Sortable JS
-  //   new Sortable(this, {
-  //     group: {
-  //       name: 'shared',
-  //       pull: 'clone',
-  //       put: false // Do not allow items to be put into this list
-  //     },
-  //     sort: false,
-  //     animation: 150
-  //   });
-  //  })
 }
 
 // For Asset
@@ -240,7 +222,8 @@ function getAssetData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "ASSETS") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -256,12 +239,12 @@ function getliabilityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "LIABILITIES") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
         "</div>";
-     
     }
   });
   $("#DestinationAccount").html(html);
@@ -273,7 +256,8 @@ function getEquityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -289,7 +273,8 @@ function getRevenueData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" + "⠿ " +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "⠿ " +
         element.AccountCode +
         "--" +
         element.AccountName +
@@ -308,109 +293,61 @@ var SourceBtnData = JSON.parse(StandardChartofAccountDataString);
 // for button click
 
 function getBtnAssetData() {
-  debugger;
-  // SourceBtnData.forEach((element, index) => {
-  // for (let i = 0; i < SourceBtnData.length; i++) {
-  //   var id = $(".SourceAcc")[i].id;
-  //   $(`#${id}`).hide();
-  //   var MostId = $(".MostLikely")[i].id;
-  //   $(`#${MostId}MostLikely`).hide();
-
-  //   if (SourceBtnData[i].Type == "Assets" && SourceBtnData[i].Number != "") {
-
-  //     // $(".SourceAcc")[index].id
-  //     // console.log($(".SourceAcc")[index].id)
-  //     var id = $(".SourceAcc")[i].id;
-  //     $(`#${id}`).show();
-  //     var MostId = $(".MostLikely")[i].id;
-  //     $(`#${MostId}MostLikely`).show();
-  //   }
-  // }
-  // $("#SourceAccount").html(html);
-
-  // $.each(".SourceAcc", function(index) {
-  //   console.log(this.id)
-
-  // })
-
   $(".SourceAcc").each(function (index) {
     // console.log(this.id);
     var id = this.id;
     $(`#${id}`).hide();
-    $(`#${id}MostLikely`).hide();
-    $(`#${id}Likely`).hide();
-    $(`#${id}Possible`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
 
-    var dataAttribute = $(this).attr('data-atr');
-    // console.log("Alok",dataAttribute)
-
-    // if (
-    //   SourceBtnData[index].Type == "Assets" &&
-    //   SourceBtnData[index].Number != ""
-    // )
-    if (
-      dataAttribute.trim() == "Assets" 
-    )
-     {
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Assets") {
       var id = this.id;
       $(`#${id}`).show();
-      $(`#${id}MostLikely`).show();
-      $(`#${id}Likely`).show();
-      $(`#${id}Possible`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
     }
   });
-
 }
 
 function getBtnLiabilityData() {
-
-  debugger
+  debugger;
   $(".SourceAcc").each(function (index) {
     // console.log(this.id);
     var id = this.id;
     $(`#${id}`).hide();
-    $(`#${id}MostLikely`).hide();
-    $(`#${id}Likely`).hide();
-    $(`#${id}Possible`).hide();
-
-    var dataAttribute = $(this).attr('data-atr');
-    // console.log("Alok",dataAttribute)
-
-
-    if (
-      dataAttribute.trim() == "Liabilities" 
-    ) {
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Liabilities") {
       var id = this.id;
       $(`#${id}`).show();
-      $(`#${id}MostLikely`).show();
-      $(`#${id}Likely`).show();
-      $(`#${id}Possible`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
     }
   });
 }
 
 function getBtnEquityData() {
-
   $(".SourceAcc").each(function (index) {
     // console.log(this.id);
     var id = this.id;
     $(`#${id}`).hide();
-    $(`#${id}MostLikely`).hide();
-    $(`#${id}Likely`).hide();
-    $(`#${id}Possible`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
 
-    var dataAttribute = $(this).attr('data-atr');
-    // console.log("Alok",dataAttribute)
-
-
-    if (
-      dataAttribute.trim() == "Equity" 
-    ) {
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Equity") {
       var id = this.id;
       $(`#${id}`).show();
-      $(`#${id}MostLikely`).show();
-      $(`#${id}Likely`).show();
-      $(`#${id}Possible`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
     }
   });
 }
@@ -429,7 +366,7 @@ dataBtn.forEach((btn) => {
     Scrollitems.forEach((link) => {
       if (link.matches(linkSelector)) {
         link.click();
-        // this.focus(); 
+        link.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     });
   });
@@ -438,11 +375,20 @@ dataBtn.forEach((btn) => {
 // -----------------------------------------------------------------------------------------------------------
 
 // Search
-jQuery("#searchinput").on("keyup", function () {
-  var value = $(this).val().toLowerCase();
-  jQuery("#DestinationAccount div").filter(function () {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-  });
+var searchInput = document.getElementById('searchinput');
+var destinationAccountDiv = document.getElementById('DestinationAccount');
+var destinationAccountDivs = destinationAccountDiv.getElementsByTagName('div');
+
+searchInput.addEventListener('keyup', function () {
+  var value = this.value.toLowerCase();
+  for (var i = 0; i < destinationAccountDivs.length; i++) {
+    var text = destinationAccountDivs[i].textContent.toLowerCase();
+    if (text.indexOf(value) > -1) {
+      destinationAccountDivs[i].style.display = '';
+    } else {
+      destinationAccountDivs[i].style.display = 'none';
+    }
+  }
 });
 
 
@@ -450,100 +396,116 @@ jQuery("#searchinput").on("keyup", function () {
 
 // on Window onload the Asset btn willl be clicked
 
-window.addEventListener('load', function () {
-  var assetBtn = this.document.getElementById('assetBtn')
-  assetBtn.click()
-})
+window.addEventListener("load", function () {
+  var assetBtn = this.document.getElementById("assetBtn");
+  assetBtn.click();
+});
 
 // --------------------------------------------------------------------------------------------------------
 
-var destinationAccount = document.getElementById('DestinationAccount')
+var destinationAccount = document.getElementById("DestinationAccount");
 // Sortable JS
 new Sortable(destinationAccount, {
-
   group: {
-    name: 'shared',
-    pull: 'clone',
-    put: false // Do not allow items to be put into this list
+    name: "shared",
+    pull: "clone",
+    put: false, // Do not allow items to be put into this list
   },
-  sort : false,
-  animation: 150
+  onStart: function (evt) {
+    var id = evt.item.id;
+    console.log(' id:', id);
+  },
+
+  sort: false,
+  animation: 150,
 });
 
-
-// $(".MostLikely").each(function () {
-//   new Sortable(this, {
-//     group: 'shared',
-//     animation: 150,
-//     onAdd: function (evt) {
-//       // Check if there are any existing items in the div
-//       if (evt.to.children.length > 1) {
-//         // Cancel the addition of the new item
-//         evt.to.removeChild(evt.to.children[0]);
-//       }
-//     }
-//   });
-  
-// })
-
-// $(".likely").each(function () {
-//   new Sortable(this, {
-//     group: 'shared',
-//     animation: 150
-//   });
-// })
-// $(".possible").each(function () {
-//   new Sortable(this, {
-//     group: 'shared',
-//     animation: 150
-//   });
-// })
-
-
-
-$(".MostLikely").each(function() {
+$(".MostLikely").each(function () {
   new Sortable(this, {
-    group: 'shared',
+    group: "shared",
     animation: 150,
-    onAdd: function(evt) {
-      // console.log('onAdd called');
-      // Check if there are any existing items in the div
-      // $(".DestinationDynamicFontSize").removeClass("mt-2").removeClass("mt-2").removeClass("mt-border ")
+
+    onAdd: function (evt) {
+      var mostLikelyItem = evt.to.children[0];
+   
+      var Mostid = this.el.id;
+      console.log(Mostid);
+
+      var Likely = Mostid.replace("ML", "L");
+      var PossibledivID = Mostid.replace("ML", "P");
+
+      var LikelyDIV = document.getElementById(Likely);
+      var PossibleDIV = document.getElementById(PossibledivID);
 
       if (evt.to.children.length > 1) {
-        evt.to.removeChild(evt.to.children[0]);
-
-        // Remove the first item from MostLikely and add it to likely
-        var mostLikelyItem = evt.to.children[0];
-        // console.log("Most",mostLikelyItem)
-        var likelyList = document.querySelector('.likely');
-        // console.log(likelyList)
-        // likelyList.insertBefore(mostLikelyItem, likelyList.firstChild);
-
-        // Remove the first item from likely and add it to possible
-        var likelyItem = likelyList.children[0];
-        var possibleList = document.querySelector('.possible');
-        // possibleList.insertBefore(likelyItem, possibleList.firstChild);
+        var oldMostLikelyitem = evt.to.children[1];
+        LikelyDIV.appendChild(oldMostLikelyitem);
+        console.log(LikelyDIV.children);
       }
-    }
+      if (LikelyDIV.children.length > 1) {
+        var oldLikelyitem = LikelyDIV.children[0];
+        console.log(oldLikelyitem);
+        PossibleDIV.appendChild(oldLikelyitem);
+      }
+      if (PossibleDIV.children.length > 1) {
+        PossibleDIV.removeChild(PossibleDIV.children[0]);
+      }
+
+    },
+    ghostClass: "ghost",
   });
 });
 
-$(".likely").each(function() {
+$(".likely").each(function () {
   new Sortable(this, {
-    group: 'shared',
-    animation: 150
+    group: "shared",
+    animation: 150,
+    onAdd: function (evt) {
+      var LikelyItem = evt.to.children[0];
+   
+
+
+      var Likeid = this.el.id;
+      // console.log(Likeid);
+
+      var PossibledivID = Likeid.replace("L", "P");
+
+      var PossibleDIV = document.getElementById(PossibledivID);
+      if (evt.to.children.length > 1) {
+
+        var olditem = evt.to.children[1]
+        PossibleDIV.appendChild(olditem);
+
+      }
+      if (PossibleDIV.children.length > 1) {
+        PossibleDIV.removeChild(PossibleDIV.children[0]);
+
+
+      }
+    },
+    ghostClass: "ghost",
   });
 });
 
-$(".possible").each(function() {
+$(".possible").each(function () {
   new Sortable(this, {
-    group: 'shared',
-    animation: 150
+    group: "shared",
+    animation: 150,
+
+    onAdd: function (evt) {
+      var possible = evt.to.children[0];
+   
+      debugger;
+      console.log(evt.dragEl)
+
+      if (evt.to.children.length > 1) {
+        evt.to.removeChild(evt.to.children[1]);
+
+      }
+    },
+    ghostClass: "ghost",
   });
 });
-
-
 
 // -------------------------------------------------------------------------------------------------------
 // locastorage
@@ -551,34 +513,105 @@ $(".possible").each(function() {
 document.onload = getLocalStorageData();
 
 var SourceAccount = new Array();
-function AddDataLocalStorage(){
-  // alert("Alok")
-  
-  
-  for(let i =0 ; i < SourceData.length; i++){
-    
-   var sourceAccountObj = {
-      SourceId : SourceData[i].Number,
-      MostLikely: $("#" + SourceData[i].Number +"MostLikely").html(),
-      Likely: $("#" + SourceData[i].Number +"Likely").html(),
-      Possible: $("#" + SourceData[i].Number +"Possible").html(),
-
+function AddDataLocalStorage() {
+  const mainDiv = document.getElementById("SourceAccount");
+  const divs = mainDiv.querySelectorAll("div");
+  var SourceID;
+  divs.forEach(function (div) {
+    SourceID = div.id
+    console.log(SourceID)
+    debugger
+    if (localStorage.getItem("SourceAccount") == null) {
+      SourceAccount = [];
+      var sourceAccountObj = {
+        SourceId: SourceID,
+        MostLikely: $("#" + SourceID + "ML").html(),
+        Likely: $("#" + SourceID + "L").html(),
+        Possible: $("#" + SourceID + "P").html(),
+      };
     }
-    SourceAccount.push(sourceAccountObj)
+    else {
+      var sourceAccountObj = {
+        SourceId: SourceID,
+        MostLikely: $("#" + SourceID + "ML").html(),
+        Likely: $("#" + SourceID + "L").html(),
+        Possible: $("#" + SourceID + "P").html(),
+      };
+    }
+
+    SourceAccount.push(sourceAccountObj);
+
+    // localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount));
+  })
+  localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount));
+}
+
+function getLocalStorageData() {
+  debugger
+  var SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"));
+  console.log("Json", SourceDataJson);
+
+  const mainDiv = document.getElementById("SourceAccount");
+  const divs = mainDiv.querySelectorAll("div");
+  // divs.forEach(div => console.log(div.id));
+  var getSourceid;
+  divs.forEach(function (div, index) {
+    getSourceid = div.id
+    $("#" + getSourceid + "ML").html(SourceDataJson[index].MostLikely);
+    $("#" + getSourceid + "L").html(SourceDataJson[index].Likely)
+    $("#" + getSourceid + "P").html(SourceDataJson[index].Possible)
+
+  })
+
+}
+
+// --------------------------------------------------------------------------------------------------------
+
+// Time
+function formatDate(dateVal) {
+  var newDate = new Date(dateVal);
+
+  var sMonth = padValue(newDate.getMonth() + 1);
+  var sDay = padValue(newDate.getDate());
+  var sYear = newDate.getFullYear();
+  var sHour = newDate.getHours();
+  var sMinute = padValue(newDate.getMinutes());
+  var sAMPM = "AM";
+
+  var iHourCheck = parseInt(sHour);
+
+  if (iHourCheck > 12) {
+    sAMPM = "PM";
+    sHour = iHourCheck - 12;
+  } else if (iHourCheck === 0) {
+    sHour = "12";
   }
-  // console.log(sourceAccountObj)
-  localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount))
+  sHour = padValue(sHour);
+  return (
+    sMonth +
+    "/" +
+    sDay +
+    "/" +
+    sYear +
+    " " +
+    "at" +
+    " " +
+    +sHour +
+    ":" +
+    sMinute +
+    " " +
+    sAMPM
+  );
 }
 
-function getLocalStorageData(){
- var SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"))
- console.log(SourceData)
-
- for (let i = 0; i<SourceData.length; i++ ){
-  // $("#" + SourceData[i].Number +"MostLikely").html(SourceAccount[i].MostLikely)
-  // console.log(SourceAccount[i][i].MostLikely)
- }
+function padValue(value) {
+  return value < 10 ? "0" + value : value;
 }
 
+var Time = formatDate(new Date());
+console.log(Time);
 
-
+var Lastupdate = document.getElementById('Submit');
+Lastupdate.addEventListener('click',function(){
+  document.getElementById('LastSubmited').innerHTML = "Last Updated On "+Time
+})

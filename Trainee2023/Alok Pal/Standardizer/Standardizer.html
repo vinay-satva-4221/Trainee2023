@@ -63,10 +63,14 @@
                 data-link="#OtherRevenue">Other Revenue & Expense</button>
         </div>
         <div class=" d-flex justify-content-end ">
-            <button type="submit" class="btn  mx-2 btn-success submitBtn" onclick="AddDataLocalStorage()">Submit</button>
-
+            <button type="submit" class="btn  mx-2 btn-success submitBtn" id="Submit" onclick="AddDataLocalStorage()">Submit</button>
+            <br>
         </div>
     </div>
+    
+    <div id="LastSubmited" class=" submittext text-end mt-2"></div>
+
+
     <div class="container-fluid HumanUpdated ps-4 mt-5">
         <p><i class="fa fa-circle-o"></i>&nbsp;<b>Human updated</b></p>
     </div>
@@ -129,7 +133,7 @@
                     <input type="search" class="form-control ps-5 searchInput" id="searchinput" onclick="filter()"
                         placeholder="Search Account Here...">
                 </div>
-                <div class="list-group" id="DestinationAccount">
+                <div class="list-group destinationScroll" id="DestinationAccount">
 
                 </div>
             </div>
