@@ -26,31 +26,65 @@ $(document).ready(function () {
         }
         result.forEach((columndata) => {
             if (columndata.Number != "") {
-                $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "<i class='material-icons float-end'>done_all history</i></li>");
+                $("#Balancesheet_list").append("<li id='number_" + columndata.Number + "' class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "<i class='material-icons float-end'>done_all history</i></li>");
+                $("#mostlikelys").append("<li id='mostlikely_" + columndata.Number + "' class='list-group-item mostlike  mostlikedrag'>");
+                $("#likelys").append("<li id='likely_" + columndata.Number + "' class='list-group-item mostlike likelydrag'>");
+                $("#possible").append("<li id='possible_" + columndata.Number + "' class='list-group-item mostlike possibledrag'>");
             }
         });
-        // debugger
+        $('.mostlikedrag').each(function () {
+      
+            new Sortable(this, {
+                group: 'shared',
+                animation: 150,
+            })
+        })
+        $('.likelydrag').each(function () {
+                       new Sortable(this, {
+                group: 'shared',
+                animation: 150,
+            })
+        })
+        $('.possibledrag').each(function () {
+           
+            new Sortable(this, {
+                group: 'shared',
+                animation: 150,
+            })
+        })
+        debugger
         $(".source_btn").click(function () {
+        
             var type = $(this).data("value");
-            $("#Balancesheet_list").html('');
+
+            var mostlikelys = $("#mostlikelys");
+            var likelys = $("#likelys");
+            var possible = $("#possible");
+            var type = $(this).data("value");
+            
+            $("#Balancesheet_list li").hide();
+            mostlikelys.find("li").hide();
+            likelys.find("li").hide();
+            possible.find("li").hide();
+        
             result.forEach((columndata) => {
                 if (columndata.Type == type) {
-                    console.log(columndata.Name);
                     if (columndata.Number != "") {
-
-                        $("#Balancesheet_list").append("<li class='list-group-item'>" + columndata.Number + "  " + columndata.Name + "<i class='material-icons float-end'>done_all history</i></li>");
-                      
+                        $("#number_" + columndata.Number).show();
+                        $("#mostlikely_" + columndata.Number).show();
+                        $("#likely_" + columndata.Number).show();
+                        $("#possible_" + columndata.Number).show();
                     }
                 }
             });
-            
-            // let menu = document.getElementById('mostlikelys');
-            // menu.removeChild(menu.lastElementChild);
+            $('.btndrag').each(function () {
+                debugger
+                new Sortable(this, {
+                    group: 'shared',
+                    animation: 150,
+                })
+            })
 
-            var length = $("#Balancesheet_list li").length;
-            console.log(length)
-            for(i=0;i<length;i++){
-            $("#mostlikelys").append("<li class='list-group-item mostlike'>")}
           
             const MasterDataMap = {
                 "Assets": "ASSETS",
@@ -73,8 +107,8 @@ $(document).ready(function () {
                         $("#mastersheet_list").append("<li class='list-group-item'>" + "⠿" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
                     }
                 }
-            }) 
-            
+            })
+
         });
         return JSON.stringify(result);
     }
@@ -103,9 +137,9 @@ $(document).ready(function () {
     var html = '';
     getvalueofmasterdata.forEach((columndata) => {
         if (columndata.Number != "") {
-         // $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
-         html += "<li class='list-group-item'>" + "⠿" +columndata.AccountCode + "  " + columndata.AccountName + "</li>"
-                
+            // $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+            html += "<li class='list-group-item'>" + "⠿" + columndata.AccountCode + "  " + columndata.AccountName + "</li>"
+
         }
         $("#mastersheet_list").html(html)
     });
@@ -114,33 +148,32 @@ $(document).ready(function () {
         const MasternavbarMap = {
             "Assets": "ASSETS",
             "Liabilities": "LIABILITIES",
-            "Equity/Capital": "EQUITY/CAPITAL",
+            "Equity": "EQUITY/CAPITAL",
             "Revenue": "Professional Services Revenue",
-            "CoGS": "Product Revenue",
+            "COGS": "Product Revenue",
             "Expense": '"Outside (or ""1099"") Professional Services Costs"',
-            "other": "Product Costs"
+            "Other Rev & Exp": "Product Costs"
         };
         datamatchedofnavbar = MasternavbarMap[navbarvalue];
         $("#mastersheet_list").html('');
-        debugger
+
         getvalueofmasterdata.forEach((columndata) => {
             if (columndata.AccountTypeName == datamatchedofnavbar) {
                 console.log(columndata.AccountName);
-                if (columndata.Number != "" ) {
+                if (columndata.Number != "") {
 
-                        $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+                    $("#mastersheet_list").append("<li class='list-group-item'>" + "⠿" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
                 }
             }
         });
-          $('#all_data').click(function(){
-            getvalueofmasterdata.forEach((columndata) => {      
-                  console.log(columndata.AccountName);
-                  if(columndata.Number!=""){
-                    $("#mastersheet_list").append("<li class='list-group-item'>" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
-                }        
-
-               });
-          });
+        $('#all_data').click(function () {
+            getvalueofmasterdata.forEach((columndata) => {
+                console.log(columndata.AccountName);
+                if (columndata.Number != "") {
+                    $("#mastersheet_list").append("<li class='list-group-item'>" + "⠿" + columndata.AccountCode + "  " + columndata.AccountName + "</li>");
+                }
+            });
+        });
     })
     const buttons = document.querySelectorAll('.source_btn');
     buttons.forEach(button => {
@@ -169,58 +202,82 @@ $(document).ready(function () {
         }
     });
 
-        $('.menu-item.navbar_btn').click(function() {
-          // remove the active class from all links
-          $('.menu-item.navbar_btn').removeClass('active');
-          // add the active class to the clicked link
-          $(this).addClass('active');
-        });
-      
+    $('.menu-item.navbar_btn').click(function () {
+        // remove the active class from all links
+        $('.menu-item.navbar_btn').removeClass('active');
+        // add the active class to the clicked link
+        $(this).addClass('active');
+    });
 });
-new Sortable(document.getElementById('mostlikely_sortable'), {
-    group: 'shared',
-    animation: 150
+// new Sortable(document.getElementById('mostlikelys'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementById('likelys'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementById('possible'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementById('mastersheet_list'), {
+//        group: {
+//         name: 'shared',
+//         pull: 'clone',
+//         put: false 
+//     },
+//     animation: 150,
+// });
+
+new Sortable(mastersheet_list, {
+    group: {
+        name: 'shared',
+        pull: 'clone',
+        put: false
+    },
+    animation: 150,
+    // sort: false 
 });
 
-new Sortable(document.getElementById('likely_sortable'), {
-    group: 'shared',
-    animation: 150
-});
+// new Sortable(document.getElementsByClassName('mostlikelys_list'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementsByClassName('likelys_list'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementsByClassName('possible_list'), {
+//     group: 'shared',
+//     animation: 150,
+// });
+// new Sortable(document.getElementsByClassName('destination_account'), {
+//     group: {
+//         name: 'shared',
+//         pull: 'clone',
+//     }, 
+//        animation: 150,
+// });
 
-new Sortable(document.getElementById('possible_sortable'), {
-    group: 'shared',
-    animation: 150
-});
+
 // create a new li element with desired data
-var newItem = document.createElement('li');
-newItem.innerHTML = '';
-
-// add new item to mastersheet_list
-document.getElementById('mastersheet_list').appendChild(newItem);
-
+// var newItem = document.createElement('li');
+// newItem.innerHTML = '';
+// document.getElementById('mastersheet_list').appendChild(newItem);
 // initialize new Sortable instance on mastersheet_list
-new Sortable(document.getElementById('mastersheet_list'), {
-  group: 'shared',
-  animation: 150
-});
-
-
-
-
 const buttons = document.querySelectorAll('.source_btn');
 buttons.forEach((button) => {
-  button.addEventListener('click', (event) => {
-    const value = event.target.getAttribute('data-value');
-
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    menuItems.forEach((menuItem) => {
-      if (menuItem.getAttribute('data-value') === value) {
-        menuItem.classList.add('active');
-      } else {
-        menuItem.classList.remove('active');
-      }
+    button.addEventListener('click', (event) => {
+        const value = event.target.getAttribute('data-value');
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach((menuItem) => {
+            if (menuItem.getAttribute('data-value') === value) {
+                menuItem.classList.add('active');
+                menuItem.scrollIntoView({ behavior: "smooth", block: "end", inline: "end" });
+            } else {
+                menuItem.classList.remove('active');
+            }
+        });
     });
-  });
 });
-{/* <i class='material-icons md-10'>done_all history</i></div>"); */}

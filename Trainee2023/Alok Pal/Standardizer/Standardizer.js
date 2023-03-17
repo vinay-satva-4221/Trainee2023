@@ -33,13 +33,12 @@ xhr.onreadystatechange = function () {
     // Convert the JSON string to a JSON object
     masterChartAccountObject = JSON.parse(masterChartAccountDataString);
 
-    // console.log(masterChartAccountObject); // Log the JSON object to the console
   }
 };
 xhr.send();
 
 var destinationData = JSON.parse(masterChartAccountDataString);
-// console.log("Alok", destinationData);
+console.log("Alok", destinationData);
 
 //---------------------------------------------------------------------------------------------------------
 
@@ -49,19 +48,17 @@ var destinationData = JSON.parse(masterChartAccountDataString);
 var htmlD = "";
 $(document).ready(function () {
   // console.log(destinationData);
-  destinationData.forEach((item) => {
-    htmlD +=
-      "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'  id='" +
-      item.AccountCode +
-      "' >" +
-      "⠿ " +
-      item.AccountCode +
-      "--" +
-      item.AccountName +
-      "</div>";
-  });
+  // destinationData.forEach((item) => {
+  //   htmlD +=
+  //     "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'  data-atr='" +item.AccountCode + "' >" +
+  //     "⠿ " +
+  //     item.AccountCode +
+  //     "--" +
+  //     item.AccountName +
+  //     "</div>";
+  // });
 
-  $("#DestinationAccount").html(htmlD);
+  // $("#DestinationAccount").html(htmlD);
 
   // ------------------------------------------------------------------------------------------------------
 
@@ -120,7 +117,7 @@ xhrs.onreadystatechange = function () {
     // Convert the JSON string to a JSON object .. It is used to only check the response
     StandardChartofAccountObject = JSON.parse(StandardChartofAccountDataString);
 
-    // console.log(StandardChartofAccountObject); // Log the JSON object to the console
+    console.log(StandardChartofAccountObject); // Log the JSON object to the console
   }
 };
 xhrs.send();
@@ -175,20 +172,21 @@ $("#Possible").html(possible);
 
 // --------------------------------------------------------------------------------------------------------
 
+// Navbar Scrollbar
 const scrollbar = document.getElementById("scrollbar");
 const scrollLeftBtn = document.getElementById("scroll-Left-btn");
 const scrollrightBtn = document.getElementById("scroll-right-btn");
 
 // Set up button click handlers
-scrollLeftBtn.addEventListener("click", scrollUp);
-scrollrightBtn.addEventListener("click", scrollDown);
+scrollLeftBtn.addEventListener("click", right);
+scrollrightBtn.addEventListener("click", left);
 
-function scrollUp() {
+function right() {
   // Scroll up by 50 pixels
   scrollbar.scrollLeft += 70;
 }
 
-function scrollDown() {
+function left() {
   // Scroll down by 50 pixels
   scrollbar.scrollLeft -= 70;
 }
@@ -206,7 +204,9 @@ function getAllData() {
   html1 = "";
   DestinationData.forEach((element, index) => {
     html1 +=
-      "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+      "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+      element.AccountCode +
+      "'>" +
       "⠿ " +
       element.AccountCode +
       "--" +
@@ -222,7 +222,9 @@ function getAssetData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "ASSETS") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
         "⠿ " +
         element.AccountCode +
         "--" +
@@ -239,7 +241,9 @@ function getliabilityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "LIABILITIES") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
         "⠿ " +
         element.AccountCode +
         "--" +
@@ -256,7 +260,9 @@ function getEquityData() {
   DestinationData.forEach((element, index) => {
     if (element.AccountTypeName == "EQUITY/CAPITAL") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
         "⠿ " +
         element.AccountCode +
         "--" +
@@ -271,9 +277,11 @@ function getEquityData() {
 function getRevenueData() {
   html = "";
   DestinationData.forEach((element, index) => {
-    if (element.AccountTypeName == "EQUITY/CAPITAL") {
+    if (element.AccountTypeName == "Professional Services Revenue") {
       html +=
-        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2'>" +
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
         "⠿ " +
         element.AccountCode +
         "--" +
@@ -284,6 +292,62 @@ function getRevenueData() {
   $("#DestinationAccount").html(html);
 }
 
+// For Cogs
+function CogsData() {
+  html = "";
+  DestinationData.forEach((element, index) => {
+    if (element.AccountTypeName == "Professional Services Costs") {
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
+        "⠿ " +
+        element.AccountCode +
+        "--" +
+        element.AccountName +
+        "</div>";
+    }
+  });
+  $("#DestinationAccount").html(html);
+}
+
+// For Expenses
+function ExpensesData() {
+  html = "";
+  DestinationData.forEach((element, index) => {
+    if (element.AccountTypeName == "Labor Expense") {
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
+        "⠿ " +
+        element.AccountCode +
+        "--" +
+        element.AccountName +
+        "</div>";
+    }
+  });
+  $("#DestinationAccount").html(html);
+}
+
+// Other Revenue & Expenses
+function OtherRevenueData() {
+  html = "";
+  DestinationData.forEach((element, index) => {
+    if (element.AccountTypeName == "Product Revenue") {
+      html +=
+        "<div class='list-group-item mt-2 border p-1 DestinationDynamicFontSize destinatonDrag ps-2' data-atr='" +
+        element.AccountCode +
+        "'>" +
+        "⠿ " +
+        element.AccountCode +
+        "--" +
+        element.AccountName +
+        "</div>";
+    }
+  });
+  $("#DestinationAccount").html(html);
+}
 // --------------------------------------------------------------------------------------------------------
 
 // Source
@@ -352,6 +416,83 @@ function getBtnEquityData() {
   });
 }
 
+function getBtnRevenueData() {
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
+
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Revenue") {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
+    }
+  });
+}
+function getBtnCogsData() {
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
+
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "COGS") {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
+    }
+  });
+}
+function getBtnExpenseData() {
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
+
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Expense") {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
+    }
+  });
+}
+function getBtnOtherExpenseData() {
+  $(".SourceAcc").each(function (index) {
+    // console.log(this.id);
+    var id = this.id;
+    $(`#${id}`).hide();
+    $(`#${id}ML`).hide();
+    $(`#${id}L`).hide();
+    $(`#${id}P`).hide();
+
+    var dataAttribute = $(this).attr("data-atr");
+    if (dataAttribute.trim() == "Other Rev & Exp") {
+      var id = this.id;
+      $(`#${id}`).show();
+      $(`#${id}ML`).show();
+      $(`#${id}L`).show();
+      $(`#${id}P`).show();
+    }
+  });
+}
+
 // --------------------------------------------------------------------------------------------------------
 
 // Button click
@@ -375,22 +516,21 @@ dataBtn.forEach((btn) => {
 // -----------------------------------------------------------------------------------------------------------
 
 // Search
-var searchInput = document.getElementById('searchinput');
-var destinationAccountDiv = document.getElementById('DestinationAccount');
-var destinationAccountDivs = destinationAccountDiv.getElementsByTagName('div');
+var searchInput = document.getElementById("searchinput");
+var destinationAccountDiv = document.getElementById("DestinationAccount");
+var destinationAccountDivs = destinationAccountDiv.getElementsByTagName("div");
 
-searchInput.addEventListener('keyup', function () {
+searchInput.addEventListener("keyup", function () {
   var value = this.value.toLowerCase();
   for (var i = 0; i < destinationAccountDivs.length; i++) {
     var text = destinationAccountDivs[i].textContent.toLowerCase();
     if (text.indexOf(value) > -1) {
-      destinationAccountDivs[i].style.display = '';
+      destinationAccountDivs[i].style.display = "";
     } else {
-      destinationAccountDivs[i].style.display = 'none';
+      destinationAccountDivs[i].style.display = "none";
     }
   }
 });
-
 
 // --------------------------------------------------------------------------------------------------------
 
@@ -411,10 +551,6 @@ new Sortable(destinationAccount, {
     pull: "clone",
     put: false, // Do not allow items to be put into this list
   },
-  onStart: function (evt) {
-    var id = evt.item.id;
-    console.log(' id:', id);
-  },
 
   sort: false,
   animation: 150,
@@ -426,11 +562,44 @@ $(".MostLikely").each(function () {
     animation: 150,
 
     onAdd: function (evt) {
-      var mostLikelyItem = evt.to.children[0];
-   
       var Mostid = this.el.id;
-      console.log(Mostid);
 
+      var Likely = Mostid.replace("ML", "L");
+      var PossibledivID = Mostid.replace("ML", "P");
+
+      var mostLikelyAttr1;
+      var mostLikelyAttr2;
+
+      // duplicate in self
+
+
+      // when nothing is there
+      var emptyLikely = document.getElementById(Likely).children[0]
+      emptyLikely = $(emptyLikely).attr("data-atr")
+
+      var emptyPossible = document.getElementById(PossibledivID).children[0]
+      emptyPossible = $(emptyPossible).attr("data-atr")
+      
+      var emptyMostlikely = $(evt.item).attr("data-atr")
+
+      if (emptyLikely == emptyMostlikely || emptyMostlikely == emptyPossible ) {
+        alert("EFEW")
+        evt.to.removeChild(evt.item)
+      }
+      else {
+        if (evt.to.children.length > 1) {
+          mostLikelyAttr1 = evt.to.children[0].getAttribute("data-atr");
+          mostLikelyAttr2 = evt.to.children[1].getAttribute("data-atr");
+
+          if (mostLikelyAttr1 == mostLikelyAttr2) {
+            alert("error");
+            evt.to.removeChild(evt.to.children[1]);
+          }
+        }
+
+      }
+
+      var Mostid = this.el.id;
       var Likely = Mostid.replace("ML", "L");
       var PossibledivID = Mostid.replace("ML", "P");
 
@@ -440,21 +609,20 @@ $(".MostLikely").each(function () {
       if (evt.to.children.length > 1) {
         var oldMostLikelyitem = evt.to.children[1];
         LikelyDIV.appendChild(oldMostLikelyitem);
-        console.log(LikelyDIV.children);
       }
       if (LikelyDIV.children.length > 1) {
         var oldLikelyitem = LikelyDIV.children[0];
-        console.log(oldLikelyitem);
         PossibleDIV.appendChild(oldLikelyitem);
       }
       if (PossibleDIV.children.length > 1) {
         PossibleDIV.removeChild(PossibleDIV.children[0]);
       }
-
     },
     ghostClass: "ghost",
   });
 });
+
+var likelyAtr1, likelyAtr2;
 
 $(".likely").each(function () {
   new Sortable(this, {
@@ -462,25 +630,48 @@ $(".likely").each(function () {
     animation: 150,
     onAdd: function (evt) {
       var LikelyItem = evt.to.children[0];
-   
-
 
       var Likeid = this.el.id;
-      // console.log(Likeid);
+      var MLikelyid = Likeid.replace("L", "ML");
+      var PossibledivID = Likeid.replace("L", "P");
+
+      var likelyAtr1;
+      var likelyAtr2;
+
+
+
+      // when nothing is there
+      var emptyMLikely = document.getElementById(MLikelyid).children[0]
+      emptyMLikely = $(emptyMLikely).attr("data-atr")
+
+      var EmptyPossible = document.getElementById(PossibledivID).children[0]
+      EmptyPossible = $(EmptyPossible).attr("data-atr")
+
+      var emptylikely = $(evt.item).attr("data-atr")
+
+      if (emptyMLikely == emptylikely || emptylikely == EmptyPossible ) {
+        alert("EFEWjwdh")
+        evt.to.removeChild(evt.item)
+      }else{
+        if (evt.to.children.length > 1) {
+          likelyAtr1 = evt.to.children[0].getAttribute("data-atr");
+          likelyAtr2 = evt.to.children[1].getAttribute("data-atr");
+          if (likelyAtr1 == likelyAtr2) {
+            alert("error");
+            evt.to.removeChild(evt.to.children[1]);
+          }
+        }
+      }
 
       var PossibledivID = Likeid.replace("L", "P");
 
       var PossibleDIV = document.getElementById(PossibledivID);
       if (evt.to.children.length > 1) {
-
-        var olditem = evt.to.children[1]
+        var olditem = evt.to.children[1];
         PossibleDIV.appendChild(olditem);
-
       }
       if (PossibleDIV.children.length > 1) {
         PossibleDIV.removeChild(PossibleDIV.children[0]);
-
-
       }
     },
     ghostClass: "ghost",
@@ -493,15 +684,40 @@ $(".possible").each(function () {
     animation: 150,
 
     onAdd: function (evt) {
-      var possible = evt.to.children[0];
-   
-      debugger;
-      console.log(evt.dragEl)
 
-      if (evt.to.children.length > 1) {
-        evt.to.removeChild(evt.to.children[1]);
+      var Possibleid = this.el.id;
+      var MostLikelyid = Possibleid.replace("P", "ML");
+      var LikelyID = Possibleid.replace("P", "L");
 
+      var PossibleAtr1;
+      var PossibleAtr2;
+
+
+
+      // when nothing is there
+      var EmptyMLikely = document.getElementById(MostLikelyid).children[0]
+      EmptyMLikely = $(EmptyMLikely).attr("data-atr")
+
+      var EmptyLikely = document.getElementById(LikelyID).children[0]
+      EmptyLikely = $(EmptyLikely).attr("data-atr")
+
+      var emptyPoss = $(evt.item).attr("data-atr")
+     
+      if (EmptyMLikely == emptyPoss || emptyPoss == EmptyLikely ) {
+        alert("EFEWjwdh")
+        evt.to.removeChild(evt.item)
+      }else{
+        if (evt.to.children.length > 1) {
+          PossibleAtr1 = evt.to.children[0].getAttribute("data-atr");
+          PossibleAtr2 = evt.to.children[1].getAttribute("data-atr");
+      
+          if (PossibleAtr1 == PossibleAtr2) {
+            alert("error");
+            evt.to.removeChild(evt.to.children[1]);
+          }
+        }
       }
+
     },
     ghostClass: "ghost",
   });
@@ -509,8 +725,12 @@ $(".possible").each(function () {
 
 // -------------------------------------------------------------------------------------------------------
 // locastorage
-
-document.onload = getLocalStorageData();
+window.addEventListener("load", function () {
+  var SourceJson = JSON.parse(localStorage.getItem("SourceAccount"));
+  if (SourceJson != null || SourceJson != undefined) {
+    document.onload = getLocalStorageData();
+  }
+});
 
 var SourceAccount = new Array();
 function AddDataLocalStorage() {
@@ -518,9 +738,7 @@ function AddDataLocalStorage() {
   const divs = mainDiv.querySelectorAll("div");
   var SourceID;
   divs.forEach(function (div) {
-    SourceID = div.id
-    console.log(SourceID)
-    debugger
+    SourceID = div.id;
     if (localStorage.getItem("SourceAccount") == null) {
       SourceAccount = [];
       var sourceAccountObj = {
@@ -529,8 +747,9 @@ function AddDataLocalStorage() {
         Likely: $("#" + SourceID + "L").html(),
         Possible: $("#" + SourceID + "P").html(),
       };
-    }
-    else {
+      SourceAccount.push(sourceAccountObj);
+
+    } else {
       var sourceAccountObj = {
         SourceId: SourceID,
         MostLikely: $("#" + SourceID + "ML").html(),
@@ -542,27 +761,23 @@ function AddDataLocalStorage() {
     SourceAccount.push(sourceAccountObj);
 
     // localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount));
-  })
+  });
   localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount));
 }
 
 function getLocalStorageData() {
-  debugger
   var SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"));
   console.log("Json", SourceDataJson);
 
   const mainDiv = document.getElementById("SourceAccount");
   const divs = mainDiv.querySelectorAll("div");
-  // divs.forEach(div => console.log(div.id));
   var getSourceid;
   divs.forEach(function (div, index) {
-    getSourceid = div.id
+    getSourceid = div.id;
     $("#" + getSourceid + "ML").html(SourceDataJson[index].MostLikely);
-    $("#" + getSourceid + "L").html(SourceDataJson[index].Likely)
-    $("#" + getSourceid + "P").html(SourceDataJson[index].Possible)
-
-  })
-
+    $("#" + getSourceid + "L").html(SourceDataJson[index].Likely);
+    $("#" + getSourceid + "P").html(SourceDataJson[index].Possible);
+  });
 }
 
 // --------------------------------------------------------------------------------------------------------
@@ -609,9 +824,8 @@ function padValue(value) {
 }
 
 var Time = formatDate(new Date());
-console.log(Time);
 
-var Lastupdate = document.getElementById('Submit');
-Lastupdate.addEventListener('click',function(){
-  document.getElementById('LastSubmited').innerHTML = "Last Updated On "+Time
-})
+var Lastupdate = document.getElementById("Submit");
+Lastupdate.addEventListener("click", function () {
+  document.getElementById("LastSubmited").innerHTML = "Last Updated On " + Time;
+});
