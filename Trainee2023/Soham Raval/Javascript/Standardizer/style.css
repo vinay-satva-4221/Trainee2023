@@ -7,7 +7,7 @@
   position: absolute;
   width: 33%;
   height: 2px;
-  bottom: -20px;
+  bottom: -12px;
   left: 15px;
   background-color: #3cb7e7;
   visibility: hidden;
@@ -219,7 +219,9 @@ margin-top: 10px;
 .mostlike{
   height: 40px;
   margin-top: 10px;
+  overflow: hidden;
 }
+
 .navbar_btn.active
 {
 color: green;
@@ -228,6 +230,44 @@ color: green;
   border-bottom: 2px solid green;
   padding-bottom: 18px;
 }
+
+.list-group-item:last-child {
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+  display: block!important;
+}
+
+/* .mostlikedrag:has(li){
+  padding: 0px;
+ border: none;
+}
+.likelydrag:has(li){
+  padding: 0px;
+ border: none;
+}
+.possibledrag:has(li){
+  padding: 0px;
+ border: none;
+
+} */
+/* .mostlikebtndrag:has(li){
+  padding: 0px;
+ border: none;
+}
+.likelybtndrag:has(li){
+  padding: 0px;
+ border: none;
+}
+.possiblebtndrag:has(li){
+  padding: 0px;
+ border: none;
+} */
+.mostlike:has(li){
+  padding: 0px;
+ border: none;
+}
+
+
 /* .navbar_btn.active::after {
   content: "";
   display: block;
@@ -355,6 +395,7 @@ text-decoration:none;
 text-align:center;
 white-space:no-wrap;
 }
+
 .menu-item:hover {
 text-decoration:underline;
 }
@@ -404,6 +445,13 @@ width: 19.4rem;
 }
 .menu-inner-box a:hover {
   text-decoration: none;
+}
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
 }
   /* .menu-inner-box a.active {
     color: #0d9d66;
