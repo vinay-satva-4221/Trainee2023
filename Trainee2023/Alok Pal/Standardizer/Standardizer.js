@@ -583,7 +583,7 @@ $(".MostLikely").each(function () {
       var emptyMostlikely = $(evt.item).attr("data-atr")
 
       if (emptyLikely == emptyMostlikely || emptyMostlikely == emptyPossible ) {
-        alert("EFEW")
+        Swal.fire('Duplicate Data is Found')
         evt.to.removeChild(evt.item)
       }
       else {
@@ -592,7 +592,7 @@ $(".MostLikely").each(function () {
           mostLikelyAttr2 = evt.to.children[1].getAttribute("data-atr");
 
           if (mostLikelyAttr1 == mostLikelyAttr2) {
-            alert("error");
+            Swal.fire('Duplicate Data is Found')
             evt.to.removeChild(evt.to.children[1]);
           }
         }
@@ -650,14 +650,16 @@ $(".likely").each(function () {
       var emptylikely = $(evt.item).attr("data-atr")
 
       if (emptyMLikely == emptylikely || emptylikely == EmptyPossible ) {
-        alert("EFEWjwdh")
+        Swal.fire('Duplicate Data is Found')
+
         evt.to.removeChild(evt.item)
       }else{
         if (evt.to.children.length > 1) {
           likelyAtr1 = evt.to.children[0].getAttribute("data-atr");
           likelyAtr2 = evt.to.children[1].getAttribute("data-atr");
           if (likelyAtr1 == likelyAtr2) {
-            alert("error");
+            Swal.fire('Duplicate Data is Found')
+
             evt.to.removeChild(evt.to.children[1]);
           }
         }
@@ -704,7 +706,8 @@ $(".possible").each(function () {
       var emptyPoss = $(evt.item).attr("data-atr")
      
       if (EmptyMLikely == emptyPoss || emptyPoss == EmptyLikely ) {
-        alert("EFEWjwdh")
+        Swal.fire('Duplicate Data is Found')
+
         evt.to.removeChild(evt.item)
       }else{
         if (evt.to.children.length > 1) {
@@ -712,7 +715,8 @@ $(".possible").each(function () {
           PossibleAtr2 = evt.to.children[1].getAttribute("data-atr");
       
           if (PossibleAtr1 == PossibleAtr2) {
-            alert("error");
+            Swal.fire('Duplicate Data is Found')
+        
             evt.to.removeChild(evt.to.children[1]);
           }
         }
@@ -732,8 +736,8 @@ window.addEventListener("load", function () {
   }
 });
 
-var SourceAccount = new Array();
 function AddDataLocalStorage() {
+  var SourceAccount = new Array();
   const mainDiv = document.getElementById("SourceAccount");
   const divs = mainDiv.querySelectorAll("div");
   var SourceID;
@@ -742,6 +746,7 @@ function AddDataLocalStorage() {
     if (localStorage.getItem("SourceAccount") == null) {
       SourceAccount = [];
       var sourceAccountObj = {
+        LastUpdated: Time,
         SourceId: SourceID,
         MostLikely: $("#" + SourceID + "ML").html(),
         Likely: $("#" + SourceID + "L").html(),
@@ -751,6 +756,7 @@ function AddDataLocalStorage() {
 
     } else {
       var sourceAccountObj = {
+        LastUpdated: Time,
         SourceId: SourceID,
         MostLikely: $("#" + SourceID + "ML").html(),
         Likely: $("#" + SourceID + "L").html(),
@@ -765,8 +771,10 @@ function AddDataLocalStorage() {
   localStorage.setItem("SourceAccount", JSON.stringify(SourceAccount));
 }
 
+// local storage variable
+var SourceDataJson
 function getLocalStorageData() {
-  var SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"));
+  SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"));
   console.log("Json", SourceDataJson);
 
   const mainDiv = document.getElementById("SourceAccount");
@@ -827,5 +835,6 @@ var Time = formatDate(new Date());
 
 var Lastupdate = document.getElementById("Submit");
 Lastupdate.addEventListener("click", function () {
-  document.getElementById("LastSubmited").innerHTML = "Last Updated On " + Time;
+  SourceDataJson = JSON.parse(localStorage.getItem("SourceAccount"));
+  document.getElementById("LastSubmited").innerHTML = "Last Updated On " + SourceDataJson[0].LastUpdated;
 });
