@@ -189,7 +189,7 @@ div.scrollmenu a {
     position: absolute;
     right: 18rem;
     font-size: 13px;
-    top: 318px;
+    top: 341px;
 }
 
 .searchInput {
@@ -310,4 +310,8 @@ div.scrollmenu a {
 
 .SourceAccDivs div{
     margin: 0px !important;
+}
+
+#LastSubmited{
+    height: 14px;
 }
