@@ -7,12 +7,59 @@
 //     filter: '.sortable-disabled',
 //     chosenClass: 'active'
 //   });
+$(".destinations").each(function (){
+  new Sortable(this,{
+    group: "list-1",
+    animation:150,
+
+  });
+});
 
 
 
+Sortable(destination, {
+  group: 'shared', // set both lists to same group
+  animation: 150,
+  pull:'clone',
+  put: 'false'
+});
+
+  Sortable(mostlikely, {
+  group: 'shared',
+  animation: 150
+});
+// Sortable.create(destination, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone',// To clone: set pull to 'clone'
+//   put: false
+
+// });
 
 
+// Sortable.create(mostlikely, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
 
+// });
+
+// Sortable.create(likely, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
+
+// });
+
+// Sortable.create(possible, {
+//   group: 'list-1',
+//   handle: '.list-group-item',
+//   pull: 'clone' // To clone: set pull to 'clone'
+
+// });
+
+
+// Filter mapping
 const buttons = document.querySelectorAll('.destination_source');
 const links = document.querySelectorAll('.destination-nav a');
 
@@ -37,35 +84,6 @@ const links = document.querySelectorAll('.destination-nav a');
     });
 
 
-// $('.destination-nav').click(function(){
-//   const button = document.querySelectorAll('.destination-nav a');
-
-//   button.classList.remove('active');
-
-// });
-
-
-
-  Sortable.create(destination, {
-    group: 'list-1',
-    handle: '.list-group-item'
-  });
-  
-
-  Sortable.create(mostlikely, {
-    group: 'list-1',
-    handle: '.list-group-item',
-  });
-
-  Sortable.create(likely, {
-    group: 'list-1',
-    handle: '.list-group-item'
-  });
-
-  Sortable.create(possible, {
-    group: 'list-1',
-    handle: '.list-group-item'
-  });
 
 // Destination Data Get
 const destinationdata = new XMLHttpRequest();
@@ -103,7 +121,7 @@ const parentElement = document.getElementById('destination');
 
 destinationData.forEach((item) => {
   var liElement = document.createElement('li');
-  liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+  liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
   liElement.classList.add('list-group-item')
   parentElement.appendChild(liElement);
 
@@ -144,10 +162,16 @@ sourcedata.send();
 var sourcedata = JSON.parse(standardcofstring);
 const parent = document.getElementById('source');
 
+
 sourcedata.forEach((item) => {
+  
+
   if(item.Number!=""){
+
   var liElement = document.createElement('li');
-  liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+  liElement.innerHTML = `${item.Number} ${'--'} ${item.Name}` +      `<i class='material-icons float-end'>done_all history</i>`  ;
+
+  // li.innerHTML = data[i]["N  umber"] + " -- " + data[i]["Name"] + '<i class="material-icons float-end">done_all history</i>';
   liElement.classList.add('list-group-item')
   parent.appendChild(liElement);
   
@@ -155,9 +179,11 @@ sourcedata.forEach((item) => {
   //     console.log(listlength)
       // $("#mostlikely li").remove();
         // for(var i=0; i<listlength;i++){
-          
+   
               $("#mostlikely").append("<li class='list-group-item destinations'></li>");
-      
+              $("#likely").append("<li class='list-group-item destinations'></li>");
+              $("#possible").append("<li class='list-group-item destinations'></li>");
+
           // }
   }
 });
@@ -165,28 +191,39 @@ sourcedata.forEach((item) => {
 
 
 ///Filtering with buttons
-
+//Filtering with Button 
 $('.btn-check').click(function(){
+ 
+  var mostlikely = document.getElementById('mostlikely');
+  var likely = document.getElementById('likely');
+  var possible = document.getElementById('possible');
+  mostlikely.innerHTML = '';
+  likely.innerHTML = '';
+  possible.innerHTML = '';
+
   var button = $(this).data("type");
   console.log(button);
   document.getElementById('source').innerHTML =""
   document.getElementById('destination').innerHTML =""
 
-debugger
   sourcedata.forEach((item) => {
 
     if(item.Type==button){
       if(item.Number!=""){
     var liElement = document.createElement('li');
-    liElement.textContent = `${item.Number} ${'--'} ${item.Name} `;
+    liElement.innerHTML = `${item.Number} ${'--'} ${item.Name}` +      `<i class='material-icons float-end'>done_all history</i>`  ;
     liElement.classList.add('list-group-item')
     parent.appendChild(liElement);
       
+    $("#mostlikely").append("<li class='list-group-item destinations'></li>");
+    $("#likely").append("<li class='list-group-item destinations'></li>");
+    $("#possible").append("<li class='list-group-item destinations'></li>");
+
     }}
 
 
      
-  });debugger
+  });
     
     var newdestinationData = "";
     if(button=="Assets"){
@@ -209,27 +246,32 @@ debugger
   destinationData.forEach((item) => {
     if(item.AccountTypeName==newdestinationData){
     var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+    liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
     liElement.classList.add('list-group-item')
     parentElement.appendChild(liElement);
-    
-    $("#mostlikely").append("<li class='list-group-item destinations'></li>");
-
     } 
 });
 
 
 });
-$('a').click(function(){debugger
+//Destination Filter
+$('a').click(function(){
   var button = $(this).data("type");
   console.log(button);
 
+  // var a = $("data-active-type"); 
+  // const classList = document.getElementById("actives") 
+  // classList.remove(a)
+
+
   document.getElementById('destination').innerHTML =""
    
+
+
   destinationData.forEach((item) => {
     if(item.AccountTypeName==button){
     var liElement = document.createElement('li');
-    liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+    liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
     liElement.classList.add('list-group-item')
     parentElement.appendChild(liElement);
     } 
@@ -241,7 +283,7 @@ $('#all').click(function(){
       destinationData.forEach((item) => {
       // if(item.AccountTypeName==button){
       var liElement = document.createElement('li');
-      liElement.textContent = `${item.AccountCode} ${'--'} ${item.AccountName} `;
+      liElement.textContent =  `⠿ ${item.AccountCode} ${'--'} ${item.AccountName}` ;
       liElement.classList.add('list-group-item')
       parentElement.appendChild(liElement);
       // } 
